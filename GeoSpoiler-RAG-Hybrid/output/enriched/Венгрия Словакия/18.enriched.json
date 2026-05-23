@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T20:18:39.962638+00:00",
+  "provenance": {
+    "channel_name": "Венгрия Словакия",
+    "channel_id": 3328128766,
+    "message_id": 18,
+    "date": "2026-02-15T15:36:47+00:00",
+    "post_url": "https://t.me/c/3328128766/18",
+    "normalized_file": "output\\normalized\\Венгрия Словакия\\18.txt",
+    "meta_file": "output\\normalized\\Венгрия Словакия\\18.meta.json",
+    "is_forward": true,
+    "forward_from": "Clash Report"
+  },
+  "content_type": "mixed",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Зеленский заявил, что Путин нашел в Европе представителей, подрывающих европейское единство, назвав это внутренними разногласиями.",
+  "key_facts": [
+    {
+      "text": "Зеленский утверждает, что Путин нашел в Европе представителей, борющихся против единства Европы.",
+      "claim_type": "source_claim"
+    },
+    {
+      "text": "Зеленский характеризует эти действия как внутренние разногласия в Европе.",
+      "claim_type": "source_claim"
+    }
+  ],
+  "entities": {
+    "people": [
+      "Зеленский",
+      "Путин"
+    ],
+    "organizations": [],
+    "countries": [
+      "Европа"
+    ],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [
+    "европейское единство",
+    "внешнее вмешательство",
+    "политические разногласия"
+  ],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": false,
+    "has_video": true,
+    "video_type": "telegram_native",
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Clash Report",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Венгрия Словакия | Дата: 2026-02-15 15:36 | Пост: https://t.me/c/3328128766/18]\n\n\nЗеленский заявил, что Путин нашел в Европе представителей, подрывающих европейское единство, назвав это внутренними разногласиями.\n\nКлючевые факты:\n- Зеленский утверждает, что Путин нашел в Европе представителей, борющихся против единства Европы. [source_claim]\n- Зеленский характеризует эти действия как внутренние разногласия в Европе. [source_claim]\n\nСущности: Зеленский, Путин, Европа\n\nИсточник: Clash Report",
+  "search_text": "[Канал: Венгрия Словакия | Дата: 2026-02-15 15:36 | Пост: https://t.me/c/3328128766/18]\n\n\nЗеленский заявил, что Путин нашел в Европе представителей, подрывающих европейское единство, назвав это внутренними разногласиями.\n\nКлючевые факты:\n- Зеленский утверждает, что Путин нашел в Европе представителей, борющихся против единства Европы. [source_claim]\n- Зеленский характеризует эти действия как внутренние разногласия в Европе. [source_claim]\n\nСущности: Зеленский, Путин, Европа\n\nИсточник: Clash Report\n\nТемы: европейское единство, внешнее вмешательство, политические разногласия\n\nТип контента: mixed"
+}

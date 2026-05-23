@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T21:11:19.308273+00:00",
+  "provenance": {
+    "channel_name": "Корея",
+    "channel_id": 3215620297,
+    "message_id": 38,
+    "date": "2026-04-27T12:07:10+00:00",
+    "post_url": "https://t.me/c/3215620297/38",
+    "normalized_file": "output\\normalized\\Корея\\38.txt",
+    "meta_file": "output\\normalized\\Корея\\38.meta.json",
+    "is_forward": true,
+    "forward_from": "Ateo Breaking"
+  },
+  "content_type": "image",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Северокорейский лидер Ким Чен Ын заявил о поддержке России в её вторжении в Украину и пообещал помочь Москве одержать победу в «священной войне».",
+  "key_facts": [
+    {
+      "text": "Ким Чен Ын заявил о поддержке российского вторжения в Украину.",
+      "claim_type": "source_claim"
+    },
+    {
+      "text": "Ким Чен Ын пообещал помочь России одержать победу в её «священной войне».",
+      "claim_type": "source_claim"
+    }
+  ],
+  "entities": {
+    "people": [
+      "Ким Чен Ын"
+    ],
+    "organizations": [],
+    "countries": [
+      "Северная Корея",
+      "Россия",
+      "Украина"
+    ],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [
+    "вторжение России в Украину",
+    "северокорейско-российские отношения",
+    "поддержка военных действий"
+  ],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": true,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Ateo Breaking",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Корея | Дата: 2026-04-27 12:07 | Пост: https://t.me/c/3215620297/38]\n\n\nСеверокорейский лидер Ким Чен Ын заявил о поддержке России в её вторжении в Украину и пообещал помочь Москве одержать победу в «священной войне».\n\nКлючевые факты:\n- Ким Чен Ын заявил о поддержке российского вторжения в Украину. [source_claim]\n- Ким Чен Ын пообещал помочь России одержать победу в её «священной войне». [source_claim]\n\nСущности: Ким Чен Ын, Северная Корея, Россия, Украина\n\nИсточник: Ateo Breaking",
+  "search_text": "[Канал: Корея | Дата: 2026-04-27 12:07 | Пост: https://t.me/c/3215620297/38]\n\n\nСеверокорейский лидер Ким Чен Ын заявил о поддержке России в её вторжении в Украину и пообещал помочь Москве одержать победу в «священной войне».\n\nКлючевые факты:\n- Ким Чен Ын заявил о поддержке российского вторжения в Украину. [source_claim]\n- Ким Чен Ын пообещал помочь России одержать победу в её «священной войне». [source_claim]\n\nСущности: Ким Чен Ын, Северная Корея, Россия, Украина\n\nИсточник: Ateo Breaking\n\nТемы: вторжение России в Украину, северокорейско-российские отношения, поддержка военных действий\n\nТип контента: image"
+}

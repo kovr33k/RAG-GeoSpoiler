@@ -1,0 +1,731 @@
+2026-05-04 22:53:36,531 [nano-vectordb] INFO: Load (199, 1024) data
+2026-05-04 22:53:36,531 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 199 data
+2026-05-04 22:53:36,538 [nano-vectordb] INFO: Load (220, 1024) data
+2026-05-04 22:53:36,538 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 220 data
+2026-05-04 22:53:36,540 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-04 22:53:36,540 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-04 22:53:36,560 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-04 22:53:36,560 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, profile=source, rerank=enabled)
+2026-05-04 22:53:36,756 [openai._base_client] INFO: Retrying request to /embeddings in 0.489517 seconds
+2026-05-04 22:53:37,250 [openai._base_client] INFO: Retrying request to /embeddings in 0.968883 seconds
+2026-05-04 22:53:38,228 [geospoiler.loader] WARNING: Embedding request failed for batch 1-3/3 on attempt 1/6: APIConnectionError. Retrying in 1.5s.
+2026-05-04 22:53:39,740 [openai._base_client] INFO: Retrying request to /embeddings in 0.431292 seconds
+2026-05-04 22:53:40,183 [openai._base_client] INFO: Retrying request to /embeddings in 0.980348 seconds
+2026-05-04 22:53:41,179 [geospoiler.loader] WARNING: Embedding request failed for batch 1-3/3 on attempt 2/6: APIConnectionError. Retrying in 3.0s.
+2026-05-04 22:53:44,192 [openai._base_client] INFO: Retrying request to /embeddings in 0.428372 seconds
+2026-05-04 22:53:44,636 [openai._base_client] INFO: Retrying request to /embeddings in 0.784547 seconds
+2026-05-04 22:53:45,431 [geospoiler.loader] WARNING: Embedding request failed for batch 1-3/3 on attempt 3/6: APIConnectionError. Retrying in 4.5s.
+2026-05-04 22:53:49,945 [openai._base_client] INFO: Retrying request to /embeddings in 0.414602 seconds
+2026-05-04 22:53:50,371 [openai._base_client] INFO: Retrying request to /embeddings in 0.833449 seconds
+2026-05-04 22:53:51,215 [geospoiler.loader] WARNING: Embedding request failed for batch 1-3/3 on attempt 4/6: APIConnectionError. Retrying in 6.0s.
+2026-05-04 22:53:57,221 [openai._base_client] INFO: Retrying request to /embeddings in 0.419115 seconds
+2026-05-04 22:53:57,644 [openai._base_client] INFO: Retrying request to /embeddings in 0.960828 seconds
+2026-05-04 22:53:58,622 [geospoiler.loader] WARNING: Embedding request failed for batch 1-3/3 on attempt 5/6: APIConnectionError. Retrying in 7.5s.
+2026-05-04 22:54:06,130 [openai._base_client] INFO: Retrying request to /embeddings in 0.381037 seconds
+2026-05-04 22:54:06,526 [openai._base_client] INFO: Retrying request to /embeddings in 0.788267 seconds
+2026-05-04 22:54:07,333 [openai._base_client] INFO: Retrying request to /embeddings in 0.448979 seconds
+2026-05-04 22:54:07,788 [openai._base_client] INFO: Retrying request to /embeddings in 0.839874 seconds
+2026-05-04 22:54:08,642 [geospoiler.loader] WARNING: Embedding request failed for batch 1-1/1 on attempt 1/6: APIConnectionError. Retrying in 1.5s.
+2026-05-04 22:54:10,151 [openai._base_client] INFO: Retrying request to /embeddings in 0.488386 seconds
+2026-05-04 22:54:10,656 [openai._base_client] INFO: Retrying request to /embeddings in 0.906021 seconds
+2026-05-04 22:54:11,571 [geospoiler.loader] WARNING: Embedding request failed for batch 1-1/1 on attempt 2/6: APIConnectionError. Retrying in 3.0s.
+2026-05-04 22:54:14,579 [openai._base_client] INFO: Retrying request to /embeddings in 0.482195 seconds
+2026-05-04 22:54:15,069 [openai._base_client] INFO: Retrying request to /embeddings in 0.953237 seconds
+2026-05-04 22:54:16,033 [geospoiler.loader] WARNING: Embedding request failed for batch 1-1/1 on attempt 3/6: APIConnectionError. Retrying in 4.5s.
+2026-05-04 22:54:20,539 [openai._base_client] INFO: Retrying request to /embeddings in 0.456199 seconds
+2026-05-04 22:54:21,011 [openai._base_client] INFO: Retrying request to /embeddings in 0.774265 seconds
+2026-05-04 22:54:21,792 [geospoiler.loader] WARNING: Embedding request failed for batch 1-1/1 on attempt 4/6: APIConnectionError. Retrying in 6.0s.
+2026-05-04 22:54:27,795 [openai._base_client] INFO: Retrying request to /embeddings in 0.394080 seconds
+2026-05-04 22:54:28,193 [openai._base_client] INFO: Retrying request to /embeddings in 0.800497 seconds
+2026-05-04 22:54:29,004 [geospoiler.loader] WARNING: Embedding request failed for batch 1-1/1 on attempt 5/6: APIConnectionError. Retrying in 7.5s.
+2026-05-04 22:54:36,517 [openai._base_client] INFO: Retrying request to /embeddings in 0.455523 seconds
+2026-05-04 22:54:36,987 [openai._base_client] INFO: Retrying request to /embeddings in 0.889191 seconds
+2026-05-04 22:55:10,929 [nano-vectordb] INFO: Load (199, 1024) data
+2026-05-04 22:55:10,930 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 199 data
+2026-05-04 22:55:10,936 [nano-vectordb] INFO: Load (220, 1024) data
+2026-05-04 22:55:10,937 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 220 data
+2026-05-04 22:55:10,938 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-04 22:55:10,938 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-04 22:55:10,951 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-04 22:55:10,951 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, profile=source, rerank=enabled)
+2026-05-04 22:55:11,952 [geospoiler.reranker] INFO: Reranker (nim): 25 docs -> 25 candidates -> 10 returned
+2026-05-04 23:13:24,916 [geospoiler] INFO: === FULL PIPELINE START ===
+2026-05-04 23:13:24,916 [geospoiler] INFO: === FETCH: Starting Telegram fetch ===
+2026-05-04 23:13:24,923 [telethon.network.mtprotosender] INFO: Connecting to 149.154.167.51:443/TcpFull...
+2026-05-04 23:13:24,956 [telethon.network.mtprotosender] INFO: Connection to 149.154.167.51:443/TcpFull complete!
+2026-05-04 23:13:25,322 [geospoiler.fetcher] INFO: Telegram client connected.
+2026-05-04 23:13:25,607 [geospoiler.fetcher] INFO:   Found channel in folder: Ультра левые и ультра правые (id=3299898370)
+2026-05-04 23:13:25,607 [geospoiler.fetcher] INFO:   Found channel in folder: Куба (id=3841808641)
+2026-05-04 23:13:25,607 [geospoiler.fetcher] INFO:   Found channel in folder: Балтийские страны (id=3889026624)
+2026-05-04 23:13:25,607 [geospoiler.fetcher] INFO:   Found channel in folder: Венгрия Словакия (id=3328128766)
+2026-05-04 23:13:25,607 [geospoiler.fetcher] INFO:   Found channel in folder: Корея (id=3215620297)
+2026-05-04 23:13:25,607 [geospoiler.fetcher] INFO:   Found channel in folder: Англия (id=3548806336)
+2026-05-04 23:13:25,607 [geospoiler.fetcher] INFO: Discovered 6 channel(s) in Telegram folder 'GeoSpoiler'.
+2026-05-04 23:13:25,607 [geospoiler.fetcher] INFO: Fetching from 'Ультра левые и ультра правые' (last_id=27)...
+2026-05-04 23:13:25,865 [geospoiler.fetcher] INFO:   Got 0 new messages from 'Ультра левые и ультра правые'.
+2026-05-04 23:13:25,865 [geospoiler.fetcher] INFO: Fetching from 'Куба' (last_id=9)...
+2026-05-04 23:13:25,935 [geospoiler.fetcher] INFO:   Got 0 new messages from 'Куба'.
+2026-05-04 23:13:25,935 [geospoiler.fetcher] INFO: Fetching from 'Балтийские страны' (last_id=0)...
+2026-05-04 23:13:26,988 [geospoiler.fetcher] INFO:   Got 9 new messages from 'Балтийские страны'.
+2026-05-04 23:13:26,989 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:27,165 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:27,467 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:27,744 [geospoiler.fetcher] INFO: Fetching from 'Венгрия Словакия' (last_id=0)...
+2026-05-04 23:13:29,804 [geospoiler.fetcher] INFO:   Got 198 new messages from 'Венгрия Словакия'.
+2026-05-04 23:13:29,805 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:29,949 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:30,124 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:30,730 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:31,137 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:31,242 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:31,444 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:31,636 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:32,013 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:32,460 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:32,656 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:32,798 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:32,914 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:33,156 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:33,371 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:33,590 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:34,017 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:34,218 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:34,408 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:34,450 [telethon.client.downloads] INFO: File lives in another DC
+2026-05-04 23:13:34,491 [telethon.network.mtprotosender] INFO: Connecting to 149.154.167.91:443/TcpFull...
+2026-05-04 23:13:35,663 [telethon.network.mtprotosender] INFO: Connection to 149.154.167.91:443/TcpFull complete!
+2026-05-04 23:13:35,663 [telethon.client.telegrambaseclient] INFO: Exporting auth for new borrowed sender in DcOption(id=4, ip_address='149.154.167.91', port=443, ipv6=False, media_only=False, tcpo_only=False, cdn=False, static=False, this_port_only=False, secret=None)
+2026-05-04 23:13:36,221 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:36,427 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:37,017 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:37,658 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:37,913 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:38,253 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:38,632 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:38,980 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:39,933 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:40,110 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:40,284 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:40,413 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:40,578 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:41,050 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:41,466 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:41,999 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:42,466 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:43,036 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:43,511 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:44,010 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:44,534 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:45,125 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:45,216 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:46,136 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:46,624 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:47,500 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:49,058 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:50,018 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:50,506 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:50,714 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:50,973 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:51,184 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:51,373 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:51,832 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:52,046 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:52,291 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:52,547 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:52,797 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:53,045 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:53,248 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:53,422 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:53,640 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:53,881 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:54,126 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:54,333 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:54,705 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:55,070 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:55,191 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:55,528 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:55,700 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:56,339 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:56,709 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:57,170 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:58,104 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:58,426 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:58,629 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:58,797 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:59,144 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:59,238 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:59,417 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:59,601 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:13:59,771 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:00,010 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:00,112 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:00,390 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:00,760 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:00,800 [telethon.client.downloads] INFO: File lives in another DC
+2026-05-04 23:14:01,052 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:01,396 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:01,554 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:01,780 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:02,024 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:02,188 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:02,401 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:02,988 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:03,216 [geospoiler.fetcher] INFO: Fetching from 'Корея' (last_id=0)...
+2026-05-04 23:14:04,262 [geospoiler.fetcher] INFO:   Got 39 new messages from 'Корея'.
+2026-05-04 23:14:04,262 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:04,503 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:04,640 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:04,815 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:05,304 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:06,021 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:06,275 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:06,525 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:06,913 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:07,179 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:07,536 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:07,742 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:07,945 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:08,156 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:08,356 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:08,790 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:09,153 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:09,578 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:09,757 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:09,951 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:10,145 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:10,402 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:10,585 [geospoiler.fetcher] INFO: Fetching from 'Англия' (last_id=0)...
+2026-05-04 23:14:11,641 [geospoiler.fetcher] INFO:   Got 9 new messages from 'Англия'.
+2026-05-04 23:14:11,641 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:11,806 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:12,056 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:12,474 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-04 23:14:13,068 [geospoiler] INFO: === FETCH complete: 190 messages from 6 channels ===
+2026-05-04 23:14:13,068 [telethon.network.mtprotosender] INFO: Disconnecting from 149.154.167.51:443/TcpFull...
+2026-05-04 23:14:13,069 [telethon.network.mtprotosender] INFO: Disconnection from 149.154.167.51:443/TcpFull complete!
+2026-05-04 23:14:13,069 [telethon.network.mtprotosender] INFO: Disconnecting from 149.154.167.91:443/TcpFull...
+2026-05-04 23:14:13,069 [telethon.network.mtprotosender] INFO: Disconnection from 149.154.167.91:443/TcpFull complete!
+2026-05-04 23:14:13,085 [geospoiler] INFO: === NORMALIZE: Processing messages ===
+2026-05-04 23:14:13,086 [geospoiler] INFO: Processing channel: Балтийские страны (7 messages)
+2026-05-04 23:14:30,688 [geospoiler.normalizer] INFO:   Normalized: 2.txt (1594 chars)
+2026-05-04 23:15:59,119 [geospoiler.normalizer] INFO:   Normalized: 3.txt (17530 chars)
+2026-05-04 23:16:01,077 [geospoiler.normalizer] INFO:   Normalized: 4.txt (318 chars)
+2026-05-04 23:16:01,434 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:16:31,672 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Балтийские страны\msg_5.jpg
+2026-05-04 23:16:32,042 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:16:32,418 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Балтийские страны\msg_6.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:16:46,395 [geospoiler.normalizer] INFO:   Normalized: 6.txt (3202 chars)
+2026-05-04 23:17:19,993 [geospoiler.normalizer] INFO:   Normalized: 7.txt (4585 chars)
+2026-05-04 23:17:20,396 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:17:20,758 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Балтийские страны\msg_8.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:17:21,658 [geospoiler.normalizer] INFO:   Normalized: 8.txt (197 chars)
+2026-05-04 23:17:42,112 [geospoiler.normalizer] INFO:   Normalized: 9.txt (3538 chars)
+2026-05-04 23:17:42,142 [geospoiler] INFO: Processing channel: Венгрия Словакия (150 messages)
+2026-05-04 23:17:42,488 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:17:42,806 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_2.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:17:44,934 [geospoiler.normalizer] INFO:   Normalized: 2.txt (445 chars)
+2026-05-04 23:17:45,292 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:17:45,638 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_3.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:17:49,071 [geospoiler.normalizer] INFO:   Normalized: 3.txt (796 chars)
+2026-05-04 23:17:50,498 [geospoiler.normalizer] INFO:   Normalized: 4.txt (287 chars)
+2026-05-04 23:18:03,106 [geospoiler.normalizer] INFO:   Normalized: 5.txt (2451 chars)
+2026-05-04 23:18:03,519 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:18:03,896 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_6.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:18:04,281 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:18:04,673 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_7.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:18:09,255 [geospoiler.normalizer] INFO:   Normalized: 7.txt (1113 chars)
+2026-05-04 23:18:20,269 [geospoiler.normalizer] INFO:   Normalized: 8.txt (3020 chars)
+2026-05-04 23:18:26,396 [geospoiler.normalizer] INFO:   Normalized: 9.txt (887 chars)
+2026-05-04 23:18:42,508 [geospoiler.normalizer] INFO:   Normalized: 10.txt (3939 chars)
+2026-05-04 23:18:42,876 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:18:43,212 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_12.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:18:43,598 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:18:43,922 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_13.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:18:56,272 [geospoiler.normalizer] INFO:   Normalized: 13.txt (1695 chars)
+2026-05-04 23:18:57,648 [geospoiler.normalizer] INFO:   Normalized: 14.txt (295 chars)
+2026-05-04 23:19:04,479 [geospoiler.normalizer] INFO:   Normalized: 15.txt (1634 chars)
+2026-05-04 23:19:06,416 [geospoiler.normalizer] INFO:   Normalized: 16.txt (480 chars)
+2026-05-04 23:19:06,769 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:19:07,117 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_17.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:19:08,385 [geospoiler.normalizer] INFO:   Normalized: 17.txt (268 chars)
+2026-05-04 23:19:12,678 [geospoiler.normalizer] INFO:   Normalized: 18.txt (339 chars)
+2026-05-04 23:19:13,160 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:19:13,522 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_19.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:19:16,214 [geospoiler.normalizer] INFO:   Normalized: 19.txt (714 chars)
+2026-05-04 23:19:16,612 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:19:46,885 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_20.jpg
+2026-05-04 23:19:49,644 [geospoiler.normalizer] INFO:   Normalized: 20.txt (470 chars)
+2026-05-04 23:19:52,982 [geospoiler.normalizer] INFO:   Normalized: 21.txt (872 chars)
+2026-05-04 23:19:56,433 [geospoiler.normalizer] INFO:   Normalized: 22.txt (965 chars)
+2026-05-04 23:20:17,567 [geospoiler.normalizer] INFO:   Normalized: 23.txt (2312 chars)
+2026-05-04 23:20:17,936 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:20:18,271 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_24.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:20:19,808 [geospoiler.normalizer] INFO:   Normalized: 24.txt (382 chars)
+2026-05-04 23:20:20,163 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:20:50,426 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_25.jpg
+2026-05-04 23:20:52,341 [geospoiler.normalizer] INFO:   Normalized: 25.txt (437 chars)
+2026-05-04 23:20:52,684 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:21:22,934 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_26.jpg
+2026-05-04 23:21:27,269 [geospoiler.normalizer] INFO:   Normalized: 26.txt (886 chars)
+2026-05-04 23:21:27,652 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:21:28,062 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_27.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:21:35,215 [geospoiler.normalizer] INFO:   Normalized: 27.txt (1054 chars)
+2026-05-04 23:21:42,265 [geospoiler.normalizer] INFO:   Normalized: 28.txt (768 chars)
+2026-05-04 23:21:42,608 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:21:42,923 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_29.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:21:44,943 [geospoiler.normalizer] INFO:   Normalized: 29.txt (322 chars)
+2026-05-04 23:21:45,299 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:21:45,624 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_30.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:21:48,854 [geospoiler.normalizer] INFO:   Normalized: 30.txt (641 chars)
+2026-05-04 23:21:49,240 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:21:49,575 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_31.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:21:49,945 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:22:20,205 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_32.jpg
+2026-05-04 23:22:20,569 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:22:20,880 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_33.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:22:38,577 [geospoiler.normalizer] INFO:   Normalized: 33.txt (3270 chars)
+2026-05-04 23:22:41,851 [geospoiler.normalizer] INFO:   Normalized: 34.txt (579 chars)
+2026-05-04 23:22:44,211 [geospoiler.normalizer] INFO:   Normalized: 35.txt (581 chars)
+2026-05-04 23:22:47,168 [geospoiler.normalizer] INFO:   Normalized: 36.txt (501 chars)
+2026-05-04 23:22:54,130 [geospoiler.normalizer] INFO:   Normalized: 37.txt (1258 chars)
+2026-05-04 23:22:54,490 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:22:54,801 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_38.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:22:56,871 [geospoiler.normalizer] INFO:   Normalized: 38.txt (315 chars)
+2026-05-04 23:22:57,944 [geospoiler.normalizer] INFO:   Normalized: 39.txt (240 chars)
+2026-05-04 23:23:07,283 [geospoiler.normalizer] INFO:   Normalized: 40.txt (635 chars)
+2026-05-04 23:23:07,633 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:23:07,976 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_41.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:23:10,315 [geospoiler.normalizer] INFO:   Normalized: 41.txt (353 chars)
+2026-05-04 23:23:14,282 [geospoiler.normalizer] INFO:   Normalized: 42.txt (732 chars)
+2026-05-04 23:23:15,902 [geospoiler.normalizer] INFO:   Normalized: 43.txt (264 chars)
+2026-05-04 23:23:16,326 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:23:16,686 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_44.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:23:17,091 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:23:17,454 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_45.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:23:17,822 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:23:18,193 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_46.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:23:18,586 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:23:18,935 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_47.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:23:19,325 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:23:19,703 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_48.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:23:20,087 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:23:20,418 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_49.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:23:27,112 [geospoiler.normalizer] INFO:   Normalized: 49.txt (859 chars)
+2026-05-04 23:23:27,566 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:24:03,671 [geospoiler.normalizer] INFO:   Normalized: 50.txt (3783 chars)
+2026-05-04 23:24:14,040 [geospoiler.normalizer] INFO:   Normalized: 51.txt (1885 chars)
+2026-05-04 23:24:21,351 [geospoiler.normalizer] INFO:   Normalized: 52.txt (741 chars)
+2026-05-04 23:24:35,507 [geospoiler.normalizer] INFO:   Normalized: 53.txt (2664 chars)
+2026-05-04 23:24:35,876 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:24:36,202 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_54.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:24:39,586 [geospoiler.normalizer] INFO:   Normalized: 54.txt (300 chars)
+2026-05-04 23:24:39,950 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:24:40,254 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_55.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:24:52,766 [geospoiler.normalizer] INFO:   Normalized: 55.txt (925 chars)
+2026-05-04 23:24:53,244 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:25:23,573 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_56.jpg
+2026-05-04 23:25:27,141 [geospoiler.normalizer] INFO:   Normalized: 56.txt (576 chars)
+2026-05-04 23:25:33,375 [geospoiler.normalizer] INFO:   Normalized: 57.txt (1252 chars)
+2026-05-04 23:25:34,862 [geospoiler.normalizer] INFO:   Normalized: 58.txt (336 chars)
+2026-05-04 23:25:35,232 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:26:05,586 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_59.jpg
+2026-05-04 23:26:10,403 [geospoiler.normalizer] INFO:   Normalized: 59.txt (992 chars)
+2026-05-04 23:26:10,819 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:26:11,492 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_60.jpg: 500 Server Error: Internal Server Error for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:26:11,903 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:26:12,523 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_61.jpg: 500 Server Error: Internal Server Error for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:26:12,964 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:26:13,576 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_62.jpg: 500 Server Error: Internal Server Error for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:26:13,993 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:26:14,607 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_63.jpg: 500 Server Error: Internal Server Error for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:26:15,046 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:26:45,351 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_64.jpg
+2026-05-04 23:26:45,790 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:27:16,086 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_65.jpg
+2026-05-04 23:27:23,120 [geospoiler.normalizer] INFO:   Normalized: 65.txt (1026 chars)
+2026-05-04 23:27:23,806 [geospoiler.normalizer] INFO:   Normalized: 66.txt (101 chars)
+2026-05-04 23:27:40,428 [geospoiler.normalizer] INFO:   Normalized: 67.txt (934 chars)
+2026-05-04 23:27:40,862 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:27:58,657 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_68.jpg: 500 Server Error: Internal Server Error for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:27:59,095 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:27:59,723 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_69.jpg: 500 Server Error: Internal Server Error for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:28:01,536 [geospoiler.normalizer] INFO:   Normalized: 69.txt (352 chars)
+2026-05-04 23:28:01,965 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:28:32,262 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_70.jpg
+2026-05-04 23:28:33,581 [geospoiler.normalizer] INFO:   Normalized: 70.txt (294 chars)
+2026-05-04 23:28:40,061 [geospoiler.normalizer] INFO:   Normalized: 71.txt (1686 chars)
+2026-05-04 23:28:40,444 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:28:40,768 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_72.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:28:48,481 [geospoiler.normalizer] INFO:   Normalized: 72.txt (1193 chars)
+2026-05-04 23:28:49,710 [geospoiler.normalizer] INFO:   Normalized: 73.txt (224 chars)
+2026-05-04 23:28:50,837 [geospoiler.normalizer] INFO:   Normalized: 74.txt (273 chars)
+2026-05-04 23:28:51,296 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:29:21,614 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_76.jpg
+2026-05-04 23:29:22,047 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:29:52,315 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_78.jpg
+2026-05-04 23:29:59,253 [geospoiler.normalizer] INFO:   Normalized: 80.txt (1300 chars)
+2026-05-04 23:30:01,461 [geospoiler.normalizer] INFO:   Normalized: 81.txt (521 chars)
+2026-05-04 23:30:12,023 [geospoiler.normalizer] INFO:   Normalized: 82.txt (435 chars)
+2026-05-04 23:30:12,486 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:30:42,765 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_83.jpg
+2026-05-04 23:30:43,278 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:31:13,604 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_84.jpg
+2026-05-04 23:31:14,070 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:31:44,354 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_85.jpg
+2026-05-04 23:31:44,796 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:32:14,592 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_86.jpg: 500 Server Error: Internal Server Error for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:32:14,990 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:32:45,268 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_87.jpg
+2026-05-04 23:32:48,778 [geospoiler.normalizer] INFO:   Normalized: 87.txt (773 chars)
+2026-05-04 23:32:49,165 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:33:19,471 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_88.jpg
+2026-05-04 23:33:21,631 [geospoiler.normalizer] INFO:   Normalized: 88.txt (621 chars)
+2026-05-04 23:33:22,771 [geospoiler.normalizer] INFO:   Normalized: 89.txt (274 chars)
+2026-05-04 23:33:23,177 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:33:53,497 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_90.jpg
+2026-05-04 23:33:55,820 [geospoiler.normalizer] INFO:   Normalized: 90.txt (425 chars)
+2026-05-04 23:33:56,190 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:34:26,483 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_91.jpg
+2026-05-04 23:34:30,964 [geospoiler.normalizer] INFO:   Normalized: 91.txt (1293 chars)
+2026-05-04 23:34:34,414 [geospoiler.normalizer] INFO:   Normalized: 92.txt (1051 chars)
+2026-05-04 23:34:35,933 [geospoiler.normalizer.instagram] WARNING: Could not extract Instagram content from https://www.instagram.com/p/DWBUULBDDr1/?igsh=MW1qNW5mZWtyb29qZQ==
+2026-05-04 23:34:38,878 [geospoiler.normalizer] INFO:   Normalized: 93.txt (259 chars)
+2026-05-04 23:34:39,299 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:34:39,668 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_95.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:35:03,962 [geospoiler.normalizer] INFO:   Normalized: 95.txt (4095 chars)
+2026-05-04 23:35:15,210 [geospoiler.normalizer] INFO:   Normalized: 96.txt (3039 chars)
+2026-05-04 23:35:16,687 [geospoiler.normalizer] INFO:   Normalized: 97.txt (373 chars)
+2026-05-04 23:35:17,067 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:35:47,352 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_98.jpg
+2026-05-04 23:35:49,148 [geospoiler.normalizer] INFO:   Normalized: 98.txt (417 chars)
+2026-05-04 23:35:55,831 [geospoiler.normalizer] INFO:   Normalized: 99.txt (1836 chars)
+2026-05-04 23:36:01,017 [geospoiler.normalizer] INFO:   Normalized: 100.txt (658 chars)
+2026-05-04 23:36:16,847 [geospoiler.normalizer] INFO:   Normalized: 101.txt (4341 chars)
+2026-05-04 23:36:17,227 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:36:47,513 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_102.jpg
+2026-05-04 23:36:50,529 [geospoiler.normalizer] INFO:   Normalized: 102.txt (708 chars)
+2026-05-04 23:36:56,913 [geospoiler.normalizer] INFO:   Normalized: 103.txt (1696 chars)
+2026-05-04 23:36:57,329 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:36:57,749 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_104.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:37:01,984 [geospoiler.normalizer] INFO:   Normalized: 104.txt (1134 chars)
+2026-05-04 23:37:04,010 [geospoiler.normalizer] INFO:   Normalized: 106.txt (430 chars)
+2026-05-04 23:37:09,645 [geospoiler.normalizer] INFO:   Normalized: 107.txt (300 chars)
+2026-05-04 23:37:17,780 [geospoiler.normalizer] INFO:   Normalized: 108.txt (2406 chars)
+2026-05-04 23:37:30,023 [geospoiler.normalizer] INFO:   Normalized: 109.txt (1685 chars)
+2026-05-04 23:37:46,161 [geospoiler.normalizer] INFO:   Normalized: 110.txt (2662 chars)
+2026-05-04 23:37:59,066 [geospoiler.normalizer] INFO:   Normalized: 111.txt (4395 chars)
+2026-05-04 23:37:59,508 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:37:59,896 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_112.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:38:00,309 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:38:00,689 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_113.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:38:01,118 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:38:01,461 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_114.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:38:01,835 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:38:02,202 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_115.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:38:02,576 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:38:02,938 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_116.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:38:03,333 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:38:03,745 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_117.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:38:19,642 [geospoiler.normalizer] INFO:   Normalized: 117.txt (4637 chars)
+2026-05-04 23:38:53,062 [geospoiler.normalizer] INFO:   Normalized: 118.txt (4240 chars)
+2026-05-04 23:38:53,466 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:38:53,847 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_119.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:38:59,141 [geospoiler.normalizer] INFO:   Normalized: 119.txt (1229 chars)
+2026-05-04 23:39:00,219 [geospoiler.normalizer] INFO:   Normalized: 120.txt (161 chars)
+2026-05-04 23:39:00,597 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:39:00,942 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_121.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:39:01,359 [geospoiler.normalizer.web] WARNING: Failed to fetch https://stream.zeno.fm/6cdovsomtoruv: 401 Client Error: Unauthorized for url: https://stream.zeno.fm/6cdovsomtoruv
+2026-05-04 23:39:04,090 [geospoiler.normalizer] INFO:   Normalized: 121.txt (706 chars)
+2026-05-04 23:39:04,515 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:39:04,946 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_122.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:39:05,360 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:39:05,732 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_123.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:39:10,371 [geospoiler.normalizer] INFO:   Normalized: 123.txt (1257 chars)
+2026-05-04 23:39:10,757 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:39:11,119 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_124.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:39:21,485 [geospoiler.normalizer] INFO:   Normalized: 124.txt (3138 chars)
+2026-05-04 23:39:24,192 [geospoiler.normalizer] INFO:   Normalized: 126.txt (749 chars)
+2026-05-04 23:39:30,139 [geospoiler.normalizer] INFO:   Normalized: 129.txt (1725 chars)
+2026-05-04 23:39:37,521 [geospoiler.normalizer] INFO:   Normalized: 130.txt (1998 chars)
+2026-05-04 23:39:42,289 [geospoiler.normalizer] INFO:   Normalized: 131.txt (1374 chars)
+2026-05-04 23:39:44,551 [geospoiler.normalizer] INFO:   Normalized: 132.txt (399 chars)
+2026-05-04 23:39:50,326 [geospoiler.normalizer] INFO:   Normalized: 133.txt (1159 chars)
+2026-05-04 23:41:53,907 [geospoiler.normalizer.translator] WARNING: LLM translation timeout. Returning original text.
+2026-05-04 23:41:53,909 [geospoiler.normalizer] INFO:   Normalized: 134.txt (53153 chars)
+2026-05-04 23:41:54,337 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:42:24,642 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_135.jpg
+2026-05-04 23:42:30,742 [geospoiler.normalizer] INFO:   Normalized: 135.txt (2200 chars)
+2026-05-04 23:42:33,156 [geospoiler.normalizer] INFO:   Normalized: 136.txt (332 chars)
+2026-05-04 23:42:38,183 [geospoiler.normalizer] INFO:   Normalized: 137.txt (1553 chars)
+2026-05-04 23:42:45,801 [geospoiler.normalizer] INFO:   Normalized: 138.txt (1908 chars)
+2026-05-04 23:42:50,111 [geospoiler.normalizer] INFO:   Normalized: 139.txt (1158 chars)
+2026-05-04 23:44:54,437 [geospoiler.normalizer.translator] WARNING: LLM translation timeout. Returning original text.
+2026-05-04 23:44:54,439 [geospoiler.normalizer] INFO:   Normalized: 140.txt (48078 chars)
+2026-05-04 23:44:57,196 [geospoiler.normalizer] INFO:   Normalized: 141.txt (696 chars)
+2026-05-04 23:46:05,715 [geospoiler.normalizer] INFO:   Normalized: 142.txt (16784 chars)
+2026-05-04 23:46:06,095 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:46:36,331 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_143.jpg
+2026-05-04 23:46:39,778 [geospoiler.normalizer] INFO:   Normalized: 143.txt (959 chars)
+2026-05-04 23:46:49,759 [geospoiler.normalizer] INFO:   Normalized: 144.txt (3050 chars)
+2026-05-04 23:46:52,355 [geospoiler.normalizer] INFO:   Normalized: 145.txt (238 chars)
+2026-05-04 23:46:53,862 [geospoiler.normalizer] INFO:   Normalized: 146.txt (391 chars)
+2026-05-04 23:46:55,893 [geospoiler.normalizer] INFO:   Normalized: 147.txt (434 chars)
+2026-05-04 23:46:56,328 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:47:04,141 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_148.jpg: 500 Server Error: Internal Server Error for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:47:09,614 [geospoiler.normalizer] INFO:   Normalized: 148.txt (1619 chars)
+2026-05-04 23:47:12,407 [geospoiler.normalizer] INFO:   Normalized: 149.txt (881 chars)
+2026-05-04 23:47:12,822 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:47:43,120 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_150.jpg
+2026-05-04 23:47:45,768 [geospoiler.normalizer] INFO:   Normalized: 150.txt (807 chars)
+2026-05-04 23:47:48,487 [geospoiler.normalizer] INFO:   Normalized: 151.txt (856 chars)
+2026-05-04 23:47:48,902 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:48:19,174 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_153.jpg
+2026-05-04 23:48:20,503 [geospoiler.normalizer] INFO:   Normalized: 153.txt (352 chars)
+2026-05-04 23:48:20,924 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:48:51,225 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_157.jpg
+2026-05-04 23:48:51,629 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:49:21,908 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_158.jpg
+2026-05-04 23:49:23,925 [geospoiler.normalizer] INFO:   Normalized: 159.txt (585 chars)
+2026-05-04 23:49:24,284 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:49:54,556 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_160.jpg
+2026-05-04 23:50:01,475 [geospoiler.normalizer] INFO:   Normalized: 160.txt (2251 chars)
+2026-05-04 23:50:02,602 [geospoiler.normalizer] INFO:   Normalized: 162.txt (289 chars)
+2026-05-04 23:50:02,951 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:50:33,209 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_163.jpg
+2026-05-04 23:50:39,811 [geospoiler.normalizer] INFO:   Normalized: 163.txt (659 chars)
+2026-05-04 23:50:40,213 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:50:40,600 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_164.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:50:50,739 [geospoiler.normalizer] INFO:   Normalized: 164.txt (2165 chars)
+2026-05-04 23:50:51,097 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:50:51,421 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_165.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:51:14,489 [geospoiler.normalizer] INFO:   Normalized: 165.txt (2886 chars)
+2026-05-04 23:51:14,869 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:51:15,199 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_166.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:51:17,093 [geospoiler.normalizer] INFO:   Normalized: 166.txt (413 chars)
+2026-05-04 23:51:17,467 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:51:17,791 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_167.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:51:28,190 [geospoiler.normalizer] INFO:   Normalized: 167.txt (233 chars)
+2026-05-04 23:51:45,015 [geospoiler.normalizer] INFO:   Normalized: 168.txt (2529 chars)
+2026-05-04 23:51:46,890 [geospoiler.normalizer] INFO:   Normalized: 169.txt (422 chars)
+2026-05-04 23:51:47,251 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:51:47,561 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_170.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:51:51,973 [geospoiler.normalizer] INFO:   Normalized: 170.txt (860 chars)
+2026-05-04 23:51:52,386 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:51:52,762 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_171.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:51:54,550 [geospoiler.normalizer] INFO:   Normalized: 171.txt (378 chars)
+2026-05-04 23:51:54,901 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:51:55,237 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_172.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:51:56,496 [geospoiler.normalizer] INFO:   Normalized: 172.txt (257 chars)
+2026-05-04 23:52:08,022 [geospoiler.normalizer] INFO:   Normalized: 173.txt (1254 chars)
+2026-05-04 23:52:08,423 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:52:08,767 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_174.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:52:09,173 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:52:09,532 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_175.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:52:10,697 [geospoiler.normalizer] INFO:   Normalized: 175.txt (283 chars)
+2026-05-04 23:52:11,562 [geospoiler.normalizer] INFO:   Normalized: 181.txt (208 chars)
+2026-05-04 23:52:40,669 [geospoiler.normalizer] INFO:   Normalized: 182.txt (4214 chars)
+2026-05-04 23:52:41,052 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:52:41,411 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_183.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:52:42,539 [geospoiler.normalizer] INFO:   Normalized: 183.txt (149 chars)
+2026-05-04 23:52:42,951 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:52:43,318 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_184.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-04 23:53:02,182 [geospoiler.normalizer] INFO:   Normalized: 184.txt (3916 chars)
+2026-05-04 23:53:07,747 [geospoiler.normalizer] INFO:   Normalized: 185.txt (298 chars)
+2026-05-04 23:53:10,666 [geospoiler.normalizer] INFO:   Normalized: 186.txt (595 chars)
+2026-05-04 23:53:22,139 [geospoiler.normalizer] INFO:   Normalized: 187.txt (470 chars)
+2026-05-04 23:53:29,580 [geospoiler.normalizer] INFO:   Normalized: 188.txt (1986 chars)
+2026-05-04 23:53:45,553 [geospoiler.normalizer] INFO:   Normalized: 189.txt (2848 chars)
+2026-05-04 23:53:45,904 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:54:16,162 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_190.jpg
+2026-05-04 23:54:41,373 [geospoiler.normalizer] INFO:   Normalized: 190.txt (3304 chars)
+2026-05-04 23:54:41,757 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:55:12,035 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_191.jpg
+2026-05-04 23:55:16,779 [geospoiler.normalizer] INFO:   Normalized: 191.txt (1107 chars)
+2026-05-04 23:55:19,164 [geospoiler.normalizer] INFO:   Normalized: 192.txt (441 chars)
+2026-05-04 23:55:19,577 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:55:49,878 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_193.jpg
+2026-05-04 23:55:50,636 [geospoiler.normalizer] INFO:   Normalized: 193.txt (152 chars)
+2026-05-04 23:55:51,007 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:56:21,286 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_194.jpg
+2026-05-04 23:56:21,698 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:56:51,978 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_195.jpg
+2026-05-04 23:56:54,531 [geospoiler.normalizer] INFO:   Normalized: 195.txt (804 chars)
+2026-05-04 23:56:57,758 [geospoiler.normalizer] INFO:   Normalized: 196.txt (759 chars)
+2026-05-04 23:57:01,124 [geospoiler.normalizer] INFO:   Normalized: 197.txt (695 chars)
+2026-05-04 23:57:14,678 [geospoiler.normalizer] INFO:   Normalized: 198.txt (4417 chars)
+2026-05-04 23:57:15,116 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:57:45,420 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_199.jpg
+2026-05-04 23:57:51,044 [geospoiler.normalizer] INFO:   Normalized: 200.txt (1728 chars)
+2026-05-04 23:57:53,000 [geospoiler.normalizer] INFO:   Normalized: 201.txt (558 chars)
+2026-05-04 23:57:53,393 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:58:23,654 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Венгрия Словакия\msg_202.jpg
+2026-05-04 23:58:25,419 [geospoiler.normalizer] INFO:   Normalized: 202.txt (559 chars)
+2026-05-04 23:58:26,350 [geospoiler] INFO: Processing channel: Корея (26 messages)
+2026-05-04 23:58:26,761 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:58:57,037 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_2.jpg
+2026-05-04 23:58:59,646 [geospoiler.normalizer] INFO:   Normalized: 2.txt (705 chars)
+2026-05-04 23:59:01,508 [geospoiler.normalizer] INFO:   Normalized: 3.txt (564 chars)
+2026-05-04 23:59:04,380 [geospoiler.normalizer] INFO:   Normalized: 4.txt (759 chars)
+2026-05-04 23:59:11,794 [geospoiler.normalizer] INFO:   Normalized: 5.txt (2062 chars)
+2026-05-04 23:59:14,516 [geospoiler.normalizer] INFO:   Normalized: 6.txt (839 chars)
+2026-05-04 23:59:23,288 [geospoiler.normalizer] INFO:   Normalized: 7.txt (263 chars)
+2026-05-04 23:59:23,674 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-04 23:59:53,937 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_8.jpg
+2026-05-05 00:00:01,013 [geospoiler.normalizer] INFO:   Normalized: 8.txt (2317 chars)
+2026-05-05 00:00:01,372 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:00:05,434 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_9.jpg: 500 Server Error: Internal Server Error for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-05 00:00:05,869 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:00:06,532 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_10.jpg: 500 Server Error: Internal Server Error for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-05 00:00:06,966 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:00:07,581 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_11.jpg: 500 Server Error: Internal Server Error for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-05 00:00:09,248 [geospoiler.normalizer] INFO:   Normalized: 11.txt (455 chars)
+2026-05-05 00:00:16,626 [geospoiler.normalizer] INFO:   Normalized: 12.txt (1690 chars)
+2026-05-05 00:00:20,114 [geospoiler.normalizer] INFO:   Normalized: 13.txt (779 chars)
+2026-05-05 00:00:24,273 [geospoiler.normalizer] INFO:   Normalized: 14.txt (848 chars)
+2026-05-05 00:00:26,510 [geospoiler.normalizer] INFO:   Normalized: 15.txt (671 chars)
+2026-05-05 00:00:26,903 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:00:57,187 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_16.jpg
+2026-05-05 00:00:57,632 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:01:27,949 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_17.jpg
+2026-05-05 00:01:28,423 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:01:58,725 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_18.jpg
+2026-05-05 00:01:59,125 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:02:29,420 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_19.jpg
+2026-05-05 00:02:29,809 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:03:00,094 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_20.jpg
+2026-05-05 00:03:00,478 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:03:00,878 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_21.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-05 00:03:03,923 [geospoiler.normalizer] INFO:   Normalized: 21.txt (1088 chars)
+2026-05-05 00:03:04,291 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:03:34,557 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_22.jpg
+2026-05-05 00:03:37,154 [geospoiler.normalizer] INFO:   Normalized: 22.txt (608 chars)
+2026-05-05 00:03:37,533 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:04:02,235 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_23.jpg: 500 Server Error: Internal Server Error for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-05 00:04:03,466 [geospoiler.normalizer] INFO:   Normalized: 23.txt (274 chars)
+2026-05-05 00:04:05,003 [geospoiler.normalizer] INFO:   Normalized: 24.txt (379 chars)
+2026-05-05 00:04:05,402 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:04:05,789 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_25.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-05 00:04:11,465 [geospoiler.normalizer] INFO:   Normalized: 25.txt (945 chars)
+2026-05-05 00:04:19,615 [geospoiler.normalizer] INFO:   Normalized: 26.txt (1883 chars)
+2026-05-05 00:04:28,773 [geospoiler.normalizer] INFO:   Normalized: 27.txt (2348 chars)
+2026-05-05 00:04:33,298 [geospoiler.normalizer] INFO:   Normalized: 28.txt (1019 chars)
+2026-05-05 00:04:43,763 [geospoiler.normalizer] INFO:   Normalized: 29.txt (1676 chars)
+2026-05-05 00:04:44,270 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:05:14,597 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_30.jpg
+2026-05-05 00:05:15,068 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:05:45,379 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_31.jpg
+2026-05-05 00:05:45,826 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:05:46,230 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_32.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-05 00:05:47,901 [geospoiler.normalizer] INFO:   Normalized: 32.txt (473 chars)
+2026-05-05 00:05:49,563 [geospoiler.normalizer] INFO:   Normalized: 33.txt (398 chars)
+2026-05-05 00:05:49,947 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:06:20,252 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_35.jpg
+2026-05-05 00:06:20,679 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:06:50,964 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_36.jpg
+2026-05-05 00:06:51,372 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:07:21,669 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_37.jpg
+2026-05-05 00:07:23,987 [geospoiler.normalizer] INFO:   Normalized: 37.txt (619 chars)
+2026-05-05 00:07:24,399 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:07:54,705 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_38.jpg
+2026-05-05 00:07:56,343 [geospoiler.normalizer] INFO:   Normalized: 38.txt (279 chars)
+2026-05-05 00:07:56,761 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:08:27,085 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Корея\msg_39.jpg
+2026-05-05 00:08:31,425 [geospoiler.normalizer] INFO:   Normalized: 39.txt (830 chars)
+2026-05-05 00:08:31,573 [geospoiler] INFO: Processing channel: Англия (7 messages)
+2026-05-05 00:08:31,955 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:09:02,258 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Англия\msg_2.jpg
+2026-05-05 00:09:03,276 [geospoiler.normalizer] INFO:   Normalized: 2.txt (204 chars)
+2026-05-05 00:09:13,975 [geospoiler.normalizer] INFO:   Normalized: 3.txt (3425 chars)
+2026-05-05 00:09:15,658 [geospoiler.normalizer] INFO:   Normalized: 4.txt (453 chars)
+2026-05-05 00:09:16,069 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:09:46,382 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Англия\msg_5.jpg
+2026-05-05 00:09:48,289 [geospoiler.normalizer] INFO:   Normalized: 5.txt (517 chars)
+2026-05-05 00:09:48,678 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:09:49,057 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Англия\msg_7.jpg: 400 Client Error: Bad Request for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-05-05 00:09:51,202 [geospoiler.normalizer] INFO:   Normalized: 7.txt (380 chars)
+2026-05-05 00:09:51,621 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-05 00:10:21,906 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Англия\msg_8.jpg
+2026-05-05 00:10:28,094 [geospoiler.normalizer] INFO:   Normalized: 8.txt (2149 chars)
+2026-05-05 00:10:29,507 [geospoiler.normalizer] INFO:   Normalized: 9.txt (361 chars)
+2026-05-05 00:10:29,545 [geospoiler] INFO: === NORMALIZE complete: 190 texts normalized ===
+2026-05-05 00:10:29,545 [geospoiler] INFO: === LOAD: Loading into LightRAG ===
+2026-05-05 00:10:30,314 [nano-vectordb] INFO: Load (199, 1024) data
+2026-05-05 00:10:30,317 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 199 data
+2026-05-05 00:10:30,325 [nano-vectordb] INFO: Load (220, 1024) data
+2026-05-05 00:10:30,325 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 220 data
+2026-05-05 00:10:30,327 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-05 00:10:30,327 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-05 00:10:30,342 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-05 00:13:40,301 [openai._base_client] INFO: Retrying request to /chat/completions in 0.408393 seconds
+2026-05-05 00:14:27,374 [geospoiler.loader] INFO:   Inserted progress: 5/190
+2026-05-05 00:15:24,416 [geospoiler.loader] INFO:   Inserted progress: 10/190
+2026-05-05 00:18:14,519 [geospoiler.loader] INFO:   Inserted progress: 15/190
+2026-05-05 00:19:32,704 [geospoiler.loader] INFO:   Inserted progress: 20/190
+2026-05-05 00:20:07,849 [geospoiler.loader] INFO:   Inserted progress: 25/190
+2026-05-05 00:21:34,705 [geospoiler.loader] INFO:   Inserted progress: 30/190
+2026-05-05 00:24:03,020 [openai._base_client] INFO: Retrying request to /chat/completions in 0.443042 seconds
+2026-05-05 00:25:16,804 [geospoiler.loader] INFO:   Inserted progress: 35/190
+2026-05-05 00:26:51,583 [geospoiler.loader] INFO:   Inserted progress: 40/190
+2026-05-05 00:27:52,629 [geospoiler.loader] INFO:   Inserted progress: 45/190
+2026-05-05 00:29:16,867 [geospoiler.loader] INFO:   Inserted progress: 50/190
+2026-05-05 00:30:07,634 [geospoiler.loader] INFO:   Inserted progress: 55/190
+2026-05-05 00:30:43,201 [geospoiler.loader] INFO:   Inserted progress: 60/190
+2026-05-05 00:32:19,184 [geospoiler.loader] INFO:   Inserted progress: 65/190
+2026-05-05 00:33:51,247 [geospoiler.loader] INFO:   Inserted progress: 70/190
+2026-05-05 00:35:50,466 [geospoiler.loader] INFO:   Inserted progress: 75/190
+2026-05-05 00:38:14,464 [geospoiler.loader] INFO:   Inserted progress: 80/190
+2026-05-05 00:40:27,539 [geospoiler.loader] INFO:   Inserted progress: 85/190
+2026-05-05 00:43:53,620 [openai._base_client] INFO: Retrying request to /chat/completions in 0.381990 seconds
+2026-05-05 00:46:24,087 [openai._base_client] INFO: Retrying request to /chat/completions in 0.408438 seconds
+2026-05-05 00:47:09,607 [geospoiler.loader] INFO:   Inserted progress: 90/190
+2026-05-05 00:49:37,497 [openai._base_client] INFO: Retrying request to /chat/completions in 0.472288 seconds
+2026-05-05 00:51:38,067 [openai._base_client] INFO: Retrying request to /chat/completions in 0.990370 seconds
+2026-05-05 00:53:12,766 [geospoiler.loader] INFO:   Inserted progress: 95/190
+2026-05-05 00:55:49,030 [openai._base_client] INFO: Retrying request to /chat/completions in 0.493321 seconds
+2026-05-05 00:58:46,496 [openai._base_client] INFO: Retrying request to /chat/completions in 0.471001 seconds
+2026-05-05 01:00:02,889 [geospoiler.loader] INFO:   Inserted progress: 100/190
+2026-05-05 01:04:00,296 [openai._base_client] INFO: Retrying request to /chat/completions in 0.430730 seconds
+2026-05-05 01:04:25,942 [openai._base_client] INFO: Retrying request to /chat/completions in 0.446630 seconds
+2026-05-05 01:05:11,799 [openai._base_client] INFO: Retrying request to /chat/completions in 0.433565 seconds
+2026-05-05 01:06:00,812 [openai._base_client] INFO: Retrying request to /chat/completions in 0.776886 seconds
+2026-05-05 01:07:12,524 [openai._base_client] INFO: Retrying request to /chat/completions in 0.471239 seconds
+2026-05-05 01:09:01,563 [geospoiler.loader] INFO:   Inserted progress: 105/190
+2026-05-05 01:09:13,099 [openai._base_client] INFO: Retrying request to /chat/completions in 0.829332 seconds
+2026-05-05 01:12:35,548 [openai._base_client] INFO: Retrying request to /chat/completions in 0.385084 seconds
+2026-05-05 01:13:57,297 [openai._base_client] INFO: Retrying request to /chat/completions in 0.406590 seconds
+2026-05-05 01:16:13,909 [geospoiler.loader] INFO:   Inserted progress: 110/190
+2026-05-05 01:18:32,490 [openai._base_client] INFO: Retrying request to /chat/completions in 0.417008 seconds
+2026-05-05 01:18:52,346 [openai._base_client] INFO: Retrying request to /chat/completions in 0.435182 seconds
+2026-05-05 01:20:39,264 [geospoiler.loader] INFO:   Inserted progress: 115/190
+2026-05-05 01:22:12,873 [geospoiler.loader] INFO:   Inserted progress: 120/190
+2026-05-05 01:24:12,543 [geospoiler.loader] INFO:   Inserted progress: 125/190
+2026-05-05 01:26:30,604 [geospoiler.loader] INFO:   Inserted progress: 130/190
+2026-05-05 01:27:02,700 [geospoiler.loader] INFO:   Inserted progress: 135/190
+2026-05-05 01:28:44,489 [geospoiler.loader] INFO:   Inserted progress: 140/190
+2026-05-05 01:32:29,525 [geospoiler.loader] INFO:   Inserted progress: 145/190
+2026-05-05 01:34:35,958 [geospoiler.loader] INFO:   Inserted progress: 150/190
+2026-05-05 01:37:53,135 [openai._base_client] INFO: Retrying request to /chat/completions in 0.455152 seconds
+2026-05-05 01:39:53,681 [openai._base_client] INFO: Retrying request to /chat/completions in 0.932534 seconds
+2026-05-05 01:41:58,428 [geospoiler.loader] INFO:   Inserted progress: 155/190
+2026-05-05 01:45:20,200 [geospoiler.loader] INFO:   Inserted progress: 160/190
+2026-05-05 01:47:21,572 [geospoiler.loader] INFO:   Inserted progress: 165/190
+2026-05-05 01:49:55,749 [openai._base_client] INFO: Retrying request to /chat/completions in 0.421419 seconds
+2026-05-05 01:51:56,252 [openai._base_client] INFO: Retrying request to /chat/completions in 0.830972 seconds
+2026-05-05 01:54:23,195 [geospoiler.loader] INFO:   Inserted progress: 170/190
+2026-05-05 01:56:35,776 [geospoiler.loader] INFO:   Inserted progress: 175/190
+2026-05-05 01:59:17,276 [geospoiler.loader] INFO:   Inserted progress: 180/190
+2026-05-05 02:04:00,845 [openai._base_client] INFO: Retrying request to /chat/completions in 0.469327 seconds
+2026-05-05 02:04:43,406 [geospoiler.loader] INFO:   Inserted progress: 185/190
+2026-05-05 02:05:32,496 [geospoiler.loader] INFO:   Inserted progress: 190/190
+2026-05-05 02:05:32,496 [geospoiler.loader] INFO: Loading complete: 190/190 texts inserted into LightRAG.
+2026-05-05 02:05:32,939 [geospoiler.loader] INFO: Auto-fixed entity aliases: 18th sanctions package -> 18th Sanctions Package
+2026-05-05 02:05:33,547 [geospoiler.loader] INFO: Auto-fixed entity aliases: 2022 Hungarian elections -> 2022 Hungarian Elections
+2026-05-05 02:05:34,102 [geospoiler.loader] INFO: Auto-fixed entity aliases: POLITICO -> Politico
+2026-05-05 02:05:34,102 [geospoiler.loader] WARNING: Failed to auto-merge entities into Resurgamhub (resurgamhub): Source entity 'resurgamhub' does not exist
+2026-05-05 02:05:34,531 [geospoiler.loader] INFO: Auto-fixed entity aliases: Smer -> SMER
+2026-05-05 02:05:36,198 [geospoiler.loader] INFO: Auto-fixed entity aliases: TISZA -> Tisza
+2026-05-05 02:05:37,069 [geospoiler.loader] INFO: Auto-fixed entity aliases: Vsquare -> VSquare
+2026-05-05 02:05:37,069 [geospoiler.loader] WARNING: Failed to auto-merge entities into White Jihad (white jihad): Source entity 'white jihad' does not exist
+2026-05-05 02:05:37,069 [geospoiler] INFO: === AUTO-FIX complete: 6 safe entity merge(s) applied ===
+2026-05-05 02:05:37,069 [geospoiler] INFO: === LOAD complete: 190 texts loaded ===
+2026-05-05 02:05:37,069 [geospoiler] INFO: === FULL PIPELINE COMPLETE ===

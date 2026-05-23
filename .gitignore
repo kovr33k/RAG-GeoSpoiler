@@ -1,0 +1,12 @@
+# OS / editor noise
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Obsidian local workspace state
+.obsidian/workspace*.json
+.trash/
+
+# Local secrets and sessions at repository root
+.env
+*.session

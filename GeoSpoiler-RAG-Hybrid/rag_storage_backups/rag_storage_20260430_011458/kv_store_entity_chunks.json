@@ -1,0 +1,2479 @@
+{
+  "Куба": {
+    "chunk_ids": [
+      "chunk-9d076bc578a76f0d37205d88cb111e3a",
+      "chunk-33fbdbc87dc3d63c894c4967c64e416d",
+      "chunk-6d798b538fd8af34e3a1e68772e086e8"
+    ],
+    "count": 3,
+    "update_time": 1777422364,
+    "_id": "Куба"
+  },
+  "Коммунистическая партия Кубы": {
+    "chunk_ids": [
+      "chunk-9d076bc578a76f0d37205d88cb111e3a"
+    ],
+    "count": 1,
+    "create_time": 1777417868,
+    "update_time": 1777417868,
+    "_id": "Коммунистическая партия Кубы"
+  },
+  "Президент Кубы": {
+    "chunk_ids": [
+      "chunk-9d076bc578a76f0d37205d88cb111e3a"
+    ],
+    "count": 1,
+    "create_time": 1777417868,
+    "update_time": 1777417868,
+    "_id": "Президент Кубы"
+  },
+  "США": {
+    "chunk_ids": [
+      "chunk-9d076bc578a76f0d37205d88cb111e3a",
+      "chunk-d87de5ac222f3f5483a17dcd9be1a802",
+      "chunk-6d798b538fd8af34e3a1e68772e086e8"
+    ],
+    "count": 3,
+    "update_time": 1777422364,
+    "_id": "США"
+  },
+  "Протесты на Кубе": {
+    "chunk_ids": [
+      "chunk-9d076bc578a76f0d37205d88cb111e3a"
+    ],
+    "count": 1,
+    "create_time": 1777417868,
+    "update_time": 1777417868,
+    "_id": "Протесты на Кубе"
+  },
+  "Ateo Blacked": {
+    "chunk_ids": [
+      "chunk-9d076bc578a76f0d37205d88cb111e3a"
+    ],
+    "count": 1,
+    "create_time": 1777417868,
+    "update_time": 1777417868,
+    "_id": "Ateo Blacked"
+  },
+  "Телеграм": {
+    "chunk_ids": [
+      "chunk-9d076bc578a76f0d37205d88cb111e3a",
+      "chunk-d87de5ac222f3f5483a17dcd9be1a802"
+    ],
+    "count": 2,
+    "update_time": 1777418083,
+    "_id": "Телеграм"
+  },
+  "Электричество": {
+    "chunk_ids": [
+      "chunk-9d076bc578a76f0d37205d88cb111e3a"
+    ],
+    "count": 1,
+    "create_time": 1777417868,
+    "update_time": 1777417868,
+    "_id": "Электричество"
+  },
+  "Дональд Трамп": {
+    "chunk_ids": [
+      "chunk-33fbdbc87dc3d63c894c4967c64e416d",
+      "chunk-19d93fe51122c951f011d35eb337a3f7"
+    ],
+    "count": 2,
+    "update_time": 1777422382,
+    "_id": "Дональд Трамп"
+  },
+  "Росія": {
+    "chunk_ids": [
+      "chunk-33fbdbc87dc3d63c894c4967c64e416d"
+    ],
+    "count": 1,
+    "update_time": 1777422365,
+    "_id": "Росія"
+  },
+  "Берегова охорона США": {
+    "chunk_ids": [
+      "chunk-33fbdbc87dc3d63c894c4967c64e416d"
+    ],
+    "count": 1,
+    "create_time": 1777417889,
+    "update_time": 1777417889,
+    "_id": "Берегова охорона США"
+  },
+  "Російський нафтовий танкер": {
+    "chunk_ids": [
+      "chunk-33fbdbc87dc3d63c894c4967c64e416d"
+    ],
+    "count": 1,
+    "create_time": 1777417889,
+    "update_time": 1777417889,
+    "_id": "Російський нафтовий танкер"
+  },
+  "Енергетична блокада": {
+    "chunk_ids": [
+      "chunk-33fbdbc87dc3d63c894c4967c64e416d"
+    ],
+    "count": 1,
+    "create_time": 1777417889,
+    "update_time": 1777417889,
+    "_id": "Енергетична блокада"
+  },
+  "Мінфін США": {
+    "chunk_ids": [
+      "chunk-33fbdbc87dc3d63c894c4967c64e416d"
+    ],
+    "count": 1,
+    "create_time": 1777417889,
+    "update_time": 1777417889,
+    "_id": "Мінфін США"
+  },
+  "Шрайк Ньюс": {
+    "chunk_ids": [
+      "chunk-33fbdbc87dc3d63c894c4967c64e416d"
+    ],
+    "count": 1,
+    "update_time": 1777422351,
+    "_id": "Шрайк Ньюс"
+  },
+  "NYT": {
+    "chunk_ids": [
+      "chunk-33fbdbc87dc3d63c894c4967c64e416d"
+    ],
+    "count": 1,
+    "create_time": 1777417889,
+    "update_time": 1777417889,
+    "_id": "NYT"
+  },
+  "Ґрета Тунберг": {
+    "chunk_ids": [
+      "chunk-47985507480c716e0000b869ef2c9aa6"
+    ],
+    "count": 1,
+    "create_time": 1777417945,
+    "update_time": 1777417945,
+    "_id": "Ґрета Тунберг"
+  },
+  "Італійські ультраліві союзники": {
+    "chunk_ids": [
+      "chunk-47985507480c716e0000b869ef2c9aa6"
+    ],
+    "count": 1,
+    "create_time": 1777417945,
+    "update_time": 1777417945,
+    "_id": "Італійські ультраліві союзники"
+  },
+  "Європейські країни": {
+    "chunk_ids": [
+      "chunk-47985507480c716e0000b869ef2c9aa6"
+    ],
+    "count": 1,
+    "create_time": 1777417945,
+    "update_time": 1777417945,
+    "_id": "Європейські країни"
+  },
+  "Україна": {
+    "chunk_ids": [
+      "chunk-47985507480c716e0000b869ef2c9aa6"
+    ],
+    "count": 1,
+    "create_time": 1777417945,
+    "update_time": 1777417945,
+    "_id": "Україна"
+  },
+  "ЄС": {
+    "chunk_ids": [
+      "chunk-47985507480c716e0000b869ef2c9aa6"
+    ],
+    "count": 1,
+    "create_time": 1777417945,
+    "update_time": 1777417945,
+    "_id": "ЄС"
+  },
+  "Останній Капіталіст": {
+    "chunk_ids": [
+      "chunk-47985507480c716e0000b869ef2c9aa6"
+    ],
+    "count": 1,
+    "create_time": 1777417945,
+    "update_time": 1777417945,
+    "_id": "Останній Капіталіст"
+  },
+  "MonoBase": {
+    "chunk_ids": [
+      "chunk-47985507480c716e0000b869ef2c9aa6"
+    ],
+    "count": 1,
+    "create_time": 1777417945,
+    "update_time": 1777417945,
+    "_id": "MonoBase"
+  },
+  "Мілітаризація Європи": {
+    "chunk_ids": [
+      "chunk-47985507480c716e0000b869ef2c9aa6"
+    ],
+    "count": 1,
+    "create_time": 1777417945,
+    "update_time": 1777417945,
+    "_id": "Мілітаризація Європи"
+  },
+  "Переозброєння ЄС": {
+    "chunk_ids": [
+      "chunk-47985507480c716e0000b869ef2c9aa6"
+    ],
+    "count": 1,
+    "create_time": 1777417945,
+    "update_time": 1777417945,
+    "_id": "Переозброєння ЄС"
+  },
+  "Бундесвер": {
+    "chunk_ids": [
+      "chunk-9bd051cb787992a9c82372f39a42ff14"
+    ],
+    "count": 1,
+    "create_time": 1777417955,
+    "update_time": 1777417955,
+    "_id": "Бундесвер"
+  },
+  "Украина": {
+    "chunk_ids": [
+      "chunk-9bd051cb787992a9c82372f39a42ff14",
+      "chunk-fc81f47105f95a01062a3dca9ee5ad14",
+      "chunk-96d3d395cd55743faf41e3b3b3a8d446"
+    ],
+    "count": 3,
+    "update_time": 1777418254,
+    "_id": "Украина"
+  },
+  "Зеленые": {
+    "chunk_ids": [
+      "chunk-9bd051cb787992a9c82372f39a42ff14"
+    ],
+    "count": 1,
+    "create_time": 1777417955,
+    "update_time": 1777417955,
+    "_id": "Зеленые"
+  },
+  "Социал-демократы": {
+    "chunk_ids": [
+      "chunk-9bd051cb787992a9c82372f39a42ff14"
+    ],
+    "count": 1,
+    "create_time": 1777417955,
+    "update_time": 1777417955,
+    "_id": "Социал-демократы"
+  },
+  "АдГ": {
+    "chunk_ids": [
+      "chunk-9bd051cb787992a9c82372f39a42ff14",
+      "chunk-96d3d395cd55743faf41e3b3b3a8d446",
+      "chunk-4117a24ac776e64ee5b10c9c825a2778"
+    ],
+    "count": 3,
+    "update_time": 1777419334,
+    "_id": "АдГ"
+  },
+  "Левые": {
+    "chunk_ids": [
+      "chunk-9bd051cb787992a9c82372f39a42ff14"
+    ],
+    "count": 1,
+    "create_time": 1777417955,
+    "update_time": 1777417955,
+    "_id": "Левые"
+  },
+  "Опрос": {
+    "chunk_ids": [
+      "chunk-9bd051cb787992a9c82372f39a42ff14"
+    ],
+    "count": 1,
+    "create_time": 1777417955,
+    "update_time": 1777417955,
+    "_id": "Опрос"
+  },
+  "Германия": {
+    "chunk_ids": [
+      "chunk-9bd051cb787992a9c82372f39a42ff14"
+    ],
+    "count": 1,
+    "create_time": 1777417956,
+    "update_time": 1777417956,
+    "_id": "Германия"
+  },
+  "Путин": {
+    "chunk_ids": [
+      "chunk-fc81f47105f95a01062a3dca9ee5ad14"
+    ],
+    "count": 1,
+    "create_time": 1777417989,
+    "update_time": 1777417989,
+    "_id": "Путин"
+  },
+  "Белоусов": {
+    "chunk_ids": [
+      "chunk-fc81f47105f95a01062a3dca9ee5ad14"
+    ],
+    "count": 1,
+    "create_time": 1777417989,
+    "update_time": 1777417989,
+    "_id": "Белоусов"
+  },
+  "Россия": {
+    "chunk_ids": [
+      "chunk-fc81f47105f95a01062a3dca9ee5ad14",
+      "chunk-96d3d395cd55743faf41e3b3b3a8d446"
+    ],
+    "count": 2,
+    "update_time": 1777418254,
+    "_id": "Россия"
+  },
+  "НАТО": {
+    "chunk_ids": [
+      "chunk-fc81f47105f95a01062a3dca9ee5ad14"
+    ],
+    "count": 1,
+    "create_time": 1777417989,
+    "update_time": 1777417989,
+    "_id": "НАТО"
+  },
+  "СВО": {
+    "chunk_ids": [
+      "chunk-fc81f47105f95a01062a3dca9ee5ad14"
+    ],
+    "count": 1,
+    "create_time": 1777417989,
+    "update_time": 1777417989,
+    "_id": "СВО"
+  },
+  "Ультраправые": {
+    "chunk_ids": [
+      "chunk-fc81f47105f95a01062a3dca9ee5ad14"
+    ],
+    "count": 1,
+    "create_time": 1777417989,
+    "update_time": 1777417989,
+    "_id": "Ультраправые"
+  },
+  "Ультралевые": {
+    "chunk_ids": [
+      "chunk-fc81f47105f95a01062a3dca9ee5ad14"
+    ],
+    "count": 1,
+    "create_time": 1777417989,
+    "update_time": 1777417989,
+    "_id": "Ультралевые"
+  },
+  "2026–2030 Military Plan": {
+    "chunk_ids": [
+      "chunk-fc81f47105f95a01062a3dca9ee5ad14"
+    ],
+    "count": 1,
+    "create_time": 1777417989,
+    "update_time": 1777417989,
+    "_id": "2026–2030 Military Plan"
+  },
+  "Исторические земли": {
+    "chunk_ids": [
+      "chunk-fc81f47105f95a01062a3dca9ee5ad14"
+    ],
+    "count": 1,
+    "create_time": 1777417989,
+    "update_time": 1777417989,
+    "_id": "Исторические земли"
+  },
+  "Буферная зона безопасности": {
+    "chunk_ids": [
+      "chunk-fc81f47105f95a01062a3dca9ee5ad14"
+    ],
+    "count": 1,
+    "create_time": 1777417989,
+    "update_time": 1777417989,
+    "_id": "Буферная зона безопасности"
+  },
+  "Грета Тумберг": {
+    "chunk_ids": [
+      "chunk-a304cf0adead7270b6fc538ffdd99fa1"
+    ],
+    "count": 1,
+    "create_time": 1777418001,
+    "update_time": 1777418001,
+    "_id": "Грета Тумберг"
+  },
+  "Иран": {
+    "chunk_ids": [
+      "chunk-a304cf0adead7270b6fc538ffdd99fa1"
+    ],
+    "count": 1,
+    "create_time": 1777418001,
+    "update_time": 1777418001,
+    "_id": "Иран"
+  },
+  "Западные леваки": {
+    "chunk_ids": [
+      "chunk-a304cf0adead7270b6fc538ffdd99fa1"
+    ],
+    "count": 1,
+    "create_time": 1777418001,
+    "update_time": 1777418001,
+    "_id": "Западные леваки"
+  },
+  "Сионизм": {
+    "chunk_ids": [
+      "chunk-a304cf0adead7270b6fc538ffdd99fa1"
+    ],
+    "count": 1,
+    "create_time": 1777418001,
+    "update_time": 1777418001,
+    "_id": "Сионизм"
+  },
+  "Ультра-левые взгляды и идеи": {
+    "chunk_ids": [
+      "chunk-a304cf0adead7270b6fc538ffdd99fa1"
+    ],
+    "count": 1,
+    "create_time": 1777418001,
+    "update_time": 1777418001,
+    "_id": "Ультра-левые взгляды и идеи"
+  },
+  "Западная культура": {
+    "chunk_ids": [
+      "chunk-a304cf0adead7270b6fc538ffdd99fa1"
+    ],
+    "count": 1,
+    "create_time": 1777418001,
+    "update_time": 1777418001,
+    "_id": "Западная культура"
+  },
+  "Ультра левые и ультра правые": {
+    "chunk_ids": [
+      "chunk-59c14307e1ce5b3eda581be854ab7d17",
+      "chunk-e9a14fc1e13b7bdf9ed3cf57cf0801e3",
+      "chunk-bb2a44e637b1302a015f7a8af22e8ed2"
+    ],
+    "count": 3,
+    "update_time": 1777422444,
+    "_id": "Ультра левые и ультра правые"
+  },
+  "2026-01-14": {
+    "chunk_ids": [
+      "chunk-59c14307e1ce5b3eda581be854ab7d17"
+    ],
+    "count": 1,
+    "create_time": 1777418009,
+    "update_time": 1777418009,
+    "_id": "2026-01-14"
+  },
+  "https://t.me/c/3299898370/6": {
+    "chunk_ids": [
+      "chunk-59c14307e1ce5b3eda581be854ab7d17"
+    ],
+    "count": 1,
+    "create_time": 1777418009,
+    "update_time": 1777418009,
+    "_id": "https://t.me/c/3299898370/6"
+  },
+  "Последний абзац": {
+    "chunk_ids": [
+      "chunk-59c14307e1ce5b3eda581be854ab7d17"
+    ],
+    "count": 1,
+    "create_time": 1777418009,
+    "update_time": 1777418009,
+    "_id": "Последний абзац"
+  },
+  "Resurgam": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea"
+    ],
+    "count": 1,
+    "create_time": 1777418034,
+    "update_time": 1777418034,
+    "_id": "Resurgam"
+  },
+  "Gazprom": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea"
+    ],
+    "count": 1,
+    "create_time": 1777418034,
+    "update_time": 1777418034,
+    "_id": "Gazprom"
+  },
+  "RZhD": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea"
+    ],
+    "count": 1,
+    "create_time": 1777418034,
+    "update_time": 1777418034,
+    "_id": "RZhD"
+  },
+  "Donald Trump": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea",
+      "chunk-c0e0170a200bcf7e8fbd7f4b57d7f105"
+    ],
+    "count": 2,
+    "update_time": 1777422362,
+    "_id": "Donald Trump"
+  },
+  "Greenland": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea",
+      "chunk-82ec00bc106465d816d43c59302f07ca"
+    ],
+    "count": 2,
+    "update_time": 1777418044,
+    "_id": "Greenland"
+  },
+  "Moldova": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea"
+    ],
+    "count": 1,
+    "create_time": 1777418034,
+    "update_time": 1777418034,
+    "_id": "Moldova"
+  },
+  "Sweden": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea"
+    ],
+    "count": 1,
+    "create_time": 1777418034,
+    "update_time": 1777418034,
+    "_id": "Sweden"
+  },
+  "ICEYE": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea"
+    ],
+    "count": 1,
+    "create_time": 1777418034,
+    "update_time": 1777418034,
+    "_id": "ICEYE"
+  },
+  "Bella 1": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea"
+    ],
+    "count": 1,
+    "create_time": 1777418034,
+    "update_time": 1777418034,
+    "_id": "Bella 1"
+  },
+  "Sophia": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea"
+    ],
+    "count": 1,
+    "create_time": 1777418034,
+    "update_time": 1777418034,
+    "_id": "Sophia"
+  },
+  "Viktor Orbán": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea"
+    ],
+    "count": 1,
+    "create_time": 1777418034,
+    "update_time": 1777418034,
+    "_id": "Viktor Orbán"
+  },
+  "Russia": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea",
+      "chunk-98d518fc3b7e7fe3dcf675759a3da1ed",
+      "chunk-2802e11b74b9768fe90d58d3fe517040",
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 4,
+    "update_time": 1777422407,
+    "_id": "Russia"
+  },
+  "United States": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea",
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4",
+      "chunk-c0e0170a200bcf7e8fbd7f4b57d7f105"
+    ],
+    "count": 3,
+    "update_time": 1777422362,
+    "_id": "United States"
+  },
+  "Venezuela": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea",
+      "chunk-82ec00bc106465d816d43c59302f07ca"
+    ],
+    "count": 2,
+    "update_time": 1777418044,
+    "_id": "Venezuela"
+  },
+  "Hungary": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea"
+    ],
+    "count": 1,
+    "create_time": 1777418034,
+    "update_time": 1777418034,
+    "_id": "Hungary"
+  },
+  "ResurgamHub": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea"
+    ],
+    "count": 1,
+    "create_time": 1777418034,
+    "update_time": 1777418034,
+    "_id": "ResurgamHub"
+  },
+  "Russian Shadow Fleet": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea"
+    ],
+    "count": 1,
+    "create_time": 1777418034,
+    "update_time": 1777418034,
+    "_id": "Russian Shadow Fleet"
+  },
+  "Ukraine": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea",
+      "chunk-2802e11b74b9768fe90d58d3fe517040",
+      "chunk-e232cbb8378e12daaab207e9ebfcb38b",
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 4,
+    "update_time": 1777422406,
+    "_id": "Ukraine"
+  },
+  "European Union": {
+    "chunk_ids": [
+      "chunk-247e3564ae01c87b4e47bbb7579416ea"
+    ],
+    "count": 1,
+    "create_time": 1777418034,
+    "update_time": 1777418034,
+    "_id": "European Union"
+  },
+  "Alice Weidel": {
+    "chunk_ids": [
+      "chunk-82ec00bc106465d816d43c59302f07ca",
+      "chunk-27f8ffeb0dc7e596154051ef26bfbe6f",
+      "chunk-2802e11b74b9768fe90d58d3fe517040"
+    ],
+    "count": 3,
+    "update_time": 1777418176,
+    "_id": "Alice Weidel"
+  },
+  "AfD": {
+    "chunk_ids": [
+      "chunk-82ec00bc106465d816d43c59302f07ca",
+      "chunk-27f8ffeb0dc7e596154051ef26bfbe6f",
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 3,
+    "update_time": 1777422406,
+    "_id": "AfD"
+  },
+  "Putin": {
+    "chunk_ids": [
+      "chunk-82ec00bc106465d816d43c59302f07ca",
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 2,
+    "update_time": 1777422406,
+    "_id": "Putin"
+  },
+  "Trump": {
+    "chunk_ids": [
+      "chunk-82ec00bc106465d816d43c59302f07ca",
+      "chunk-a5415784c3214963deae1dae144503c6"
+    ],
+    "count": 2,
+    "update_time": 1777422430,
+    "_id": "Trump"
+  },
+  "Clash Report": {
+    "chunk_ids": [
+      "chunk-82ec00bc106465d816d43c59302f07ca"
+    ],
+    "count": 1,
+    "create_time": 1777418044,
+    "update_time": 1777418044,
+    "_id": "Clash Report"
+  },
+  "Telegram Channel": {
+    "chunk_ids": [
+      "chunk-82ec00bc106465d816d43c59302f07ca"
+    ],
+    "count": 1,
+    "create_time": 1777418044,
+    "update_time": 1777418044,
+    "_id": "Telegram Channel"
+  },
+  "Александр Дугин": {
+    "chunk_ids": [
+      "chunk-d87de5ac222f3f5483a17dcd9be1a802"
+    ],
+    "count": 1,
+    "create_time": 1777418083,
+    "update_time": 1777418083,
+    "_id": "Александр Дугин"
+  },
+  "Русский мир": {
+    "chunk_ids": [
+      "chunk-d87de5ac222f3f5483a17dcd9be1a802"
+    ],
+    "count": 1,
+    "create_time": 1777418083,
+    "update_time": 1777418083,
+    "_id": "Русский мир"
+  },
+  "Армения": {
+    "chunk_ids": [
+      "chunk-d87de5ac222f3f5483a17dcd9be1a802"
+    ],
+    "count": 1,
+    "create_time": 1777418083,
+    "update_time": 1777418083,
+    "_id": "Армения"
+  },
+  "Азербайджан": {
+    "chunk_ids": [
+      "chunk-d87de5ac222f3f5483a17dcd9be1a802"
+    ],
+    "count": 1,
+    "create_time": 1777418083,
+    "update_time": 1777418083,
+    "_id": "Азербайджан"
+  },
+  "Казахстан": {
+    "chunk_ids": [
+      "chunk-d87de5ac222f3f5483a17dcd9be1a802"
+    ],
+    "count": 1,
+    "create_time": 1777418083,
+    "update_time": 1777418083,
+    "_id": "Казахстан"
+  },
+  "Грузия": {
+    "chunk_ids": [
+      "chunk-d87de5ac222f3f5483a17dcd9be1a802"
+    ],
+    "count": 1,
+    "create_time": 1777418083,
+    "update_time": 1777418083,
+    "_id": "Грузия"
+  },
+  "Узбекистан": {
+    "chunk_ids": [
+      "chunk-d87de5ac222f3f5483a17dcd9be1a802"
+    ],
+    "count": 1,
+    "create_time": 1777418083,
+    "update_time": 1777418083,
+    "_id": "Узбекистан"
+  },
+  "ЕС": {
+    "chunk_ids": [
+      "chunk-d87de5ac222f3f5483a17dcd9be1a802",
+      "chunk-96d3d395cd55743faf41e3b3b3a8d446"
+    ],
+    "count": 2,
+    "update_time": 1777418254,
+    "_id": "ЕС"
+  },
+  "Ateo Breaking": {
+    "chunk_ids": [
+      "chunk-d87de5ac222f3f5483a17dcd9be1a802"
+    ],
+    "count": 1,
+    "create_time": 1777418083,
+    "update_time": 1777418083,
+    "_id": "Ateo Breaking"
+  },
+  "Ультра левые": {
+    "chunk_ids": [
+      "chunk-8af93d60286d82c374d993d2d5e462ec"
+    ],
+    "count": 1,
+    "create_time": 1777418093,
+    "update_time": 1777418093,
+    "_id": "Ультра левые"
+  },
+  "Ультра правые": {
+    "chunk_ids": [
+      "chunk-8af93d60286d82c374d993d2d5e462ec"
+    ],
+    "count": 1,
+    "create_time": 1777418093,
+    "update_time": 1777418093,
+    "_id": "Ультра правые"
+  },
+  "2026-02-09 19:05": {
+    "chunk_ids": [
+      "chunk-8af93d60286d82c374d993d2d5e462ec"
+    ],
+    "count": 1,
+    "create_time": 1777418093,
+    "update_time": 1777418093,
+    "_id": "2026-02-09 19:05"
+  },
+  "https://t.me/c/3299898370/11": {
+    "chunk_ids": [
+      "chunk-8af93d60286d82c374d993d2d5e462ec"
+    ],
+    "count": 1,
+    "create_time": 1777418093,
+    "update_time": 1777418093,
+    "_id": "https://t.me/c/3299898370/11"
+  },
+  "Germany": {
+    "chunk_ids": [
+      "chunk-e232cbb8378e12daaab207e9ebfcb38b",
+      "chunk-4117a24ac776e64ee5b10c9c825a2778",
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 3,
+    "update_time": 1777422406,
+    "_id": "Germany"
+  },
+  "Tino Chrupalla": {
+    "chunk_ids": [
+      "chunk-27f8ffeb0dc7e596154051ef26bfbe6f"
+    ],
+    "count": 1,
+    "create_time": 1777418149,
+    "update_time": 1777418149,
+    "_id": "Tino Chrupalla"
+  },
+  "Marcus Frontmayr": {
+    "chunk_ids": [
+      "chunk-27f8ffeb0dc7e596154051ef26bfbe6f"
+    ],
+    "count": 1,
+    "create_time": 1777418149,
+    "update_time": 1777418149,
+    "_id": "Marcus Frontmayr"
+  },
+  "Ulrich Ziegmund": {
+    "chunk_ids": [
+      "chunk-27f8ffeb0dc7e596154051ef26bfbe6f"
+    ],
+    "count": 1,
+    "create_time": 1777418149,
+    "update_time": 1777418149,
+    "_id": "Ulrich Ziegmund"
+  },
+  "Saxony-Anhalt": {
+    "chunk_ids": [
+      "chunk-27f8ffeb0dc7e596154051ef26bfbe6f"
+    ],
+    "count": 1,
+    "create_time": 1777418149,
+    "update_time": 1777418149,
+    "_id": "Saxony-Anhalt"
+  },
+  "Saxony": {
+    "chunk_ids": [
+      "chunk-27f8ffeb0dc7e596154051ef26bfbe6f"
+    ],
+    "count": 1,
+    "create_time": 1777418149,
+    "update_time": 1777418149,
+    "_id": "Saxony"
+  },
+  "Baden-Württemberg": {
+    "chunk_ids": [
+      "chunk-27f8ffeb0dc7e596154051ef26bfbe6f",
+      "chunk-4117a24ac776e64ee5b10c9c825a2778"
+    ],
+    "count": 2,
+    "update_time": 1777419333,
+    "_id": "Baden-Württemberg"
+  },
+  "Bundestag": {
+    "chunk_ids": [
+      "chunk-27f8ffeb0dc7e596154051ef26bfbe6f"
+    ],
+    "count": 1,
+    "create_time": 1777418149,
+    "update_time": 1777418149,
+    "_id": "Bundestag"
+  },
+  "Izvestia": {
+    "chunk_ids": [
+      "chunk-27f8ffeb0dc7e596154051ef26bfbe6f"
+    ],
+    "count": 1,
+    "create_time": 1777418149,
+    "update_time": 1777418149,
+    "_id": "Izvestia"
+  },
+  "t-online": {
+    "chunk_ids": [
+      "chunk-27f8ffeb0dc7e596154051ef26bfbe6f"
+    ],
+    "count": 1,
+    "create_time": 1777418149,
+    "update_time": 1777418149,
+    "_id": "t-online"
+  },
+  "Nepotism Scandal": {
+    "chunk_ids": [
+      "chunk-27f8ffeb0dc7e596154051ef26bfbe6f"
+    ],
+    "count": 1,
+    "create_time": 1777418149,
+    "update_time": 1777418149,
+    "_id": "Nepotism Scandal"
+  },
+  "German Chancellor Merz": {
+    "chunk_ids": [
+      "chunk-17a9ae5b78189f20f0cac9aa51d582a4"
+    ],
+    "count": 1,
+    "create_time": 1777418158,
+    "update_time": 1777418158,
+    "_id": "German Chancellor Merz"
+  },
+  "Alternative für Deutschland": {
+    "chunk_ids": [
+      "chunk-17a9ae5b78189f20f0cac9aa51d582a4"
+    ],
+    "count": 1,
+    "create_time": 1777418158,
+    "update_time": 1777418158,
+    "_id": "Alternative für Deutschland"
+  },
+  "European Legacy": {
+    "chunk_ids": [
+      "chunk-17a9ae5b78189f20f0cac9aa51d582a4"
+    ],
+    "count": 1,
+    "create_time": 1777418158,
+    "update_time": 1777418158,
+    "_id": "European Legacy"
+  },
+  "Federal Republic of Germany": {
+    "chunk_ids": [
+      "chunk-17a9ae5b78189f20f0cac9aa51d582a4"
+    ],
+    "count": 1,
+    "create_time": 1777418158,
+    "update_time": 1777418158,
+    "_id": "Federal Republic of Germany"
+  },
+  "German AfD": {
+    "chunk_ids": [
+      "chunk-2802e11b74b9768fe90d58d3fe517040"
+    ],
+    "count": 1,
+    "create_time": 1777418176,
+    "update_time": 1777418176,
+    "_id": "German AfD"
+  },
+  "Great Britain": {
+    "chunk_ids": [
+      "chunk-2802e11b74b9768fe90d58d3fe517040"
+    ],
+    "count": 1,
+    "create_time": 1777418176,
+    "update_time": 1777418176,
+    "_id": "Great Britain"
+  },
+  "Istanbul Agreement": {
+    "chunk_ids": [
+      "chunk-2802e11b74b9768fe90d58d3fe517040"
+    ],
+    "count": 1,
+    "create_time": 1777418176,
+    "update_time": 1777418176,
+    "_id": "Istanbul Agreement"
+  },
+  "Zelensky": {
+    "chunk_ids": [
+      "chunk-2802e11b74b9768fe90d58d3fe517040"
+    ],
+    "count": 1,
+    "create_time": 1777418176,
+    "update_time": 1777418176,
+    "_id": "Zelensky"
+  },
+  "2022": {
+    "chunk_ids": [
+      "chunk-2802e11b74b9768fe90d58d3fe517040"
+    ],
+    "count": 1,
+    "create_time": 1777418176,
+    "update_time": 1777418176,
+    "_id": "2022"
+  },
+  "Western States": {
+    "chunk_ids": [
+      "chunk-2802e11b74b9768fe90d58d3fe517040"
+    ],
+    "count": 1,
+    "create_time": 1777418176,
+    "update_time": 1777418176,
+    "_id": "Western States"
+  },
+  "MUCRAINE": {
+    "chunk_ids": [
+      "chunk-e232cbb8378e12daaab207e9ebfcb38b"
+    ],
+    "count": 1,
+    "create_time": 1777418232,
+    "update_time": 1777418232,
+    "_id": "MUCRAINE"
+  },
+  "ZDFHEUTE": {
+    "chunk_ids": [
+      "chunk-e232cbb8378e12daaab207e9ebfcb38b"
+    ],
+    "count": 1,
+    "create_time": 1777418232,
+    "update_time": 1777418232,
+    "_id": "ZDFHEUTE"
+  },
+  "YURII_KECHUR": {
+    "chunk_ids": [
+      "chunk-e232cbb8378e12daaab207e9ebfcb38b"
+    ],
+    "count": 1,
+    "create_time": 1777418232,
+    "update_time": 1777418232,
+    "_id": "YURII_KECHUR"
+  },
+  "Far-Left and Far-Right Ideologies": {
+    "chunk_ids": [
+      "chunk-e232cbb8378e12daaab207e9ebfcb38b"
+    ],
+    "count": 1,
+    "create_time": 1777418232,
+    "update_time": 1777418232,
+    "_id": "Far-Left and Far-Right Ideologies"
+  },
+  "Балтийское море": {
+    "chunk_ids": [
+      "chunk-96d3d395cd55743faf41e3b3b3a8d446"
+    ],
+    "count": 1,
+    "create_time": 1777418254,
+    "update_time": 1777418254,
+    "_id": "Балтийское море"
+  },
+  "Politico": {
+    "chunk_ids": [
+      "chunk-96d3d395cd55743faf41e3b3b3a8d446"
+    ],
+    "count": 1,
+    "create_time": 1777418254,
+    "update_time": 1777418254,
+    "_id": "Politico"
+  },
+  "Альтернатива для Германии": {
+    "chunk_ids": [
+      "chunk-96d3d395cd55743faf41e3b3b3a8d446"
+    ],
+    "count": 1,
+    "create_time": 1777418254,
+    "update_time": 1777418254,
+    "_id": "Альтернатива для Германии"
+  },
+  "2026-03-24": {
+    "chunk_ids": [
+      "chunk-96d3d395cd55743faf41e3b3b3a8d446"
+    ],
+    "count": 1,
+    "create_time": 1777418254,
+    "update_time": 1777418254,
+    "_id": "2026-03-24"
+  },
+  "Документы ЕС": {
+    "chunk_ids": [
+      "chunk-96d3d395cd55743faf41e3b3b3a8d446"
+    ],
+    "count": 1,
+    "create_time": 1777418254,
+    "update_time": 1777418254,
+    "_id": "Документы ЕС"
+  },
+  "Ursula von der Leyen": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243",
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 2,
+    "update_time": 1777418926,
+    "_id": "Ursula von der Leyen"
+  },
+  "European Commission": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243",
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 2,
+    "update_time": 1777418926,
+    "_id": "European Commission"
+  },
+  "European People's Party": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243",
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 2,
+    "update_time": 1777418926,
+    "_id": "European People's Party"
+  },
+  "Far-Right Fractures": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243"
+    ],
+    "count": 1,
+    "create_time": 1777418278,
+    "update_time": 1777418278,
+    "_id": "Far-Right Fractures"
+  },
+  "Far-Left Fractures": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243"
+    ],
+    "count": 1,
+    "create_time": 1777418278,
+    "update_time": 1777418278,
+    "_id": "Far-Left Fractures"
+  },
+  "Patriots for Europe": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243",
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 2,
+    "update_time": 1777418926,
+    "_id": "Patriots for Europe"
+  },
+  "The Left": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243",
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 2,
+    "update_time": 1777418926,
+    "_id": "The Left"
+  },
+  "European Parliament": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243",
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 2,
+    "update_time": 1777418926,
+    "_id": "European Parliament"
+  },
+  "Green Deal": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243"
+    ],
+    "count": 1,
+    "create_time": 1777418278,
+    "update_time": 1777418278,
+    "_id": "Green Deal"
+  },
+  "Pfizergate": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243",
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 2,
+    "update_time": 1777418926,
+    "_id": "Pfizergate"
+  },
+  "Europes Fortress": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243"
+    ],
+    "count": 1,
+    "create_time": 1777418278,
+    "update_time": 1777418278,
+    "_id": "Europes Fortress"
+  },
+  "Israel": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243"
+    ],
+    "count": 1,
+    "create_time": 1777418278,
+    "update_time": 1777418278,
+    "_id": "Israel"
+  },
+  "Gaza Conflict": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243"
+    ],
+    "count": 1,
+    "create_time": 1777418278,
+    "update_time": 1777418278,
+    "_id": "Gaza Conflict"
+  },
+  "Tunisia": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243"
+    ],
+    "count": 1,
+    "create_time": 1777418278,
+    "update_time": 1777418278,
+    "_id": "Tunisia"
+  },
+  "Egypt": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243"
+    ],
+    "count": 1,
+    "create_time": 1777418278,
+    "update_time": 1777418278,
+    "_id": "Egypt"
+  },
+  "Pfizer": {
+    "chunk_ids": [
+      "chunk-ffb76e13354613b80f653af13be1e243",
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 2,
+    "update_time": 1777418926,
+    "_id": "Pfizer"
+  },
+  "Motion of Censure": {
+    "chunk_ids": [
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 1,
+    "create_time": 1777418926,
+    "update_time": 1777418926,
+    "_id": "Motion of Censure"
+  },
+  "Jacques Santer": {
+    "chunk_ids": [
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 1,
+    "create_time": 1777418926,
+    "update_time": 1777418926,
+    "_id": "Jacques Santer"
+  },
+  "Conflict in Gaza": {
+    "chunk_ids": [
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 1,
+    "create_time": 1777418926,
+    "update_time": 1777418926,
+    "_id": "Conflict in Gaza"
+  },
+  "Mercosur": {
+    "chunk_ids": [
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 1,
+    "create_time": 1777418926,
+    "update_time": 1777418926,
+    "_id": "Mercosur"
+  },
+  "Social Democrats": {
+    "chunk_ids": [
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 1,
+    "create_time": 1777418926,
+    "update_time": 1777418926,
+    "_id": "Social Democrats"
+  },
+  "Liberals": {
+    "chunk_ids": [
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 1,
+    "create_time": 1777418926,
+    "update_time": 1777418926,
+    "_id": "Liberals"
+  },
+  "European Conservatives and Reformists": {
+    "chunk_ids": [
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 1,
+    "create_time": 1777418926,
+    "update_time": 1777418926,
+    "_id": "European Conservatives and Reformists"
+  },
+  "Liga": {
+    "chunk_ids": [
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 1,
+    "create_time": 1777418926,
+    "update_time": 1777418926,
+    "_id": "Liga"
+  },
+  "George Piperea": {
+    "chunk_ids": [
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 1,
+    "create_time": 1777418926,
+    "update_time": 1777418926,
+    "_id": "George Piperea"
+  },
+  "Brussels": {
+    "chunk_ids": [
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 1,
+    "create_time": 1777418926,
+    "update_time": 1777418926,
+    "_id": "Brussels"
+  },
+  "July 2025 Motion of Censure": {
+    "chunk_ids": [
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 1,
+    "create_time": 1777418926,
+    "update_time": 1777418926,
+    "_id": "July 2025 Motion of Censure"
+  },
+  "October 2025 Motion of Censure (Social Policy)": {
+    "chunk_ids": [
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 1,
+    "create_time": 1777418926,
+    "update_time": 1777418926,
+    "_id": "October 2025 Motion of Censure (Social Policy)"
+  },
+  "October 2025 Motion of Censure (Trade Policy)": {
+    "chunk_ids": [
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 1,
+    "create_time": 1777418926,
+    "update_time": 1777418926,
+    "_id": "October 2025 Motion of Censure (Trade Policy)"
+  },
+  "January 2026 Motion of Censure": {
+    "chunk_ids": [
+      "chunk-9537adb639f6d92a3c655a2e0dc6a434"
+    ],
+    "count": 1,
+    "create_time": 1777418926,
+    "update_time": 1777418926,
+    "_id": "January 2026 Motion of Censure"
+  },
+  "Atomwaffen Division": {
+    "chunk_ids": [
+      "chunk-4117a24ac776e64ee5b10c9c825a2778"
+    ],
+    "count": 1,
+    "create_time": 1777419333,
+    "update_time": 1777419333,
+    "_id": "Atomwaffen Division"
+  },
+  "Terrorgram-сцена": {
+    "chunk_ids": [
+      "chunk-4117a24ac776e64ee5b10c9c825a2778"
+    ],
+    "count": 1,
+    "create_time": 1777419333,
+    "update_time": 1777419333,
+    "_id": "Terrorgram-сцена"
+  },
+  "Hamas": {
+    "chunk_ids": [
+      "chunk-4117a24ac776e64ee5b10c9c825a2778",
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 2,
+    "update_time": 1777419918,
+    "_id": "Hamas"
+  },
+  "Al-Qaeda": {
+    "chunk_ids": [
+      "chunk-4117a24ac776e64ee5b10c9c825a2778",
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 2,
+    "update_time": 1777419918,
+    "_id": "Al-Qaeda"
+  },
+  "ISIS": {
+    "chunk_ids": [
+      "chunk-4117a24ac776e64ee5b10c9c825a2778"
+    ],
+    "count": 1,
+    "create_time": 1777419333,
+    "update_time": 1777419333,
+    "_id": "ISIS"
+  },
+  "SAFE": {
+    "chunk_ids": [
+      "chunk-4117a24ac776e64ee5b10c9c825a2778"
+    ],
+    "count": 1,
+    "create_time": 1777419333,
+    "update_time": 1777419333,
+    "_id": "SAFE"
+  },
+  "Stefan Balliet": {
+    "chunk_ids": [
+      "chunk-4117a24ac776e64ee5b10c9c825a2778"
+    ],
+    "count": 1,
+    "create_time": 1777419333,
+    "update_time": 1777419333,
+    "_id": "Stefan Balliet"
+  },
+  "Halle": {
+    "chunk_ids": [
+      "chunk-4117a24ac776e64ee5b10c9c825a2778"
+    ],
+    "count": 1,
+    "create_time": 1777419334,
+    "update_time": 1777419334,
+    "_id": "Halle"
+  },
+  "Militant Accelerationism": {
+    "chunk_ids": [
+      "chunk-4117a24ac776e64ee5b10c9c825a2778",
+      "chunk-e9a14fc1e13b7bdf9ed3cf57cf0801e3"
+    ],
+    "count": 2,
+    "update_time": 1777419681,
+    "_id": "Militant Accelerationism"
+  },
+  "White Sharia": {
+    "chunk_ids": [
+      "chunk-4117a24ac776e64ee5b10c9c825a2778"
+    ],
+    "count": 1,
+    "create_time": 1777419334,
+    "update_time": 1777419334,
+    "_id": "White Sharia"
+  },
+  "White Jihad": {
+    "chunk_ids": [
+      "chunk-4117a24ac776e64ee5b10c9c825a2778",
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 2,
+    "update_time": 1777419918,
+    "_id": "White Jihad"
+  },
+  "Saints": {
+    "chunk_ids": [
+      "chunk-4117a24ac776e64ee5b10c9c825a2778"
+    ],
+    "count": 1,
+    "create_time": 1777419334,
+    "update_time": 1777419334,
+    "_id": "Saints"
+  },
+  "Lone Actor Strategy": {
+    "chunk_ids": [
+      "chunk-4117a24ac776e64ee5b10c9c825a2778"
+    ],
+    "count": 1,
+    "create_time": 1777419334,
+    "update_time": 1777419334,
+    "_id": "Lone Actor Strategy"
+  },
+  "2025 SAFE Report": {
+    "chunk_ids": [
+      "chunk-4117a24ac776e64ee5b10c9c825a2778"
+    ],
+    "count": 1,
+    "create_time": 1777419334,
+    "update_time": 1777419334,
+    "_id": "2025 SAFE Report"
+  },
+  "Pandemic Period": {
+    "chunk_ids": [
+      "chunk-4117a24ac776e64ee5b10c9c825a2778"
+    ],
+    "count": 1,
+    "create_time": 1777419334,
+    "update_time": 1777419334,
+    "_id": "Pandemic Period"
+  },
+  "Поступь Астреи": {
+    "chunk_ids": [
+      "chunk-e9a14fc1e13b7bdf9ed3cf57cf0801e3",
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 2,
+    "update_time": 1777419918,
+    "_id": "Поступь Астреи"
+  },
+  "The Turner Diaries": {
+    "chunk_ids": [
+      "chunk-e9a14fc1e13b7bdf9ed3cf57cf0801e3"
+    ],
+    "count": 1,
+    "create_time": 1777419681,
+    "update_time": 1777419681,
+    "_id": "The Turner Diaries"
+  },
+  "Siege": {
+    "chunk_ids": [
+      "chunk-e9a14fc1e13b7bdf9ed3cf57cf0801e3"
+    ],
+    "count": 1,
+    "create_time": 1777419681,
+    "update_time": 1777419681,
+    "_id": "Siege"
+  },
+  "Игра престолов": {
+    "chunk_ids": [
+      "chunk-e9a14fc1e13b7bdf9ed3cf57cf0801e3"
+    ],
+    "count": 1,
+    "create_time": 1777419681,
+    "update_time": 1777419681,
+    "_id": "Игра престолов"
+  },
+  "Белый джихад": {
+    "chunk_ids": [
+      "chunk-e9a14fc1e13b7bdf9ed3cf57cf0801e3"
+    ],
+    "count": 1,
+    "create_time": 1777419681,
+    "update_time": 1777419681,
+    "_id": "Белый джихад"
+  },
+  "Неонацизм": {
+    "chunk_ids": [
+      "chunk-e9a14fc1e13b7bdf9ed3cf57cf0801e3"
+    ],
+    "count": 1,
+    "create_time": 1777419681,
+    "update_time": 1777419681,
+    "_id": "Неонацизм"
+  },
+  "Акселерационизм": {
+    "chunk_ids": [
+      "chunk-e9a14fc1e13b7bdf9ed3cf57cf0801e3"
+    ],
+    "count": 1,
+    "create_time": 1777419681,
+    "update_time": 1777419681,
+    "_id": "Акселерационизм"
+  },
+  "Инцелы": {
+    "chunk_ids": [
+      "chunk-e9a14fc1e13b7bdf9ed3cf57cf0801e3"
+    ],
+    "count": 1,
+    "create_time": 1777419681,
+    "update_time": 1777419681,
+    "_id": "Инцелы"
+  },
+  "Запад": {
+    "chunk_ids": [
+      "chunk-e9a14fc1e13b7bdf9ed3cf57cf0801e3"
+    ],
+    "count": 1,
+    "create_time": 1777419681,
+    "update_time": 1777419681,
+    "_id": "Запад"
+  },
+  "Подростки": {
+    "chunk_ids": [
+      "chunk-e9a14fc1e13b7bdf9ed3cf57cf0801e3"
+    ],
+    "count": 1,
+    "create_time": 1777419681,
+    "update_time": 1777419681,
+    "_id": "Подростки"
+  },
+  "Школьники": {
+    "chunk_ids": [
+      "chunk-e9a14fc1e13b7bdf9ed3cf57cf0801e3"
+    ],
+    "count": 1,
+    "create_time": 1777419681,
+    "update_time": 1777419681,
+    "_id": "Школьники"
+  },
+  "Социальные низы": {
+    "chunk_ids": [
+      "chunk-e9a14fc1e13b7bdf9ed3cf57cf0801e3"
+    ],
+    "count": 1,
+    "create_time": 1777419681,
+    "update_time": 1777419681,
+    "_id": "Социальные низы"
+  },
+  "Ultraleftists": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Ultraleftists"
+  },
+  "Ultrarightists": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Ultrarightists"
+  },
+  "Islamists": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Islamists"
+  },
+  "Jihadists": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Jihadists"
+  },
+  "Fused Extremism": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Fused Extremism"
+  },
+  "Cumulative Extremism": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Cumulative Extremism"
+  },
+  "Composite Violent Extremism": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Composite Violent Extremism"
+  },
+  "Synergistic Extremism": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Synergistic Extremism"
+  },
+  "Johann von Leers": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Johann von Leers"
+  },
+  "Omar Amin": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Omar Amin"
+  },
+  "François Genoud": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "François Genoud"
+  },
+  "Albert Friedrich Huber": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Albert Friedrich Huber"
+  },
+  "Al-Taqwa Bank": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Al-Taqwa Bank"
+  },
+  "Adolf Eichmann": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Adolf Eichmann"
+  },
+  "Gamal Abdel Nasser": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Gamal Abdel Nasser"
+  },
+  "Adolf Hitler": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Adolf Hitler"
+  },
+  "Christian Identity": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Christian Identity"
+  },
+  "The Order": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "The Order"
+  },
+  "Aryan Nations": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Aryan Nations"
+  },
+  "David Myatt": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "David Myatt"
+  },
+  "Ministry of Islamic Relations": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Ministry of Islamic Relations"
+  },
+  "Europe": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Europe"
+  },
+  "Argentina": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Argentina"
+  },
+  "Switzerland": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Switzerland"
+  },
+  "t.me/c/3299898370/23": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "t.me/c/3299898370/23"
+  },
+  "A Practical Guide to Aryan Revolution": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "A Practical Guide to Aryan Revolution"
+  },
+  "Are Martyrdom Operations Lawful According to the Quran and Sunnah?": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "Are Martyrdom Operations Lawful According to the Quran and Sunnah?"
+  },
+  "2026-04-14 15:58": {
+    "chunk_ids": [
+      "chunk-4698e80f89aaeb2bfe1d0d03eef662a4"
+    ],
+    "count": 1,
+    "create_time": 1777419918,
+    "update_time": 1777419918,
+    "_id": "2026-04-14 15:58"
+  },
+  "Фицо": {
+    "chunk_ids": [
+      "chunk-0168809fea8850a567b329dc050c22d4"
+    ],
+    "count": 1,
+    "create_time": 1777419930,
+    "update_time": 1777419930,
+    "_id": "Фицо"
+  },
+  "Радев": {
+    "chunk_ids": [
+      "chunk-0168809fea8850a567b329dc050c22d4"
+    ],
+    "count": 1,
+    "create_time": 1777419930,
+    "update_time": 1777419930,
+    "_id": "Радев"
+  },
+  "Ультраправые антиукраинские силы": {
+    "chunk_ids": [
+      "chunk-0168809fea8850a567b329dc050c22d4"
+    ],
+    "count": 1,
+    "create_time": 1777419930,
+    "update_time": 1777419930,
+    "_id": "Ультраправые антиукраинские силы"
+  },
+  "Кремль": {
+    "chunk_ids": [
+      "chunk-0168809fea8850a567b329dc050c22d4"
+    ],
+    "count": 1,
+    "create_time": 1777419930,
+    "update_time": 1777419930,
+    "_id": "Кремль"
+  },
+  "Европа": {
+    "chunk_ids": [
+      "chunk-0168809fea8850a567b329dc050c22d4"
+    ],
+    "count": 1,
+    "create_time": 1777419930,
+    "update_time": 1777419930,
+    "_id": "Европа"
+  },
+  "Маттіас Моосдорф": {
+    "chunk_ids": [
+      "chunk-8a8ef9acbdb16654cc9e786c9aa0ea74"
+    ],
+    "count": 1,
+    "create_time": 1777419954,
+    "update_time": 1777419954,
+    "_id": "Маттіас Моосдорф"
+  },
+  "Маркус Фронмаєр": {
+    "chunk_ids": [
+      "chunk-8a8ef9acbdb16654cc9e786c9aa0ea74"
+    ],
+    "count": 1,
+    "create_time": 1777419954,
+    "update_time": 1777419954,
+    "_id": "Маркус Фронмаєр"
+  },
+  "Гнєсінська музична академія": {
+    "chunk_ids": [
+      "chunk-8a8ef9acbdb16654cc9e786c9aa0ea74"
+    ],
+    "count": 1,
+    "create_time": 1777419954,
+    "update_time": 1777419954,
+    "_id": "Гнєсінська музична академія"
+  },
+  "Вайдель": {
+    "chunk_ids": [
+      "chunk-8a8ef9acbdb16654cc9e786c9aa0ea74"
+    ],
+    "count": 1,
+    "create_time": 1777419954,
+    "update_time": 1777419954,
+    "_id": "Вайдель"
+  },
+  "Республіканці США": {
+    "chunk_ids": [
+      "chunk-8a8ef9acbdb16654cc9e786c9aa0ea74"
+    ],
+    "count": 1,
+    "create_time": 1777419954,
+    "update_time": 1777419954,
+    "_id": "Республіканці США"
+  },
+  "Рюдігер Лукассен": {
+    "chunk_ids": [
+      "chunk-8a8ef9acbdb16654cc9e786c9aa0ea74"
+    ],
+    "count": 1,
+    "create_time": 1777419954,
+    "update_time": 1777419954,
+    "_id": "Рюдігер Лукассен"
+  },
+  "Бйорн Хьоке": {
+    "chunk_ids": [
+      "chunk-8a8ef9acbdb16654cc9e786c9aa0ea74"
+    ],
+    "count": 1,
+    "create_time": 1777419954,
+    "update_time": 1777419954,
+    "_id": "Бйорн Хьоке"
+  },
+  "Конфлікт між Моосдорфом і Фронмаєром": {
+    "chunk_ids": [
+      "chunk-8a8ef9acbdb16654cc9e786c9aa0ea74"
+    ],
+    "count": 1,
+    "create_time": 1777419954,
+    "update_time": 1777419954,
+    "_id": "Конфлікт між Моосдорфом і Фронмаєром"
+  },
+  "Конфлікт між Лукассеном і Хьоке": {
+    "chunk_ids": [
+      "chunk-8a8ef9acbdb16654cc9e786c9aa0ea74"
+    ],
+    "count": 1,
+    "create_time": 1777419954,
+    "update_time": 1777419954,
+    "_id": "Конфлікт між Лукассеном і Хьоке"
+  },
+  "Cuba": {
+    "chunk_ids": [
+      "chunk-c0e0170a200bcf7e8fbd7f4b57d7f105"
+    ],
+    "count": 1,
+    "create_time": 1777422362,
+    "update_time": 1777422362,
+    "_id": "Cuba"
+  },
+  "White House": {
+    "chunk_ids": [
+      "chunk-c0e0170a200bcf7e8fbd7f4b57d7f105"
+    ],
+    "count": 1,
+    "create_time": 1777422362,
+    "update_time": 1777422362,
+    "_id": "White House"
+  },
+  "Ivan Dyakonov": {
+    "chunk_ids": [
+      "chunk-c0e0170a200bcf7e8fbd7f4b57d7f105"
+    ],
+    "count": 1,
+    "create_time": 1777422362,
+    "update_time": 1777422362,
+    "_id": "Ivan Dyakonov"
+  },
+  "Tariff Implementation Against Oil Suppliers to Cuba": {
+    "chunk_ids": [
+      "chunk-c0e0170a200bcf7e8fbd7f4b57d7f105"
+    ],
+    "count": 1,
+    "create_time": 1777422362,
+    "update_time": 1777422362,
+    "_id": "Tariff Implementation Against Oil Suppliers to Cuba"
+  },
+  "Гавана": {
+    "chunk_ids": [
+      "chunk-6d798b538fd8af34e3a1e68772e086e8"
+    ],
+    "count": 1,
+    "create_time": 1777422364,
+    "update_time": 1777422364,
+    "_id": "Гавана"
+  },
+  "Тарас Григорович": {
+    "chunk_ids": [
+      "chunk-6d798b538fd8af34e3a1e68772e086e8"
+    ],
+    "count": 1,
+    "create_time": 1777422364,
+    "update_time": 1777422364,
+    "_id": "Тарас Григорович"
+  },
+  "Рауль Гільєрмо Родрігес Кастро": {
+    "chunk_ids": [
+      "chunk-6d798b538fd8af34e3a1e68772e086e8"
+    ],
+    "count": 1,
+    "create_time": 1777422364,
+    "update_time": 1777422364,
+    "_id": "Рауль Гільєрмо Родрігес Кастро"
+  },
+  "Держдепартамент США": {
+    "chunk_ids": [
+      "chunk-6d798b538fd8af34e3a1e68772e086e8"
+    ],
+    "count": 1,
+    "create_time": 1777422364,
+    "update_time": 1777422364,
+    "_id": "Держдепартамент США"
+  },
+  "1959 революція": {
+    "chunk_ids": [
+      "chunk-6d798b538fd8af34e3a1e68772e086e8"
+    ],
+    "count": 1,
+    "create_time": 1777422364,
+    "update_time": 1777422364,
+    "_id": "1959 революція"
+  },
+  "Starlink": {
+    "chunk_ids": [
+      "chunk-6d798b538fd8af34e3a1e68772e086e8"
+    ],
+    "count": 1,
+    "create_time": 1777422364,
+    "update_time": 1777422364,
+    "_id": "Starlink"
+  },
+  "Торгове ембарго": {
+    "chunk_ids": [
+      "chunk-6d798b538fd8af34e3a1e68772e086e8"
+    ],
+    "count": 1,
+    "create_time": 1777422364,
+    "update_time": 1777422364,
+    "_id": "Торгове ембарго"
+  },
+  "2016 візит Барака Обами": {
+    "chunk_ids": [
+      "chunk-6d798b538fd8af34e3a1e68772e086e8"
+    ],
+    "count": 1,
+    "create_time": 1777422364,
+    "update_time": 1777422364,
+    "_id": "2016 візит Барака Обами"
+  },
+  "Axios": {
+    "chunk_ids": [
+      "chunk-6d798b538fd8af34e3a1e68772e086e8"
+    ],
+    "count": 1,
+    "create_time": 1777422364,
+    "update_time": 1777422364,
+    "_id": "Axios"
+  },
+  "Ніколас Мадуро": {
+    "chunk_ids": [
+      "chunk-19d93fe51122c951f011d35eb337a3f7"
+    ],
+    "count": 1,
+    "create_time": 1777422382,
+    "update_time": 1777422382,
+    "_id": "Ніколас Мадуро"
+  },
+  "Європейські ультраправі партії": {
+    "chunk_ids": [
+      "chunk-19d93fe51122c951f011d35eb337a3f7"
+    ],
+    "count": 1,
+    "create_time": 1777422382,
+    "update_time": 1777422382,
+    "_id": "Європейські ультраправі партії"
+  },
+  "Німеччина": {
+    "chunk_ids": [
+      "chunk-19d93fe51122c951f011d35eb337a3f7"
+    ],
+    "count": 1,
+    "create_time": 1777422382,
+    "update_time": 1777422382,
+    "_id": "Німеччина"
+  },
+  "Франція": {
+    "chunk_ids": [
+      "chunk-19d93fe51122c951f011d35eb337a3f7"
+    ],
+    "count": 1,
+    "create_time": 1777422382,
+    "update_time": 1777422382,
+    "_id": "Франція"
+  },
+  "Словаччина": {
+    "chunk_ids": [
+      "chunk-19d93fe51122c951f011d35eb337a3f7"
+    ],
+    "count": 1,
+    "create_time": 1777422382,
+    "update_time": 1777422382,
+    "_id": "Словаччина"
+  },
+  "Гренландія": {
+    "chunk_ids": [
+      "chunk-19d93fe51122c951f011d35eb337a3f7"
+    ],
+    "count": 1,
+    "create_time": 1777422382,
+    "update_time": 1777422382,
+    "_id": "Гренландія"
+  },
+  "Ilulissat": {
+    "chunk_ids": [
+      "chunk-19d93fe51122c951f011d35eb337a3f7"
+    ],
+    "count": 1,
+    "create_time": 1777422382,
+    "update_time": 1777422382,
+    "_id": "Ilulissat"
+  },
+  "Disko Bay": {
+    "chunk_ids": [
+      "chunk-19d93fe51122c951f011d35eb337a3f7"
+    ],
+    "count": 1,
+    "create_time": 1777422382,
+    "update_time": 1777422382,
+    "_id": "Disko Bay"
+  },
+  "Bloomberg": {
+    "chunk_ids": [
+      "chunk-19d93fe51122c951f011d35eb337a3f7"
+    ],
+    "count": 1,
+    "create_time": 1777422382,
+    "update_time": 1777422382,
+    "_id": "Bloomberg"
+  },
+  "Juliette Pavy": {
+    "chunk_ids": [
+      "chunk-19d93fe51122c951f011d35eb337a3f7"
+    ],
+    "count": 1,
+    "create_time": 1777422382,
+    "update_time": 1777422382,
+    "_id": "Juliette Pavy"
+  },
+  "Trumps Greenland Play Is a Step Too Far for Europes Far Right": {
+    "chunk_ids": [
+      "chunk-19d93fe51122c951f011d35eb337a3f7"
+    ],
+    "count": 1,
+    "create_time": 1777422382,
+    "update_time": 1777422382,
+    "_id": "Trumps Greenland Play Is a Step Too Far for Europes Far Right"
+  },
+  "Місце зйомки в Іллулісаті": {
+    "chunk_ids": [
+      "chunk-19d93fe51122c951f011d35eb337a3f7"
+    ],
+    "count": 1,
+    "create_time": 1777422382,
+    "update_time": 1777422382,
+    "_id": "Місце зйомки в Іллулісаті"
+  },
+  "Insa": {
+    "chunk_ids": [
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 1,
+    "create_time": 1777422406,
+    "update_time": 1777422406,
+    "_id": "Insa"
+  },
+  "BILD": {
+    "chunk_ids": [
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 1,
+    "create_time": 1777422406,
+    "update_time": 1777422406,
+    "_id": "BILD"
+  },
+  "SPD": {
+    "chunk_ids": [
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 1,
+    "create_time": 1777422406,
+    "update_time": 1777422406,
+    "_id": "SPD"
+  },
+  "BSW": {
+    "chunk_ids": [
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 1,
+    "create_time": 1777422406,
+    "update_time": 1777422406,
+    "_id": "BSW"
+  },
+  "Greens": {
+    "chunk_ids": [
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 1,
+    "create_time": 1777422406,
+    "update_time": 1777422406,
+    "_id": "Greens"
+  },
+  "NATO": {
+    "chunk_ids": [
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 1,
+    "create_time": 1777422406,
+    "update_time": 1777422406,
+    "_id": "NATO"
+  },
+  "Poland": {
+    "chunk_ids": [
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 1,
+    "create_time": 1777422406,
+    "update_time": 1777422406,
+    "_id": "Poland"
+  },
+  "Lithuania": {
+    "chunk_ids": [
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 1,
+    "create_time": 1777422406,
+    "update_time": 1777422406,
+    "_id": "Lithuania"
+  },
+  "PzH 2000": {
+    "chunk_ids": [
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 1,
+    "create_time": 1777422406,
+    "update_time": 1777422406,
+    "_id": "PzH 2000"
+  },
+  "Bundeswehr": {
+    "chunk_ids": [
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 1,
+    "create_time": 1777422406,
+    "update_time": 1777422406,
+    "_id": "Bundeswehr"
+  },
+  "Eastern Europe": {
+    "chunk_ids": [
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 1,
+    "create_time": 1777422406,
+    "update_time": 1777422406,
+    "_id": "Eastern Europe"
+  },
+  "Military Deployment": {
+    "chunk_ids": [
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 1,
+    "create_time": 1777422406,
+    "update_time": 1777422406,
+    "_id": "Military Deployment"
+  },
+  "Russian Aggression": {
+    "chunk_ids": [
+      "chunk-261d8bd00caff040b0b682991d5548c5"
+    ],
+    "count": 1,
+    "create_time": 1777422406,
+    "update_time": 1777422406,
+    "_id": "Russian Aggression"
+  },
+  "Julius Malema": {
+    "chunk_ids": [
+      "chunk-a5415784c3214963deae1dae144503c6"
+    ],
+    "count": 1,
+    "create_time": 1777422430,
+    "update_time": 1777422430,
+    "_id": "Julius Malema"
+  },
+  "EFF": {
+    "chunk_ids": [
+      "chunk-a5415784c3214963deae1dae144503c6"
+    ],
+    "count": 1,
+    "create_time": 1777422430,
+    "update_time": 1777422430,
+    "_id": "EFF"
+  },
+  "South Africa": {
+    "chunk_ids": [
+      "chunk-a5415784c3214963deae1dae144503c6"
+    ],
+    "count": 1,
+    "create_time": 1777422430,
+    "update_time": 1777422430,
+    "_id": "South Africa"
+  },
+  "Kill the Boer": {
+    "chunk_ids": [
+      "chunk-a5415784c3214963deae1dae144503c6"
+    ],
+    "count": 1,
+    "create_time": 1777422430,
+    "update_time": 1777422430,
+    "_id": "Kill the Boer"
+  },
+  "Boer": {
+    "chunk_ids": [
+      "chunk-a5415784c3214963deae1dae144503c6"
+    ],
+    "count": 1,
+    "create_time": 1777422430,
+    "update_time": 1777422430,
+    "_id": "Boer"
+  },
+  "Derecha Libertaria": {
+    "chunk_ids": [
+      "chunk-a5415784c3214963deae1dae144503c6"
+    ],
+    "count": 1,
+    "create_time": 1777422430,
+    "update_time": 1777422430,
+    "_id": "Derecha Libertaria"
+  },
+  "Javier Milei": {
+    "chunk_ids": [
+      "chunk-a5415784c3214963deae1dae144503c6"
+    ],
+    "count": 1,
+    "create_time": 1777422430,
+    "update_time": 1777422430,
+    "_id": "Javier Milei"
+  },
+  "Instagram Reel DT_BzWeD9SF": {
+    "chunk_ids": [
+      "chunk-a5415784c3214963deae1dae144503c6"
+    ],
+    "count": 1,
+    "create_time": 1777422430,
+    "update_time": 1777422430,
+    "_id": "Instagram Reel DT_BzWeD9SF"
+  },
+  "Ultra Left and Ultra Right Channel": {
+    "chunk_ids": [
+      "chunk-a5415784c3214963deae1dae144503c6"
+    ],
+    "count": 1,
+    "create_time": 1777422430,
+    "update_time": 1777422430,
+    "_id": "Ultra Left and Ultra Right Channel"
+  },
+  "Telegram Channel \"Ультра левые и ультра правые\"": {
+    "chunk_ids": [
+      "chunk-a5415784c3214963deae1dae144503c6"
+    ],
+    "count": 1,
+    "create_time": 1777422430,
+    "update_time": 1777422430,
+    "_id": "Telegram Channel \"Ультра левые и ультра правые\""
+  },
+  "2026-03-03 15:44": {
+    "chunk_ids": [
+      "chunk-bb2a44e637b1302a015f7a8af22e8ed2"
+    ],
+    "count": 1,
+    "create_time": 1777422444,
+    "update_time": 1777422444,
+    "_id": "2026-03-03 15:44"
+  },
+  "https://t.me/c/3299898370/17": {
+    "chunk_ids": [
+      "chunk-bb2a44e637b1302a015f7a8af22e8ed2"
+    ],
+    "count": 1,
+    "create_time": 1777422444,
+    "update_time": 1777422444,
+    "_id": "https://t.me/c/3299898370/17"
+  },
+  "https://www.instagram.com/reel/DVRCLW0DZT9/?igsh=cWI0ejYzYnZvMzVi": {
+    "chunk_ids": [
+      "chunk-bb2a44e637b1302a015f7a8af22e8ed2"
+    ],
+    "count": 1,
+    "create_time": 1777422444,
+    "update_time": 1777422444,
+    "_id": "https://www.instagram.com/reel/DVRCLW0DZT9/?igsh=cWI0ejYzYnZvMzVi"
+  },
+  "Fair Use (Section 107, Copyright Act of 1976)": {
+    "chunk_ids": [
+      "chunk-bb2a44e637b1302a015f7a8af22e8ed2"
+    ],
+    "count": 1,
+    "create_time": 1777422444,
+    "update_time": 1777422444,
+    "_id": "Fair Use (Section 107, Copyright Act of 1976)"
+  },
+  "Metas Community Standards": {
+    "chunk_ids": [
+      "chunk-bb2a44e637b1302a015f7a8af22e8ed2"
+    ],
+    "count": 1,
+    "create_time": 1777422444,
+    "update_time": 1777422444,
+    "_id": "Metas Community Standards"
+  },
+  "History repeats…": {
+    "chunk_ids": [
+      "chunk-bb2a44e637b1302a015f7a8af22e8ed2"
+    ],
+    "count": 1,
+    "create_time": 1777422444,
+    "update_time": 1777422444,
+    "_id": "History repeats…"
+  }
+}

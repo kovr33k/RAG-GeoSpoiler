@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T20:16:21.894571+00:00",
+  "provenance": {
+    "channel_name": "Венгрия Словакия",
+    "channel_id": 3328128766,
+    "message_id": 167,
+    "date": "2026-04-12T16:06:58+00:00",
+    "post_url": "https://t.me/c/3328128766/167",
+    "normalized_file": "output\\normalized\\Венгрия Словакия\\167.txt",
+    "meta_file": "output\\normalized\\Венгрия Словакия\\167.meta.json",
+    "is_forward": true,
+    "forward_from": "Ateo Blacked"
+  },
+  "content_type": "image",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Карикатура с лозунгом «Орбан за суверенную Венгрию», предположительно отражающая политическую позицию премьер-министра Венгрии.",
+  "key_facts": [
+    {
+      "text": "Лозунг «Орбан за суверенную Венгрию» используется в карикатуре.",
+      "claim_type": "source_claim"
+    }
+  ],
+  "entities": {
+    "people": [
+      "Виктор Орбан"
+    ],
+    "organizations": [],
+    "countries": [
+      "Венгрия"
+    ],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [
+    "политика",
+    "суверенитет",
+    "карикатура"
+  ],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": true,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Ateo Blacked",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Венгрия Словакия | Дата: 2026-04-12 16:06 | Пост: https://t.me/c/3328128766/167]\n\n\nКарикатура с лозунгом «Орбан за суверенную Венгрию», предположительно отражающая политическую позицию премьер-министра Венгрии.\n\nКлючевые факты:\n- Лозунг «Орбан за суверенную Венгрию» используется в карикатуре. [source_claim]\n\nСущности: Виктор Орбан, Венгрия\n\nИсточник: Ateo Blacked",
+  "search_text": "[Канал: Венгрия Словакия | Дата: 2026-04-12 16:06 | Пост: https://t.me/c/3328128766/167]\n\n\nКарикатура с лозунгом «Орбан за суверенную Венгрию», предположительно отражающая политическую позицию премьер-министра Венгрии.\n\nКлючевые факты:\n- Лозунг «Орбан за суверенную Венгрию» используется в карикатуре. [source_claim]\n\nСущности: Виктор Орбан, Венгрия\n\nИсточник: Ateo Blacked\n\nТемы: политика, суверенитет, карикатура\n\nТип контента: image"
+}

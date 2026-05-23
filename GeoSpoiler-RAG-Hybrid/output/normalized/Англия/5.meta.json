@@ -1,0 +1,22 @@
+{
+  "channel_name": "Англия",
+  "channel_id": 3548806336,
+  "channel_username": "3548806336",
+  "message_id": 5,
+  "date": "2026-03-08T15:40:13+00:00",
+  "post_url": "https://t.me/c/3548806336/5",
+  "is_forward": true,
+  "forward_from_name": "Алексей Шевцов",
+  "forward_from_id": 1158535533,
+  "forward_date": "2026-03-08T15:36:06+00:00",
+  "has_text": true,
+  "has_images": true,
+  "image_count": 1,
+  "has_video": false,
+  "has_voice": false,
+  "has_document": false,
+  "youtube_urls": [],
+  "instagram_urls": [],
+  "ai_chat_urls": [],
+  "web_urls": []
+}

@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T21:07:08.623267+00:00",
+  "provenance": {
+    "channel_name": "Корея",
+    "channel_id": 3215620297,
+    "message_id": 23,
+    "date": "2026-02-24T18:53:39+00:00",
+    "post_url": "https://t.me/c/3215620297/23",
+    "normalized_file": "output\\normalized\\Корея\\23.txt",
+    "meta_file": "output\\normalized\\Корея\\23.meta.json",
+    "is_forward": true,
+    "forward_from": "Тарас Григорович повідомляє"
+  },
+  "content_type": "image",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Согласно Newsweek, Ким Чен Ин назначил свою 13-летнюю дочь главой ядерных сил КНДР, где она получает брифинги от генералов и отдаёт приказы.",
+  "key_facts": [
+    {
+      "text": "Ким Чен Ин назначил свою 13-летнюю дочь главой ядерных сил КНДР",
+      "claim_type": "source_claim"
+    },
+    {
+      "text": "Дочь Ким Чен Ин получает брифинги от генералов и иногда отдаёт приказы",
+      "claim_type": "source_claim"
+    }
+  ],
+  "entities": {
+    "people": [
+      "Ким Чен Ин"
+    ],
+    "organizations": [],
+    "countries": [
+      "КНДР"
+    ],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [
+    "ядерные силы",
+    "наследование власти",
+    "КНДР"
+  ],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": true,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Тарас Григорович повідомляє",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Корея | Дата: 2026-02-24 18:53 | Пост: https://t.me/c/3215620297/23]\n\n\nСогласно Newsweek, Ким Чен Ин назначил свою 13-летнюю дочь главой ядерных сил КНДР, где она получает брифинги от генералов и отдаёт приказы.\n\nКлючевые факты:\n- Ким Чен Ин назначил свою 13-летнюю дочь главой ядерных сил КНДР [source_claim]\n- Дочь Ким Чен Ин получает брифинги от генералов и иногда отдаёт приказы [source_claim]\n\nСущности: Ким Чен Ин, КНДР\n\nИсточник: Тарас Григорович повідомляє",
+  "search_text": "[Канал: Корея | Дата: 2026-02-24 18:53 | Пост: https://t.me/c/3215620297/23]\n\n\nСогласно Newsweek, Ким Чен Ин назначил свою 13-летнюю дочь главой ядерных сил КНДР, где она получает брифинги от генералов и отдаёт приказы.\n\nКлючевые факты:\n- Ким Чен Ин назначил свою 13-летнюю дочь главой ядерных сил КНДР [source_claim]\n- Дочь Ким Чен Ин получает брифинги от генералов и иногда отдаёт приказы [source_claim]\n\nСущности: Ким Чен Ин, КНДР\n\nИсточник: Тарас Григорович повідомляє\n\nТемы: ядерные силы, наследование власти, КНДР\n\nТип контента: image"
+}

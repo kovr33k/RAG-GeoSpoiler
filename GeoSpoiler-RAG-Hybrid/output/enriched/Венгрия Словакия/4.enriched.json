@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T20:40:12.200471+00:00",
+  "provenance": {
+    "channel_name": "Венгрия Словакия",
+    "channel_id": 3328128766,
+    "message_id": 4,
+    "date": "2026-01-05T15:44:41+00:00",
+    "post_url": "https://t.me/c/3328128766/4",
+    "normalized_file": "output\\normalized\\Венгрия Словакия\\4.txt",
+    "meta_file": "output\\normalized\\Венгрия Словакия\\4.meta.json",
+    "is_forward": true,
+    "forward_from": "Ateo Breaking"
+  },
+  "content_type": "quote",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Венгрия не поддержала общее заявление ЕС о событиях в Венесуэле, отказавшись участвовать в его обсуждении, но не наложив вето.",
+  "key_facts": [
+    {
+      "text": "Венгрия не поддержала общее заявление ЕС о событиях в Венесуэле.",
+      "claim_type": "fact"
+    },
+    {
+      "text": "Венгрия не наложила вето на заявление, а просто отказалась участвовать в его обсуждении.",
+      "claim_type": "fact"
+    },
+    {
+      "text": "Заявление было инициировано ЕС.",
+      "claim_type": "fact"
+    }
+  ],
+  "entities": {
+    "people": [],
+    "organizations": [
+      "ЕС"
+    ],
+    "countries": [
+      "Венгрия",
+      "Венесуэла"
+    ],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [
+    "Международные отношения",
+    "Дипломатия ЕС",
+    "Венесуэльский кризис"
+  ],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": false,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Ateo Breaking",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Венгрия Словакия | Дата: 2026-01-05 15:44 | Пост: https://t.me/c/3328128766/4]\n\n\nВенгрия не поддержала общее заявление ЕС о событиях в Венесуэле, отказавшись участвовать в его обсуждении, но не наложив вето.\n\nКлючевые факты:\n- Венгрия не поддержала общее заявление ЕС о событиях в Венесуэле. [fact]\n- Венгрия не наложила вето на заявление, а просто отказалась участвовать в его обсуждении. [fact]\n- Заявление было инициировано ЕС. [fact]\n\nСущности: ЕС, Венгрия, Венесуэла\n\nИсточник: Ateo Breaking",
+  "search_text": "[Канал: Венгрия Словакия | Дата: 2026-01-05 15:44 | Пост: https://t.me/c/3328128766/4]\n\n\nВенгрия не поддержала общее заявление ЕС о событиях в Венесуэле, отказавшись участвовать в его обсуждении, но не наложив вето.\n\nКлючевые факты:\n- Венгрия не поддержала общее заявление ЕС о событиях в Венесуэле. [fact]\n- Венгрия не наложила вето на заявление, а просто отказалась участвовать в его обсуждении. [fact]\n- Заявление было инициировано ЕС. [fact]\n\nСущности: ЕС, Венгрия, Венесуэла\n\nИсточник: Ateo Breaking\n\nТемы: Международные отношения, Дипломатия ЕС, Венесуэльский кризис\n\nТип контента: quote"
+}

@@ -1,0 +1,183 @@
+{
+  "doc-882de6693e8c9fb207f57f61323d2d4e": {
+    "entity_names": [
+      "Cuba",
+      "Protesters",
+      "President",
+      "Communist Party of Cuba",
+      "United States"
+    ],
+    "count": 5,
+    "create_time": 1777504026,
+    "update_time": 1777504026,
+    "_id": "doc-882de6693e8c9fb207f57f61323d2d4e"
+  },
+  "doc-7febacd6fb43b6f3f5d322062ffa2c70": {
+    "entity_names": [
+      "U.S. Coast Guard",
+      "Donald Trump",
+      "Cuba",
+      "New York Times",
+      "U.S. Department of the Treasury",
+      "Russia",
+      "United States",
+      "oil shipment"
+    ],
+    "count": 8,
+    "create_time": 1777504045,
+    "update_time": 1777504045,
+    "_id": "doc-7febacd6fb43b6f3f5d322062ffa2c70"
+  },
+  "doc-c5ff3150becdc95a13382b5166108426": {
+    "entity_names": [
+      "Donald Trump",
+      "Cuba",
+      "Ivan Dyakonov",
+      "United States",
+      "White House"
+    ],
+    "count": 5,
+    "create_time": 1777504054,
+    "update_time": 1777504054,
+    "_id": "doc-c5ff3150becdc95a13382b5166108426"
+  },
+  "doc-81793c3cdcbfbe89f795246759446720": {
+    "entity_names": [
+      "Starlink",
+      "Cuba",
+      "Raúl Castro",
+      "Barack Obama",
+      "United States",
+      "1959 Revolution",
+      "State Department",
+      "Raúl Guillermo Rodríguez Castro"
+    ],
+    "count": 8,
+    "create_time": 1777504069,
+    "update_time": 1777504069,
+    "_id": "doc-81793c3cdcbfbe89f795246759446720"
+  },
+  "doc-b14a5dcf0576373212d8f6eb81f4a79b": {
+    "entity_names": [
+      "Kazakhstan",
+      "Alexander Dugin",
+      "Russian World",
+      "European Union",
+      "Armenia",
+      "Azerbaijan",
+      "United States",
+      "Uzbekistan",
+      "Georgia"
+    ],
+    "count": 9,
+    "create_time": 1777504090,
+    "update_time": 1777504090,
+    "_id": "doc-b14a5dcf0576373212d8f6eb81f4a79b"
+  },
+  "doc-e0d5989261f7edbddde19128152f7c74": {
+    "entity_names": [
+      "Ультра левые",
+      "Правые"
+    ],
+    "count": 2,
+    "create_time": 1777504095,
+    "update_time": 1777504095,
+    "_id": "doc-e0d5989261f7edbddde19128152f7c74"
+  },
+  "doc-f53762641d2ee3217b2ff76f463d9ed6": {
+    "entity_names": [
+      "AfD",
+      "BSW",
+      "СДПН",
+      "Ukraine",
+      "Insa",
+      "Литва",
+      "Польща",
+      "НАТО",
+      "German Bundeswehr",
+      "BILD",
+      "Russia",
+      "Зелені",
+      "Німеччина",
+      "PzH 2000",
+      "Путін"
+    ],
+    "count": 15,
+    "create_time": 1777504115,
+    "update_time": 1777504115,
+    "_id": "doc-f53762641d2ee3217b2ff76f463d9ed6"
+  },
+  "doc-6a5a5086371a41f6db882a7202c9eabc": {
+    "entity_names": [
+      "Kremlin",
+      "AfD",
+      "Baden-Württemberg",
+      "Известия",
+      "Saxony-Anhalt",
+      "Marcus Frontmaier",
+      "t-online",
+      "Tino Chrupalla",
+      "Bundestag",
+      "Alice Weidel",
+      "Ulrich Ziegmund"
+    ],
+    "count": 11,
+    "create_time": 1777504133,
+    "update_time": 1777504133,
+    "_id": "doc-6a5a5086371a41f6db882a7202c9eabc"
+  },
+  "doc-6b6575a8c3bfb0cbceb16d1b8bcd6767": {
+    "entity_names": [
+      "European Union",
+      "Alternative für Deutschland",
+      "Federal Republic",
+      "Merz"
+    ],
+    "count": 4,
+    "create_time": 1777504139,
+    "update_time": 1777504139,
+    "_id": "doc-6b6575a8c3bfb0cbceb16d1b8bcd6767"
+  },
+  "doc-92844413dd098c6870c624e615a2accb": {
+    "entity_names": [
+      "AfD",
+      "Ukraine",
+      "Zelensky",
+      "Russia",
+      "Western states",
+      "Great Britain",
+      "Istanbul Agreement",
+      "Alice Weidel"
+    ],
+    "count": 8,
+    "create_time": 1777504152,
+    "update_time": 1777504152,
+    "_id": "doc-92844413dd098c6870c624e615a2accb"
+  },
+  "doc-a1a356985345a203c25a5c607675793d": {
+    "entity_names": [
+      "Donald Trump",
+      "Sudáfrica",
+      "Julius Malema",
+      "Boer",
+      "EFF",
+      "Javier Milei"
+    ],
+    "count": 6,
+    "create_time": 1777504161,
+    "update_time": 1777504161,
+    "_id": "doc-a1a356985345a203c25a5c607675793d"
+  },
+  "doc-798d63d30f88e78402c9f686b948dc0e": {
+    "entity_names": [
+      "Copyright Act of 1976",
+      "Fair Use",
+      "Meta",
+      "Section 107"
+    ],
+    "count": 4,
+    "create_time": 1777504168,
+    "update_time": 1777504168,
+    "_id": "doc-798d63d30f88e78402c9f686b948dc0e"
+  }
+}

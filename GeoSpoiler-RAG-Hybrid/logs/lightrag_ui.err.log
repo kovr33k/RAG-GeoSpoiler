@@ -1,0 +1,24 @@
+WARNING: TOKEN_SECRET not set and AUTH_ACCOUNTS is not configured. Falling back to the default guest-mode JWT secret. 
+C:\Users\artem\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\lightrag\api\lightrag_server.py:1487: DeprecationWarning: 'asyncio.WindowsSelectorEventLoopPolicy' is deprecated and slated for removal in Python 3.16
+  asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+C:\Users\artem\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\lightrag\api\lightrag_server.py:1487: DeprecationWarning: 'asyncio.set_event_loop_policy' is deprecated and slated for removal in Python 3.16
+  asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+INFO: OpenAI LLM Options: {}
+INFO: Embedding config: binding=openai model=nvidia/nv-embedqa-e5-v5 embedding_dim=1024 max_token_size=8192
+INFO: Send embedding dimension: False by env var (dimensions=1024, has_param=True, binding=openai)
+INFO: Embedding max_token_size: 8192 (from openai provider default)
+INFO: Reranking is disabled
+INFO: [] Loaded graph from D:\ObsidianWiki\GeoSpoiler-RAG\rag_storage\graph_chunk_entity_relation.graphml with 274 nodes, 316 edges
+INFO: WebUI assets mounted at /webui
+INFO: Started server process [25900]
+INFO: Waiting for application startup.
+INFO: [] Process 25900 KV load full_docs with 29 records
+INFO: [] Process 25900 KV load text_chunks with 29 records
+INFO: [] Process 25900 KV load full_entities with 29 records
+INFO: [] Process 25900 KV load full_relations with 29 records
+INFO: [] Process 25900 KV load entity_chunks with 274 records
+INFO: [] Process 25900 KV load relation_chunks with 316 records
+INFO: [] Process 25900 KV load llm_response_cache with 68 records
+INFO: [] Process 25900 doc status load doc_status with 29 records
+INFO: Application startup complete.
+INFO: Uvicorn running on http://127.0.0.1:9621 (Press CTRL+C to quit)

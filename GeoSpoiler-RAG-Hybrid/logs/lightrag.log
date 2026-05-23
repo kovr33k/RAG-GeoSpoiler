@@ -1,0 +1,303 @@
+2026-04-29 03:15:45,856 - lightrag - INFO - OpenAI LLM Options: {}
+2026-04-29 03:15:46,225 - lightrag - INFO - Embedding config: binding=openai model=nvidia/nv-embedqa-e5-v5 embedding_dim=1024 max_token_size=8192
+2026-04-29 03:15:46,235 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=1024, has_param=True, binding=openai)
+2026-04-29 03:15:46,235 - lightrag - INFO - Embedding max_token_size: 8192 (from openai provider default)
+2026-04-29 03:15:46,235 - lightrag - INFO - Reranking is disabled
+2026-04-29 03:15:46,615 - lightrag - INFO - [] Loaded graph from D:\ObsidianWiki\GeoSpoiler-RAG\rag_storage\graph_chunk_entity_relation.graphml with 274 nodes, 316 edges
+2026-04-29 03:15:46,720 - lightrag - INFO - WebUI assets mounted at /webui
+2026-04-29 03:15:46,758 - uvicorn.error - INFO - Started server process [25900]
+2026-04-29 03:15:46,758 - uvicorn.error - INFO - Waiting for application startup.
+2026-04-29 03:15:46,764 - lightrag - INFO - [] Process 25900 KV load full_docs with 29 records
+2026-04-29 03:15:46,769 - lightrag - INFO - [] Process 25900 KV load text_chunks with 29 records
+2026-04-29 03:15:46,773 - lightrag - INFO - [] Process 25900 KV load full_entities with 29 records
+2026-04-29 03:15:46,777 - lightrag - INFO - [] Process 25900 KV load full_relations with 29 records
+2026-04-29 03:15:46,782 - lightrag - INFO - [] Process 25900 KV load entity_chunks with 274 records
+2026-04-29 03:15:46,786 - lightrag - INFO - [] Process 25900 KV load relation_chunks with 316 records
+2026-04-29 03:15:46,800 - lightrag - INFO - [] Process 25900 KV load llm_response_cache with 68 records
+2026-04-29 03:15:46,807 - lightrag - INFO - [] Process 25900 doc status load doc_status with 29 records
+2026-04-29 03:15:46,808 - uvicorn.error - INFO - Application startup complete.
+2026-04-29 03:15:46,808 - uvicorn.error - INFO - Uvicorn running on http://127.0.0.1:9621 (Press CTRL+C to quit)
+2026-04-29 03:17:00,177 - lightrag - INFO - OpenAI LLM Options: {}
+2026-04-29 03:17:00,477 - lightrag - INFO - Embedding config: binding=openai model=nvidia/nv-embedqa-e5-v5 embedding_dim=1024 max_token_size=8192
+2026-04-29 03:17:00,477 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=1024, has_param=True, binding=openai)
+2026-04-29 03:17:00,477 - lightrag - INFO - Embedding max_token_size: 8192 (from openai provider default)
+2026-04-29 03:17:00,477 - lightrag - INFO - Reranking is disabled
+2026-04-29 03:17:00,771 - lightrag - INFO - [] Loaded graph from D:\ObsidianWiki\GeoSpoiler-RAG\rag_storage\graph_chunk_entity_relation.graphml with 274 nodes, 316 edges
+2026-04-29 03:17:00,841 - lightrag - INFO - WebUI assets mounted at /webui
+2026-04-29 03:17:00,863 - uvicorn.error - INFO - Started server process [30036]
+2026-04-29 03:17:00,863 - uvicorn.error - INFO - Waiting for application startup.
+2026-04-29 03:17:00,864 - lightrag - INFO - [] Process 30036 KV load full_docs with 29 records
+2026-04-29 03:17:00,865 - lightrag - INFO - [] Process 30036 KV load text_chunks with 29 records
+2026-04-29 03:17:00,865 - lightrag - INFO - [] Process 30036 KV load full_entities with 29 records
+2026-04-29 03:17:00,866 - lightrag - INFO - [] Process 30036 KV load full_relations with 29 records
+2026-04-29 03:17:00,867 - lightrag - INFO - [] Process 30036 KV load entity_chunks with 274 records
+2026-04-29 03:17:00,867 - lightrag - INFO - [] Process 30036 KV load relation_chunks with 316 records
+2026-04-29 03:17:00,875 - lightrag - INFO - [] Process 30036 KV load llm_response_cache with 68 records
+2026-04-29 03:17:00,876 - lightrag - INFO - [] Process 30036 doc status load doc_status with 29 records
+2026-04-29 03:17:00,877 - uvicorn.error - INFO - Application startup complete.
+2026-04-29 03:17:00,877 - uvicorn.error - INFO - Uvicorn running on http://127.0.0.1:9621 (Press CTRL+C to quit)
+2026-04-29 03:17:09,626 - uvicorn.access - INFO - 127.0.0.1:62615 - "GET / HTTP/1.1" 307
+2026-04-29 03:17:09,627 - uvicorn.access - INFO - 127.0.0.1:62615 - "GET /webui HTTP/1.1" 307
+2026-04-29 03:17:09,666 - uvicorn.access - INFO - 127.0.0.1:62615 - "GET /docs HTTP/1.1" 200
+2026-04-29 03:17:09,725 - uvicorn.access - INFO - 127.0.0.1:62615 - "GET /openapi.json HTTP/1.1" 200
+2026-04-29 03:21:52,179 - lightrag - INFO - OpenAI LLM Options: {}
+2026-04-29 03:21:52,512 - lightrag - INFO - Embedding config: binding=openai model=nvidia/nv-embedqa-e5-v5 embedding_dim=1024 max_token_size=8192
+2026-04-29 03:21:52,512 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=1024, has_param=True, binding=openai)
+2026-04-29 03:21:52,512 - lightrag - INFO - Embedding max_token_size: 8192 (from openai provider default)
+2026-04-29 03:21:52,513 - lightrag - INFO - Reranking is disabled
+2026-04-29 03:21:52,832 - lightrag - INFO - [] Loaded graph from D:\ObsidianWiki\GeoSpoiler-RAG\rag_storage\graph_chunk_entity_relation.graphml with 274 nodes, 316 edges
+2026-04-29 03:21:52,905 - lightrag - INFO - WebUI assets mounted at /webui
+2026-04-29 03:21:52,929 - uvicorn.error - INFO - Started server process [10764]
+2026-04-29 03:21:52,929 - uvicorn.error - INFO - Waiting for application startup.
+2026-04-29 03:21:52,930 - lightrag - INFO - [] Process 10764 KV load full_docs with 29 records
+2026-04-29 03:21:52,930 - lightrag - INFO - [] Process 10764 KV load text_chunks with 29 records
+2026-04-29 03:21:52,931 - lightrag - INFO - [] Process 10764 KV load full_entities with 29 records
+2026-04-29 03:21:52,931 - lightrag - INFO - [] Process 10764 KV load full_relations with 29 records
+2026-04-29 03:21:52,932 - lightrag - INFO - [] Process 10764 KV load entity_chunks with 274 records
+2026-04-29 03:21:52,933 - lightrag - INFO - [] Process 10764 KV load relation_chunks with 316 records
+2026-04-29 03:21:52,941 - lightrag - INFO - [] Process 10764 KV load llm_response_cache with 68 records
+2026-04-29 03:21:52,941 - lightrag - INFO - [] Process 10764 doc status load doc_status with 29 records
+2026-04-29 03:21:52,942 - uvicorn.error - INFO - Application startup complete.
+2026-04-29 03:21:52,942 - uvicorn.error - INFO - Uvicorn running on http://127.0.0.1:9621 (Press CTRL+C to quit)
+2026-04-29 03:22:01,599 - uvicorn.access - INFO - 127.0.0.1:54412 - "GET /openapi.json HTTP/1.1" 200
+2026-04-29 03:22:01,696 - lightrag - INFO - LLM func: 4 new workers initialized (Timeouts: Func: 180s, Worker: 360s, Health Check: 375s)
+2026-04-29 03:22:03,464 - lightrag - ERROR - OpenAI API Connection Error: Connection error.
+2026-04-29 03:22:08,796 - lightrag - ERROR - OpenAI API Connection Error: Connection error.
+2026-04-29 03:22:14,218 - lightrag - ERROR - OpenAI API Connection Error: Connection error.
+2026-04-29 03:22:14,218 - lightrag - ERROR - LLM func: Error in decorated function for task 1899915269552_32925.1189891: RetryError[<Future at 0x1ba5d910690 state=finished raised APIConnectionError>]
+2026-04-29 03:22:14,218 - lightrag - ERROR - Query failed: RetryError[<Future at 0x1ba5d910690 state=finished raised APIConnectionError>]
+2026-04-29 03:22:14,218 - uvicorn.access - INFO - 127.0.0.1:54412 - "POST /query HTTP/1.1" 200
+2026-04-29 03:34:44,161 - lightrag - INFO - OpenAI LLM Options: {}
+2026-04-29 03:34:44,533 - lightrag - INFO - Embedding config: binding=openai model=nvidia/nv-embedqa-e5-v5 embedding_dim=1024 max_token_size=8192
+2026-04-29 03:34:44,533 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=1024, has_param=True, binding=openai)
+2026-04-29 03:34:44,533 - lightrag - INFO - Embedding max_token_size: 8192 (from openai provider default)
+2026-04-29 03:34:44,533 - lightrag - INFO - Reranking is disabled
+2026-04-29 03:34:44,940 - lightrag - INFO - [] Loaded graph from D:\ObsidianWiki\GeoSpoiler-RAG\rag_storage\graph_chunk_entity_relation.graphml with 274 nodes, 316 edges
+2026-04-29 03:34:45,026 - lightrag - INFO - WebUI assets mounted at /webui
+2026-04-29 03:34:45,062 - uvicorn.error - INFO - Started server process [3480]
+2026-04-29 03:34:45,063 - uvicorn.error - INFO - Waiting for application startup.
+2026-04-29 03:34:45,068 - lightrag - INFO - [] Process 3480 KV load full_docs with 29 records
+2026-04-29 03:34:45,072 - lightrag - INFO - [] Process 3480 KV load text_chunks with 29 records
+2026-04-29 03:34:45,076 - lightrag - INFO - [] Process 3480 KV load full_entities with 29 records
+2026-04-29 03:34:45,080 - lightrag - INFO - [] Process 3480 KV load full_relations with 29 records
+2026-04-29 03:34:45,085 - lightrag - INFO - [] Process 3480 KV load entity_chunks with 274 records
+2026-04-29 03:34:45,088 - lightrag - INFO - [] Process 3480 KV load relation_chunks with 316 records
+2026-04-29 03:34:45,103 - lightrag - INFO - [] Process 3480 KV load llm_response_cache with 68 records
+2026-04-29 03:34:45,110 - lightrag - INFO - [] Process 3480 doc status load doc_status with 29 records
+2026-04-29 03:34:45,110 - uvicorn.error - INFO - Application startup complete.
+2026-04-29 03:34:45,111 - uvicorn.error - INFO - Uvicorn running on http://127.0.0.1:9621 (Press CTRL+C to quit)
+2026-04-29 03:34:52,742 - lightrag - INFO - LLM func: 4 new workers initialized (Timeouts: Func: 180s, Worker: 360s, Health Check: 375s)
+2026-04-29 03:34:54,349 - lightrag - ERROR - OpenAI API Connection Error: Connection error.
+2026-04-29 03:34:59,962 - lightrag - ERROR - OpenAI API Connection Error: Connection error.
+2026-04-29 03:35:05,395 - lightrag - ERROR - OpenAI API Connection Error: Connection error.
+2026-04-29 03:35:05,395 - lightrag - ERROR - LLM func: Error in decorated function for task 1674640866064_33696.165345: RetryError[<Future at 0x185ecda82d0 state=finished raised APIConnectionError>]
+2026-04-29 03:35:05,395 - lightrag - ERROR - Query failed: RetryError[<Future at 0x185ecda82d0 state=finished raised APIConnectionError>]
+2026-04-29 03:35:05,395 - uvicorn.access - INFO - 127.0.0.1:59239 - "POST /query HTTP/1.1" 200
+2026-04-29 03:35:06,810 - lightrag - ERROR - OpenAI API Connection Error: Connection error.
+2026-04-29 03:35:12,370 - lightrag - ERROR - OpenAI API Connection Error: Connection error.
+2026-04-29 03:35:17,843 - lightrag - ERROR - OpenAI API Connection Error: Connection error.
+2026-04-29 03:35:17,843 - lightrag - ERROR - LLM func: Error in decorated function for task 1674706318320_33708.8387632: RetryError[<Future at 0x185ecdb0ef0 state=finished raised APIConnectionError>]
+2026-04-29 03:35:17,843 - lightrag - ERROR - Query failed: RetryError[<Future at 0x185ecdb0ef0 state=finished raised APIConnectionError>]
+2026-04-29 03:35:17,843 - uvicorn.access - INFO - 127.0.0.1:59239 - "POST /query HTTP/1.1" 200
+2026-04-29 03:35:19,281 - lightrag - ERROR - OpenAI API Connection Error: Connection error.
+2026-04-29 03:35:24,772 - lightrag - ERROR - OpenAI API Connection Error: Connection error.
+2026-04-29 03:35:30,320 - lightrag - ERROR - OpenAI API Connection Error: Connection error.
+2026-04-29 03:35:30,320 - lightrag - ERROR - LLM func: Error in decorated function for task 1674706318320_33721.2685406: RetryError[<Future at 0x185ecdc1350 state=finished raised APIConnectionError>]
+2026-04-29 03:35:30,321 - lightrag - ERROR - Query failed: RetryError[<Future at 0x185ecdc1350 state=finished raised APIConnectionError>]
+2026-04-29 03:35:30,321 - uvicorn.access - INFO - 127.0.0.1:59239 - "POST /query HTTP/1.1" 200
+2026-04-29 03:35:31,820 - lightrag - ERROR - OpenAI API Connection Error: Connection error.
+2026-04-29 03:35:37,273 - lightrag - ERROR - OpenAI API Connection Error: Connection error.
+2026-04-29 03:35:42,619 - lightrag - ERROR - OpenAI API Connection Error: Connection error.
+2026-04-29 03:35:42,620 - lightrag - ERROR - LLM func: Error in decorated function for task 1674706318320_33733.7461118: RetryError[<Future at 0x185ecdd9130 state=finished raised APIConnectionError>]
+2026-04-29 03:35:42,620 - lightrag - ERROR - Query failed: RetryError[<Future at 0x185ecdd9130 state=finished raised APIConnectionError>]
+2026-04-29 03:35:42,620 - uvicorn.access - INFO - 127.0.0.1:59239 - "POST /query HTTP/1.1" 200
+2026-04-29 19:02:10,036 - lightrag - INFO - OpenAI LLM Options: {}
+2026-04-29 19:02:10,668 - lightrag - INFO - Embedding config: binding=openai model=nvidia/nv-embedqa-e5-v5 embedding_dim=1024 max_token_size=8192
+2026-04-29 19:02:10,668 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=1024, has_param=True, binding=openai)
+2026-04-29 19:02:10,669 - lightrag - INFO - Embedding max_token_size: 8192 (from openai provider default)
+2026-04-29 19:02:10,669 - lightrag - INFO - Reranking is disabled
+2026-04-29 19:02:11,288 - lightrag - INFO - [] Loaded graph from D:\ObsidianWiki\GeoSpoiler-RAG\rag_storage\graph_chunk_entity_relation.graphml with 274 nodes, 316 edges
+2026-04-29 19:02:11,395 - lightrag - INFO - WebUI assets mounted at /webui
+2026-04-29 19:02:11,460 - uvicorn.error - INFO - Started server process [26940]
+2026-04-29 19:02:11,460 - uvicorn.error - INFO - Waiting for application startup.
+2026-04-29 19:02:11,461 - lightrag - INFO - [] Process 26940 KV load full_docs with 29 records
+2026-04-29 19:02:11,462 - lightrag - INFO - [] Process 26940 KV load text_chunks with 29 records
+2026-04-29 19:02:11,463 - lightrag - INFO - [] Process 26940 KV load full_entities with 29 records
+2026-04-29 19:02:11,463 - lightrag - INFO - [] Process 26940 KV load full_relations with 29 records
+2026-04-29 19:02:11,464 - lightrag - INFO - [] Process 26940 KV load entity_chunks with 274 records
+2026-04-29 19:02:11,465 - lightrag - INFO - [] Process 26940 KV load relation_chunks with 316 records
+2026-04-29 19:02:11,477 - lightrag - INFO - [] Process 26940 KV load llm_response_cache with 70 records
+2026-04-29 19:02:11,478 - lightrag - INFO - [] Process 26940 doc status load doc_status with 29 records
+2026-04-29 19:02:11,479 - uvicorn.error - INFO - Application startup complete.
+2026-04-29 19:02:11,479 - uvicorn.error - INFO - Uvicorn running on http://127.0.0.1:9621 (Press CTRL+C to quit)
+2026-04-29 19:02:13,279 - uvicorn.access - INFO - 127.0.0.1:53057 - "GET / HTTP/1.1" 307
+2026-04-29 19:02:13,280 - uvicorn.access - INFO - 127.0.0.1:53057 - "GET /webui HTTP/1.1" 307
+2026-04-29 19:03:32,912 - lightrag - INFO - OpenAI LLM Options: {}
+2026-04-29 19:03:33,309 - lightrag - INFO - Embedding config: binding=openai model=nvidia/nv-embedqa-e5-v5 embedding_dim=1024 max_token_size=8192
+2026-04-29 19:03:33,309 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=1024, has_param=True, binding=openai)
+2026-04-29 19:03:33,309 - lightrag - INFO - Embedding max_token_size: 8192 (from openai provider default)
+2026-04-29 19:03:33,309 - lightrag - INFO - Reranking is disabled
+2026-04-29 19:03:33,727 - lightrag - INFO - [] Loaded graph from D:\ObsidianWiki\GeoSpoiler-RAG\rag_storage\graph_chunk_entity_relation.graphml with 274 nodes, 316 edges
+2026-04-29 19:03:33,824 - lightrag - INFO - WebUI assets mounted at /webui
+2026-04-29 19:03:33,852 - uvicorn.error - INFO - Started server process [30204]
+2026-04-29 19:03:33,852 - uvicorn.error - INFO - Waiting for application startup.
+2026-04-29 19:03:33,853 - lightrag - INFO - [] Process 30204 KV load full_docs with 29 records
+2026-04-29 19:03:33,854 - lightrag - INFO - [] Process 30204 KV load text_chunks with 29 records
+2026-04-29 19:03:33,854 - lightrag - INFO - [] Process 30204 KV load full_entities with 29 records
+2026-04-29 19:03:33,855 - lightrag - INFO - [] Process 30204 KV load full_relations with 29 records
+2026-04-29 19:03:33,855 - lightrag - INFO - [] Process 30204 KV load entity_chunks with 274 records
+2026-04-29 19:03:33,856 - lightrag - INFO - [] Process 30204 KV load relation_chunks with 316 records
+2026-04-29 19:03:33,867 - lightrag - INFO - [] Process 30204 KV load llm_response_cache with 70 records
+2026-04-29 19:03:33,868 - lightrag - INFO - [] Process 30204 doc status load doc_status with 29 records
+2026-04-29 19:03:33,869 - uvicorn.error - INFO - Application startup complete.
+2026-04-29 19:03:33,870 - uvicorn.error - INFO - Uvicorn running on http://127.0.0.1:9621 (Press CTRL+C to quit)
+2026-04-29 19:09:27,392 - lightrag - INFO - OpenAI LLM Options: {}
+2026-04-29 19:09:27,739 - lightrag - INFO - Embedding config: binding=openai model=nvidia/nv-embedqa-e5-v5 embedding_dim=1024 max_token_size=8192
+2026-04-29 19:09:27,739 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=1024, has_param=True, binding=openai)
+2026-04-29 19:09:27,740 - lightrag - INFO - Embedding max_token_size: 8192 (from openai provider default)
+2026-04-29 19:09:27,740 - lightrag - INFO - Reranking is disabled
+2026-04-29 19:09:28,093 - lightrag - INFO - [] Loaded graph from D:\ObsidianWiki\GeoSpoiler-RAG\rag_storage\graph_chunk_entity_relation.graphml with 274 nodes, 316 edges
+2026-04-29 19:09:28,177 - lightrag - INFO - WebUI assets mounted at /webui
+2026-04-29 19:09:28,203 - uvicorn.error - INFO - Started server process [25136]
+2026-04-29 19:09:28,203 - uvicorn.error - INFO - Waiting for application startup.
+2026-04-29 19:09:28,204 - lightrag - INFO - [] Process 25136 KV load full_docs with 29 records
+2026-04-29 19:09:28,205 - lightrag - INFO - [] Process 25136 KV load text_chunks with 29 records
+2026-04-29 19:09:28,205 - lightrag - INFO - [] Process 25136 KV load full_entities with 29 records
+2026-04-29 19:09:28,206 - lightrag - INFO - [] Process 25136 KV load full_relations with 29 records
+2026-04-29 19:09:28,206 - lightrag - INFO - [] Process 25136 KV load entity_chunks with 274 records
+2026-04-29 19:09:28,207 - lightrag - INFO - [] Process 25136 KV load relation_chunks with 316 records
+2026-04-29 19:09:28,216 - lightrag - INFO - [] Process 25136 KV load llm_response_cache with 70 records
+2026-04-29 19:09:28,217 - lightrag - INFO - [] Process 25136 doc status load doc_status with 29 records
+2026-04-29 19:09:28,217 - uvicorn.error - INFO - Application startup complete.
+2026-04-29 19:09:28,218 - uvicorn.error - INFO - Uvicorn running on http://127.0.0.1:9621 (Press CTRL+C to quit)
+2026-04-29 19:09:35,123 - uvicorn.access - INFO - 127.0.0.1:51209 - "GET / HTTP/1.1" 307
+2026-04-29 19:09:35,129 - uvicorn.access - INFO - 127.0.0.1:51209 - "GET /webui HTTP/1.1" 307
+2026-04-29 19:09:35,201 - uvicorn.access - INFO - 127.0.0.1:51209 - "GET /webui/assets/index-Dutxwtl1.js HTTP/1.1" 200
+2026-04-29 19:09:35,205 - uvicorn.access - INFO - 127.0.0.1:49316 - "GET /webui/assets/chunk-CFjPhJqf.js HTTP/1.1" 200
+2026-04-29 19:09:35,209 - uvicorn.access - INFO - 127.0.0.1:56659 - "GET /webui/assets/chunk-ICPOFSXX-D_rb2Fwi.js HTTP/1.1" 200
+2026-04-29 19:09:35,209 - uvicorn.access - INFO - 127.0.0.1:49817 - "GET /webui/assets/src-B0URjIBy.js HTTP/1.1" 200
+2026-04-29 19:09:35,209 - uvicorn.access - INFO - 127.0.0.1:59221 - "GET /webui/assets/dist-Cyt3jvt8.js HTTP/1.1" 200
+2026-04-29 19:09:35,210 - uvicorn.access - INFO - 127.0.0.1:61503 - "GET /webui/assets/_createAssigner-Cnio_y90.js HTTP/1.1" 200
+2026-04-29 19:09:35,228 - uvicorn.access - INFO - 127.0.0.1:49316 - "GET /webui/assets/index-2SRLMHGI.css HTTP/1.1" 200
+2026-04-29 19:09:35,230 - uvicorn.access - INFO - 127.0.0.1:61503 - "GET /webui/assets/chunk-U2HBQHQK-BdXA2pRF.js HTTP/1.1" 200
+2026-04-29 19:09:35,230 - uvicorn.access - INFO - 127.0.0.1:49817 - "GET /webui/assets/chunk-5PVQY5BW-DeqzpWsO.js HTTP/1.1" 200
+2026-04-29 19:09:35,234 - uvicorn.access - INFO - 127.0.0.1:59221 - "GET /webui/assets/katex-CELP4b1s.js HTTP/1.1" 200
+2026-04-29 19:09:35,235 - uvicorn.access - INFO - 127.0.0.1:56659 - "GET /webui/assets/chunk-X2U36JSP-BLvTqlXl.js HTTP/1.1" 200
+2026-04-29 19:09:35,250 - uvicorn.access - INFO - 127.0.0.1:51209 - "GET /webui/assets/chunk-ZZ45TVLE-z8_zsPHW.js HTTP/1.1" 200
+2026-04-29 19:09:35,273 - uvicorn.access - INFO - 127.0.0.1:61503 - "GET /webui/assets/rough.esm-MuJqrtdI.js HTTP/1.1" 200
+2026-04-29 19:09:35,275 - uvicorn.access - INFO - 127.0.0.1:56659 - "GET /webui/assets/chunk-BSJP7CBP-RKHmWJF5.js HTTP/1.1" 200
+2026-04-29 19:09:35,276 - uvicorn.access - INFO - 127.0.0.1:49817 - "GET /webui/assets/chunk-5FUZZQ4R-BkvlRzw1.js HTTP/1.1" 200
+2026-04-29 19:09:35,276 - uvicorn.access - INFO - 127.0.0.1:51209 - "GET /webui/assets/path-BCgwsvmy.js HTTP/1.1" 200
+2026-04-29 19:09:35,280 - uvicorn.access - INFO - 127.0.0.1:50875 - "GET /webui/assets/src-B0URjIBy.js HTTP/1.1" 200
+2026-04-29 19:09:35,281 - uvicorn.access - INFO - 127.0.0.1:54006 - "GET /webui/assets/chunk-CFjPhJqf.js HTTP/1.1" 200
+2026-04-29 19:09:35,281 - uvicorn.access - INFO - 127.0.0.1:53640 - "GET /webui/assets/_createAssigner-Cnio_y90.js HTTP/1.1" 200
+2026-04-29 19:09:35,282 - uvicorn.access - INFO - 127.0.0.1:61499 - "GET /webui/assets/dist-Cyt3jvt8.js HTTP/1.1" 200
+2026-04-29 19:09:35,283 - uvicorn.access - INFO - 127.0.0.1:49316 - "GET /webui/assets/array-DKReyB4R.js HTTP/1.1" 200
+2026-04-29 19:09:35,290 - uvicorn.access - INFO - 127.0.0.1:61503 - "GET /webui/assets/chunk-ENJZ2VHE-BH5h5q-9.js HTTP/1.1" 200
+2026-04-29 19:09:35,291 - uvicorn.access - INFO - 127.0.0.1:59221 - "GET /webui/assets/line-DgkkWxCl.js HTTP/1.1" 200
+2026-04-29 19:09:36,214 - uvicorn.access - INFO - 127.0.0.1:53640 - "GET /webui/assets/chunk-ICPOFSXX-D_rb2Fwi.js HTTP/1.1" 200
+2026-04-29 19:09:36,287 - uvicorn.access - INFO - 127.0.0.1:61499 - "GET /webui/assets/index-Dutxwtl1.js HTTP/1.1" 200
+2026-04-29 19:09:36,287 - uvicorn.access - INFO - 127.0.0.1:50875 - "GET /webui/assets/chunk-5PVQY5BW-DeqzpWsO.js HTTP/1.1" 200
+2026-04-29 19:09:36,288 - uvicorn.access - INFO - 127.0.0.1:54006 - "GET /webui/assets/chunk-U2HBQHQK-BdXA2pRF.js HTTP/1.1" 200
+2026-04-29 19:09:36,292 - uvicorn.access - INFO - 127.0.0.1:53640 - "GET /webui/assets/chunk-X2U36JSP-BLvTqlXl.js HTTP/1.1" 200
+2026-04-29 19:09:36,294 - uvicorn.access - INFO - 127.0.0.1:57118 - "GET /webui/assets/chunk-ZZ45TVLE-z8_zsPHW.js HTTP/1.1" 200
+2026-04-29 19:09:36,294 - uvicorn.access - INFO - 127.0.0.1:55071 - "GET /webui/assets/katex-CELP4b1s.js HTTP/1.1" 200
+2026-04-29 19:09:36,296 - uvicorn.access - INFO - 127.0.0.1:54006 - "GET /webui/assets/chunk-BSJP7CBP-RKHmWJF5.js HTTP/1.1" 200
+2026-04-29 19:09:36,297 - uvicorn.access - INFO - 127.0.0.1:50875 - "GET /webui/assets/rough.esm-MuJqrtdI.js HTTP/1.1" 200
+2026-04-29 19:09:36,301 - uvicorn.access - INFO - 127.0.0.1:53640 - "GET /webui/assets/path-BCgwsvmy.js HTTP/1.1" 200
+2026-04-29 19:09:36,304 - uvicorn.access - INFO - 127.0.0.1:55071 - "GET /webui/assets/line-DgkkWxCl.js HTTP/1.1" 200
+2026-04-29 19:09:36,305 - uvicorn.access - INFO - 127.0.0.1:54006 - "GET /webui/assets/array-DKReyB4R.js HTTP/1.1" 200
+2026-04-29 19:09:36,306 - uvicorn.access - INFO - 127.0.0.1:57118 - "GET /webui/assets/chunk-5FUZZQ4R-BkvlRzw1.js HTTP/1.1" 200
+2026-04-29 19:09:36,310 - uvicorn.access - INFO - 127.0.0.1:50875 - "GET /webui/assets/chunk-ENJZ2VHE-BH5h5q-9.js HTTP/1.1" 200
+2026-04-29 19:09:37,019 - uvicorn.access - INFO - 127.0.0.1:61503 - "GET /auth-status HTTP/1.1" 200
+2026-04-29 19:09:37,404 - uvicorn.access - INFO - 127.0.0.1:49316 - "GET /graph/label/popular?limit=300 HTTP/1.1" 200
+2026-04-29 19:09:37,409 - lightrag - INFO - [] Subgraph query successful | Node count: 274 | Edge count: 316
+2026-04-29 19:09:37,424 - uvicorn.access - INFO - 127.0.0.1:49817 - "GET /graphs?label=*&max_depth=3&max_nodes=1000 HTTP/1.1" 200
+2026-04-29 19:09:37,427 - uvicorn.access - INFO - 127.0.0.1:49316 - "GET /docs HTTP/1.1" 200
+2026-04-29 19:09:37,510 - uvicorn.access - INFO - 127.0.0.1:49316 - "GET /static/swagger-ui/swagger-ui.css HTTP/1.1" 200
+2026-04-29 19:09:37,511 - uvicorn.access - INFO - 127.0.0.1:59221 - "GET /static/swagger-ui/swagger-ui-bundle.js HTTP/1.1" 200
+2026-04-29 19:09:38,007 - uvicorn.access - INFO - 127.0.0.1:59221 - "GET /openapi.json HTTP/1.1" 200
+2026-04-29 19:09:38,009 - uvicorn.access - INFO - 127.0.0.1:49316 - "GET /webui/favicon.png HTTP/1.1" 200
+2026-04-29 19:10:54,583 - uvicorn.access - INFO - 127.0.0.1:53097 - "POST /documents/scan HTTP/1.1" 200
+2026-04-29 19:10:54,587 - lightrag - INFO - Found 0 files to index.
+2026-04-29 19:10:54,587 - lightrag - INFO - No upload file found, check if there are any documents in the queue...
+2026-04-29 19:10:54,587 - lightrag - INFO - No documents to process
+2026-04-29 19:13:05,308 - lightrag - INFO - [] Graph truncated: found 16 nodes within max_depth 2
+2026-04-29 19:13:05,308 - lightrag - INFO - [] Subgraph query successful | Node count: 16 | Edge count: 18
+2026-04-29 19:13:05,309 - uvicorn.access - INFO - 127.0.0.1:53144 - "GET /graphs?label=%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%94%D1%83%D0%B3%D0%B8%D0%BD&max_depth=2&max_nodes=1000 HTTP/1.1" 200
+2026-04-29 19:13:28,779 - lightrag - INFO - [] Subgraph query successful | Node count: 274 | Edge count: 316
+2026-04-29 19:13:28,794 - uvicorn.access - INFO - 127.0.0.1:51119 - "GET /graphs?label=*&max_depth=3&max_nodes=1000 HTTP/1.1" 200
+2026-04-29 19:13:28,823 - uvicorn.access - INFO - 127.0.0.1:51119 - "GET /docs HTTP/1.1" 200
+2026-04-29 19:13:29,216 - uvicorn.access - INFO - 127.0.0.1:51119 - "GET /openapi.json HTTP/1.1" 200
+2026-04-29 19:16:20,292 - lightrag - INFO - [] Subgraph query successful | Node count: 274 | Edge count: 316
+2026-04-29 19:16:20,308 - uvicorn.access - INFO - 127.0.0.1:59147 - "GET /graphs?label=*&max_depth=3&max_nodes=1000 HTTP/1.1" 200
+2026-04-29 19:16:20,324 - uvicorn.access - INFO - 127.0.0.1:59147 - "GET /docs HTTP/1.1" 200
+2026-04-29 19:16:20,723 - uvicorn.access - INFO - 127.0.0.1:59147 - "GET /openapi.json HTTP/1.1" 200
+2026-05-02 01:08:38,303 - lightrag - INFO - OpenAI LLM Options: {}
+2026-05-02 01:08:38,667 - lightrag - INFO - Embedding config: binding=openai model=nvidia/nv-embedqa-e5-v5 embedding_dim=1024 max_token_size=8192
+2026-05-02 01:08:38,667 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=1024, has_param=True, binding=openai)
+2026-05-02 01:08:38,667 - lightrag - INFO - Embedding max_token_size: 8192 (from openai provider default)
+2026-05-02 01:08:38,668 - lightrag - INFO - Reranking is disabled
+2026-05-02 01:08:39,107 - lightrag - INFO - [] Loaded graph from D:\ObsidianWiki\GeoSpoiler-RAG\rag_storage\graph_chunk_entity_relation.graphml with 199 nodes, 220 edges
+2026-05-02 01:08:39,199 - lightrag - INFO - WebUI assets mounted at /webui
+2026-05-02 01:08:39,254 - uvicorn.error - INFO - Started server process [24928]
+2026-05-02 01:08:39,254 - uvicorn.error - INFO - Waiting for application startup.
+2026-05-02 01:08:39,255 - lightrag - INFO - [] Process 24928 KV load full_docs with 30 records
+2026-05-02 01:08:39,256 - lightrag - INFO - [] Process 24928 KV load text_chunks with 30 records
+2026-05-02 01:08:39,256 - lightrag - INFO - [] Process 24928 KV load full_entities with 29 records
+2026-05-02 01:08:39,257 - lightrag - INFO - [] Process 24928 KV load full_relations with 29 records
+2026-05-02 01:08:39,257 - lightrag - INFO - [] Process 24928 KV load entity_chunks with 199 records
+2026-05-02 01:08:39,258 - lightrag - INFO - [] Process 24928 KV load relation_chunks with 220 records
+2026-05-02 01:08:39,264 - lightrag - INFO - [] Process 24928 KV load llm_response_cache with 106 records
+2026-05-02 01:08:39,265 - lightrag - INFO - [] Process 24928 doc status load doc_status with 30 records
+2026-05-02 01:08:39,265 - uvicorn.error - INFO - Application startup complete.
+2026-05-02 01:08:39,266 - uvicorn.error - INFO - Uvicorn running on http://127.0.0.1:9621 (Press CTRL+C to quit)
+2026-05-02 01:08:46,893 - uvicorn.access - INFO - 127.0.0.1:58255 - "HEAD / HTTP/1.1" 405
+2026-05-02 01:08:58,685 - uvicorn.access - INFO - 127.0.0.1:63629 - "GET / HTTP/1.1" 307
+2026-05-02 01:08:58,691 - uvicorn.access - INFO - 127.0.0.1:63629 - "GET /webui HTTP/1.1" 307
+2026-05-02 01:08:58,769 - uvicorn.access - INFO - 127.0.0.1:63629 - "GET /webui/assets/index-Dutxwtl1.js HTTP/1.1" 304
+2026-05-02 01:08:58,773 - uvicorn.access - INFO - 127.0.0.1:52693 - "GET /webui/assets/chunk-CFjPhJqf.js HTTP/1.1" 304
+2026-05-02 01:08:58,774 - uvicorn.access - INFO - 127.0.0.1:49401 - "GET /webui/assets/src-B0URjIBy.js HTTP/1.1" 304
+2026-05-02 01:08:58,774 - uvicorn.access - INFO - 127.0.0.1:63629 - "GET /webui/assets/chunk-ICPOFSXX-D_rb2Fwi.js HTTP/1.1" 304
+2026-05-02 01:08:58,776 - uvicorn.access - INFO - 127.0.0.1:52822 - "GET /webui/assets/dist-Cyt3jvt8.js HTTP/1.1" 304
+2026-05-02 01:08:58,777 - uvicorn.access - INFO - 127.0.0.1:65387 - "GET /webui/assets/_createAssigner-Cnio_y90.js HTTP/1.1" 304
+2026-05-02 01:08:58,777 - uvicorn.access - INFO - 127.0.0.1:51014 - "GET /webui/assets/chunk-5PVQY5BW-DeqzpWsO.js HTTP/1.1" 304
+2026-05-02 01:08:58,779 - uvicorn.access - INFO - 127.0.0.1:52693 - "GET /webui/assets/index-2SRLMHGI.css HTTP/1.1" 304
+2026-05-02 01:08:58,780 - uvicorn.access - INFO - 127.0.0.1:63629 - "GET /webui/assets/katex-CELP4b1s.js HTTP/1.1" 304
+2026-05-02 01:08:58,781 - uvicorn.access - INFO - 127.0.0.1:49401 - "GET /webui/assets/chunk-U2HBQHQK-BdXA2pRF.js HTTP/1.1" 304
+2026-05-02 01:08:58,781 - uvicorn.access - INFO - 127.0.0.1:52822 - "GET /webui/assets/chunk-X2U36JSP-BLvTqlXl.js HTTP/1.1" 304
+2026-05-02 01:08:58,782 - uvicorn.access - INFO - 127.0.0.1:51014 - "GET /webui/assets/rough.esm-MuJqrtdI.js HTTP/1.1" 304
+2026-05-02 01:08:58,782 - uvicorn.access - INFO - 127.0.0.1:65387 - "GET /webui/assets/chunk-ZZ45TVLE-z8_zsPHW.js HTTP/1.1" 304
+2026-05-02 01:08:58,785 - uvicorn.access - INFO - 127.0.0.1:52693 - "GET /webui/assets/chunk-5FUZZQ4R-BkvlRzw1.js HTTP/1.1" 304
+2026-05-02 01:08:58,786 - uvicorn.access - INFO - 127.0.0.1:63629 - "GET /webui/assets/chunk-BSJP7CBP-RKHmWJF5.js HTTP/1.1" 304
+2026-05-02 01:08:58,787 - uvicorn.access - INFO - 127.0.0.1:49401 - "GET /webui/assets/path-BCgwsvmy.js HTTP/1.1" 304
+2026-05-02 01:08:58,787 - uvicorn.access - INFO - 127.0.0.1:52822 - "GET /webui/assets/array-DKReyB4R.js HTTP/1.1" 304
+2026-05-02 01:08:58,788 - uvicorn.access - INFO - 127.0.0.1:65387 - "GET /webui/assets/chunk-ENJZ2VHE-BH5h5q-9.js HTTP/1.1" 304
+2026-05-02 01:08:58,788 - uvicorn.access - INFO - 127.0.0.1:51014 - "GET /webui/assets/line-DgkkWxCl.js HTTP/1.1" 304
+2026-05-02 01:08:58,800 - uvicorn.access - INFO - 127.0.0.1:55088 - "GET /webui/assets/chunk-CFjPhJqf.js HTTP/1.1" 304
+2026-05-02 01:08:58,801 - uvicorn.access - INFO - 127.0.0.1:62799 - "GET /webui/assets/src-B0URjIBy.js HTTP/1.1" 304
+2026-05-02 01:08:58,805 - uvicorn.access - INFO - 127.0.0.1:55088 - "GET /webui/assets/katex-CELP4b1s.js HTTP/1.1" 304
+2026-05-02 01:08:58,806 - uvicorn.access - INFO - 127.0.0.1:63581 - "GET /webui/assets/dist-Cyt3jvt8.js HTTP/1.1" 304
+2026-05-02 01:08:58,806 - uvicorn.access - INFO - 127.0.0.1:52830 - "GET /webui/assets/chunk-ICPOFSXX-D_rb2Fwi.js HTTP/1.1" 304
+2026-05-02 01:08:58,807 - uvicorn.access - INFO - 127.0.0.1:62799 - "GET /webui/assets/chunk-5PVQY5BW-DeqzpWsO.js HTTP/1.1" 304
+2026-05-02 01:08:58,807 - uvicorn.access - INFO - 127.0.0.1:64637 - "GET /webui/assets/_createAssigner-Cnio_y90.js HTTP/1.1" 304
+2026-05-02 01:08:58,808 - uvicorn.access - INFO - 127.0.0.1:62230 - "GET /webui/assets/chunk-U2HBQHQK-BdXA2pRF.js HTTP/1.1" 304
+2026-05-02 01:08:58,813 - uvicorn.access - INFO - 127.0.0.1:62230 - "GET /webui/assets/chunk-X2U36JSP-BLvTqlXl.js HTTP/1.1" 304
+2026-05-02 01:08:59,824 - uvicorn.access - INFO - 127.0.0.1:62230 - "GET /webui/assets/rough.esm-MuJqrtdI.js HTTP/1.1" 304
+2026-05-02 01:08:59,855 - uvicorn.access - INFO - 127.0.0.1:62230 - "GET /webui/assets/chunk-ZZ45TVLE-z8_zsPHW.js HTTP/1.1" 304
+2026-05-02 01:08:59,904 - uvicorn.access - INFO - 127.0.0.1:62230 - "GET /webui/assets/chunk-5FUZZQ4R-BkvlRzw1.js HTTP/1.1" 304
+2026-05-02 01:08:59,908 - uvicorn.access - INFO - 127.0.0.1:62230 - "GET /webui/assets/chunk-BSJP7CBP-RKHmWJF5.js HTTP/1.1" 304
+2026-05-02 01:09:00,101 - uvicorn.access - INFO - 127.0.0.1:62230 - "GET /webui/assets/path-BCgwsvmy.js HTTP/1.1" 304
+2026-05-02 01:09:00,106 - uvicorn.access - INFO - 127.0.0.1:62230 - "GET /webui/assets/array-DKReyB4R.js HTTP/1.1" 304
+2026-05-02 01:09:00,110 - uvicorn.access - INFO - 127.0.0.1:62230 - "GET /webui/assets/chunk-ENJZ2VHE-BH5h5q-9.js HTTP/1.1" 304
+2026-05-02 01:09:00,111 - uvicorn.access - INFO - 127.0.0.1:64637 - "GET /webui/assets/line-DgkkWxCl.js HTTP/1.1" 304
+2026-05-02 01:09:00,112 - uvicorn.access - INFO - 127.0.0.1:62230 - "GET /webui/assets/index-Dutxwtl1.js HTTP/1.1" 304
+2026-05-02 01:09:00,581 - uvicorn.access - INFO - 127.0.0.1:65387 - "GET /auth-status HTTP/1.1" 200
+2026-05-02 01:09:00,784 - lightrag - INFO - [] Subgraph query successful | Node count: 199 | Edge count: 220
+2026-05-02 01:09:00,794 - uvicorn.access - INFO - 127.0.0.1:65387 - "GET /graphs?label=*&max_depth=3&max_nodes=1000 HTTP/1.1" 200
+2026-05-02 01:09:00,796 - uvicorn.access - INFO - 127.0.0.1:51014 - "GET /docs HTTP/1.1" 200
+2026-05-02 01:09:00,860 - uvicorn.access - INFO - 127.0.0.1:65387 - "GET /static/swagger-ui/swagger-ui-bundle.js HTTP/1.1" 304
+2026-05-02 01:09:00,860 - uvicorn.access - INFO - 127.0.0.1:51014 - "GET /static/swagger-ui/swagger-ui.css HTTP/1.1" 304
+2026-05-02 01:09:01,250 - uvicorn.access - INFO - 127.0.0.1:51014 - "GET /openapi.json HTTP/1.1" 200
+2026-05-02 01:09:01,251 - uvicorn.access - INFO - 127.0.0.1:65387 - "GET /webui/favicon.png HTTP/1.1" 304
+2026-05-02 01:22:10,547 - uvicorn.access - INFO - 127.0.0.1:64948 - "HEAD / HTTP/1.1" 405

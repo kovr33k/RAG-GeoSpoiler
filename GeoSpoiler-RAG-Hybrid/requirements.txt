@@ -1,0 +1,21 @@
+# Telegram
+telethon>=1.36.0
+
+# LightRAG
+lightrag-hku>=1.0.0
+
+# Web scraping
+trafilatura>=2.0.0
+requests>=2.31.0
+
+# YouTube subtitles
+yt-dlp>=2024.0.0
+
+# Instagram (captions)
+instaloader>=4.13.0
+
+# Environment
+python-dotenv>=1.0.0
+
+# Utilities
+aiofiles>=24.0.0

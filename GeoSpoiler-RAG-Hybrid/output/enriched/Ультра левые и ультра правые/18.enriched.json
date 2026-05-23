@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T21:19:06.641013+00:00",
+  "provenance": {
+    "channel_name": "Ультра левые и ультра правые",
+    "channel_id": 3299898370,
+    "message_id": 18,
+    "date": "2026-03-05T01:16:18+00:00",
+    "post_url": "https://t.me/c/3299898370/18",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\18.txt",
+    "meta_file": "output\\normalized\\Ультра левые и ультра правые\\18.meta.json",
+    "is_forward": true,
+    "forward_from": "Для канала"
+  },
+  "content_type": "instagram_reel",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Пост хвалит видео, которое объясняет ультра-левые и ультра-правые взгляды простым языком, ссылаясь на источник ZDF heute и автора @yurii_kechur.",
+  "key_facts": [
+    {
+      "text": "Видео объясняет ультра-левые и ультра-правые взгляды простым и понятным языком.",
+      "claim_type": "source_claim"
+    },
+    {
+      "text": "Источник видео — ZDF heute (@zdfheute).",
+      "claim_type": "source_claim"
+    },
+    {
+      "text": "Автор поста — @MUCRAINE 🇺🇦 MUKRAINE, с упоминанием @yurii_kechur.",
+      "claim_type": "source_claim"
+    }
+  ],
+  "entities": {
+    "people": [
+      "yurii_kechur"
+    ],
+    "organizations": [
+      "ZDF heute"
+    ],
+    "countries": [
+      "Ukraine",
+      "Germany"
+    ],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [
+    "политические взгляды",
+    "ультра-левые",
+    "ультра-правые",
+    "медиа-анализ"
+  ],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [
+    "MUCRAINE",
+    "MUKRAINE",
+    "ZDF heute",
+    "yurii_kechur"
+  ],
+  "visual": {
+    "has_images": false,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Для канала",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Ультра левые и ультра правые | Дата: 2026-03-05 01:16 | Пост: https://t.me/c/3299898370/18]\n\n\nПост хвалит видео, которое объясняет ультра-левые и ультра-правые взгляды простым языком, ссылаясь на источник ZDF heute и автора @yurii_kechur.\n\nКлючевые факты:\n- Видео объясняет ультра-левые и ультра-правые взгляды простым и понятным языком. [source_claim]\n- Источник видео — ZDF heute (@zdfheute). [source_claim]\n- Автор поста — @MUCRAINE 🇺🇦 MUKRAINE, с упоминанием @yurii_kechur. [source_claim]\n\nСущности: yurii_kechur, ZDF heute, Ukraine, Germany\n\nИсточник: Для канала",
+  "search_text": "[Канал: Ультра левые и ультра правые | Дата: 2026-03-05 01:16 | Пост: https://t.me/c/3299898370/18]\n\n\nПост хвалит видео, которое объясняет ультра-левые и ультра-правые взгляды простым языком, ссылаясь на источник ZDF heute и автора @yurii_kechur.\n\nКлючевые факты:\n- Видео объясняет ультра-левые и ультра-правые взгляды простым и понятным языком. [source_claim]\n- Источник видео — ZDF heute (@zdfheute). [source_claim]\n- Автор поста — @MUCRAINE 🇺🇦 MUKRAINE, с упоминанием @yurii_kechur. [source_claim]\n\nСущности: yurii_kechur, ZDF heute, Ukraine, Germany\n\nИсточник: Для канала\n\nСинонимы для поиска: MUCRAINE | MUKRAINE | ZDF heute | yurii_kechur\n\nТемы: политические взгляды, ультра-левые, ультра-правые, медиа-анализ\n\nТип контента: instagram_reel"
+}

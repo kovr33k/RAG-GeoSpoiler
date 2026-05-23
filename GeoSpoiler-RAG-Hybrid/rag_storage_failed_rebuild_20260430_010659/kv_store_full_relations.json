@@ -1,0 +1,442 @@
+{
+  "doc-882de6693e8c9fb207f57f61323d2d4e": {
+    "relation_pairs": [
+      [
+        "Communist Party of Cuba",
+        "Protesters"
+      ],
+      [
+        "Cuba",
+        "President"
+      ],
+      [
+        "Cuba",
+        "United States"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777504026,
+    "update_time": 1777504026,
+    "_id": "doc-882de6693e8c9fb207f57f61323d2d4e"
+  },
+  "doc-7febacd6fb43b6f3f5d322062ffa2c70": {
+    "relation_pairs": [
+      [
+        "New York Times",
+        "U.S. Coast Guard"
+      ],
+      [
+        "Cuba",
+        "U.S. Department of the Treasury"
+      ],
+      [
+        "Russia",
+        "United States"
+      ],
+      [
+        "Cuba",
+        "Russia"
+      ],
+      [
+        "Cuba",
+        "oil shipment"
+      ],
+      [
+        "Cuba",
+        "United States"
+      ],
+      [
+        "Russia",
+        "U.S. Coast Guard"
+      ],
+      [
+        "Donald Trump",
+        "United States"
+      ]
+    ],
+    "count": 8,
+    "create_time": 1777504045,
+    "update_time": 1777504045,
+    "_id": "doc-7febacd6fb43b6f3f5d322062ffa2c70"
+  },
+  "doc-c5ff3150becdc95a13382b5166108426": {
+    "relation_pairs": [
+      [
+        "Ivan Dyakonov",
+        "White House"
+      ],
+      [
+        "Donald Trump",
+        "White House"
+      ],
+      [
+        "Cuba",
+        "Donald Trump"
+      ],
+      [
+        "Cuba",
+        "United States"
+      ],
+      [
+        "Donald Trump",
+        "United States"
+      ],
+      [
+        "Ivan Dyakonov",
+        "United States"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1777504054,
+    "update_time": 1777504054,
+    "_id": "doc-c5ff3150becdc95a13382b5166108426"
+  },
+  "doc-81793c3cdcbfbe89f795246759446720": {
+    "relation_pairs": [
+      [
+        "Starlink",
+        "United States"
+      ],
+      [
+        "Barack Obama",
+        "United States"
+      ],
+      [
+        "Cuba",
+        "State Department"
+      ],
+      [
+        "1959 Revolution",
+        "United States"
+      ],
+      [
+        "Cuba",
+        "United States"
+      ],
+      [
+        "Cuba",
+        "Raúl Guillermo Rodríguez Castro"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1777504069,
+    "update_time": 1777504069,
+    "_id": "doc-81793c3cdcbfbe89f795246759446720"
+  },
+  "doc-b14a5dcf0576373212d8f6eb81f4a79b": {
+    "relation_pairs": [
+      [
+        "Armenia",
+        "United States"
+      ],
+      [
+        "Alexander Dugin",
+        "Russian World"
+      ],
+      [
+        "Azerbaijan",
+        "European Union"
+      ],
+      [
+        "Kazakhstan",
+        "United States"
+      ],
+      [
+        "United States",
+        "Uzbekistan"
+      ],
+      [
+        "Alexander Dugin",
+        "Azerbaijan"
+      ],
+      [
+        "Armenia",
+        "European Union"
+      ],
+      [
+        "European Union",
+        "Georgia"
+      ],
+      [
+        "Azerbaijan",
+        "United States"
+      ],
+      [
+        "Alexander Dugin",
+        "Georgia"
+      ],
+      [
+        "European Union",
+        "Uzbekistan"
+      ],
+      [
+        "Alexander Dugin",
+        "Kazakhstan"
+      ],
+      [
+        "Alexander Dugin",
+        "Armenia"
+      ],
+      [
+        "Alexander Dugin",
+        "Uzbekistan"
+      ],
+      [
+        "Georgia",
+        "United States"
+      ],
+      [
+        "European Union",
+        "Kazakhstan"
+      ]
+    ],
+    "count": 16,
+    "create_time": 1777504090,
+    "update_time": 1777504090,
+    "_id": "doc-b14a5dcf0576373212d8f6eb81f4a79b"
+  },
+  "doc-e0d5989261f7edbddde19128152f7c74": {
+    "relation_pairs": [
+      [
+        "Правые",
+        "Ультра левые"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777504095,
+    "update_time": 1777504095,
+    "_id": "doc-e0d5989261f7edbddde19128152f7c74"
+  },
+  "doc-f53762641d2ee3217b2ff76f463d9ed6": {
+    "relation_pairs": [
+      [
+        "Russia",
+        "Польща"
+      ],
+      [
+        "Russia",
+        "Литва"
+      ],
+      [
+        "BILD",
+        "Insa"
+      ],
+      [
+        "BSW",
+        "НАТО"
+      ],
+      [
+        "Ukraine",
+        "Німеччина"
+      ],
+      [
+        "AfD",
+        "НАТО"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "Зелені",
+        "НАТО"
+      ],
+      [
+        "BSW",
+        "Ukraine"
+      ],
+      [
+        "НАТО",
+        "СДПН"
+      ],
+      [
+        "AfD",
+        "Ukraine"
+      ],
+      [
+        "German Bundeswehr",
+        "НАТО"
+      ],
+      [
+        "Ukraine",
+        "СДПН"
+      ],
+      [
+        "PzH 2000",
+        "НАТО"
+      ],
+      [
+        "German Bundeswehr",
+        "PzH 2000"
+      ],
+      [
+        "PzH 2000",
+        "Ukraine"
+      ]
+    ],
+    "count": 16,
+    "create_time": 1777504115,
+    "update_time": 1777504115,
+    "_id": "doc-f53762641d2ee3217b2ff76f463d9ed6"
+  },
+  "doc-6a5a5086371a41f6db882a7202c9eabc": {
+    "relation_pairs": [
+      [
+        "Kremlin",
+        "Известия"
+      ],
+      [
+        "Alice Weidel",
+        "Marcus Frontmaier"
+      ],
+      [
+        "AfD",
+        "Tino Chrupalla"
+      ],
+      [
+        "Marcus Frontmaier",
+        "Известия"
+      ],
+      [
+        "AfD",
+        "t-online"
+      ],
+      [
+        "AfD",
+        "Marcus Frontmaier"
+      ],
+      [
+        "Baden-Württemberg",
+        "Marcus Frontmaier"
+      ],
+      [
+        "Bundestag",
+        "Marcus Frontmaier"
+      ],
+      [
+        "AfD",
+        "Ulrich Ziegmund"
+      ],
+      [
+        "Saxony-Anhalt",
+        "Ulrich Ziegmund"
+      ]
+    ],
+    "count": 10,
+    "create_time": 1777504133,
+    "update_time": 1777504133,
+    "_id": "doc-6a5a5086371a41f6db882a7202c9eabc"
+  },
+  "doc-6b6575a8c3bfb0cbceb16d1b8bcd6767": {
+    "relation_pairs": [
+      [
+        "Alternative für Deutschland",
+        "Federal Republic"
+      ],
+      [
+        "European Union",
+        "Merz"
+      ],
+      [
+        "Alternative für Deutschland",
+        "Merz"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777504139,
+    "update_time": 1777504139,
+    "_id": "doc-6b6575a8c3bfb0cbceb16d1b8bcd6767"
+  },
+  "doc-92844413dd098c6870c624e615a2accb": {
+    "relation_pairs": [
+      [
+        "AfD",
+        "Russia"
+      ],
+      [
+        "Istanbul Agreement",
+        "Zelensky"
+      ],
+      [
+        "Alice Weidel",
+        "Zelensky"
+      ],
+      [
+        "Russia",
+        "Western states"
+      ],
+      [
+        "Great Britain",
+        "Istanbul Agreement"
+      ],
+      [
+        "AfD",
+        "Alice Weidel"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "AfD",
+        "Ukraine"
+      ],
+      [
+        "Alice Weidel",
+        "Great Britain"
+      ]
+    ],
+    "count": 9,
+    "create_time": 1777504152,
+    "update_time": 1777504152,
+    "_id": "doc-92844413dd098c6870c624e615a2accb"
+  },
+  "doc-a1a356985345a203c25a5c607675793d": {
+    "relation_pairs": [
+      [
+        "Boer",
+        "Sudáfrica"
+      ],
+      [
+        "EFF",
+        "Julius Malema"
+      ],
+      [
+        "Boer",
+        "EFF"
+      ],
+      [
+        "Boer",
+        "Julius Malema"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777504161,
+    "update_time": 1777504161,
+    "_id": "doc-a1a356985345a203c25a5c607675793d"
+  },
+  "doc-798d63d30f88e78402c9f686b948dc0e": {
+    "relation_pairs": [
+      [
+        "Copyright Act of 1976",
+        "Fair Use"
+      ],
+      [
+        "Fair Use",
+        "Meta"
+      ],
+      [
+        "Copyright Act of 1976",
+        "Section 107"
+      ],
+      [
+        "Meta",
+        "Section 107"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777504168,
+    "update_time": 1777504168,
+    "_id": "doc-798d63d30f88e78402c9f686b948dc0e"
+  }
+}

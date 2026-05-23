@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T21:13:20.452796+00:00",
+  "provenance": {
+    "channel_name": "Корея",
+    "channel_id": 3215620297,
+    "message_id": 7,
+    "date": "2025-12-18T15:01:23+00:00",
+    "post_url": "https://t.me/c/3215620297/7",
+    "normalized_file": "output\\normalized\\Корея\\7.txt",
+    "meta_file": "output\\normalized\\Корея\\7.meta.json",
+    "is_forward": true,
+    "forward_from": "Пхеньянська Правда🇺🇦"
+  },
+  "content_type": "video_native",
+  "triage": "keep",
+  "triage_reason": "Native video has useful caption text",
+  "language": "ru",
+  "summary": "",
+  "key_facts": [],
+  "entities": {
+    "people": [],
+    "organizations": [],
+    "countries": [],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": false,
+    "has_video": true,
+    "video_type": "telegram_native",
+    "broll_potential": "unknown",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Пхеньянська Правда🇺🇦",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Корея | Дата: 2025-12-18 15:01 | Пост: https://t.me/c/3215620297/7]\n\nИсточник: Пхеньянська Правда🇺🇦",
+  "search_text": "[Канал: Корея | Дата: 2025-12-18 15:01 | Пост: https://t.me/c/3215620297/7]\n\nИсточник: Пхеньянська Правда🇺🇦\n\nТип контента: video_native"
+}
