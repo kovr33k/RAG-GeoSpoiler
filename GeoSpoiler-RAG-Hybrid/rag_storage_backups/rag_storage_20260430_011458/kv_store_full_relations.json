@@ -1,0 +1,1506 @@
+{
+  "doc-882de6693e8c9fb207f57f61323d2d4e": {
+    "relation_pairs": [
+      [
+        "Президент Кубы",
+        "США"
+      ],
+      [
+        "Протесты на Кубе",
+        "Электричество"
+      ],
+      [
+        "Куба",
+        "Протесты на Кубе"
+      ],
+      [
+        "Ateo Blacked",
+        "Телеграм"
+      ],
+      [
+        "Коммунистическая партия Кубы",
+        "Протесты на Кубе"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777417869,
+    "update_time": 1777417869,
+    "_id": "doc-882de6693e8c9fb207f57f61323d2d4e"
+  },
+  "doc-7febacd6fb43b6f3f5d322062ffa2c70": {
+    "relation_pairs": [
+      [
+        "Берегова охорона США",
+        "Російський нафтовий танкер"
+      ],
+      [
+        "NYT",
+        "Берегова охорона США"
+      ],
+      [
+        "Куба",
+        "Російський нафтовий танкер"
+      ],
+      [
+        "Енергетична блокада",
+        "Куба"
+      ],
+      [
+        "Куба",
+        "Мінфін США"
+      ],
+      [
+        "Дональд Трамп",
+        "Шрайк Ньюс"
+      ],
+      [
+        "Дональд Трамп",
+        "Росія"
+      ],
+      [
+        "Дональд Трамп",
+        "Куба"
+      ]
+    ],
+    "count": 8,
+    "create_time": 1777417889,
+    "update_time": 1777417889,
+    "_id": "doc-7febacd6fb43b6f3f5d322062ffa2c70"
+  },
+  "doc-133f2ad7358431230c033d73c3e53653": {
+    "relation_pairs": [
+      [
+        "Мілітаризація Європи",
+        "Ґрета Тунберг"
+      ],
+      [
+        "MonoBase",
+        "Останній Капіталіст"
+      ],
+      [
+        "Італійські ультраліві союзники",
+        "Мілітаризація Європи"
+      ],
+      [
+        "ЄС",
+        "Переозброєння ЄС"
+      ],
+      [
+        "Європейські країни",
+        "Україна"
+      ],
+      [
+        "Італійські ультраліві союзники",
+        "Ґрета Тунберг"
+      ],
+      [
+        "Мілітаризація Європи",
+        "Останній Капіталіст"
+      ],
+      [
+        "Останній Капіталіст",
+        "Ґрета Тунберг"
+      ]
+    ],
+    "count": 8,
+    "create_time": 1777417946,
+    "update_time": 1777417946,
+    "_id": "doc-133f2ad7358431230c033d73c3e53653"
+  },
+  "doc-8f4e07ad069c4a993d91e95d299a0bba": {
+    "relation_pairs": [
+      [
+        "АдГ",
+        "Опрос"
+      ],
+      [
+        "Опрос",
+        "Социал-демократы"
+      ],
+      [
+        "Германия",
+        "Опрос"
+      ],
+      [
+        "Зеленые",
+        "Опрос"
+      ],
+      [
+        "Левые",
+        "Опрос"
+      ],
+      [
+        "Бундесвер",
+        "Украина"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1777417956,
+    "update_time": 1777417956,
+    "_id": "doc-8f4e07ad069c4a993d91e95d299a0bba"
+  },
+  "doc-0d6051cb10e0c5daad1afed76665c5c6": {
+    "relation_pairs": [
+      [
+        "Путин",
+        "Ультралевые"
+      ],
+      [
+        "2026–2030 Military Plan",
+        "Путин"
+      ],
+      [
+        "2026–2030 Military Plan",
+        "Белоусов"
+      ],
+      [
+        "Путин",
+        "Россия"
+      ],
+      [
+        "Исторические земли",
+        "СВО"
+      ],
+      [
+        "Белоусов",
+        "Путин"
+      ],
+      [
+        "2026–2030 Military Plan",
+        "Украина"
+      ],
+      [
+        "Ультралевые",
+        "Ультраправые"
+      ],
+      [
+        "НАТО",
+        "Россия"
+      ],
+      [
+        "Буферная зона безопасности",
+        "Россия"
+      ],
+      [
+        "Россия",
+        "Украина"
+      ],
+      [
+        "Исторические земли",
+        "Россия"
+      ],
+      [
+        "Путин",
+        "Ультраправые"
+      ],
+      [
+        "2026–2030 Military Plan",
+        "Буферная зона безопасности"
+      ],
+      [
+        "2026–2030 Military Plan",
+        "СВО"
+      ],
+      [
+        "НАТО",
+        "Украина"
+      ],
+      [
+        "Россия",
+        "СВО"
+      ]
+    ],
+    "count": 17,
+    "create_time": 1777417991,
+    "update_time": 1777417991,
+    "_id": "doc-0d6051cb10e0c5daad1afed76665c5c6"
+  },
+  "doc-119e506dfe6a156b8b2b3e88680a2a88": {
+    "relation_pairs": [
+      [
+        "Грета Тумберг",
+        "Иран"
+      ],
+      [
+        "Западные леваки",
+        "Иран"
+      ],
+      [
+        "Западная культура",
+        "Ультра-левые взгляды и идеи"
+      ],
+      [
+        "Сионизм",
+        "Ультра-левые взгляды и идеи"
+      ],
+      [
+        "Западные леваки",
+        "Ультра-левые взгляды и идеи"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777418002,
+    "update_time": 1777418002,
+    "_id": "doc-119e506dfe6a156b8b2b3e88680a2a88"
+  },
+  "doc-7e7e6233d3ccb1e849c23b6aacfb3a1e": {
+    "relation_pairs": [
+      [
+        "https://t.me/c/3299898370/6",
+        "Ультра левые и ультра правые"
+      ],
+      [
+        "https://t.me/c/3299898370/6",
+        "Последний абзац"
+      ],
+      [
+        "2026-01-14",
+        "https://t.me/c/3299898370/6"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777418010,
+    "update_time": 1777418010,
+    "_id": "doc-7e7e6233d3ccb1e849c23b6aacfb3a1e"
+  },
+  "doc-a32ffbd27b462eeb182b0f3fd21bfa85": {
+    "relation_pairs": [
+      [
+        "Resurgam",
+        "ResurgamHub"
+      ],
+      [
+        "Resurgam",
+        "Ukraine"
+      ],
+      [
+        "ICEYE",
+        "Sweden"
+      ],
+      [
+        "Moldova",
+        "Russia"
+      ],
+      [
+        "United States",
+        "Viktor Orbán"
+      ],
+      [
+        "Russian Shadow Fleet",
+        "United States"
+      ],
+      [
+        "Resurgam",
+        "Russia"
+      ],
+      [
+        "RZhD",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "United States"
+      ],
+      [
+        "Russian Shadow Fleet",
+        "Venezuela"
+      ],
+      [
+        "Gazprom",
+        "Russia"
+      ],
+      [
+        "Donald Trump",
+        "Greenland"
+      ],
+      [
+        "Bella 1",
+        "Sophia"
+      ],
+      [
+        "Russia",
+        "Viktor Orbán"
+      ]
+    ],
+    "count": 14,
+    "create_time": 1777418036,
+    "update_time": 1777418036,
+    "_id": "doc-a32ffbd27b462eeb182b0f3fd21bfa85"
+  },
+  "doc-30252879d7bf3d7a04d93f59857a7dc7": {
+    "relation_pairs": [
+      [
+        "Trump",
+        "Venezuela"
+      ],
+      [
+        "Alice Weidel",
+        "Putin"
+      ],
+      [
+        "Greenland",
+        "Trump"
+      ],
+      [
+        "Alice Weidel",
+        "Trump"
+      ],
+      [
+        "Clash Report",
+        "Telegram Channel"
+      ],
+      [
+        "Alice Weidel",
+        "Telegram Channel"
+      ],
+      [
+        "AfD",
+        "Alice Weidel"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777418045,
+    "update_time": 1777418045,
+    "_id": "doc-30252879d7bf3d7a04d93f59857a7dc7"
+  },
+  "doc-b14a5dcf0576373212d8f6eb81f4a79b": {
+    "relation_pairs": [
+      [
+        "Александр Дугин",
+        "Казахстан"
+      ],
+      [
+        "Александр Дугин",
+        "ЕС"
+      ],
+      [
+        "Ateo Breaking",
+        "Телеграм"
+      ],
+      [
+        "Александр Дугин",
+        "США"
+      ],
+      [
+        "ЕС",
+        "Русский мир"
+      ],
+      [
+        "Александр Дугин",
+        "Русский мир"
+      ],
+      [
+        "Александр Дугин",
+        "Армения"
+      ],
+      [
+        "Русский мир",
+        "США"
+      ],
+      [
+        "Азербайджан",
+        "Александр Дугин"
+      ],
+      [
+        "Александр Дугин",
+        "Узбекистан"
+      ],
+      [
+        "Александр Дугин",
+        "Грузия"
+      ]
+    ],
+    "count": 11,
+    "create_time": 1777418085,
+    "update_time": 1777418085,
+    "_id": "doc-b14a5dcf0576373212d8f6eb81f4a79b"
+  },
+  "doc-e0d5989261f7edbddde19128152f7c74": {
+    "relation_pairs": [
+      [
+        "https://t.me/c/3299898370/11",
+        "Ультра левые"
+      ],
+      [
+        "2026-02-09 19:05",
+        "https://t.me/c/3299898370/11"
+      ],
+      [
+        "Ультра левые",
+        "Ультра правые"
+      ],
+      [
+        "https://t.me/c/3299898370/11",
+        "Ультра правые"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777418094,
+    "update_time": 1777418094,
+    "_id": "doc-e0d5989261f7edbddde19128152f7c74"
+  },
+  "doc-6a5a5086371a41f6db882a7202c9eabc": {
+    "relation_pairs": [
+      [
+        "AfD",
+        "Bundestag"
+      ],
+      [
+        "AfD",
+        "Nepotism Scandal"
+      ],
+      [
+        "Bundestag",
+        "Ulrich Ziegmund"
+      ],
+      [
+        "Bundestag",
+        "Tino Chrupalla"
+      ],
+      [
+        "Bundestag",
+        "Marcus Frontmayr"
+      ],
+      [
+        "Nepotism Scandal",
+        "Ulrich Ziegmund"
+      ],
+      [
+        "Nepotism Scandal",
+        "Tino Chrupalla"
+      ],
+      [
+        "Nepotism Scandal",
+        "t-online"
+      ],
+      [
+        "Baden-Württemberg",
+        "Marcus Frontmayr"
+      ],
+      [
+        "Izvestia",
+        "Marcus Frontmayr"
+      ],
+      [
+        "Marcus Frontmayr",
+        "Nepotism Scandal"
+      ],
+      [
+        "Saxony-Anhalt",
+        "Ulrich Ziegmund"
+      ],
+      [
+        "Saxony",
+        "Tino Chrupalla"
+      ]
+    ],
+    "count": 13,
+    "create_time": 1777418151,
+    "update_time": 1777418151,
+    "_id": "doc-6a5a5086371a41f6db882a7202c9eabc"
+  },
+  "doc-6b6575a8c3bfb0cbceb16d1b8bcd6767": {
+    "relation_pairs": [
+      [
+        "European Legacy",
+        "Federal Republic of Germany"
+      ],
+      [
+        "Alternative für Deutschland",
+        "German Chancellor Merz"
+      ],
+      [
+        "Federal Republic of Germany",
+        "German Chancellor Merz"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777418158,
+    "update_time": 1777418158,
+    "_id": "doc-6b6575a8c3bfb0cbceb16d1b8bcd6767"
+  },
+  "doc-92844413dd098c6870c624e615a2accb": {
+    "relation_pairs": [
+      [
+        "Alice Weidel",
+        "German AfD"
+      ],
+      [
+        "Alice Weidel",
+        "Russia"
+      ],
+      [
+        "Alice Weidel",
+        "Zelensky"
+      ],
+      [
+        "Alice Weidel",
+        "Ukraine"
+      ],
+      [
+        "Istanbul Agreement",
+        "Western States"
+      ],
+      [
+        "2022",
+        "Alice Weidel"
+      ],
+      [
+        "Great Britain",
+        "Istanbul Agreement"
+      ],
+      [
+        "Istanbul Agreement",
+        "Zelensky"
+      ]
+    ],
+    "count": 8,
+    "create_time": 1777418177,
+    "update_time": 1777418177,
+    "_id": "doc-92844413dd098c6870c624e615a2accb"
+  },
+  "doc-c30d101952e0653e54f1513f17bd9893": {
+    "relation_pairs": [
+      [
+        "Germany",
+        "ZDFHEUTE"
+      ],
+      [
+        "MUCRAINE",
+        "YURII_KECHUR"
+      ],
+      [
+        "Far-Left and Far-Right Ideologies",
+        "MUCRAINE"
+      ],
+      [
+        "MUCRAINE",
+        "Ukraine"
+      ],
+      [
+        "Far-Left and Far-Right Ideologies",
+        "ZDFHEUTE"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777418232,
+    "update_time": 1777418232,
+    "_id": "doc-c30d101952e0653e54f1513f17bd9893"
+  },
+  "doc-ddd3b5e7905870192a694879f37ab0b6": {
+    "relation_pairs": [
+      [
+        "Politico",
+        "АдГ"
+      ],
+      [
+        "АдГ",
+        "ЕС"
+      ],
+      [
+        "АдГ",
+        "Балтийское море"
+      ],
+      [
+        "АдГ",
+        "Альтернатива для Германии"
+      ],
+      [
+        "АдГ",
+        "Россия"
+      ],
+      [
+        "Документы ЕС",
+        "Россия"
+      ],
+      [
+        "АдГ",
+        "Украина"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777418255,
+    "update_time": 1777418255,
+    "_id": "doc-ddd3b5e7905870192a694879f37ab0b6"
+  },
+  "doc-03cf47b58bc13f3679c1e0a07f9feaef": {
+    "relation_pairs": [
+      [
+        "Far-Left Fractures",
+        "The Left"
+      ],
+      [
+        "Far-Right Fractures",
+        "Patriots for Europe"
+      ],
+      [
+        "Green Deal",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Europes Fortress",
+        "Tunisia"
+      ],
+      [
+        "Pfizer",
+        "Pfizergate"
+      ],
+      [
+        "Europes Fortress",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Far-Left Fractures",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Israel",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Egypt",
+        "Europes Fortress"
+      ],
+      [
+        "European Parliament",
+        "Far-Left Fractures"
+      ],
+      [
+        "Far-Left Fractures",
+        "Gaza Conflict"
+      ],
+      [
+        "Pfizergate",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Far-Right Fractures",
+        "Green Deal"
+      ],
+      [
+        "European Parliament",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Gaza Conflict",
+        "Israel"
+      ],
+      [
+        "European Parliament",
+        "Far-Right Fractures"
+      ],
+      [
+        "European Commission",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Far-Right Fractures",
+        "Ursula von der Leyen"
+      ],
+      [
+        "European People's Party",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Far-Left Fractures",
+        "Green Deal"
+      ]
+    ],
+    "count": 20,
+    "create_time": 1777418279,
+    "update_time": 1777418279,
+    "_id": "doc-03cf47b58bc13f3679c1e0a07f9feaef"
+  },
+  "doc-c4cb4f939cd316405a3f91efc3e704fa": {
+    "relation_pairs": [
+      [
+        "George Piperea",
+        "July 2025 Motion of Censure"
+      ],
+      [
+        "October 2025 Motion of Censure (Social Policy)",
+        "The Left"
+      ],
+      [
+        "European Commission",
+        "European Parliament"
+      ],
+      [
+        "Motion of Censure",
+        "Patriots for Europe"
+      ],
+      [
+        "Pfizer",
+        "Pfizergate"
+      ],
+      [
+        "Motion of Censure",
+        "Social Democrats"
+      ],
+      [
+        "July 2025 Motion of Censure",
+        "October 2025 Motion of Censure (Trade Policy)"
+      ],
+      [
+        "October 2025 Motion of Censure (Social Policy)",
+        "October 2025 Motion of Censure (Trade Policy)"
+      ],
+      [
+        "Liberals",
+        "Motion of Censure"
+      ],
+      [
+        "Brussels",
+        "January 2026 Motion of Censure"
+      ],
+      [
+        "Pfizer",
+        "Ursula von der Leyen"
+      ],
+      [
+        "European Parliament",
+        "Motion of Censure"
+      ],
+      [
+        "Conflict in Gaza",
+        "October 2025 Motion of Censure (Social Policy)"
+      ],
+      [
+        "Brussels",
+        "Ursula von der Leyen"
+      ],
+      [
+        "January 2026 Motion of Censure",
+        "October 2025 Motion of Censure (Trade Policy)"
+      ],
+      [
+        "January 2026 Motion of Censure",
+        "Liga"
+      ],
+      [
+        "October 2025 Motion of Censure (Trade Policy)",
+        "Patriots for Europe"
+      ],
+      [
+        "European Conservatives and Reformists",
+        "July 2025 Motion of Censure"
+      ],
+      [
+        "January 2026 Motion of Censure",
+        "Patriots for Europe"
+      ],
+      [
+        "July 2025 Motion of Censure",
+        "October 2025 Motion of Censure (Social Policy)"
+      ],
+      [
+        "European Commission",
+        "Motion of Censure"
+      ],
+      [
+        "Motion of Censure",
+        "The Left"
+      ],
+      [
+        "Mercosur",
+        "October 2025 Motion of Censure (Trade Policy)"
+      ],
+      [
+        "European Commission",
+        "Ursula von der Leyen"
+      ],
+      [
+        "European People's Party",
+        "Motion of Censure"
+      ],
+      [
+        "Jacques Santer",
+        "Motion of Censure"
+      ],
+      [
+        "Brussels",
+        "European Parliament"
+      ],
+      [
+        "Motion of Censure",
+        "Ursula von der Leyen"
+      ],
+      [
+        "July 2025 Motion of Censure",
+        "Pfizergate"
+      ],
+      [
+        "European Conservatives and Reformists",
+        "Motion of Censure"
+      ]
+    ],
+    "count": 30,
+    "create_time": 1777418928,
+    "update_time": 1777418928,
+    "_id": "doc-c4cb4f939cd316405a3f91efc3e704fa"
+  },
+  "doc-937369d27df806c42397289db7f7a715": {
+    "relation_pairs": [
+      [
+        "Atomwaffen Division",
+        "Hamas"
+      ],
+      [
+        "Militant Accelerationism",
+        "Terrorgram-сцена"
+      ],
+      [
+        "2025 SAFE Report",
+        "Germany"
+      ],
+      [
+        "Baden-Württemberg",
+        "SAFE"
+      ],
+      [
+        "Atomwaffen Division",
+        "Militant Accelerationism"
+      ],
+      [
+        "2025 SAFE Report",
+        "Terrorgram-сцена"
+      ],
+      [
+        "Atomwaffen Division",
+        "Terrorgram-сцена"
+      ],
+      [
+        "2025 SAFE Report",
+        "Atomwaffen Division"
+      ],
+      [
+        "2025 SAFE Report",
+        "Pandemic Period"
+      ],
+      [
+        "Halle",
+        "Stefan Balliet"
+      ],
+      [
+        "Germany",
+        "Pandemic Period"
+      ],
+      [
+        "Atomwaffen Division",
+        "АдГ"
+      ],
+      [
+        "Terrorgram-сцена",
+        "White Sharia"
+      ],
+      [
+        "Lone Actor Strategy",
+        "Terrorgram-сцена"
+      ],
+      [
+        "Atomwaffen Division",
+        "Stefan Balliet"
+      ],
+      [
+        "Atomwaffen Division",
+        "ISIS"
+      ],
+      [
+        "Al-Qaeda",
+        "Atomwaffen Division"
+      ],
+      [
+        "Saints",
+        "Terrorgram-сцена"
+      ],
+      [
+        "Terrorgram-сцена",
+        "White Jihad"
+      ]
+    ],
+    "count": 19,
+    "create_time": 1777419335,
+    "update_time": 1777419335,
+    "_id": "doc-937369d27df806c42397289db7f7a715"
+  },
+  "doc-ea3780ab210d39afa0a450b3db57d0d8": {
+    "relation_pairs": [
+      [
+        "Белый джихад",
+        "Социальные низы"
+      ],
+      [
+        "The Turner Diaries",
+        "Белый джихад"
+      ],
+      [
+        "Белый джихад",
+        "Подростки"
+      ],
+      [
+        "Militant Accelerationism",
+        "Игра престолов"
+      ],
+      [
+        "Поступь Астреи",
+        "Ультра левые и ультра правые"
+      ],
+      [
+        "Белый джихад",
+        "Неонацизм"
+      ],
+      [
+        "Siege",
+        "Белый джихад"
+      ],
+      [
+        "Акселерационизм",
+        "Белый джихад"
+      ],
+      [
+        "Белый джихад",
+        "Инцелы"
+      ],
+      [
+        "Акселерационизм",
+        "Неонацизм"
+      ],
+      [
+        "Белый джихад",
+        "Запад"
+      ],
+      [
+        "Белый джихад",
+        "Игра престолов"
+      ],
+      [
+        "Белый джихад",
+        "Школьники"
+      ],
+      [
+        "Militant Accelerationism",
+        "Белый джихад"
+      ]
+    ],
+    "count": 14,
+    "create_time": 1777419683,
+    "update_time": 1777419683,
+    "_id": "doc-ea3780ab210d39afa0a450b3db57d0d8"
+  },
+  "doc-f99063df51483d8820fc8acb9aec543f": {
+    "relation_pairs": [
+      [
+        "Cumulative Extremism",
+        "Fused Extremism"
+      ],
+      [
+        "Jihadists",
+        "Ultrarightists"
+      ],
+      [
+        "Are Martyrdom Operations Lawful According to the Quran and Sunnah?",
+        "David Myatt"
+      ],
+      [
+        "Aryan Nations",
+        "Christian Identity"
+      ],
+      [
+        "David Myatt",
+        "White Jihad"
+      ],
+      [
+        "Adolf Hitler",
+        "Johann von Leers"
+      ],
+      [
+        "Gamal Abdel Nasser",
+        "Johann von Leers"
+      ],
+      [
+        "Al-Taqwa Bank",
+        "Switzerland"
+      ],
+      [
+        "Argentina",
+        "Johann von Leers"
+      ],
+      [
+        "Johann von Leers",
+        "Omar Amin"
+      ],
+      [
+        "Al-Qaeda",
+        "Al-Taqwa Bank"
+      ],
+      [
+        "Fused Extremism",
+        "Islamists"
+      ],
+      [
+        "A Practical Guide to Aryan Revolution",
+        "Hamas"
+      ],
+      [
+        "Aryan Nations",
+        "Ministry of Islamic Relations"
+      ],
+      [
+        "United States",
+        "White Jihad"
+      ],
+      [
+        "David Myatt",
+        "Hamas"
+      ],
+      [
+        "Fused Extremism",
+        "White Jihad"
+      ],
+      [
+        "Fused Extremism",
+        "t.me/c/3299898370/23"
+      ],
+      [
+        "Europe",
+        "White Jihad"
+      ],
+      [
+        "Aryan Nations",
+        "David Myatt"
+      ],
+      [
+        "2026-04-14 15:58",
+        "t.me/c/3299898370/23"
+      ],
+      [
+        "Islamists",
+        "Ultrarightists"
+      ],
+      [
+        "Fused Extremism",
+        "Synergistic Extremism"
+      ],
+      [
+        "Composite Violent Extremism",
+        "Fused Extremism"
+      ],
+      [
+        "Are Martyrdom Operations Lawful According to the Quran and Sunnah?",
+        "Hamas"
+      ],
+      [
+        "Al-Taqwa Bank",
+        "Albert Friedrich Huber"
+      ],
+      [
+        "Christian Identity",
+        "The Order"
+      ],
+      [
+        "Al-Qaeda",
+        "Aryan Nations"
+      ],
+      [
+        "Fused Extremism",
+        "Jihadists"
+      ],
+      [
+        "Are Martyrdom Operations Lawful According to the Quran and Sunnah?",
+        "Aryan Nations"
+      ],
+      [
+        "t.me/c/3299898370/23",
+        "Поступь Астреи"
+      ],
+      [
+        "A Practical Guide to Aryan Revolution",
+        "David Myatt"
+      ],
+      [
+        "Adolf Eichmann",
+        "François Genoud"
+      ]
+    ],
+    "count": 33,
+    "create_time": 1777419921,
+    "update_time": 1777419921,
+    "_id": "doc-f99063df51483d8820fc8acb9aec543f"
+  },
+  "doc-80faa7ae11aa12f44032a08f0e8863de": {
+    "relation_pairs": [
+      [
+        "Европа",
+        "Кремль"
+      ],
+      [
+        "Европа",
+        "Фицо"
+      ],
+      [
+        "Радев",
+        "Фицо"
+      ],
+      [
+        "Кремль",
+        "Фицо"
+      ],
+      [
+        "Кремль",
+        "Ультраправые антиукраинские силы"
+      ],
+      [
+        "Ультраправые антиукраинские силы",
+        "Фицо"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1777419931,
+    "update_time": 1777419931,
+    "_id": "doc-80faa7ae11aa12f44032a08f0e8863de"
+  },
+  "doc-ddc345cdf31fa3a21cd3d3a41bd346a5": {
+    "relation_pairs": [
+      [
+        "Бйорн Хьоке",
+        "Конфлікт між Лукассеном і Хьоке"
+      ],
+      [
+        "Бйорн Хьоке",
+        "Рюдігер Лукассен"
+      ],
+      [
+        "Конфлікт між Моосдорфом і Фронмаєром",
+        "Маркус Фронмаєр"
+      ],
+      [
+        "Конфлікт між Лукассеном і Хьоке",
+        "Рюдігер Лукассен"
+      ],
+      [
+        "Маркус Фронмаєр",
+        "Республіканці США"
+      ],
+      [
+        "Вайдель",
+        "Маркус Фронмаєр"
+      ],
+      [
+        "Гнєсінська музична академія",
+        "Маттіас Моосдорф"
+      ],
+      [
+        "Маркус Фронмаєр",
+        "Маттіас Моосдорф"
+      ],
+      [
+        "Конфлікт між Моосдорфом і Фронмаєром",
+        "Маттіас Моосдорф"
+      ]
+    ],
+    "count": 9,
+    "create_time": 1777419955,
+    "update_time": 1777419955,
+    "_id": "doc-ddc345cdf31fa3a21cd3d3a41bd346a5"
+  },
+  "doc-c5ff3150becdc95a13382b5166108426": {
+    "relation_pairs": [
+      [
+        "Tariff Implementation Against Oil Suppliers to Cuba",
+        "United States"
+      ],
+      [
+        "Cuba",
+        "Tariff Implementation Against Oil Suppliers to Cuba"
+      ],
+      [
+        "Ivan Dyakonov",
+        "Tariff Implementation Against Oil Suppliers to Cuba"
+      ],
+      [
+        "Cuba",
+        "United States"
+      ],
+      [
+        "Tariff Implementation Against Oil Suppliers to Cuba",
+        "White House"
+      ],
+      [
+        "Donald Trump",
+        "United States"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1777422363,
+    "update_time": 1777422363,
+    "_id": "doc-c5ff3150becdc95a13382b5166108426"
+  },
+  "doc-81793c3cdcbfbe89f795246759446720": {
+    "relation_pairs": [
+      [
+        "1959 революція",
+        "США"
+      ],
+      [
+        "Гавана",
+        "Куба"
+      ],
+      [
+        "Starlink",
+        "США"
+      ],
+      [
+        "США",
+        "Тарас Григорович"
+      ],
+      [
+        "Держдепартамент США",
+        "Рауль Гільєрмо Родрігес Кастро"
+      ],
+      [
+        "США",
+        "Торгове ембарго"
+      ],
+      [
+        "1959 революція",
+        "Торгове ембарго"
+      ],
+      [
+        "2016 візит Барака Обами",
+        "Куба"
+      ],
+      [
+        "Держдепартамент США",
+        "Куба"
+      ],
+      [
+        "Куба",
+        "США"
+      ],
+      [
+        "Axios",
+        "Тарас Григорович"
+      ],
+      [
+        "Axios",
+        "Держдепартамент США"
+      ]
+    ],
+    "count": 12,
+    "create_time": 1777422365,
+    "update_time": 1777422365,
+    "_id": "doc-81793c3cdcbfbe89f795246759446720"
+  },
+  "doc-ce903237a35972b170402bb380ff44cb": {
+    "relation_pairs": [
+      [
+        "Disko Bay",
+        "Гренландія"
+      ],
+      [
+        "Bloomberg",
+        "Trumps Greenland Play Is a Step Too Far for Europes Far Right"
+      ],
+      [
+        "Дональд Трамп",
+        "Франція"
+      ],
+      [
+        "Ilulissat",
+        "Гренландія"
+      ],
+      [
+        "Disko Bay",
+        "Trumps Greenland Play Is a Step Too Far for Europes Far Right"
+      ],
+      [
+        "Дональд Трамп",
+        "Словаччина"
+      ],
+      [
+        "Дональд Трамп",
+        "Ніколас Мадуро"
+      ],
+      [
+        "Ilulissat",
+        "Trumps Greenland Play Is a Step Too Far for Europes Far Right"
+      ],
+      [
+        "Bloomberg",
+        "Juliette Pavy"
+      ],
+      [
+        "Гренландія",
+        "Дональд Трамп"
+      ],
+      [
+        "Європейські ультраправі партії",
+        "Дональд Трамп"
+      ],
+      [
+        "Дональд Трамп",
+        "Німеччина"
+      ]
+    ],
+    "count": 12,
+    "create_time": 1777422383,
+    "update_time": 1777422383,
+    "_id": "doc-ce903237a35972b170402bb380ff44cb"
+  },
+  "doc-f53762641d2ee3217b2ff76f463d9ed6": {
+    "relation_pairs": [
+      [
+        "BILD",
+        "Insa"
+      ],
+      [
+        "Lithuania",
+        "Russia"
+      ],
+      [
+        "Poland",
+        "Russia"
+      ],
+      [
+        "Greens",
+        "Russian Aggression"
+      ],
+      [
+        "Eastern Europe",
+        "Military Deployment"
+      ],
+      [
+        "Eastern Europe",
+        "PzH 2000"
+      ],
+      [
+        "BSW",
+        "Ukraine"
+      ],
+      [
+        "Russian Aggression",
+        "SPD"
+      ],
+      [
+        "Bundeswehr",
+        "PzH 2000"
+      ],
+      [
+        "AfD",
+        "Ukraine"
+      ],
+      [
+        "Germany",
+        "Putin"
+      ],
+      [
+        "Germany",
+        "Ukraine"
+      ],
+      [
+        "SPD",
+        "Ukraine"
+      ],
+      [
+        "Military Deployment",
+        "Ukraine"
+      ],
+      [
+        "Germany",
+        "NATO"
+      ],
+      [
+        "BSW",
+        "Russian Aggression"
+      ],
+      [
+        "AfD",
+        "Russian Aggression"
+      ]
+    ],
+    "count": 17,
+    "create_time": 1777422408,
+    "update_time": 1777422408,
+    "_id": "doc-f53762641d2ee3217b2ff76f463d9ed6"
+  },
+  "doc-a1a356985345a203c25a5c607675793d": {
+    "relation_pairs": [
+      [
+        "Julius Malema",
+        "South Africa"
+      ],
+      [
+        "Boer",
+        "South Africa"
+      ],
+      [
+        "EFF",
+        "Julius Malema"
+      ],
+      [
+        "Julius Malema",
+        "Kill the Boer"
+      ],
+      [
+        "Julius Malema",
+        "Trump"
+      ],
+      [
+        "Boer",
+        "Kill the Boer"
+      ],
+      [
+        "Instagram Reel DT_BzWeD9SF",
+        "Telegram Channel \"Ультра левые и ультра правые\""
+      ],
+      [
+        "Instagram Reel DT_BzWeD9SF",
+        "Ultra Left and Ultra Right Channel"
+      ],
+      [
+        "Instagram Reel DT_BzWeD9SF",
+        "Kill the Boer"
+      ],
+      [
+        "Javier Milei",
+        "Julius Malema"
+      ],
+      [
+        "Derecha Libertaria",
+        "Instagram Reel DT_BzWeD9SF"
+      ]
+    ],
+    "count": 11,
+    "create_time": 1777422432,
+    "update_time": 1777422432,
+    "_id": "doc-a1a356985345a203c25a5c607675793d"
+  },
+  "doc-798d63d30f88e78402c9f686b948dc0e": {
+    "relation_pairs": [
+      [
+        "Fair Use (Section 107, Copyright Act of 1976)",
+        "https://t.me/c/3299898370/17"
+      ],
+      [
+        "Metas Community Standards",
+        "https://www.instagram.com/reel/DVRCLW0DZT9/?igsh=cWI0ejYzYnZvMzVi"
+      ],
+      [
+        "https://www.instagram.com/reel/DVRCLW0DZT9/?igsh=cWI0ejYzYnZvMzVi",
+        "Ультра левые и ультра правые"
+      ],
+      [
+        "History repeats…",
+        "Ультра левые и ультра правые"
+      ],
+      [
+        "https://t.me/c/3299898370/17",
+        "Ультра левые и ультра правые"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777422445,
+    "update_time": 1777422445,
+    "_id": "doc-798d63d30f88e78402c9f686b948dc0e"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T21:29:37.281177+00:00",
+  "provenance": {
+    "channel_name": "Ультра левые и ультра правые",
+    "channel_id": 3299898370,
+    "message_id": 6,
+    "date": "2026-01-14T17:06:29+00:00",
+    "post_url": "https://t.me/c/3299898370/6",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\6.txt",
+    "meta_file": "output\\normalized\\Ультра левые и ультра правые\\6.meta.json",
+    "is_forward": false,
+    "forward_from": ""
+  },
+  "content_type": "quote",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "",
+  "key_facts": [],
+  "entities": {
+    "people": [],
+    "organizations": [],
+    "countries": [],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": false,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "unknown",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Ультра левые и ультра правые",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Ультра левые и ультра правые | Дата: 2026-01-14 17:06 | Пост: https://t.me/c/3299898370/6]\n\nИсточник: Ультра левые и ультра правые",
+  "search_text": "[Канал: Ультра левые и ультра правые | Дата: 2026-01-14 17:06 | Пост: https://t.me/c/3299898370/6]\n\nИсточник: Ультра левые и ультра правые\n\nТип контента: quote"
+}

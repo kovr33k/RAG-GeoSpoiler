@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T20:20:13.155018+00:00",
+  "provenance": {
+    "channel_name": "Венгрия Словакия",
+    "channel_id": 3328128766,
+    "message_id": 183,
+    "date": "2026-04-13T16:29:49+00:00",
+    "post_url": "https://t.me/c/3328128766/183",
+    "normalized_file": "output\\normalized\\Венгрия Словакия\\183.txt",
+    "meta_file": "output\\normalized\\Венгрия Словакия\\183.meta.json",
+    "is_forward": false,
+    "forward_from": ""
+  },
+  "content_type": "broll_candidate",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Изображение недоступно, описание не может быть сгенерировано из-за отсутствия настроек Vision API.",
+  "key_facts": [
+    {
+      "text": "Изображение недоступно из-за ненастроенной Vision API.",
+      "claim_type": "fact"
+    }
+  ],
+  "entities": {
+    "people": [],
+    "organizations": [],
+    "countries": [],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": true,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "Нет визуального контента для анализа; требуется настройка Vision API для извлечения описания изображения.",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Венгрия Словакия",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Венгрия Словакия | Дата: 2026-04-13 16:29 | Пост: https://t.me/c/3328128766/183]\n\n\nИзображение недоступно, описание не может быть сгенерировано из-за отсутствия настроек Vision API.\n\nКлючевые факты:\n- Изображение недоступно из-за ненастроенной Vision API. [fact]\n\nИсточник: Венгрия Словакия",
+  "search_text": "[Канал: Венгрия Словакия | Дата: 2026-04-13 16:29 | Пост: https://t.me/c/3328128766/183]\n\n\nИзображение недоступно, описание не может быть сгенерировано из-за отсутствия настроек Vision API.\n\nКлючевые факты:\n- Изображение недоступно из-за ненастроенной Vision API. [fact]\n\nИсточник: Венгрия Словакия\n\nТип контента: broll_candidate"
+}

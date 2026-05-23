@@ -1,0 +1,24 @@
+{
+  "channel_name": "Венгрия Словакия",
+  "channel_id": 3328128766,
+  "channel_username": "3328128766",
+  "message_id": 140,
+  "date": "2026-04-08T19:42:16+00:00",
+  "post_url": "https://t.me/c/3328128766/140",
+  "is_forward": true,
+  "forward_from_name": "Накипело. Майкл Наки",
+  "forward_from_id": 1136078154,
+  "forward_date": "2026-04-08T16:34:16+00:00",
+  "has_text": true,
+  "has_images": false,
+  "image_count": 0,
+  "has_video": false,
+  "has_voice": false,
+  "has_document": false,
+  "youtube_urls": [
+    "https://youtu.be/lHMJvEPXf0k"
+  ],
+  "instagram_urls": [],
+  "ai_chat_urls": [],
+  "web_urls": []
+}

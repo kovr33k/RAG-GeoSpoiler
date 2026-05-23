@@ -1,0 +1,495 @@
+2026-05-01 00:05:51,160 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:05:51,163 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:05:51,174 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:05:51,175 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:05:51,178 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:05:51,178 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:05:51,195 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:05:51,195 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-05-01 00:05:54,257 [geospoiler.reranker] INFO: Reranker (nim): 25 docs -> 25 candidates -> 20 returned
+2026-05-01 00:06:46,679 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:06:46,679 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:06:46,685 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:06:46,686 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:06:46,687 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:06:46,687 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:06:46,699 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:06:46,699 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-05-01 00:06:48,840 [geospoiler.reranker] INFO: Reranker (nim): 25 docs -> 25 candidates -> 20 returned
+2026-05-01 00:07:30,318 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:07:30,318 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:07:30,327 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:07:30,327 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:07:30,330 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:07:30,331 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:07:30,344 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:07:30,344 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-05-01 00:07:31,521 [geospoiler.reranker] INFO: Reranker (nim): 25 docs -> 25 candidates -> 20 returned
+2026-05-01 00:07:59,497 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:07:59,497 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:07:59,506 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:07:59,507 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:07:59,510 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:07:59,510 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:07:59,518 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:07:59,518 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-05-01 00:08:00,583 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:08:00,584 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:08:00,591 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:08:00,591 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:08:00,593 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:08:00,593 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:08:00,598 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:08:00,598 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-05-01 00:08:01,174 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:08:01,174 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:08:01,182 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:08:01,182 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:08:01,184 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:08:01,184 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:08:01,190 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:08:01,190 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-05-01 00:08:02,226 [geospoiler.reranker] INFO: Reranker (nim): 25 docs -> 25 candidates -> 20 returned
+2026-05-01 00:08:02,365 [geospoiler.reranker] INFO: Reranker (nim): 25 docs -> 25 candidates -> 20 returned
+2026-05-01 00:08:04,940 [geospoiler.reranker] INFO: Reranker (nim): 27 docs -> 27 candidates -> 20 returned
+2026-05-01 00:10:10,446 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:10:10,448 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:10:10,455 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:10:10,459 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:10:10,460 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:10:10,461 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:10:10,474 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:10:10,474 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-05-01 00:10:11,645 [geospoiler.reranker] INFO: Reranker (nim): 25 docs -> 25 candidates -> 20 returned
+2026-05-01 00:10:15,141 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:10:15,142 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:10:15,148 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:10:15,149 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:10:15,151 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:10:15,151 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:10:15,156 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:10:15,156 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-05-01 00:10:16,267 [geospoiler.reranker] INFO: Reranker (nim): 25 docs -> 25 candidates -> 20 returned
+2026-05-01 00:10:19,682 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:10:19,682 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:10:19,690 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:10:19,690 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:10:19,692 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:10:19,692 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:10:19,697 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:10:19,697 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-05-01 00:10:20,899 [geospoiler.reranker] INFO: Reranker (nim): 27 docs -> 27 candidates -> 20 returned
+2026-05-01 00:10:24,363 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:10:24,363 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:10:24,369 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:10:24,369 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:10:24,372 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:10:24,372 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:10:24,379 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:10:24,379 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-05-01 00:10:26,475 [geospoiler.reranker] INFO: Reranker (nim): 26 docs -> 26 candidates -> 20 returned
+2026-05-01 00:10:53,924 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:10:53,925 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:10:53,932 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:10:53,932 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:10:53,933 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:10:53,933 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:10:53,948 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:10:53,949 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-05-01 00:10:55,922 [geospoiler.reranker] INFO: Reranker (nim): 25 docs -> 25 candidates -> 20 returned
+2026-05-01 00:11:16,172 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:11:16,173 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:11:16,181 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:11:16,181 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:11:16,183 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:11:16,183 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:11:16,197 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:11:16,197 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-05-01 00:11:18,947 [geospoiler.reranker] INFO: Reranker (nim): 25 docs -> 25 candidates -> 20 returned
+2026-05-01 00:11:54,066 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:11:54,067 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:11:54,076 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:11:54,076 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:11:54,078 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:11:54,078 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:11:54,093 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:11:54,093 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-05-01 00:11:55,176 [geospoiler.reranker] INFO: Reranker (nim): 27 docs -> 27 candidates -> 20 returned
+2026-05-01 00:11:58,718 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:11:58,718 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:11:58,725 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:11:58,726 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:11:58,727 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:11:58,727 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:11:58,733 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:11:58,734 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 00:12:00,720 [geospoiler.reranker] INFO: Reranker (nim): 29 docs -> 29 candidates -> 20 returned
+2026-05-01 00:12:15,880 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:12:15,881 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:12:15,887 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:12:15,887 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:12:15,889 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:12:15,889 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:12:15,901 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:12:15,901 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-05-01 00:12:16,942 [geospoiler.reranker] INFO: Reranker (nim): 25 docs -> 25 candidates -> 20 returned
+2026-05-01 00:12:20,547 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:12:20,547 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:12:20,554 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:12:20,555 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:12:20,556 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:12:20,556 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:12:20,563 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:12:20,563 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 00:12:22,642 [geospoiler.reranker] INFO: Reranker (nim): 29 docs -> 29 candidates -> 20 returned
+2026-05-01 00:12:37,813 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:12:37,814 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:12:37,821 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:12:37,822 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:12:37,823 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:12:37,824 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:12:37,836 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:12:37,836 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-05-01 00:12:38,880 [geospoiler.reranker] INFO: Reranker (nim): 25 docs -> 25 candidates -> 20 returned
+2026-05-01 00:12:42,310 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:12:42,311 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:12:42,318 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:12:42,318 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:12:42,320 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:12:42,320 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:12:42,327 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:12:42,327 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 00:12:44,338 [geospoiler.reranker] INFO: Reranker (nim): 29 docs -> 29 candidates -> 20 returned
+2026-05-01 00:19:11,024 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:19:11,024 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:19:11,031 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:19:11,032 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:19:11,033 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:19:11,033 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:19:11,046 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:19:11,046 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 00:19:12,107 [geospoiler.reranker] INFO: Reranker (nim): 27 docs -> 27 candidates -> 10 returned
+2026-05-01 00:19:26,143 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:19:26,143 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:19:26,151 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:19:26,151 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:19:26,153 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:19:26,153 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:19:26,166 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:19:26,166 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 00:19:28,515 [geospoiler.reranker] INFO: Reranker (nim): 27 docs -> 27 candidates -> 10 returned
+2026-05-01 00:19:37,269 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:19:37,269 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:19:37,277 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:19:37,277 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:19:37,279 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:19:37,279 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:19:37,292 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:19:37,292 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 00:19:38,406 [geospoiler.reranker] INFO: Reranker (nim): 27 docs -> 27 candidates -> 10 returned
+2026-05-01 00:19:48,911 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:19:48,911 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:19:48,917 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:19:48,918 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:19:48,921 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:19:48,921 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:19:48,936 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:19:48,936 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 00:19:50,004 [geospoiler.reranker] INFO: Reranker (nim): 27 docs -> 27 candidates -> 10 returned
+2026-05-01 00:27:00,564 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:27:00,564 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:27:00,572 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:27:00,572 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:27:00,573 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:27:00,574 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:27:00,584 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:27:00,584 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=naive, rerank=enabled)
+2026-05-01 00:27:01,472 [geospoiler.reranker] INFO: Reranker (nim): 10 docs -> 10 candidates -> 10 returned
+2026-05-01 00:27:08,092 [nano-vectordb] INFO: Load (179, 1024) data
+2026-05-01 00:27:08,093 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-05-01 00:27:08,100 [nano-vectordb] INFO: Load (232, 1024) data
+2026-05-01 00:27:08,100 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-05-01 00:27:08,102 [nano-vectordb] INFO: Load (29, 1024) data
+2026-05-01 00:27:08,102 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-05-01 00:27:08,116 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 00:27:08,116 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=naive, rerank=enabled)
+2026-05-01 00:27:08,971 [geospoiler.reranker] INFO: Reranker (nim): 10 docs -> 10 candidates -> 10 returned
+2026-05-01 01:16:20,627 [geospoiler] INFO: === FULL PIPELINE START ===
+2026-05-01 01:16:20,627 [geospoiler] INFO: === FETCH: Starting Telegram fetch ===
+2026-05-01 01:16:20,646 [telethon.network.mtprotosender] INFO: Connecting to 149.154.167.51:443/TcpFull...
+2026-05-01 01:16:20,685 [telethon.network.mtprotosender] INFO: Connection to 149.154.167.51:443/TcpFull complete!
+2026-05-01 01:16:20,973 [geospoiler.fetcher] INFO: Telegram client connected.
+2026-05-01 01:16:21,087 [geospoiler.fetcher] INFO:   Found channel in folder: Куба (id=3841808641)
+2026-05-01 01:16:21,087 [geospoiler.fetcher] INFO:   Found channel in folder: Ультра левые и ультра правые (id=3299898370)
+2026-05-01 01:16:21,087 [geospoiler.fetcher] INFO: Discovered 2 channel(s) in Telegram folder 'GeoSpoiler'.
+2026-05-01 01:16:21,088 [geospoiler.fetcher] INFO: Fetching from 'Куба' (last_id=0)...
+2026-05-01 01:16:22,138 [geospoiler.fetcher] INFO:   Got 9 new messages from 'Куба'.
+2026-05-01 01:16:22,139 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-01 01:16:22,680 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-01 01:16:23,190 [geospoiler.fetcher] INFO: Fetching from 'Ультра левые и ультра правые' (last_id=0)...
+2026-05-01 01:16:24,252 [geospoiler.fetcher] INFO:   Got 27 new messages from 'Ультра левые и ультра правые'.
+2026-05-01 01:16:24,253 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-01 01:16:24,709 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-01 01:16:25,137 [geospoiler] INFO: === FETCH complete: 30 messages from 2 channels ===
+2026-05-01 01:16:25,137 [telethon.network.mtprotosender] INFO: Disconnecting from 149.154.167.51:443/TcpFull...
+2026-05-01 01:16:25,138 [telethon.network.mtprotosender] INFO: Disconnection from 149.154.167.51:443/TcpFull complete!
+2026-05-01 01:16:25,152 [geospoiler] INFO: === NORMALIZE: Processing messages ===
+2026-05-01 01:16:25,153 [geospoiler] INFO: Processing channel: Куба (5 messages)
+2026-05-01 01:16:25,154 [geospoiler.normalizer] INFO:   Normalized: 5.txt (522 chars)
+2026-05-01 01:16:25,155 [geospoiler.normalizer] INFO:   Normalized: 6.txt (1016 chars)
+2026-05-01 01:16:25,659 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-01 01:16:42,290 [geospoiler.normalizer] INFO:   Normalized: 7.txt (2304 chars)
+2026-05-01 01:16:42,715 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-01 01:17:13,036 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Куба\msg_8 (2).jpg
+2026-05-01 01:17:13,046 [geospoiler.normalizer] INFO:   Normalized: 8.txt (1506 chars)
+2026-05-01 01:17:13,047 [geospoiler.normalizer] INFO:   Normalized: 9.txt (290 chars)
+2026-05-01 01:17:13,075 [geospoiler] INFO: Processing channel: Ультра левые и ультра правые (25 messages)
+2026-05-01 01:17:13,076 [geospoiler.normalizer] INFO:   Normalized: 2.txt (696 chars)
+2026-05-01 01:17:13,077 [geospoiler.normalizer] INFO:   Normalized: 3.txt (473 chars)
+2026-05-01 01:17:13,078 [geospoiler.normalizer] INFO:   Normalized: 4.txt (3774 chars)
+2026-05-01 01:17:13,078 [geospoiler.normalizer] INFO:   Normalized: 5.txt (614 chars)
+2026-05-01 01:17:13,079 [geospoiler.normalizer] INFO:   Normalized: 6.txt (115 chars)
+2026-05-01 01:17:13,080 [geospoiler.normalizer] INFO:   Normalized: 7.txt (2895 chars)
+2026-05-01 01:17:13,080 [geospoiler.normalizer] INFO:   Normalized: 8.txt (447 chars)
+2026-05-01 01:17:13,507 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-01 01:17:23,571 [geospoiler.normalizer] INFO:   Normalized: 9.txt (2258 chars)
+2026-05-01 01:17:23,572 [geospoiler.normalizer] INFO:   Normalized: 10.txt (412 chars)
+2026-05-01 01:17:23,573 [geospoiler.normalizer] INFO:   Normalized: 11.txt (132 chars)
+2026-05-01 01:17:23,991 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-01 01:17:31,028 [geospoiler.normalizer] INFO:   Normalized: 12.txt (2745 chars)
+2026-05-01 01:17:31,029 [geospoiler.normalizer] INFO:   Normalized: 13.txt (1794 chars)
+2026-05-01 01:17:31,030 [geospoiler.normalizer] INFO:   Normalized: 14.txt (525 chars)
+2026-05-01 01:17:31,032 [geospoiler.normalizer] INFO:   Normalized: 15.txt (689 chars)
+2026-05-01 01:17:32,837 [geospoiler.normalizer] INFO:   Normalized: 16.txt (1103 chars)
+2026-05-01 01:17:34,395 [geospoiler.normalizer] INFO:   Normalized: 17.txt (1007 chars)
+2026-05-01 01:17:36,053 [geospoiler.normalizer] INFO:   Normalized: 18.txt (572 chars)
+2026-05-01 01:17:36,053 [geospoiler.normalizer] INFO:   Normalized: 19.txt (573 chars)
+2026-05-01 01:17:36,054 [geospoiler.normalizer] INFO:   Normalized: 20.txt (3688 chars)
+2026-05-01 01:17:36,064 [geospoiler.normalizer] INFO:   Normalized: 21.txt (3419 chars)
+2026-05-01 01:17:36,066 [geospoiler.normalizer] INFO:   Normalized: 22.txt (3556 chars)
+2026-05-01 01:17:36,066 [geospoiler.normalizer] INFO:   Normalized: 23.txt (3379 chars)
+2026-05-01 01:17:36,067 [geospoiler.normalizer] INFO:   Normalized: 24.txt (2162 chars)
+2026-05-01 01:17:36,068 [geospoiler.normalizer] INFO:   Normalized: 25.txt (572 chars)
+2026-05-01 01:17:36,068 [geospoiler.normalizer] INFO:   Normalized: 27.txt (1063 chars)
+2026-05-01 01:17:36,189 [geospoiler] INFO: === NORMALIZE complete: 30 texts normalized ===
+2026-05-01 01:17:36,189 [geospoiler] INFO: === LOAD: Loading into LightRAG ===
+2026-05-01 01:17:36,804 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 0 data
+2026-05-01 01:17:36,805 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 0 data
+2026-05-01 01:17:36,805 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 0 data
+2026-05-01 01:17:36,806 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 01:18:46,763 [geospoiler.loader] INFO:   Inserted progress: 5/30
+2026-05-01 01:20:04,001 [geospoiler.loader] INFO:   Inserted progress: 10/30
+2026-05-01 01:21:44,608 [geospoiler.loader] INFO:   Inserted progress: 15/30
+2026-05-01 01:23:17,221 [geospoiler.loader] INFO:   Inserted progress: 20/30
+2026-05-01 01:24:57,358 [geospoiler.loader] INFO:   Inserted progress: 25/30
+2026-05-01 01:26:39,161 [geospoiler.loader] INFO:   Inserted progress: 30/30
+2026-05-01 01:26:39,161 [geospoiler.loader] INFO: Loading complete: 30/30 texts inserted into LightRAG.
+2026-05-01 01:26:39,394 [geospoiler.loader] INFO: Auto-fixed entity aliases: Nato -> NATO
+2026-05-01 01:26:39,394 [geospoiler] INFO: === AUTO-FIX complete: 1 safe entity merge(s) applied ===
+2026-05-01 01:26:39,394 [geospoiler] INFO: === LOAD complete: 30 texts loaded ===
+2026-05-01 01:26:39,394 [geospoiler] INFO: === FULL PIPELINE COMPLETE ===
+2026-05-01 01:26:43,889 [nano-vectordb] INFO: Load (190, 1024) data
+2026-05-01 01:26:43,890 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 190 data
+2026-05-01 01:26:43,902 [nano-vectordb] INFO: Load (209, 1024) data
+2026-05-01 01:26:43,903 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 209 data
+2026-05-01 01:26:43,911 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-01 01:26:43,911 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-01 01:26:43,959 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 01:26:43,960 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 01:26:46,859 [geospoiler.reranker] INFO: Reranker (nim): 29 docs -> 29 candidates -> 10 returned
+2026-05-01 01:27:01,428 [nano-vectordb] INFO: Load (190, 1024) data
+2026-05-01 01:27:01,428 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 190 data
+2026-05-01 01:27:01,434 [nano-vectordb] INFO: Load (209, 1024) data
+2026-05-01 01:27:01,435 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 209 data
+2026-05-01 01:27:01,436 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-01 01:27:01,437 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-01 01:27:01,460 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 01:27:01,460 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 01:27:05,050 [geospoiler.reranker] INFO: Reranker (nim): 30 docs -> 30 candidates -> 10 returned
+2026-05-01 01:27:18,815 [nano-vectordb] INFO: Load (190, 1024) data
+2026-05-01 01:27:18,815 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 190 data
+2026-05-01 01:27:18,824 [nano-vectordb] INFO: Load (209, 1024) data
+2026-05-01 01:27:18,825 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 209 data
+2026-05-01 01:27:18,826 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-01 01:27:18,827 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-01 01:27:18,849 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 01:27:18,849 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 01:27:21,029 [geospoiler.reranker] INFO: Reranker (nim): 28 docs -> 28 candidates -> 10 returned
+2026-05-01 01:27:33,533 [nano-vectordb] INFO: Load (190, 1024) data
+2026-05-01 01:27:33,534 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 190 data
+2026-05-01 01:27:33,540 [nano-vectordb] INFO: Load (209, 1024) data
+2026-05-01 01:27:33,540 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 209 data
+2026-05-01 01:27:33,542 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-01 01:27:33,542 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-01 01:27:33,562 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 01:27:33,562 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 01:27:35,687 [geospoiler.reranker] INFO: Reranker (nim): 29 docs -> 29 candidates -> 10 returned
+2026-05-01 02:16:33,861 [nano-vectordb] INFO: Load (190, 1024) data
+2026-05-01 02:16:33,861 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 190 data
+2026-05-01 02:16:33,868 [nano-vectordb] INFO: Load (209, 1024) data
+2026-05-01 02:16:33,868 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 209 data
+2026-05-01 02:16:33,870 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-01 02:16:33,870 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-01 02:16:33,885 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 02:16:33,885 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 02:16:35,086 [geospoiler.reranker] INFO: Reranker (nim): 27 docs -> 27 candidates -> 10 returned
+2026-05-01 02:16:59,029 [nano-vectordb] INFO: Load (190, 1024) data
+2026-05-01 02:16:59,029 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 190 data
+2026-05-01 02:16:59,036 [nano-vectordb] INFO: Load (209, 1024) data
+2026-05-01 02:16:59,036 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 209 data
+2026-05-01 02:16:59,038 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-01 02:16:59,038 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-01 02:16:59,055 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 02:16:59,055 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 02:17:00,101 [geospoiler.reranker] INFO: Reranker (nim): 26 docs -> 26 candidates -> 10 returned
+2026-05-01 02:17:29,193 [nano-vectordb] INFO: Load (190, 1024) data
+2026-05-01 02:17:29,194 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 190 data
+2026-05-01 02:17:29,199 [nano-vectordb] INFO: Load (209, 1024) data
+2026-05-01 02:17:29,199 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 209 data
+2026-05-01 02:17:29,200 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-01 02:17:29,200 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-01 02:17:29,215 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 02:17:29,215 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 02:17:31,633 [geospoiler.reranker] INFO: Reranker (nim): 24 docs -> 24 candidates -> 10 returned
+2026-05-01 02:20:06,701 [nano-vectordb] INFO: Load (190, 1024) data
+2026-05-01 02:20:06,701 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 190 data
+2026-05-01 02:20:06,709 [nano-vectordb] INFO: Load (209, 1024) data
+2026-05-01 02:20:06,710 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 209 data
+2026-05-01 02:20:06,711 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-01 02:20:06,712 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-01 02:20:06,724 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 02:20:06,724 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 02:20:09,740 [geospoiler.reranker] INFO: Reranker (nim): 25 docs -> 25 candidates -> 10 returned
+2026-05-01 03:12:37,889 [geospoiler] INFO: === FULL PIPELINE START ===
+2026-05-01 03:12:37,889 [geospoiler] INFO: === FETCH: Starting Telegram fetch ===
+2026-05-01 03:12:37,900 [telethon.network.mtprotosender] INFO: Connecting to 149.154.167.51:443/TcpFull...
+2026-05-01 03:12:37,932 [telethon.network.mtprotosender] INFO: Connection to 149.154.167.51:443/TcpFull complete!
+2026-05-01 03:12:38,179 [geospoiler.fetcher] INFO: Telegram client connected.
+2026-05-01 03:12:38,275 [geospoiler.fetcher] INFO:   Found channel in folder: Куба (id=3841808641)
+2026-05-01 03:12:38,276 [geospoiler.fetcher] INFO:   Found channel in folder: Ультра левые и ультра правые (id=3299898370)
+2026-05-01 03:12:38,276 [geospoiler.fetcher] INFO: Discovered 2 channel(s) in Telegram folder 'GeoSpoiler'.
+2026-05-01 03:12:38,276 [geospoiler.fetcher] INFO: Fetching from 'Куба' (last_id=0)...
+2026-05-01 03:12:39,328 [geospoiler.fetcher] INFO:   Got 9 new messages from 'Куба'.
+2026-05-01 03:12:39,329 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-01 03:12:39,740 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-01 03:12:40,129 [geospoiler.fetcher] INFO: Fetching from 'Ультра левые и ультра правые' (last_id=0)...
+2026-05-01 03:12:41,179 [geospoiler.fetcher] INFO:   Got 27 new messages from 'Ультра левые и ультра правые'.
+2026-05-01 03:12:41,179 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-01 03:12:41,494 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-05-01 03:12:41,821 [geospoiler] INFO: === FETCH complete: 30 messages from 2 channels ===
+2026-05-01 03:12:41,821 [telethon.network.mtprotosender] INFO: Disconnecting from 149.154.167.51:443/TcpFull...
+2026-05-01 03:12:41,821 [telethon.network.mtprotosender] INFO: Disconnection from 149.154.167.51:443/TcpFull complete!
+2026-05-01 03:12:41,837 [geospoiler] INFO: === NORMALIZE: Processing messages ===
+2026-05-01 03:12:41,837 [geospoiler] INFO: Processing channel: Куба (5 messages)
+2026-05-01 03:12:43,841 [geospoiler.normalizer] INFO:   Normalized: 5.txt (520 chars)
+2026-05-01 03:12:56,997 [geospoiler.normalizer] INFO:   Normalized: 6.txt (1047 chars)
+2026-05-01 03:12:57,362 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-01 03:13:27,631 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Куба\msg_7 (3).jpg
+2026-05-01 03:13:28,758 [geospoiler.normalizer] INFO:   Normalized: 7.txt (262 chars)
+2026-05-01 03:13:29,141 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-01 03:13:59,402 [geospoiler.normalizer.image] WARNING: Vision API timeout for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Куба\msg_8 (3).jpg
+2026-05-01 03:14:19,195 [geospoiler.normalizer] INFO:   Normalized: 8.txt (1585 chars)
+2026-05-01 03:14:20,605 [geospoiler.normalizer] INFO:   Normalized: 9.txt (290 chars)
+2026-05-01 03:14:20,624 [geospoiler] INFO: Processing channel: Ультра левые и ультра правые (25 messages)
+2026-05-01 03:14:23,402 [geospoiler.normalizer] INFO:   Normalized: 2.txt (705 chars)
+2026-05-01 03:14:26,527 [geospoiler.normalizer] INFO:   Normalized: 3.txt (485 chars)
+2026-05-01 03:14:47,092 [geospoiler.normalizer] INFO:   Normalized: 4.txt (3759 chars)
+2026-05-01 03:14:49,480 [geospoiler.normalizer] INFO:   Normalized: 5.txt (604 chars)
+2026-05-01 03:14:57,373 [geospoiler.normalizer] INFO:   Normalized: 6.txt (115 chars)
+2026-05-01 03:15:20,492 [geospoiler.normalizer] INFO:   Normalized: 7.txt (2985 chars)
+2026-05-01 03:15:22,456 [geospoiler.normalizer] INFO:   Normalized: 8.txt (464 chars)
+2026-05-01 03:15:22,807 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-01 03:15:44,846 [geospoiler.normalizer] INFO:   Normalized: 9.txt (1965 chars)
+2026-05-01 03:15:46,565 [geospoiler.normalizer] INFO:   Normalized: 10.txt (410 chars)
+2026-05-01 03:15:47,494 [geospoiler.normalizer] INFO:   Normalized: 11.txt (140 chars)
+2026-05-01 03:15:47,852 [geospoiler.normalizer.image] WARNING: Vision API key was forbidden; retrying image request with fallback API key.
+2026-05-01 03:16:12,929 [geospoiler.normalizer] INFO:   Normalized: 12.txt (2808 chars)
+2026-05-01 03:16:21,335 [geospoiler.normalizer] INFO:   Normalized: 13.txt (1855 chars)
+2026-05-01 03:16:24,090 [geospoiler.normalizer] INFO:   Normalized: 14.txt (518 chars)
+2026-05-01 03:16:27,024 [geospoiler.normalizer] INFO:   Normalized: 15.txt (705 chars)
+2026-05-01 03:16:33,520 [geospoiler.normalizer] INFO:   Normalized: 16.txt (992 chars)
+2026-05-01 03:16:47,586 [geospoiler.normalizer] INFO:   Normalized: 17.txt (1129 chars)
+2026-05-01 03:16:52,378 [geospoiler.normalizer] INFO:   Normalized: 18.txt (577 chars)
+2026-05-01 03:16:54,306 [geospoiler.normalizer] INFO:   Normalized: 19.txt (574 chars)
+2026-05-01 03:17:24,398 [geospoiler.normalizer] INFO:   Normalized: 20.txt (3750 chars)
+2026-05-01 03:17:37,239 [geospoiler.normalizer] INFO:   Normalized: 21.txt (3541 chars)
+2026-05-01 03:18:04,575 [geospoiler.normalizer] INFO:   Normalized: 22.txt (3565 chars)
+2026-05-01 03:18:17,783 [geospoiler.normalizer] INFO:   Normalized: 23.txt (3382 chars)
+2026-05-01 03:18:27,166 [geospoiler.normalizer] INFO:   Normalized: 24.txt (2193 chars)
+2026-05-01 03:18:30,047 [geospoiler.normalizer] INFO:   Normalized: 25.txt (585 chars)
+2026-05-01 03:18:35,061 [geospoiler.normalizer] INFO:   Normalized: 27.txt (1094 chars)
+2026-05-01 03:18:35,161 [geospoiler] INFO: === NORMALIZE complete: 30 texts normalized ===
+2026-05-01 03:18:35,161 [geospoiler] INFO: === LOAD: Loading into LightRAG ===
+2026-05-01 03:18:35,673 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 0 data
+2026-05-01 03:18:35,673 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 0 data
+2026-05-01 03:18:35,673 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 0 data
+2026-05-01 03:18:35,674 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 03:19:27,424 [geospoiler.loader] INFO:   Inserted progress: 5/30
+2026-05-01 03:20:39,935 [geospoiler.loader] INFO:   Inserted progress: 10/30
+2026-05-01 03:22:40,291 [geospoiler.loader] INFO:   Inserted progress: 15/30
+2026-05-01 03:23:49,955 [geospoiler.loader] INFO:   Inserted progress: 20/30
+2026-05-01 03:25:38,171 [geospoiler.loader] INFO:   Inserted progress: 25/30
+2026-05-01 03:27:38,313 [openai._base_client] INFO: Retrying request to /chat/completions in 0.462093 seconds
+2026-05-01 03:30:01,459 [openai._base_client] INFO: Retrying request to /chat/completions in 0.484577 seconds
+2026-05-01 03:32:02,086 [openai._base_client] INFO: Retrying request to /chat/completions in 0.788824 seconds
+2026-05-01 03:33:38,844 [geospoiler.loader] INFO:   Inserted progress: 30/30
+2026-05-01 03:33:38,844 [geospoiler.loader] INFO: Loading complete: 30/30 texts inserted into LightRAG.
+2026-05-01 03:33:39,100 [geospoiler.loader] INFO: Auto-fixed entity aliases: resurgamhub -> Resurgamhub
+2026-05-01 03:33:40,908 [geospoiler.loader] INFO: Auto-fixed entity aliases: white jihad -> White Jihad
+2026-05-01 03:33:40,908 [geospoiler] INFO: === AUTO-FIX complete: 2 safe entity merge(s) applied ===
+2026-05-01 03:33:40,908 [geospoiler] INFO: === LOAD complete: 30 texts loaded ===
+2026-05-01 03:33:40,909 [geospoiler] INFO: === FULL PIPELINE COMPLETE ===
+2026-05-01 03:33:51,500 [nano-vectordb] INFO: Load (199, 1024) data
+2026-05-01 03:33:51,500 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 199 data
+2026-05-01 03:33:51,514 [nano-vectordb] INFO: Load (220, 1024) data
+2026-05-01 03:33:51,514 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 220 data
+2026-05-01 03:33:51,524 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-01 03:33:51,524 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-01 03:33:51,560 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 03:33:51,560 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 03:33:53,691 [geospoiler.reranker] INFO: Reranker (nim): 24 docs -> 24 candidates -> 10 returned
+2026-05-01 03:34:09,633 [nano-vectordb] INFO: Load (199, 1024) data
+2026-05-01 03:34:09,634 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 199 data
+2026-05-01 03:34:09,639 [nano-vectordb] INFO: Load (220, 1024) data
+2026-05-01 03:34:09,639 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 220 data
+2026-05-01 03:34:09,641 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-01 03:34:09,641 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-01 03:34:09,654 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 03:34:09,654 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 03:34:11,754 [geospoiler.reranker] INFO: Reranker (nim): 27 docs -> 27 candidates -> 10 returned
+2026-05-01 16:56:13,817 [nano-vectordb] INFO: Load (199, 1024) data
+2026-05-01 16:56:13,818 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 199 data
+2026-05-01 16:56:13,833 [nano-vectordb] INFO: Load (220, 1024) data
+2026-05-01 16:56:13,834 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 220 data
+2026-05-01 16:56:13,843 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-01 16:56:13,843 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-01 16:56:13,895 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 16:56:13,895 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 16:56:15,260 [geospoiler.reranker] INFO: Reranker (nim): 29 docs -> 29 candidates -> 10 returned
+2026-05-01 16:56:37,786 [nano-vectordb] INFO: Load (199, 1024) data
+2026-05-01 16:56:37,787 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 199 data
+2026-05-01 16:56:37,795 [nano-vectordb] INFO: Load (220, 1024) data
+2026-05-01 16:56:37,796 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 220 data
+2026-05-01 16:56:37,797 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-01 16:56:37,798 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-01 16:56:37,814 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 16:56:37,814 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 16:56:38,947 [geospoiler.reranker] INFO: Reranker (nim): 29 docs -> 29 candidates -> 10 returned
+2026-05-01 16:56:51,389 [nano-vectordb] INFO: Load (199, 1024) data
+2026-05-01 16:56:51,390 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 199 data
+2026-05-01 16:56:51,396 [nano-vectordb] INFO: Load (220, 1024) data
+2026-05-01 16:56:51,396 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 220 data
+2026-05-01 16:56:51,398 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-01 16:56:51,398 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-01 16:56:51,407 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 16:56:51,407 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 16:56:54,537 [geospoiler.reranker] INFO: Reranker (nim): 29 docs -> 29 candidates -> 10 returned
+2026-05-01 17:30:53,344 [nano-vectordb] INFO: Load (199, 1024) data
+2026-05-01 17:30:53,345 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 199 data
+2026-05-01 17:30:53,350 [nano-vectordb] INFO: Load (220, 1024) data
+2026-05-01 17:30:53,351 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 220 data
+2026-05-01 17:30:53,352 [nano-vectordb] INFO: Load (30, 1024) data
+2026-05-01 17:30:53,352 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 30 data
+2026-05-01 17:30:53,367 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-01 17:30:53,367 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, rerank=enabled)
+2026-05-01 17:30:54,365 [geospoiler.reranker] INFO: Reranker (nim): 26 docs -> 26 candidates -> 10 returned

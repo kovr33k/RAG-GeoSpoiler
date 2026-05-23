@@ -1,0 +1,128 @@
+2026-04-29 01:10:43,994 [geospoiler] INFO: === FULL PIPELINE START ===
+2026-04-29 01:10:43,994 [geospoiler] INFO: === FETCH: Starting Telegram fetch ===
+2026-04-29 01:10:43,996 [telethon.network.mtprotosender] INFO: Connecting to 149.154.167.51:443/TcpFull...
+2026-04-29 01:10:44,034 [telethon.network.mtprotosender] INFO: Connection to 149.154.167.51:443/TcpFull complete!
+2026-04-29 01:10:44,320 [geospoiler.fetcher] INFO: Telegram client connected.
+2026-04-29 01:10:44,455 [geospoiler.fetcher] INFO:   Found channel in folder: Куба (id=3841808641)
+2026-04-29 01:10:44,455 [geospoiler.fetcher] INFO:   Found channel in folder: Ультра левые и ультра правые (id=3299898370)
+2026-04-29 01:10:44,464 [geospoiler.fetcher] INFO: Discovered 2 channel(s) in Telegram folder 'GeoSpoiler'.
+2026-04-29 01:10:44,464 [geospoiler.fetcher] INFO: Fetching from 'Куба' (last_id=0)...
+2026-04-29 01:10:45,522 [geospoiler.fetcher] INFO:   Got 8 new messages from 'Куба'.
+2026-04-29 01:10:45,523 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-04-29 01:10:46,001 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-04-29 01:10:46,427 [geospoiler.fetcher] INFO: Fetching from 'Ультра левые и ультра правые' (last_id=0)...
+2026-04-29 01:10:47,494 [geospoiler.fetcher] INFO:   Got 27 new messages from 'Ультра левые и ультра правые'.
+2026-04-29 01:10:47,495 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-04-29 01:10:47,833 [telethon.client.downloads] INFO: Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-04-29 01:10:48,197 [geospoiler] INFO: === FETCH complete: 29 messages from 2 channels ===
+2026-04-29 01:10:48,197 [telethon.network.mtprotosender] INFO: Disconnecting from 149.154.167.51:443/TcpFull...
+2026-04-29 01:10:48,198 [telethon.network.mtprotosender] INFO: Disconnection from 149.154.167.51:443/TcpFull complete!
+2026-04-29 01:10:48,204 [geospoiler] INFO: === NORMALIZE: Processing messages ===
+2026-04-29 01:10:48,204 [geospoiler] INFO: Processing channel: Куба (4 messages)
+2026-04-29 01:10:48,204 [geospoiler.normalizer] INFO:   Normalized: 5.txt (522 chars)
+2026-04-29 01:10:48,205 [geospoiler.normalizer] INFO:   Normalized: 6.txt (1016 chars)
+2026-04-29 01:10:48,639 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Куба\msg_7.jpg: 403 Client Error: Forbidden for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-04-29 01:10:48,640 [geospoiler.normalizer] INFO:   Normalized: 7.txt (322 chars)
+2026-04-29 01:10:49,055 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Куба\msg_8.jpg: 403 Client Error: Forbidden for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-04-29 01:10:49,057 [geospoiler.normalizer] INFO:   Normalized: 8.txt (1506 chars)
+2026-04-29 01:10:49,072 [geospoiler] INFO: Processing channel: Ультра левые и ультра правые (25 messages)
+2026-04-29 01:10:49,072 [geospoiler.normalizer] INFO:   Normalized: 2.txt (696 chars)
+2026-04-29 01:10:49,073 [geospoiler.normalizer] INFO:   Normalized: 3.txt (473 chars)
+2026-04-29 01:10:49,073 [geospoiler.normalizer] INFO:   Normalized: 4.txt (3774 chars)
+2026-04-29 01:10:49,074 [geospoiler.normalizer] INFO:   Normalized: 5.txt (614 chars)
+2026-04-29 01:10:49,074 [geospoiler.normalizer] INFO:   Normalized: 6.txt (115 chars)
+2026-04-29 01:10:49,075 [geospoiler.normalizer] INFO:   Normalized: 7.txt (2895 chars)
+2026-04-29 01:10:49,084 [geospoiler.normalizer] INFO:   Normalized: 8.txt (447 chars)
+2026-04-29 01:10:49,481 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Ультра левые и ультра правые\msg_9.jpg: 403 Client Error: Forbidden for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-04-29 01:10:49,483 [geospoiler.normalizer] INFO:   Normalized: 9.txt (699 chars)
+2026-04-29 01:10:49,483 [geospoiler.normalizer] INFO:   Normalized: 10.txt (412 chars)
+2026-04-29 01:10:49,484 [geospoiler.normalizer] INFO:   Normalized: 11.txt (132 chars)
+2026-04-29 01:10:49,905 [geospoiler.normalizer.image] ERROR: Vision API error for D:\ObsidianWiki\GeoSpoiler-RAG\media_cache\Ультра левые и ультра правые\msg_12.jpg: 403 Client Error: Forbidden for url: https://integrate.api.nvidia.com/v1/chat/completions
+2026-04-29 01:10:49,906 [geospoiler.normalizer] INFO:   Normalized: 12.txt (1368 chars)
+2026-04-29 01:10:49,907 [geospoiler.normalizer] INFO:   Normalized: 13.txt (1794 chars)
+2026-04-29 01:10:49,907 [geospoiler.normalizer] INFO:   Normalized: 14.txt (525 chars)
+2026-04-29 01:10:49,907 [geospoiler.normalizer] INFO:   Normalized: 15.txt (689 chars)
+2026-04-29 01:10:52,218 [geospoiler.normalizer.instagram] WARNING: Could not extract Instagram content from https://kkinstagram.com/reel/DT_BzWeD9SF/?igsh=MThmbXFmazUycnFyeQ==
+2026-04-29 01:10:52,219 [geospoiler.normalizer] INFO:   Normalized: 16.txt (309 chars)
+2026-04-29 01:10:53,869 [geospoiler.normalizer.instagram] WARNING: Could not extract Instagram content from https://kkinstagram.com/reel/DVRCLW0DZT9/?igsh=cWI0ejYzYnZvMzVi
+2026-04-29 01:10:53,870 [geospoiler.normalizer] INFO:   Normalized: 17.txt (237 chars)
+2026-04-29 01:10:56,072 [geospoiler.normalizer] INFO:   Normalized: 18.txt (480 chars)
+2026-04-29 01:10:56,073 [geospoiler.normalizer] INFO:   Normalized: 19.txt (573 chars)
+2026-04-29 01:10:56,073 [geospoiler.normalizer] INFO:   Normalized: 20.txt (3688 chars)
+2026-04-29 01:10:56,074 [geospoiler.normalizer] INFO:   Normalized: 21.txt (3419 chars)
+2026-04-29 01:10:56,074 [geospoiler.normalizer] INFO:   Normalized: 22.txt (3556 chars)
+2026-04-29 01:10:56,075 [geospoiler.normalizer] INFO:   Normalized: 23.txt (3379 chars)
+2026-04-29 01:10:56,075 [geospoiler.normalizer] INFO:   Normalized: 24.txt (2162 chars)
+2026-04-29 01:10:56,076 [geospoiler.normalizer] INFO:   Normalized: 25.txt (572 chars)
+2026-04-29 01:10:56,076 [geospoiler.normalizer] INFO:   Normalized: 27.txt (1063 chars)
+2026-04-29 01:10:56,186 [geospoiler] INFO: === NORMALIZE complete: 29 texts normalized ===
+2026-04-29 01:10:56,186 [geospoiler] INFO: === LOAD: Loading into LightRAG ===
+2026-04-29 01:10:56,691 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 0 data
+2026-04-29 01:10:56,691 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 0 data
+2026-04-29 01:10:56,691 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 0 data
+2026-04-29 01:10:56,692 [geospoiler.loader] INFO: LightRAG initialized.
+2026-04-29 01:12:07,744 [openai._base_client] INFO: Retrying request to /embeddings in 0.381363 seconds
+2026-04-29 01:12:26,520 [geospoiler.loader] INFO:   Inserted progress: 5/29
+2026-04-29 01:13:10,210 [openai._base_client] INFO: Retrying request to /embeddings in 0.445237 seconds
+2026-04-29 01:13:54,467 [openai._base_client] INFO: Retrying request to /embeddings in 0.482349 seconds
+2026-04-29 01:13:55,012 [openai._base_client] INFO: Retrying request to /embeddings in 0.998966 seconds
+2026-04-29 01:13:56,625 [geospoiler.loader] INFO:   Inserted progress: 10/29
+2026-04-29 01:14:44,537 [openai._base_client] INFO: Retrying request to /embeddings in 0.498693 seconds
+2026-04-29 01:15:16,029 [openai._base_client] INFO: Retrying request to /embeddings in 0.376796 seconds
+2026-04-29 01:15:16,061 [openai._base_client] INFO: Retrying request to /embeddings in 0.403896 seconds
+2026-04-29 01:15:16,989 [geospoiler.loader] INFO:   Inserted progress: 15/29
+2026-04-29 01:15:49,767 [openai._base_client] INFO: Retrying request to /embeddings in 0.421885 seconds
+2026-04-29 01:15:49,769 [openai._base_client] INFO: Retrying request to /embeddings in 0.499502 seconds
+2026-04-29 01:15:50,245 [openai._base_client] INFO: Retrying request to /embeddings in 0.934643 seconds
+2026-04-29 01:17:01,505 [geospoiler.loader] INFO:   Inserted progress: 20/29
+2026-04-29 01:17:58,944 [openai._base_client] INFO: Retrying request to /embeddings in 0.480984 seconds
+2026-04-29 01:23:02,117 [openai._base_client] INFO: Retrying request to /chat/completions in 0.443829 seconds
+2026-04-29 01:28:32,439 [openai._base_client] INFO: Retrying request to /chat/completions in 0.495132 seconds
+2026-04-29 01:28:46,621 [openai._base_client] INFO: Retrying request to /embeddings in 0.451002 seconds
+2026-04-29 01:28:46,622 [openai._base_client] INFO: Retrying request to /embeddings in 0.475248 seconds
+2026-04-29 01:28:46,627 [openai._base_client] INFO: Retrying request to /embeddings in 0.452535 seconds
+2026-04-29 01:28:47,134 [openai._base_client] INFO: Retrying request to /embeddings in 0.879950 seconds
+2026-04-29 01:28:47,228 [openai._base_client] INFO: Retrying request to /embeddings in 0.457942 seconds
+2026-04-29 01:34:48,719 [geospoiler.loader] INFO:   Inserted progress: 25/29
+2026-04-29 01:35:34,441 [openai._base_client] INFO: Retrying request to /embeddings in 0.495887 seconds
+2026-04-29 01:41:22,312 [openai._base_client] INFO: Retrying request to /embeddings in 0.378701 seconds
+2026-04-29 01:43:57,240 [openai._base_client] INFO: Retrying request to /chat/completions in 0.436083 seconds
+2026-04-29 01:44:27,395 [openai._base_client] INFO: Retrying request to /chat/completions in 0.779464 seconds
+2026-04-29 01:45:18,413 [openai._base_client] INFO: Retrying request to /embeddings in 0.454640 seconds
+2026-04-29 01:45:18,418 [openai._base_client] INFO: Retrying request to /embeddings in 0.375358 seconds
+2026-04-29 01:45:18,466 [openai._base_client] INFO: Retrying request to /embeddings in 0.449915 seconds
+2026-04-29 01:45:18,483 [openai._base_client] INFO: Retrying request to /embeddings in 0.459465 seconds
+2026-04-29 01:45:18,491 [openai._base_client] INFO: Retrying request to /embeddings in 0.417111 seconds
+2026-04-29 01:45:18,498 [openai._base_client] INFO: Retrying request to /embeddings in 0.398953 seconds
+2026-04-29 01:45:18,601 [openai._base_client] INFO: Retrying request to /embeddings in 0.399225 seconds
+2026-04-29 01:45:18,615 [openai._base_client] INFO: Retrying request to /embeddings in 0.431129 seconds
+2026-04-29 01:45:18,920 [openai._base_client] INFO: Retrying request to /embeddings in 0.824953 seconds
+2026-04-29 01:45:18,943 [openai._base_client] INFO: Retrying request to /embeddings in 0.499309 seconds
+2026-04-29 01:45:18,966 [openai._base_client] INFO: Retrying request to /embeddings in 0.815610 seconds
+2026-04-29 01:45:18,975 [openai._base_client] INFO: Retrying request to /embeddings in 0.827753 seconds
+2026-04-29 01:45:19,058 [openai._base_client] INFO: Retrying request to /embeddings in 0.942491 seconds
+2026-04-29 01:45:19,106 [openai._base_client] INFO: Retrying request to /embeddings in 0.976318 seconds
+2026-04-29 01:45:21,043 [openai._base_client] INFO: Retrying request to /embeddings in 0.380405 seconds
+2026-04-29 01:45:55,156 [geospoiler.loader] INFO:   Inserted progress: 29/29
+2026-04-29 01:45:55,156 [geospoiler.loader] INFO: Loading complete: 29/29 texts inserted into LightRAG.
+2026-04-29 01:45:55,156 [geospoiler] INFO: === LOAD complete: 29 texts loaded ===
+2026-04-29 01:45:55,157 [geospoiler] INFO: === FULL PIPELINE COMPLETE ===
+2026-04-29 04:03:56,688 [nano-vectordb] INFO: Load (274, 1024) data
+2026-04-29 04:03:56,698 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 274 data
+2026-04-29 04:03:56,705 [nano-vectordb] INFO: Load (316, 1024) data
+2026-04-29 04:03:56,706 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 316 data
+2026-04-29 04:03:56,707 [nano-vectordb] INFO: Load (29, 1024) data
+2026-04-29 04:03:56,707 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-04-29 04:03:56,719 [geospoiler.loader] INFO: LightRAG initialized.
+2026-04-29 04:03:56,719 [geospoiler.loader] INFO: Querying LightRAG (mode=mix, rerank=enabled)
+2026-04-29 04:03:56,931 [openai._base_client] INFO: Retrying request to /chat/completions in 0.387864 seconds
+2026-04-29 04:03:57,322 [openai._base_client] INFO: Retrying request to /chat/completions in 0.756689 seconds
+2026-04-29 04:04:10,251 [nano-vectordb] INFO: Load (274, 1024) data
+2026-04-29 04:04:10,252 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 274 data
+2026-04-29 04:04:10,260 [nano-vectordb] INFO: Load (316, 1024) data
+2026-04-29 04:04:10,260 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 316 data
+2026-04-29 04:04:10,262 [nano-vectordb] INFO: Load (29, 1024) data
+2026-04-29 04:04:10,262 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-04-29 04:04:10,273 [geospoiler.loader] INFO: LightRAG initialized.
+2026-04-29 04:04:10,273 [geospoiler.loader] INFO: Querying LightRAG (mode=mix, rerank=enabled)
+2026-04-29 04:04:12,491 [geospoiler.reranker] INFO: Reranker (nim): 28 docs -> 28 candidates -> 20 returned

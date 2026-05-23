@@ -1,0 +1,466 @@
+2026-04-30 01:04:18,919 [geospoiler] INFO: === REBUILD: Resetting LightRAG storage ===
+2026-04-30 01:04:18,920 [geospoiler.loader] INFO: Archived RAG storage to: D:\ObsidianWiki\GeoSpoiler-RAG\rag_storage_backups\rag_storage_20260430_010418
+2026-04-30 01:04:18,920 [geospoiler] INFO: RAG storage backup created at: D:\ObsidianWiki\GeoSpoiler-RAG\rag_storage_backups\rag_storage_20260430_010418
+2026-04-30 01:04:18,920 [geospoiler] INFO: === REBUILD: Loading all normalized sources into fresh LightRAG storage ===
+2026-04-30 01:04:18,920 [geospoiler] INFO: === LOAD: Loading into LightRAG ===
+2026-04-30 01:04:19,647 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 0 data
+2026-04-30 01:04:19,657 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 0 data
+2026-04-30 01:04:19,657 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 0 data
+2026-04-30 01:04:19,659 [geospoiler.loader] INFO: LightRAG initialized.
+2026-04-30 01:04:19,662 [geospoiler.loader] INFO: Found 29 normalized texts to load.
+2026-04-30 01:04:20,027 [openai._base_client] INFO: Retrying request to /embeddings in 0.406695 seconds
+2026-04-30 01:04:20,439 [openai._base_client] INFO: Retrying request to /embeddings in 0.890646 seconds
+2026-04-30 01:04:21,437 [openai._base_client] INFO: Retrying request to /embeddings in 0.438747 seconds
+2026-04-30 01:04:21,438 [openai._base_client] INFO: Retrying request to /embeddings in 0.389772 seconds
+2026-04-30 01:04:21,831 [openai._base_client] INFO: Retrying request to /embeddings in 0.891202 seconds
+2026-04-30 01:04:21,891 [openai._base_client] INFO: Retrying request to /embeddings in 0.871128 seconds
+2026-04-30 01:04:22,793 [openai._base_client] INFO: Retrying request to /embeddings in 0.394809 seconds
+2026-04-30 01:04:22,793 [openai._base_client] INFO: Retrying request to /embeddings in 0.448105 seconds
+2026-04-30 01:04:23,195 [openai._base_client] INFO: Retrying request to /embeddings in 0.772684 seconds
+2026-04-30 01:04:23,256 [openai._base_client] INFO: Retrying request to /embeddings in 0.954042 seconds
+2026-04-30 01:04:23,997 [openai._base_client] INFO: Retrying request to /embeddings in 0.497868 seconds
+2026-04-30 01:04:24,498 [openai._base_client] INFO: Retrying request to /embeddings in 0.803763 seconds
+2026-04-30 01:04:25,329 [openai._base_client] INFO: Retrying request to /embeddings in 0.466546 seconds
+2026-04-30 01:04:25,329 [openai._base_client] INFO: Retrying request to /embeddings in 0.380847 seconds
+2026-04-30 01:04:25,721 [openai._base_client] INFO: Retrying request to /embeddings in 0.933620 seconds
+2026-04-30 01:04:25,798 [openai._base_client] INFO: Retrying request to /embeddings in 0.966129 seconds
+2026-04-30 01:04:26,679 [openai._base_client] INFO: Retrying request to /embeddings in 0.473335 seconds
+2026-04-30 01:04:26,786 [openai._base_client] INFO: Retrying request to /embeddings in 0.446346 seconds
+2026-04-30 01:04:27,161 [openai._base_client] INFO: Retrying request to /embeddings in 0.870180 seconds
+2026-04-30 01:04:27,240 [openai._base_client] INFO: Retrying request to /embeddings in 0.838207 seconds
+2026-04-30 01:04:28,105 [openai._base_client] INFO: Retrying request to /embeddings in 0.473582 seconds
+2026-04-30 01:04:28,105 [openai._base_client] INFO: Retrying request to /embeddings in 0.479673 seconds
+2026-04-30 01:04:28,596 [openai._base_client] INFO: Retrying request to /embeddings in 0.753002 seconds
+2026-04-30 01:04:28,596 [openai._base_client] INFO: Retrying request to /embeddings in 0.986545 seconds
+2026-04-30 01:04:29,367 [openai._base_client] INFO: Retrying request to /embeddings in 0.424656 seconds
+2026-04-30 01:04:29,596 [openai._base_client] INFO: Retrying request to /embeddings in 0.413986 seconds
+2026-04-30 01:04:29,802 [openai._base_client] INFO: Retrying request to /embeddings in 0.757862 seconds
+2026-04-30 01:04:30,017 [openai._base_client] INFO: Retrying request to /embeddings in 0.757862 seconds
+2026-04-30 01:04:30,575 [openai._base_client] INFO: Retrying request to /embeddings in 0.383487 seconds
+2026-04-30 01:04:30,966 [openai._base_client] INFO: Retrying request to /embeddings in 0.896527 seconds
+2026-04-30 01:04:31,873 [geospoiler.loader] INFO:   Inserted progress: 5/29
+2026-04-30 01:04:31,896 [openai._base_client] INFO: Retrying request to /embeddings in 0.380783 seconds
+2026-04-30 01:04:31,896 [openai._base_client] INFO: Retrying request to /embeddings in 0.470737 seconds
+2026-04-30 01:04:32,280 [openai._base_client] INFO: Retrying request to /embeddings in 0.867919 seconds
+2026-04-30 01:04:32,372 [openai._base_client] INFO: Retrying request to /embeddings in 0.778075 seconds
+2026-04-30 01:04:33,181 [openai._base_client] INFO: Retrying request to /embeddings in 0.449929 seconds
+2026-04-30 01:04:33,181 [openai._base_client] INFO: Retrying request to /embeddings in 0.495418 seconds
+2026-04-30 01:04:33,637 [openai._base_client] INFO: Retrying request to /embeddings in 0.982991 seconds
+2026-04-30 01:04:33,683 [openai._base_client] INFO: Retrying request to /embeddings in 0.974549 seconds
+2026-04-30 01:04:34,632 [openai._base_client] INFO: Retrying request to /embeddings in 0.377379 seconds
+2026-04-30 01:04:34,675 [openai._base_client] INFO: Retrying request to /embeddings in 0.409912 seconds
+2026-04-30 01:04:35,021 [openai._base_client] INFO: Retrying request to /embeddings in 0.853463 seconds
+2026-04-30 01:04:35,096 [openai._base_client] INFO: Retrying request to /embeddings in 0.939504 seconds
+2026-04-30 01:04:36,067 [openai._base_client] INFO: Retrying request to /embeddings in 0.489837 seconds
+2026-04-30 01:04:36,067 [openai._base_client] INFO: Retrying request to /embeddings in 0.463105 seconds
+2026-04-30 01:04:36,538 [openai._base_client] INFO: Retrying request to /embeddings in 0.880940 seconds
+2026-04-30 01:04:36,569 [openai._base_client] INFO: Retrying request to /embeddings in 0.895925 seconds
+2026-04-30 01:04:37,437 [openai._base_client] INFO: Retrying request to /embeddings in 0.425569 seconds
+2026-04-30 01:04:37,481 [openai._base_client] INFO: Retrying request to /embeddings in 0.480890 seconds
+2026-04-30 01:04:37,870 [openai._base_client] INFO: Retrying request to /embeddings in 0.836953 seconds
+2026-04-30 01:04:37,977 [openai._base_client] INFO: Retrying request to /embeddings in 0.839792 seconds
+2026-04-30 01:04:38,720 [openai._base_client] INFO: Retrying request to /embeddings in 0.484091 seconds
+2026-04-30 01:04:38,842 [openai._base_client] INFO: Retrying request to /embeddings in 0.487994 seconds
+2026-04-30 01:04:39,219 [openai._base_client] INFO: Retrying request to /embeddings in 0.993811 seconds
+2026-04-30 01:04:39,341 [openai._base_client] INFO: Retrying request to /embeddings in 0.986949 seconds
+2026-04-30 01:04:40,238 [openai._base_client] INFO: Retrying request to /embeddings in 0.423962 seconds
+2026-04-30 01:04:40,671 [openai._base_client] INFO: Retrying request to /embeddings in 0.991793 seconds
+2026-04-30 01:04:41,687 [openai._base_client] INFO: Retrying request to /embeddings in 0.423442 seconds
+2026-04-30 01:04:41,687 [openai._base_client] INFO: Retrying request to /embeddings in 0.423636 seconds
+2026-04-30 01:04:42,127 [openai._base_client] INFO: Retrying request to /embeddings in 0.781740 seconds
+2026-04-30 01:04:42,127 [openai._base_client] INFO: Retrying request to /embeddings in 0.971115 seconds
+2026-04-30 01:04:42,932 [openai._base_client] INFO: Retrying request to /embeddings in 0.397306 seconds
+2026-04-30 01:04:43,116 [openai._base_client] INFO: Retrying request to /embeddings in 0.439919 seconds
+2026-04-30 01:04:43,339 [openai._base_client] INFO: Retrying request to /embeddings in 0.811205 seconds
+2026-04-30 01:04:43,567 [openai._base_client] INFO: Retrying request to /embeddings in 0.949052 seconds
+2026-04-30 01:04:44,176 [openai._base_client] INFO: Retrying request to /embeddings in 0.406453 seconds
+2026-04-30 01:04:44,550 [openai._base_client] INFO: Retrying request to /embeddings in 0.409759 seconds
+2026-04-30 01:04:44,592 [openai._base_client] INFO: Retrying request to /embeddings in 0.837408 seconds
+2026-04-30 01:04:44,974 [openai._base_client] INFO: Retrying request to /embeddings in 0.984396 seconds
+2026-04-30 01:04:45,445 [openai._base_client] INFO: Retrying request to /embeddings in 0.479574 seconds
+2026-04-30 01:04:45,929 [openai._base_client] INFO: Retrying request to /embeddings in 0.933220 seconds
+2026-04-30 01:04:45,985 [openai._base_client] INFO: Retrying request to /embeddings in 0.453984 seconds
+2026-04-30 01:04:46,449 [openai._base_client] INFO: Retrying request to /embeddings in 0.778360 seconds
+2026-04-30 01:04:47,264 [openai._base_client] INFO: Retrying request to /embeddings in 0.386683 seconds
+2026-04-30 01:04:47,264 [openai._base_client] INFO: Retrying request to /embeddings in 0.403392 seconds
+2026-04-30 01:04:47,654 [openai._base_client] INFO: Retrying request to /embeddings in 0.912768 seconds
+2026-04-30 01:04:47,684 [openai._base_client] INFO: Retrying request to /embeddings in 0.880978 seconds
+2026-04-30 01:04:48,590 [openai._base_client] INFO: Retrying request to /embeddings in 0.383195 seconds
+2026-04-30 01:04:48,590 [openai._base_client] INFO: Retrying request to /embeddings in 0.401108 seconds
+2026-04-30 01:04:48,984 [openai._base_client] INFO: Retrying request to /embeddings in 0.951494 seconds
+2026-04-30 01:04:48,999 [openai._base_client] INFO: Retrying request to /embeddings in 0.829801 seconds
+2026-04-30 01:04:49,859 [openai._base_client] INFO: Retrying request to /embeddings in 0.415497 seconds
+2026-04-30 01:04:49,958 [openai._base_client] INFO: Retrying request to /embeddings in 0.452371 seconds
+2026-04-30 01:04:50,282 [openai._base_client] INFO: Retrying request to /embeddings in 0.788528 seconds
+2026-04-30 01:04:50,420 [openai._base_client] INFO: Retrying request to /embeddings in 0.817373 seconds
+2026-04-30 01:04:51,101 [openai._base_client] INFO: Retrying request to /embeddings in 0.428531 seconds
+2026-04-30 01:04:51,251 [openai._base_client] INFO: Retrying request to /embeddings in 0.477829 seconds
+2026-04-30 01:04:51,545 [openai._base_client] INFO: Retrying request to /embeddings in 0.840094 seconds
+2026-04-30 01:04:51,743 [openai._base_client] INFO: Retrying request to /embeddings in 0.819388 seconds
+2026-04-30 01:04:52,408 [openai._base_client] INFO: Retrying request to /embeddings in 0.402636 seconds
+2026-04-30 01:04:52,814 [openai._base_client] INFO: Retrying request to /embeddings in 0.828564 seconds
+2026-04-30 01:04:53,675 [openai._base_client] INFO: Retrying request to /embeddings in 0.474494 seconds
+2026-04-30 01:04:53,675 [openai._base_client] INFO: Retrying request to /embeddings in 0.491644 seconds
+2026-04-30 01:04:54,163 [openai._base_client] INFO: Retrying request to /embeddings in 0.819491 seconds
+2026-04-30 01:04:54,178 [openai._base_client] INFO: Retrying request to /embeddings in 0.953269 seconds
+2026-04-30 01:04:54,999 [openai._base_client] INFO: Retrying request to /embeddings in 0.448049 seconds
+2026-04-30 01:04:55,151 [openai._base_client] INFO: Retrying request to /embeddings in 0.409575 seconds
+2026-04-30 01:04:55,461 [openai._base_client] INFO: Retrying request to /embeddings in 0.935727 seconds
+2026-04-30 01:04:55,567 [openai._base_client] INFO: Retrying request to /embeddings in 0.831108 seconds
+2026-04-30 01:04:56,424 [openai._base_client] INFO: Retrying request to /embeddings in 0.424103 seconds
+2026-04-30 01:04:56,424 [openai._base_client] INFO: Retrying request to /embeddings in 0.477182 seconds
+2026-04-30 01:04:56,866 [openai._base_client] INFO: Retrying request to /embeddings in 0.987928 seconds
+2026-04-30 01:04:56,912 [openai._base_client] INFO: Retrying request to /embeddings in 0.813248 seconds
+2026-04-30 01:04:57,747 [openai._base_client] INFO: Retrying request to /embeddings in 0.453453 seconds
+2026-04-30 01:04:57,870 [openai._base_client] INFO: Retrying request to /embeddings in 0.391543 seconds
+2026-04-30 01:04:58,215 [openai._base_client] INFO: Retrying request to /embeddings in 0.975874 seconds
+2026-04-30 01:04:58,273 [openai._base_client] INFO: Retrying request to /embeddings in 0.803537 seconds
+2026-04-30 01:04:59,095 [openai._base_client] INFO: Retrying request to /embeddings in 0.414815 seconds
+2026-04-30 01:04:59,218 [openai._base_client] INFO: Retrying request to /embeddings in 0.436997 seconds
+2026-04-30 01:04:59,514 [openai._base_client] INFO: Retrying request to /embeddings in 0.846082 seconds
+2026-04-30 01:04:59,667 [openai._base_client] INFO: Retrying request to /embeddings in 0.802984 seconds
+2026-04-30 01:05:00,484 [geospoiler.loader] INFO:   Inserted progress: 10/29
+2026-04-30 01:05:00,501 [openai._base_client] INFO: Retrying request to /embeddings in 0.414163 seconds
+2026-04-30 01:05:00,501 [openai._base_client] INFO: Retrying request to /embeddings in 0.432467 seconds
+2026-04-30 01:05:00,919 [openai._base_client] INFO: Retrying request to /embeddings in 0.837659 seconds
+2026-04-30 01:05:00,950 [openai._base_client] INFO: Retrying request to /embeddings in 0.836637 seconds
+2026-04-30 01:05:01,768 [openai._base_client] INFO: Retrying request to /embeddings in 0.386830 seconds
+2026-04-30 01:05:01,799 [openai._base_client] INFO: Retrying request to /embeddings in 0.394869 seconds
+2026-04-30 01:05:02,172 [openai._base_client] INFO: Retrying request to /embeddings in 0.902863 seconds
+2026-04-30 01:05:02,203 [openai._base_client] INFO: Retrying request to /embeddings in 0.990253 seconds
+2026-04-30 01:05:03,099 [openai._base_client] INFO: Retrying request to /embeddings in 0.465230 seconds
+2026-04-30 01:05:03,208 [openai._base_client] INFO: Retrying request to /embeddings in 0.498874 seconds
+2026-04-30 01:05:03,581 [openai._base_client] INFO: Retrying request to /embeddings in 0.961765 seconds
+2026-04-30 01:05:03,719 [openai._base_client] INFO: Retrying request to /embeddings in 0.782264 seconds
+2026-04-30 01:05:04,529 [openai._base_client] INFO: Retrying request to /embeddings in 0.436807 seconds
+2026-04-30 01:05:04,558 [openai._base_client] INFO: Retrying request to /embeddings in 0.384842 seconds
+2026-04-30 01:05:04,946 [openai._base_client] INFO: Retrying request to /embeddings in 0.866562 seconds
+2026-04-30 01:05:04,976 [openai._base_client] INFO: Retrying request to /embeddings in 0.751699 seconds
+2026-04-30 01:05:05,740 [openai._base_client] INFO: Retrying request to /embeddings in 0.462570 seconds
+2026-04-30 01:05:05,833 [openai._base_client] INFO: Retrying request to /embeddings in 0.388726 seconds
+2026-04-30 01:05:06,218 [openai._base_client] INFO: Retrying request to /embeddings in 0.935722 seconds
+2026-04-30 01:05:06,233 [openai._base_client] INFO: Retrying request to /embeddings in 0.804705 seconds
+2026-04-30 01:05:07,052 [openai._base_client] INFO: Retrying request to /embeddings in 0.435661 seconds
+2026-04-30 01:05:07,503 [openai._base_client] INFO: Retrying request to /embeddings in 0.979168 seconds
+2026-04-30 01:05:08,518 [openai._base_client] INFO: Retrying request to /embeddings in 0.442263 seconds
+2026-04-30 01:05:08,518 [openai._base_client] INFO: Retrying request to /embeddings in 0.448151 seconds
+2026-04-30 01:05:08,974 [openai._base_client] INFO: Retrying request to /embeddings in 0.854456 seconds
+2026-04-30 01:05:08,974 [openai._base_client] INFO: Retrying request to /embeddings in 0.868719 seconds
+2026-04-30 01:05:09,862 [openai._base_client] INFO: Retrying request to /embeddings in 0.409036 seconds
+2026-04-30 01:05:09,862 [openai._base_client] INFO: Retrying request to /embeddings in 0.457704 seconds
+2026-04-30 01:05:10,285 [openai._base_client] INFO: Retrying request to /embeddings in 0.948120 seconds
+2026-04-30 01:05:10,330 [openai._base_client] INFO: Retrying request to /embeddings in 0.988277 seconds
+2026-04-30 01:05:11,256 [openai._base_client] INFO: Retrying request to /embeddings in 0.471409 seconds
+2026-04-30 01:05:11,333 [openai._base_client] INFO: Retrying request to /embeddings in 0.378316 seconds
+2026-04-30 01:05:11,719 [openai._base_client] INFO: Retrying request to /embeddings in 0.949001 seconds
+2026-04-30 01:05:11,734 [openai._base_client] INFO: Retrying request to /embeddings in 0.958402 seconds
+2026-04-30 01:05:12,679 [openai._base_client] INFO: Retrying request to /embeddings in 0.432669 seconds
+2026-04-30 01:05:12,710 [openai._base_client] INFO: Retrying request to /embeddings in 0.456095 seconds
+2026-04-30 01:05:13,115 [openai._base_client] INFO: Retrying request to /embeddings in 0.864675 seconds
+2026-04-30 01:05:13,178 [openai._base_client] INFO: Retrying request to /embeddings in 0.766200 seconds
+2026-04-30 01:05:13,964 [openai._base_client] INFO: Retrying request to /embeddings in 0.421249 seconds
+2026-04-30 01:05:13,995 [openai._base_client] INFO: Retrying request to /embeddings in 0.436773 seconds
+2026-04-30 01:05:14,398 [openai._base_client] INFO: Retrying request to /embeddings in 0.824945 seconds
+2026-04-30 01:05:14,444 [openai._base_client] INFO: Retrying request to /embeddings in 0.913285 seconds
+2026-04-30 01:05:15,248 [openai._base_client] INFO: Retrying request to /embeddings in 0.458917 seconds
+2026-04-30 01:05:15,370 [openai._base_client] INFO: Retrying request to /embeddings in 0.381285 seconds
+2026-04-30 01:05:15,714 [openai._base_client] INFO: Retrying request to /embeddings in 0.883354 seconds
+2026-04-30 01:05:15,759 [openai._base_client] INFO: Retrying request to /embeddings in 0.972601 seconds
+2026-04-30 01:05:16,767 [openai._base_client] INFO: Retrying request to /embeddings in 0.465867 seconds
+2026-04-30 01:05:16,767 [openai._base_client] INFO: Retrying request to /embeddings in 0.390277 seconds
+2026-04-30 01:05:17,160 [openai._base_client] INFO: Retrying request to /embeddings in 0.760772 seconds
+2026-04-30 01:05:17,236 [openai._base_client] INFO: Retrying request to /embeddings in 0.899738 seconds
+2026-04-30 01:05:17,937 [openai._base_client] INFO: Retrying request to /embeddings in 0.402756 seconds
+2026-04-30 01:05:18,149 [openai._base_client] INFO: Retrying request to /embeddings in 0.483290 seconds
+2026-04-30 01:05:18,356 [openai._base_client] INFO: Retrying request to /embeddings in 0.946462 seconds
+2026-04-30 01:05:18,647 [openai._base_client] INFO: Retrying request to /embeddings in 0.876547 seconds
+2026-04-30 01:05:19,317 [openai._base_client] INFO: Retrying request to /embeddings in 0.413515 seconds
+2026-04-30 01:05:19,546 [openai._base_client] INFO: Retrying request to /embeddings in 0.457014 seconds
+2026-04-30 01:05:19,736 [openai._base_client] INFO: Retrying request to /embeddings in 0.789721 seconds
+2026-04-30 01:05:20,012 [openai._base_client] INFO: Retrying request to /embeddings in 0.792100 seconds
+2026-04-30 01:05:20,540 [openai._base_client] INFO: Retrying request to /embeddings in 0.384597 seconds
+2026-04-30 01:05:20,817 [openai._base_client] INFO: Retrying request to /embeddings in 0.414108 seconds
+2026-04-30 01:05:20,930 [openai._base_client] INFO: Retrying request to /embeddings in 0.902685 seconds
+2026-04-30 01:05:21,236 [openai._base_client] INFO: Retrying request to /embeddings in 0.932401 seconds
+2026-04-30 01:05:21,856 [openai._base_client] INFO: Retrying request to /embeddings in 0.439868 seconds
+2026-04-30 01:05:22,195 [openai._base_client] INFO: Retrying request to /embeddings in 0.440435 seconds
+2026-04-30 01:05:22,308 [openai._base_client] INFO: Retrying request to /embeddings in 0.931979 seconds
+2026-04-30 01:05:22,644 [openai._base_client] INFO: Retrying request to /embeddings in 0.870524 seconds
+2026-04-30 01:05:23,265 [openai._base_client] INFO: Retrying request to /embeddings in 0.440577 seconds
+2026-04-30 01:05:23,540 [openai._base_client] INFO: Retrying request to /embeddings in 0.482318 seconds
+2026-04-30 01:05:23,714 [openai._base_client] INFO: Retrying request to /embeddings in 0.868051 seconds
+2026-04-30 01:05:24,036 [openai._base_client] INFO: Retrying request to /embeddings in 0.945074 seconds
+2026-04-30 01:05:24,596 [openai._base_client] INFO: Retrying request to /embeddings in 0.420908 seconds
+2026-04-30 01:05:25,021 [openai._base_client] INFO: Retrying request to /embeddings in 0.784470 seconds
+2026-04-30 01:05:25,842 [openai._base_client] INFO: Retrying request to /embeddings in 0.441826 seconds
+2026-04-30 01:05:25,842 [openai._base_client] INFO: Retrying request to /embeddings in 0.404114 seconds
+2026-04-30 01:05:26,255 [openai._base_client] INFO: Retrying request to /embeddings in 0.854958 seconds
+2026-04-30 01:05:26,301 [openai._base_client] INFO: Retrying request to /embeddings in 0.841065 seconds
+2026-04-30 01:05:27,126 [openai._base_client] INFO: Retrying request to /embeddings in 0.439901 seconds
+2026-04-30 01:05:27,156 [openai._base_client] INFO: Retrying request to /embeddings in 0.471055 seconds
+2026-04-30 01:05:27,579 [openai._base_client] INFO: Retrying request to /embeddings in 0.807578 seconds
+2026-04-30 01:05:27,641 [openai._base_client] INFO: Retrying request to /embeddings in 0.932912 seconds
+2026-04-30 01:05:28,400 [openai._base_client] INFO: Retrying request to /embeddings in 0.421064 seconds
+2026-04-30 01:05:28,597 [openai._base_client] INFO: Retrying request to /embeddings in 0.481947 seconds
+2026-04-30 01:05:28,835 [openai._base_client] INFO: Retrying request to /embeddings in 0.751293 seconds
+2026-04-30 01:05:29,081 [openai._base_client] INFO: Retrying request to /embeddings in 0.891539 seconds
+2026-04-30 01:05:29,611 [openai._base_client] INFO: Retrying request to /embeddings in 0.451530 seconds
+2026-04-30 01:05:29,990 [openai._base_client] INFO: Retrying request to /embeddings in 0.418021 seconds
+2026-04-30 01:05:30,074 [openai._base_client] INFO: Retrying request to /embeddings in 0.826908 seconds
+2026-04-30 01:05:30,424 [openai._base_client] INFO: Retrying request to /embeddings in 0.930059 seconds
+2026-04-30 01:05:30,919 [openai._base_client] INFO: Retrying request to /embeddings in 0.408332 seconds
+2026-04-30 01:05:31,340 [openai._base_client] INFO: Retrying request to /embeddings in 0.877747 seconds
+2026-04-30 01:05:31,389 [openai._base_client] INFO: Retrying request to /embeddings in 0.425439 seconds
+2026-04-30 01:05:31,829 [openai._base_client] INFO: Retrying request to /embeddings in 0.988323 seconds
+2026-04-30 01:05:32,235 [openai._base_client] INFO: Retrying request to /embeddings in 0.405366 seconds
+2026-04-30 01:05:32,656 [openai._base_client] INFO: Retrying request to /embeddings in 0.936060 seconds
+2026-04-30 01:05:32,832 [openai._base_client] INFO: Retrying request to /embeddings in 0.463895 seconds
+2026-04-30 01:05:33,303 [openai._base_client] INFO: Retrying request to /embeddings in 0.962504 seconds
+2026-04-30 01:05:33,617 [openai._base_client] INFO: Retrying request to /embeddings in 0.417641 seconds
+2026-04-30 01:05:34,037 [openai._base_client] INFO: Retrying request to /embeddings in 0.892678 seconds
+2026-04-30 01:05:34,276 [openai._base_client] INFO: Retrying request to /embeddings in 0.385940 seconds
+2026-04-30 01:05:34,668 [openai._base_client] INFO: Retrying request to /embeddings in 0.939347 seconds
+2026-04-30 01:05:35,644 [openai._base_client] INFO: Retrying request to /embeddings in 0.398830 seconds
+2026-04-30 01:05:35,644 [openai._base_client] INFO: Retrying request to /embeddings in 0.375956 seconds
+2026-04-30 01:05:36,029 [openai._base_client] INFO: Retrying request to /embeddings in 0.792012 seconds
+2026-04-30 01:05:36,059 [openai._base_client] INFO: Retrying request to /embeddings in 0.916036 seconds
+2026-04-30 01:05:36,834 [openai._base_client] INFO: Retrying request to /embeddings in 0.433170 seconds
+2026-04-30 01:05:36,987 [openai._base_client] INFO: Retrying request to /embeddings in 0.445592 seconds
+2026-04-30 01:05:37,284 [openai._base_client] INFO: Retrying request to /embeddings in 0.998672 seconds
+2026-04-30 01:05:37,438 [openai._base_client] INFO: Retrying request to /embeddings in 0.769864 seconds
+2026-04-30 01:05:38,226 [openai._base_client] INFO: Retrying request to /embeddings in 0.422301 seconds
+2026-04-30 01:05:38,303 [openai._base_client] INFO: Retrying request to /embeddings in 0.387887 seconds
+2026-04-30 01:05:38,663 [openai._base_client] INFO: Retrying request to /embeddings in 0.852033 seconds
+2026-04-30 01:05:38,694 [openai._base_client] INFO: Retrying request to /embeddings in 0.883202 seconds
+2026-04-30 01:05:39,532 [openai._base_client] INFO: Retrying request to /embeddings in 0.405253 seconds
+2026-04-30 01:05:39,593 [openai._base_client] INFO: Retrying request to /embeddings in 0.407360 seconds
+2026-04-30 01:05:39,953 [openai._base_client] INFO: Retrying request to /embeddings in 0.863334 seconds
+2026-04-30 01:05:40,014 [openai._base_client] INFO: Retrying request to /embeddings in 0.992776 seconds
+2026-04-30 01:05:40,834 [openai._base_client] INFO: Retrying request to /embeddings in 0.468222 seconds
+2026-04-30 01:05:41,019 [openai._base_client] INFO: Retrying request to /embeddings in 0.433508 seconds
+2026-04-30 01:05:41,318 [openai._base_client] INFO: Retrying request to /embeddings in 0.805269 seconds
+2026-04-30 01:05:41,456 [openai._base_client] INFO: Retrying request to /embeddings in 0.780635 seconds
+2026-04-30 01:05:42,139 [openai._base_client] INFO: Retrying request to /embeddings in 0.414333 seconds
+2026-04-30 01:05:42,261 [openai._base_client] INFO: Retrying request to /embeddings in 0.402190 seconds
+2026-04-30 01:05:42,560 [openai._base_client] INFO: Retrying request to /embeddings in 0.922238 seconds
+2026-04-30 01:05:42,667 [openai._base_client] INFO: Retrying request to /embeddings in 0.866659 seconds
+2026-04-30 01:05:43,505 [openai._base_client] INFO: Retrying request to /embeddings in 0.377697 seconds
+2026-04-30 01:05:43,548 [openai._base_client] INFO: Retrying request to /embeddings in 0.407898 seconds
+2026-04-30 01:05:43,891 [openai._base_client] INFO: Retrying request to /embeddings in 0.950424 seconds
+2026-04-30 01:05:43,967 [openai._base_client] INFO: Retrying request to /embeddings in 0.957375 seconds
+2026-04-30 01:05:44,855 [openai._base_client] INFO: Retrying request to /embeddings in 0.421225 seconds
+2026-04-30 01:05:45,291 [openai._base_client] INFO: Retrying request to /embeddings in 0.867120 seconds
+2026-04-30 01:05:46,170 [geospoiler.loader] INFO:   Inserted progress: 15/29
+2026-04-30 01:05:46,186 [openai._base_client] INFO: Retrying request to /embeddings in 0.487910 seconds
+2026-04-30 01:05:46,186 [openai._base_client] INFO: Retrying request to /embeddings in 0.407175 seconds
+2026-04-30 01:05:46,608 [openai._base_client] INFO: Retrying request to /embeddings in 0.970975 seconds
+2026-04-30 01:05:46,684 [openai._base_client] INFO: Retrying request to /embeddings in 0.989935 seconds
+2026-04-30 01:05:47,596 [openai._base_client] INFO: Retrying request to /embeddings in 0.470599 seconds
+2026-04-30 01:05:47,691 [openai._base_client] INFO: Retrying request to /embeddings in 0.463309 seconds
+2026-04-30 01:05:48,082 [openai._base_client] INFO: Retrying request to /embeddings in 0.904612 seconds
+2026-04-30 01:05:48,159 [openai._base_client] INFO: Retrying request to /embeddings in 0.991129 seconds
+2026-04-30 01:05:49,009 [openai._base_client] INFO: Retrying request to /embeddings in 0.441806 seconds
+2026-04-30 01:05:49,164 [openai._base_client] INFO: Retrying request to /embeddings in 0.438960 seconds
+2026-04-30 01:05:49,463 [openai._base_client] INFO: Retrying request to /embeddings in 0.863316 seconds
+2026-04-30 01:05:49,615 [openai._base_client] INFO: Retrying request to /embeddings in 0.826561 seconds
+2026-04-30 01:05:50,343 [openai._base_client] INFO: Retrying request to /embeddings in 0.487307 seconds
+2026-04-30 01:05:50,466 [openai._base_client] INFO: Retrying request to /embeddings in 0.446886 seconds
+2026-04-30 01:05:50,841 [openai._base_client] INFO: Retrying request to /embeddings in 0.964695 seconds
+2026-04-30 01:05:50,918 [openai._base_client] INFO: Retrying request to /embeddings in 0.967478 seconds
+2026-04-30 01:05:51,834 [openai._base_client] INFO: Retrying request to /embeddings in 0.471445 seconds
+2026-04-30 01:05:51,910 [openai._base_client] INFO: Retrying request to /embeddings in 0.487356 seconds
+2026-04-30 01:05:52,316 [openai._base_client] INFO: Retrying request to /embeddings in 0.809203 seconds
+2026-04-30 01:05:52,411 [openai._base_client] INFO: Retrying request to /embeddings in 0.792499 seconds
+2026-04-30 01:05:53,141 [openai._base_client] INFO: Retrying request to /embeddings in 0.426249 seconds
+2026-04-30 01:05:53,217 [openai._base_client] INFO: Retrying request to /embeddings in 0.433531 seconds
+2026-04-30 01:05:53,577 [openai._base_client] INFO: Retrying request to /embeddings in 0.763669 seconds
+2026-04-30 01:05:53,655 [openai._base_client] INFO: Retrying request to /embeddings in 0.782694 seconds
+2026-04-30 01:05:54,353 [openai._base_client] INFO: Retrying request to /embeddings in 0.472420 seconds
+2026-04-30 01:05:54,459 [openai._base_client] INFO: Retrying request to /embeddings in 0.499395 seconds
+2026-04-30 01:05:54,834 [openai._base_client] INFO: Retrying request to /embeddings in 0.837762 seconds
+2026-04-30 01:05:54,972 [openai._base_client] INFO: Retrying request to /embeddings in 0.796745 seconds
+2026-04-30 01:05:55,683 [openai._base_client] INFO: Retrying request to /embeddings in 0.489642 seconds
+2026-04-30 01:05:55,792 [openai._base_client] INFO: Retrying request to /embeddings in 0.488517 seconds
+2026-04-30 01:05:56,182 [openai._base_client] INFO: Retrying request to /embeddings in 0.946807 seconds
+2026-04-30 01:05:56,288 [openai._base_client] INFO: Retrying request to /embeddings in 0.878247 seconds
+2026-04-30 01:05:57,196 [openai._base_client] INFO: Retrying request to /embeddings in 0.426887 seconds
+2026-04-30 01:05:57,196 [openai._base_client] INFO: Retrying request to /embeddings in 0.426604 seconds
+2026-04-30 01:05:57,637 [openai._base_client] INFO: Retrying request to /embeddings in 0.993933 seconds
+2026-04-30 01:05:57,638 [openai._base_client] INFO: Retrying request to /embeddings in 0.895528 seconds
+2026-04-30 01:05:58,549 [openai._base_client] INFO: Retrying request to /embeddings in 0.401326 seconds
+2026-04-30 01:05:58,655 [openai._base_client] INFO: Retrying request to /embeddings in 0.448271 seconds
+2026-04-30 01:05:58,953 [openai._base_client] INFO: Retrying request to /embeddings in 0.754549 seconds
+2026-04-30 01:05:59,106 [openai._base_client] INFO: Retrying request to /embeddings in 0.976680 seconds
+2026-04-30 01:05:59,730 [openai._base_client] INFO: Retrying request to /embeddings in 0.418682 seconds
+2026-04-30 01:06:00,096 [openai._base_client] INFO: Retrying request to /embeddings in 0.435424 seconds
+2026-04-30 01:06:00,164 [openai._base_client] INFO: Retrying request to /embeddings in 0.963712 seconds
+2026-04-30 01:06:00,547 [openai._base_client] INFO: Retrying request to /embeddings in 0.778451 seconds
+2026-04-30 01:06:01,153 [openai._base_client] INFO: Retrying request to /embeddings in 0.392507 seconds
+2026-04-30 01:06:01,336 [openai._base_client] INFO: Retrying request to /embeddings in 0.398043 seconds
+2026-04-30 01:06:01,559 [openai._base_client] INFO: Retrying request to /embeddings in 0.833909 seconds
+2026-04-30 01:06:01,742 [openai._base_client] INFO: Retrying request to /embeddings in 0.874718 seconds
+2026-04-30 01:06:02,408 [openai._base_client] INFO: Retrying request to /embeddings in 0.415508 seconds
+2026-04-30 01:06:02,637 [openai._base_client] INFO: Retrying request to /embeddings in 0.464218 seconds
+2026-04-30 01:06:02,829 [openai._base_client] INFO: Retrying request to /embeddings in 0.914208 seconds
+2026-04-30 01:06:03,106 [openai._base_client] INFO: Retrying request to /embeddings in 0.851407 seconds
+2026-04-30 01:06:03,755 [openai._base_client] INFO: Retrying request to /embeddings in 0.497260 seconds
+2026-04-30 01:06:03,970 [openai._base_client] INFO: Retrying request to /embeddings in 0.402743 seconds
+2026-04-30 01:06:04,271 [openai._base_client] INFO: Retrying request to /embeddings in 0.938503 seconds
+2026-04-30 01:06:04,377 [openai._base_client] INFO: Retrying request to /embeddings in 0.870671 seconds
+2026-04-30 01:06:05,226 [openai._base_client] INFO: Retrying request to /embeddings in 0.468919 seconds
+2026-04-30 01:06:05,272 [openai._base_client] INFO: Retrying request to /embeddings in 0.434547 seconds
+2026-04-30 01:06:05,709 [openai._base_client] INFO: Retrying request to /embeddings in 0.918941 seconds
+2026-04-30 01:06:05,710 [openai._base_client] INFO: Retrying request to /embeddings in 0.807128 seconds
+2026-04-30 01:06:06,541 [openai._base_client] INFO: Retrying request to /embeddings in 0.408493 seconds
+2026-04-30 01:06:06,659 [openai._base_client] INFO: Retrying request to /embeddings in 0.462079 seconds
+2026-04-30 01:06:06,962 [openai._base_client] INFO: Retrying request to /embeddings in 0.839946 seconds
+2026-04-30 01:06:07,130 [openai._base_client] INFO: Retrying request to /embeddings in 0.893017 seconds
+2026-04-30 01:06:07,828 [openai._base_client] INFO: Retrying request to /embeddings in 0.463360 seconds
+2026-04-30 01:06:08,295 [openai._base_client] INFO: Retrying request to /embeddings in 0.889504 seconds
+2026-04-30 01:06:09,206 [openai._base_client] INFO: Retrying request to /embeddings in 0.477606 seconds
+2026-04-30 01:06:09,206 [openai._base_client] INFO: Retrying request to /embeddings in 0.404029 seconds
+2026-04-30 01:06:09,615 [openai._base_client] INFO: Retrying request to /embeddings in 0.843974 seconds
+2026-04-30 01:06:09,693 [openai._base_client] INFO: Retrying request to /embeddings in 0.823887 seconds
+2026-04-30 01:06:10,485 [openai._base_client] INFO: Retrying request to /embeddings in 0.425282 seconds
+2026-04-30 01:06:10,530 [openai._base_client] INFO: Retrying request to /embeddings in 0.435342 seconds
+2026-04-30 01:06:10,922 [openai._base_client] INFO: Retrying request to /embeddings in 0.907943 seconds
+2026-04-30 01:06:10,968 [openai._base_client] INFO: Retrying request to /embeddings in 0.890131 seconds
+2026-04-30 01:06:11,850 [openai._base_client] INFO: Retrying request to /embeddings in 0.480335 seconds
+2026-04-30 01:06:11,881 [openai._base_client] INFO: Retrying request to /embeddings in 0.439650 seconds
+2026-04-30 01:06:12,331 [openai._base_client] INFO: Retrying request to /embeddings in 0.971935 seconds
+2026-04-30 01:06:12,332 [openai._base_client] INFO: Retrying request to /embeddings in 0.872794 seconds
+2026-04-30 01:06:13,219 [openai._base_client] INFO: Retrying request to /embeddings in 0.428574 seconds
+2026-04-30 01:06:13,324 [openai._base_client] INFO: Retrying request to /embeddings in 0.483033 seconds
+2026-04-30 01:06:13,653 [openai._base_client] INFO: Retrying request to /embeddings in 0.961827 seconds
+2026-04-30 01:06:13,823 [openai._base_client] INFO: Retrying request to /embeddings in 0.918651 seconds
+2026-04-30 01:06:14,630 [openai._base_client] INFO: Retrying request to /embeddings in 0.396961 seconds
+2026-04-30 01:06:14,767 [openai._base_client] INFO: Retrying request to /embeddings in 0.467764 seconds
+2026-04-30 01:06:15,034 [openai._base_client] INFO: Retrying request to /embeddings in 0.831933 seconds
+2026-04-30 01:06:15,248 [openai._base_client] INFO: Retrying request to /embeddings in 0.810187 seconds
+2026-04-30 01:06:15,884 [openai._base_client] INFO: Retrying request to /embeddings in 0.420536 seconds
+2026-04-30 01:06:16,083 [openai._base_client] INFO: Retrying request to /embeddings in 0.497127 seconds
+2026-04-30 01:06:16,321 [openai._base_client] INFO: Retrying request to /embeddings in 0.888449 seconds
+2026-04-30 01:06:16,595 [openai._base_client] INFO: Retrying request to /embeddings in 0.866446 seconds
+2026-04-30 01:06:59,430 [geospoiler] INFO: === REBUILD: Resetting LightRAG storage ===
+2026-04-30 01:06:59,431 [geospoiler.loader] INFO: Archived RAG storage to: D:\ObsidianWiki\GeoSpoiler-RAG\rag_storage_backups\rag_storage_20260430_010659
+2026-04-30 01:06:59,431 [geospoiler] INFO: RAG storage backup created at: D:\ObsidianWiki\GeoSpoiler-RAG\rag_storage_backups\rag_storage_20260430_010659
+2026-04-30 01:06:59,431 [geospoiler] INFO: === REBUILD: Loading all normalized sources into fresh LightRAG storage ===
+2026-04-30 01:06:59,431 [geospoiler] INFO: === LOAD: Loading into LightRAG ===
+2026-04-30 01:07:00,002 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 0 data
+2026-04-30 01:07:00,003 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 0 data
+2026-04-30 01:07:00,003 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 0 data
+2026-04-30 01:07:00,005 [geospoiler.loader] INFO: LightRAG initialized.
+2026-04-30 01:07:00,009 [geospoiler.loader] INFO: Found 29 normalized texts to load.
+2026-04-30 01:08:09,915 [openai._base_client] INFO: Retrying request to /embeddings in 0.499614 seconds
+2026-04-30 01:08:09,932 [openai._base_client] INFO: Retrying request to /embeddings in 0.441760 seconds
+2026-04-30 01:08:10,614 [geospoiler.loader] INFO:   Inserted progress: 5/29
+2026-04-30 01:08:34,334 [openai._base_client] INFO: Retrying request to /embeddings in 0.406918 seconds
+2026-04-30 01:08:34,526 [openai._base_client] INFO: Retrying request to /embeddings in 0.411256 seconds
+2026-04-30 01:08:52,828 [openai._base_client] INFO: Retrying request to /embeddings in 0.434480 seconds
+2026-04-30 01:09:12,317 [geospoiler.loader] INFO:   Inserted progress: 10/29
+2026-04-30 01:14:58,060 [geospoiler] INFO: === REBUILD: Resetting LightRAG storage ===
+2026-04-30 01:14:58,060 [geospoiler.loader] INFO: Archived RAG storage to: D:\ObsidianWiki\GeoSpoiler-RAG\rag_storage_backups\rag_storage_20260430_011458
+2026-04-30 01:14:58,061 [geospoiler] INFO: RAG storage backup created at: D:\ObsidianWiki\GeoSpoiler-RAG\rag_storage_backups\rag_storage_20260430_011458
+2026-04-30 01:14:58,061 [geospoiler] INFO: === REBUILD: Loading all normalized sources into fresh LightRAG storage ===
+2026-04-30 01:14:58,061 [geospoiler] INFO: === LOAD: Loading into LightRAG ===
+2026-04-30 01:14:58,647 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 0 data
+2026-04-30 01:14:58,647 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 0 data
+2026-04-30 01:14:58,648 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 0 data
+2026-04-30 01:14:58,649 [geospoiler.loader] INFO: LightRAG initialized.
+2026-04-30 01:14:58,653 [geospoiler.loader] INFO: Found 29 normalized texts to load.
+2026-04-30 01:16:13,653 [geospoiler.loader] INFO:   Inserted progress: 5/29
+2026-04-30 01:17:33,334 [geospoiler.loader] INFO:   Inserted progress: 10/29
+2026-04-30 01:18:35,746 [geospoiler.loader] INFO:   Inserted progress: 15/29
+2026-04-30 01:21:40,094 [openai._base_client] INFO: Retrying request to /chat/completions in 0.499110 seconds
+2026-04-30 01:23:51,127 [openai._base_client] INFO: Retrying request to /chat/completions in 0.495787 seconds
+2026-04-30 01:25:16,649 [geospoiler.loader] INFO:   Inserted progress: 20/29
+2026-04-30 01:28:43,254 [openai._base_client] INFO: Retrying request to /chat/completions in 0.477812 seconds
+2026-04-30 01:30:43,860 [openai._base_client] INFO: Retrying request to /chat/completions in 0.852276 seconds
+2026-04-30 01:34:43,600 [openai._base_client] INFO: Retrying request to /chat/completions in 0.495670 seconds
+2026-04-30 01:34:56,537 [geospoiler.loader] INFO:   Inserted progress: 25/29
+2026-04-30 01:35:59,447 [geospoiler.loader] INFO:   Inserted progress: 29/29
+2026-04-30 01:35:59,447 [geospoiler.loader] INFO: Loading complete: 29/29 texts inserted into LightRAG.
+2026-04-30 01:35:59,447 [geospoiler] INFO: === LOAD complete: 29 texts loaded ===
+2026-04-30 01:35:59,447 [geospoiler] INFO: === REBUILD COMPLETE ===
+2026-04-30 01:43:51,850 [nano-vectordb] INFO: Load (179, 1024) data
+2026-04-30 01:43:51,850 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-04-30 01:43:51,865 [nano-vectordb] INFO: Load (232, 1024) data
+2026-04-30 01:43:51,865 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-04-30 01:43:51,871 [nano-vectordb] INFO: Load (29, 1024) data
+2026-04-30 01:43:51,872 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-04-30 01:43:51,916 [geospoiler.loader] INFO: LightRAG initialized.
+2026-04-30 01:43:51,916 [geospoiler.loader] INFO: Querying LightRAG (mode=hybrid, rerank=enabled)
+2026-04-30 01:43:53,886 [geospoiler.reranker] INFO: Reranker (nim): 15 docs -> 15 candidates -> 15 returned
+2026-04-30 23:41:22,622 [nano-vectordb] INFO: Load (179, 1024) data
+2026-04-30 23:41:22,622 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-04-30 23:41:22,623 [nano-vectordb] INFO: Load (179, 1024) data
+2026-04-30 23:41:22,623 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-04-30 23:41:22,626 [nano-vectordb] INFO: Load (179, 1024) data
+2026-04-30 23:41:22,626 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-04-30 23:41:22,629 [nano-vectordb] INFO: Load (232, 1024) data
+2026-04-30 23:41:22,629 [nano-vectordb] INFO: Load (232, 1024) data
+2026-04-30 23:41:22,629 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-04-30 23:41:22,630 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-04-30 23:41:22,631 [nano-vectordb] INFO: Load (29, 1024) data
+2026-04-30 23:41:22,631 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-04-30 23:41:22,631 [nano-vectordb] INFO: Load (29, 1024) data
+2026-04-30 23:41:22,632 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-04-30 23:41:22,632 [nano-vectordb] INFO: Load (232, 1024) data
+2026-04-30 23:41:22,632 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-04-30 23:41:22,634 [nano-vectordb] INFO: Load (29, 1024) data
+2026-04-30 23:41:22,634 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-04-30 23:41:22,636 [geospoiler.loader] INFO: LightRAG initialized.
+2026-04-30 23:41:22,636 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-04-30 23:41:22,636 [geospoiler.loader] INFO: LightRAG initialized.
+2026-04-30 23:41:22,636 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-04-30 23:41:22,638 [geospoiler.loader] INFO: LightRAG initialized.
+2026-04-30 23:41:22,638 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-04-30 23:41:22,843 [openai._base_client] INFO: Retrying request to /chat/completions in 0.465047 seconds
+2026-04-30 23:41:22,843 [openai._base_client] INFO: Retrying request to /chat/completions in 0.489967 seconds
+2026-04-30 23:41:22,843 [openai._base_client] INFO: Retrying request to /chat/completions in 0.382441 seconds
+2026-04-30 23:41:23,228 [openai._base_client] INFO: Retrying request to /chat/completions in 0.936736 seconds
+2026-04-30 23:41:23,320 [openai._base_client] INFO: Retrying request to /chat/completions in 0.851293 seconds
+2026-04-30 23:41:23,349 [openai._base_client] INFO: Retrying request to /chat/completions in 0.905574 seconds
+2026-04-30 23:41:58,712 [nano-vectordb] INFO: Load (179, 1024) data
+2026-04-30 23:41:58,712 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-04-30 23:41:58,718 [nano-vectordb] INFO: Load (232, 1024) data
+2026-04-30 23:41:58,718 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-04-30 23:41:58,720 [nano-vectordb] INFO: Load (29, 1024) data
+2026-04-30 23:41:58,720 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-04-30 23:41:58,724 [geospoiler.loader] INFO: LightRAG initialized.
+2026-04-30 23:41:58,725 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-04-30 23:42:02,116 [geospoiler.reranker] INFO: Reranker (nim): 25 docs -> 25 candidates -> 20 returned
+2026-04-30 23:43:12,028 [nano-vectordb] INFO: Load (179, 1024) data
+2026-04-30 23:43:12,029 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-04-30 23:43:12,038 [nano-vectordb] INFO: Load (232, 1024) data
+2026-04-30 23:43:12,038 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-04-30 23:43:12,041 [nano-vectordb] INFO: Load (29, 1024) data
+2026-04-30 23:43:12,041 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-04-30 23:43:12,058 [geospoiler.loader] INFO: LightRAG initialized.
+2026-04-30 23:43:12,058 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-04-30 23:43:13,701 [nano-vectordb] INFO: Load (179, 1024) data
+2026-04-30 23:43:13,701 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-04-30 23:43:13,708 [nano-vectordb] INFO: Load (232, 1024) data
+2026-04-30 23:43:13,708 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-04-30 23:43:13,709 [nano-vectordb] INFO: Load (29, 1024) data
+2026-04-30 23:43:13,710 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-04-30 23:43:13,710 [geospoiler.loader] INFO: LightRAG initialized.
+2026-04-30 23:43:13,710 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-04-30 23:43:15,851 [geospoiler.reranker] INFO: Reranker (nim): 16 docs -> 16 candidates -> 16 returned
+2026-04-30 23:43:32,101 [nano-vectordb] INFO: Load (179, 1024) data
+2026-04-30 23:43:32,102 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-04-30 23:43:32,108 [nano-vectordb] INFO: Load (232, 1024) data
+2026-04-30 23:43:32,108 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-04-30 23:43:32,109 [nano-vectordb] INFO: Load (29, 1024) data
+2026-04-30 23:43:32,109 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-04-30 23:43:32,110 [geospoiler.loader] INFO: LightRAG initialized.
+2026-04-30 23:43:32,110 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-04-30 23:45:49,048 [nano-vectordb] INFO: Load (179, 1024) data
+2026-04-30 23:45:49,048 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_entities.json'} 179 data
+2026-04-30 23:45:49,055 [nano-vectordb] INFO: Load (232, 1024) data
+2026-04-30 23:45:49,055 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_relationships.json'} 232 data
+2026-04-30 23:45:49,057 [nano-vectordb] INFO: Load (29, 1024) data
+2026-04-30 23:45:49,057 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG\\rag_storage\\vdb_chunks.json'} 29 data
+2026-04-30 23:45:49,067 [geospoiler.loader] INFO: LightRAG initialized.
+2026-04-30 23:45:49,068 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, rerank=enabled)
+2026-04-30 23:45:51,080 [geospoiler.reranker] INFO: Reranker (nim): 15 docs -> 15 candidates -> 15 returned

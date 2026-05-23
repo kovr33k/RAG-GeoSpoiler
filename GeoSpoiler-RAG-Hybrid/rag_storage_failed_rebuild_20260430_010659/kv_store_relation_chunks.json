@@ -1,0 +1,724 @@
+{
+  "Cuba<SEP>United States": {
+    "chunk_ids": [
+      "chunk-a2c1fe6eec4b0d533b5269363a9c02da",
+      "chunk-26a0c741b3e720a0878cd12efde32ab3",
+      "chunk-a87bd5684f407f2900f544cd1ebd84b2",
+      "chunk-7e0fc3662465aeaa22012fc5b57b9ab2"
+    ],
+    "count": 4,
+    "update_time": 1777504068,
+    "_id": "Cuba<SEP>United States"
+  },
+  "Communist Party of Cuba<SEP>Protesters": {
+    "chunk_ids": [
+      "chunk-a2c1fe6eec4b0d533b5269363a9c02da"
+    ],
+    "count": 1,
+    "create_time": 1777504026,
+    "update_time": 1777504026,
+    "_id": "Communist Party of Cuba<SEP>Protesters"
+  },
+  "Cuba<SEP>President": {
+    "chunk_ids": [
+      "chunk-a2c1fe6eec4b0d533b5269363a9c02da"
+    ],
+    "count": 1,
+    "create_time": 1777504026,
+    "update_time": 1777504026,
+    "_id": "Cuba<SEP>President"
+  },
+  "Donald Trump<SEP>United States": {
+    "chunk_ids": [
+      "chunk-26a0c741b3e720a0878cd12efde32ab3",
+      "chunk-a87bd5684f407f2900f544cd1ebd84b2"
+    ],
+    "count": 2,
+    "update_time": 1777504054,
+    "_id": "Donald Trump<SEP>United States"
+  },
+  "Russia<SEP>U.S. Coast Guard": {
+    "chunk_ids": [
+      "chunk-26a0c741b3e720a0878cd12efde32ab3"
+    ],
+    "count": 1,
+    "create_time": 1777504045,
+    "update_time": 1777504045,
+    "_id": "Russia<SEP>U.S. Coast Guard"
+  },
+  "New York Times<SEP>U.S. Coast Guard": {
+    "chunk_ids": [
+      "chunk-26a0c741b3e720a0878cd12efde32ab3"
+    ],
+    "count": 1,
+    "create_time": 1777504045,
+    "update_time": 1777504045,
+    "_id": "New York Times<SEP>U.S. Coast Guard"
+  },
+  "Russia<SEP>United States": {
+    "chunk_ids": [
+      "chunk-26a0c741b3e720a0878cd12efde32ab3"
+    ],
+    "count": 1,
+    "create_time": 1777504045,
+    "update_time": 1777504045,
+    "_id": "Russia<SEP>United States"
+  },
+  "Cuba<SEP>Russia": {
+    "chunk_ids": [
+      "chunk-26a0c741b3e720a0878cd12efde32ab3"
+    ],
+    "count": 1,
+    "create_time": 1777504045,
+    "update_time": 1777504045,
+    "_id": "Cuba<SEP>Russia"
+  },
+  "Cuba<SEP>U.S. Department of the Treasury": {
+    "chunk_ids": [
+      "chunk-26a0c741b3e720a0878cd12efde32ab3"
+    ],
+    "count": 1,
+    "create_time": 1777504045,
+    "update_time": 1777504045,
+    "_id": "Cuba<SEP>U.S. Department of the Treasury"
+  },
+  "Cuba<SEP>oil shipment": {
+    "chunk_ids": [
+      "chunk-26a0c741b3e720a0878cd12efde32ab3"
+    ],
+    "count": 1,
+    "create_time": 1777504045,
+    "update_time": 1777504045,
+    "_id": "Cuba<SEP>oil shipment"
+  },
+  "Donald Trump<SEP>White House": {
+    "chunk_ids": [
+      "chunk-a87bd5684f407f2900f544cd1ebd84b2"
+    ],
+    "count": 1,
+    "create_time": 1777504054,
+    "update_time": 1777504054,
+    "_id": "Donald Trump<SEP>White House"
+  },
+  "Ivan Dyakonov<SEP>United States": {
+    "chunk_ids": [
+      "chunk-a87bd5684f407f2900f544cd1ebd84b2"
+    ],
+    "count": 1,
+    "create_time": 1777504054,
+    "update_time": 1777504054,
+    "_id": "Ivan Dyakonov<SEP>United States"
+  },
+  "Cuba<SEP>Donald Trump": {
+    "chunk_ids": [
+      "chunk-a87bd5684f407f2900f544cd1ebd84b2"
+    ],
+    "count": 1,
+    "create_time": 1777504054,
+    "update_time": 1777504054,
+    "_id": "Cuba<SEP>Donald Trump"
+  },
+  "Ivan Dyakonov<SEP>White House": {
+    "chunk_ids": [
+      "chunk-a87bd5684f407f2900f544cd1ebd84b2"
+    ],
+    "count": 1,
+    "create_time": 1777504054,
+    "update_time": 1777504054,
+    "_id": "Ivan Dyakonov<SEP>White House"
+  },
+  "Starlink<SEP>United States": {
+    "chunk_ids": [
+      "chunk-7e0fc3662465aeaa22012fc5b57b9ab2"
+    ],
+    "count": 1,
+    "create_time": 1777504068,
+    "update_time": 1777504068,
+    "_id": "Starlink<SEP>United States"
+  },
+  "Cuba<SEP>State Department": {
+    "chunk_ids": [
+      "chunk-7e0fc3662465aeaa22012fc5b57b9ab2"
+    ],
+    "count": 1,
+    "create_time": 1777504068,
+    "update_time": 1777504068,
+    "_id": "Cuba<SEP>State Department"
+  },
+  "1959 Revolution<SEP>United States": {
+    "chunk_ids": [
+      "chunk-7e0fc3662465aeaa22012fc5b57b9ab2"
+    ],
+    "count": 1,
+    "create_time": 1777504068,
+    "update_time": 1777504068,
+    "_id": "1959 Revolution<SEP>United States"
+  },
+  "Cuba<SEP>Raúl Guillermo Rodríguez Castro": {
+    "chunk_ids": [
+      "chunk-7e0fc3662465aeaa22012fc5b57b9ab2"
+    ],
+    "count": 1,
+    "create_time": 1777504068,
+    "update_time": 1777504068,
+    "_id": "Cuba<SEP>Raúl Guillermo Rodríguez Castro"
+  },
+  "Barack Obama<SEP>United States": {
+    "chunk_ids": [
+      "chunk-7e0fc3662465aeaa22012fc5b57b9ab2"
+    ],
+    "count": 1,
+    "create_time": 1777504069,
+    "update_time": 1777504069,
+    "_id": "Barack Obama<SEP>United States"
+  },
+  "Alexander Dugin<SEP>Russian World": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504089,
+    "update_time": 1777504089,
+    "_id": "Alexander Dugin<SEP>Russian World"
+  },
+  "Armenia<SEP>United States": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504089,
+    "update_time": 1777504089,
+    "_id": "Armenia<SEP>United States"
+  },
+  "Armenia<SEP>European Union": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504089,
+    "update_time": 1777504089,
+    "_id": "Armenia<SEP>European Union"
+  },
+  "Azerbaijan<SEP>United States": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504089,
+    "update_time": 1777504089,
+    "_id": "Azerbaijan<SEP>United States"
+  },
+  "Alexander Dugin<SEP>Armenia": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504089,
+    "update_time": 1777504089,
+    "_id": "Alexander Dugin<SEP>Armenia"
+  },
+  "Kazakhstan<SEP>United States": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504089,
+    "update_time": 1777504089,
+    "_id": "Kazakhstan<SEP>United States"
+  },
+  "Azerbaijan<SEP>European Union": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504089,
+    "update_time": 1777504089,
+    "_id": "Azerbaijan<SEP>European Union"
+  },
+  "Alexander Dugin<SEP>Azerbaijan": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504089,
+    "update_time": 1777504089,
+    "_id": "Alexander Dugin<SEP>Azerbaijan"
+  },
+  "Georgia<SEP>United States": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504089,
+    "update_time": 1777504089,
+    "_id": "Georgia<SEP>United States"
+  },
+  "European Union<SEP>Kazakhstan": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504089,
+    "update_time": 1777504089,
+    "_id": "European Union<SEP>Kazakhstan"
+  },
+  "United States<SEP>Uzbekistan": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504089,
+    "update_time": 1777504089,
+    "_id": "United States<SEP>Uzbekistan"
+  },
+  "European Union<SEP>Georgia": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504089,
+    "update_time": 1777504089,
+    "_id": "European Union<SEP>Georgia"
+  },
+  "Alexander Dugin<SEP>Kazakhstan": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504089,
+    "update_time": 1777504089,
+    "_id": "Alexander Dugin<SEP>Kazakhstan"
+  },
+  "European Union<SEP>Uzbekistan": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504089,
+    "update_time": 1777504089,
+    "_id": "European Union<SEP>Uzbekistan"
+  },
+  "Alexander Dugin<SEP>Georgia": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504089,
+    "update_time": 1777504089,
+    "_id": "Alexander Dugin<SEP>Georgia"
+  },
+  "Alexander Dugin<SEP>Uzbekistan": {
+    "chunk_ids": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "count": 1,
+    "create_time": 1777504090,
+    "update_time": 1777504090,
+    "_id": "Alexander Dugin<SEP>Uzbekistan"
+  },
+  "Правые<SEP>Ультра левые": {
+    "chunk_ids": [
+      "chunk-1e5a4b6e48badb36de1e41a6f2ff6bf7"
+    ],
+    "count": 1,
+    "create_time": 1777504095,
+    "update_time": 1777504095,
+    "_id": "Правые<SEP>Ультра левые"
+  },
+  "BILD<SEP>Insa": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848"
+    ],
+    "count": 1,
+    "create_time": 1777504114,
+    "update_time": 1777504114,
+    "_id": "BILD<SEP>Insa"
+  },
+  "Ukraine<SEP>Німеччина": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848"
+    ],
+    "count": 1,
+    "create_time": 1777504114,
+    "update_time": 1777504114,
+    "_id": "Ukraine<SEP>Німеччина"
+  },
+  "German Bundeswehr<SEP>PzH 2000": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848"
+    ],
+    "count": 1,
+    "create_time": 1777504114,
+    "update_time": 1777504114,
+    "_id": "German Bundeswehr<SEP>PzH 2000"
+  },
+  "Ukraine<SEP>СДПН": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848"
+    ],
+    "count": 1,
+    "create_time": 1777504114,
+    "update_time": 1777504114,
+    "_id": "Ukraine<SEP>СДПН"
+  },
+  "German Bundeswehr<SEP>НАТО": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848"
+    ],
+    "count": 1,
+    "create_time": 1777504114,
+    "update_time": 1777504114,
+    "_id": "German Bundeswehr<SEP>НАТО"
+  },
+  "AfD<SEP>Ukraine": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848",
+      "chunk-55348f566660754475cddb9236d91243"
+    ],
+    "count": 2,
+    "update_time": 1777504152,
+    "_id": "AfD<SEP>Ukraine"
+  },
+  "BSW<SEP>Ukraine": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848"
+    ],
+    "count": 1,
+    "create_time": 1777504114,
+    "update_time": 1777504114,
+    "_id": "BSW<SEP>Ukraine"
+  },
+  "Russia<SEP>Ukraine": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848",
+      "chunk-55348f566660754475cddb9236d91243"
+    ],
+    "count": 2,
+    "update_time": 1777504152,
+    "_id": "Russia<SEP>Ukraine"
+  },
+  "НАТО<SEP>СДПН": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848"
+    ],
+    "count": 1,
+    "create_time": 1777504114,
+    "update_time": 1777504114,
+    "_id": "НАТО<SEP>СДПН"
+  },
+  "Зелені<SEP>НАТО": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848"
+    ],
+    "count": 1,
+    "create_time": 1777504114,
+    "update_time": 1777504114,
+    "_id": "Зелені<SEP>НАТО"
+  },
+  "AfD<SEP>НАТО": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848"
+    ],
+    "count": 1,
+    "create_time": 1777504115,
+    "update_time": 1777504115,
+    "_id": "AfD<SEP>НАТО"
+  },
+  "PzH 2000<SEP>Ukraine": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848"
+    ],
+    "count": 1,
+    "create_time": 1777504115,
+    "update_time": 1777504115,
+    "_id": "PzH 2000<SEP>Ukraine"
+  },
+  "Russia<SEP>Польща": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848"
+    ],
+    "count": 1,
+    "create_time": 1777504115,
+    "update_time": 1777504115,
+    "_id": "Russia<SEP>Польща"
+  },
+  "BSW<SEP>НАТО": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848"
+    ],
+    "count": 1,
+    "create_time": 1777504115,
+    "update_time": 1777504115,
+    "_id": "BSW<SEP>НАТО"
+  },
+  "Russia<SEP>Литва": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848"
+    ],
+    "count": 1,
+    "create_time": 1777504115,
+    "update_time": 1777504115,
+    "_id": "Russia<SEP>Литва"
+  },
+  "PzH 2000<SEP>НАТО": {
+    "chunk_ids": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848"
+    ],
+    "count": 1,
+    "create_time": 1777504115,
+    "update_time": 1777504115,
+    "_id": "PzH 2000<SEP>НАТО"
+  },
+  "AfD<SEP>Tino Chrupalla": {
+    "chunk_ids": [
+      "chunk-62c7c27d5a1271eee2b62fde6fdb978e"
+    ],
+    "count": 1,
+    "create_time": 1777504132,
+    "update_time": 1777504132,
+    "_id": "AfD<SEP>Tino Chrupalla"
+  },
+  "Marcus Frontmaier<SEP>Известия": {
+    "chunk_ids": [
+      "chunk-62c7c27d5a1271eee2b62fde6fdb978e"
+    ],
+    "count": 1,
+    "create_time": 1777504132,
+    "update_time": 1777504132,
+    "_id": "Marcus Frontmaier<SEP>Известия"
+  },
+  "Saxony-Anhalt<SEP>Ulrich Ziegmund": {
+    "chunk_ids": [
+      "chunk-62c7c27d5a1271eee2b62fde6fdb978e"
+    ],
+    "count": 1,
+    "create_time": 1777504132,
+    "update_time": 1777504132,
+    "_id": "Saxony-Anhalt<SEP>Ulrich Ziegmund"
+  },
+  "Alice Weidel<SEP>Marcus Frontmaier": {
+    "chunk_ids": [
+      "chunk-62c7c27d5a1271eee2b62fde6fdb978e"
+    ],
+    "count": 1,
+    "create_time": 1777504132,
+    "update_time": 1777504132,
+    "_id": "Alice Weidel<SEP>Marcus Frontmaier"
+  },
+  "Kremlin<SEP>Известия": {
+    "chunk_ids": [
+      "chunk-62c7c27d5a1271eee2b62fde6fdb978e"
+    ],
+    "count": 1,
+    "create_time": 1777504132,
+    "update_time": 1777504132,
+    "_id": "Kremlin<SEP>Известия"
+  },
+  "Bundestag<SEP>Marcus Frontmaier": {
+    "chunk_ids": [
+      "chunk-62c7c27d5a1271eee2b62fde6fdb978e"
+    ],
+    "count": 1,
+    "create_time": 1777504132,
+    "update_time": 1777504132,
+    "_id": "Bundestag<SEP>Marcus Frontmaier"
+  },
+  "Baden-Württemberg<SEP>Marcus Frontmaier": {
+    "chunk_ids": [
+      "chunk-62c7c27d5a1271eee2b62fde6fdb978e"
+    ],
+    "count": 1,
+    "create_time": 1777504132,
+    "update_time": 1777504132,
+    "_id": "Baden-Württemberg<SEP>Marcus Frontmaier"
+  },
+  "AfD<SEP>Marcus Frontmaier": {
+    "chunk_ids": [
+      "chunk-62c7c27d5a1271eee2b62fde6fdb978e"
+    ],
+    "count": 1,
+    "create_time": 1777504132,
+    "update_time": 1777504132,
+    "_id": "AfD<SEP>Marcus Frontmaier"
+  },
+  "AfD<SEP>Ulrich Ziegmund": {
+    "chunk_ids": [
+      "chunk-62c7c27d5a1271eee2b62fde6fdb978e"
+    ],
+    "count": 1,
+    "create_time": 1777504133,
+    "update_time": 1777504133,
+    "_id": "AfD<SEP>Ulrich Ziegmund"
+  },
+  "AfD<SEP>t-online": {
+    "chunk_ids": [
+      "chunk-62c7c27d5a1271eee2b62fde6fdb978e"
+    ],
+    "count": 1,
+    "create_time": 1777504133,
+    "update_time": 1777504133,
+    "_id": "AfD<SEP>t-online"
+  },
+  "Alternative für Deutschland<SEP>Merz": {
+    "chunk_ids": [
+      "chunk-9ee68b3273f299f8ae149b136191f2fe"
+    ],
+    "count": 1,
+    "create_time": 1777504138,
+    "update_time": 1777504138,
+    "_id": "Alternative für Deutschland<SEP>Merz"
+  },
+  "European Union<SEP>Merz": {
+    "chunk_ids": [
+      "chunk-9ee68b3273f299f8ae149b136191f2fe"
+    ],
+    "count": 1,
+    "create_time": 1777504138,
+    "update_time": 1777504138,
+    "_id": "European Union<SEP>Merz"
+  },
+  "Alternative für Deutschland<SEP>Federal Republic": {
+    "chunk_ids": [
+      "chunk-9ee68b3273f299f8ae149b136191f2fe"
+    ],
+    "count": 1,
+    "create_time": 1777504138,
+    "update_time": 1777504138,
+    "_id": "Alternative für Deutschland<SEP>Federal Republic"
+  },
+  "AfD<SEP>Alice Weidel": {
+    "chunk_ids": [
+      "chunk-55348f566660754475cddb9236d91243"
+    ],
+    "count": 1,
+    "create_time": 1777504151,
+    "update_time": 1777504151,
+    "_id": "AfD<SEP>Alice Weidel"
+  },
+  "Great Britain<SEP>Istanbul Agreement": {
+    "chunk_ids": [
+      "chunk-55348f566660754475cddb9236d91243"
+    ],
+    "count": 1,
+    "create_time": 1777504151,
+    "update_time": 1777504151,
+    "_id": "Great Britain<SEP>Istanbul Agreement"
+  },
+  "Russia<SEP>Western states": {
+    "chunk_ids": [
+      "chunk-55348f566660754475cddb9236d91243"
+    ],
+    "count": 1,
+    "create_time": 1777504151,
+    "update_time": 1777504151,
+    "_id": "Russia<SEP>Western states"
+  },
+  "Istanbul Agreement<SEP>Zelensky": {
+    "chunk_ids": [
+      "chunk-55348f566660754475cddb9236d91243"
+    ],
+    "count": 1,
+    "create_time": 1777504151,
+    "update_time": 1777504151,
+    "_id": "Istanbul Agreement<SEP>Zelensky"
+  },
+  "Alice Weidel<SEP>Zelensky": {
+    "chunk_ids": [
+      "chunk-55348f566660754475cddb9236d91243"
+    ],
+    "count": 1,
+    "create_time": 1777504152,
+    "update_time": 1777504152,
+    "_id": "Alice Weidel<SEP>Zelensky"
+  },
+  "AfD<SEP>Russia": {
+    "chunk_ids": [
+      "chunk-55348f566660754475cddb9236d91243"
+    ],
+    "count": 1,
+    "create_time": 1777504152,
+    "update_time": 1777504152,
+    "_id": "AfD<SEP>Russia"
+  },
+  "Alice Weidel<SEP>Great Britain": {
+    "chunk_ids": [
+      "chunk-55348f566660754475cddb9236d91243"
+    ],
+    "count": 1,
+    "create_time": 1777504152,
+    "update_time": 1777504152,
+    "_id": "Alice Weidel<SEP>Great Britain"
+  },
+  "EFF<SEP>Julius Malema": {
+    "chunk_ids": [
+      "chunk-32b092b5e1ef49279916994e3472b8cb"
+    ],
+    "count": 1,
+    "create_time": 1777504160,
+    "update_time": 1777504160,
+    "_id": "EFF<SEP>Julius Malema"
+  },
+  "Boer<SEP>Julius Malema": {
+    "chunk_ids": [
+      "chunk-32b092b5e1ef49279916994e3472b8cb"
+    ],
+    "count": 1,
+    "create_time": 1777504160,
+    "update_time": 1777504160,
+    "_id": "Boer<SEP>Julius Malema"
+  },
+  "Boer<SEP>EFF": {
+    "chunk_ids": [
+      "chunk-32b092b5e1ef49279916994e3472b8cb"
+    ],
+    "count": 1,
+    "create_time": 1777504160,
+    "update_time": 1777504160,
+    "_id": "Boer<SEP>EFF"
+  },
+  "Boer<SEP>Sudáfrica": {
+    "chunk_ids": [
+      "chunk-32b092b5e1ef49279916994e3472b8cb"
+    ],
+    "count": 1,
+    "create_time": 1777504161,
+    "update_time": 1777504161,
+    "_id": "Boer<SEP>Sudáfrica"
+  },
+  "Copyright Act of 1976<SEP>Fair Use": {
+    "chunk_ids": [
+      "chunk-4b36ac69a885c1764067ae49e05f7daf"
+    ],
+    "count": 1,
+    "create_time": 1777504168,
+    "update_time": 1777504168,
+    "_id": "Copyright Act of 1976<SEP>Fair Use"
+  },
+  "Meta<SEP>Section 107": {
+    "chunk_ids": [
+      "chunk-4b36ac69a885c1764067ae49e05f7daf"
+    ],
+    "count": 1,
+    "create_time": 1777504168,
+    "update_time": 1777504168,
+    "_id": "Meta<SEP>Section 107"
+  },
+  "Fair Use<SEP>Meta": {
+    "chunk_ids": [
+      "chunk-4b36ac69a885c1764067ae49e05f7daf"
+    ],
+    "count": 1,
+    "create_time": 1777504168,
+    "update_time": 1777504168,
+    "_id": "Fair Use<SEP>Meta"
+  },
+  "Copyright Act of 1976<SEP>Section 107": {
+    "chunk_ids": [
+      "chunk-4b36ac69a885c1764067ae49e05f7daf"
+    ],
+    "count": 1,
+    "create_time": 1777504168,
+    "update_time": 1777504168,
+    "_id": "Copyright Act of 1976<SEP>Section 107"
+  }
+}

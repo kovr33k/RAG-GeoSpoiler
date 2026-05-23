@@ -1,0 +1,8482 @@
+{
+  "doc-882de6693e8c9fb207f57f61323d2d4e": {
+    "relation_pairs": [
+      [
+        "Cuba",
+        "United States"
+      ],
+      [
+        "Cuba",
+        "President"
+      ],
+      [
+        "Communist Party of Cuba",
+        "President"
+      ],
+      [
+        "Communist Party of Cuba",
+        "Cuba"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777598325,
+    "update_time": 1777598325,
+    "_id": "doc-882de6693e8c9fb207f57f61323d2d4e"
+  },
+  "doc-7febacd6fb43b6f3f5d322062ffa2c70": {
+    "relation_pairs": [
+      [
+        "Donald Trump",
+        "Russia"
+      ],
+      [
+        "Cuba",
+        "United States"
+      ],
+      [
+        "Cuba",
+        "U.S. Department of the Treasury"
+      ],
+      [
+        "Cuba",
+        "Donald Trump"
+      ],
+      [
+        "Cuba",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "U.S. Coast Guard"
+      ],
+      [
+        "New York Times",
+        "U.S. Coast Guard"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777598338,
+    "update_time": 1777598338,
+    "_id": "doc-7febacd6fb43b6f3f5d322062ffa2c70"
+  },
+  "doc-c5ff3150becdc95a13382b5166108426": {
+    "relation_pairs": [
+      [
+        "Cuba",
+        "Donald Trump"
+      ],
+      [
+        "Donald Trump",
+        "Vladimir"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777598345,
+    "update_time": 1777598345,
+    "_id": "doc-c5ff3150becdc95a13382b5166108426"
+  },
+  "doc-81793c3cdcbfbe89f795246759446720": {
+    "relation_pairs": [
+      [
+        "Barack Obama",
+        "United States"
+      ],
+      [
+        "Cuba",
+        "United States"
+      ],
+      [
+        "Starlink",
+        "United States"
+      ],
+      [
+        "Cuba",
+        "State Department"
+      ],
+      [
+        "1959 Revolution",
+        "Cuba"
+      ],
+      [
+        "1959 Revolution",
+        "United States"
+      ],
+      [
+        "Raúl Guillermo Rodríguez Castro",
+        "United States"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777598357,
+    "update_time": 1777598357,
+    "_id": "doc-81793c3cdcbfbe89f795246759446720"
+  },
+  "doc-3ca0560767ba012dd8b95db541c0b90d": {
+    "relation_pairs": [
+      [
+        "Демократы",
+        "Республиканцы в Сенате США"
+      ],
+      [
+        "Donald Trump",
+        "Куба"
+      ],
+      [
+        "Donald Trump",
+        "Конгресс"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777598367,
+    "update_time": 1777598367,
+    "_id": "doc-3ca0560767ba012dd8b95db541c0b90d"
+  },
+  "doc-133f2ad7358431230c033d73c3e53653": {
+    "relation_pairs": [
+      [
+        "Europe",
+        "European Union"
+      ],
+      [
+        "European Union",
+        "Greta Thunberg"
+      ],
+      [
+        "European Union",
+        "Ukraine"
+      ],
+      [
+        "Greta Thunberg",
+        "Italian Far-Right Allies"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777598377,
+    "update_time": 1777598377,
+    "_id": "doc-133f2ad7358431230c033d73c3e53653"
+  },
+  "doc-8f4e07ad069c4a993d91e95d299a0bba": {
+    "relation_pairs": [
+      [
+        "Germany",
+        "Ukraine"
+      ],
+      [
+        "Bundeswehr",
+        "Ukraine"
+      ],
+      [
+        "Social Democrats",
+        "Ukraine"
+      ],
+      [
+        "AfD",
+        "Ukraine"
+      ],
+      [
+        "The Left",
+        "Ukraine"
+      ],
+      [
+        "Greens",
+        "Ukraine"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1777598387,
+    "update_time": 1777598387,
+    "_id": "doc-8f4e07ad069c4a993d91e95d299a0bba"
+  },
+  "doc-0d6051cb10e0c5daad1afed76665c5c6": {
+    "relation_pairs": [
+      [
+        "Special Military Operation (SVO)",
+        "Ukraine"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "Russia",
+        "Sumy"
+      ],
+      [
+        "Ukraine",
+        "United States"
+      ],
+      [
+        "NATO",
+        "Ukraine"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ],
+      [
+        "NATO",
+        "Russia"
+      ],
+      [
+        "Ukraine",
+        "Vladimir Putin"
+      ],
+      [
+        "Chmut",
+        "Ukraine"
+      ],
+      [
+        "Kharkiv",
+        "Russia"
+      ],
+      [
+        "Sternenko",
+        "Ukraine"
+      ],
+      [
+        "Belousov",
+        "Special Military Operation (SVO)"
+      ],
+      [
+        "Donbas",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "United States"
+      ],
+      [
+        "Special Military Operation (SVO)",
+        "Vladimir Putin"
+      ],
+      [
+        "Krotovich",
+        "Ukraine"
+      ],
+      [
+        "Kherson",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "Vladimir Putin"
+      ],
+      [
+        "Belousov",
+        "Vladimir Putin"
+      ]
+    ],
+    "count": 19,
+    "create_time": 1777598426,
+    "update_time": 1777598426,
+    "_id": "doc-0d6051cb10e0c5daad1afed76665c5c6"
+  },
+  "doc-119e506dfe6a156b8b2b3e88680a2a88": {
+    "relation_pairs": [
+      [
+        "Western culture",
+        "Western leftists"
+      ],
+      [
+        "Greta Thunberg",
+        "Iran"
+      ],
+      [
+        "Iran",
+        "Western leftists"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777598438,
+    "update_time": 1777598438,
+    "_id": "doc-119e506dfe6a156b8b2b3e88680a2a88"
+  },
+  "doc-a32ffbd27b462eeb182b0f3fd21bfa85": {
+    "relation_pairs": [
+      [
+        "Resurgam",
+        "Венесуэла"
+      ],
+      [
+        "Kremlin",
+        "Газпром"
+      ],
+      [
+        "Donald Trump",
+        "Resurgam"
+      ],
+      [
+        "Газпром",
+        "РЖД"
+      ],
+      [
+        "Donald Trump",
+        "Гренландия"
+      ],
+      [
+        "ICEYE",
+        "Швеция"
+      ],
+      [
+        "Kremlin",
+        "Sophia"
+      ],
+      [
+        "Resurgam",
+        "resurgamhub"
+      ],
+      [
+        "Resurgam",
+        "Швеция"
+      ],
+      [
+        "Kremlin",
+        "Resurgam"
+      ],
+      [
+        "Donald Trump",
+        "Виктор Орбан"
+      ],
+      [
+        "Resurgam",
+        "Молдова"
+      ],
+      [
+        "Resurgam",
+        "Виктор Орбан"
+      ],
+      [
+        "Kremlin",
+        "РЖД"
+      ],
+      [
+        "Kremlin",
+        "Виктор Орбан"
+      ],
+      [
+        "Bella 1",
+        "Kremlin"
+      ]
+    ],
+    "count": 16,
+    "create_time": 1777598495,
+    "update_time": 1777598495,
+    "_id": "doc-a32ffbd27b462eeb182b0f3fd21bfa85"
+  },
+  "doc-30252879d7bf3d7a04d93f59857a7dc7": {
+    "relation_pairs": [
+      [
+        "Donald Trump",
+        "Venezuela"
+      ],
+      [
+        "Donald Trump",
+        "Greenland"
+      ],
+      [
+        "Vladimir Putin",
+        "Алиса Вайдель"
+      ],
+      [
+        "Donald Trump",
+        "Алиса Вайдель"
+      ],
+      [
+        "AfD",
+        "Алиса Вайдель"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777598516,
+    "update_time": 1777598516,
+    "_id": "doc-30252879d7bf3d7a04d93f59857a7dc7"
+  },
+  "doc-ce903237a35972b170402bb380ff44cb": {
+    "relation_pairs": [
+      [
+        "European far-right parties",
+        "Germany"
+      ],
+      [
+        "Donald Trump",
+        "Greenland"
+      ],
+      [
+        "Disko Bay",
+        "Juliette Pavi"
+      ],
+      [
+        "Donald Trump",
+        "European far-right parties"
+      ],
+      [
+        "Ilulissat",
+        "Juliette Pavi"
+      ],
+      [
+        "European far-right parties",
+        "France"
+      ],
+      [
+        "Bloomberg",
+        "Juliette Pavi"
+      ],
+      [
+        "Donald Trump",
+        "Nicolás Maduro"
+      ],
+      [
+        "Disko Bay",
+        "Ilulissat"
+      ]
+    ],
+    "count": 9,
+    "create_time": 1777598533,
+    "update_time": 1777598533,
+    "_id": "doc-ce903237a35972b170402bb380ff44cb"
+  },
+  "doc-b14a5dcf0576373212d8f6eb81f4a79b": {
+    "relation_pairs": [
+      [
+        "Alexander Dugin",
+        "Kazakhstan"
+      ],
+      [
+        "Azerbaijan",
+        "United States"
+      ],
+      [
+        "Alexander Dugin",
+        "Azerbaijan"
+      ],
+      [
+        "United States",
+        "Uzbekistan"
+      ],
+      [
+        "European Union",
+        "Kazakhstan"
+      ],
+      [
+        "Alexander Dugin",
+        "Armenia"
+      ],
+      [
+        "Alexander Dugin",
+        "Russian World"
+      ],
+      [
+        "Georgia",
+        "United States"
+      ],
+      [
+        "Armenia",
+        "European Union"
+      ],
+      [
+        "Armenia",
+        "United States"
+      ],
+      [
+        "Kazakhstan",
+        "United States"
+      ],
+      [
+        "Alexander Dugin",
+        "Uzbekistan"
+      ],
+      [
+        "European Union",
+        "Georgia"
+      ],
+      [
+        "Alexander Dugin",
+        "Georgia"
+      ],
+      [
+        "European Union",
+        "Uzbekistan"
+      ],
+      [
+        "Azerbaijan",
+        "European Union"
+      ]
+    ],
+    "count": 16,
+    "create_time": 1777598555,
+    "update_time": 1777598555,
+    "_id": "doc-b14a5dcf0576373212d8f6eb81f4a79b"
+  },
+  "doc-e0d5989261f7edbddde19128152f7c74": {
+    "relation_pairs": [
+      [
+        "Ultra-Left",
+        "Ultra-Right"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777598560,
+    "update_time": 1777598560,
+    "_id": "doc-e0d5989261f7edbddde19128152f7c74"
+  },
+  "doc-f53762641d2ee3217b2ff76f463d9ed6": {
+    "relation_pairs": [
+      [
+        "BSW",
+        "Ukraine"
+      ],
+      [
+        "Poland",
+        "Russia"
+      ],
+      [
+        "AfD",
+        "Russia"
+      ],
+      [
+        "Lithuania",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "Bundeswehr",
+        "Eastern Europe"
+      ],
+      [
+        "Germany",
+        "Ukraine"
+      ],
+      [
+        "Greens",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "SPD"
+      ],
+      [
+        "BILD",
+        "Insa"
+      ],
+      [
+        "Bundeswehr",
+        "PzH 2000"
+      ],
+      [
+        "BSW",
+        "Russia"
+      ],
+      [
+        "SPD",
+        "Ukraine"
+      ],
+      [
+        "Eastern Europe",
+        "PzH 2000"
+      ],
+      [
+        "AfD",
+        "Ukraine"
+      ],
+      [
+        "Germany",
+        "Russia"
+      ]
+    ],
+    "count": 16,
+    "create_time": 1777598584,
+    "update_time": 1777598584,
+    "_id": "doc-f53762641d2ee3217b2ff76f463d9ed6"
+  },
+  "doc-6a5a5086371a41f6db882a7202c9eabc": {
+    "relation_pairs": [
+      [
+        "Alice Weidel",
+        "Markus Frömmel"
+      ],
+      [
+        "Izvestia",
+        "Markus Frömmel"
+      ],
+      [
+        "AfD",
+        "Ulrich Ziegmund"
+      ],
+      [
+        "Baden-Württemberg",
+        "Markus Frömmel"
+      ],
+      [
+        "AfD",
+        "Bundestag"
+      ],
+      [
+        "AfD",
+        "Tino Chrupalla"
+      ],
+      [
+        "AfD",
+        "Markus Frömmel"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777598603,
+    "update_time": 1777598603,
+    "_id": "doc-6a5a5086371a41f6db882a7202c9eabc"
+  },
+  "doc-6b6575a8c3bfb0cbceb16d1b8bcd6767": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Merz"
+      ],
+      [
+        "Alternative for Germany",
+        "Merz"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777598608,
+    "update_time": 1777598608,
+    "_id": "doc-6b6575a8c3bfb0cbceb16d1b8bcd6767"
+  },
+  "doc-92844413dd098c6870c624e615a2accb": {
+    "relation_pairs": [
+      [
+        "Istanbul Agreement",
+        "United Kingdom"
+      ],
+      [
+        "AfD",
+        "Russia"
+      ],
+      [
+        "Istanbul Agreement",
+        "Zelensky"
+      ],
+      [
+        "AfD",
+        "Алисе Вайдель"
+      ],
+      [
+        "AfD",
+        "Ukraine"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777598620,
+    "update_time": 1777598620,
+    "_id": "doc-92844413dd098c6870c624e615a2accb"
+  },
+  "doc-a1a356985345a203c25a5c607675793d": {
+    "relation_pairs": [
+      [
+        "Boer",
+        "South Africa"
+      ],
+      [
+        "EFF",
+        "South Africa"
+      ],
+      [
+        "Julius Malema",
+        "South Africa"
+      ],
+      [
+        "EFF",
+        "Julius Malema"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777598629,
+    "update_time": 1777598629,
+    "_id": "doc-a1a356985345a203c25a5c607675793d"
+  },
+  "doc-798d63d30f88e78402c9f686b948dc0e": {
+    "relation_pairs": [
+      [
+        "Section 107",
+        "Закон об авторском праве 1976 года"
+      ],
+      [
+        "Instagram",
+        "Meta"
+      ],
+      [
+        "Instagram",
+        "Section 107"
+      ],
+      [
+        "Meta",
+        "Закон об авторском праве 1976 года"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777598640,
+    "update_time": 1777598640,
+    "_id": "doc-798d63d30f88e78402c9f686b948dc0e"
+  },
+  "doc-c30d101952e0653e54f1513f17bd9893": {
+    "relation_pairs": [
+      [
+        "Germany",
+        "zdfheute"
+      ],
+      [
+        "Germany",
+        "Ukraine"
+      ],
+      [
+        "MUCRAINE",
+        "zdfheute"
+      ],
+      [
+        "MUCRAINE",
+        "yurii_kechur"
+      ],
+      [
+        "MUCRAINE",
+        "Ukraine"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777598650,
+    "update_time": 1777598650,
+    "_id": "doc-c30d101952e0653e54f1513f17bd9893"
+  },
+  "doc-ddd3b5e7905870192a694879f37ab0b6": {
+    "relation_pairs": [
+      [
+        "AfD",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "Baltic Sea region",
+        "Russia"
+      ],
+      [
+        "AfD",
+        "European Union"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777598659,
+    "update_time": 1777598659,
+    "_id": "doc-ddd3b5e7905870192a694879f37ab0b6"
+  },
+  "doc-03cf47b58bc13f3679c1e0a07f9feaef": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Gaza Strip"
+      ],
+      [
+        "Green Deal",
+        "Ursula von der Leyen"
+      ],
+      [
+        "European Union",
+        "Green Deal"
+      ],
+      [
+        "Pfizer",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Israel",
+        "Ursula von der Leyen"
+      ],
+      [
+        "The Left",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Patriots for Europe",
+        "Ursula von der Leyen"
+      ],
+      [
+        "European Union",
+        "Tunisia"
+      ],
+      [
+        "European Union",
+        "Patriots for Europe"
+      ],
+      [
+        "European People's Party",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Pfizergate",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Pfizer",
+        "Pfizergate"
+      ],
+      [
+        "European Commission",
+        "Ursula von der Leyen"
+      ],
+      [
+        "European Union",
+        "The Left"
+      ],
+      [
+        "European Union",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Egypt",
+        "European Union"
+      ]
+    ],
+    "count": 16,
+    "create_time": 1777598702,
+    "update_time": 1777598702,
+    "_id": "doc-03cf47b58bc13f3679c1e0a07f9feaef"
+  },
+  "doc-c4cb4f939cd316405a3f91efc3e704fa": {
+    "relation_pairs": [
+      [
+        "Motion of Censure",
+        "Patriots for Europe"
+      ],
+      [
+        "Lega",
+        "Patriots for Europe"
+      ],
+      [
+        "European Commission",
+        "Liberals"
+      ],
+      [
+        "Patriots for Europe",
+        "United States"
+      ],
+      [
+        "European Commission",
+        "European People's Party"
+      ],
+      [
+        "European Commission",
+        "Motion of Censure"
+      ],
+      [
+        "Motion of Censure",
+        "The Left"
+      ],
+      [
+        "European Conservatives and Reformists",
+        "Pfizergate"
+      ],
+      [
+        "Belgium",
+        "European Commission"
+      ],
+      [
+        "European Commission",
+        "Jacques Santer"
+      ],
+      [
+        "European Conservatives and Reformists",
+        "Georghe Piperea"
+      ],
+      [
+        "European Parliament",
+        "Motion of Censure"
+      ],
+      [
+        "Mercosur",
+        "Patriots for Europe"
+      ],
+      [
+        "European Commission",
+        "Social Democrats"
+      ],
+      [
+        "European Commission",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Conflict in Gaza",
+        "The Left"
+      ]
+    ],
+    "count": 16,
+    "create_time": 1777598738,
+    "update_time": 1777598738,
+    "_id": "doc-c4cb4f939cd316405a3f91efc3e704fa"
+  },
+  "doc-937369d27df806c42397289db7f7a715": {
+    "relation_pairs": [
+      [
+        "Atomwaffen Division",
+        "Stefan Balliet"
+      ],
+      [
+        "AfD",
+        "Atomwaffen Division"
+      ],
+      [
+        "Al-Qaeda",
+        "Atomwaffen Division"
+      ],
+      [
+        "Atomwaffen Division",
+        "ISIS"
+      ],
+      [
+        "SAT BW",
+        "Terrorgram scene"
+      ],
+      [
+        "Germany",
+        "Terrorgram scene"
+      ],
+      [
+        "Atomwaffen Division",
+        "Germany"
+      ],
+      [
+        "SAFE",
+        "Terrorgram scene"
+      ],
+      [
+        "Atomwaffen Division",
+        "Terrorgram scene"
+      ],
+      [
+        "Atomwaffen Division",
+        "Hamas"
+      ],
+      [
+        "Atomwaffen Division",
+        "Charles Manson"
+      ]
+    ],
+    "count": 11,
+    "create_time": 1777598881,
+    "update_time": 1777598881,
+    "_id": "doc-937369d27df806c42397289db7f7a715"
+  },
+  "doc-f99063df51483d8820fc8acb9aec543f": {
+    "relation_pairs": [
+      [
+        "United States",
+        "White Jihad"
+      ],
+      [
+        "Adolf Hitler",
+        "Johann von Leers"
+      ],
+      [
+        "Aryan Nations",
+        "Christian Identity"
+      ],
+      [
+        "Composite Violent Extremism",
+        "White Jihad"
+      ],
+      [
+        "Fused Extremism",
+        "White Jihad"
+      ],
+      [
+        "Christian Identity",
+        "The Order"
+      ],
+      [
+        "Al-Qaeda",
+        "Aryan Nations"
+      ],
+      [
+        "Germany",
+        "White Jihad"
+      ],
+      [
+        "Al-Taqwa",
+        "Switzerland"
+      ],
+      [
+        "Aryan Nations",
+        "David Myatt"
+      ],
+      [
+        "Al-Qaeda",
+        "Albert Friedrich Huber"
+      ],
+      [
+        "Aryan Nations",
+        "Ministry of Islamic Relations"
+      ],
+      [
+        "Adolf Eichmann",
+        "François Genoud"
+      ],
+      [
+        "Cumulative Extremism",
+        "White Jihad"
+      ],
+      [
+        "Synnergistic Extremism",
+        "White Jihad"
+      ],
+      [
+        "Gamal Abdel Nasser",
+        "Johann von Leers"
+      ],
+      [
+        "Al-Taqwa",
+        "Osama bin Laden"
+      ],
+      [
+        "David Myatt",
+        "Hamas"
+      ],
+      [
+        "Adolf Eichmann",
+        "Albert Friedrich Huber"
+      ]
+    ],
+    "count": 19,
+    "create_time": 1777599161,
+    "update_time": 1777599161,
+    "_id": "doc-f99063df51483d8820fc8acb9aec543f"
+  },
+  "doc-ea3780ab210d39afa0a450b3db57d0d8": {
+    "relation_pairs": [
+      [
+        "neo-Nazis",
+        "white jihad"
+      ],
+      [
+        "adolescents",
+        "white jihad"
+      ],
+      [
+        "white jihad",
+        "Осада"
+      ],
+      [
+        "Militant Accelerationism",
+        "United Kingdom"
+      ],
+      [
+        "Militant Accelerationism",
+        "white jihad"
+      ],
+      [
+        "white jihad",
+        "white supremacists"
+      ],
+      [
+        "Militant Accelerationism",
+        "United States"
+      ],
+      [
+        "white jihad",
+        "Дневники Тёрнера"
+      ],
+      [
+        "incels",
+        "white jihad"
+      ],
+      [
+        "United Kingdom",
+        "white jihad"
+      ],
+      [
+        "social underclasses",
+        "white jihad"
+      ],
+      [
+        "United States",
+        "white jihad"
+      ]
+    ],
+    "count": 12,
+    "create_time": 1777599191,
+    "update_time": 1777599191,
+    "_id": "doc-ea3780ab210d39afa0a450b3db57d0d8"
+  },
+  "doc-80faa7ae11aa12f44032a08f0e8863de": {
+    "relation_pairs": [
+      [
+        "Kremlin",
+        "Ultraright Anti-Ukrainian Forces"
+      ],
+      [
+        "Robert Fico",
+        "Ultraright Anti-Ukrainian Forces"
+      ],
+      [
+        "European Union",
+        "Kremlin"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777599200,
+    "update_time": 1777599200,
+    "_id": "doc-80faa7ae11aa12f44032a08f0e8863de"
+  },
+  "doc-ddc345cdf31fa3a21cd3d3a41bd346a5": {
+    "relation_pairs": [
+      [
+        "Matthias Mözdorf",
+        "Moscow"
+      ],
+      [
+        "Marcus Frontmeyer",
+        "Matthias Mözdorf"
+      ],
+      [
+        "Marcus Frontmeyer",
+        "United States"
+      ],
+      [
+        "Marcus Frontmeyer",
+        "Moscow"
+      ],
+      [
+        "AfD",
+        "Marcus Frontmeyer"
+      ],
+      [
+        "AfD",
+        "Rüdiger Lukassen"
+      ],
+      [
+        "AfD",
+        "Björn Höcke"
+      ],
+      [
+        "AfD",
+        "Matthias Mözdorf"
+      ]
+    ],
+    "count": 8,
+    "create_time": 1777599218,
+    "update_time": 1777599218,
+    "_id": "doc-ddc345cdf31fa3a21cd3d3a41bd346a5"
+  },
+  "doc-051dab41fce7bd5924a6a05b03225122": {
+    "relation_pairs": [
+      [
+        "NATO",
+        "Poland"
+      ],
+      [
+        "36th Brigade",
+        "Russian Armed Forces"
+      ],
+      [
+        "Razvedos",
+        "Ukraine"
+      ],
+      [
+        "Eastern Shield",
+        "Poland"
+      ],
+      [
+        "JDAM",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "France",
+        "NATO"
+      ],
+      [
+        "Belarus",
+        "Poland"
+      ],
+      [
+        "36th Brigade",
+        "Starlink"
+      ],
+      [
+        "Рации",
+        "Российские дроноводы"
+      ],
+      [
+        "Rusha Today",
+        "Russia"
+      ],
+      [
+        "Russian Armed Forces",
+        "Starlink"
+      ],
+      [
+        "Бытили Плюс",
+        "Патреон"
+      ],
+      [
+        "ВСУ",
+        "Разведос"
+      ],
+      [
+        "Discord",
+        "Russian Armed Forces"
+      ],
+      [
+        "Canada",
+        "Разведос"
+      ],
+      [
+        "Germany",
+        "NATO"
+      ],
+      [
+        "Russia",
+        "Химик"
+      ],
+      [
+        "Russian Armed Forces",
+        "Ukraine"
+      ],
+      [
+        "Starlink",
+        "Российские дроноводы"
+      ],
+      [
+        "Canada",
+        "Russia"
+      ],
+      [
+        "ВСУ",
+        "Российские дроноводы"
+      ],
+      [
+        "NATO",
+        "Russian Armed Forces"
+      ],
+      [
+        "Starlink",
+        "Ukraine"
+      ],
+      [
+        "NATO",
+        "Sweden"
+      ],
+      [
+        "NATO",
+        "Russia"
+      ],
+      [
+        "FPV-дроны",
+        "Радиотехническая разведка ВСУ"
+      ],
+      [
+        "Russia",
+        "United States"
+      ],
+      [
+        "Eastern Shield",
+        "Russia"
+      ],
+      [
+        "ВСУ",
+        "Михаил Фёдоров"
+      ],
+      [
+        "YouTube",
+        "Патреон"
+      ],
+      [
+        "Russian Armed Forces",
+        "SpaceX"
+      ],
+      [
+        "Belarus",
+        "Russia"
+      ],
+      [
+        "Alexander Arutyunyan",
+        "Razvedos"
+      ],
+      [
+        "NATO",
+        "Ukraine"
+      ],
+      [
+        "NATO",
+        "United Kingdom"
+      ],
+      [
+        "Baba Yga",
+        "Ukraine"
+      ],
+      [
+        "Starlink",
+        "Старше Эды"
+      ],
+      [
+        "Russia",
+        "Разведос"
+      ],
+      [
+        "Russian Armed Forces",
+        "United States"
+      ],
+      [
+        "Russian Armed Forces",
+        "Telegram"
+      ],
+      [
+        "YouTube",
+        "Бытили Плюс"
+      ],
+      [
+        "Baba Yga",
+        "Starlink"
+      ],
+      [
+        "Kremlin",
+        "Russia"
+      ],
+      [
+        "Радиотехническая разведка ВСУ",
+        "Российские дроноводы"
+      ],
+      [
+        "Ilon Mask",
+        "Starlink"
+      ],
+      [
+        "Razvedos",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "Бытили Плюс"
+      ],
+      [
+        "FPV-дроны",
+        "ВСУ"
+      ],
+      [
+        "Russian Armed Forces",
+        "Voenkor Filatov"
+      ],
+      [
+        "ВСУ",
+        "Филатов"
+      ],
+      [
+        "Russia",
+        "Tu-214R"
+      ],
+      [
+        "Poland",
+        "Russia"
+      ],
+      [
+        "NATO",
+        "Razvedos"
+      ]
+    ],
+    "count": 54,
+    "create_time": 1777932687,
+    "update_time": 1777932687,
+    "_id": "doc-051dab41fce7bd5924a6a05b03225122"
+  },
+  "doc-08dd9942adf74e4535faffe5955e1347": {
+    "relation_pairs": [
+      [
+        "Europe",
+        "Narva"
+      ],
+      [
+        "Narva",
+        "Russia"
+      ],
+      [
+        "NATO",
+        "Narva"
+      ],
+      [
+        "Estonia",
+        "Narva"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777932700,
+    "update_time": 1777932700,
+    "_id": "doc-08dd9942adf74e4535faffe5955e1347"
+  },
+  "doc-2e541d28e710c7d2792582df2bec5180": {
+    "relation_pairs": [
+      [
+        "Latvia",
+        "Russia"
+      ],
+      [
+        "Lithuania",
+        "Russia"
+      ],
+      [
+        "Information Warfare",
+        "Russia"
+      ],
+      [
+        "Narva",
+        "Russia"
+      ],
+      [
+        "Nuclear Deterrence",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "UnRealpolitik"
+      ],
+      [
+        "Kinetical Phase",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ],
+      [
+        "Article 5 of NATO",
+        "NATO"
+      ],
+      [
+        "Baltic States",
+        "Russia"
+      ],
+      [
+        "NATO",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "United States"
+      ],
+      [
+        "Russia",
+        "Suwałki Corridor"
+      ],
+      [
+        "Harvard",
+        "Limited Invasion"
+      ],
+      [
+        "Estonia",
+        "Russia"
+      ],
+      [
+        "Belarus",
+        "Russia"
+      ],
+      [
+        "Kremlin",
+        "Russia"
+      ],
+      [
+        "Article 4 of NATO",
+        "NATO"
+      ],
+      [
+        "Poland",
+        "Russia"
+      ]
+    ],
+    "count": 19,
+    "create_time": 1777932850,
+    "update_time": 1777932850,
+    "_id": "doc-2e541d28e710c7d2792582df2bec5180"
+  },
+  "doc-30427f847a88ae7045302dacf20d348e": {
+    "relation_pairs": [
+      [
+        "Ленинградская область",
+        "Литва"
+      ],
+      [
+        "Верховный главнокомандующий",
+        "российская власть"
+      ],
+      [
+        "Литва",
+        "НАТО"
+      ],
+      [
+        "Иран",
+        "НАТО"
+      ],
+      [
+        "Соловьёв",
+        "российская власть"
+      ],
+      [
+        "Germany",
+        "Европа"
+      ],
+      [
+        "Европа",
+        "НАТО"
+      ],
+      [
+        "НАТО",
+        "Польша"
+      ]
+    ],
+    "count": 8,
+    "create_time": 1777932867,
+    "update_time": 1777932867,
+    "_id": "doc-30427f847a88ae7045302dacf20d348e"
+  },
+  "doc-8c17f6b2b910b51f8fb088d9f48f3606": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Литва"
+      ],
+      [
+        "Вторая мировая война",
+        "Литва"
+      ],
+      [
+        "United States",
+        "НАТО"
+      ],
+      [
+        "Литва",
+        "Юозас Олекас"
+      ],
+      [
+        "European Union",
+        "НАТО"
+      ],
+      [
+        "Russia",
+        "Донбасс"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "Литва",
+        "НАТО"
+      ],
+      [
+        "United States",
+        "Литва"
+      ],
+      [
+        "2027 год",
+        "Литва"
+      ],
+      [
+        "Russia",
+        "Юозас Олекас"
+      ],
+      [
+        "Ukraine",
+        "Литва"
+      ],
+      [
+        "Russia",
+        "Крым"
+      ],
+      [
+        "Russia",
+        "Грузия"
+      ]
+    ],
+    "count": 14,
+    "create_time": 1777932900,
+    "update_time": 1777932900,
+    "_id": "doc-8c17f6b2b910b51f8fb088d9f48f3606"
+  },
+  "doc-c61c5e909d0f51de22a1d6c921e05ec5": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Siyarto"
+      ],
+      [
+        "Russia",
+        "Siyarto"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777932905,
+    "update_time": 1777932905,
+    "_id": "doc-c61c5e909d0f51de22a1d6c921e05ec5"
+  },
+  "doc-743fce792f8381ab035b7b798031674d": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "Putin",
+        "Russia"
+      ],
+      [
+        "Orbán",
+        "Putin"
+      ],
+      [
+        "European Union",
+        "Ukraine"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777932919,
+    "update_time": 1777932919,
+    "_id": "doc-743fce792f8381ab035b7b798031674d"
+  },
+  "doc-64fc0c233ed46ab24dceec96fc715e40": {
+    "relation_pairs": [
+      [
+        "Fidesz",
+        "POLITICO Poll of Polls"
+      ],
+      [
+        "2026 Hungarian Parliamentary Election",
+        "Hungary"
+      ],
+      [
+        "Fidesz",
+        "Matteo Salvini"
+      ],
+      [
+        "Fidesz",
+        "Viktor Orbán"
+      ],
+      [
+        "POLITICO Poll of Polls",
+        "Tisza"
+      ],
+      [
+        "FPÖ",
+        "Fidesz"
+      ],
+      [
+        "Fidesz",
+        "Giorgia Meloni"
+      ],
+      [
+        "Republikon",
+        "Tisza"
+      ],
+      [
+        "Benjamin Netanyahu",
+        "Fidesz"
+      ],
+      [
+        "2026 Hungarian Parliamentary Election",
+        "Fidesz"
+      ],
+      [
+        "Fidesz",
+        "Herbert Kickl"
+      ],
+      [
+        "AfD",
+        "Fidesz"
+      ],
+      [
+        "Aleksandar Vučić",
+        "Fidesz"
+      ],
+      [
+        "Fidesz",
+        "Mateusz Morawiecki"
+      ],
+      [
+        "Fidesz",
+        "Vox"
+      ],
+      [
+        "Fidesz",
+        "Javier Milei"
+      ],
+      [
+        "Andrej Babiš",
+        "Fidesz"
+      ],
+      [
+        "Alice Weidel",
+        "Fidesz"
+      ],
+      [
+        "Fidesz",
+        "Magyar Társadalomkutató"
+      ],
+      [
+        "IDEA / Publicus",
+        "Tisza"
+      ],
+      [
+        "Fidesz",
+        "Tisza"
+      ],
+      [
+        "Fidesz",
+        "Santiago Abascal"
+      ],
+      [
+        "2026 Hungarian Parliamentary Election",
+        "Tisza"
+      ],
+      [
+        "European Conservatives and Reformists",
+        "Fidesz"
+      ],
+      [
+        "Fidesz",
+        "Marine Le Pen"
+      ],
+      [
+        "21 Kutatóközpont",
+        "Tisza"
+      ],
+      [
+        "Fidesz",
+        "PolitPro"
+      ],
+      [
+        "Fidesz",
+        "National Rally"
+      ],
+      [
+        "Fidesz",
+        "Nézőpont"
+      ],
+      [
+        "PolitPro",
+        "Tisza"
+      ]
+    ],
+    "count": 30,
+    "create_time": 1777932963,
+    "update_time": 1777932963,
+    "_id": "doc-64fc0c233ed46ab24dceec96fc715e40"
+  },
+  "doc-f7cf12cb44baf013763e14cb0d583f17": {
+    "relation_pairs": [
+      [
+        "Hungarian Government",
+        "Orbán"
+      ],
+      [
+        "Hungarian Government",
+        "Ukraine"
+      ],
+      [
+        "Hungarian Government",
+        "Russia"
+      ],
+      [
+        "Brussels",
+        "Hungarian Government"
+      ],
+      [
+        "Hungarian Government",
+        "Ursula von der Leyen"
+      ],
+      [
+        "European Union",
+        "Hungarian Government"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1777932975,
+    "update_time": 1777932975,
+    "_id": "doc-f7cf12cb44baf013763e14cb0d583f17"
+  },
+  "doc-37210e5738410e4f5658f9a33b6de71b": {
+    "relation_pairs": [
+      [
+        "Fidesz",
+        "Tisa"
+      ],
+      [
+        "Péter Szijjártó",
+        "Ukraine"
+      ],
+      [
+        "Fidesz",
+        "Orbán"
+      ],
+      [
+        "Péter Márki-Zay",
+        "Tisa"
+      ],
+      [
+        "Hungary",
+        "Slovakia"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "Tamás Sulyok"
+      ],
+      [
+        "Donald Trump",
+        "Orbán"
+      ],
+      [
+        "2026 Hungarian Parliamentary Elections",
+        "Fidesz"
+      ],
+      [
+        "Anita Orbán",
+        "Russia"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "Mukachevo",
+        "Russia"
+      ],
+      [
+        "Anita Orbán",
+        "Ukraine"
+      ],
+      [
+        "Hungary",
+        "World War III"
+      ],
+      [
+        "European Union",
+        "Tisa"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "Fidesz",
+        "Ukraine"
+      ],
+      [
+        "Orbán",
+        "Robert Fico"
+      ],
+      [
+        "Mukachevo",
+        "Zakarpattia"
+      ]
+    ],
+    "count": 19,
+    "create_time": 1777933044,
+    "update_time": 1777933044,
+    "_id": "doc-37210e5738410e4f5658f9a33b6de71b"
+  },
+  "doc-6ecff60dff7ab5c3d2308d23bccbb150": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Ukraine"
+      ],
+      [
+        "European Union",
+        "Viktor Orbán"
+      ],
+      [
+        "Ukraine",
+        "Viktor Orbán"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777933062,
+    "update_time": 1777933062,
+    "_id": "doc-6ecff60dff7ab5c3d2308d23bccbb150"
+  },
+  "doc-9c2d06a6fff816bf1b1f6c96b867f145": {
+    "relation_pairs": [
+      [
+        "Juraj Šeliga",
+        "Peter Pellegrini"
+      ],
+      [
+        "Robert Fico",
+        "Slovakia"
+      ],
+      [
+        "Epstein Files",
+        "Leslie Groff"
+      ],
+      [
+        "Epstein Files",
+        "Peter Pellegrini"
+      ],
+      [
+        "Epstein Files",
+        "Lajčák"
+      ],
+      [
+        "Peter Pellegrini",
+        "Robert Fico"
+      ],
+      [
+        "Epstein Files",
+        "Slovakia"
+      ],
+      [
+        "Constitutional Court of the Slovak Republic",
+        "Peter Pellegrini"
+      ],
+      [
+        "Democrats",
+        "Robert Fico"
+      ],
+      [
+        "Epstein Files",
+        "Robert Fico"
+      ],
+      [
+        "Nagy",
+        "Robert Fico"
+      ],
+      [
+        "Democrats",
+        "Peter Pellegrini"
+      ],
+      [
+        "Peter Pellegrini",
+        "Slovakia"
+      ],
+      [
+        "Democrats",
+        "National Criminal Agency"
+      ],
+      [
+        "Democrats",
+        "Special Prosecutors Office"
+      ]
+    ],
+    "count": 15,
+    "create_time": 1777933094,
+    "update_time": 1777933094,
+    "_id": "doc-9c2d06a6fff816bf1b1f6c96b867f145"
+  },
+  "doc-bc2ec0c9ce9763ee56b64e1d400d81ca": {
+    "relation_pairs": [
+      [
+        "Petr Pellegrini",
+        "Robert Fico"
+      ],
+      [
+        "Robert Fico",
+        "Vladimir Putin"
+      ],
+      [
+        "Slovakia",
+        "Ukraine"
+      ],
+      [
+        "Robert Fico",
+        "Slovakia"
+      ],
+      [
+        "F-16 Block 70/72",
+        "Slovakia"
+      ],
+      [
+        "Hungary",
+        "Slovakia"
+      ],
+      [
+        "MiG-29",
+        "Slovakia"
+      ],
+      [
+        "Poland",
+        "Slovakia"
+      ],
+      [
+        "MiG-29",
+        "Ukraine"
+      ],
+      [
+        "Petr Pellegrini",
+        "Slovakia"
+      ],
+      [
+        "Czechia",
+        "Slovakia"
+      ],
+      [
+        "NATO",
+        "Slovakia"
+      ],
+      [
+        "F-16 Block 70/72",
+        "Petr Pellegrini"
+      ],
+      [
+        "Slovakia",
+        "Vladimir Putin"
+      ]
+    ],
+    "count": 14,
+    "create_time": 1777933127,
+    "update_time": 1777933127,
+    "_id": "doc-bc2ec0c9ce9763ee56b64e1d400d81ca"
+  },
+  "doc-d3201e107bd42b8df3e9cac9c8337f39": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Viktor Orbán"
+      ],
+      [
+        "Budapest",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "European Union",
+        "Ukraine"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777933138,
+    "update_time": 1777933138,
+    "_id": "doc-d3201e107bd42b8df3e9cac9c8337f39"
+  },
+  "doc-7adb080ec7dd4803546a8980980ef625": {
+    "relation_pairs": [
+      [
+        "April",
+        "Hungary"
+      ],
+      [
+        "2024",
+        "Пётр Мадяр"
+      ],
+      [
+        "Russia",
+        "Пётр Мадяр"
+      ],
+      [
+        "Fidesz",
+        "Viktor Orbán"
+      ],
+      [
+        "Fidesz",
+        "Hungary"
+      ],
+      [
+        "Fidesz",
+        "Пётр Мадяр"
+      ],
+      [
+        "Hungary",
+        "Tisa"
+      ],
+      [
+        "Viktor Orbán",
+        "Пётр Мадяр"
+      ],
+      [
+        "Tisa",
+        "Пётр Мадяр"
+      ]
+    ],
+    "count": 9,
+    "create_time": 1777933161,
+    "update_time": 1777933161,
+    "_id": "doc-7adb080ec7dd4803546a8980980ef625"
+  },
+  "doc-6f2b09232ebfabe3da4b5cb3fbf58b41": {
+    "relation_pairs": [
+      [
+        "Брюссель",
+        "Свинктор Торбан"
+      ],
+      [
+        "Путин",
+        "Свинктор Торбан"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777933167,
+    "update_time": 1777933167,
+    "_id": "doc-6f2b09232ebfabe3da4b5cb3fbf58b41"
+  },
+  "doc-ad9bf0528a0847b0e1f705e25c466be2": {
+    "relation_pairs": [
+      [
+        "Robert Fico",
+        "Ukraine"
+      ],
+      [
+        "Robert Fico",
+        "Russia"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777933172,
+    "update_time": 1777933172,
+    "_id": "doc-ad9bf0528a0847b0e1f705e25c466be2"
+  },
+  "doc-5ebc6be4860200e3be2c97bcb38c02e4": {
+    "relation_pairs": [
+      [
+        "Европа",
+        "Путин"
+      ],
+      [
+        "Зеленский",
+        "Путин"
+      ],
+      [
+        "POLITICO",
+        "Зеленский"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777933178,
+    "update_time": 1777933178,
+    "_id": "doc-5ebc6be4860200e3be2c97bcb38c02e4"
+  },
+  "doc-c3a9b860b4047056a463ca0390259fdf": {
+    "relation_pairs": [
+      [
+        "Croatian pipeline",
+        "Druzhba"
+      ],
+      [
+        "Croatia",
+        "Croatian pipeline"
+      ],
+      [
+        "Druzhba",
+        "Russia"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777933185,
+    "update_time": 1777933185,
+    "_id": "doc-c3a9b860b4047056a463ca0390259fdf"
+  },
+  "doc-31ceac0f822624a2e33322605349ec08": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Viktor Orbán"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777933190,
+    "update_time": 1777933190,
+    "_id": "doc-31ceac0f822624a2e33322605349ec08"
+  },
+  "doc-a9615334f343926ef41049dc0391fd55": {
+    "relation_pairs": [
+      [
+        "Siyarto",
+        "Ukraine"
+      ],
+      [
+        "European Union",
+        "Siyarto"
+      ],
+      [
+        "European Union",
+        "NATO"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "European Union",
+        "Ukraine"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ],
+      [
+        "Hungary",
+        "Siyarto"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777933201,
+    "update_time": 1777933201,
+    "_id": "doc-a9615334f343926ef41049dc0391fd55"
+  },
+  "doc-ee8fae0c675a7765f3bab3179eff9ad1": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Orbán"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "Tisa",
+        "Ukraine"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777933207,
+    "update_time": 1777933207,
+    "_id": "doc-ee8fae0c675a7765f3bab3179eff9ad1"
+  },
+  "doc-84e31fefa7b625affd92c6f698ac2037": {
+    "relation_pairs": [
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "Friendship Pipeline",
+        "Russia"
+      ],
+      [
+        "Friendship Pipeline",
+        "Ukraine"
+      ],
+      [
+        "Putin",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "Fico"
+      ],
+      [
+        "Donald Trump",
+        "European Union"
+      ],
+      [
+        "Friendship Pipeline",
+        "Orbán"
+      ],
+      [
+        "Giorgia Meloni",
+        "Malta"
+      ],
+      [
+        "Bulgaria",
+        "Giorgia Meloni"
+      ],
+      [
+        "Babiš",
+        "European Union"
+      ],
+      [
+        "European Union",
+        "Ukraine"
+      ],
+      [
+        "Bulgaria",
+        "European Union"
+      ],
+      [
+        "Orbán",
+        "Ukraine"
+      ],
+      [
+        "Kremlin",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "Giorgia Meloni"
+      ],
+      [
+        "Bart de Wever",
+        "Giorgia Meloni"
+      ],
+      [
+        "Bart de Wever",
+        "European Union"
+      ],
+      [
+        "European Union",
+        "Malta"
+      ]
+    ],
+    "count": 19,
+    "create_time": 1777933236,
+    "update_time": 1777933236,
+    "_id": "doc-84e31fefa7b625affd92c6f698ac2037"
+  },
+  "doc-ca5a2a428a4b942b94bf580d78a97725": {
+    "relation_pairs": [
+      [
+        "Napoleon",
+        "Russia"
+      ],
+      [
+        "Hitler",
+        "Russia"
+      ],
+      [
+        "Kaja Kallas",
+        "Орбан"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777933247,
+    "update_time": 1777933247,
+    "_id": "doc-ca5a2a428a4b942b94bf580d78a97725"
+  },
+  "doc-144a3b48f2c36a7a3a5d86424cd70c9d": {
+    "relation_pairs": [
+      [
+        "Friendship Pipeline",
+        "Slovakia"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Szijjártó"
+      ],
+      [
+        "Hungary",
+        "Slovakia"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "Friendship Pipeline",
+        "Hungary"
+      ],
+      [
+        "European Union",
+        "Ukraine"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777933262,
+    "update_time": 1777933262,
+    "_id": "doc-144a3b48f2c36a7a3a5d86424cd70c9d"
+  },
+  "doc-852554b1def48541450889425b6545f5": {
+    "relation_pairs": [
+      [
+        "Druzhba",
+        "Hungary"
+      ],
+      [
+        "European Council",
+        "European Union"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "Antonio Costa",
+        "Viktor Orbán"
+      ],
+      [
+        "Ukraine",
+        "Viktor Orbán"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777933279,
+    "update_time": 1777933279,
+    "_id": "doc-852554b1def48541450889425b6545f5"
+  },
+  "doc-39b76ef932d366548ca3bb5fbd800bd4": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Orbán"
+      ],
+      [
+        "Brussels",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "Ukraine"
+      ],
+      [
+        "Hungary",
+        "Kyiv"
+      ],
+      [
+        "Donald Trump",
+        "Orbán"
+      ]
+    ],
+    "count": 8,
+    "create_time": 1777933294,
+    "update_time": 1777933294,
+    "_id": "doc-39b76ef932d366548ca3bb5fbd800bd4"
+  },
+  "doc-38dc254ef06b4d54db587588f05a0039": {
+    "relation_pairs": [
+      [
+        "Budapest",
+        "Red Army"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "Hungary",
+        "Sikorski"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Hungary",
+        "ruling party"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777933303,
+    "update_time": 1777933303,
+    "_id": "doc-38dc254ef06b4d54db587588f05a0039"
+  },
+  "doc-16850c41558b9e3ebcadb42352d4ed0b": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Poland",
+        "Russia"
+      ],
+      [
+        "Czechia",
+        "Russia"
+      ],
+      [
+        "Bulgaria",
+        "Russia"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777933309,
+    "update_time": 1777933309,
+    "_id": "doc-16850c41558b9e3ebcadb42352d4ed0b"
+  },
+  "doc-63f17a112e469336209819b38800f7ce": {
+    "relation_pairs": [
+      [
+        "April Elections",
+        "Hungary"
+      ],
+      [
+        "Peter Magyar",
+        "Tisza"
+      ],
+      [
+        "Fidesz",
+        "Peter Magyar"
+      ],
+      [
+        "Hungary",
+        "Viktor Orbán"
+      ],
+      [
+        "Fidesz",
+        "Tisza"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777933322,
+    "update_time": 1777933322,
+    "_id": "doc-63f17a112e469336209819b38800f7ce"
+  },
+  "doc-6f16eff0d3d6eed7d43799b5c7cc11c3": {
+    "relation_pairs": [
+      [
+        "Fico",
+        "Slovakia"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "Brody Pumping Station",
+        "Shahed"
+      ],
+      [
+        "Brody Pumping Station",
+        "NASA FIRMS"
+      ],
+      [
+        "Brody Pumping Station",
+        "Druzhba"
+      ],
+      [
+        "Hungary",
+        "Slovakia"
+      ],
+      [
+        "Brody Pumping Station",
+        "Naftogaz Ukraine"
+      ],
+      [
+        "Russia",
+        "Slovakia"
+      ],
+      [
+        "Naftogaz Ukraine",
+        "Serhiy Kortsyk"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Bloomberg",
+        "Planet Labs"
+      ],
+      [
+        "Brody Pumping Station",
+        "European Union"
+      ],
+      [
+        "European Union",
+        "Slovakia"
+      ],
+      [
+        "Brody Pumping Station",
+        "Serhiy Kortsyk"
+      ],
+      [
+        "Brody Pumping Station",
+        "Tsargrad TV"
+      ],
+      [
+        "Brody Pumping Station",
+        "Russia"
+      ],
+      [
+        "Hungary",
+        "Orban"
+      ]
+    ],
+    "count": 18,
+    "create_time": 1777933492,
+    "update_time": 1777933492,
+    "_id": "doc-6f16eff0d3d6eed7d43799b5c7cc11c3"
+  },
+  "doc-94b3a0575bed2d81bf26b87626c868bc": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Zelensky"
+      ],
+      [
+        "Svinktor Torban",
+        "Szazalombatta Oil Refinery"
+      ],
+      [
+        "Friendship Oil Pipeline",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Szazalombatta Oil Refinery"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777933516,
+    "update_time": 1777933516,
+    "_id": "doc-94b3a0575bed2d81bf26b87626c868bc"
+  },
+  "doc-bf62ce7714ad73bcd55ba24657224c7b": {
+    "relation_pairs": [
+      [
+        "Viktor Orbán",
+        "Volodymyr Zelensky"
+      ],
+      [
+        "Croatia",
+        "Hungary"
+      ],
+      [
+        "Croatia",
+        "Slovakia"
+      ],
+      [
+        "Russia",
+        "Viktor Orbán"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777933542,
+    "update_time": 1777933542,
+    "_id": "doc-bf62ce7714ad73bcd55ba24657224c7b"
+  },
+  "doc-135cbb9eb891b9fd3b6f9dfb7cb51425": {
+    "relation_pairs": [
+      [
+        "Словакия",
+        "Укрэнерго"
+      ],
+      [
+        "Ukraine",
+        "Словакия"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777933551,
+    "update_time": 1777933551,
+    "_id": "doc-135cbb9eb891b9fd3b6f9dfb7cb51425"
+  },
+  "doc-0e83180ffaf3fb31527994339d43f91a": {
+    "relation_pairs": [
+      [
+        "40 million US dollars",
+        "Oschadbank"
+      ],
+      [
+        "35 million euros",
+        "Oschadbank"
+      ],
+      [
+        "Hungary",
+        "Oschadbank"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "9 kilograms of gold",
+        "Oschadbank"
+      ],
+      [
+        "Oschadbank",
+        "Raiffeisen Bank Austria"
+      ],
+      [
+        "Budapest",
+        "Hungary"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777933588,
+    "update_time": 1777933588,
+    "_id": "doc-0e83180ffaf3fb31527994339d43f91a"
+  },
+  "doc-b2d6bb253f52da25049b4f74f7683ccb": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Peter Magyar"
+      ],
+      [
+        "European Union",
+        "Ukraine"
+      ],
+      [
+        "Peter Magyar",
+        "Zelensky"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777933598,
+    "update_time": 1777933598,
+    "_id": "doc-b2d6bb253f52da25049b4f74f7683ccb"
+  },
+  "doc-1beb1ff8b74ec88b3ef336871c83d0e0": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Orban"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777933611,
+    "update_time": 1777933611,
+    "_id": "doc-1beb1ff8b74ec88b3ef336871c83d0e0"
+  },
+  "doc-e3443df376d21c0ccfc06825e6f26c8c": {
+    "relation_pairs": [
+      [
+        "Putin",
+        "Sergei Kirienko"
+      ],
+      [
+        "Russia",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungary",
+        "Sergei Kirienko"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Putin",
+        "VSquare"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777933631,
+    "update_time": 1777933631,
+    "_id": "doc-e3443df376d21c0ccfc06825e6f26c8c"
+  },
+  "doc-39a59d080a06e0ab1d51c2761122294a": {
+    "relation_pairs": [
+      [
+        "Ukraine",
+        "Сиьярто"
+      ],
+      [
+        "Ukraine",
+        "Ощадбанк"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777933645,
+    "update_time": 1777933645,
+    "_id": "doc-39a59d080a06e0ab1d51c2761122294a"
+  },
+  "doc-16fc9e52c61afd7323a31ebfd0dcebc6": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Seven Ukrainian Cash-in-Transit Officers"
+      ],
+      [
+        "Seven Ukrainian Cash-in-Transit Officers",
+        "Ukrainian Air Force"
+      ],
+      [
+        "Oshchadbank",
+        "Seven Ukrainian Cash-in-Transit Officers"
+      ],
+      [
+        "Security Service of Ukraine",
+        "Seven Ukrainian Cash-in-Transit Officers"
+      ],
+      [
+        "National Tax and Customs Administration",
+        "Seven Ukrainian Cash-in-Transit Officers"
+      ],
+      [
+        "Government Information Center",
+        "Seven Ukrainian Cash-in-Transit Officers"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1777933657,
+    "update_time": 1777933657,
+    "_id": "doc-16fc9e52c61afd7323a31ebfd0dcebc6"
+  },
+  "doc-30598935428a2c98eba71bba76987a6f": {
+    "relation_pairs": [
+      [
+        "Orbán",
+        "Ukraine"
+      ],
+      [
+        "Hungary",
+        "Orbán"
+      ],
+      [
+        "Orbán",
+        "Oschadbank"
+      ],
+      [
+        "Oschadbank",
+        "Ukraine"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777933672,
+    "update_time": 1777933672,
+    "_id": "doc-30598935428a2c98eba71bba76987a6f"
+  },
+  "doc-1fed1b15a0d50415cf4cd2a3915f1621": {
+    "relation_pairs": [
+      [
+        "1956",
+        "Hungary"
+      ],
+      [
+        "Russia",
+        "Viktor Orbán"
+      ],
+      [
+        "GRU",
+        "Moldova"
+      ],
+      [
+        "GRU",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Vladimir Putin"
+      ],
+      [
+        "Hungary",
+        "Peter Magyar"
+      ],
+      [
+        "Janos Kadar",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungary",
+        "Volodymyr Zelensky"
+      ],
+      [
+        "April 12",
+        "Hungary"
+      ],
+      [
+        "GRU",
+        "Russia"
+      ],
+      [
+        "Peter Magyar",
+        "Tisa"
+      ],
+      [
+        "Peter Magyar",
+        "Viktor Orbán"
+      ]
+    ],
+    "count": 12,
+    "create_time": 1777933694,
+    "update_time": 1777933694,
+    "_id": "doc-1fed1b15a0d50415cf4cd2a3915f1621"
+  },
+  "doc-053ee19c300366028b34ccf2da44bdd2": {
+    "relation_pairs": [
+      [
+        "Москва",
+        "Операция «Будапешт»"
+      ],
+      [
+        "Вадим Титов",
+        "Росатом"
+      ],
+      [
+        "Kremlin",
+        "Операция «Будапешт»"
+      ],
+      [
+        "НАТО",
+        "ЦРУ США"
+      ],
+      [
+        "Операция «Будапешт»",
+        "Сергей Кириенко"
+      ],
+      [
+        "European Union",
+        "ЦРУ США"
+      ],
+      [
+        "Vsquare",
+        "Операция «Будапешт»"
+      ],
+      [
+        "Группа из трех человек",
+        "Операция «Будапешт»"
+      ],
+      [
+        "Операция «Будапешт»",
+        "Управление по стратегическому партнерству и сотрудничеству"
+      ],
+      [
+        "Калитин Андрей Сергеевич",
+        "Операция «Будапешт»"
+      ],
+      [
+        "Вадим Титов",
+        "Операция «Будапешт»"
+      ],
+      [
+        "Молдова",
+        "Сергей Кириенко"
+      ]
+    ],
+    "count": 12,
+    "create_time": 1777933726,
+    "update_time": 1777933726,
+    "_id": "doc-053ee19c300366028b34ccf2da44bdd2"
+  },
+  "doc-131723565bd454d6c7d6517e885be939": {
+    "relation_pairs": [
+      [
+        "Мате Кочиш",
+        "Фидес"
+      ],
+      [
+        "Ощадбанк",
+        "Фидес"
+      ],
+      [
+        "Мате Кочиш",
+        "Ощадбанк"
+      ],
+      [
+        "Ощадбанк",
+        "украинский золотой конвой"
+      ],
+      [
+        "Венгрия",
+        "Фидес"
+      ],
+      [
+        "Венгрия",
+        "Мате Кочиш"
+      ],
+      [
+        "Венгрия",
+        "Ощадбанк"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777933740,
+    "update_time": 1777933740,
+    "_id": "doc-131723565bd454d6c7d6517e885be939"
+  },
+  "doc-8ec95625be7553d1e0098450ea784dd6": {
+    "relation_pairs": [
+      [
+        "Kremlin",
+        "Orbán"
+      ],
+      [
+        "Orbán",
+        "Ukraine"
+      ],
+      [
+        "Druzhba",
+        "Ukraine"
+      ],
+      [
+        "April 12",
+        "Hungary"
+      ],
+      [
+        "European Union",
+        "Ukraine"
+      ],
+      [
+        "April 12",
+        "Orbán"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1777933752,
+    "update_time": 1777933752,
+    "_id": "doc-8ec95625be7553d1e0098450ea784dd6"
+  },
+  "doc-db702386c575ea51ebf0138e7099a9fa": {
+    "relation_pairs": [
+      [
+        "Орбан",
+        "Фицо"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777933756,
+    "update_time": 1777933756,
+    "_id": "doc-db702386c575ea51ebf0138e7099a9fa"
+  },
+  "doc-da20b0a27addcfc84250e3aa0fa87acc": {
+    "relation_pairs": [
+      [
+        "Ministry of Foreign Affairs of Ukraine",
+        "Ukraine"
+      ],
+      [
+        "Budapest",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "Hungary",
+        "Other"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777933765,
+    "update_time": 1777933765,
+    "_id": "doc-da20b0a27addcfc84250e3aa0fa87acc"
+  },
+  "doc-4c5fc5e3044c9aab6288e263b0b01342": {
+    "relation_pairs": [
+      [
+        "Fidesz",
+        "Mate Kocsis"
+      ],
+      [
+        "Hungarian Parliament",
+        "Oshchadbank"
+      ],
+      [
+        "Hungarian Parliament",
+        "Mate Kocsis"
+      ],
+      [
+        "Fidesz",
+        "Hungarian Parliament"
+      ],
+      [
+        "National Tax and Customs Authority",
+        "Oshchadbank"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777933778,
+    "update_time": 1777933778,
+    "_id": "doc-4c5fc5e3044c9aab6288e263b0b01342"
+  },
+  "doc-2ddd458ab7583acad6a7d0a983b16dfa": {
+    "relation_pairs": [
+      [
+        "Druzhba",
+        "Hungary"
+      ],
+      [
+        "Druzhba",
+        "Ukraine"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "Hungary",
+        "János Lázár"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777933789,
+    "update_time": 1777933789,
+    "_id": "doc-2ddd458ab7583acad6a7d0a983b16dfa"
+  },
+  "doc-86018094d91b31b51d5f2f145cd757f1": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777933794,
+    "update_time": 1777933794,
+    "_id": "doc-86018094d91b31b51d5f2f145cd757f1"
+  },
+  "doc-de4a30ffab3bfd60d14d5cc23651d83f": {
+    "relation_pairs": [
+      [
+        "Brussels",
+        "Péter Márki-Zay"
+      ],
+      [
+        "Social Design Agency",
+        "Viktor Orbán"
+      ],
+      [
+        "Péter Márki-Zay",
+        "Social Design Agency"
+      ],
+      [
+        "Kremlin",
+        "Social Design Agency"
+      ],
+      [
+        "Hungary",
+        "Viktor Orbán"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777933807,
+    "update_time": 1777933807,
+    "_id": "doc-de4a30ffab3bfd60d14d5cc23651d83f"
+  },
+  "doc-07038a6c696f420024f93c3394b71b5b": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Zelensky"
+      ],
+      [
+        "Orban",
+        "Zelensky"
+      ],
+      [
+        "Orban",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "Orban"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777933817,
+    "update_time": 1777933817,
+    "_id": "doc-07038a6c696f420024f93c3394b71b5b"
+  },
+  "doc-e522c5f46937aa56357d0ef2324b55a4": {
+    "relation_pairs": [
+      [
+        "Orban",
+        "Sariko"
+      ],
+      [
+        "Alice",
+        "Orban"
+      ],
+      [
+        "Orban",
+        "Ukraine"
+      ],
+      [
+        "Orban",
+        "Rozhe"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777933835,
+    "update_time": 1777933835,
+    "_id": "doc-e522c5f46937aa56357d0ef2324b55a4"
+  },
+  "doc-f915fdc9f7ebc4e443418dbda578ff73": {
+    "relation_pairs": [
+      [
+        "Viktor Orbán",
+        "Viktor Yushchenko"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777933843,
+    "update_time": 1777933843,
+    "_id": "doc-f915fdc9f7ebc4e443418dbda578ff73"
+  },
+  "doc-59c6668993849ede653866e3f464ee73": {
+    "relation_pairs": [
+      [
+        "Kremlin",
+        "Spoiler Technique"
+      ],
+      [
+        "Peter Magyar",
+        "Spoiler Technique"
+      ],
+      [
+        "Orbán",
+        "Spoiler Technique"
+      ],
+      [
+        "Georgia",
+        "Kremlin"
+      ],
+      [
+        "Kazakhstan",
+        "Kremlin"
+      ],
+      [
+        "Armenia",
+        "Kremlin"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1777933855,
+    "update_time": 1777933855,
+    "_id": "doc-59c6668993849ede653866e3f464ee73"
+  },
+  "doc-36fe4657825279ac9e3909c7869ac71e": {
+    "relation_pairs": [
+      [
+        "Germany",
+        "Hungary"
+      ],
+      [
+        "Slovakia",
+        "Ukraine"
+      ],
+      [
+        "European Union",
+        "Viktor Orbán"
+      ],
+      [
+        "Ukraine",
+        "Viktor Orbán"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "United States"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "Peaceful March",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Austria",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Netherlands"
+      ],
+      [
+        "Viktor Orbán",
+        "Volodymyr Zelenskyy"
+      ],
+      [
+        "Germany",
+        "Russia"
+      ],
+      [
+        "Brussels",
+        "European Union"
+      ],
+      [
+        "Hungary",
+        "Kiev"
+      ]
+    ],
+    "count": 15,
+    "create_time": 1777933894,
+    "update_time": 1777933894,
+    "_id": "doc-36fe4657825279ac9e3909c7869ac71e"
+  },
+  "doc-9bebc967cec9dc0f42930581e6a1638a": {
+    "relation_pairs": [
+      [
+        "Orbán",
+        "Ukraine"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777933902,
+    "update_time": 1777933902,
+    "_id": "doc-9bebc967cec9dc0f42930581e6a1638a"
+  },
+  "doc-a0ff8170aaa35c335c45398ebe6d0d67": {
+    "relation_pairs": [
+      [
+        "Мадьяр",
+        "Орбан"
+      ],
+      [
+        "Будапешт",
+        "Марш в Будапеште"
+      ],
+      [
+        "Мадьяр",
+        "Марш в Будапеште"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777933912,
+    "update_time": 1777933912,
+    "_id": "doc-a0ff8170aaa35c335c45398ebe6d0d67"
+  },
+  "doc-01a2f6ed9d1e15e8a8099488ba0d0a16": {
+    "relation_pairs": [
+      [
+        "1848 Hungarian Revolution",
+        "Viktor Orbán"
+      ],
+      [
+        "Péter Márki-Zay",
+        "Tisza"
+      ],
+      [
+        "Budapest",
+        "Péter Márki-Zay"
+      ],
+      [
+        "Hungary",
+        "Tisza"
+      ],
+      [
+        "Hungary",
+        "Viktor Orbán"
+      ],
+      [
+        "Ukraine",
+        "Viktor Orbán"
+      ],
+      [
+        "Budapest",
+        "Viktor Orbán"
+      ],
+      [
+        "European Union",
+        "Péter Márki-Zay"
+      ]
+    ],
+    "count": 8,
+    "create_time": 1777933939,
+    "update_time": 1777933939,
+    "_id": "doc-01a2f6ed9d1e15e8a8099488ba0d0a16"
+  },
+  "doc-d485ca34bd7e0fb38d94428b1fb5f15d": {
+    "relation_pairs": [
+      [
+        "Soviet Union",
+        "Viktor Orban"
+      ],
+      [
+        "April 12",
+        "Viktor Orban"
+      ],
+      [
+        "Ukraine",
+        "Viktor Orban"
+      ],
+      [
+        "Kyiv",
+        "Viktor Orban"
+      ],
+      [
+        "April 12",
+        "Hungary"
+      ],
+      [
+        "Viktor Orban",
+        "Vladimir Zelensky"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1777933950,
+    "update_time": 1777933950,
+    "_id": "doc-d485ca34bd7e0fb38d94428b1fb5f15d"
+  },
+  "doc-679c9b25be677c6ac0df0c1309e58175": {
+    "relation_pairs": [
+      [
+        "Orbán",
+        "Ukraine"
+      ],
+      [
+        "Orbán",
+        "Zelensky"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777933980,
+    "update_time": 1777933980,
+    "_id": "doc-679c9b25be677c6ac0df0c1309e58175"
+  },
+  "doc-f0e3b35945db088502910150bfe09b9b": {
+    "relation_pairs": [
+      [
+        "Moscow",
+        "Viktor Orbán"
+      ],
+      [
+        "Peter Madyar",
+        "Viktor Orbán"
+      ],
+      [
+        "Peter Madyar",
+        "Tisza"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777934001,
+    "update_time": 1777934001,
+    "_id": "doc-f0e3b35945db088502910150bfe09b9b"
+  },
+  "doc-02177320a6ee09ada075193b702a4345": {
+    "relation_pairs": [
+      [
+        "Madyar",
+        "Viktor Orban"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777934025,
+    "update_time": 1777934025,
+    "_id": "doc-02177320a6ee09ada075193b702a4345"
+  },
+  "doc-01c16353f96aa8f2f13b627652bcaf6a": {
+    "relation_pairs": [
+      [
+        "Ukraine",
+        "Орбана"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777934031,
+    "update_time": 1777934031,
+    "_id": "doc-01c16353f96aa8f2f13b627652bcaf6a"
+  },
+  "doc-f4cb7a0eb8dae431c3cddf43ba75e087": {
+    "relation_pairs": [
+      [
+        "Borscht",
+        "Orbán"
+      ],
+      [
+        "Orbán",
+        "Transcarpathia"
+      ],
+      [
+        "Borscht",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Transcarpathia"
+      ],
+      [
+        "Hungary",
+        "Uzhhorod"
+      ],
+      [
+        "Orbán",
+        "Uzhhorod"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1777934052,
+    "update_time": 1777934052,
+    "_id": "doc-f4cb7a0eb8dae431c3cddf43ba75e087"
+  },
+  "doc-6297d1d4abcba7cde037cebced8ea978": {
+    "relation_pairs": [
+      [
+        "Druzhba",
+        "Hungary"
+      ],
+      [
+        "European Union",
+        "Viktor Orbán"
+      ],
+      [
+        "Druzhba",
+        "Slovakia"
+      ],
+      [
+        "Robert Fico",
+        "Ukraine"
+      ],
+      [
+        "European Union",
+        "Ukraine"
+      ],
+      [
+        "Druzhba",
+        "Russia"
+      ],
+      [
+        "Antonio Costa",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Robert Fico",
+        "Viktor Orbán"
+      ],
+      [
+        "Ukraine",
+        "Viktor Orbán"
+      ]
+    ],
+    "count": 9,
+    "create_time": 1777934078,
+    "update_time": 1777934078,
+    "_id": "doc-6297d1d4abcba7cde037cebced8ea978"
+  },
+  "doc-128e4bc59a1c5408e48c49fc13d523d4": {
+    "relation_pairs": [
+      [
+        "Orbán",
+        "Vladimir Putin"
+      ],
+      [
+        "NATO",
+        "Russia"
+      ],
+      [
+        "Ukraine",
+        "West"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "Russia",
+        "West"
+      ],
+      [
+        "European Union",
+        "Ukraine"
+      ],
+      [
+        "NATO",
+        "Ukraine"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777934090,
+    "update_time": 1777934090,
+    "_id": "doc-128e4bc59a1c5408e48c49fc13d523d4"
+  },
+  "doc-c82ccb38f9402edb22b5874a938ca3ba": {
+    "relation_pairs": [
+      [
+        "Russian Military Intelligence",
+        "VSquare"
+      ],
+      [
+        "European Union",
+        "Fidesz"
+      ],
+      [
+        "Gamechanger",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungary",
+        "Kremlin"
+      ],
+      [
+        "Hungary",
+        "Russian Military Intelligence"
+      ],
+      [
+        "Fidesz",
+        "Soviet Foreign Intelligence Service"
+      ],
+      [
+        "European Union",
+        "Soviet Foreign Intelligence Service"
+      ],
+      [
+        "Peter Márki-Zay",
+        "Soviet Foreign Intelligence Service"
+      ],
+      [
+        "United States",
+        "Viktor Orbán"
+      ],
+      [
+        "Soviet Foreign Intelligence Service",
+        "Viktor Orbán"
+      ],
+      [
+        "Ukraine",
+        "Viktor Orbán"
+      ],
+      [
+        "Kremlin",
+        "United States"
+      ]
+    ],
+    "count": 12,
+    "create_time": 1777934150,
+    "update_time": 1777934150,
+    "_id": "doc-c82ccb38f9402edb22b5874a938ca3ba"
+  },
+  "doc-b8b3fc729f62c6b9dc41963898609b33": {
+    "relation_pairs": [
+      [
+        "Ferenc Fres",
+        "Russia"
+      ],
+      [
+        "Russian Military Intelligence",
+        "VSquare"
+      ],
+      [
+        "SvR RF",
+        "The Washington Post"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "Ervin Nadem",
+        "SvR RF"
+      ],
+      [
+        "Hungary",
+        "Tigran Garibyan"
+      ],
+      [
+        "Hungary",
+        "Russian Military Intelligence"
+      ],
+      [
+        "SvR RF",
+        "Tigran Garibyan"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Peter Szijjártó",
+        "Sergey Lavrov"
+      ],
+      [
+        "Maria Gurozo",
+        "SvR RF"
+      ],
+      [
+        "Operation \"GameChanger\"",
+        "SvR RF"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ],
+      [
+        "Donald Trump",
+        "Operation \"GameChanger\""
+      ],
+      [
+        "SvR RF",
+        "Viktor Orbán"
+      ]
+    ],
+    "count": 15,
+    "create_time": 1777934214,
+    "update_time": 1777934214,
+    "_id": "doc-b8b3fc729f62c6b9dc41963898609b33"
+  },
+  "doc-68d5603e6882035ba20646bb79aa0567": {
+    "relation_pairs": [
+      [
+        "Siyarto",
+        "Washington Post"
+      ],
+      [
+        "Lavrov",
+        "Siyarto"
+      ],
+      [
+        "European Union",
+        "Siyarto"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777934223,
+    "update_time": 1777934223,
+    "_id": "doc-68d5603e6882035ba20646bb79aa0567"
+  },
+  "doc-e40b1e89fb339815c1a6c53b66ea81a6": {
+    "relation_pairs": [
+      [
+        "Budapest",
+        "European Union"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "Politico"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777934248,
+    "update_time": 1777934248,
+    "_id": "doc-e40b1e89fb339815c1a6c53b66ea81a6"
+  },
+  "doc-a1509e8060627b9c0b458fe9556086e4": {
+    "relation_pairs": [
+      [
+        "Hungarian Military Intelligence",
+        "Zakarpattia"
+      ],
+      [
+        "Hungarian Military Intelligence",
+        "Zoltan Andre"
+      ],
+      [
+        "Berehove District",
+        "Zoltan Andre"
+      ],
+      [
+        "Ukrainian Defense Forces",
+        "Zoltan Andre"
+      ],
+      [
+        "Hungary",
+        "Zoltan Andre"
+      ],
+      [
+        "Security Service of Ukraine",
+        "Zakarpattia"
+      ],
+      [
+        "Zakarpattia",
+        "Zoltan Andre"
+      ],
+      [
+        "Hungary",
+        "Security Service of Ukraine"
+      ],
+      [
+        "Security Service of Ukraine",
+        "Zoltan Andre"
+      ]
+    ],
+    "count": 9,
+    "create_time": 1777934275,
+    "update_time": 1777934275,
+    "_id": "doc-a1509e8060627b9c0b458fe9556086e4"
+  },
+  "doc-87e9038707fe5297726fcbfe13a20035": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Siyarto"
+      ],
+      [
+        "Lavrov",
+        "Siyarto"
+      ],
+      [
+        "Serbia",
+        "Siyarto"
+      ],
+      [
+        "Israel",
+        "Siyarto"
+      ],
+      [
+        "Siyarto",
+        "United States"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777934294,
+    "update_time": 1777934294,
+    "_id": "doc-87e9038707fe5297726fcbfe13a20035"
+  },
+  "doc-0cd6efbef20d87ed4e8be415000843b5": {
+    "relation_pairs": [
+      [
+        "Jan Kuciak",
+        "Robert Fico"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "European Union",
+        "Sabolc Páni"
+      ],
+      [
+        "Hungary",
+        "Slovakia"
+      ],
+      [
+        "Hlas",
+        "SMER"
+      ],
+      [
+        "Kremlin",
+        "Viktor Orbán"
+      ],
+      [
+        "Kremlin",
+        "Robert Fico"
+      ],
+      [
+        "Kremlin",
+        "Sándor Pintér"
+      ],
+      [
+        "Kremlin",
+        "Petr Pellegrini"
+      ],
+      [
+        "Sergey Lavrov",
+        "Sándor Pintér"
+      ],
+      [
+        "Hungary",
+        "Politico"
+      ],
+      [
+        "Robert Fico",
+        "Viktor Orbán"
+      ],
+      [
+        "European Union",
+        "Romania"
+      ],
+      [
+        "Sándor Pintér",
+        "The Washington Post"
+      ],
+      [
+        "Kremlin",
+        "Slovakia"
+      ]
+    ],
+    "count": 15,
+    "create_time": 1777934337,
+    "update_time": 1777934337,
+    "_id": "doc-0cd6efbef20d87ed4e8be415000843b5"
+  },
+  "doc-877ef72317e73e8b852ea4c5d9a4a6b0": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Sabolc Panyi"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ],
+      [
+        "NATO",
+        "Russia"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777934364,
+    "update_time": 1777934364,
+    "_id": "doc-877ef72317e73e8b852ea4c5d9a4a6b0"
+  },
+  "doc-9e58e45ff3e3f57717cae4ecd40722b6": {
+    "relation_pairs": [
+      [
+        "Republic",
+        "SMER-SD"
+      ],
+      [
+        "Druzhba Pipeline",
+        "Ukraine"
+      ],
+      [
+        "Progressive Slovakia",
+        "SaS"
+      ],
+      [
+        "General Prosecutor's Office of Slovakia",
+        "Robert Fico"
+      ],
+      [
+        "Robert Fico",
+        "Slovakia"
+      ],
+      [
+        "Bronislav Gerulský",
+        "Robert Fico"
+      ],
+      [
+        "Druzhba Pipeline",
+        "Russia"
+      ],
+      [
+        "2027 Slovak Parliamentary Elections",
+        "Slovakia"
+      ],
+      [
+        "HLAS-SD",
+        "SMER-SD"
+      ],
+      [
+        "Robert Fico",
+        "Russia"
+      ],
+      [
+        "Robert Fico",
+        "SaS"
+      ],
+      [
+        "2027 Slovak Parliamentary Elections",
+        "Robert Fico"
+      ]
+    ],
+    "count": 12,
+    "create_time": 1777934399,
+    "update_time": 1777934399,
+    "_id": "doc-9e58e45ff3e3f57717cae4ecd40722b6"
+  },
+  "doc-e47ddaa1bfd3f213a0bfcf5fc5d404d1": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Kremlin"
+      ],
+      [
+        "Kremlin",
+        "Péter Márki-Zay"
+      ],
+      [
+        "Kirienko",
+        "Kremlin"
+      ],
+      [
+        "Kremlin",
+        "Viktor Orbán"
+      ],
+      [
+        "Kremlin",
+        "Reading Club Budapest"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777934407,
+    "update_time": 1777934407,
+    "_id": "doc-e47ddaa1bfd3f213a0bfcf5fc5d404d1"
+  },
+  "doc-f62fc75ce5b20ddd69ab6f4ad4d2481b": {
+    "relation_pairs": [
+      [
+        "Orbán",
+        "Ukraine"
+      ],
+      [
+        "Hungary",
+        "Orbán"
+      ],
+      [
+        "Dęır",
+        "Orbán"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777934427,
+    "update_time": 1777934427,
+    "_id": "doc-f62fc75ce5b20ddd69ab6f4ad4d2481b"
+  },
+  "doc-3055ae5d33d2c44e63374e663622df4e": {
+    "relation_pairs": [
+      [
+        "Druzhba Pipeline",
+        "Ukraine"
+      ],
+      [
+        "Robert Fico",
+        "Slovakia"
+      ],
+      [
+        "Russia",
+        "Slovakia"
+      ],
+      [
+        "European Union",
+        "Slovakia"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777934447,
+    "update_time": 1777934447,
+    "_id": "doc-3055ae5d33d2c44e63374e663622df4e"
+  },
+  "doc-2ce45aa281a7ef93bb38f3aa506711fd": {
+    "relation_pairs": [
+      [
+        "BBC",
+        "Цена голоса"
+      ],
+      [
+        "Fidesz",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Цена голоса"
+      ],
+      [
+        "Hungary",
+        "Orbán"
+      ],
+      [
+        "Fidesz",
+        "Цена голоса"
+      ],
+      [
+        "Fidesz",
+        "Orbán"
+      ],
+      [
+        "Fidesz",
+        "Krak"
+      ],
+      [
+        "Fidesz",
+        "Roma people"
+      ]
+    ],
+    "count": 8,
+    "create_time": 1777934486,
+    "update_time": 1777934486,
+    "_id": "doc-2ce45aa281a7ef93bb38f3aa506711fd"
+  },
+  "doc-630ef404bd40d634375ec08895b93b57": {
+    "relation_pairs": [
+      [
+        "Silvio Berlusconi",
+        "Viktor Orban"
+      ],
+      [
+        "Kremlin",
+        "Viktor Orban"
+      ],
+      [
+        "Felcsút",
+        "Viktor Orban"
+      ],
+      [
+        "Viktor Orban",
+        "Vladimir Putin"
+      ],
+      [
+        "Fides",
+        "Viktor Orban"
+      ],
+      [
+        "Republican Party",
+        "Viktor Orban"
+      ],
+      [
+        "2015 Migration Crisis",
+        "Viktor Orban"
+      ],
+      [
+        "European Union",
+        "Viktor Orban"
+      ],
+      [
+        "1848 Uprising",
+        "Viktor Orban"
+      ],
+      [
+        "1956 Uprising",
+        "Viktor Orban"
+      ],
+      [
+        "Brussels",
+        "Viktor Orban"
+      ]
+    ],
+    "count": 11,
+    "create_time": 1777934663,
+    "update_time": 1777934663,
+    "_id": "doc-630ef404bd40d634375ec08895b93b57"
+  },
+  "doc-878f1eb714b04017588e3e349e23520a": {
+    "relation_pairs": [
+      [
+        "Ismailova",
+        "Siyarto"
+      ],
+      [
+        "Sergei Lavrov",
+        "Siyarto"
+      ],
+      [
+        "Alisher Usmanov",
+        "Siyarto"
+      ],
+      [
+        "Европейский союз",
+        "Сиярто"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777934829,
+    "update_time": 1777934829,
+    "_id": "doc-878f1eb714b04017588e3e349e23520a"
+  },
+  "doc-6ddeee35e1422d0229641ba11e2d8e2a": {
+    "relation_pairs": [
+      [
+        "Magyar Nemzet",
+        "Ukraine"
+      ],
+      [
+        "Dmytro Korniienko",
+        "Resurgam"
+      ],
+      [
+        "Magyar Nemzet",
+        "RT Balkan"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Orban",
+        "Zelensky"
+      ],
+      [
+        "Dmytro Korniienko",
+        "Viktor Orbán"
+      ],
+      [
+        "Magyar Nemzet",
+        "Russia"
+      ],
+      [
+        "Dmytro Korniienko",
+        "Russia"
+      ],
+      [
+        "Dmytro Korniienko",
+        "Volodymyr Zelenskyy"
+      ]
+    ],
+    "count": 9,
+    "create_time": 1777934857,
+    "update_time": 1777934857,
+    "_id": "doc-6ddeee35e1422d0229641ba11e2d8e2a"
+  },
+  "doc-62008d3593e130f82f2a6b9ad492ad58": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Siyarto"
+      ],
+      [
+        "Slovakia",
+        "The Insider"
+      ],
+      [
+        "Borrell",
+        "Lavrov"
+      ],
+      [
+        "Ismailova",
+        "Siyarto"
+      ],
+      [
+        "Hungary",
+        "Slovakia"
+      ],
+      [
+        "18th Sanctions Package",
+        "European Union"
+      ],
+      [
+        "European Union",
+        "Slovakia"
+      ],
+      [
+        "18th Sanctions Package",
+        "Siyarto"
+      ],
+      [
+        "Degtyarev",
+        "Ismailova"
+      ],
+      [
+        "Lavrov",
+        "Siyarto"
+      ],
+      [
+        "Gazprom",
+        "Siyarto"
+      ],
+      [
+        "Hungary",
+        "Sorokin"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "2Rivers",
+        "European Union"
+      ],
+      [
+        "Siyarto",
+        "The Insider"
+      ],
+      [
+        "Ismailova",
+        "Kantor"
+      ],
+      [
+        "Hungary",
+        "The Insider"
+      ],
+      [
+        "Siyarto",
+        "Usmanov"
+      ],
+      [
+        "2Rivers",
+        "Siyarto"
+      ]
+    ],
+    "count": 19,
+    "create_time": 1777935140,
+    "update_time": 1777935140,
+    "_id": "doc-62008d3593e130f82f2a6b9ad492ad58"
+  },
+  "doc-3c2f72ad9ea176fa305ad80572fbddf0": {
+    "relation_pairs": [
+      [
+        "Lavrov",
+        "Siyarto"
+      ],
+      [
+        "Hungary",
+        "Siyarto"
+      ],
+      [
+        "European Union",
+        "Siyarto"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777935166,
+    "update_time": 1777935166,
+    "_id": "doc-3c2f72ad9ea176fa305ad80572fbddf0"
+  },
+  "doc-c47f7fd7b5db20e95b649e557184d279": {
+    "relation_pairs": [
+      [
+        "Ukrainian Ministry of Foreign Affairs",
+        "Венгерское радио Украины"
+      ],
+      [
+        "Венгрия",
+        "Министерство иностранных дел Украины"
+      ],
+      [
+        "Hungary",
+        "Orbán"
+      ],
+      [
+        "Венгерское радио Украины",
+        "Министерство иностранных дел Украины"
+      ],
+      [
+        "Министерство иностранных дел Украины",
+        "Орбан"
+      ],
+      [
+        "Orbán",
+        "Ukrainian Ministry of Foreign Affairs"
+      ],
+      [
+        "Hungary",
+        "Ukrainian Ministry of Foreign Affairs"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777935192,
+    "update_time": 1777935192,
+    "_id": "doc-c47f7fd7b5db20e95b649e557184d279"
+  },
+  "doc-041e1f390283fd66a47e1a500ab3b316": {
+    "relation_pairs": [
+      [
+        "Russia",
+        "Viktor Orbán"
+      ],
+      [
+        "European Union",
+        "Viktor Orbán"
+      ],
+      [
+        "Donald Trump",
+        "Russia"
+      ],
+      [
+        "Donald Trump",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Dmitriev",
+        "Viktor Orbán"
+      ],
+      [
+        "Russia",
+        "Sanctions"
+      ],
+      [
+        "Donald Trump",
+        "Vladimir Putin"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ],
+      [
+        "Economic Crisis",
+        "Energy Crisis"
+      ]
+    ],
+    "count": 10,
+    "create_time": 1777935228,
+    "update_time": 1777935228,
+    "_id": "doc-041e1f390283fd66a47e1a500ab3b316"
+  },
+  "doc-d7a9e05beed949909b4a52efffd95c13": {
+    "relation_pairs": [
+      [
+        "Chad",
+        "Gáspár Orbán"
+      ],
+      [
+        "Gáspár Orbán",
+        "Hungarian Army"
+      ],
+      [
+        "Chad",
+        "Hungarian Army"
+      ],
+      [
+        "Gáspár Orbán",
+        "Sylvester Pálkinás"
+      ],
+      [
+        "Gáspár Orbán",
+        "Viktor Orbán"
+      ],
+      [
+        "Sylvester Pálkinás",
+        "Telex.hu"
+      ],
+      [
+        "Hungarian Army",
+        "Sylvester Pálkinás"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777935371,
+    "update_time": 1777935371,
+    "_id": "doc-d7a9e05beed949909b4a52efffd95c13"
+  },
+  "doc-fa3402de1beb0f1dd6140eeb9589f3da": {
+    "relation_pairs": [
+      [
+        "Fidesz",
+        "Orbán"
+      ],
+      [
+        "1956 Hungarian Uprising",
+        "Soviet Union"
+      ],
+      [
+        "1956 Hungarian Uprising",
+        "Orbán"
+      ],
+      [
+        "Orbán",
+        "United States"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777935395,
+    "update_time": 1777935395,
+    "_id": "doc-fa3402de1beb0f1dd6140eeb9589f3da"
+  },
+  "doc-76fa6e66d2bbc299ccac27f929fbb6e9": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "Jey D. Vens",
+        "Viktor"
+      ],
+      [
+        "Hungary",
+        "United States"
+      ],
+      [
+        "European Union",
+        "Jey D. Vens"
+      ],
+      [
+        "Hungary",
+        "Viktor"
+      ],
+      [
+        "Brussels",
+        "European Union"
+      ],
+      [
+        "Jey D. Vens",
+        "United States"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777935537,
+    "update_time": 1777935537,
+    "_id": "doc-76fa6e66d2bbc299ccac27f929fbb6e9"
+  },
+  "doc-18d13cb11adbaf6533b27b108adff831": {
+    "relation_pairs": [
+      [
+        "Donald Trump",
+        "Putin"
+      ],
+      [
+        "Budapest",
+        "Orbán"
+      ],
+      [
+        "Aesops Fable",
+        "Orbán"
+      ],
+      [
+        "Hungary",
+        "Orbán"
+      ],
+      [
+        "Orbán",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Putin",
+        "Russia"
+      ],
+      [
+        "Orbán",
+        "Putin"
+      ],
+      [
+        "Hungary",
+        "Putin"
+      ],
+      [
+        "COVID-19 Pandemic",
+        "Russia-Ukraine War"
+      ],
+      [
+        "Orbán",
+        "Russia-Ukraine War"
+      ],
+      [
+        "Donald Trump",
+        "Orbán"
+      ],
+      [
+        "Orbán",
+        "Saint Petersburg"
+      ]
+    ],
+    "count": 14,
+    "create_time": 1777935602,
+    "update_time": 1777935602,
+    "_id": "doc-18d13cb11adbaf6533b27b108adff831"
+  },
+  "doc-56a5107be70de978be828c8424d8bd68": {
+    "relation_pairs": [
+      [
+        "Boris Kovalchuk",
+        "Vladimir Putin"
+      ],
+      [
+        "Viktor Orbán",
+        "Vladimir Putin"
+      ],
+      [
+        "Valery Roldugin",
+        "Vladimir Putin"
+      ],
+      [
+        "Vladimir Putin",
+        "Yevgeny Prigozhin"
+      ],
+      [
+        "Viktor Orbán",
+        "mouse"
+      ],
+      [
+        "Arkady Rotenberg",
+        "Vladimir Putin"
+      ],
+      [
+        "Kremlin",
+        "Russia"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Hungary",
+        "Viktor Orbán"
+      ],
+      [
+        "Gennady Timchenko",
+        "Vladimir Putin"
+      ]
+    ],
+    "count": 10,
+    "create_time": 1777935677,
+    "update_time": 1777935677,
+    "_id": "doc-56a5107be70de978be828c8424d8bd68"
+  },
+  "doc-15bc4e46d65e8b6c679c0513794f7a0d": {
+    "relation_pairs": [
+      [
+        "Ukraine",
+        "United States"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "J D Vans",
+        "Ukraine"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777935691,
+    "update_time": 1777935691,
+    "_id": "doc-15bc4e46d65e8b6c679c0513794f7a0d"
+  },
+  "doc-e7f479c1dafa7f6000ea9c8a9d708681": {
+    "relation_pairs": [
+      [
+        "Donald Trump",
+        "Gigi DAlessio"
+      ],
+      [
+        "Donald Trump",
+        "Viktor Orbán"
+      ],
+      [
+        "Donald Trump",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Viktor Orbán"
+      ],
+      [
+        "Donald Trump",
+        "Hungarian Patriots"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777935719,
+    "update_time": 1777935719,
+    "_id": "doc-e7f479c1dafa7f6000ea9c8a9d708681"
+  },
+  "doc-d676b4cd482e3a1b0b5a31f8890d6a05": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Politico"
+      ],
+      [
+        "Mikhail Murashko",
+        "Peter Szijjártó"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777936134,
+    "update_time": 1777936134,
+    "_id": "doc-d676b4cd482e3a1b0b5a31f8890d6a05"
+  },
+  "doc-b4ab4af04ea406b0a7a47efc262f0eb2": {
+    "relation_pairs": [
+      [
+        "Dietmar Klaud",
+        "Igor Koryol"
+      ],
+      [
+        "Budapest",
+        "István Hofman"
+      ],
+      [
+        "Игорь",
+        "Саша"
+      ],
+      [
+        "Игорь Король",
+        "венгерская граница"
+      ],
+      [
+        "Игорь",
+        "Октогон"
+      ],
+      [
+        "Пинтер Шандер",
+        "Эзрадеш Венгри"
+      ],
+      [
+        "Igor Korol",
+        "László Kócs"
+      ],
+      [
+        "Магилевич",
+        "Шандор Пинтер"
+      ],
+      [
+        "Alexander Kirichanin",
+        "László Kócs"
+      ],
+      [
+        "Black Skull",
+        "Igor Koryol"
+      ],
+      [
+        "Hungary",
+        "Slovakia"
+      ],
+      [
+        "Александр Киричанин",
+        "Венгрия"
+      ],
+      [
+        "Вад",
+        "Полиграф"
+      ],
+      [
+        "Виктор Арбан",
+        "Пинтер, Шандер"
+      ],
+      [
+        "Igor Koryol",
+        "Semyon Mogilevich"
+      ],
+      [
+        "Spring 1996",
+        "Дитмарклоудо"
+      ],
+      [
+        "23 декабря 1998 года",
+        "Будапешт"
+      ],
+      [
+        "Борош Томаш",
+        "Рогоч"
+      ],
+      [
+        "Игорь Король",
+        "Корона"
+      ],
+      [
+        "BMW",
+        "Будапешт"
+      ],
+      [
+        "Dietmar Klaud",
+        "Orbán"
+      ],
+      [
+        "Hungary",
+        "László Kócs"
+      ],
+      [
+        "Budapest",
+        "Semyon Mogilevich"
+      ],
+      [
+        "László Kócs",
+        "Ukraine"
+      ],
+      [
+        "Russia",
+        "Магилевич"
+      ],
+      [
+        "Hungary",
+        "Рогоч"
+      ],
+      [
+        "BMW",
+        "Игорь"
+      ],
+      [
+        "Будапешт",
+        "Шандор Пинтер"
+      ],
+      [
+        "Пинтер",
+        "Портик Томаш"
+      ],
+      [
+        "Roman Dobrokhотов",
+        "The Insider"
+      ],
+      [
+        "Slovakia",
+        "Рогоч"
+      ],
+      [
+        "23 декабря 1998 года",
+        "Саша"
+      ],
+      [
+        "Steec Nutrition",
+        "Игорь"
+      ],
+      [
+        "László Kócs",
+        "The Insider"
+      ],
+      [
+        "Bucharest",
+        "Игорь"
+      ],
+      [
+        "Сомбатхе",
+        "Шандор Пинтер"
+      ],
+      [
+        "Explosion near McDonalds in Budapest",
+        "Дитмарклоудо"
+      ],
+      [
+        "Арбан",
+        "Орбан"
+      ],
+      [
+        "Russia",
+        "Орбан"
+      ],
+      [
+        "Портик",
+        "Рогоч"
+      ],
+      [
+        "Hungary",
+        "Дитмарклоудо"
+      ],
+      [
+        "23 декабря 1998 года",
+        "BMW"
+      ],
+      [
+        "Израиль",
+        "Леонид Тюра"
+      ],
+      [
+        "Игорь Король",
+        "Камигами"
+      ],
+      [
+        "Igor Koryol",
+        "Leonid Stitsyura"
+      ],
+      [
+        "Полиграф",
+        "Шандор Пинтер"
+      ],
+      [
+        "Budapest",
+        "Nedits Maraklodu"
+      ],
+      [
+        "Полиграф",
+        "Сомбатхе"
+      ],
+      [
+        "Семён Могилевич",
+        "Томаш Портик"
+      ],
+      [
+        "Игорь Король",
+        "Шандор Пинтер"
+      ],
+      [
+        "Игорь Король",
+        "Леонид Цецюра"
+      ],
+      [
+        "Леонид Цецюра",
+        "Могилевич, Семён"
+      ],
+      [
+        "Йозеф Рогоч",
+        "Присташ Йожеф"
+      ],
+      [
+        "НВС",
+        "Пинтер Шандер"
+      ],
+      [
+        "Леонид Цецюра",
+        "Сева"
+      ],
+      [
+        "Семён Могилевич",
+        "Шандор Пинтер"
+      ],
+      [
+        "Борош Томаш",
+        "Могилевич"
+      ],
+      [
+        "Игорь Король",
+        "Семён Могилевич"
+      ],
+      [
+        "Шандор Пинтер",
+        "тюрьма"
+      ],
+      [
+        "Александр Киричанин",
+        "Будоверш"
+      ],
+      [
+        "Магилевич",
+        "Орбан"
+      ],
+      [
+        "Budapest",
+        "Polish Fiat"
+      ],
+      [
+        "Alexander Kirichanin",
+        "Hungary"
+      ],
+      [
+        "Александр Киричанин",
+        "Пинтер"
+      ],
+      [
+        "Игорь Король",
+        "Сева"
+      ],
+      [
+        "Будоверш",
+        "Сантендра"
+      ],
+      [
+        "Hungary",
+        "Oyki Kish"
+      ],
+      [
+        "Виктор Арбан",
+        "Магилевич"
+      ],
+      [
+        "1996",
+        "1997"
+      ],
+      [
+        "Goldf Gim",
+        "Igor Koryol"
+      ],
+      [
+        "Магилевич",
+        "Пинтер, Шандер"
+      ],
+      [
+        "Игорь",
+        "Пинтер"
+      ],
+      [
+        "Budapest",
+        "Ukraine"
+      ],
+      [
+        "1998 Elections",
+        "Магилевич"
+      ],
+      [
+        "Alexander Kirichenko",
+        "Igor Koryol"
+      ],
+      [
+        "Венгрия",
+        "Орбан"
+      ],
+      [
+        "Король",
+        "Могилевич"
+      ],
+      [
+        "Бургермейштержолт",
+        "Эзрадеш Венгри"
+      ],
+      [
+        "Пинтер",
+        "Присташ Йожеф"
+      ],
+      [
+        "Igor Koryol",
+        "Mogilevich"
+      ],
+      [
+        "Игорь",
+        "Саша Киричанин"
+      ],
+      [
+        "Игорь Король",
+        "Киев"
+      ],
+      [
+        "Вендис",
+        "Октогон"
+      ],
+      [
+        "István Hofman",
+        "József Pristash"
+      ],
+      [
+        "Czech Republic",
+        "Hungary"
+      ],
+      [
+        "Игорь Король",
+        "Оля Игоря"
+      ],
+      [
+        "Вад",
+        "Шандор Пинтер"
+      ],
+      [
+        "Hungary",
+        "Tiszókecske"
+      ],
+      [
+        "Goldf Gim",
+        "László Kócs"
+      ],
+      [
+        "Портик",
+        "Шандор Пинтер"
+      ],
+      [
+        "Арбанк",
+        "Семён Могилевич"
+      ],
+      [
+        "Борош Томаш",
+        "Орбан"
+      ],
+      [
+        "Budapest",
+        "McDonald's"
+      ],
+      [
+        "Игорь",
+        "Радченко Руслан"
+      ],
+      [
+        "Тони Дюри Визовицкий Ласлоу",
+        "Шандор Пинтер"
+      ],
+      [
+        "Hungary",
+        "Igor Korol"
+      ],
+      [
+        "Александр Киричанин",
+        "Игорь Король"
+      ],
+      [
+        "Шандер Пинтер",
+        "Шандор Пинтер"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "Békásmegyer",
+        "Szentendre"
+      ],
+      [
+        "Leather Bag",
+        "Витька"
+      ],
+      [
+        "Spring 1998 Elections",
+        "Арбанк"
+      ],
+      [
+        "Игорь Король",
+        "Пинтер"
+      ],
+      [
+        "Игорь Король",
+        "НКУизер Джип"
+      ],
+      [
+        "Igor",
+        "István Hofman"
+      ],
+      [
+        "Бухарест",
+        "Игорь Король"
+      ],
+      [
+        "Орбан",
+        "Шандор Пинтер"
+      ],
+      [
+        "Борош Томаш",
+        "Пинтер Шандор"
+      ],
+      [
+        "1998 Elections",
+        "Виктор Арбан"
+      ],
+      [
+        "Ukraine",
+        "Uzhhorod"
+      ],
+      [
+        "Leather Bag",
+        "Шандер Пинтер"
+      ],
+      [
+        "Венгрия",
+        "Игорь Король"
+      ],
+      [
+        "Йозеф Рогоч",
+        "Портик Томаш"
+      ]
+    ],
+    "count": 113,
+    "create_time": 1777936141,
+    "update_time": 1777936141,
+    "_id": "doc-b4ab4af04ea406b0a7a47efc262f0eb2"
+  },
+  "doc-04255b715a0376896ee759f97f705fa9": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Sergey Lavrov"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "Donald Tusk",
+        "Viktor Orban"
+      ],
+      [
+        "European Union",
+        "Sergey Lavrov"
+      ],
+      [
+        "Hungary",
+        "Viktor Orban"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777936164,
+    "update_time": 1777936164,
+    "_id": "doc-04255b715a0376896ee759f97f705fa9"
+  },
+  "doc-1df0b1b88f34d580b02a39f19b81863c": {
+    "relation_pairs": [
+      [
+        "Lavrov",
+        "Ukraine"
+      ],
+      [
+        "Siyarto",
+        "Ukraine"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "European Union",
+        "Siyarto"
+      ],
+      [
+        "Lavrov",
+        "Siyarto"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777936195,
+    "update_time": 1777936195,
+    "_id": "doc-1df0b1b88f34d580b02a39f19b81863c"
+  },
+  "doc-856b3e97c7114ec779d61032fd380cac": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Sergey Lavrov"
+      ],
+      [
+        "FrontStory",
+        "VSquare"
+      ],
+      [
+        "European Union",
+        "Péter Szijjártó"
+      ],
+      [
+        "Delfi",
+        "FrontStory"
+      ],
+      [
+        "FrontStory",
+        "The Insider"
+      ],
+      [
+        "FrontStory",
+        "ICJK"
+      ],
+      [
+        "Péter Szijjártó",
+        "Sergey Lavrov"
+      ],
+      [
+        "Delfi",
+        "VSquare"
+      ],
+      [
+        "ICJK",
+        "VSquare"
+      ],
+      [
+        "Péter Szijjártó",
+        "Ukraine"
+      ],
+      [
+        "ICJK",
+        "The Insider"
+      ],
+      [
+        "The Insider",
+        "VSquare"
+      ],
+      [
+        "Delfi",
+        "ICJK"
+      ],
+      [
+        "Delfi",
+        "The Insider"
+      ]
+    ],
+    "count": 14,
+    "create_time": 1777936220,
+    "update_time": 1777936220,
+    "_id": "doc-856b3e97c7114ec779d61032fd380cac"
+  },
+  "doc-9709583820fd5481ffcce2b760a7e137": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "United States"
+      ],
+      [
+        "Adriatic Pipeline",
+        "Hungary"
+      ],
+      [
+        "Adriatic Pipeline",
+        "Croatia"
+      ],
+      [
+        "Ante Šušnjar",
+        "Croatia"
+      ],
+      [
+        "Adriatic Pipeline",
+        "United States"
+      ],
+      [
+        "Adriatic Pipeline",
+        "Slovakia"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1777936234,
+    "update_time": 1777936234,
+    "_id": "doc-9709583820fd5481ffcce2b760a7e137"
+  },
+  "doc-aee2cce01ea0f26a0eca327b55ad4d84": {
+    "relation_pairs": [
+      [
+        "Peter Magyar",
+        "Ursula von der Leyen"
+      ],
+      [
+        "Druzhba Pipeline",
+        "Ukraine"
+      ],
+      [
+        "2026–2027",
+        "European Union"
+      ],
+      [
+        "Hatvanpusta",
+        "Mehyigorye"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "Cohesion Funds",
+        "European Union"
+      ],
+      [
+        "Fidesz",
+        "Peter Magyar"
+      ],
+      [
+        "Russia",
+        "Viktor Orban"
+      ],
+      [
+        "Hungary",
+        "SVR"
+      ],
+      [
+        "Fidesz",
+        "Orbán"
+      ],
+      [
+        "Hungarian public procurement system",
+        "Orbán"
+      ],
+      [
+        "Tisza",
+        "Viktor Orbán"
+      ],
+      [
+        "Matthias Corvinus Collegium",
+        "Viktor Orban"
+      ],
+      [
+        "Russia",
+        "Viktor Orbán"
+      ],
+      [
+        "MO",
+        "Russia"
+      ],
+      [
+        "Hungary",
+        "Jan Šlais"
+      ],
+      [
+        "Kremlin",
+        "Orbán"
+      ],
+      [
+        "Hungary",
+        "Kremlin"
+      ],
+      [
+        "Czechia",
+        "Hungary"
+      ],
+      [
+        "Sergey Lavrov",
+        "Viktor Orbán"
+      ],
+      [
+        "European Union",
+        "Mádiár"
+      ],
+      [
+        "Hungary",
+        "Tisza"
+      ],
+      [
+        "Druzhba",
+        "Viktor Orbán"
+      ],
+      [
+        "European Union",
+        "Siyarta"
+      ],
+      [
+        "Siyarta",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungarian Government",
+        "Kremlin"
+      ],
+      [
+        "Hungary",
+        "NATO"
+      ],
+      [
+        "MO",
+        "Viktor Orbán"
+      ],
+      [
+        "Michael Naki",
+        "Viktor Orbán"
+      ],
+      [
+        "NATO",
+        "Russia"
+      ],
+      [
+        "Donald Tusk",
+        "Viktor Orbán"
+      ],
+      [
+        "Orbán",
+        "Social Design Agency"
+      ],
+      [
+        "Newgard",
+        "TikTok"
+      ],
+      [
+        "Donald Tusk",
+        "Hungary"
+      ],
+      [
+        "Gabrielius Landsbergis",
+        "Hungary"
+      ],
+      [
+        "Delamit Kft.",
+        "Viktor Orbán"
+      ],
+      [
+        "22 February",
+        "27 January"
+      ],
+      [
+        "Hungarian Election",
+        "Kyiv"
+      ],
+      [
+        "Akashhadhazi",
+        "Hatvanpusta"
+      ],
+      [
+        "Alisher Usmanov",
+        "European Union"
+      ],
+      [
+        "Orbán",
+        "Ukraine"
+      ],
+      [
+        "Hungary",
+        "Orbán"
+      ],
+      [
+        "Kremlin",
+        "Peter Szijjártó"
+      ],
+      [
+        "Kremlin",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "Orbán"
+      ],
+      [
+        "Financial Times",
+        "V Square"
+      ],
+      [
+        "Mádiár",
+        "Soros"
+      ],
+      [
+        "Bulgarian Center for the Study of Democracy",
+        "CNN"
+      ],
+      [
+        "Orbán",
+        "Sergei Lavrov"
+      ],
+      [
+        "Viktor Orbán",
+        "Vladimir Putin"
+      ],
+      [
+        "Fidesz",
+        "Hungary"
+      ],
+      [
+        "Antal Rogán",
+        "Viktor Orbán"
+      ],
+      [
+        "Kremlin",
+        "Viktor Orbán"
+      ],
+      [
+        "Fides",
+        "SVR"
+      ],
+      [
+        "Brussels",
+        "Hungarian Election"
+      ],
+      [
+        "Hungary",
+        "MO"
+      ],
+      [
+        "Hungary",
+        "Mádár"
+      ],
+      [
+        "Moldova",
+        "Sergei Kirienko"
+      ],
+      [
+        "Delamit Kft",
+        "József Orbán"
+      ],
+      [
+        "Bloomberg",
+        "Hungarian Government"
+      ],
+      [
+        "Donald Trump",
+        "Viktor Orbán"
+      ],
+      [
+        "Peter Szijjártó",
+        "Russia"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Hungary",
+        "Mádiár"
+      ],
+      [
+        "Hungary",
+        "Soviet Union"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ],
+      [
+        "Hungarian Election",
+        "Moscow"
+      ],
+      [
+        "MO",
+        "Viktor Orban"
+      ],
+      [
+        "Dzsózsef Orbán",
+        "Viktor Orbán"
+      ],
+      [
+        "Judit Varga",
+        "Mádiár"
+      ],
+      [
+        "Hungarian education and healthcare infrastructure",
+        "Hungary"
+      ],
+      [
+        "Budapest",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "Fides",
+        "Orbán"
+      ],
+      [
+        "Druzhba Pipeline",
+        "Kremlin"
+      ],
+      [
+        "József Orbán",
+        "Viktor Orbán"
+      ],
+      [
+        "Hatyapust",
+        "MO"
+      ],
+      [
+        "Jan Šlais",
+        "Orbán"
+      ],
+      [
+        "NATO",
+        "Viktor Orbán"
+      ],
+      [
+        "Fidesz",
+        "Ukraine"
+      ],
+      [
+        "Kremlin",
+        "Moldova"
+      ],
+      [
+        "Budapest",
+        "Hungarian Election"
+      ],
+      [
+        "Fidesz",
+        "Viktor Orbán"
+      ],
+      [
+        "Hatvanpusta",
+        "Viktor Orbán"
+      ],
+      [
+        "22 February",
+        "5 March"
+      ],
+      [
+        "SVR",
+        "Washington Post"
+      ],
+      [
+        "Andrei Kirienko",
+        "Moldova"
+      ],
+      [
+        "Delamit Kft",
+        "Hatvanpusta"
+      ],
+      [
+        "Hungary",
+        "Warsaw Pact"
+      ],
+      [
+        "Ukraine",
+        "Viktor Orbán"
+      ],
+      [
+        "European Union",
+        "Peter Szijjártó"
+      ],
+      [
+        "Chișinău",
+        "Russia"
+      ],
+      [
+        "Leningrad",
+        "Viktor Orbán"
+      ],
+      [
+        "Lukashenko",
+        "Viktor Orbán"
+      ],
+      [
+        "Donald Tusk",
+        "Jarosław Kaczyński"
+      ],
+      [
+        "Hungary",
+        "Michael Naki"
+      ],
+      [
+        "Kremlin",
+        "SVR"
+      ],
+      [
+        "Sergei Kirienko",
+        "Ukraine"
+      ],
+      [
+        "European Union",
+        "Viktor Orban"
+      ],
+      [
+        "Hungary",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungary",
+        "Zakarpattia"
+      ],
+      [
+        "Jared Vance",
+        "Orbán"
+      ],
+      [
+        "European Union",
+        "Viktor Orbán"
+      ],
+      [
+        "Orbán",
+        "Vladimir Putin"
+      ],
+      [
+        "Hungary",
+        "Oschadbank"
+      ],
+      [
+        "Mádiár",
+        "Russia"
+      ],
+      [
+        "Budapest",
+        "Viktor Orbán"
+      ],
+      [
+        "Madjar",
+        "Orbán"
+      ],
+      [
+        "Hungary",
+        "United States"
+      ],
+      [
+        "Financial Times",
+        "Social Design Agency"
+      ],
+      [
+        "European Union",
+        "Hungarian Ministry of Economy"
+      ],
+      [
+        "Lavrov",
+        "Siyarta"
+      ],
+      [
+        "Druzhba Pipeline",
+        "Hungary"
+      ],
+      [
+        "Mádiár",
+        "Viktor Orbán"
+      ],
+      [
+        "Oschadbank",
+        "RaiFaiZen Bank"
+      ],
+      [
+        "Kremlin",
+        "Sergei Kirienko"
+      ],
+      [
+        "Hungarian Ministry of Economy",
+        "Hungary"
+      ],
+      [
+        "GRU",
+        "Hungary"
+      ],
+      [
+        "18th Sanctions Package",
+        "European Union"
+      ],
+      [
+        "KGB",
+        "Russia"
+      ],
+      [
+        "Hungary",
+        "Social Design Agency"
+      ],
+      [
+        "Donald Trump",
+        "Orbán"
+      ],
+      [
+        "Pavel Sorokin",
+        "Siyarta"
+      ],
+      [
+        "Madjar",
+        "Russia"
+      ],
+      [
+        "Gáncs",
+        "Viktor Orbán"
+      ],
+      [
+        "Hótvágypuszta",
+        "Viktor Orbán"
+      ],
+      [
+        "Jan Šlais",
+        "Ukraine"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "Putin",
+        "Viktor Orban"
+      ],
+      [
+        "European Union",
+        "Ukraine"
+      ],
+      [
+        "Fidesz",
+        "Mádiár"
+      ],
+      [
+        "April 12",
+        "European Union"
+      ],
+      [
+        "Katalin Novák",
+        "Viktor Orbán"
+      ],
+      [
+        "Brussels",
+        "Mádiár"
+      ],
+      [
+        "EU Recovery Fund",
+        "European Union"
+      ],
+      [
+        "Alisher Usmanov",
+        "Gulbakhor Ismailova"
+      ],
+      [
+        "Hungary",
+        "Sergei Kirienko"
+      ],
+      [
+        "Akashhadhazi",
+        "Viktor Orbán"
+      ],
+      [
+        "Judit Varga",
+        "Viktor Orbán"
+      ],
+      [
+        "Druzhba",
+        "MO"
+      ],
+      [
+        "Peter Szijjártó",
+        "Sergey Lavrov"
+      ]
+    ],
+    "count": 141,
+    "create_time": 1777936573,
+    "update_time": 1777936573,
+    "_id": "doc-aee2cce01ea0f26a0eca327b55ad4d84"
+  },
+  "doc-6668814f0fa4a08a5e7146c18c524882": {
+    "relation_pairs": [
+      [
+        "Madjar",
+        "Weber"
+      ],
+      [
+        "European People's Party",
+        "Weber"
+      ],
+      [
+        "Hungary",
+        "Orbán"
+      ],
+      [
+        "Kremlin",
+        "Orbán"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777936592,
+    "update_time": 1777936592,
+    "_id": "doc-6668814f0fa4a08a5e7146c18c524882"
+  },
+  "doc-30016fb6016e5e816490beecfa0137ea": {
+    "relation_pairs": [
+      [
+        "Viktor Orbán",
+        "Vladimir Putin"
+      ],
+      [
+        "2022 Hungarian Elections",
+        "United Hungary"
+      ],
+      [
+        "Péter Márki-Zay",
+        "Tisza"
+      ],
+      [
+        "Fidesz",
+        "Viktor Orbán"
+      ],
+      [
+        "Fidesz",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Opposition"
+      ],
+      [
+        "Serbia–Hungary Gas Pipeline",
+        "Ukraine"
+      ],
+      [
+        "2026 Hungarian Elections",
+        "Hungary"
+      ],
+      [
+        "Fidesz",
+        "Orbán"
+      ],
+      [
+        "Orbán",
+        "Serbia–Hungary Gas Pipeline"
+      ],
+      [
+        "Fidesz",
+        "Tisz"
+      ],
+      [
+        "Tisza",
+        "Viktor Orbán"
+      ],
+      [
+        "Budapest",
+        "Fidesz"
+      ],
+      [
+        "Russia",
+        "Viktor Orbán"
+      ],
+      [
+        "Donald Trump",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Hungarian State Media",
+        "Ukraine"
+      ],
+      [
+        "2026 Hungarian Elections",
+        "Fidesz"
+      ],
+      [
+        "EU Made Simple",
+        "Viktor Orbán"
+      ],
+      [
+        "EU Made Simple",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Price of the Vote"
+      ],
+      [
+        "Ukraine",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungary",
+        "Serbia–Hungary Gas Pipeline"
+      ],
+      [
+        "2022 Hungarian Elections",
+        "Hungary"
+      ],
+      [
+        "EU Made Simple",
+        "European Union"
+      ],
+      [
+        "Fidesz",
+        "Győr-Moson-Sopron"
+      ],
+      [
+        "Fidesz",
+        "United Hungary"
+      ],
+      [
+        "Fides",
+        "Viktor Orbán"
+      ],
+      [
+        "Fidesz",
+        "Szig"
+      ],
+      [
+        "Fidesz",
+        "Pest"
+      ],
+      [
+        "Hungary",
+        "Viktor Orbán"
+      ],
+      [
+        "Artificial Intelligence",
+        "Hungarian State Media"
+      ],
+      [
+        "Fides",
+        "Hungary"
+      ],
+      [
+        "Fidesz",
+        "Tisza"
+      ],
+      [
+        "Ground News",
+        "Viktor Orbán"
+      ],
+      [
+        "2022 Hungarian Elections",
+        "Fidesz"
+      ],
+      [
+        "J.D. Vance",
+        "Viktor Orbán"
+      ],
+      [
+        "Croatia",
+        "Viktor Orbán"
+      ],
+      [
+        "Breitbart",
+        "Ukraine"
+      ],
+      [
+        "European Union",
+        "Viktor Orbán"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "Fidesz",
+        "Hungarian State Media"
+      ],
+      [
+        "2026 Hungarian Elections",
+        "Tisza"
+      ],
+      [
+        "Fidesz",
+        "Price of the Vote"
+      ],
+      [
+        "Hungary",
+        "Orbán"
+      ],
+      [
+        "2022 Hungarian Elections",
+        "2026 Hungarian Elections"
+      ],
+      [
+        "Orbán",
+        "Péter Márki-Zay"
+      ],
+      [
+        "United States",
+        "Viktor Orbán"
+      ],
+      [
+        "Budapest",
+        "Hungary"
+      ]
+    ],
+    "count": 49,
+    "create_time": 1777936773,
+    "update_time": 1777936773,
+    "_id": "doc-30016fb6016e5e816490beecfa0137ea"
+  },
+  "doc-6b6094bb4baa50ca16b050094527bb72": {
+    "relation_pairs": [
+      [
+        "Iran",
+        "Kremlin"
+      ],
+      [
+        "Iran",
+        "Moscow"
+      ],
+      [
+        "Iran",
+        "Viktor Orbán"
+      ],
+      [
+        "The Washington Post",
+        "Viktor Orbán"
+      ],
+      [
+        "Abbas Araghchi",
+        "Peter Sijarto"
+      ],
+      [
+        "Peter Sijarto",
+        "The Washington Post"
+      ],
+      [
+        "Abbas Araghchi",
+        "The Washington Post"
+      ],
+      [
+        "Hezbollah",
+        "Israel"
+      ]
+    ],
+    "count": 8,
+    "create_time": 1777936789,
+    "update_time": 1777936789,
+    "_id": "doc-6b6094bb4baa50ca16b050094527bb72"
+  },
+  "doc-0a0dab94a560fc758fa6ee405a3073e1": {
+    "relation_pairs": [
+      [
+        "Antonio Costa",
+        "Ukraine"
+      ],
+      [
+        "Robert Fico",
+        "Ukraine"
+      ],
+      [
+        "Nord Stream",
+        "Ukraine"
+      ],
+      [
+        "Druzhba",
+        "Ukraine"
+      ],
+      [
+        "European Parliament",
+        "Ukraine"
+      ],
+      [
+        "Israel",
+        "United States"
+      ],
+      [
+        "European Commission",
+        "Robert Fico"
+      ],
+      [
+        "Hungary",
+        "Robert Fico"
+      ],
+      [
+        "European Union",
+        "Ukraine"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "Robert Fico"
+      ]
+    ],
+    "count": 11,
+    "create_time": 1777936833,
+    "update_time": 1777936833,
+    "_id": "doc-0a0dab94a560fc758fa6ee405a3073e1"
+  },
+  "doc-3ee95b6f249a6cf2559cd73a00550138": {
+    "relation_pairs": [
+      [
+        "Orbán",
+        "Russia"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777936839,
+    "update_time": 1777936839,
+    "_id": "doc-3ee95b6f249a6cf2559cd73a00550138"
+  },
+  "doc-b98644fa6c027080d677392f4baa26bd": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Hungary",
+        "Пётр Мадьяр"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777936856,
+    "update_time": 1777936856,
+    "_id": "doc-b98644fa6c027080d677392f4baa26bd"
+  },
+  "doc-22dda17b85321428e8317e44b44c499c": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Hungary",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungary",
+        "Putin"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777936880,
+    "update_time": 1777936880,
+    "_id": "doc-22dda17b85321428e8317e44b44c499c"
+  },
+  "doc-fde1c7dba3053bf39b823407bf0075e5": {
+    "relation_pairs": [
+      [
+        "Donald Trump",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Viktor Orbán"
+      ],
+      [
+        "Donald Trump",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungary",
+        "United States"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777936889,
+    "update_time": 1777936889,
+    "_id": "doc-fde1c7dba3053bf39b823407bf0075e5"
+  },
+  "doc-fb9bc88523d7049f682e99556fbbfd37": {
+    "relation_pairs": [
+      [
+        "Orbán",
+        "Xi Jinping"
+      ],
+      [
+        "Orbán",
+        "Vladimir Putin"
+      ],
+      [
+        "Kim Jong Un",
+        "Orbán"
+      ],
+      [
+        "Hungary",
+        "Orbán"
+      ],
+      [
+        "European Union",
+        "United States"
+      ],
+      [
+        "British Empire",
+        "European Union"
+      ],
+      [
+        "European Union",
+        "Orbán"
+      ],
+      [
+        "Donald Trump",
+        "Orbán"
+      ]
+    ],
+    "count": 8,
+    "create_time": 1777936921,
+    "update_time": 1777936921,
+    "_id": "doc-fb9bc88523d7049f682e99556fbbfd37"
+  },
+  "doc-1a89584429491d20ee45913ca503536d": {
+    "relation_pairs": [
+      [
+        "Donald Trump",
+        "Hungary"
+      ],
+      [
+        "Donald Trump",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungary",
+        "United States"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777936932,
+    "update_time": 1777936932,
+    "_id": "doc-1a89584429491d20ee45913ca503536d"
+  },
+  "doc-f68aa3ac0ebebc5a5cededeb040cb5ac": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Soviet Union"
+      ],
+      [
+        "Hungary",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungarian Uprising",
+        "Soviet Union"
+      ],
+      [
+        "Hungarian Uprising",
+        "Hungary"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777936954,
+    "update_time": 1777936954,
+    "_id": "doc-f68aa3ac0ebebc5a5cededeb040cb5ac"
+  },
+  "doc-8e45b249c72baa269b0603187d93f3bc": {
+    "relation_pairs": [
+      [
+        "United States",
+        "Дон Бейкон"
+      ],
+      [
+        "United States",
+        "республиканцы"
+      ],
+      [
+        "Белый дом",
+        "Орбан"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777936977,
+    "update_time": 1777936977,
+    "_id": "doc-8e45b249c72baa269b0603187d93f3bc"
+  },
+  "doc-ea35cee9226c7357aa9e81db2089a430": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Orbán"
+      ],
+      [
+        "Hungary",
+        "Russians"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777936983,
+    "update_time": 1777936983,
+    "_id": "doc-ea35cee9226c7357aa9e81db2089a430"
+  },
+  "doc-4eecd59d77e0e564eeaafd52f31e7ac1": {
+    "relation_pairs": [
+      [
+        "Kremlin",
+        "Russian Orthodox Church"
+      ],
+      [
+        "NATO",
+        "Orbán"
+      ],
+      [
+        "Kremlin",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Hungary",
+        "Soviet Union"
+      ],
+      [
+        "European Union",
+        "Orbán"
+      ],
+      [
+        "East Germany",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ]
+    ],
+    "count": 10,
+    "create_time": 1777937046,
+    "update_time": 1777937046,
+    "_id": "doc-4eecd59d77e0e564eeaafd52f31e7ac1"
+  },
+  "doc-394c82423002e59143960e4599324517": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Orbán"
+      ],
+      [
+        "Debrecen",
+        "Hungary"
+      ],
+      [
+        "Debrecen",
+        "Orbán"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777937052,
+    "update_time": 1777937052,
+    "_id": "doc-394c82423002e59143960e4599324517"
+  },
+  "doc-62eec6c3baddadae239ef47958f734b4": {
+    "relation_pairs": [
+      [
+        "Viktor Orbán",
+        "White House"
+      ],
+      [
+        "Donald Trump Jr.",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungary",
+        "Viktor Orbán"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777937082,
+    "update_time": 1777937082,
+    "_id": "doc-62eec6c3baddadae239ef47958f734b4"
+  },
+  "doc-d26557eeb4a4e13cd87bf26c5f862efd": {
+    "relation_pairs": [
+      [
+        "Kremlin",
+        "Peter Magyar"
+      ],
+      [
+        "Kremlin",
+        "Sabolch Panyi"
+      ],
+      [
+        "Borsod-Abaúj-Zemplén",
+        "Hungary"
+      ],
+      [
+        "4,968,713 voters",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Kremlin"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "M1",
+        "Ukraine"
+      ],
+      [
+        "2022 Hungarian elections",
+        "Hungary"
+      ],
+      [
+        "Hungary",
+        "Pest"
+      ],
+      [
+        "Hungary",
+        "Vladimir Zelensky"
+      ],
+      [
+        "Fidesz",
+        "Peter Magyar"
+      ],
+      [
+        "Hungary",
+        "Tisa"
+      ],
+      [
+        "2014 Hungarian elections",
+        "Hungary"
+      ],
+      [
+        "Budapest",
+        "Hungary"
+      ],
+      [
+        "2010 Hungarian elections",
+        "Hungary"
+      ]
+    ],
+    "count": 15,
+    "create_time": 1777937114,
+    "update_time": 1777937114,
+    "_id": "doc-d26557eeb4a4e13cd87bf26c5f862efd"
+  },
+  "doc-92f5e1b66d48541d78d7b7a01fb69ff1": {
+    "relation_pairs": [
+      [
+        "Craig Unger",
+        "The Putin House"
+      ],
+      [
+        "American Compromat",
+        "Craig Unger"
+      ],
+      [
+        "FSB",
+        "Semen Mogilevich"
+      ],
+      [
+        "Russia",
+        "Semen Mogilevich"
+      ],
+      [
+        "Dithmar Clodo",
+        "Viktor Orbán"
+      ],
+      [
+        "Dithmar Clodo",
+        "Semen Mogilevich"
+      ],
+      [
+        "Semen Mogilevich",
+        "Ukraine"
+      ],
+      [
+        "Donald Trump",
+        "Semen Mogilevich"
+      ],
+      [
+        "Craig Unger",
+        "The Trump House"
+      ],
+      [
+        "FBI",
+        "Semen Mogilevich"
+      ],
+      [
+        "David Bogatin",
+        "Donald Trump"
+      ],
+      [
+        "Al-Qaeda",
+        "Semen Mogilevich"
+      ],
+      [
+        "Dithmar Clodo",
+        "Sandor Pinter"
+      ],
+      [
+        "Craig Unger",
+        "The Spy Nest"
+      ],
+      [
+        "Hungary",
+        "Semen Mogilevich"
+      ]
+    ],
+    "count": 15,
+    "create_time": 1777937152,
+    "update_time": 1777937152,
+    "_id": "doc-92f5e1b66d48541d78d7b7a01fb69ff1"
+  },
+  "doc-4d67209b4f70814e5aee9617a64d5ced": {
+    "relation_pairs": [
+      [
+        "Венгрия",
+        "Орбан"
+      ],
+      [
+        "Венгрия",
+        "Фидес"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777937171,
+    "update_time": 1777937171,
+    "_id": "doc-4d67209b4f70814e5aee9617a64d5ced"
+  },
+  "doc-b332e0de43bee355dc263966d02915ac": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Orbán"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777937190,
+    "update_time": 1777937190,
+    "_id": "doc-b332e0de43bee355dc263966d02915ac"
+  },
+  "doc-5909dcafd9bd423d94c4a871960e2552": {
+    "relation_pairs": [
+      [
+        "Hungarian electoral system",
+        "Hungary"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777937196,
+    "update_time": 1777937196,
+    "_id": "doc-5909dcafd9bd423d94c4a871960e2552"
+  },
+  "doc-ecee66f5d456b615ddaa415fd6e97355": {
+    "relation_pairs": [
+      [
+        "Fides",
+        "Mihai Shoke-Tot"
+      ],
+      [
+        "Mihai Shoke-Tot",
+        "Tisa"
+      ],
+      [
+        "Bocha",
+        "Mihai Shoke-Tot"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777937211,
+    "update_time": 1777937211,
+    "_id": "doc-ecee66f5d456b615ddaa415fd6e97355"
+  },
+  "doc-4bcdb8c4549d1a92a6f93346c245411c": {
+    "relation_pairs": [
+      [
+        "Fides",
+        "Torbán"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777937218,
+    "update_time": 1777937218,
+    "_id": "doc-4bcdb8c4549d1a92a6f93346c245411c"
+  },
+  "doc-bfd1a245bf28ca7409665b38a7b472db": {
+    "relation_pairs": [
+      [
+        "Magyar",
+        "Orbán"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777937222,
+    "update_time": 1777937222,
+    "_id": "doc-bfd1a245bf28ca7409665b38a7b472db"
+  },
+  "doc-8b75360df5b1fff48d67080d47148daf": {
+    "relation_pairs": [
+      [
+        "Russia",
+        "Viktor Orbán"
+      ],
+      [
+        "European Union",
+        "Viktor Orbán"
+      ],
+      [
+        "France",
+        "Russia"
+      ],
+      [
+        "Kremlin",
+        "Peter Magyar"
+      ],
+      [
+        "Croatia",
+        "Hungary"
+      ],
+      [
+        "Russia",
+        "Volodymyr Zelenskyy"
+      ],
+      [
+        "Peter Magyar",
+        "Ukraine"
+      ],
+      [
+        "Kremlin",
+        "Viktor Orbán"
+      ],
+      [
+        "Dmitry Peskov",
+        "Peter Magyar"
+      ],
+      [
+        "European Union",
+        "Peter Magyar"
+      ],
+      [
+        "European Union",
+        "Germany"
+      ],
+      [
+        "Венгрия",
+        "Песков"
+      ],
+      [
+        "Peter Magyar",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "Ukraine"
+      ],
+      [
+        "Andrey Sybihha",
+        "Hungary"
+      ],
+      [
+        "Ukraine",
+        "Viktor Orbán"
+      ],
+      [
+        "Peter Magyar",
+        "Viktor Orbán"
+      ]
+    ],
+    "count": 17,
+    "create_time": 1777937320,
+    "update_time": 1777937320,
+    "_id": "doc-8b75360df5b1fff48d67080d47148daf"
+  },
+  "doc-ce0887b031549c36b3e6a2314eb06b50": {
+    "relation_pairs": [
+      [
+        "Fidesz",
+        "Hungary"
+      ],
+      [
+        "2026 Hungarian Elections",
+        "Szijjártó–Lavrov Series (2024–2025)"
+      ],
+      [
+        "2026 Hungarian Elections",
+        "European Union"
+      ],
+      [
+        "2026 Hungarian Elections",
+        "Orbán"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Orbán",
+        "Putin"
+      ],
+      [
+        "Hungary",
+        "Tisza"
+      ],
+      [
+        "European Commission",
+        "Hungary"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ],
+      [
+        "European Parliament",
+        "Hungary"
+      ],
+      [
+        "Orbán",
+        "Vance"
+      ],
+      [
+        "Hungary",
+        "NATO"
+      ],
+      [
+        "Lavrov",
+        "Szijjártó"
+      ],
+      [
+        "Dmitriev",
+        "Uitkoft"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "2026 Hungarian Elections",
+        "Tisza"
+      ],
+      [
+        "Uitkoft",
+        "Ushakov"
+      ],
+      [
+        "2026 Hungarian Elections",
+        "Orbán–Putin Call"
+      ],
+      [
+        "1956 Hungarian Uprising",
+        "Hungary"
+      ]
+    ],
+    "count": 19,
+    "create_time": 1777937388,
+    "update_time": 1777937388,
+    "_id": "doc-ce0887b031549c36b3e6a2314eb06b50"
+  },
+  "doc-7d40930487aa33a57f91bbda298dd330": {
+    "relation_pairs": [
+      [
+        "Budapest",
+        "Tisza"
+      ],
+      [
+        "Hungary",
+        "Joltt Hegedus"
+      ],
+      [
+        "Joltt Hegedus",
+        "Tisza"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777937426,
+    "update_time": 1777937426,
+    "_id": "doc-7d40930487aa33a57f91bbda298dd330"
+  },
+  "doc-cc48f439bc39f6dece963d26d6d4bc30": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Peter Szijjártó"
+      ],
+      [
+        "Peter Magyar",
+        "Tisha"
+      ],
+      [
+        "Peter Magyar",
+        "Peter Szijjártó"
+      ],
+      [
+        "Hungary",
+        "Peter Szijjártó"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777937436,
+    "update_time": 1777937436,
+    "_id": "doc-cc48f439bc39f6dece963d26d6d4bc30"
+  },
+  "doc-5b80911e536bc3ebe2a065a04282544d": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Mátyás"
+      ],
+      [
+        "Hungary",
+        "Ukraine"
+      ],
+      [
+        "Mátyás",
+        "Ukraine"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777937478,
+    "update_time": 1777937478,
+    "_id": "doc-5b80911e536bc3ebe2a065a04282544d"
+  },
+  "doc-26252737d3586c4728a077af0b0268ab": {
+    "relation_pairs": [
+      [
+        "Russia",
+        "Viktor Orbán"
+      ],
+      [
+        "Moskovskiy Komsomolets",
+        "Russia"
+      ],
+      [
+        "European Union",
+        "Hungary"
+      ],
+      [
+        "Moskovskiy Komsomolets",
+        "Steve Rosenberg"
+      ],
+      [
+        "European Union",
+        "Viktor Orbán"
+      ],
+      [
+        "Russia",
+        "Russian Newspaper"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "Hungary",
+        "Russia"
+      ],
+      [
+        "Donald Trump",
+        "Hungary"
+      ],
+      [
+        "Russian Newspaper",
+        "Steve Rosenberg"
+      ],
+      [
+        "European Union",
+        "Ukraine"
+      ],
+      [
+        "Komsomolskaya Pravda",
+        "Steve Rosenberg"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ],
+      [
+        "Hungary",
+        "Viktor Orbán"
+      ],
+      [
+        "Komsomolskaya Pravda",
+        "Russia"
+      ]
+    ],
+    "count": 15,
+    "create_time": 1777937549,
+    "update_time": 1777937549,
+    "_id": "doc-26252737d3586c4728a077af0b0268ab"
+  },
+  "doc-38d8eb35dbe68bc80051aac6aa9837e3": {
+    "relation_pairs": [
+      [
+        "Marco Rubio",
+        "Viktor Orbán"
+      ],
+      [
+        "Péter Magyar",
+        "Viktor Orbán"
+      ],
+      [
+        "National Recovery and Protection of State Assets Office",
+        "Viktor Orbán"
+      ],
+      [
+        "European Union",
+        "Viktor Orbán"
+      ],
+      [
+        "CPAC",
+        "Donald Trump"
+      ],
+      [
+        "J.D. Vance",
+        "Viktor Orbán"
+      ],
+      [
+        "Matt Schlapp",
+        "Viktor Orbán"
+      ],
+      [
+        "CPAC",
+        "Péter Magyar"
+      ],
+      [
+        "CPAC",
+        "Viktor Orbán"
+      ],
+      [
+        "CPAC",
+        "Hungary"
+      ],
+      [
+        "United States",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungary",
+        "Viktor Orbán"
+      ]
+    ],
+    "count": 12,
+    "create_time": 1777937577,
+    "update_time": 1777937577,
+    "_id": "doc-38d8eb35dbe68bc80051aac6aa9837e3"
+  },
+  "doc-e30656f31a526785c8e1cb1afafc5bf4": {
+    "relation_pairs": [
+      [
+        "Robert Fico",
+        "Slovakia"
+      ],
+      [
+        "Robert Fico",
+        "Sns"
+      ],
+      [
+        "Kremlin",
+        "Robert Fico"
+      ],
+      [
+        "Demokrati",
+        "Robert Fico"
+      ],
+      [
+        "Hlas",
+        "Robert Fico"
+      ],
+      [
+        "Progressive Slovakia",
+        "Robert Fico"
+      ],
+      [
+        "Robert Fico",
+        "Smer"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777937654,
+    "update_time": 1777937654,
+    "_id": "doc-e30656f31a526785c8e1cb1afafc5bf4"
+  },
+  "doc-320552fa7045aa8953c66d0d4e5e6823": {
+    "relation_pairs": [
+      [
+        "Hungary",
+        "Peter Magyar"
+      ],
+      [
+        "Hungary",
+        "Orbán"
+      ],
+      [
+        "Peter Magyar",
+        "State Media Service of Hungary"
+      ],
+      [
+        "Peter Magyar",
+        "Tamás Sulyok"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777937669,
+    "update_time": 1777937669,
+    "_id": "doc-320552fa7045aa8953c66d0d4e5e6823"
+  },
+  "doc-cd58119ddd7b5c4ea3c6177ba9839de3": {
+    "relation_pairs": [
+      [
+        "M1",
+        "Peter Magyar"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777937674,
+    "update_time": 1777937674,
+    "_id": "doc-cd58119ddd7b5c4ea3c6177ba9839de3"
+  },
+  "doc-d4cae917a61031f4288b64bbbc3c7b4d": {
+    "relation_pairs": [
+      [
+        "2200 Convicted Smugglers",
+        "Slovakia"
+      ],
+      [
+        "Robert Fico",
+        "Slovakia"
+      ],
+      [
+        "Slovakia",
+        "Viktor Orbán"
+      ],
+      [
+        "2200 Convicted Smugglers",
+        "Viktor Orbán"
+      ],
+      [
+        "Robert Fico",
+        "Viktor Orbán"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777937708,
+    "update_time": 1777937708,
+    "_id": "doc-d4cae917a61031f4288b64bbbc3c7b4d"
+  },
+  "doc-00d0f212fb25688ee612c0dd20c5ade5": {
+    "relation_pairs": [
+      [
+        "European Union",
+        "Lithuania"
+      ],
+      [
+        "European Union",
+        "Latvia"
+      ],
+      [
+        "Latvia",
+        "Robert Fico"
+      ],
+      [
+        "Estonia",
+        "European Union"
+      ],
+      [
+        "European Union",
+        "Robert Fico"
+      ],
+      [
+        "Estonia",
+        "Robert Fico"
+      ],
+      [
+        "Lithuania",
+        "Robert Fico"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777937723,
+    "update_time": 1777937723,
+    "_id": "doc-00d0f212fb25688ee612c0dd20c5ade5"
+  },
+  "doc-213eaa59d73ff468181ba96d1b1108e6": {
+    "relation_pairs": [
+      [
+        "Georgia",
+        "Robert Fico"
+      ],
+      [
+        "Poland",
+        "Robert Fico"
+      ],
+      [
+        "Robert Fico",
+        "Romania"
+      ],
+      [
+        "Latvia",
+        "Robert Fico"
+      ],
+      [
+        "May 9 Parade",
+        "Robert Fico"
+      ],
+      [
+        "Poland",
+        "Slovakia"
+      ],
+      [
+        "Bratislava",
+        "Slovakia"
+      ],
+      [
+        "Hungary",
+        "Robert Fico"
+      ],
+      [
+        "Estonia",
+        "Robert Fico"
+      ],
+      [
+        "Lithuania",
+        "Robert Fico"
+      ],
+      [
+        "Poland",
+        "Warsaw"
+      ]
+    ],
+    "count": 11,
+    "create_time": 1777937752,
+    "update_time": 1777937752,
+    "_id": "doc-213eaa59d73ff468181ba96d1b1108e6"
+  },
+  "doc-a4eb527fb89231f20ad8214a8374c7c8": {
+    "relation_pairs": [
+      [
+        "Poland",
+        "Robert Fico"
+      ],
+      [
+        "Russia",
+        "Viktor Orbán"
+      ],
+      [
+        "Latvia",
+        "Robert Fico"
+      ],
+      [
+        "Russia",
+        "Slovakia"
+      ],
+      [
+        "Kremlin",
+        "Мышь и лев"
+      ],
+      [
+        "Kremlin",
+        "Viktor Orbán"
+      ],
+      [
+        "Robert Fico",
+        "Ruszkik haza!"
+      ],
+      [
+        "Lavrov",
+        "Siyarto"
+      ],
+      [
+        "European Union",
+        "Robert Fico"
+      ],
+      [
+        "European Union",
+        "Slovakia"
+      ],
+      [
+        "Kremlin",
+        "Robert Fico"
+      ],
+      [
+        "Druzhba Pipeline",
+        "Robert Fico"
+      ],
+      [
+        "Robert Fico",
+        "Viktor Orbán"
+      ],
+      [
+        "Hungary",
+        "Robert Fico"
+      ],
+      [
+        "Estonia",
+        "Robert Fico"
+      ],
+      [
+        "European Union",
+        "Russia"
+      ],
+      [
+        "Lithuania",
+        "Robert Fico"
+      ],
+      [
+        "Kremlin",
+        "Resurgam"
+      ]
+    ],
+    "count": 18,
+    "create_time": 1777938052,
+    "update_time": 1777938052,
+    "_id": "doc-a4eb527fb89231f20ad8214a8374c7c8"
+  },
+  "doc-c5140db0b5c93aaef9725d9f4885975d": {
+    "relation_pairs": [
+      [
+        "Antal Rogán",
+        "Lounge Event Kft"
+      ],
+      [
+        "Lounge Event Kft",
+        "Orbán"
+      ],
+      [
+        "Orbán",
+        "Peter Magyar"
+      ],
+      [
+        "National Tax and Customs Administration of Hungary",
+        "Peter Magyar"
+      ],
+      [
+        "Orbán",
+        "United States"
+      ],
+      [
+        "Orbán",
+        "Uruguay"
+      ],
+      [
+        "Dubai",
+        "Mesároš family"
+      ],
+      [
+        "Orbán",
+        "United Arab Emirates"
+      ],
+      [
+        "Antal Rogán",
+        "National Tax and Customs Administration of Hungary"
+      ],
+      [
+        "Orbán",
+        "TISZA"
+      ],
+      [
+        "Antal Rogán",
+        "Peter Magyar"
+      ]
+    ],
+    "count": 11,
+    "create_time": 1777938118,
+    "update_time": 1777938118,
+    "_id": "doc-c5140db0b5c93aaef9725d9f4885975d"
+  },
+  "doc-7be007b67073b3dddd898f3e1459d930": {
+    "relation_pairs": [
+      [
+        "Slovakia",
+        "Ukraine"
+      ],
+      [
+        "Robert Fico",
+        "Zelensky"
+      ],
+      [
+        "European Union",
+        "Slovakia"
+      ],
+      [
+        "European Union",
+        "Zelensky"
+      ],
+      [
+        "European Union",
+        "Robert Fico"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777938155,
+    "update_time": 1777938155,
+    "_id": "doc-7be007b67073b3dddd898f3e1459d930"
+  },
+  "doc-7babc8ed6b8e112f02f11f483e8366fe": {
+    "relation_pairs": [
+      [
+        "Robert Fico",
+        "Ukraine"
+      ],
+      [
+        "Moscow",
+        "Robert Fico"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "Robert Fico",
+        "Russia"
+      ],
+      [
+        "Robert Fico",
+        "Viktor Orbán"
+      ],
+      [
+        "European Union",
+        "Robert Fico"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1777938175,
+    "update_time": 1777938175,
+    "_id": "doc-7babc8ed6b8e112f02f11f483e8366fe"
+  },
+  "doc-62ce08018de37099ef622e0d34a319e0": {
+    "relation_pairs": [
+      [
+        "AFP",
+        "South Korean Intelligence Agency"
+      ],
+      [
+        "North Korea",
+        "Russian-Ukrainian War"
+      ],
+      [
+        "North Korean Soldiers",
+        "South Korean Intelligence Agency"
+      ],
+      [
+        "Russian-Ukrainian War",
+        "Ukraine"
+      ],
+      [
+        "North Korean Soldiers",
+        "South Korea"
+      ],
+      [
+        "AFP",
+        "South Korea"
+      ],
+      [
+        "North Korean Soldiers",
+        "Russian-Ukrainian War"
+      ],
+      [
+        "North Korean Soldiers",
+        "Ukraine"
+      ],
+      [
+        "North Korea",
+        "North Korean Soldiers"
+      ]
+    ],
+    "count": 9,
+    "create_time": 1777938212,
+    "update_time": 1777938212,
+    "_id": "doc-62ce08018de37099ef622e0d34a319e0"
+  },
+  "doc-015f7e49737724e7d88f312a7afe69db": {
+    "relation_pairs": [
+      [
+        "North Korea",
+        "Russia"
+      ],
+      [
+        "North Korean military personnel",
+        "Russia"
+      ],
+      [
+        "North Korea",
+        "Russian-Ukrainian border"
+      ],
+      [
+        "Russian-Ukrainian border",
+        "Yonhap"
+      ],
+      [
+        "North Korea",
+        "Yonhap"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777938276,
+    "update_time": 1777938276,
+    "_id": "doc-015f7e49737724e7d88f312a7afe69db"
+  },
+  "doc-798dcb1f197b26a7a2db147447027f8b": {
+    "relation_pairs": [
+      [
+        "Democratic People's Republic of Korea",
+        "North Korean military personnel"
+      ],
+      [
+        "Democratic People's Republic of Korea",
+        "Korean Central News Agency"
+      ],
+      [
+        "Ministry of Defense of the Russian Federation",
+        "Russian Federation"
+      ],
+      [
+        "Democratic People's Republic of Korea",
+        "Russian Federation"
+      ],
+      [
+        "National Intelligence Service of South Korea",
+        "Russian Federation"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777938320,
+    "update_time": 1777938320,
+    "_id": "doc-798dcb1f197b26a7a2db147447027f8b"
+  },
+  "doc-0e5fcccd131988c3ce8885c05277cfd4": {
+    "relation_pairs": [
+      [
+        "North Korea",
+        "Ukraine"
+      ],
+      [
+        "North Korea",
+        "Russia"
+      ],
+      [
+        "Korean Demilitarized Zone",
+        "North Korea"
+      ],
+      [
+        "Korean Demilitarized Zone",
+        "Pyongyang"
+      ],
+      [
+        "North Korea",
+        "Seoul"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777938338,
+    "update_time": 1777938338,
+    "_id": "doc-0e5fcccd131988c3ce8885c05277cfd4"
+  },
+  "doc-84243d8c790aa58c8c4068a0d0077faa": {
+    "relation_pairs": [
+      [
+        "China",
+        "Chinese Maritime Militia"
+      ],
+      [
+        "Chinese Maritime Militia",
+        "South Korea"
+      ],
+      [
+        "China",
+        "South Korea"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777938350,
+    "update_time": 1777938350,
+    "_id": "doc-84243d8c790aa58c8c4068a0d0077faa"
+  },
+  "doc-e7f4b2e859f24cce9059c861cfed3092": {
+    "relation_pairs": [
+      [
+        "KNA",
+        "Kursk Oblast"
+      ],
+      [
+        "KNA",
+        "North Korea"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777938364,
+    "update_time": 1777938364,
+    "_id": "doc-e7f4b2e859f24cce9059c861cfed3092"
+  },
+  "doc-62287b8aafea6f3d42b96d7883f49924": {
+    "relation_pairs": [
+      [
+        "Tonbakhanso",
+        "Медуза"
+      ],
+      [
+        "Russia",
+        "The Voicer"
+      ],
+      [
+        "Ukraine",
+        "КНДР"
+      ],
+      [
+        "Royal Blood-Fresh",
+        "Медуза"
+      ],
+      [
+        "Angunsahyangu",
+        "Медуза"
+      ],
+      [
+        "Russia",
+        "КНДР"
+      ],
+      [
+        "Angunsahyangu",
+        "Royal Blood-Fresh"
+      ],
+      [
+        "Royal Blood-Fresh",
+        "Tonbakhanso"
+      ],
+      [
+        "Angunsahyangu",
+        "Tonbakhanso"
+      ],
+      [
+        "Kremlin",
+        "КНДР"
+      ],
+      [
+        "The Voicer",
+        "КНДР"
+      ]
+    ],
+    "count": 11,
+    "create_time": 1777938413,
+    "update_time": 1777938413,
+    "_id": "doc-62287b8aafea6f3d42b96d7883f49924"
+  },
+  "doc-614536eb8c68a321e5de318fea0e31c5": {
+    "relation_pairs": [
+      [
+        "Democratic People's Republic of Korea",
+        "Ukraine"
+      ],
+      [
+        "Democratic People's Republic of Korea",
+        "Kim Jong Un"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777938441,
+    "update_time": 1777938441,
+    "_id": "doc-614536eb8c68a321e5de318fea0e31c5"
+  },
+  "doc-175da62ab3f70b180a6b139d1c568a0a": {
+    "relation_pairs": [
+      [
+        "Ukraine",
+        "КНДР"
+      ],
+      [
+        "КНДР",
+        "Путин"
+      ],
+      [
+        "Ким Чен Ын",
+        "Путин"
+      ],
+      [
+        "The Kyiv Independent",
+        "ЮлияТарадюк"
+      ],
+      [
+        "КНДР",
+        "Ким Чен Ын"
+      ],
+      [
+        "КНДР",
+        "Пхеньян"
+      ],
+      [
+        "Russia",
+        "КНДР"
+      ],
+      [
+        "ГУР",
+        "Северокорейские войска"
+      ],
+      [
+        "Курская область",
+        "Северокорейские войска"
+      ],
+      [
+        "Северокорейские войска",
+        "Сумская область"
+      ],
+      [
+        "Russia",
+        "Северокорейские войска"
+      ],
+      [
+        "Ukraine",
+        "Северокорейские войска"
+      ],
+      [
+        "The Kyiv Independent",
+        "ГУР"
+      ],
+      [
+        "КНДР",
+        "Северокорейские войска"
+      ]
+    ],
+    "count": 14,
+    "create_time": 1777938738,
+    "update_time": 1777938738,
+    "_id": "doc-175da62ab3f70b180a6b139d1c568a0a"
+  },
+  "doc-ac79f12ec72cd52c008972d012106637": {
+    "relation_pairs": [
+      [
+        "North Korea",
+        "Ukraine"
+      ],
+      [
+        "North Korea",
+        "Russia"
+      ],
+      [
+        "Korean Democratic People's Republic",
+        "Korean People's Army"
+      ],
+      [
+        "Korean Democratic People's Republic",
+        "North Korea"
+      ],
+      [
+        "North Korea",
+        "Wall Street Journal"
+      ],
+      [
+        "Korean People's Army",
+        "Kursk Region"
+      ],
+      [
+        "Korean People's Army",
+        "Russia"
+      ]
+    ],
+    "count": 7,
+    "create_time": 1777938774,
+    "update_time": 1777938774,
+    "_id": "doc-ac79f12ec72cd52c008972d012106637"
+  },
+  "doc-3481b9847af3a89182d81af7eabd1605": {
+    "relation_pairs": [
+      [
+        "Special Foreign Operation",
+        "Ukraine"
+      ],
+      [
+        "Democratic People's Republic of Korea",
+        "Russia"
+      ],
+      [
+        "Kim Jong Un",
+        "Korean People's Army"
+      ],
+      [
+        "Kim Jong Un",
+        "Special Foreign Operation"
+      ],
+      [
+        "Korean People's Army",
+        "Russia"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777938802,
+    "update_time": 1777938802,
+    "_id": "doc-3481b9847af3a89182d81af7eabd1605"
+  },
+  "doc-58c3c086c79c7a4c6fcf7e6fe200d8c1": {
+    "relation_pairs": [
+      [
+        "North Korea",
+        "Russia"
+      ],
+      [
+        "North Korea",
+        "War in Ukraine"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "Shinzo Koizumi",
+        "War in Ukraine"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777938827,
+    "update_time": 1777938827,
+    "_id": "doc-58c3c086c79c7a4c6fcf7e6fe200d8c1"
+  },
+  "doc-240b79f5c828e079b3773477dec25710": {
+    "relation_pairs": [
+      [
+        "Kim Jong Un",
+        "Pyongyang"
+      ],
+      [
+        "North Korea",
+        "Ukraine"
+      ],
+      [
+        "North Korea",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "Kursk Oblast",
+        "Sebel"
+      ],
+      [
+        "Kim Jong Un",
+        "Sebel"
+      ]
+    ],
+    "count": 6,
+    "create_time": 1777938862,
+    "update_time": 1777938862,
+    "_id": "doc-240b79f5c828e079b3773477dec25710"
+  },
+  "doc-a66c0751afe982b8fe7923d9beb6fd82": {
+    "relation_pairs": [
+      [
+        "Kim Jong Un",
+        "Kim Ju Ae"
+      ],
+      [
+        "Kim Ju Ae",
+        "North Korea"
+      ],
+      [
+        "Kim Ju Ae",
+        "Zhang Chang He"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777938868,
+    "update_time": 1777938868,
+    "_id": "doc-a66c0751afe982b8fe7923d9beb6fd82"
+  },
+  "doc-0c64afaf545f446d9c0cb039c08dddf6": {
+    "relation_pairs": [
+      [
+        "Kim Jong Un",
+        "Kim Jong Un's Daughter"
+      ],
+      [
+        "Kim Jong Un's Daughter",
+        "North Korea"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777938875,
+    "update_time": 1777938875,
+    "_id": "doc-0c64afaf545f446d9c0cb039c08dddf6"
+  },
+  "doc-bafdefcef1b0bcbba8df8f5445df9a9a": {
+    "relation_pairs": [
+      [
+        "North Korea",
+        "Russia"
+      ],
+      [
+        "Kim",
+        "Kim's Daughter"
+      ],
+      [
+        "North Korea",
+        "Workers' Party"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777938906,
+    "update_time": 1777938906,
+    "_id": "doc-bafdefcef1b0bcbba8df8f5445df9a9a"
+  },
+  "doc-f1abd674ec1daf5b31a50d5639a796fe": {
+    "relation_pairs": [
+      [
+        "North Korea",
+        "Vladimir Putin"
+      ],
+      [
+        "Georgiy Tikhii",
+        "North Korea"
+      ],
+      [
+        "North Korea",
+        "Ukraine"
+      ],
+      [
+        "North Korea",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ],
+      [
+        "Georgiy Tikhii",
+        "Russia"
+      ],
+      [
+        "Indo-Pacific Region",
+        "Ukraine"
+      ],
+      [
+        "Moscow",
+        "Pyongyang"
+      ]
+    ],
+    "count": 8,
+    "create_time": 1777938949,
+    "update_time": 1777938949,
+    "_id": "doc-f1abd674ec1daf5b31a50d5639a796fe"
+  },
+  "doc-015327e6fac24471a4dc93725059959d": {
+    "relation_pairs": [
+      [
+        "North Korea",
+        "United States"
+      ],
+      [
+        "MIVD",
+        "Russia"
+      ],
+      [
+        "Ministry of Defense of Russia",
+        "Russian Military Counterintelligence"
+      ],
+      [
+        "AIVD",
+        "Russia"
+      ],
+      [
+        "Andrey Kalitin",
+        "Russia"
+      ],
+      [
+        "North Korea",
+        "Russia"
+      ],
+      [
+        "Ministry of Defense of Russia",
+        "Russia"
+      ],
+      [
+        "Central Intelligence Agency",
+        "United States"
+      ],
+      [
+        "North Korea",
+        "Rajin Port"
+      ]
+    ],
+    "count": 9,
+    "create_time": 1777938995,
+    "update_time": 1777938995,
+    "_id": "doc-015327e6fac24471a4dc93725059959d"
+  },
+  "doc-8c72f79332026607b773bfb1b6c950c3": {
+    "relation_pairs": [
+      [
+        "Russia",
+        "российская армия"
+      ],
+      [
+        "Russia",
+        "российские судна"
+      ],
+      [
+        "Russia",
+        "КНДР"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777939080,
+    "update_time": 1777939080,
+    "_id": "doc-8c72f79332026607b773bfb1b6c950c3"
+  },
+  "doc-686c3300d53b2bf7c26163deb1d7c6d6": {
+    "relation_pairs": [
+      [
+        "Институт стратегии национальной безопасности Южной Кореи",
+        "Северная Корея"
+      ],
+      [
+        "Владимир Путин",
+        "Ким Чен Ын"
+      ],
+      [
+        "Russia",
+        "Северная Корея"
+      ],
+      [
+        "Северная Корея",
+        "Центральный банк Южной Кореи"
+      ],
+      [
+        "Bloomberg",
+        "Северная Корея"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777939121,
+    "update_time": 1777939121,
+    "_id": "doc-686c3300d53b2bf7c26163deb1d7c6d6"
+  },
+  "doc-7f24eb65bfd587dd53fa2364408e09c1": {
+    "relation_pairs": [
+      [
+        "Kim Jong Un",
+        "Ministry of Defense of North Korea"
+      ],
+      [
+        "North Korea",
+        "Ukraine"
+      ],
+      [
+        "Kim Jong Un",
+        "Workers' Party"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777939150,
+    "update_time": 1777939150,
+    "_id": "doc-7f24eb65bfd587dd53fa2364408e09c1"
+  },
+  "doc-a58543e9b79b01b5797bf1731b6973e1": {
+    "relation_pairs": [
+      [
+        "Ким Чен Ын",
+        "Северокорейский хакер"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777939157,
+    "update_time": 1777939157,
+    "_id": "doc-a58543e9b79b01b5797bf1731b6973e1"
+  },
+  "doc-9a02509ca7df90bef640026692423158": {
+    "relation_pairs": [
+      [
+        "Kursk Oblast",
+        "North Korean Armed Forces"
+      ],
+      [
+        "North Korea",
+        "Russia"
+      ],
+      [
+        "Minister of Defense of Russia",
+        "Russia"
+      ],
+      [
+        "Kursk Oblast",
+        "North Korea"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1777939190,
+    "update_time": 1777939190,
+    "_id": "doc-9a02509ca7df90bef640026692423158"
+  },
+  "doc-1cca8e49451ca3437c74fe3d63156ca9": {
+    "relation_pairs": [
+      [
+        "Kim Jong Un",
+        "Russia"
+      ],
+      [
+        "Pyongyang",
+        "Russia"
+      ],
+      [
+        "Russia",
+        "Ukraine"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777939229,
+    "update_time": 1777939229,
+    "_id": "doc-1cca8e49451ca3437c74fe3d63156ca9"
+  },
+  "doc-ba1d8e0155edd3e99ea5f134aa46226f": {
+    "relation_pairs": [
+      [
+        "North Korea",
+        "Ukraine"
+      ],
+      [
+        "North Korea",
+        "Russia"
+      ],
+      [
+        "Pyongyang",
+        "Youth League"
+      ],
+      [
+        "North Korea",
+        "Youth League"
+      ],
+      [
+        "Kim Jong Un",
+        "North Korea"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1777939265,
+    "update_time": 1777939265,
+    "_id": "doc-ba1d8e0155edd3e99ea5f134aa46226f"
+  },
+  "doc-291ed6579ac9681630d3252dadc9f56b": {
+    "relation_pairs": [
+      [
+        "Brexit",
+        "Britain"
+      ]
+    ],
+    "count": 1,
+    "create_time": 1777939273,
+    "update_time": 1777939273,
+    "_id": "doc-291ed6579ac9681630d3252dadc9f56b"
+  },
+  "doc-041029ef6f7a6eb71dabe4f5fe984175": {
+    "relation_pairs": [
+      [
+        "Donald Trump",
+        "NATO"
+      ],
+      [
+        "France",
+        "United Kingdom"
+      ],
+      [
+        "Security Action for Europe (SAFE)",
+        "United Kingdom"
+      ],
+      [
+        "Germany",
+        "United Kingdom"
+      ],
+      [
+        "Keir Starmer",
+        "NATO"
+      ],
+      [
+        "Keir Starmer",
+        "Ukraine"
+      ],
+      [
+        "Keir Starmer",
+        "Security Action for Europe (SAFE)"
+      ],
+      [
+        "Donald Trump",
+        "European Union"
+      ],
+      [
+        "Keir Starmer",
+        "The Observer"
+      ],
+      [
+        "European Union",
+        "France"
+      ],
+      [
+        "European Union",
+        "United Kingdom"
+      ],
+      [
+        "European Union",
+        "Security Action for Europe (SAFE)"
+      ],
+      [
+        "European Union",
+        "Keir Starmer"
+      ],
+      [
+        "NATO",
+        "United Kingdom"
+      ],
+      [
+        "Emmanuel Macron",
+        "Keir Starmer"
+      ],
+      [
+        "Donald Trump",
+        "Greenland"
+      ],
+      [
+        "Keir Starmer",
+        "Markus Söder"
+      ],
+      [
+        "European Union",
+        "Germany"
+      ],
+      [
+        "Maroš Šefčovič",
+        "United Kingdom"
+      ]
+    ],
+    "count": 19,
+    "create_time": 1777939483,
+    "update_time": 1777939483,
+    "_id": "doc-041029ef6f7a6eb71dabe4f5fe984175"
+  },
+  "doc-7436515cba2712ed1abeee9af81e50a7": {
+    "relation_pairs": [
+      [
+        "Donald Trump",
+        "United Kingdom"
+      ],
+      [
+        "Donald Trump",
+        "Starmer"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777939488,
+    "update_time": 1777939488,
+    "_id": "doc-7436515cba2712ed1abeee9af81e50a7"
+  },
+  "doc-5964d0e39e2114d04620d98a10da1cda": {
+    "relation_pairs": [
+      [
+        "Британия",
+        "Флот"
+      ],
+      [
+        "Британия",
+        "Кипр"
+      ],
+      [
+        "Профсоюз",
+        "Флот"
+      ]
+    ],
+    "count": 3,
+    "create_time": 1777939498,
+    "update_time": 1777939498,
+    "_id": "doc-5964d0e39e2114d04620d98a10da1cda"
+  },
+  "doc-7d1cbeca25a61fb114af123bfbe626f1": {
+    "relation_pairs": [
+      [
+        "B-1B Lancer",
+        "Iran"
+      ],
+      [
+        "B-1B Lancer",
+        "United Kingdom"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777939505,
+    "update_time": 1777939505,
+    "_id": "doc-7d1cbeca25a61fb114af123bfbe626f1"
+  },
+  "doc-b8552cfc4c27d605e47c41014186872e": {
+    "relation_pairs": [
+      [
+        "Financial Times",
+        "United States"
+      ],
+      [
+        "Financial Times",
+        "United Kingdom"
+      ],
+      [
+        "Donald Trump",
+        "Keir Starmer"
+      ],
+      [
+        "United Kingdom",
+        "Winston Churchill"
+      ],
+      [
+        "RAF Fairford",
+        "United States"
+      ],
+      [
+        "United Kingdom",
+        "United States"
+      ],
+      [
+        "Prince and Princess of Wales",
+        "United States"
+      ],
+      [
+        "Iran",
+        "United States"
+      ],
+      [
+        "Iran",
+        "United Kingdom"
+      ],
+      [
+        "King Charles III",
+        "United States"
+      ]
+    ],
+    "count": 10,
+    "create_time": 1777939522,
+    "update_time": 1777939522,
+    "_id": "doc-b8552cfc4c27d605e47c41014186872e"
+  },
+  "doc-b92f7a2ab9e342540e4df341e5aeba29": {
+    "relation_pairs": [
+      [
+        "Donald Trump",
+        "Кир Стармер"
+      ],
+      [
+        "Vladimir Putin",
+        "Кир Стармер"
+      ]
+    ],
+    "count": 2,
+    "create_time": 1777939532,
+    "update_time": 1777939532,
+    "_id": "doc-b92f7a2ab9e342540e4df341e5aeba29"
+  },
+  "doc-0574414aa8864aaf273b8712793b8dd5": {
+    "relation_pairs": [
+      [
+        "Estonia",
+        "GRUNT with Notevsky"
+      ],
+      [
+        "Ida-Viru County",
+        "Russia"
+      ],
+      [
+        "NATO",
+        "Russia"
+      ],
+      [
+        "GRUNT with Notevsky",
+        "NATO"
+      ],
+      [
+        "Estonia",
+        "Russia"
+      ],
+      [
+        "Alexander Notevsky",
+        "GRUNT with Notevsky"
+      ],
+      [
+        "GRUNT with Notevsky",
+        "Russia"
+      ],
+      [
+        "Ida-Viru County",
+        "Narvskaya Narodnaya Respublika"
+      ],
+      [
+        "Narva",
+        "Narvskaya Narodnaya Respublika"
+      ],
+      [
+        "Narva",
+        "Russia"
+      ]
+    ],
+    "count": 10,
+    "create_time": 1778011234,
+    "update_time": 1778011234,
+    "_id": "doc-0574414aa8864aaf273b8712793b8dd5"
+  },
+  "doc-a670576039c87a3bca1d98d1c8307658": {
+    "relation_pairs": [
+      [
+        "Peter Szijjártó",
+        "Russian services"
+      ],
+      [
+        "Orbán",
+        "Russian services"
+      ],
+      [
+        "Hungary",
+        "Orbán"
+      ],
+      [
+        "Hungary",
+        "Peter Szijjártó"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1778011253,
+    "update_time": 1778011253,
+    "_id": "doc-a670576039c87a3bca1d98d1c8307658"
+  },
+  "doc-f2a61697bfb2b814caed28db4a6318db": {
+    "relation_pairs": [
+      [
+        "Orbán",
+        "West"
+      ],
+      [
+        "FSB",
+        "Orbán"
+      ],
+      [
+        "George Soros",
+        "Orbán"
+      ],
+      [
+        "Orbán",
+        "Soviet regime"
+      ],
+      [
+        "Orbanism",
+        "Orbán"
+      ]
+    ],
+    "count": 5,
+    "create_time": 1778011266,
+    "update_time": 1778011266,
+    "_id": "doc-f2a61697bfb2b814caed28db4a6318db"
+  },
+  "doc-540a5296783feacb13e22f9819375c9a": {
+    "relation_pairs": [
+      [
+        "North Korea",
+        "Russia"
+      ],
+      [
+        "BBC News - Russian Service",
+        "Russia"
+      ],
+      [
+        "Olga Ivshina",
+        "Russia"
+      ],
+      [
+        "Andrei Lankov",
+        "Olga Ivshina"
+      ]
+    ],
+    "count": 4,
+    "create_time": 1778011292,
+    "update_time": 1778011292,
+    "_id": "doc-540a5296783feacb13e22f9819375c9a"
+  }
+}

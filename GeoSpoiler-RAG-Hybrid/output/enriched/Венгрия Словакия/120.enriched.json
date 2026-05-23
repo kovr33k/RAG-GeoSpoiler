@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-17T01:23:25.635483+00:00",
+  "provenance": {
+    "channel_name": "Венгрия Словакия",
+    "channel_id": 3328128766,
+    "message_id": 120,
+    "date": "2026-03-31T21:02:46+00:00",
+    "post_url": "https://t.me/c/3328128766/120",
+    "normalized_file": "output\\normalized\\Венгрия Словакия\\120.txt",
+    "meta_file": "output\\normalized\\Венгрия Словакия\\120.meta.json",
+    "is_forward": true,
+    "forward_from": "In Factum"
+  },
+  "content_type": "quote",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Пользователь выражает ироничное поздравление другу за усиление, используя эмодзи с дьяволом.",
+  "key_facts": [
+    {
+      "text": "Пользователь поздравляет друга с усилением.",
+      "claim_type": "source_claim"
+    }
+  ],
+  "entities": {
+    "people": [],
+    "organizations": [],
+    "countries": [],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": false,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "In Factum",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Венгрия Словакия | Дата: 2026-03-31 21:02 | Пост: https://t.me/c/3328128766/120]\n\n\nПользователь выражает ироничное поздравление другу за усиление, используя эмодзи с дьяволом.\n\nКлючевые факты:\n- Пользователь поздравляет друга с усилением. [source_claim]\n\nИсточник: In Factum",
+  "search_text": "[Канал: Венгрия Словакия | Дата: 2026-03-31 21:02 | Пост: https://t.me/c/3328128766/120]\n\n\nПользователь выражает ироничное поздравление другу за усиление, используя эмодзи с дьяволом.\n\nКлючевые факты:\n- Пользователь поздравляет друга с усилением. [source_claim]\n\nИсточник: In Factum\n\nТип контента: quote"
+}

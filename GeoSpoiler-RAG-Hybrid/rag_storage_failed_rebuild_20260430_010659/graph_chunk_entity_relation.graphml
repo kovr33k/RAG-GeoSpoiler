@@ -1,0 +1,1357 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d13" for="edge" attr.name="truncate" attr.type="string"/>
+<key id="d12" for="edge" attr.name="created_at" attr.type="long"/>
+<key id="d11" for="edge" attr.name="file_path" attr.type="string"/>
+<key id="d10" for="edge" attr.name="source_id" attr.type="string"/>
+<key id="d9" for="edge" attr.name="keywords" attr.type="string"/>
+<key id="d8" for="edge" attr.name="description" attr.type="string"/>
+<key id="d7" for="edge" attr.name="weight" attr.type="double"/>
+<key id="d6" for="node" attr.name="truncate" attr.type="string"/>
+<key id="d5" for="node" attr.name="created_at" attr.type="long"/>
+<key id="d4" for="node" attr.name="file_path" attr.type="string"/>
+<key id="d3" for="node" attr.name="source_id" attr.type="string"/>
+<key id="d2" for="node" attr.name="description" attr.type="string"/>
+<key id="d1" for="node" attr.name="entity_type" attr.type="string"/>
+<key id="d0" for="node" attr.name="entity_id" attr.type="string"/>
+<graph edgedefault="undirected"><node id="Cuba">
+  <data key="d0">Cuba</data>
+  <data key="d1">country</data>
+  <data key="d2">Cuba is a country where protests are taking place, accompanied by arson and prolonged power outages.&lt;SEP&gt;Cuba is a country that has been subject to a U.S. oil blockade since January, and to which a Russian oil tanker is scheduled to deliver approximately 730,000 barrels of oil.&lt;SEP&gt;Cuba is the country targeted by U.S. tariffs, as it receives oil and petroleum products from other nations, which the United States seeks to penalize.&lt;SEP&gt;Cuba engaged in secret negotiations with the United States in Havana, with its leadership reportedly meeting with U.S. State Department officials and being urged to implement reforms amid economic decline.</data>
+  <data key="d3">chunk-a2c1fe6eec4b0d533b5269363a9c02da&lt;SEP&gt;chunk-26a0c741b3e720a0878cd12efde32ab3&lt;SEP&gt;chunk-a87bd5684f407f2900f544cd1ebd84b2&lt;SEP&gt;chunk-7e0fc3662465aeaa22012fc5b57b9ab2</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\5.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\7.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\8.txt</data>
+  <data key="d5">1777504068</data>
+  <data key="d6"></data>
+</node>
+<node id="United States">
+  <data key="d0">United States</data>
+  <data key="d1">country</data>
+  <data key="d2">United States is a country with which the president of Cuba has announced the beginning of negotiations.&lt;SEP&gt;United States is a country that has imposed an oil blockade on Cuba since January, authorized a Russian oil tanker to reach Cuba, and added Cuba to a list of countries prohibited from purchasing Russian oil.&lt;SEP&gt;The United States is the country implementing economic sanctions in the form of tariffs on nations that supply oil to Cuba, citing national security concerns.&lt;SEP&gt;United States conducted secret talks with Cuba in Havana for the first time in 10 years, proposing the lifting of trade embargo and access to Starlink satellite communication in exchange for democratic and economic reforms, release of political prisoners, and compensation for confiscated assets.&lt;SEP&gt;United States is referenced by Alexander Dugin as a foreign power seeking to establish a foothold in post-Soviet states.</data>
+  <data key="d3">chunk-a2c1fe6eec4b0d533b5269363a9c02da&lt;SEP&gt;chunk-26a0c741b3e720a0878cd12efde32ab3&lt;SEP&gt;chunk-a87bd5684f407f2900f544cd1ebd84b2&lt;SEP&gt;chunk-7e0fc3662465aeaa22012fc5b57b9ab2&lt;SEP&gt;chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\5.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\7.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\8.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d5">1777504089</data>
+  <data key="d6"></data>
+</node>
+<node id="Communist Party of Cuba">
+  <data key="d0">Communist Party of Cuba</data>
+  <data key="d1">organization</data>
+  <data key="d2">Communist Party of Cuba is a political organization whose local offices have been set on fire by protesters in some cities.</data>
+  <data key="d3">chunk-a2c1fe6eec4b0d533b5269363a9c02da</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\5.txt</data>
+  <data key="d5">1777504026</data>
+  <data key="d6"></data>
+</node>
+<node id="President">
+  <data key="d0">President</data>
+  <data key="d1">person</data>
+  <data key="d2">President is a person who announced the beginning of negotiations with the United States, which served as an additional catalyst for protests.</data>
+  <data key="d3">chunk-a2c1fe6eec4b0d533b5269363a9c02da</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\5.txt</data>
+  <data key="d5">1777504026</data>
+  <data key="d6"></data>
+</node>
+<node id="Protesters">
+  <data key="d0">Protesters</data>
+  <data key="d3">chunk-a2c1fe6eec4b0d533b5269363a9c02da</data>
+  <data key="d2">Protesters in some cities set fire to local offices of the Communist Party of Cuba.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\5.txt</data>
+  <data key="d5">1777504026</data>
+  <data key="d6"></data>
+</node>
+<node id="Donald Trump">
+  <data key="d0">Donald Trump</data>
+  <data key="d1">person</data>
+  <data key="d2">Donald Trump is the President of the United States who stated he has no objections to the delivery of Russian oil to Cuba, despite the energy blockade, and claimed that neither Russia nor Cuba would benefit from such deliveries.&lt;SEP&gt;Donald Trump is the President of the United States who signed an order to impose new tariffs on countries supplying oil and petroleum products to Cuba.&lt;SEP&gt;Donald Trump is mentioned in the hashtags of the post but is not directly involved in the described event.</data>
+  <data key="d3">chunk-26a0c741b3e720a0878cd12efde32ab3&lt;SEP&gt;chunk-a87bd5684f407f2900f544cd1ebd84b2&lt;SEP&gt;chunk-32b092b5e1ef49279916994e3472b8cb</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\7.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\16.txt</data>
+  <data key="d5">1777504160</data>
+  <data key="d6"></data>
+</node>
+<node id="Russia">
+  <data key="d0">Russia</data>
+  <data key="d1">country</data>
+  <data key="d2">Russia is a country whose oil is being transported to Cuba, with Donald Trump noting that Russia would not profit from these deliveries.&lt;SEP&gt;Росія (Russia) is the country referenced as potentially extending its aggression to NATO members after Ukraine.&lt;SEP&gt;Russia is a country that Alice Weidel and the AfD assert must be included in any peace agreement for Europe.</data>
+  <data key="d3">chunk-26a0c741b3e720a0878cd12efde32ab3&lt;SEP&gt;chunk-d9288589f132b7f0eb2ae4c305ab9848&lt;SEP&gt;chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d5">1777504151</data>
+  <data key="d6"></data>
+</node>
+<node id="New York Times">
+  <data key="d0">New York Times</data>
+  <data key="d1">organization</data>
+  <data key="d2">New York Times is an organization that reported the U.S. Coast Guard permitted a Russian oil tanker to reach Cuba.</data>
+  <data key="d3">chunk-26a0c741b3e720a0878cd12efde32ab3</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt</data>
+  <data key="d5">1777504044</data>
+  <data key="d6"></data>
+</node>
+<node id="U.S. Coast Guard">
+  <data key="d0">U.S. Coast Guard</data>
+  <data key="d1">military_unit</data>
+  <data key="d2">U.S. Coast Guard is a military unit that authorized a Russian oil tanker to reach Cuba.</data>
+  <data key="d3">chunk-26a0c741b3e720a0878cd12efde32ab3</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt</data>
+  <data key="d5">1777504044</data>
+  <data key="d6"></data>
+</node>
+<node id="U.S. Department of the Treasury">
+  <data key="d0">U.S. Department of the Treasury</data>
+  <data key="d1">organization</data>
+  <data key="d2">U.S. Department of the Treasury is an organization that added Cuba to a list of countries banned from purchasing Russian oil.</data>
+  <data key="d3">chunk-26a0c741b3e720a0878cd12efde32ab3</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt</data>
+  <data key="d5">1777504044</data>
+  <data key="d6"></data>
+</node>
+<node id="oil shipment">
+  <data key="d0">oil shipment</data>
+  <data key="d3">chunk-26a0c741b3e720a0878cd12efde32ab3</data>
+  <data key="d2">Cuba is dependent on oil shipments, and the blockade has previously caused total blackouts on the island.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt</data>
+  <data key="d5">1777504045</data>
+  <data key="d6"></data>
+</node>
+<node id="White House">
+  <data key="d0">White House</data>
+  <data key="d1">organization</data>
+  <data key="d2">White House is the source of the official statement regarding the imposition of tariffs on countries trading oil with Cuba.</data>
+  <data key="d3">chunk-a87bd5684f407f2900f544cd1ebd84b2</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\7.txt</data>
+  <data key="d5">1777504054</data>
+  <data key="d6"></data>
+</node>
+<node id="Ivan Dyakonov">
+  <data key="d0">Ivan Dyakonov</data>
+  <data key="d1">person</data>
+  <data key="d2">Ivan Dyakonov is the author of the article reporting on Donald Trump's executive order regarding tariffs on oil shipments to Cuba.</data>
+  <data key="d3">chunk-a87bd5684f407f2900f544cd1ebd84b2</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\7.txt</data>
+  <data key="d5">1777504054</data>
+  <data key="d6"></data>
+</node>
+<node id="Raúl Guillermo Rodríguez Castro">
+  <data key="d0">Raúl Guillermo Rodríguez Castro</data>
+  <data key="d1">person</data>
+  <data key="d2">Raúl Guillermo Rodríguez Castro is the grandson of Cuban leader Raúl Castro and met with U.S. State Department officials during secret negotiations in Havana.</data>
+  <data key="d3">chunk-7e0fc3662465aeaa22012fc5b57b9ab2</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\8.txt</data>
+  <data key="d5">1777504068</data>
+  <data key="d6"></data>
+</node>
+<node id="State Department">
+  <data key="d0">State Department</data>
+  <data key="d1">organization</data>
+  <data key="d2">The State Department of the United States led a delegation to Havana for secret talks with Cuban authorities, demanding political prisoner releases, compensation for confiscated assets, and expressing concern over foreign military and intelligence activities near U.S. territory.</data>
+  <data key="d3">chunk-7e0fc3662465aeaa22012fc5b57b9ab2</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\8.txt</data>
+  <data key="d5">1777504068</data>
+  <data key="d6"></data>
+</node>
+<node id="Raúl Castro">
+  <data key="d0">Raúl Castro</data>
+  <data key="d1">person</data>
+  <data key="d2">Raúl Castro is the former leader of Cuba and the grandfather of Raúl Guillermo Rodríguez Castro, who participated in secret talks with the United States.</data>
+  <data key="d3">chunk-7e0fc3662465aeaa22012fc5b57b9ab2</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\8.txt</data>
+  <data key="d5">1777504068</data>
+  <data key="d6"></data>
+</node>
+<node id="Starlink">
+  <data key="d0">Starlink</data>
+  <data key="d1">other</data>
+  <data key="d2">Starlink is a satellite communication system offered by the United States as part of a proposal to Cuba in exchange for political and economic reforms.</data>
+  <data key="d3">chunk-7e0fc3662465aeaa22012fc5b57b9ab2</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\8.txt</data>
+  <data key="d5">1777504068</data>
+  <data key="d6"></data>
+</node>
+<node id="1959 Revolution">
+  <data key="d0">1959 Revolution</data>
+  <data key="d1">event</data>
+  <data key="d2">The 1959 Revolution in Cuba led to the confiscation of assets belonging to American citizens and corporations, which the United States demands be compensated during negotiations.</data>
+  <data key="d3">chunk-7e0fc3662465aeaa22012fc5b57b9ab2</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\8.txt</data>
+  <data key="d5">1777504068</data>
+  <data key="d6"></data>
+</node>
+<node id="Barack Obama">
+  <data key="d0">Barack Obama</data>
+  <data key="d1">person</data>
+  <data key="d2">Barack Obama was the last U.S. president to visit Cuba directly before the 2026 secret talks, with his 2016 visit being the most recent prior diplomatic engagement between the two countries.</data>
+  <data key="d3">chunk-7e0fc3662465aeaa22012fc5b57b9ab2</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\8.txt</data>
+  <data key="d5">1777504068</data>
+  <data key="d6"></data>
+</node>
+<node id="Alexander Dugin">
+  <data key="d0">Alexander Dugin</data>
+  <data key="d1">person</data>
+  <data key="d2">Alexander Dugin is the main ideologist of the "Russian world" who expressed views on the sovereignty of several post-Soviet states.</data>
+  <data key="d3">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d5">1777504089</data>
+  <data key="d6"></data>
+</node>
+<node id="Russian World">
+  <data key="d0">Russian World</data>
+  <data key="d1">other</data>
+  <data key="d2">Russian World is an ideological concept associated with Alexander Dugin, advocating for a unified political sphere including former Soviet states.</data>
+  <data key="d3">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d5">1777504089</data>
+  <data key="d6"></data>
+</node>
+<node id="Armenia">
+  <data key="d0">Armenia</data>
+  <data key="d1">country</data>
+  <data key="d2">Armenia is a sovereign state mentioned by Alexander Dugin as either needing to join a unified union or become a base for the United States and the European Union.</data>
+  <data key="d3">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d5">1777504089</data>
+  <data key="d6"></data>
+</node>
+<node id="Azerbaijan">
+  <data key="d0">Azerbaijan</data>
+  <data key="d1">country</data>
+  <data key="d2">Azerbaijan is a sovereign state mentioned by Alexander Dugin as either needing to join a unified union or become a base for the United States and the European Union.</data>
+  <data key="d3">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d5">1777504089</data>
+  <data key="d6"></data>
+</node>
+<node id="Kazakhstan">
+  <data key="d0">Kazakhstan</data>
+  <data key="d1">country</data>
+  <data key="d2">Kazakhstan is a sovereign state mentioned by Alexander Dugin as either needing to join a unified union or become a base for the United States and the European Union.</data>
+  <data key="d3">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d5">1777504089</data>
+  <data key="d6"></data>
+</node>
+<node id="Georgia">
+  <data key="d0">Georgia</data>
+  <data key="d1">country</data>
+  <data key="d2">Georgia is a sovereign state mentioned by Alexander Dugin as either needing to join a unified union or become a base for the United States and the European Union.</data>
+  <data key="d3">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d5">1777504089</data>
+  <data key="d6"></data>
+</node>
+<node id="Uzbekistan">
+  <data key="d0">Uzbekistan</data>
+  <data key="d1">country</data>
+  <data key="d2">Uzbekistan is a sovereign state mentioned by Alexander Dugin as either needing to join a unified union or become a base for the United States and the European Union.</data>
+  <data key="d3">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d5">1777504089</data>
+  <data key="d6"></data>
+</node>
+<node id="European Union">
+  <data key="d0">European Union</data>
+  <data key="d1">organization</data>
+  <data key="d2">European Union is referenced by Alexander Dugin as a foreign power seeking to establish a foothold in post-Soviet states.&lt;SEP&gt;European Union is the legacy of the Federal Republic of Germany that Merz is committed to protecting from being squandered by populists.</data>
+  <data key="d3">chunk-c3304f520cd42cf6e6640f83b9b8f87c&lt;SEP&gt;chunk-9ee68b3273f299f8ae149b136191f2fe</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\14.txt</data>
+  <data key="d5">1777504138</data>
+  <data key="d6"></data>
+</node>
+<node id="Ультра левые">
+  <data key="d0">Ультра левые</data>
+  <data key="d1">other</data>
+  <data key="d2">Ультра левые refers to ultra-left groups or individuals, as mentioned in the source text.</data>
+  <data key="d3">chunk-1e5a4b6e48badb36de1e41a6f2ff6bf7</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\11.txt</data>
+  <data key="d5">1777504095</data>
+  <data key="d6"></data>
+</node>
+<node id="Правые">
+  <data key="d0">Правые</data>
+  <data key="d1">other</data>
+  <data key="d2">Правые refers to right-wing groups or individuals, as mentioned in the source text.</data>
+  <data key="d3">chunk-1e5a4b6e48badb36de1e41a6f2ff6bf7</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\11.txt</data>
+  <data key="d5">1777504095</data>
+  <data key="d6"></data>
+</node>
+<node id="Insa">
+  <data key="d0">Insa</data>
+  <data key="d1">organization</data>
+  <data key="d2">Insa is an organization that conducted a survey commissioned by BILD regarding German public opinion on support for Ukraine.</data>
+  <data key="d3">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d5">1777504113</data>
+  <data key="d6"></data>
+</node>
+<node id="BILD">
+  <data key="d0">BILD</data>
+  <data key="d1">organization</data>
+  <data key="d2">BILD is a media organization that commissioned a survey from Insa on German public opinion regarding support for Ukraine.</data>
+  <data key="d3">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d5">1777504113</data>
+  <data key="d6"></data>
+</node>
+<node id="Ukraine">
+  <data key="d0">Ukraine</data>
+  <data key="d1">country</data>
+  <data key="d2">Ukraine is a country receiving support from the West, as discussed in the survey, and is the subject of military and financial aid debates in Germany.&lt;SEP&gt;Ukraine is a country involved in a conflict where Alice Weidel calls for an end to violence and advocates for peace negotiations with Russia.</data>
+  <data key="d3">chunk-d9288589f132b7f0eb2ae4c305ab9848&lt;SEP&gt;chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d5">1777504151</data>
+  <data key="d6"></data>
+</node>
+<node id="Німеччина">
+  <data key="d0">Німеччина</data>
+  <data key="d1">country</data>
+  <data key="d2">Німеччина (Germany) is the country where the survey was conducted, with public opinion divided on providing military and financial aid to Ukraine.</data>
+  <data key="d3">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d5">1777504113</data>
+  <data key="d6"></data>
+</node>
+<node id="Путін">
+  <data key="d0">Путін</data>
+  <data key="d1">person</data>
+  <data key="d2">Путін (Putin) is the Russian leader referenced in the survey as the target of pressure through increased Western support for Ukraine.</data>
+  <data key="d3">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d5">1777504113</data>
+  <data key="d6"></data>
+</node>
+<node id="СДПН">
+  <data key="d0">СДПН</data>
+  <data key="d1">organization</data>
+  <data key="d2">СДПН (SPD) is a German political party whose voters show the highest level of solidarity with Ukraine, with 74% supporting increased aid.</data>
+  <data key="d3">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d5">1777504113</data>
+  <data key="d6"></data>
+</node>
+<node id="AfD">
+  <data key="d0">AfD</data>
+  <data key="d1">organization</data>
+  <data key="d2">AfD is a German political party whose voters overwhelmingly reject any aid to Ukraine, with 65% opposing support.&lt;SEP&gt;AfD is a political organization implicated in nepotism scandals at both state and federal levels in Germany, with allegations involving the employment of relatives of party members in parliamentary and party-related positions.&lt;SEP&gt;AfD is a political organization led by Alice Weidel that supports peace negotiations between Ukraine and Russia and opposes Western obstruction of diplomacy.</data>
+  <data key="d3">chunk-d9288589f132b7f0eb2ae4c305ab9848&lt;SEP&gt;chunk-62c7c27d5a1271eee2b62fde6fdb978e&lt;SEP&gt;chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d5">1777504151</data>
+  <data key="d6"></data>
+</node>
+<node id="BSW">
+  <data key="d0">BSW</data>
+  <data key="d1">organization</data>
+  <data key="d2">BSW is a German political party whose voters, like those of AfD, strongly reject aid to Ukraine, with 65% opposing support.</data>
+  <data key="d3">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d5">1777504113</data>
+  <data key="d6"></data>
+</node>
+<node id="НАТО">
+  <data key="d0">НАТО</data>
+  <data key="d1">organization</data>
+  <data key="d2">НАТО (NATO) is an international military alliance referenced in the survey as a potential target of Russian aggression following Ukraine.</data>
+  <data key="d3">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d5">1777504113</data>
+  <data key="d6"></data>
+</node>
+<node id="Польща">
+  <data key="d0">Польща</data>
+  <data key="d1">country</data>
+  <data key="d2">Польща (Poland) is a NATO member state cited in the survey as a potential target of Russian aggression after Ukraine.</data>
+  <data key="d3">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d5">1777504113</data>
+  <data key="d6"></data>
+</node>
+<node id="Литва">
+  <data key="d0">Литва</data>
+  <data key="d1">country</data>
+  <data key="d2">Литва (Lithuania) is a NATO member state cited in the survey as a potential target of Russian aggression after Ukraine.</data>
+  <data key="d3">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d5">1777504113</data>
+  <data key="d6"></data>
+</node>
+<node id="Зелені">
+  <data key="d0">Зелені</data>
+  <data key="d1">organization</data>
+  <data key="d2">Зелені (Greens) is a German political party whose voters show high levels of concern about the risk of broader war in Europe, with 67% expressing anxiety.</data>
+  <data key="d3">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d5">1777504113</data>
+  <data key="d6"></data>
+</node>
+<node id="German Bundeswehr">
+  <data key="d0">German Bundeswehr</data>
+  <data key="d1">military_unit</data>
+  <data key="d2">German Bundeswehr is the armed forces of Germany, indicated by the presence of a PzH 2000 howitzer in the image, suggesting operational deployment.</data>
+  <data key="d3">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d5">1777504114</data>
+  <data key="d6"></data>
+</node>
+<node id="PzH 2000">
+  <data key="d0">PzH 2000</data>
+  <data key="d1">other</data>
+  <data key="d2">PzH 2000 is a German self-propelled howitzer depicted in the image, associated with military activity in a forested environment possibly linked to NATO operations.</data>
+  <data key="d3">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d5">1777504114</data>
+  <data key="d6"></data>
+</node>
+<node id="Tino Chrupalla">
+  <data key="d0">Tino Chrupalla</data>
+  <data key="d1">person</data>
+  <data key="d2">Tino Chrupalla is a co-leader of AfD who has employed the wife of a party colleague in his electoral district in Saxony for nearly ten years, though he clarified his own wife does not work within AfD structures.</data>
+  <data key="d3">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d5">1777504132</data>
+  <data key="d6"></data>
+</node>
+<node id="Marcus Frontmaier">
+  <data key="d0">Marcus Frontmaier</data>
+  <data key="d1">person</data>
+  <data key="d2">Marcus Frontmaier is a foreign policy spokesperson for AfD’s parliamentary group, a leading candidate for AfD in Baden-Württemberg, deputy chair of the AfD faction in the Bundestag, and a close ally of Alice Weidel; his wife works as head of an AfD Bundestag deputy’s office.</data>
+  <data key="d3">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d5">1777504132</data>
+  <data key="d6"></data>
+</node>
+<node id="Ulrich Ziegmund">
+  <data key="d0">Ulrich Ziegmund</data>
+  <data key="d1">person</data>
+  <data key="d2">Ulrich Ziegmund is the main state-level candidate for AfD in Saxony-Anhalt, accused of securing a high-paying position for his father within AfD’s parliamentary environment, earning over 90,000 euros annually.</data>
+  <data key="d3">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d5">1777504132</data>
+  <data key="d6"></data>
+</node>
+<node id="Alice Weidel">
+  <data key="d0">Alice Weidel</data>
+  <data key="d1">person</data>
+  <data key="d2">Alice Weidel is a prominent AfD politician and close ally of Marcus Frontmaier.&lt;SEP&gt;Alice Weidel is the leader of the German AfD who advocates for peace negotiations between Ukraine and Russia and criticizes Western states for obstructing diplomacy.</data>
+  <data key="d3">chunk-62c7c27d5a1271eee2b62fde6fdb978e&lt;SEP&gt;chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d5">1777504151</data>
+  <data key="d6"></data>
+</node>
+<node id="Saxony-Anhalt">
+  <data key="d0">Saxony-Anhalt</data>
+  <data key="d1">location</data>
+  <data key="d2">Saxony-Anhalt is a German federal state where an initial nepotism scandal involving AfD occurred, centered on Ulrich Ziegmund’s father’s appointment.</data>
+  <data key="d3">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d5">1777504132</data>
+  <data key="d6"></data>
+</node>
+<node id="Baden-Württemberg">
+  <data key="d0">Baden-Württemberg</data>
+  <data key="d1">location</data>
+  <data key="d2">Baden-Württemberg is a German federal state where Marcus Frontmaier is a leading AfD candidate for elections.</data>
+  <data key="d3">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d5">1777504132</data>
+  <data key="d6"></data>
+</node>
+<node id="Bundestag">
+  <data key="d0">Bundestag</data>
+  <data key="d1">organization</data>
+  <data key="d2">Bundestag is the federal parliament of Germany, where Marcus Frontmaier serves as deputy chair of the AfD faction and where his wife works as an office manager for an AfD deputy.</data>
+  <data key="d3">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d5">1777504132</data>
+  <data key="d6"></data>
+</node>
+<node id="Известия">
+  <data key="d0">Известия</data>
+  <data key="d1">document</data>
+  <data key="d2">Известия is a Russian state newspaper where Marcus Frontmaier’s wife previously worked as a journalist.</data>
+  <data key="d3">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d5">1777504132</data>
+  <data key="d6"></data>
+</node>
+<node id="t-online">
+  <data key="d0">t-online</data>
+  <data key="d1">organization</data>
+  <data key="d2">t-online is a media outlet that reported on nepotism cases within AfD at both state and federal levels.</data>
+  <data key="d3">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d5">1777504132</data>
+  <data key="d6"></data>
+</node>
+<node id="Kremlin">
+  <data key="d0">Kremlin</data>
+  <data key="d1">organization</data>
+  <data key="d2">Kremlin is the Russian government headquarters, implied as the entity behind Известия, the Russian state newspaper where Marcus Frontmaier’s wife previously worked.</data>
+  <data key="d3">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d5">1777504132</data>
+  <data key="d6"></data>
+</node>
+<node id="Merz">
+  <data key="d0">Merz</data>
+  <data key="d1">person</data>
+  <data key="d2">Merz is the German Chancellor who holds a firm and uncompromising stance against the Alternative für Deutschland.</data>
+  <data key="d3">chunk-9ee68b3273f299f8ae149b136191f2fe</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\14.txt</data>
+  <data key="d5">1777504138</data>
+  <data key="d6"></data>
+</node>
+<node id="Alternative für Deutschland">
+  <data key="d0">Alternative für Deutschland</data>
+  <data key="d1">organization</data>
+  <data key="d2">Alternative für Deutschland is a political organization referred to as populists by Merz, against whom Merz takes a relentless stance.</data>
+  <data key="d3">chunk-9ee68b3273f299f8ae149b136191f2fe</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\14.txt</data>
+  <data key="d5">1777504138</data>
+  <data key="d6"></data>
+</node>
+<node id="Federal Republic">
+  <data key="d0">Federal Republic</data>
+  <data key="d1">country</data>
+  <data key="d2">Federal Republic is the German state whose European legacy Merz is determined to preserve.</data>
+  <data key="d3">chunk-9ee68b3273f299f8ae149b136191f2fe</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\14.txt</data>
+  <data key="d5">1777504138</data>
+  <data key="d6"></data>
+</node>
+<node id="Great Britain">
+  <data key="d0">Great Britain</data>
+  <data key="d1">country</data>
+  <data key="d2">Great Britain is a Western state, led by its government, that Alice Weidel accuses of preventing the 2022 Istanbul agreement.</data>
+  <data key="d3">chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d5">1777504151</data>
+  <data key="d6"></data>
+</node>
+<node id="Istanbul Agreement">
+  <data key="d0">Istanbul Agreement</data>
+  <data key="d1">event</data>
+  <data key="d2">The Istanbul Agreement is a 2022 diplomatic initiative that Alice Weidel claims could have provided a better peace settlement for Ukraine than current discussions.</data>
+  <data key="d3">chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d5">1777504151</data>
+  <data key="d6"></data>
+</node>
+<node id="Zelensky">
+  <data key="d0">Zelensky</data>
+  <data key="d1">person</data>
+  <data key="d2">Zelensky is the leader of Ukraine whom Alice Weidel suggests would have benefited from the Istanbul Agreement as a peace settlement.</data>
+  <data key="d3">chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d5">1777504151</data>
+  <data key="d6"></data>
+</node>
+<node id="Western states">
+  <data key="d0">Western states</data>
+  <data key="d3">chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d2">Western states, including Great Britain, are criticized for opposing diplomacy that includes Russia, which the AfD views as essential for peace.</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d5">1777504151</data>
+  <data key="d6"></data>
+</node>
+<node id="Julius Malema">
+  <data key="d0">Julius Malema</data>
+  <data key="d1">person</data>
+  <data key="d2">Julius Malema is a political leader of the South African radical left-wing party EFF who sang the controversial apartheid-era chant "Kill the Boer" in front of a crowded stadium.</data>
+  <data key="d3">chunk-32b092b5e1ef49279916994e3472b8cb</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\16.txt</data>
+  <data key="d5">1777504160</data>
+  <data key="d6"></data>
+</node>
+<node id="EFF">
+  <data key="d0">EFF</data>
+  <data key="d1">organization</data>
+  <data key="d2">EFF is a South African radical left-wing political party led by Julius Malema.</data>
+  <data key="d3">chunk-32b092b5e1ef49279916994e3472b8cb</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\16.txt</data>
+  <data key="d5">1777504160</data>
+  <data key="d6"></data>
+</node>
+<node id="Sudáfrica">
+  <data key="d0">Sudáfrica</data>
+  <data key="d1">country</data>
+  <data key="d2">Sudáfrica is the country where Julius Malema sang the chant "Kill the Boer," and where the term "Boer" historically refers to white Afrikaans-speaking descendants, primarily farmers.</data>
+  <data key="d3">chunk-32b092b5e1ef49279916994e3472b8cb</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\16.txt</data>
+  <data key="d5">1777504160</data>
+  <data key="d6"></data>
+</node>
+<node id="Boer">
+  <data key="d0">Boer</data>
+  <data key="d1">other</data>
+  <data key="d2">Boer is a historical term referring to descendants of Afrikaans-speaking colonists in South Africa, primarily white farmers.</data>
+  <data key="d3">chunk-32b092b5e1ef49279916994e3472b8cb</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\16.txt</data>
+  <data key="d5">1777504160</data>
+  <data key="d6"></data>
+</node>
+<node id="Javier Milei">
+  <data key="d0">Javier Milei</data>
+  <data key="d1">person</data>
+  <data key="d2">Javier Milei is mentioned in the hashtags of the post but is not directly involved in the described event.</data>
+  <data key="d3">chunk-32b092b5e1ef49279916994e3472b8cb</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\16.txt</data>
+  <data key="d5">1777504160</data>
+  <data key="d6"></data>
+</node>
+<node id="Fair Use">
+  <data key="d0">Fair Use</data>
+  <data key="d1">document</data>
+  <data key="d2">Fair Use is a legal provision under Section 107 of the Copyright Act of 1976, cited in the text as the basis for sharing content for purposes such as criticism, comment, news, teaching, or research.</data>
+  <data key="d3">chunk-4b36ac69a885c1764067ae49e05f7daf</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\17.txt</data>
+  <data key="d5">1777504167</data>
+  <data key="d6"></data>
+</node>
+<node id="Copyright Act of 1976">
+  <data key="d0">Copyright Act of 1976</data>
+  <data key="d1">document</data>
+  <data key="d2">The Copyright Act of 1976 is a U.S. federal law that includes Section 107, which permits limited use of copyrighted material without permission for purposes such as criticism, comment, news, teaching, or research.</data>
+  <data key="d3">chunk-4b36ac69a885c1764067ae49e05f7daf</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\17.txt</data>
+  <data key="d5">1777504167</data>
+  <data key="d6"></data>
+</node>
+<node id="Meta">
+  <data key="d0">Meta</data>
+  <data key="d1">organization</data>
+  <data key="d2">Meta is a technology company that enforces Community Standards, and the post claims compliance with its guidelines regarding the reporting of harmful entities and activities.</data>
+  <data key="d3">chunk-4b36ac69a885c1764067ae49e05f7daf</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\17.txt</data>
+  <data key="d5">1777504167</data>
+  <data key="d6"></data>
+</node>
+<node id="Section 107">
+  <data key="d0">Section 107</data>
+  <data key="d1">document</data>
+  <data key="d2">Section 107 is a provision within the Copyright Act of 1976 that defines Fair Use, allowing limited use of copyrighted material for purposes such as criticism, comment, news, teaching, or research.</data>
+  <data key="d3">chunk-4b36ac69a885c1764067ae49e05f7daf</data>
+  <data key="d4">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\17.txt</data>
+  <data key="d5">1777504167</data>
+  <data key="d6"></data>
+</node>
+<edge source="Cuba" target="United States">
+  <data key="d7">4.0</data>
+  <data key="d8">The president of Cuba announced the beginning of negotiations with the United States.&lt;SEP&gt;United States has imposed an oil blockade on Cuba since January and prohibited Cuba from purchasing Russian oil.&lt;SEP&gt;The United States imposed tariffs on countries supplying oil to Cuba, framing the action as a measure to counter Cuba's threat to U.S. national security.&lt;SEP&gt;The United States conducted secret negotiations with Cuba in Havana, proposing the lifting of trade embargo and access to Starlink in exchange for democratic reforms, release of political prisoners, and compensation for assets seized after the 1959 Revolution.</data>
+  <data key="d9">blockade,conditional proposal,diplomatic engagement,economic sanction,national security policy,negotiation,secret negotiation,trade restriction</data>
+  <data key="d10">chunk-a2c1fe6eec4b0d533b5269363a9c02da&lt;SEP&gt;chunk-26a0c741b3e720a0878cd12efde32ab3&lt;SEP&gt;chunk-a87bd5684f407f2900f544cd1ebd84b2&lt;SEP&gt;chunk-7e0fc3662465aeaa22012fc5b57b9ab2</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\5.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\7.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\8.txt</data>
+  <data key="d12">1777504068</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Cuba" target="President">
+  <data key="d7">1.0</data>
+  <data key="d8">The president of Cuba made a public statement that influenced the escalation of protests.</data>
+  <data key="d9">governance,leadership</data>
+  <data key="d10">chunk-a2c1fe6eec4b0d533b5269363a9c02da</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\5.txt</data>
+  <data key="d12">1777504026</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Cuba" target="Russia">
+  <data key="d7">1.0</data>
+  <data key="d8">Russia is supplying oil to Cuba via a tanker authorized by the U.S. Coast Guard.</data>
+  <data key="d9">oil shipment</data>
+  <data key="d10">chunk-26a0c741b3e720a0878cd12efde32ab3</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt</data>
+  <data key="d12">1777504045</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Cuba" target="U.S. Department of the Treasury">
+  <data key="d7">1.0</data>
+  <data key="d8">U.S. Department of the Treasury added Cuba to a list of countries banned from purchasing Russian oil.</data>
+  <data key="d9">sanction,trade prohibition</data>
+  <data key="d10">chunk-26a0c741b3e720a0878cd12efde32ab3</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt</data>
+  <data key="d12">1777504045</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Cuba" target="oil shipment">
+  <data key="d7">1.0</data>
+  <data key="d8">Cuba is dependent on oil shipments, and the blockade has previously caused total blackouts on the island.</data>
+  <data key="d9">dependency,energy crisis</data>
+  <data key="d10">chunk-26a0c741b3e720a0878cd12efde32ab3</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt</data>
+  <data key="d12">1777504045</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Cuba" target="Donald Trump">
+  <data key="d7">1.0</data>
+  <data key="d8">Donald Trump signed an order targeting Cuba by imposing tariffs on nations that supply it with oil, directly linking the policy to Cuba's regime.</data>
+  <data key="d9">economic sanction,national security policy</data>
+  <data key="d10">chunk-a87bd5684f407f2900f544cd1ebd84b2</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\7.txt</data>
+  <data key="d12">1777504054</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Cuba" target="State Department">
+  <data key="d7">1.0</data>
+  <data key="d8">The State Department of the United States met with Cuban authorities in Havana, demanding the release of political prisoners and compensation for confiscated assets, and expressing concern over foreign military and intelligence activities near U.S. territory.</data>
+  <data key="d9">demand,diplomatic meeting</data>
+  <data key="d10">chunk-7e0fc3662465aeaa22012fc5b57b9ab2</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\8.txt</data>
+  <data key="d12">1777504068</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Cuba" target="Raúl Guillermo Rodríguez Castro">
+  <data key="d7">1.0</data>
+  <data key="d8">Raúl Guillermo Rodríguez Castro, grandson of Raúl Castro, represented Cuban leadership in secret talks with the United States, indicating high-level involvement in negotiations.</data>
+  <data key="d9">leadership connection,political representation</data>
+  <data key="d10">chunk-7e0fc3662465aeaa22012fc5b57b9ab2</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\8.txt</data>
+  <data key="d12">1777504068</data>
+  <data key="d13"></data>
+</edge>
+<edge source="United States" target="Donald Trump">
+  <data key="d7">2.0</data>
+  <data key="d8">Donald Trump, as President of the United States, made public statements regarding U.S. policy on oil deliveries to Cuba.&lt;SEP&gt;Donald Trump, as President of the United States, signed an executive order on behalf of the United States government to impose tariffs.</data>
+  <data key="d9">executive action,presidency,statement</data>
+  <data key="d10">chunk-26a0c741b3e720a0878cd12efde32ab3&lt;SEP&gt;chunk-a87bd5684f407f2900f544cd1ebd84b2</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\7.txt</data>
+  <data key="d12">1777504054</data>
+  <data key="d13"></data>
+</edge>
+<edge source="United States" target="Russia">
+  <data key="d7">1.0</data>
+  <data key="d8">Donald Trump stated that the United States does not object to Russian oil being delivered to Cuba but emphasized that Russia would not profit from it.</data>
+  <data key="d9">non-benefit,oil trade</data>
+  <data key="d10">chunk-26a0c741b3e720a0878cd12efde32ab3</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt</data>
+  <data key="d12">1777504045</data>
+  <data key="d13"></data>
+</edge>
+<edge source="United States" target="Ivan Dyakonov">
+  <data key="d7">1.0</data>
+  <data key="d8">Ivan Dyakonov authored an article reporting on the U.S. policy decision to impose tariffs related to Cuba.</data>
+  <data key="d9">media coverage,reporting</data>
+  <data key="d10">chunk-a87bd5684f407f2900f544cd1ebd84b2</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\7.txt</data>
+  <data key="d12">1777504054</data>
+  <data key="d13"></data>
+</edge>
+<edge source="United States" target="Starlink">
+  <data key="d7">1.0</data>
+  <data key="d8">The United States proposed providing access to Starlink satellite communication to Cuba as part of a conditional offer during negotiations.</data>
+  <data key="d9">proposal,technology provision</data>
+  <data key="d10">chunk-7e0fc3662465aeaa22012fc5b57b9ab2</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\8.txt</data>
+  <data key="d12">1777504068</data>
+  <data key="d13"></data>
+</edge>
+<edge source="United States" target="1959 Revolution">
+  <data key="d7">1.0</data>
+  <data key="d8">The United States demanded compensation for American citizens and corporations whose assets were confiscated following the 1959 Revolution in Cuba.</data>
+  <data key="d9">asset confiscation,historical grievance</data>
+  <data key="d10">chunk-7e0fc3662465aeaa22012fc5b57b9ab2</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\8.txt</data>
+  <data key="d12">1777504068</data>
+  <data key="d13"></data>
+</edge>
+<edge source="United States" target="Barack Obama">
+  <data key="d7">1.0</data>
+  <data key="d8">The 2026 secret talks between the United States and Cuba marked the first direct engagement since President Barack Obama’s visit to Cuba in 2016, establishing a diplomatic precedent.</data>
+  <data key="d9">diplomatic precedent</data>
+  <data key="d10">chunk-7e0fc3662465aeaa22012fc5b57b9ab2</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\8.txt</data>
+  <data key="d12">1777504069</data>
+  <data key="d13"></data>
+</edge>
+<edge source="United States" target="Armenia">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin claims Armenia could become a U.S. base, implying a strategic alignment between Armenia and the United States if it remains sovereign.</data>
+  <data key="d9">geopolitical rivalry,strategic alignment</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504089</data>
+  <data key="d13"></data>
+</edge>
+<edge source="United States" target="Azerbaijan">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin claims Azerbaijan could become a U.S. base, implying a strategic alignment between Azerbaijan and the United States if it remains sovereign.</data>
+  <data key="d9">geopolitical rivalry,strategic alignment</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504089</data>
+  <data key="d13"></data>
+</edge>
+<edge source="United States" target="Kazakhstan">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin claims Kazakhstan could become a U.S. base, implying a strategic alignment between Kazakhstan and the United States if it remains sovereign.</data>
+  <data key="d9">geopolitical rivalry,strategic alignment</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504089</data>
+  <data key="d13"></data>
+</edge>
+<edge source="United States" target="Georgia">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin claims Georgia could become a U.S. base, implying a strategic alignment between Georgia and the United States if it remains sovereign.</data>
+  <data key="d9">geopolitical rivalry,strategic alignment</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504089</data>
+  <data key="d13"></data>
+</edge>
+<edge source="United States" target="Uzbekistan">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin claims Uzbekistan could become a U.S. base, implying a strategic alignment between Uzbekistan and the United States if it remains sovereign.</data>
+  <data key="d9">geopolitical rivalry,strategic alignment</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504089</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Communist Party of Cuba" target="Protesters">
+  <data key="d7">1.0</data>
+  <data key="d8">Protesters in some cities set fire to local offices of the Communist Party of Cuba.</data>
+  <data key="d9">arson,attack</data>
+  <data key="d10">chunk-a2c1fe6eec4b0d533b5269363a9c02da</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\5.txt</data>
+  <data key="d12">1777504026</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Donald Trump" target="White House">
+  <data key="d7">1.0</data>
+  <data key="d8">The White House is the official source of the statement justifying the tariffs, issued under the authority of Donald Trump.</data>
+  <data key="d9">official communication,source</data>
+  <data key="d10">chunk-a87bd5684f407f2900f544cd1ebd84b2</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\7.txt</data>
+  <data key="d12">1777504054</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Russia" target="U.S. Coast Guard">
+  <data key="d7">1.0</data>
+  <data key="d8">U.S. Coast Guard permitted a Russian oil tanker to proceed to Cuba despite the U.S. oil blockade.</data>
+  <data key="d9">authorization,logistics</data>
+  <data key="d10">chunk-26a0c741b3e720a0878cd12efde32ab3</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt</data>
+  <data key="d12">1777504045</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Russia" target="Ukraine">
+  <data key="d7">2.0</data>
+  <data key="d8">Russia is portrayed as engaged in conflict with Ukraine, with potential plans to extend aggression to NATO states.&lt;SEP&gt;Russia and Ukraine are in conflict, and Alice Weidel insists that peace requires direct negotiations between them.</data>
+  <data key="d9">aggression,conflict,peace negotiation partner</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848&lt;SEP&gt;chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d12">1777504152</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Russia" target="Польща">
+  <data key="d7">1.0</data>
+  <data key="d8">Russia is perceived as a potential threat to Poland, with 54% of Germans fearing it may attack after Ukraine.</data>
+  <data key="d9">aggression,threat</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d12">1777504115</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Russia" target="Литва">
+  <data key="d7">1.0</data>
+  <data key="d8">Russia is perceived as a potential threat to Lithuania, with 54% of Germans fearing it may attack after Ukraine.</data>
+  <data key="d9">aggression,threat</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d12">1777504115</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Russia" target="Western states">
+  <data key="d7">1.0</data>
+  <data key="d8">Western states, including Great Britain, are criticized for opposing diplomacy that includes Russia, which the AfD views as essential for peace.</data>
+  <data key="d9">diplomatic opposition</data>
+  <data key="d10">chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d12">1777504151</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Russia" target="AfD">
+  <data key="d7">1.0</data>
+  <data key="d8">The AfD, under Alice Weidel, advocates for including Russia in peace negotiations, indicating alignment with Russia's position.</data>
+  <data key="d9">alignment,diplomatic support</data>
+  <data key="d10">chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d12">1777504152</data>
+  <data key="d13"></data>
+</edge>
+<edge source="New York Times" target="U.S. Coast Guard">
+  <data key="d7">1.0</data>
+  <data key="d8">New York Times reported that the U.S. Coast Guard authorized the Russian oil tanker to reach Cuba.</data>
+  <data key="d9">reporting,source</data>
+  <data key="d10">chunk-26a0c741b3e720a0878cd12efde32ab3</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\6.txt</data>
+  <data key="d12">1777504045</data>
+  <data key="d13"></data>
+</edge>
+<edge source="White House" target="Ivan Dyakonov">
+  <data key="d7">1.0</data>
+  <data key="d8">Ivan Dyakonov's article cites the White House as the source of the official statement regarding the tariff policy.</data>
+  <data key="d9">media coverage,source attribution</data>
+  <data key="d10">chunk-a87bd5684f407f2900f544cd1ebd84b2</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Куба\7.txt</data>
+  <data key="d12">1777504054</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Alexander Dugin" target="Russian World">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin is the main ideologist of the Russian World, indicating his leadership and association with the concept.</data>
+  <data key="d9">association,ideological leadership</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504089</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Alexander Dugin" target="Armenia">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin rejects Armenia's sovereignty, asserting it must either join a unified union or become a U.S. and EU base.</data>
+  <data key="d9">political opposition,sovereignty rejection</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504089</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Alexander Dugin" target="Azerbaijan">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin rejects Azerbaijan's sovereignty, asserting it must either join a unified union or become a U.S. and EU base.</data>
+  <data key="d9">political opposition,sovereignty rejection</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504089</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Alexander Dugin" target="Kazakhstan">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin rejects Kazakhstan's sovereignty, asserting it must either join a unified union or become a U.S. and EU base.</data>
+  <data key="d9">political opposition,sovereignty rejection</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504089</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Alexander Dugin" target="Georgia">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin rejects Georgia's sovereignty, asserting it must either join a unified union or become a U.S. and EU base.</data>
+  <data key="d9">political opposition,sovereignty rejection</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504089</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Alexander Dugin" target="Uzbekistan">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin rejects Uzbekistan's sovereignty, asserting it must either join a unified union or become a U.S. and EU base.</data>
+  <data key="d9">political opposition,sovereignty rejection</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504090</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Armenia" target="European Union">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin claims Armenia could become an EU base, implying a strategic alignment between Armenia and the European Union if it remains sovereign.</data>
+  <data key="d9">geopolitical rivalry,strategic alignment</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504089</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Azerbaijan" target="European Union">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin claims Azerbaijan could become an EU base, implying a strategic alignment between Azerbaijan and the European Union if it remains sovereign.</data>
+  <data key="d9">geopolitical rivalry,strategic alignment</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504089</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Kazakhstan" target="European Union">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin claims Kazakhstan could become an EU base, implying a strategic alignment between Kazakhstan and the European Union if it remains sovereign.</data>
+  <data key="d9">geopolitical rivalry,strategic alignment</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504089</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Georgia" target="European Union">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin claims Georgia could become an EU base, implying a strategic alignment between Georgia and the European Union if it remains sovereign.</data>
+  <data key="d9">geopolitical rivalry,strategic alignment</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504089</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Uzbekistan" target="European Union">
+  <data key="d7">1.0</data>
+  <data key="d8">Alexander Dugin claims Uzbekistan could become an EU base, implying a strategic alignment between Uzbekistan and the European Union if it remains sovereign.</data>
+  <data key="d9">geopolitical rivalry,strategic alignment</data>
+  <data key="d10">chunk-c3304f520cd42cf6e6640f83b9b8f87c</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\10.txt</data>
+  <data key="d12">1777504089</data>
+  <data key="d13"></data>
+</edge>
+<edge source="European Union" target="Merz">
+  <data key="d7">1.0</data>
+  <data key="d8">Merz is committed to protecting the European legacy of the Federal Republic from being squandered by populists associated with Alternative für Deutschland.</data>
+  <data key="d9">legacy preservation,protection</data>
+  <data key="d10">chunk-9ee68b3273f299f8ae149b136191f2fe</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\14.txt</data>
+  <data key="d12">1777504138</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Ультра левые" target="Правые">
+  <data key="d7">1.0</data>
+  <data key="d8">Ультра левые и правые совпадают indicates that ultra-left and right-wing groups are aligned or similar in some aspect.</data>
+  <data key="d9">alignment,ideological similarity</data>
+  <data key="d10">chunk-1e5a4b6e48badb36de1e41a6f2ff6bf7</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\11.txt</data>
+  <data key="d12">1777504095</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Insa" target="BILD">
+  <data key="d7">1.0</data>
+  <data key="d8">Insa conducted a survey on behalf of BILD to assess German public opinion on support for Ukraine.</data>
+  <data key="d9">commissioned,survey</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d12">1777504114</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Ukraine" target="Німеччина">
+  <data key="d7">1.0</data>
+  <data key="d8">A majority of Germans support increased military and financial aid to Ukraine, as per the survey results.</data>
+  <data key="d9">financial_aid,military_aid,support</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d12">1777504114</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Ukraine" target="СДПН">
+  <data key="d7">1.0</data>
+  <data key="d8">74% of СДПН voters express solidarity with Ukraine and support increased Western aid.</data>
+  <data key="d9">solidarity,support</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d12">1777504114</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Ukraine" target="AfD">
+  <data key="d7">2.0</data>
+  <data key="d8">65% of AfD voters reject any form of aid to Ukraine.&lt;SEP&gt;The AfD calls for peace negotiations between Ukraine and Russia and urges an end to the conflict in Ukraine.</data>
+  <data key="d9">diplomatic advocacy,non_support,opposition</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848&lt;SEP&gt;chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt&lt;SEP&gt;D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d12">1777504152</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Ukraine" target="BSW">
+  <data key="d7">1.0</data>
+  <data key="d8">65% of BSW voters reject any form of aid to Ukraine.</data>
+  <data key="d9">non_support,opposition</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d12">1777504114</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Ukraine" target="PzH 2000">
+  <data key="d7">1.0</data>
+  <data key="d8">The deployment of the PzH 2000 howitzer, associated with the German Bundeswehr, suggests direct military support for Ukraine or NATO’s eastern flank.</data>
+  <data key="d9">military_aid,support</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d12">1777504115</data>
+  <data key="d13"></data>
+</edge>
+<edge source="СДПН" target="НАТО">
+  <data key="d7">1.0</data>
+  <data key="d8">СДПН voters, showing the highest solidarity with Ukraine, also exhibit the highest concern about Russian threats to NATO members.</data>
+  <data key="d9">alignment,support</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d12">1777504114</data>
+  <data key="d13"></data>
+</edge>
+<edge source="AfD" target="НАТО">
+  <data key="d7">1.0</data>
+  <data key="d8">AfD voters, who oppose aid to Ukraine, show significantly lower concern (37%) about Russian aggression against NATO states.</data>
+  <data key="d9">non_support,skepticism</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d12">1777504115</data>
+  <data key="d13"></data>
+</edge>
+<edge source="AfD" target="Tino Chrupalla">
+  <data key="d7">2.0</data>
+  <data key="d8">AfD is implicated in a nepotism scandal involving Tino Chrupalla, who employed the wife of a party colleague in his electoral district for nearly ten years.&lt;SEP&gt;Tino Chrupalla is a co-leader of AfD, holding a top leadership position in the organization.</data>
+  <data key="d9">employment,leadership,nepotism,party position,party scandal</data>
+  <data key="d10">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d12">1777504132</data>
+  <data key="d13"></data>
+</edge>
+<edge source="AfD" target="Marcus Frontmaier">
+  <data key="d7">1.0</data>
+  <data key="d8">AfD is implicated in a nepotism scandal involving Marcus Frontmaier, whose wife serves as head of an AfD Bundestag deputy’s office.</data>
+  <data key="d9">employment,nepotism,party scandal</data>
+  <data key="d10">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d12">1777504132</data>
+  <data key="d13"></data>
+</edge>
+<edge source="AfD" target="Ulrich Ziegmund">
+  <data key="d7">1.0</data>
+  <data key="d8">AfD is implicated in a nepotism scandal involving Ulrich Ziegmund, whose father received a high-paying position within AfD’s parliamentary environment in Saxony-Anhalt.</data>
+  <data key="d9">employment,nepotism,party scandal</data>
+  <data key="d10">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d12">1777504133</data>
+  <data key="d13"></data>
+</edge>
+<edge source="AfD" target="t-online">
+  <data key="d7">1.0</data>
+  <data key="d8">t-online published investigative reports exposing nepotism cases within AfD at state and federal levels.</data>
+  <data key="d9">investigative journalism,media reporting</data>
+  <data key="d10">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d12">1777504133</data>
+  <data key="d13"></data>
+</edge>
+<edge source="AfD" target="Alice Weidel">
+  <data key="d7">1.0</data>
+  <data key="d8">Alice Weidel is the leader of the AfD, representing its position on peace negotiations involving Russia and Ukraine.</data>
+  <data key="d9">affiliation,leadership</data>
+  <data key="d10">chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d12">1777504151</data>
+  <data key="d13"></data>
+</edge>
+<edge source="BSW" target="НАТО">
+  <data key="d7">1.0</data>
+  <data key="d8">BSW voters, who oppose aid to Ukraine, show significantly lower concern (37%) about Russian aggression against NATO states.</data>
+  <data key="d9">non_support,skepticism</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d12">1777504115</data>
+  <data key="d13"></data>
+</edge>
+<edge source="НАТО" target="German Bundeswehr">
+  <data key="d7">1.0</data>
+  <data key="d8">The German Bundeswehr’s deployment of the PzH 2000 suggests alignment with NATO’s regional security operations in Eastern Europe.</data>
+  <data key="d9">alignment,operation</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d12">1777504114</data>
+  <data key="d13"></data>
+</edge>
+<edge source="НАТО" target="Зелені">
+  <data key="d7">1.0</data>
+  <data key="d8">Зелені voters, with 67% expressing anxiety over war escalation, demonstrate strong alignment with NATO’s security concerns.</data>
+  <data key="d9">alignment,support</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d12">1777504114</data>
+  <data key="d13"></data>
+</edge>
+<edge source="НАТО" target="PzH 2000">
+  <data key="d7">1.0</data>
+  <data key="d8">The PzH 2000 howitzer’s presence in Eastern Europe indicates participation in NATO-related military operations or training.</data>
+  <data key="d9">deployment,operation</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d12">1777504115</data>
+  <data key="d13"></data>
+</edge>
+<edge source="German Bundeswehr" target="PzH 2000">
+  <data key="d7">1.0</data>
+  <data key="d8">The German Bundeswehr is operating the PzH 2000 howitzer, indicating military activity possibly linked to NATO support in Eastern Europe.</data>
+  <data key="d9">deployment,operation</data>
+  <data key="d10">chunk-d9288589f132b7f0eb2ae4c305ab9848</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\12.txt</data>
+  <data key="d12">1777504114</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Marcus Frontmaier" target="Известия">
+  <data key="d7">1.0</data>
+  <data key="d8">Marcus Frontmaier’s wife previously worked as a journalist at Известия, a Russian state newspaper linked to the Kremlin.</data>
+  <data key="d9">employment,media background</data>
+  <data key="d10">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d12">1777504132</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Marcus Frontmaier" target="Alice Weidel">
+  <data key="d7">1.0</data>
+  <data key="d8">Marcus Frontmaier is a close ally of Alice Weidel within AfD, holding key leadership roles in the party’s Bundestag faction.</data>
+  <data key="d9">party affiliation,political alliance</data>
+  <data key="d10">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d12">1777504132</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Marcus Frontmaier" target="Bundestag">
+  <data key="d7">1.0</data>
+  <data key="d8">Marcus Frontmaier serves as deputy chair of the AfD faction in the Bundestag, representing the party in Germany’s federal parliament.</data>
+  <data key="d9">parliamentary role,political representation</data>
+  <data key="d10">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d12">1777504132</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Marcus Frontmaier" target="Baden-Württemberg">
+  <data key="d7">1.0</data>
+  <data key="d8">Marcus Frontmaier is a leading AfD candidate for the state of Baden-Württemberg in upcoming elections.</data>
+  <data key="d9">political candidacy,regional representation</data>
+  <data key="d10">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d12">1777504132</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Ulrich Ziegmund" target="Saxony-Anhalt">
+  <data key="d7">1.0</data>
+  <data key="d8">Ulrich Ziegmund is the main AfD candidate for the state of Saxony-Anhalt in upcoming elections.</data>
+  <data key="d9">political candidacy,regional representation</data>
+  <data key="d10">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d12">1777504132</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Alice Weidel" target="Zelensky">
+  <data key="d7">1.0</data>
+  <data key="d8">Alice Weidel argues that Zelensky would have benefited from the Istanbul Agreement, implying a stance in favor of his diplomatic interests.</data>
+  <data key="d9">diplomatic advocacy</data>
+  <data key="d10">chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d12">1777504152</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Alice Weidel" target="Great Britain">
+  <data key="d7">1.0</data>
+  <data key="d8">Alice Weidel criticizes Great Britain for blocking the Istanbul Agreement and undermining diplomacy with Russia.</data>
+  <data key="d9">criticism,diplomatic opposition</data>
+  <data key="d10">chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d12">1777504152</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Известия" target="Kremlin">
+  <data key="d7">1.0</data>
+  <data key="d8">The Kremlin is the governing body that controls Известия, the Russian state newspaper where Marcus Frontmaier’s wife previously worked.</data>
+  <data key="d9">media control,ownership</data>
+  <data key="d10">chunk-62c7c27d5a1271eee2b62fde6fdb978e</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\13.txt</data>
+  <data key="d12">1777504132</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Merz" target="Alternative für Deutschland">
+  <data key="d7">1.0</data>
+  <data key="d8">Merz is uncompromising and relentless in his dealings with Alternative für Deutschland, refusing to support them.</data>
+  <data key="d9">opposition,political stance</data>
+  <data key="d10">chunk-9ee68b3273f299f8ae149b136191f2fe</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\14.txt</data>
+  <data key="d12">1777504138</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Alternative für Deutschland" target="Federal Republic">
+  <data key="d7">1.0</data>
+  <data key="d8">Alternative für Deutschland is viewed by Merz as a populist force that could squander the European legacy of the Federal Republic.</data>
+  <data key="d9">populist influence,threat</data>
+  <data key="d10">chunk-9ee68b3273f299f8ae149b136191f2fe</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\14.txt</data>
+  <data key="d12">1777504138</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Great Britain" target="Istanbul Agreement">
+  <data key="d7">1.0</data>
+  <data key="d8">Great Britain is accused by Alice Weidel of preventing the 2022 Istanbul Agreement, a proposed peace initiative.</data>
+  <data key="d9">diplomatic interference,obstruction</data>
+  <data key="d10">chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d12">1777504151</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Istanbul Agreement" target="Zelensky">
+  <data key="d7">1.0</data>
+  <data key="d8">The Istanbul Agreement is presented as a potential better peace settlement for Zelensky than current negotiations.</data>
+  <data key="d9">diplomatic benefit,peace settlement</data>
+  <data key="d10">chunk-55348f566660754475cddb9236d91243</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\15.txt</data>
+  <data key="d12">1777504151</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Julius Malema" target="EFF">
+  <data key="d7">1.0</data>
+  <data key="d8">Julius Malema is the leader of the EFF, a South African radical left-wing political party.</data>
+  <data key="d9">leadership,political affiliation</data>
+  <data key="d10">chunk-32b092b5e1ef49279916994e3472b8cb</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\16.txt</data>
+  <data key="d12">1777504160</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Julius Malema" target="Boer">
+  <data key="d7">1.0</data>
+  <data key="d8">Julius Malema sang the chant "Kill the Boer," which targets the Boer population as symbols of colonial oppression, inciting racial hostility.</data>
+  <data key="d9">hostile rhetoric,incitement</data>
+  <data key="d10">chunk-32b092b5e1ef49279916994e3472b8cb</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\16.txt</data>
+  <data key="d12">1777504160</data>
+  <data key="d13"></data>
+</edge>
+<edge source="EFF" target="Boer">
+  <data key="d7">1.0</data>
+  <data key="d8">The EFF, under Julius Malema’s leadership, is associated with the chanting of "Kill the Boer," which frames the Boer community as targets of historical and ongoing oppression.</data>
+  <data key="d9">ideological conflict,targeted group</data>
+  <data key="d10">chunk-32b092b5e1ef49279916994e3472b8cb</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\16.txt</data>
+  <data key="d12">1777504160</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Sudáfrica" target="Boer">
+  <data key="d7">1.0</data>
+  <data key="d8">In Sudáfrica, the term "Boer" historically refers to white Afrikaans-speaking descendants, primarily farmers, who are central to the colonial and post-colonial conflict.</data>
+  <data key="d9">ethnic identity,historical context</data>
+  <data key="d10">chunk-32b092b5e1ef49279916994e3472b8cb</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\16.txt</data>
+  <data key="d12">1777504161</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Fair Use" target="Copyright Act of 1976">
+  <data key="d7">1.0</data>
+  <data key="d8">Fair Use is defined as a legal provision under Section 107 of the Copyright Act of 1976.</data>
+  <data key="d9">inclusion,legal provision</data>
+  <data key="d10">chunk-4b36ac69a885c1764067ae49e05f7daf</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\17.txt</data>
+  <data key="d12">1777504168</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Fair Use" target="Meta">
+  <data key="d7">1.0</data>
+  <data key="d8">Meta's Community Standards are cited as being complied with by the post, which uses Fair Use as a legal basis for content sharing.</data>
+  <data key="d9">compliance,policy alignment</data>
+  <data key="d10">chunk-4b36ac69a885c1764067ae49e05f7daf</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\17.txt</data>
+  <data key="d12">1777504168</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Copyright Act of 1976" target="Section 107">
+  <data key="d7">1.0</data>
+  <data key="d8">Section 107 is a provision within the Copyright Act of 1976 that defines Fair Use.</data>
+  <data key="d9">inclusion,legal provision</data>
+  <data key="d10">chunk-4b36ac69a885c1764067ae49e05f7daf</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\17.txt</data>
+  <data key="d12">1777504168</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Meta" target="Section 107">
+  <data key="d7">1.0</data>
+  <data key="d8">Meta's Community Standards are cited as being complied with by the post, which references Section 107 of the Copyright Act of 1976 as a legal justification.</data>
+  <data key="d9">compliance,policy alignment</data>
+  <data key="d10">chunk-4b36ac69a885c1764067ae49e05f7daf</data>
+  <data key="d11">D:\ObsidianWiki\GeoSpoiler-RAG\output\normalized\Ультра левые и ультра правые\17.txt</data>
+  <data key="d12">1777504168</data>
+  <data key="d13"></data>
+</edge>
+</graph></graphml>

@@ -1,0 +1,740 @@
+{
+  "total": 21,
+  "passed": 21,
+  "failed": 0,
+  "average_score": 100.0,
+  "cases": [
+    {
+      "question": "Что в базе говорится о сходстве ультралевых и ультраправых?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3328128766/134",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-08T03:48:56+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\134.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3889026624/3",
+          "channel": "Балтийские страны",
+          "date": "2026-03-24T21:18:12+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\3.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/17",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-03T15:44:03+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\17.txt"
+        }
+      ]
+    },
+    {
+      "question": "Откуда в базе тезис про ультралевых и ультраправых? Дай ссылку.",
+      "profile": "source",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": true,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3299898370/18",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-05T01:16:18+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\18.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/11",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-02-09T19:05:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\11.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/140",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-08T19:42:16+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\140.txt"
+        }
+      ]
+    },
+    {
+      "question": "Что в базе говорится про связи европейских ультраправых с Трампом?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3299898370/9",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-01-17T21:26:45+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\9.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/18",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-05T01:16:18+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\18.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/134",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-08T03:48:56+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\134.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/150",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-10T21:04:28+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\150.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/193",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-16T20:57:51+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\193.txt"
+        }
+      ]
+    },
+    {
+      "question": "Почему в базе AfD выглядит проблемной партией?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3299898370/19",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-24T17:31:09+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\19.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/25",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-04-20T15:45:56+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\25.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/18",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-05T01:16:18+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\18.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/14",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-02-19T09:01:42+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\14.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/18",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-15T15:36:47+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\18.txt"
+        }
+      ]
+    },
+    {
+      "question": "Что в базе говорится про отношение AfD к войне в Украине?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3299898370/12",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-02-09T19:05:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\12.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/19",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-24T17:31:09+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\19.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/182",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-13T16:21:48+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\182.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/7",
+          "channel": "Венгрия Словакия",
+          "date": "2026-01-29T19:33:52+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\7.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/49",
+          "channel": "Венгрия Словакия",
+          "date": "2026-03-06T18:29:23+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\49.txt"
+        }
+      ]
+    },
+    {
+      "question": "Что в базе говорится о риске утечки информации от AfD к России?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3299898370/19",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-24T17:31:09+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\19.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/98",
+          "channel": "Венгрия Словакия",
+          "date": "2026-03-22T22:50:49+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\98.txt"
+        }
+      ]
+    },
+    {
+      "question": "Что в базе говорится о Кубе и переговорах с США?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3328128766/140",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-08T19:42:16+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\140.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3841808641/6",
+          "channel": "Куба",
+          "date": "2026-03-30T16:47:25+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\6.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/120",
+          "channel": "Венгрия Словакия",
+          "date": "2026-03-31T21:02:46+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\120.txt"
+        }
+      ]
+    },
+    {
+      "question": "Что в базе говорится о поставках нефти на Кубу и позиции Трампа?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3841808641/6",
+          "channel": "Куба",
+          "date": "2026-03-30T16:47:25+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\6.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3841808641/7",
+          "channel": "Куба",
+          "date": "2026-03-30T16:47:29+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\7.txt"
+        }
+      ]
+    },
+    {
+      "question": "Что в базе говорится о протестах на Кубе?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3328128766/175",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-12T21:49:18+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\175.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3841808641/7",
+          "channel": "Куба",
+          "date": "2026-03-30T16:47:29+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\7.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/145",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-09T15:58:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\145.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3889026624/8",
+          "channel": "Балтийские страны",
+          "date": "2026-03-27T18:04:31+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\8.txt"
+        }
+      ]
+    },
+    {
+      "question": "Как база описывает отношение США к Кубе: давление или попытку сделки?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3841808641/8",
+          "channel": "Куба",
+          "date": "2026-04-18T16:14:14+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\8.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3841808641/7",
+          "channel": "Куба",
+          "date": "2026-03-30T16:47:29+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\7.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/193",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-16T20:57:51+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\193.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3889026624/8",
+          "channel": "Балтийские страны",
+          "date": "2026-03-27T18:04:31+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\8.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/120",
+          "channel": "Венгрия Словакия",
+          "date": "2026-03-31T21:02:46+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\120.txt"
+        }
+      ]
+    },
+    {
+      "question": "Какие страны или регионы чаще всего фигурируют в теме ультраправых?",
+      "profile": "overview",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3299898370/11",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-02-09T19:05:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\11.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/49",
+          "channel": "Венгрия Словакия",
+          "date": "2026-03-06T18:29:23+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\49.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/140",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-08T19:42:16+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\140.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/7",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-01-14T17:06:29+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\7.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/134",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-08T03:48:56+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\134.txt"
+        }
+      ]
+    },
+    {
+      "question": "Что в базе говорится про связь ультраправых с Россией?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3299898370/9",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-01-17T21:26:45+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\9.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/51",
+          "channel": "Венгрия Словакия",
+          "date": "2026-03-08T14:17:48+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\51.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/140",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-08T19:42:16+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\140.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/18",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-05T01:16:18+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\18.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/188",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-14T17:20:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\188.txt"
+        }
+      ]
+    },
+    {
+      "question": "Что в базе говорится о риске российского вторжения в страны Балтии?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3889026624/6",
+          "channel": "Балтийские страны",
+          "date": "2026-03-25T17:44:57+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\6.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3889026624/4",
+          "channel": "Балтийские страны",
+          "date": "2026-03-24T21:18:12+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\4.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3889026624/3",
+          "channel": "Балтийские страны",
+          "date": "2026-03-24T21:18:12+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\3.txt"
+        }
+      ]
+    },
+    {
+      "question": "Что в базе говорится о Нарве и планах России против Эстонии?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3328128766/140",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-08T19:42:16+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\140.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3889026624/4",
+          "channel": "Балтийские страны",
+          "date": "2026-03-24T21:18:12+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\4.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3889026624/7",
+          "channel": "Балтийские страны",
+          "date": "2026-03-26T00:43:56+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\7.txt"
+        }
+      ]
+    },
+    {
+      "question": "Как база описывает позицию Орбана по Украине и поддержке ЕС?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3328128766/7",
+          "channel": "Венгрия Словакия",
+          "date": "2026-01-29T19:33:52+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\7.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/92",
+          "channel": "Венгрия Словакия",
+          "date": "2026-03-18T17:39:15+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\92.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/14",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:26:03+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\14.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/140",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-08T19:42:16+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\140.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/73",
+          "channel": "Венгрия Словакия",
+          "date": "2026-03-14T18:59:58+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\73.txt"
+        }
+      ]
+    },
+    {
+      "question": "Что в базе говорится о Фицо и политическом кризисе в Словакии?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3328128766/198",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-22T16:11:31+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\198.txt"
+        }
+      ]
+    },
+    {
+      "question": "Что в базе говорится о северокорейских военных и России?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3215620297/3",
+          "channel": "Корея",
+          "date": "2025-11-05T09:30:39+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\3.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/26",
+          "channel": "Корея",
+          "date": "2026-03-10T07:26:15+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\26.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/2",
+          "channel": "Корея",
+          "date": "2025-11-02T15:31:45+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\2.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/32",
+          "channel": "Корея",
+          "date": "2026-03-21T16:58:57+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\32.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/11",
+          "channel": "Корея",
+          "date": "2026-01-26T16:00:14+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\11.txt"
+        }
+      ]
+    },
+    {
+      "question": "Откуда в базе тезис про северокорейских военных в России? Дай ссылку.",
+      "profile": "source",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": true,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3215620297/12",
+          "channel": "Корея",
+          "date": "2026-02-06T16:37:38+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\12.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/3",
+          "channel": "Корея",
+          "date": "2025-11-05T09:30:39+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\3.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/4",
+          "channel": "Корея",
+          "date": "2025-11-07T15:56:17+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\4.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/26",
+          "channel": "Корея",
+          "date": "2026-03-10T07:26:15+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\26.txt"
+        }
+      ]
+    },
+    {
+      "question": "Что в базе говорится о Британии, Стармере и оборонном сотрудничестве с ЕС?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3328128766/134",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-08T03:48:56+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\134.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/184",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-13T16:53:59+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\184.txt"
+        }
+      ]
+    },
+    {
+      "question": "Что в базе говорится о трещинах в отношениях США и Великобритании при Трампе и Стармере?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3328128766/140",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-08T19:42:16+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\140.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3548806336/8",
+          "channel": "Англия",
+          "date": "2026-04-01T16:58:33+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Англия\\8.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3548806336/3",
+          "channel": "Англия",
+          "date": "2026-02-04T19:33:58+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Англия\\3.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3548806336/4",
+          "channel": "Англия",
+          "date": "2026-03-08T02:05:38+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Англия\\4.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3548806336/9",
+          "channel": "Англия",
+          "date": "2026-04-09T19:09:37+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Англия\\9.txt"
+        }
+      ]
+    },
+    {
+      "question": "Кто финансирует AfD?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3299898370/19",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-24T17:31:09+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\19.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/8",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-01-17T21:25:15+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\8.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/18",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-15T15:36:47+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\18.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/22",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-20T19:25:16+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\22.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/145",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-09T15:58:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\145.txt"
+        }
+      ]
+    }
+  ]
+}

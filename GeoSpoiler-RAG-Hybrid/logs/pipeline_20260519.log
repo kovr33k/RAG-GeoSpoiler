@@ -1,0 +1,65 @@
+2026-05-19 03:39:44,592 [nano-vectordb] INFO: Load (991, 1024) data
+2026-05-19 03:39:44,595 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_entities.json'} 991 data
+2026-05-19 03:39:44,649 [nano-vectordb] INFO: Load (1311, 1024) data
+2026-05-19 03:39:44,653 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_relationships.json'} 1311 data
+2026-05-19 03:39:44,675 [nano-vectordb] INFO: Load (259, 1024) data
+2026-05-19 03:39:44,676 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_chunks.json'} 259 data
+2026-05-19 03:39:44,797 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-19 03:39:44,797 [geospoiler.retrieval.composer] INFO: Composer executing search (mode=recall) for: Трамп Орбан Венгрия
+2026-05-19 03:39:44,797 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=mix, profile=source, rerank=enabled)
+2026-05-19 03:40:03,509 [geospoiler.reranker] INFO: Reranker (nim): 108 docs -> 50 candidates -> 10 returned
+2026-05-19 03:42:03,827 [openai._base_client] INFO: Retrying request to /chat/completions in 0.496568 seconds
+2026-05-19 03:42:32,701 [geospoiler.retrieval.composer] INFO: Composer executing search (mode=shadow) for: Трамп Орбан Венгрия
+2026-05-19 03:42:43,874 [geospoiler.retrieval.composer] INFO: Composer executing search (mode=shadow) for: Трамп Орбан Венгрия
+2026-05-19 03:42:44,811 [geospoiler.loader] WARNING: LightRAG query timed out after 180.0s; trying shadow-search fallback.
+2026-05-19 03:53:55,236 [geospoiler.retrieval.composer] INFO: Composer executing search (mode=shadow) for: Трамп Орбан Венгрия
+2026-05-19 03:54:04,981 [geospoiler.retrieval.composer] INFO: Composer executing search (mode=shadow) for: Трамп Орбан Венгрия
+2026-05-19 15:39:21,307 [nano-vectordb] INFO: Load (991, 1024) data
+2026-05-19 15:39:21,309 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_entities.json'} 991 data
+2026-05-19 15:39:21,360 [nano-vectordb] INFO: Load (1311, 1024) data
+2026-05-19 15:39:21,363 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_relationships.json'} 1311 data
+2026-05-19 15:39:21,384 [nano-vectordb] INFO: Load (259, 1024) data
+2026-05-19 15:39:21,384 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_chunks.json'} 259 data
+2026-05-19 15:39:21,495 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-19 15:39:21,495 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, profile=answer, rerank=enabled)
+2026-05-19 15:39:23,139 [geospoiler.loader] INFO: Adding enriched-card context to LightRAG answer.
+2026-05-19 15:39:51,441 [nano-vectordb] INFO: Load (991, 1024) data
+2026-05-19 15:39:51,443 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_entities.json'} 991 data
+2026-05-19 15:39:51,490 [nano-vectordb] INFO: Load (1311, 1024) data
+2026-05-19 15:39:51,493 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_relationships.json'} 1311 data
+2026-05-19 15:39:51,509 [nano-vectordb] INFO: Load (259, 1024) data
+2026-05-19 15:39:51,509 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_chunks.json'} 259 data
+2026-05-19 15:39:51,579 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-19 15:39:51,579 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, profile=answer, rerank=disabled)
+2026-05-19 15:40:08,465 [geospoiler.loader] INFO: Adding enriched-card context to LightRAG answer.
+2026-05-19 15:40:22,786 [nano-vectordb] INFO: Load (991, 1024) data
+2026-05-19 15:40:22,788 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_entities.json'} 991 data
+2026-05-19 15:40:22,832 [nano-vectordb] INFO: Load (1311, 1024) data
+2026-05-19 15:40:22,834 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_relationships.json'} 1311 data
+2026-05-19 15:40:22,849 [nano-vectordb] INFO: Load (259, 1024) data
+2026-05-19 15:40:22,850 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_chunks.json'} 259 data
+2026-05-19 15:40:22,924 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-19 15:40:22,924 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, profile=answer, rerank=disabled)
+2026-05-19 15:40:23,437 [geospoiler.loader] INFO: Adding enriched-card context to LightRAG answer.
+2026-05-19 15:40:44,549 [nano-vectordb] INFO: Load (991, 1024) data
+2026-05-19 15:40:44,551 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_entities.json'} 991 data
+2026-05-19 15:40:44,594 [nano-vectordb] INFO: Load (1311, 1024) data
+2026-05-19 15:40:44,596 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_relationships.json'} 1311 data
+2026-05-19 15:40:44,611 [nano-vectordb] INFO: Load (259, 1024) data
+2026-05-19 15:40:44,612 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_chunks.json'} 259 data
+2026-05-19 15:40:44,633 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-19 15:40:44,633 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, profile=answer, rerank=disabled)
+2026-05-19 15:42:45,044 [openai._base_client] INFO: Retrying request to /chat/completions in 0.382288 seconds
+2026-05-19 15:43:44,644 [geospoiler.loader] WARNING: LightRAG query timed out after 180.0s; trying shadow-search fallback.
+2026-05-19 15:43:57,249 [geospoiler] WARNING: Skipping LightRAG finalize after fallback query to avoid blocking on cancelled workers.
+2026-05-19 15:46:31,741 [nano-vectordb] INFO: Load (991, 1024) data
+2026-05-19 15:46:31,742 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_entities.json'} 991 data
+2026-05-19 15:46:31,792 [nano-vectordb] INFO: Load (1311, 1024) data
+2026-05-19 15:46:31,794 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_relationships.json'} 1311 data
+2026-05-19 15:46:31,815 [nano-vectordb] INFO: Load (259, 1024) data
+2026-05-19 15:46:31,815 [nano-vectordb] INFO: Init {'embedding_dim': 1024, 'metric': 'cosine', 'storage_file': 'D:\\ObsidianWiki\\GeoSpoiler-RAG-Hybrid\\rag_storage\\vdb_chunks.json'} 259 data
+2026-05-19 15:46:31,862 [geospoiler.loader] INFO: LightRAG initialized.
+2026-05-19 15:46:31,862 [geospoiler.loader] INFO: Querying LightRAG with retrieval payload (mode=hybrid, profile=answer, rerank=disabled)
+2026-05-19 15:47:31,871 [geospoiler.loader] WARNING: LightRAG query timed out after 60.0s; trying shadow-search fallback.
+2026-05-19 15:47:31,950 [geospoiler] WARNING: Skipping LightRAG finalize after fallback query to avoid blocking on cancelled workers.
+2026-05-19 15:50:32,936 [geospoiler.retrieval.composer] INFO: Composer executing search (mode=shadow) for: Трамп Орбан Венгрия

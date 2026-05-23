@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T19:31:54.298142+00:00",
+  "provenance": {
+    "channel_name": "Балтийские страны",
+    "channel_id": 3889026624,
+    "message_id": 8,
+    "date": "2026-03-27T18:04:31+00:00",
+    "post_url": "https://t.me/c/3889026624/8",
+    "normalized_file": "output\\normalized\\Балтийские страны\\8.txt",
+    "meta_file": "output\\normalized\\Балтийские страны\\8.meta.json",
+    "is_forward": true,
+    "forward_from": "Тарас Григорович повідомляє"
+  },
+  "content_type": "image",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Сообщается, что Литрий Алкоголиевич всё ещё жив, несмотря на ожидания его смерти.",
+  "key_facts": [
+    {
+      "text": "Литрий Алкоголиевич ещё жив",
+      "claim_type": "source_claim"
+    }
+  ],
+  "entities": {
+    "people": [
+      "Литрий Алкоголиевич"
+    ],
+    "organizations": [],
+    "countries": [],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": true,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Тарас Григорович повідомляє",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Балтийские страны | Дата: 2026-03-27 18:04 | Пост: https://t.me/c/3889026624/8]\n\n\nСообщается, что Литрий Алкоголиевич всё ещё жив, несмотря на ожидания его смерти.\n\nКлючевые факты:\n- Литрий Алкоголиевич ещё жив [source_claim]\n\nСущности: Литрий Алкоголиевич\n\nИсточник: Тарас Григорович повідомляє",
+  "search_text": "[Канал: Балтийские страны | Дата: 2026-03-27 18:04 | Пост: https://t.me/c/3889026624/8]\n\n\nСообщается, что Литрий Алкоголиевич всё ещё жив, несмотря на ожидания его смерти.\n\nКлючевые факты:\n- Литрий Алкоголиевич ещё жив [source_claim]\n\nСущности: Литрий Алкоголиевич\n\nИсточник: Тарас Григорович повідомляє\n\nТип контента: image"
+}

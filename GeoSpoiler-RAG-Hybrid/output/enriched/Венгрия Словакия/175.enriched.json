@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T20:18:32.168440+00:00",
+  "provenance": {
+    "channel_name": "Венгрия Словакия",
+    "channel_id": 3328128766,
+    "message_id": 175,
+    "date": "2026-04-12T21:49:18+00:00",
+    "post_url": "https://t.me/c/3328128766/175",
+    "normalized_file": "output\\normalized\\Венгрия Словакия\\175.txt",
+    "meta_file": "output\\normalized\\Венгрия Словакия\\175.meta.json",
+    "is_forward": true,
+    "forward_from": "Тарас Григорович повідомляє"
+  },
+  "content_type": "image",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "На болотах наблюдается депрессия, но визуальное содержание изображений недоступно для анализа.",
+  "key_facts": [
+    {
+      "text": "На болотах наблюдается депрессия",
+      "claim_type": "hypothesis"
+    }
+  ],
+  "entities": {
+    "people": [],
+    "organizations": [],
+    "countries": [],
+    "locations": [
+      "болота"
+    ],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [
+    "депрессия",
+    "болота"
+  ],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": true,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Тарас Григорович повідомляє",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Венгрия Словакия | Дата: 2026-04-12 21:49 | Пост: https://t.me/c/3328128766/175]\n\n\nНа болотах наблюдается депрессия, но визуальное содержание изображений недоступно для анализа.\n\nКлючевые факты:\n- На болотах наблюдается депрессия [hypothesis]\n\nСущности: болота\n\nИсточник: Тарас Григорович повідомляє",
+  "search_text": "[Канал: Венгрия Словакия | Дата: 2026-04-12 21:49 | Пост: https://t.me/c/3328128766/175]\n\n\nНа болотах наблюдается депрессия, но визуальное содержание изображений недоступно для анализа.\n\nКлючевые факты:\n- На болотах наблюдается депрессия [hypothesis]\n\nСущности: болота\n\nИсточник: Тарас Григорович повідомляє\n\nТемы: депрессия, болота\n\nТип контента: image"
+}

@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T21:00:27.906762+00:00",
+  "provenance": {
+    "channel_name": "Венгрия Словакия",
+    "channel_id": 3328128766,
+    "message_id": 97,
+    "date": "2026-03-21T17:43:16+00:00",
+    "post_url": "https://t.me/c/3328128766/97",
+    "normalized_file": "output\\normalized\\Венгрия Словакия\\97.txt",
+    "meta_file": "output\\normalized\\Венгрия Словакия\\97.meta.json",
+    "is_forward": true,
+    "forward_from": "Ateo Breaking"
+  },
+  "content_type": "news",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Глава МИД Венгрии Сийярто якобы передавал Москве конфиденциальные данные из заседаний ЕС, включая детали переговоров, что сообщает Washington Post.",
+  "key_facts": [
+    {
+      "text": "Глава МИД Венгрии Сийярто переправлял данные Лаврову прямо с заседаний ЕС.",
+      "claim_type": "source_claim"
+    },
+    {
+      "text": "Сийярто мог звонить в Москву во время заседаний ЕС и делиться деталями переговоров.",
+      "claim_type": "source_claim"
+    },
+    {
+      "text": "Сийярто не комментирует эти сообщения.",
+      "claim_type": "fact"
+    }
+  ],
+  "entities": {
+    "people": [
+      "Сийярто",
+      "Лавров"
+    ],
+    "organizations": [
+      "МИД Венгрии"
+    ],
+    "countries": [
+      "Венгрия",
+      "Россия",
+      "ЕС"
+    ],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [
+    "дипломатия",
+    "шпионаж",
+    "ЕС",
+    "Россия",
+    "разглашение информации"
+  ],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": false,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Ateo Breaking",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Венгрия Словакия | Дата: 2026-03-21 17:43 | Пост: https://t.me/c/3328128766/97]\n\n\nГлава МИД Венгрии Сийярто якобы передавал Москве конфиденциальные данные из заседаний ЕС, включая детали переговоров, что сообщает Washington Post.\n\nКлючевые факты:\n- Глава МИД Венгрии Сийярто переправлял данные Лаврову прямо с заседаний ЕС. [source_claim]\n- Сийярто мог звонить в Москву во время заседаний ЕС и делиться деталями переговоров. [source_claim]\n- Сийярто не комментирует эти сообщения. [fact]\n\nСущности: Сийярто, Лавров, МИД Венгрии, Венгрия, Россия, ЕС\n\nИсточник: Ateo Breaking",
+  "search_text": "[Канал: Венгрия Словакия | Дата: 2026-03-21 17:43 | Пост: https://t.me/c/3328128766/97]\n\n\nГлава МИД Венгрии Сийярто якобы передавал Москве конфиденциальные данные из заседаний ЕС, включая детали переговоров, что сообщает Washington Post.\n\nКлючевые факты:\n- Глава МИД Венгрии Сийярто переправлял данные Лаврову прямо с заседаний ЕС. [source_claim]\n- Сийярто мог звонить в Москву во время заседаний ЕС и делиться деталями переговоров. [source_claim]\n- Сийярто не комментирует эти сообщения. [fact]\n\nСущности: Сийярто, Лавров, МИД Венгрии, Венгрия, Россия, ЕС\n\nИсточник: Ateo Breaking\n\nТемы: дипломатия, шпионаж, ЕС, Россия, разглашение информации\n\nТип контента: news"
+}

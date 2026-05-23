@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T19:18:18.724179+00:00",
+  "provenance": {
+    "channel_name": "Англия",
+    "channel_id": 3548806336,
+    "message_id": 2,
+    "date": "2026-01-20T10:49:44+00:00",
+    "post_url": "https://t.me/c/3548806336/2",
+    "normalized_file": "output\\normalized\\Англия\\2.txt",
+    "meta_file": "output\\normalized\\Англия\\2.meta.json",
+    "is_forward": true,
+    "forward_from": "Ateo Blacked"
+  },
+  "content_type": "image",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Пост утверждает рост числа мигрантов из неевропейских стран в Британию после Брекзита, ссылаясь на аккаунт @ateopremium.",
+  "key_facts": [
+    {
+      "text": "Рост количества мигрантов из неевропейских стран в Британию после Брекзита",
+      "claim_type": "source_claim"
+    }
+  ],
+  "entities": {
+    "people": [],
+    "organizations": [],
+    "countries": [
+      "Британия"
+    ],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [
+    "миграция",
+    "Брекзит"
+  ],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": true,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Ateo Blacked",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Англия | Дата: 2026-01-20 10:49 | Пост: https://t.me/c/3548806336/2]\n\n\nПост утверждает рост числа мигрантов из неевропейских стран в Британию после Брекзита, ссылаясь на аккаунт @ateopremium.\n\nКлючевые факты:\n- Рост количества мигрантов из неевропейских стран в Британию после Брекзита [source_claim]\n\nСущности: Британия\n\nИсточник: Ateo Blacked",
+  "search_text": "[Канал: Англия | Дата: 2026-01-20 10:49 | Пост: https://t.me/c/3548806336/2]\n\n\nПост утверждает рост числа мигрантов из неевропейских стран в Британию после Брекзита, ссылаясь на аккаунт @ateopremium.\n\nКлючевые факты:\n- Рост количества мигрантов из неевропейских стран в Британию после Брекзита [source_claim]\n\nСущности: Британия\n\nИсточник: Ateo Blacked\n\nТемы: миграция, Брекзит\n\nТип контента: image"
+}

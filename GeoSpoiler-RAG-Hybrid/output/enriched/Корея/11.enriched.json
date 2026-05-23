@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T21:03:17.568636+00:00",
+  "provenance": {
+    "channel_name": "Корея",
+    "channel_id": 3215620297,
+    "message_id": 11,
+    "date": "2026-01-26T16:00:14+00:00",
+    "post_url": "https://t.me/c/3215620297/11",
+    "normalized_file": "output\\normalized\\Корея\\11.txt",
+    "meta_file": "output\\normalized\\Корея\\11.meta.json",
+    "is_forward": true,
+    "forward_from": "Тарас Григорович повідомляє"
+  },
+  "content_type": "news",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Северокорейский лидер Ким Чен Ын осмотрел проекты памятника и музея, посвящённых солдатам КНДР, якобы погибшим в боях с Украиной.",
+  "key_facts": [
+    {
+      "text": "Ким Чен Ын осмотрел части будущего памятника и музея, посвящённых солдатам КНДР, погибшим в боях против Украины.",
+      "claim_type": "source_claim"
+    }
+  ],
+  "entities": {
+    "people": [
+      "Ким Чен Ын"
+    ],
+    "organizations": [],
+    "countries": [
+      "КНДР",
+      "Украина"
+    ],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [
+    "военная пропаганда",
+    "Северная Корея",
+    "Украина",
+    "памятники"
+  ],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": true,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Тарас Григорович повідомляє",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Корея | Дата: 2026-01-26 16:00 | Пост: https://t.me/c/3215620297/11]\n\n\nСеверокорейский лидер Ким Чен Ын осмотрел проекты памятника и музея, посвящённых солдатам КНДР, якобы погибшим в боях с Украиной.\n\nКлючевые факты:\n- Ким Чен Ын осмотрел части будущего памятника и музея, посвящённых солдатам КНДР, погибшим в боях против Украины. [source_claim]\n\nСущности: Ким Чен Ын, КНДР, Украина\n\nИсточник: Тарас Григорович повідомляє",
+  "search_text": "[Канал: Корея | Дата: 2026-01-26 16:00 | Пост: https://t.me/c/3215620297/11]\n\n\nСеверокорейский лидер Ким Чен Ын осмотрел проекты памятника и музея, посвящённых солдатам КНДР, якобы погибшим в боях с Украиной.\n\nКлючевые факты:\n- Ким Чен Ын осмотрел части будущего памятника и музея, посвящённых солдатам КНДР, погибшим в боях против Украины. [source_claim]\n\nСущности: Ким Чен Ын, КНДР, Украина\n\nИсточник: Тарас Григорович повідомляє\n\nТемы: военная пропаганда, Северная Корея, Украина, памятники\n\nТип контента: news"
+}

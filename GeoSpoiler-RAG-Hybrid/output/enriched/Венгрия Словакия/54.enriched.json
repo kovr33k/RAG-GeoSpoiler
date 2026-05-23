@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T20:45:55.853846+00:00",
+  "provenance": {
+    "channel_name": "Венгрия Словакия",
+    "channel_id": 3328128766,
+    "message_id": 54,
+    "date": "2026-03-09T17:40:34+00:00",
+    "post_url": "https://t.me/c/3328128766/54",
+    "normalized_file": "output\\normalized\\Венгрия Словакия\\54.txt",
+    "meta_file": "output\\normalized\\Венгрия Словакия\\54.meta.json",
+    "is_forward": true,
+    "forward_from": "Тарас Григорович повідомляє"
+  },
+  "content_type": "image",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Фицо намекнул на возможность преемника Орбана, но это было расценено как блеф.",
+  "key_facts": [
+    {
+      "text": "Фицо намекнул, что кто-то может продолжить дело Орбана, если того не будет (у власти).",
+      "claim_type": "source_claim"
+    },
+    {
+      "text": "Это блеф.",
+      "claim_type": "hypothesis"
+    }
+  ],
+  "entities": {
+    "people": [
+      "Фицо",
+      "Орбан"
+    ],
+    "organizations": [],
+    "countries": [],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [
+    "политика",
+    "преемственность власти"
+  ],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": true,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Тарас Григорович повідомляє",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Венгрия Словакия | Дата: 2026-03-09 17:40 | Пост: https://t.me/c/3328128766/54]\n\n\nФицо намекнул на возможность преемника Орбана, но это было расценено как блеф.\n\nКлючевые факты:\n- Фицо намекнул, что кто-то может продолжить дело Орбана, если того не будет (у власти). [source_claim]\n- Это блеф. [hypothesis]\n\nСущности: Фицо, Орбан\n\nИсточник: Тарас Григорович повідомляє",
+  "search_text": "[Канал: Венгрия Словакия | Дата: 2026-03-09 17:40 | Пост: https://t.me/c/3328128766/54]\n\n\nФицо намекнул на возможность преемника Орбана, но это было расценено как блеф.\n\nКлючевые факты:\n- Фицо намекнул, что кто-то может продолжить дело Орбана, если того не будет (у власти). [source_claim]\n- Это блеф. [hypothesis]\n\nСущности: Фицо, Орбан\n\nИсточник: Тарас Григорович повідомляє\n\nТемы: политика, преемственность власти\n\nТип контента: image"
+}

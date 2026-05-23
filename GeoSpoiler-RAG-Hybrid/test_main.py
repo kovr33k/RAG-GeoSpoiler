@@ -1,0 +1,238 @@
+import io
+import sys
+import unittest
+import asyncio as py_asyncio
+from pathlib import Path
+from unittest.mock import AsyncMock, patch
+
+sys.path.insert(0, str(Path(__file__).parent))
+
+import main  # noqa: E402
+
+
+class _FakeRag:
+    def __init__(self):
+        self.finalized = False
+
+    async def finalize_storages(self):
+        self.finalized = True
+
+
+class MainQueryTests(unittest.IsolatedAsyncioTestCase):
+    async def test_cmd_query_exits_nonzero_when_rag_returns_no_answer(self):
+        rag = _FakeRag()
+        output = io.StringIO()
+
+        with patch.object(main, "create_rag", AsyncMock(return_value=rag)):
+            with patch.object(main, "query_rag_result", AsyncMock(return_value={"llm_response": {"content": None}})):
+                with patch("sys.stdout", output):
+                    with self.assertRaises(SystemExit) as ctx:
+                        await main.cmd_query("test question")
+
+        self.assertEqual(ctx.exception.code, 1)
+        self.assertTrue(rag.finalized)
+        self.assertIn("Query failed: LightRAG returned no answer.", output.getvalue())
+
+    async def test_cmd_query_prints_sources_only_when_requested(self):
+        rag = _FakeRag()
+        output = io.StringIO()
+        result = {
+            "llm_response": {"content": "Answer body"},
+            "data": {
+                "references": [
+                    {"reference_id": "ref-1", "file_path": str(Path("D:/topic/1.txt").resolve(strict=False))}
+                ]
+            },
+        }
+        source_index = {
+            str(Path("D:/topic/1.txt").resolve(strict=False)): {
+                "post_url": "https://t.me/example/1",
+                "channel_name": "Topic",
+                "date": "2026-04-30 12:00",
+            }
+        }
+
+        with patch.object(main, "create_rag", AsyncMock(return_value=rag)):
+            with patch.object(main, "query_rag_result", AsyncMock(return_value=result)):
+                with patch.object(main, "load_source_metadata_index", return_value=source_index):
+                    with patch("sys.stdout", output):
+                        await main.cmd_query("Откуда эта информация? Дай ссылку")
+
+        text = output.getvalue()
+        self.assertTrue(rag.finalized)
+        self.assertIn("Answer body", text)
+        self.assertIn("Источники:", text)
+        self.assertIn("https://t.me/example/1", text)
+
+    async def test_cmd_query_skips_sources_when_not_requested(self):
+        rag = _FakeRag()
+        output = io.StringIO()
+        result = {
+            "llm_response": {"content": "Answer body"},
+            "data": {"references": [{"reference_id": "ref-1", "file_path": "D:/topic/1.txt"}]},
+        }
+
+        with patch.object(main, "create_rag", AsyncMock(return_value=rag)):
+            with patch.object(main, "query_rag_result", AsyncMock(return_value=result)):
+                with patch("sys.stdout", output):
+                    await main.cmd_query("Что в базе говорится про AfD?")
+
+        text = output.getvalue()
+        self.assertTrue(rag.finalized)
+        self.assertIn("Answer body", text)
+        self.assertNotIn("Источники:", text)
+
+    def test_extract_query_sources_prefers_cited_references(self):
+        result = {
+            "llm_response": {"content": "Answer\n\n### References\n- [2] Some cited chunk"},
+            "data": {
+                "references": [
+                    {"reference_id": "ref-a", "file_path": str(Path("D:/topic/1.txt").resolve(strict=False))},
+                    {"reference_id": "ref-b", "file_path": str(Path("D:/topic/2.txt").resolve(strict=False))},
+                ]
+            },
+        }
+        source_index = {
+            str(Path("D:/topic/1.txt").resolve(strict=False)): {"post_url": "https://t.me/example/1"},
+            str(Path("D:/topic/2.txt").resolve(strict=False)): {"post_url": "https://t.me/example/2"},
+        }
+
+        with patch.object(main, "load_source_metadata_index", return_value=source_index):
+            sources = main._extract_query_sources(result)
+
+        self.assertEqual(len(sources), 1)
+        self.assertEqual(sources[0]["post_url"], "https://t.me/example/2")
+
+    def test_main_query_cli_joins_full_question_and_mode(self):
+        captured = {}
+        original_run = py_asyncio.run
+
+        async def fake_cmd_query(question, mode, query_profile=None):
+            captured["question"] = question
+            captured["mode"] = mode
+            captured["query_profile"] = query_profile
+
+        def fake_run(coro):
+            original_run(coro)
+
+        with patch.object(main, "setup_logging"):
+            with patch.object(main, "cmd_query", fake_cmd_query):
+                with patch.object(main.asyncio, "run", side_effect=fake_run):
+                    with patch.object(
+                        sys,
+                        "argv",
+                        ["main.py", "query", "Откуда", "в", "базе", "тезис", "hybrid"],
+                    ):
+                        main.main()
+
+        self.assertEqual(captured.get("question"), "Откуда в базе тезис")
+        self.assertEqual(captured.get("mode"), "hybrid")
+        self.assertIsNone(captured.get("query_profile"))
+
+    def test_main_query_cli_parses_query_profile(self):
+        captured = {}
+        original_run = py_asyncio.run
+
+        async def fake_cmd_query(question, mode, query_profile=None):
+            captured["question"] = question
+            captured["mode"] = mode
+            captured["query_profile"] = query_profile
+
+        def fake_run(coro):
+            original_run(coro)
+
+        with patch.object(main, "setup_logging"):
+            with patch.object(main, "cmd_query", fake_cmd_query):
+                with patch.object(main.asyncio, "run", side_effect=fake_run):
+                    with patch.object(
+                        sys,
+                        "argv",
+                        ["main.py", "query", "Откуда", "это?", "mix", "source"],
+                    ):
+                        main.main()
+
+        self.assertEqual(captured.get("question"), "Откуда это?")
+        self.assertEqual(captured.get("mode"), "mix")
+        self.assertEqual(captured.get("query_profile"), "source")
+
+    def test_main_query_cli_defaults_to_mix_when_mode_is_omitted(self):
+        captured = {}
+        original_run = py_asyncio.run
+
+        async def fake_cmd_query(question, mode, query_profile=None):
+            captured["question"] = question
+            captured["mode"] = mode
+            captured["query_profile"] = query_profile
+
+        def fake_run(coro):
+            original_run(coro)
+
+        with patch.object(main, "setup_logging"):
+            with patch.object(main, "cmd_query", fake_cmd_query):
+                with patch.object(main.asyncio, "run", side_effect=fake_run):
+                    with patch.object(
+                        sys,
+                        "argv",
+                        ["main.py", "query", "Ð§Ñ‚Ð¾", "Ð²", "Ð±Ð°Ð·Ðµ", "Ð¿Ñ€Ð¾", "ÐšÑƒÐ±Ñƒ"],
+                    ):
+                        main.main()
+
+        self.assertEqual(captured.get("question"), "Ð§Ñ‚Ð¾ Ð² Ð±Ð°Ð·Ðµ Ð¿Ñ€Ð¾ ÐšÑƒÐ±Ñƒ")
+        self.assertEqual(captured.get("mode"), "mix")
+        self.assertIsNone(captured.get("query_profile"))
+
+    def test_main_rebuild_cli_defaults_to_normalized_graph(self):
+        captured = {}
+        original_run = py_asyncio.run
+
+        async def fake_cmd_rebuild(from_enriched=False):
+            captured["from_enriched"] = from_enriched
+
+        def fake_run(coro):
+            original_run(coro)
+
+        with patch.object(main, "setup_logging"):
+            with patch.object(main, "cmd_rebuild", fake_cmd_rebuild):
+                with patch.object(main.asyncio, "run", side_effect=fake_run):
+                    with patch.object(sys, "argv", ["main.py", "rebuild"]):
+                        main.main()
+
+        self.assertFalse(captured.get("from_enriched"))
+
+    def test_main_rebuild_cli_requires_explicit_enriched_flag(self):
+        captured = {}
+        original_run = py_asyncio.run
+
+        async def fake_cmd_rebuild(from_enriched=False):
+            captured["from_enriched"] = from_enriched
+
+        def fake_run(coro):
+            original_run(coro)
+
+        with patch.object(main, "setup_logging"):
+            with patch.object(main, "cmd_rebuild", fake_cmd_rebuild):
+                with patch.object(main.asyncio, "run", side_effect=fake_run):
+                    with patch.object(sys, "argv", ["main.py", "rebuild", "--from-enriched"]):
+                        main.main()
+
+        self.assertTrue(captured.get("from_enriched"))
+
+    def test_main_load_cli_defaults_to_normalized_graph(self):
+        captured = {}
+        original_run = py_asyncio.run
+
+        async def fake_cmd_load(texts_with_paths=None, from_enriched=False):
+            captured["from_enriched"] = from_enriched
+            return main.LoadStats()
+
+        def fake_run(coro):
+            return original_run(coro)
+
+        with patch.object(main, "setup_logging"):
+            with patch.object(main, "cmd_load", fake_cmd_load):
+                with patch.object(main, "_print_load_summary"):
+                    with patch.object(main.asyncio, "run", side_effect=fake_run):
+                        with patch.object(sys, "argv", ["main.py", "load"]):
+                            main.main()
+
+        self.assertFalse(captured.get("from_enriched"))

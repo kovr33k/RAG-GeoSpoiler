@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T20:17:48.388793+00:00",
+  "provenance": {
+    "channel_name": "Венгрия Словакия",
+    "channel_id": 3328128766,
+    "message_id": 172,
+    "date": "2026-04-12T19:24:02+00:00",
+    "post_url": "https://t.me/c/3328128766/172",
+    "normalized_file": "output\\normalized\\Венгрия Словакия\\172.txt",
+    "meta_file": "output\\normalized\\Венгрия Словакия\\172.meta.json",
+    "is_forward": true,
+    "forward_from": "Тарас Григорович повідомляє"
+  },
+  "content_type": "image",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Венгерский премьер-министр Виктор Орбан по телефону поздравил Мадьяра с победой, согласно изображению, описание которого недоступно.",
+  "key_facts": [
+    {
+      "text": "Виктор Орбан по телефону поздравил Мадьяра с победой.",
+      "claim_type": "source_claim"
+    }
+  ],
+  "entities": {
+    "people": [
+      "Виктор Орбан"
+    ],
+    "organizations": [],
+    "countries": [
+      "Венгрия"
+    ],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": true,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Тарас Григорович повідомляє",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Венгрия Словакия | Дата: 2026-04-12 19:24 | Пост: https://t.me/c/3328128766/172]\n\n\nВенгерский премьер-министр Виктор Орбан по телефону поздравил Мадьяра с победой, согласно изображению, описание которого недоступно.\n\nКлючевые факты:\n- Виктор Орбан по телефону поздравил Мадьяра с победой. [source_claim]\n\nСущности: Виктор Орбан, Венгрия\n\nИсточник: Тарас Григорович повідомляє",
+  "search_text": "[Канал: Венгрия Словакия | Дата: 2026-04-12 19:24 | Пост: https://t.me/c/3328128766/172]\n\n\nВенгерский премьер-министр Виктор Орбан по телефону поздравил Мадьяра с победой, согласно изображению, описание которого недоступно.\n\nКлючевые факты:\n- Виктор Орбан по телефону поздравил Мадьяра с победой. [source_claim]\n\nСущности: Виктор Орбан, Венгрия\n\nИсточник: Тарас Григорович повідомляє\n\nТип контента: image"
+}

@@ -1,0 +1,299 @@
+{
+  "doc-882de6693e8c9fb207f57f61323d2d4e": {
+    "status": "failed",
+    "error_msg": "Connection error.",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-a2c1fe6eec4b0d533b5269363a9c02da"
+    ],
+    "content_summary": "На Кубе разворачиваются протесты, сопровождающиеся поджогами\n\nПолное отключение электричества длится вторую неделю, люди жгут костры. Дополнительным поводом выйти на улицы стало выступление президента, который объявил о начале переговоров с США.\n\nКак...",
+    "content_length": 363,
+    "created_at": "2026-04-29T23:04:19.662819+00:00",
+    "updated_at": "2026-04-29T23:06:10.526928+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\5.txt",
+    "track_id": "insert_20260430_010419_cf93b879",
+    "metadata": {
+      "processing_start_time": 1777503969,
+      "processing_end_time": 1777503970
+    }
+  },
+  "doc-7febacd6fb43b6f3f5d322062ffa2c70": {
+    "status": "failed",
+    "error_msg": "Connection error.",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-26a0c741b3e720a0878cd12efde32ab3"
+    ],
+    "content_summary": "🇺🇸 Дональд Трамп заявив, що не проти постачання російської нафти на Кубу, попри енергетичну блокаду.\n\n«Якщо хтось хоче доставити нафту — ми не проти, їм потрібно виживати. Я сказав: якщо якась країна хоче відправити нафту на Кубу — у мене немає запер...",
+    "content_length": 905,
+    "created_at": "2026-04-29T23:04:21.431616+00:00",
+    "updated_at": "2026-04-29T23:06:10.481003+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\6.txt",
+    "track_id": "insert_20260430_010421_0ecc00d6",
+    "metadata": {
+      "processing_start_time": 1777503969,
+      "processing_end_time": 1777503970
+    }
+  },
+  "doc-c5ff3150becdc95a13382b5166108426": {
+    "status": "failed",
+    "error_msg": "Connection error.",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-a87bd5684f407f2900f544cd1ebd84b2"
+    ],
+    "content_summary": "Здесь есть важный нюанс - 30 января Трамп подписал указ о введении тарифов против стран, которые поставят нефть Кубе.\n\nНо другу Владимиру можно все :)\n\n[Изображение]\n## OSINT Image Analysis\n\n**Language:** Ukrainian\n\n**Image Description:** The image i...",
+    "content_length": 2149,
+    "created_at": "2026-04-29T23:04:22.787775+00:00",
+    "updated_at": "2026-04-29T23:06:11.847037+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\7.txt",
+    "track_id": "insert_20260430_010422_14d31730",
+    "metadata": {
+      "processing_start_time": 1777503970,
+      "processing_end_time": 1777503971
+    }
+  },
+  "doc-81793c3cdcbfbe89f795246759446720": {
+    "status": "failed",
+    "error_msg": "Connection error.",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-7e0fc3662465aeaa22012fc5b57b9ab2"
+    ],
+    "content_summary": "🇺🇸🇨🇺 США вперше за 10 років провели таємні переговори з Кубою в Гавані\n\n💬Делегація Держдепартаменту США минулої п'ятниці прибула до Гавани на переговори з владою Куби, повідомили джерела Axios. За словами високопоставленого чиновника дипвідомства, ві...",
+    "content_length": 1378,
+    "created_at": "2026-04-29T23:04:25.323942+00:00",
+    "updated_at": "2026-04-29T23:06:11.878614+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\8.txt",
+    "track_id": "insert_20260430_010425_5db619ec",
+    "metadata": {
+      "processing_start_time": 1777503970,
+      "processing_end_time": 1777503971
+    }
+  },
+  "doc-b14a5dcf0576373212d8f6eb81f4a79b": {
+    "status": "failed",
+    "error_msg": "Connection error.",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-c3304f520cd42cf6e6640f83b9b8f87c"
+    ],
+    "content_summary": "❗️Главный идеолог «русского мира» Александр Дугин: «Нельзя согласиться с существованием суверенной Армении, Азербайджана, Казахстана, Грузии, Узбекистана.. либо они станут частью нашего единого союза, либо плацдармом США и ЕС».",
+    "content_length": 227,
+    "created_at": "2026-04-29T23:04:28.099783+00:00",
+    "updated_at": "2026-04-29T23:06:13.215712+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\10.txt",
+    "track_id": "insert_20260430_010428_e99c53e0",
+    "metadata": {
+      "processing_start_time": 1777503971,
+      "processing_end_time": 1777503973
+    }
+  },
+  "doc-e0d5989261f7edbddde19128152f7c74": {
+    "status": "failed",
+    "error_msg": "Connection error.",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-1e5a4b6e48badb36de1e41a6f2ff6bf7"
+    ],
+    "content_summary": "Ультра левые и правые совпадают",
+    "content_length": 31,
+    "created_at": "2026-04-29T23:04:31.880714+00:00",
+    "updated_at": "2026-04-29T23:06:13.320072+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\11.txt",
+    "track_id": "insert_20260430_010431_d764113c",
+    "metadata": {
+      "processing_start_time": 1777503971,
+      "processing_end_time": 1777503973
+    }
+  },
+  "doc-f53762641d2ee3217b2ff76f463d9ed6": {
+    "status": "failed",
+    "error_msg": "Connection error.",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-d9288589f132b7f0eb2ae4c305ab9848"
+    ],
+    "content_summary": "Ще одне опитування від Insa: Більше половини німців виступає за збільшення допомоги Україні\n\nЯк показало нове опитування Insa, проведене на замовлення BILD, 52% респондентів у Німеччині вважають, що Захід має посилити підтримку України, аби підштовхн...",
+    "content_length": 2600,
+    "created_at": "2026-04-29T23:04:36.061265+00:00",
+    "updated_at": "2026-04-29T23:06:14.627395+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\12.txt",
+    "track_id": "insert_20260430_010436_40eb0604",
+    "metadata": {
+      "processing_start_time": 1777503973,
+      "processing_end_time": 1777503974
+    }
+  },
+  "doc-6a5a5086371a41f6db882a7202c9eabc": {
+    "status": "failed",
+    "error_msg": "Connection error.",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-62c7c27d5a1271eee2b62fde6fdb978e"
+    ],
+    "content_summary": "Випадки кумівства в AfD виходять за межі земельної політики\n\nПісля того як AfD у Саксонії-Ангальт уже загрузла в скандалі через працевлаштування родичів, тепер у поле зору потрапили й провідні політики федерального рівня.За даними t-online, до історі...",
+    "content_length": 1662,
+    "created_at": "2026-04-29T23:04:41.681083+00:00",
+    "updated_at": "2026-04-29T23:06:14.764342+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\13.txt",
+    "track_id": "insert_20260430_010441_d44cdcf4",
+    "metadata": {
+      "processing_start_time": 1777503973,
+      "processing_end_time": 1777503974
+    }
+  },
+  "doc-6b6575a8c3bfb0cbceb16d1b8bcd6767": {
+    "status": "failed",
+    "error_msg": "Connection error.",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-9ee68b3273f299f8ae149b136191f2fe"
+    ],
+    "content_summary": "German Chancellor Merz:\n\nI am so clear, so uncompromising, and yes, so relentless in my dealings with those who call themselves the Alternative für Deutschland, because I am not prepared to lend my hand to squandering the European legacy of our Feder...",
+    "content_length": 341,
+    "created_at": "2026-04-29T23:04:47.257667+00:00",
+    "updated_at": "2026-04-29T23:06:15.881004+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\14.txt",
+    "track_id": "insert_20260430_010447_f204953a",
+    "metadata": {
+      "processing_start_time": 1777503974,
+      "processing_end_time": 1777503975
+    }
+  },
+  "doc-92844413dd098c6870c624e615a2accb": {
+    "status": "failed",
+    "error_msg": "Connection error.",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-55348f566660754475cddb9236d91243"
+    ],
+    "content_summary": "German AfD Leader Alice Weidel:\n\nPeace in Europe is only possible with Russia, not without it. We have always stood for peace negotiations between Ukraine and Russia.\n\nEnd this senseless dying in Ukraine.\n\nWhy did the Western states, led in particula...",
+    "content_length": 505,
+    "created_at": "2026-04-29T23:04:53.669357+00:00",
+    "updated_at": "2026-04-29T23:06:16.080569+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\15.txt",
+    "track_id": "insert_20260430_010453_8bb74ced",
+    "metadata": {
+      "processing_start_time": 1777503974,
+      "processing_end_time": 1777503976
+    }
+  },
+  "doc-a1a356985345a203c25a5c607675793d": {
+    "status": "processing",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-32b092b5e1ef49279916994e3472b8cb"
+    ],
+    "content_summary": "https://kkinstagram.com/reel/DTBzWeD9SF/?igsh=MThmbXFmazUycnFyeQ==\n\n[Instagram: https://www.instagram.com/reel/DT_BzWeD9SF/?igsh=MThmbXFmazUycnFyeQ== - @Derecha Libertaria]\n\n🇿🇦🗣️: Julius Malema, líder del partido político sudafricano de izquierda rad...",
+    "content_length": 1002,
+    "created_at": "2026-04-29T23:05:00.493378+00:00",
+    "updated_at": "2026-04-29T23:06:15.882502+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\16.txt",
+    "track_id": "insert_20260430_010500_c317f3b9",
+    "metadata": {
+      "processing_start_time": 1777503975
+    }
+  },
+  "doc-798d63d30f88e78402c9f686b948dc0e": {
+    "status": "processing",
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-4b36ac69a885c1764067ae49e05f7daf"
+    ],
+    "content_summary": "[Instagram: https://www.instagram.com/reel/DVRCLW0DZT9/?igsh=cWI0ejYzYnZvMzVi]\n\nHistory repeats…\n\n-\nCopyright Disclaimer: Content shared under\nFair Use (Section 107, Copyright Act of 1976) for purposes like criticism, comment, news, teaching, or rese...",
+    "content_length": 906,
+    "created_at": "2026-04-29T23:05:08.512316+00:00",
+    "updated_at": "2026-04-29T23:06:16.081930+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\17.txt",
+    "track_id": "insert_20260430_010508_c2e08ee1",
+    "metadata": {
+      "processing_start_time": 1777503976
+    }
+  },
+  "doc-c30d101952e0653e54f1513f17bd9893": {
+    "status": "pending",
+    "content_summary": "Везде ультра левые и ульраправые одинаковые\n\n[Instagram: https://www.instagram.com/reel/DN3mCxKWnaL/?igsh=MjJ1d3BzdWRia2Jv — @MUCRAINE 🇺🇦 MUKRAINE]\n\n🇺🇦|🇩🇪 Ну нарешті хтось їм пояснив простою зрозумілою мовою. Респект!\n\n🇩🇪 Endlich hat es ihnen jemand ...",
+    "content_length": 344,
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-f74cef3fe5796ae5cd28350179a09abf"
+    ],
+    "created_at": "2026-04-29T23:05:16.760269+00:00",
+    "updated_at": "2026-04-29T23:06:09.201546+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\18.txt",
+    "track_id": "insert_20260430_010516_c25e96ea",
+    "error_msg": "",
+    "metadata": {}
+  },
+  "doc-ddd3b5e7905870192a694879f37ab0b6": {
+    "status": "pending",
+    "content_summary": "🇩🇪 Ультраправую немецкую партию АдГ подозревают в передаче секретных документов ЕС России — Politico\nПолитиков от «Альтернативы для Германии» подозревают в том, что они раскрывают информацию, представляющую интерес для российской разведки, в том числ...",
+    "content_length": 434,
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-29cbdd64eed866070cfea990b19b8903"
+    ],
+    "created_at": "2026-04-29T23:05:25.826239+00:00",
+    "updated_at": "2026-04-29T23:06:09.201562+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\19.txt",
+    "track_id": "insert_20260430_010525_bc466edb",
+    "error_msg": "",
+    "metadata": {}
+  },
+  "doc-133f2ad7358431230c033d73c3e53653": {
+    "status": "pending",
+    "content_summary": "Поки європейські країни відновлюють свою оборонну промисловість, щоб допомогти Україні, Ґрета Тунберг разом із італійськими ультралівими союзниками запускає кампанію проти \"мілітаризації\" Європи\n\n\"Переозброєння ЄС\", за їхньою логікою, не має народної...",
+    "content_length": 504,
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-ba5a3ab125fb3d7d30ee2f861e580711"
+    ],
+    "created_at": "2026-04-29T23:05:35.628617+00:00",
+    "updated_at": "2026-04-29T23:06:09.201577+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\2.txt",
+    "track_id": "insert_20260430_010535_fad79d44",
+    "error_msg": "",
+    "metadata": {}
+  },
+  "doc-03cf47b58bc13f3679c1e0a07f9feaef": {
+    "status": "pending",
+    "content_summary": "Да, это абсолютная правда. Урсула фон дер Ляйен, будучи председателем Европейской комиссии и представителем правоцентристской Европейской народной партии (ЕНП), является главным лицом европейского политического истеблишмента.\nПоскольку она находится ...",
+    "content_length": 3587,
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-046c36aa198c8a50d334b18d977bfe98"
+    ],
+    "created_at": "2026-04-29T23:05:46.179644+00:00",
+    "updated_at": "2026-04-29T23:06:09.201592+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\20.txt",
+    "track_id": "insert_20260430_010546_7f92bcd4",
+    "error_msg": "",
+    "metadata": {}
+  },
+  "doc-c4cb4f939cd316405a3f91efc3e704fa": {
+    "status": "pending",
+    "content_summary": "Вотум недоверия (официально — motion of censure) — это радикальный юридический инструмент в Европейском парламенте. Если он принимается, весь состав Европейской комиссии во главе с председателем обязан уйти в отставку.\nДо недавнего времени этот механ...",
+    "content_length": 3318,
+    "chunks_count": 1,
+    "chunks_list": [
+      "chunk-68a2a5d06a4ae8e8b102c68669140872"
+    ],
+    "created_at": "2026-04-29T23:05:57.189514+00:00",
+    "updated_at": "2026-04-29T23:06:09.201607+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\21.txt",
+    "track_id": "insert_20260430_010557_71216dfe",
+    "error_msg": "",
+    "metadata": {}
+  },
+  "doc-937369d27df806c42397289db7f7a715": {
+    "status": "pending",
+    "content_summary": "Во время пандемии по работе был занят изучением тенденций взаимодействия неонацистских и ультраправых групп с джихадистскими. Тогда я уже писал о схожих маркерах, которые их сближают, прогнозируя их симбиоз в контексте \"общих врагов\" (как-никак, исла...",
+    "content_length": 3416,
+    "created_at": "2026-04-29T23:06:09.199586+00:00",
+    "updated_at": "2026-04-29T23:06:09.199593+00:00",
+    "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\22.txt",
+    "track_id": "insert_20260430_010609_79362e84",
+    "chunks_list": []
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T20:47:31.574638+00:00",
+  "provenance": {
+    "channel_name": "Венгрия Словакия",
+    "channel_id": 3328128766,
+    "message_id": 58,
+    "date": "2026-03-10T15:08:48+00:00",
+    "post_url": "https://t.me/c/3328128766/58",
+    "normalized_file": "output\\normalized\\Венгрия Словакия\\58.txt",
+    "meta_file": "output\\normalized\\Венгрия Словакия\\58.meta.json",
+    "is_forward": true,
+    "forward_from": "Ateo Breaking"
+  },
+  "content_type": "news",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Венгрия приняла резолюцию, ограничивающую финансовую поддержку Украины и выступающую против её вступления в ЕС, опасаясь вовлечения ЕС в войну.",
+  "key_facts": [
+    {
+      "text": "Венгрия приняла резолюцию об ограничении финансовой поддержки Украины.",
+      "claim_type": "source_claim"
+    },
+    {
+      "text": "Один из пунктов резолюции против членства Украины в ЕС, так как это может вовлечь ЕС в войну.",
+      "claim_type": "source_claim"
+    }
+  ],
+  "entities": {
+    "people": [],
+    "organizations": [
+      "Европейский Союз"
+    ],
+    "countries": [
+      "Венгрия",
+      "Украина"
+    ],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [
+    "Финансовая поддержка Украины",
+    "Членство Украины в ЕС",
+    "Венгерская внешняя политика"
+  ],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": false,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Ateo Breaking",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Венгрия Словакия | Дата: 2026-03-10 15:08 | Пост: https://t.me/c/3328128766/58]\n\n\nВенгрия приняла резолюцию, ограничивающую финансовую поддержку Украины и выступающую против её вступления в ЕС, опасаясь вовлечения ЕС в войну.\n\nКлючевые факты:\n- Венгрия приняла резолюцию об ограничении финансовой поддержки Украины. [source_claim]\n- Один из пунктов резолюции против членства Украины в ЕС, так как это может вовлечь ЕС в войну. [source_claim]\n\nСущности: Европейский Союз, Венгрия, Украина\n\nИсточник: Ateo Breaking",
+  "search_text": "[Канал: Венгрия Словакия | Дата: 2026-03-10 15:08 | Пост: https://t.me/c/3328128766/58]\n\n\nВенгрия приняла резолюцию, ограничивающую финансовую поддержку Украины и выступающую против её вступления в ЕС, опасаясь вовлечения ЕС в войну.\n\nКлючевые факты:\n- Венгрия приняла резолюцию об ограничении финансовой поддержки Украины. [source_claim]\n- Один из пунктов резолюции против членства Украины в ЕС, так как это может вовлечь ЕС в войну. [source_claim]\n\nСущности: Европейский Союз, Венгрия, Украина\n\nИсточник: Ateo Breaking\n\nТемы: Финансовая поддержка Украины, Членство Украины в ЕС, Венгерская внешняя политика\n\nТип контента: news"
+}

@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "enriched_at": "2026-05-13T20:57:08.783121+00:00",
+  "provenance": {
+    "channel_name": "Венгрия Словакия",
+    "channel_id": 3328128766,
+    "message_id": 93,
+    "date": "2026-03-20T18:44:54+00:00",
+    "post_url": "https://t.me/c/3328128766/93",
+    "normalized_file": "output\\normalized\\Венгрия Словакия\\93.txt",
+    "meta_file": "output\\normalized\\Венгрия Словакия\\93.meta.json",
+    "is_forward": true,
+    "forward_from": "Европа"
+  },
+  "content_type": "instagram_post",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Не удалось извлечь содержимое поста, так как он может быть приватным.",
+  "key_facts": [
+    {
+      "text": "Содержимое поста не удалось извлечь из-за приватности аккаунта или ограничений доступа.",
+      "claim_type": "source_claim"
+    }
+  ],
+  "entities": {
+    "people": [],
+    "organizations": [],
+    "countries": [],
+    "locations": [],
+    "military_units": [],
+    "equipment": []
+  },
+  "topics": [],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [],
+  "visual": {
+    "has_images": false,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "none",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Европа",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: Венгрия Словакия | Дата: 2026-03-20 18:44 | Пост: https://t.me/c/3328128766/93]\n\n\nНе удалось извлечь содержимое поста, так как он может быть приватным.\n\nКлючевые факты:\n- Содержимое поста не удалось извлечь из-за приватности аккаунта или ограничений доступа. [source_claim]\n\nИсточник: Европа",
+  "search_text": "[Канал: Венгрия Словакия | Дата: 2026-03-20 18:44 | Пост: https://t.me/c/3328128766/93]\n\n\nНе удалось извлечь содержимое поста, так как он может быть приватным.\n\nКлючевые факты:\n- Содержимое поста не удалось извлечь из-за приватности аккаунта или ограничений доступа. [source_claim]\n\nИсточник: Европа\n\nТип контента: instagram_post"
+}
