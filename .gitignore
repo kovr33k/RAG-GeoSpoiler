@@ -6,7 +6,3 @@ Desktop.ini
 # Obsidian local workspace state
 .obsidian/workspace*.json
 .trash/
-
-# Local secrets and sessions at repository root
-.env
-*.session
