@@ -25,8 +25,12 @@ logger = logging.getLogger("geospoiler.loader")
 _LLM_ROLE = contextvars.ContextVar("geospoiler_lightrag_llm_role", default="query")
 
 # ── NIM Embedding client (handles input_type required by asymmetric models) ──
+def _client_api_key(api_key: str, base_url: str) -> str:
+    return get_openai_api_key(api_key, base_url) or "geospoiler-missing-api-key"
+
+
 _embed_client = AsyncOpenAI(
-    api_key=config.EMBEDDING_API_KEY,
+    api_key=_client_api_key(config.EMBEDDING_API_KEY, config.EMBEDDING_BASE_URL),
     base_url=config.EMBEDDING_BASE_URL,
     timeout=config.EMBEDDING_TIMEOUT_SECONDS,
 )
@@ -146,7 +150,7 @@ def _chat_settings_for_role(role: str) -> tuple[str, str, str]:
 
 def _openai_client(api_key: str, base_url: str, **kwargs) -> AsyncOpenAI:
     return AsyncOpenAI(
-        api_key=get_openai_api_key(api_key, base_url),
+        api_key=_client_api_key(api_key, base_url),
         base_url=base_url,
         **kwargs,
     )

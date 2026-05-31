@@ -39,6 +39,8 @@ Use `LLM_VERIFICATION_QUEUE.md` for model/live-endpoint checks; use this log for
   Release verification:
   `python -m unittest test_loader.AnswerPostprocessTests` -> 9 tests OK.
   Final no-cache release golden with `GOLDEN_QUERY_DELAY_SECONDS=0` and `deepseek-v4-flash` -> `23/23`, average `100.0`.
+  GitHub Actions path fixed, and offline CI imports fixed by allowing OpenAI-compatible clients to initialize with a
+  dummy key when local/API credentials are absent; real network calls without credentials still fail at request time.
   Artifacts:
   `artifacts/v1_release_golden_set_results.md`,
   `artifacts/v1_release_golden_set_scores.json`.
