@@ -1,3712 +1,3915 @@
 {
-  "doc-882de6693e8c9fb207f57f61323d2d4e": {
+  "doc-b3f527075b412a15cc288655aa83fed7": {
     "entity_names": [
-      "Communist Party of Cuba",
-      "United States",
-      "President",
-      "Cuba"
-    ],
-    "count": 4,
-    "create_time": 1777598325,
-    "update_time": 1777598325,
-    "_id": "doc-882de6693e8c9fb207f57f61323d2d4e"
-  },
-  "doc-7febacd6fb43b6f3f5d322062ffa2c70": {
-    "entity_names": [
-      "United States",
-      "730,000 barrels of oil",
-      "Cuba",
-      "New York Times",
-      "Russia",
-      "Donald Trump",
-      "U.S. Coast Guard",
-      "U.S. Department of the Treasury"
-    ],
-    "count": 8,
-    "create_time": 1777598338,
-    "update_time": 1777598338,
-    "_id": "doc-7febacd6fb43b6f3f5d322062ffa2c70"
-  },
-  "doc-c5ff3150becdc95a13382b5166108426": {
-    "entity_names": [
-      "Donald Trump",
-      "Vladimir",
-      "Cuba"
-    ],
-    "count": 3,
-    "create_time": 1777598345,
-    "update_time": 1777598345,
-    "_id": "doc-c5ff3150becdc95a13382b5166108426"
-  },
-  "doc-81793c3cdcbfbe89f795246759446720": {
-    "entity_names": [
-      "Raúl Guillermo Rodríguez Castro",
-      "State Department",
-      "Barack Obama",
-      "United States",
-      "Starlink",
-      "Cuba",
-      "Raúl Castro",
-      "1959 Revolution"
-    ],
-    "count": 8,
-    "create_time": 1777598357,
-    "update_time": 1777598357,
-    "_id": "doc-81793c3cdcbfbe89f795246759446720"
-  },
-  "doc-3ca0560767ba012dd8b95db541c0b90d": {
-    "entity_names": [
-      "Куба",
-      "United States Senate",
-      "Конгресс",
-      "Демократы",
-      "Donald Trump",
-      "Республиканцы в Сенате США"
-    ],
-    "count": 6,
-    "create_time": 1777598367,
-    "update_time": 1777598367,
-    "_id": "doc-3ca0560767ba012dd8b95db541c0b90d"
-  },
-  "doc-133f2ad7358431230c033d73c3e53653": {
-    "entity_names": [
-      "European Union",
-      "Greta Thunberg",
-      "Italian Far-Right Allies",
-      "Последний Капиталист",
-      "Europe",
-      "Ukraine"
-    ],
-    "count": 6,
-    "create_time": 1777598377,
-    "update_time": 1777598377,
-    "_id": "doc-133f2ad7358431230c033d73c3e53653"
-  },
-  "doc-8f4e07ad069c4a993d91e95d299a0bba": {
-    "entity_names": [
-      "The Left",
-      "AfD",
-      "Germany",
-      "Bundeswehr",
-      "Greens",
-      "Social Democrats",
-      "Ukraine"
-    ],
-    "count": 7,
-    "create_time": 1777598387,
-    "update_time": 1777598387,
-    "_id": "doc-8f4e07ad069c4a993d91e95d299a0bba"
-  },
-  "doc-0d6051cb10e0c5daad1afed76665c5c6": {
-    "entity_names": [
-      "Chmut",
-      "United States",
-      "Vladimir Putin",
-      "NATO",
-      "Special Military Operation (SVO)",
-      "European Union",
-      "Krotovich",
-      "Russia",
-      "Donbas",
-      "Kherson",
-      "Kharkiv",
-      "Sternenko",
-      "Sumy",
-      "Ministry of Defense of Russia",
-      "Ukraine",
-      "Belousov"
-    ],
-    "count": 16,
-    "create_time": 1777598426,
-    "update_time": 1777598426,
-    "_id": "doc-0d6051cb10e0c5daad1afed76665c5c6"
-  },
-  "doc-119e506dfe6a156b8b2b3e88680a2a88": {
-    "entity_names": [
-      "Greta Thunberg",
-      "Western culture",
-      "Iran",
-      "Western leftists"
-    ],
-    "count": 4,
-    "create_time": 1777598438,
-    "update_time": 1777598438,
-    "_id": "doc-119e506dfe6a156b8b2b3e88680a2a88"
-  },
-  "doc-a32ffbd27b462eeb182b0f3fd21bfa85": {
-    "entity_names": [
-      "Resurgamhub",
-      "Венгрия",
-      "Газпром",
-      "РЖД",
-      "resurgamhub",
-      "Молдова",
-      "Венесуэла",
-      "Bella 1",
-      "Диана Лебедь",
-      "ICEYE",
-      "Kremlin",
-      "Donald Trump",
-      "Швеция",
-      "Resurgam",
-      "Sophia",
-      "Виктор Орбан",
-      "Гренландия"
-    ],
-    "count": 17,
-    "create_time": 1777598495,
-    "update_time": 1777598495,
-    "_id": "doc-a32ffbd27b462eeb182b0f3fd21bfa85"
-  },
-  "doc-30252879d7bf3d7a04d93f59857a7dc7": {
-    "entity_names": [
-      "Venezuela",
-      "Vladimir Putin",
-      "Greenland",
-      "AfD",
-      "Donald Trump",
-      "Алиса Вайдель"
-    ],
-    "count": 6,
-    "create_time": 1777598516,
-    "update_time": 1777598516,
-    "_id": "doc-30252879d7bf3d7a04d93f59857a7dc7"
-  },
-  "doc-ce903237a35972b170402bb380ff44cb": {
-    "entity_names": [
-      "Juliette Pavi",
-      "Bloomberg",
-      "Greenland",
-      "Slovakia",
-      "Nicolás Maduro",
-      "France",
-      "Donald Trump",
-      "Germany",
-      "Disko Bay",
-      "Ilulissat",
-      "European far-right parties"
-    ],
-    "count": 11,
-    "create_time": 1777598533,
-    "update_time": 1777598533,
-    "_id": "doc-ce903237a35972b170402bb380ff44cb"
-  },
-  "doc-b14a5dcf0576373212d8f6eb81f4a79b": {
-    "entity_names": [
-      "Azerbaijan",
-      "Kazakhstan",
-      "United States",
-      "Alexander Dugin",
-      "Uzbekistan",
-      "Georgia",
-      "European Union",
-      "Russian World",
-      "Armenia"
-    ],
-    "count": 9,
-    "create_time": 1777598555,
-    "update_time": 1777598555,
-    "_id": "doc-b14a5dcf0576373212d8f6eb81f4a79b"
-  },
-  "doc-e0d5989261f7edbddde19128152f7c74": {
-    "entity_names": [
-      "Other",
-      "Ultra-Left",
-      "Ultra-Right"
-    ],
-    "count": 3,
-    "create_time": 1777598560,
-    "update_time": 1777598560,
-    "_id": "doc-e0d5989261f7edbddde19128152f7c74"
-  },
-  "doc-f53762641d2ee3217b2ff76f463d9ed6": {
-    "entity_names": [
-      "PzH 2000",
-      "NATO",
-      "Insa",
-      "BILD",
-      "AfD",
-      "SPD",
-      "Russia",
-      "Germany",
-      "Bundeswehr",
-      "BSW",
-      "Eastern Europe",
-      "Greens",
-      "Lithuania",
-      "Winter",
-      "Ukraine",
-      "Poland"
-    ],
-    "count": 16,
-    "create_time": 1777598584,
-    "update_time": 1777598584,
-    "_id": "doc-f53762641d2ee3217b2ff76f463d9ed6"
-  },
-  "doc-6a5a5086371a41f6db882a7202c9eabc": {
-    "entity_names": [
-      "Ulrich Ziegmund",
-      "Tino Chrupalla",
-      "Bundestag",
-      "Markus Frömmel",
-      "Baden-Württemberg",
-      "AfD",
-      "Germany",
-      "Izvestia",
-      "Saxony-Anhalt",
-      "Alice Weidel"
-    ],
-    "count": 10,
-    "create_time": 1777598603,
-    "update_time": 1777598603,
-    "_id": "doc-6a5a5086371a41f6db882a7202c9eabc"
-  },
-  "doc-6b6575a8c3bfb0cbceb16d1b8bcd6767": {
-    "entity_names": [
-      "Alternative for Germany",
-      "European Union",
-      "Germany",
-      "Merz",
-      "Federal Republic of Germany"
-    ],
-    "count": 5,
-    "create_time": 1777598608,
-    "update_time": 1777598608,
-    "_id": "doc-6b6575a8c3bfb0cbceb16d1b8bcd6767"
-  },
-  "doc-92844413dd098c6870c624e615a2accb": {
-    "entity_names": [
-      "Putin",
-      "Ukraine",
-      "Istanbul Agreement",
-      "AfD",
-      "Russia",
       "United Kingdom",
-      "Zelensky",
-      "Алисе Вайдель"
-    ],
-    "count": 8,
-    "create_time": 1777598620,
-    "update_time": 1777598620,
-    "_id": "doc-92844413dd098c6870c624e615a2accb"
-  },
-  "doc-a1a356985345a203c25a5c607675793d": {
-    "entity_names": [
-      "South Africa",
-      "EFF",
-      "Julius Malema",
-      "Derecha Libertaria",
-      "Boer"
-    ],
-    "count": 5,
-    "create_time": 1777598629,
-    "update_time": 1777598629,
-    "_id": "doc-a1a356985345a203c25a5c607675793d"
-  },
-  "doc-798d63d30f88e78402c9f686b948dc0e": {
-    "entity_names": [
-      "Instagram",
-      "Meta",
-      "Закон об авторском праве 1976 года",
-      "Контент предоставлен в рамках добросовестного использования (раздел 107, Закон об авторском праве 1976 года)",
-      "Section 107"
-    ],
-    "count": 5,
-    "create_time": 1777598640,
-    "update_time": 1777598640,
-    "_id": "doc-798d63d30f88e78402c9f686b948dc0e"
-  },
-  "doc-c30d101952e0653e54f1513f17bd9893": {
-    "entity_names": [
-      "MUCRAINE",
-      "zdfheute",
-      "yurii_kechur",
-      "Germany",
-      "Ukraine"
-    ],
-    "count": 5,
-    "create_time": 1777598650,
-    "update_time": 1777598650,
-    "_id": "doc-c30d101952e0653e54f1513f17bd9893"
-  },
-  "doc-ddd3b5e7905870192a694879f37ab0b6": {
-    "entity_names": [
-      "Baltic Sea region",
-      "Politico",
-      "European Union",
-      "AfD",
-      "Russia",
-      "Ukraine"
-    ],
-    "count": 6,
-    "create_time": 1777598659,
-    "update_time": 1777598659,
-    "_id": "doc-ddd3b5e7905870192a694879f37ab0b6"
-  },
-  "doc-03cf47b58bc13f3679c1e0a07f9feaef": {
-    "entity_names": [
-      "Israel",
-      "European People's Party",
-      "Pfizer",
-      "Egypt",
-      "European Union",
-      "The Left",
-      "Pfizergate",
-      "Ursula von der Leyen",
-      "Green Deal",
-      "European Parliament",
-      "European Commission",
-      "Tunisia",
-      "Patriots for Europe",
-      "Gaza Strip"
-    ],
-    "count": 14,
-    "create_time": 1777598702,
-    "update_time": 1777598702,
-    "_id": "doc-03cf47b58bc13f3679c1e0a07f9feaef"
-  },
-  "doc-c4cb4f939cd316405a3f91efc3e704fa": {
-    "entity_names": [
-      "Conflict in Gaza",
-      "Liberals",
-      "Ursula von der Leyen",
-      "European Parliament",
-      "Social Democrats",
-      "Jacques Santer",
-      "Mercosur",
-      "European People's Party",
-      "Georghe Piperea",
-      "Motion of Censure",
-      "The Left",
-      "Pfizergate",
-      "European Commission",
-      "Belgium",
-      "Patriots for Europe",
-      "Lega",
-      "United States",
-      "Brussels",
-      "European Conservatives and Reformists"
-    ],
-    "count": 19,
-    "create_time": 1777598738,
-    "update_time": 1777598738,
-    "_id": "doc-c4cb4f939cd316405a3f91efc3e704fa"
-  },
-  "doc-937369d27df806c42397289db7f7a715": {
-    "entity_names": [
-      "Helter Skelter",
-      "SAFE",
-      "Белый шариат",
-      "Atomwaffen Division",
-      "Белый джихад",
-      "ISIS",
-      "Stefan Balliet",
-      "Terrorgram scene",
-      "AfD",
-      "Salaфитский национал-социализм",
-      "Charles Manson",
-      "Germany",
-      "Al-Qaeda",
-      "Saints",
-      "SAT BW",
-      "Hamas"
-    ],
-    "count": 16,
-    "create_time": 1777598881,
-    "update_time": 1777598881,
-    "_id": "doc-937369d27df806c42397289db7f7a715"
-  },
-  "doc-f99063df51483d8820fc8acb9aec543f": {
-    "entity_names": [
-      "White Jihad",
-      "Adolf Hitler",
-      "Argentina",
-      "Al-Taqwa",
-      "Osama bin Laden",
-      "Gamal Abdel Nasser",
-      "Composite Violent Extremism",
-      "Switzerland",
-      "Synnergistic Extremism",
-      "Fused Extremism",
-      "Adolf Eichmann",
-      "Cumulative Extremism",
-      "Johann von Leers",
-      "Germany",
-      "David Myatt",
-      "Al-Qaeda",
-      "Albert Friedrich Huber",
-      "Christian Identity",
-      "Ministry of Islamic Relations",
-      "Aryan Nations",
-      "United States",
-      "Omar Amin",
-      "The Order",
-      "François Genoud",
-      "Hamas"
-    ],
-    "count": 25,
-    "create_time": 1777599161,
-    "update_time": 1777599161,
-    "_id": "doc-f99063df51483d8820fc8acb9aec543f"
-  },
-  "doc-ea3780ab210d39afa0a450b3db57d0d8": {
-    "entity_names": [
-      "Осада",
-      "white jihad",
-      "United States",
-      "white supremacists",
-      "Дневники Тёрнера",
-      "Militant Accelerationism",
-      "social underclasses",
-      "United Kingdom",
-      "neo-Nazis",
-      "adolescents",
-      "incels"
-    ],
-    "count": 11,
-    "create_time": 1777599191,
-    "update_time": 1777599191,
-    "_id": "doc-ea3780ab210d39afa0a450b3db57d0d8"
-  },
-  "doc-80faa7ae11aa12f44032a08f0e8863de": {
-    "entity_names": [
-      "Ultraright Anti-Ukrainian Forces",
-      "European Union",
-      "Radев",
-      "Robert Fico",
-      "Kremlin"
-    ],
-    "count": 5,
-    "create_time": 1777599200,
-    "update_time": 1777599200,
-    "_id": "doc-80faa7ae11aa12f44032a08f0e8863de"
-  },
-  "doc-ddc345cdf31fa3a21cd3d3a41bd346a5": {
-    "entity_names": [
-      "Moscow",
-      "Gnessin Academy of Music",
-      "United States",
-      "Matthias Mözdorf",
-      "Rüdiger Lukassen",
-      "AfD",
-      "Björn Höcke",
-      "Marcus Frontmeyer"
-    ],
-    "count": 8,
-    "create_time": 1777599218,
-    "update_time": 1777599218,
-    "_id": "doc-ddc345cdf31fa3a21cd3d3a41bd346a5"
-  },
-  "doc-051dab41fce7bd5924a6a05b03225122": {
-    "entity_names": [
-      "Pegasus",
-      "Canada",
-      "Старше Эды",
-      "NATO",
-      "Костя",
-      "Kremlin",
-      "Tu-214",
-      "Радиотехническая разведка ВСУ",
-      "Ukraine",
-      "Razvedos",
-      "Telegram",
-      "FPV-дроны",
-      "Патреон",
-      "Российские дроноводы",
-      "Russian Armed Forces",
-      "Бытили П",
-      "Rusha Today",
-      "Sweden",
-      "United Kingdom",
-      "Alexander Arutyunyan",
-      "Tu-214R",
-      "Poland",
-      "Бытили Плюс",
-      "Germany",
-      "United States",
-      "YouTube",
-      "Starlink",
-      "Разведос",
-      "ВСУ",
-      "Eastern Shield",
-      "SpaceX",
-      "France",
-      "36th Brigade",
-      "Belarus",
-      "Falcon 8X Archange",
-      "Филатов",
-      "S102B",
-      "Baba Yga",
-      "RC-135W",
-      "Chechnya",
-      "Химик",
-      "JDAM",
-      "Ilon Mask",
-      "Voenkor Filatov",
-      "Рации",
-      "CNC machines",
-      "Discord",
-      "Russia",
-      "Михаил Фёдоров"
-    ],
-    "count": 49,
-    "create_time": 1777932687,
-    "update_time": 1777932687,
-    "_id": "doc-051dab41fce7bd5924a6a05b03225122"
-  },
-  "doc-08dd9942adf74e4535faffe5955e1347": {
-    "entity_names": [
-      "NATO",
-      "Estonia",
-      "Narva",
-      "Russian Television",
-      "Russia",
+      "Brexit",
       "Europe"
     ],
-    "count": 6,
-    "create_time": 1777932700,
-    "update_time": 1777932700,
-    "_id": "doc-08dd9942adf74e4535faffe5955e1347"
+    "count": 3,
+    "create_time": 1780158514,
+    "update_time": 1780158514,
+    "_id": "doc-b3f527075b412a15cc288655aa83fed7"
   },
-  "doc-2e541d28e710c7d2792582df2bec5180": {
+  "doc-4038465084de9bc85ca7dfdeef781363": {
     "entity_names": [
-      "UnRealpolitik",
-      "NATO",
-      "Kremlin",
-      "Estonia",
-      "European Union",
-      "Baltic States",
-      "Narva",
-      "Latvia",
-      "Hybrid Warfare",
-      "Poland",
-      "Information Warfare",
+      "Security Action for Europe (SAFE)",
+      "Марош Шефчович",
+      "Кир Стармер",
+      "Китай",
+      "Europe",
       "United States",
-      "Harvard",
-      "Suwałki Corridor",
-      "Kinetical Phase",
-      "Nuclear Deterrence",
-      "Lithuania",
-      "Belarus",
-      "Limited Invasion",
-      "Article 5 of NATO",
-      "Article 4 of NATO",
-      "Russia"
+      "Лондон",
+      "United Kingdom",
+      "European Union",
+      "The Observer",
+      "Donald Trump",
+      "Лейбористская партия",
+      "Эмманюэль Макрон",
+      "Гренландия",
+      "Ukraine",
+      "Фридрих Мерц",
+      "NATO"
     ],
-    "count": 22,
-    "create_time": 1777932850,
-    "update_time": 1777932850,
-    "_id": "doc-2e541d28e710c7d2792582df2bec5180"
+    "count": 17,
+    "create_time": 1780158531,
+    "update_time": 1780158531,
+    "_id": "doc-4038465084de9bc85ca7dfdeef781363"
   },
-  "doc-30427f847a88ae7045302dacf20d348e": {
+  "doc-a541c57ce12cc6759c8a7c8b0bf33608": {
     "entity_names": [
-      "Верховный главнокомандующий",
-      "Соловьёв",
-      "Литва",
-      "российская власть",
-      "Советский кандидат экономических наук",
-      "Европа",
-      "Иран",
-      "Germany",
-      "Польша",
-      "НАТО",
-      "Ленинградская область"
+      "United Kingdom",
+      "Keir Starmer",
+      "Donald Trump",
+      "Middle East"
+    ],
+    "count": 4,
+    "create_time": 1780158539,
+    "update_time": 1780158539,
+    "_id": "doc-a541c57ce12cc6759c8a7c8b0bf33608"
+  },
+  "doc-5ec76558da57f60c3aaa4140738d1d47": {
+    "entity_names": [
+      "Labor Union",
+      "United Kingdom",
+      "Royal Navy",
+      "Cyprus",
+      "Queen of the Seas"
+    ],
+    "count": 5,
+    "create_time": 1780158547,
+    "update_time": 1780158547,
+    "_id": "doc-5ec76558da57f60c3aaa4140738d1d47"
+  },
+  "doc-d29898f023855697455adc30d8aa4e76": {
+    "entity_names": [
+      "United Kingdom",
+      "B-1B Lancer",
+      "Iran"
+    ],
+    "count": 3,
+    "create_time": 1780158553,
+    "update_time": 1780158553,
+    "_id": "doc-d29898f023855697455adc30d8aa4e76"
+  },
+  "doc-f0c7286ce103ab60d62c43f804d5f583": {
+    "entity_names": [
+      "Financial Times",
+      "RAF Fairford",
+      "Winston Churchill",
+      "Prince And Princess Of Wales",
+      "United States",
+      "United Kingdom",
+      "King Charles III",
+      "Donald Trump",
+      "Keir Starmer",
+      "FIFA World Cup",
+      "War With Iran"
     ],
     "count": 11,
-    "create_time": 1777932867,
-    "update_time": 1777932867,
-    "_id": "doc-30427f847a88ae7045302dacf20d348e"
+    "create_time": 1780158568,
+    "update_time": 1780158568,
+    "_id": "doc-f0c7286ce103ab60d62c43f804d5f583"
   },
-  "doc-8dd2f4c33985b1d27340746e85ef56d6": {
+  "doc-7d51a1cebb4721a9816fcbc2440514b5": {
+    "entity_names": [
+      "Families and Businesses in the United Kingdom",
+      "Putin",
+      "United Kingdom",
+      "Donald Trump",
+      "Keir Starmer"
+    ],
+    "count": 5,
+    "create_time": 1780158576,
+    "update_time": 1780158576,
+    "_id": "doc-7d51a1cebb4721a9816fcbc2440514b5"
+  },
+  "doc-0edaf3368766c5d898224fe5e94c7b66": {
+    "entity_names": [
+      "Russia",
+      "Александр Нотевский",
+      "Ида-Вирумаа",
+      "Нарва",
+      "NATO",
+      "Нарвская народная республика",
+      "Эстония"
+    ],
+    "count": 7,
+    "create_time": 1780158587,
+    "update_time": 1780158587,
+    "_id": "doc-0edaf3368766c5d898224fe5e94c7b66"
+  },
+  "doc-0c2f0f92752b4ed6fbb99df1904065c2": {
+    "entity_names": [
+      "Patreon",
+      "Heavy Quadcopters",
+      "Mykhailo Fedorov",
+      "Rusha Today",
+      "Военкор Филатов",
+      "Europe",
+      "United States",
+      "Z-channels",
+      "United Kingdom",
+      "Kremlin",
+      "Elon Musk",
+      "Russian Drone Operators",
+      "CNC Machines",
+      "Germany",
+      "Baba Yaga",
+      "Russia",
+      "Ukrainian Heroes",
+      "Baltic States",
+      "YouTube",
+      "France",
+      "Georgia",
+      "Sweden",
+      "Starshe Edy",
+      "Russian FPV Drone Operators",
+      "European Union",
+      "Russian Defense Enterprises",
+      "Ukraine",
+      "Armed Forces of Ukraine",
+      "Russian Aerospace Forces",
+      "Belarus",
+      "Command Post of 36th Brigade",
+      "Crimea",
+      "Zetniki",
+      "Russian Signalman",
+      "Poland",
+      "Armed Forces of Ukraine (AFU)",
+      "Alexander Arutyunyan",
+      "Telegram Channel \"Bytili Plus\"",
+      "Starlink Terminals",
+      "Chechnya",
+      "Vladimir Putin",
+      "Canada",
+      "Russian Army",
+      "Starlink",
+      "Shahed Drones",
+      "Russian Commander in the Field",
+      "Russian Propagandists",
+      "Voennor Filatov",
+      "Eastern Shield",
+      "Tupolev Tu-214R",
+      "Windows",
+      "Kostya",
+      "Razvedos",
+      "36th Brigade of the Russian Armed Forces",
+      "Discord",
+      "Canadian RAP",
+      "Ukrainian FPV Drone Operators",
+      "Motrola",
+      "Ukrainian Armed Forces",
+      "NATO",
+      "Speaker",
+      "SpaceX"
+    ],
+    "count": 62,
+    "create_time": 1780158618,
+    "update_time": 1780158618,
+    "_id": "doc-0c2f0f92752b4ed6fbb99df1904065c2"
+  },
+  "doc-7f61f79c93ac8763b9e1874f4582620d": {
+    "entity_names": [
+      "Russia",
+      "Europe",
+      "Narva",
+      "NATO",
+      "Russian Propagandists"
+    ],
+    "count": 5,
+    "create_time": 1780158625,
+    "update_time": 1780158625,
+    "_id": "doc-7f61f79c93ac8763b9e1874f4582620d"
+  },
+  "doc-0fced6ca7e0866fda01e8ae3ba3b85af": {
+    "entity_names": [
+      "Suwalki Gap",
+      "Europe",
+      "Latvia",
+      "United States",
+      "Kremlin",
+      "Russia",
+      "Baltic States",
+      "Harvard",
+      "Narva",
+      "Moscow",
+      "Ukraine",
+      "Belarus",
+      "Estonia",
+      "Poland",
+      "Lithuania",
+      "UnRealpolitik",
+      "Article 4",
+      "Article 5",
+      "Harvard Analysts",
+      "NATO"
+    ],
+    "count": 20,
+    "create_time": 1780158644,
+    "update_time": 1780158644,
+    "_id": "doc-0fced6ca7e0866fda01e8ae3ba3b85af"
+  },
+  "doc-dbd84e646081767fc283dcc93be8e2cc": {
+    "entity_names": [
+      "Russia",
+      "Iran",
+      "Special Military Operation",
+      "Poland",
+      "NATO Countries",
+      "Lithuania",
+      "Europe",
+      "Drones",
+      "Leningrad Oblast",
+      "Supreme Commander-in-Chief",
+      "NATO",
+      "American Forces"
+    ],
+    "count": 12,
+    "create_time": 1780158662,
+    "update_time": 1780158662,
+    "_id": "doc-dbd84e646081767fc283dcc93be8e2cc"
+  },
+  "doc-20e7f468b62d6e62bad9a7a2fee78afb": {
     "entity_names": [
       "Литрий Алкоголиевич"
     ],
     "count": 1,
-    "create_time": 1777932869,
-    "update_time": 1777932869,
-    "_id": "doc-8dd2f4c33985b1d27340746e85ef56d6"
+    "create_time": 1780158666,
+    "update_time": 1780158666,
+    "_id": "doc-20e7f468b62d6e62bad9a7a2fee78afb"
   },
-  "doc-8c17f6b2b910b51f8fb088d9f48f3606": {
+  "doc-e31f0abbd7dd7baed937323ed0bf9bcc": {
     "entity_names": [
-      "Грузия",
-      "Крым",
-      "Вторая мировая война",
-      "Донбасс",
-      "2027 год",
+      "Russia",
+      "World War II",
+      "Juozas Olekas",
+      "Donbas",
+      "Lithuania",
+      "NATO",
+      "Georgia",
+      "United States",
+      "Vladimir Putin",
+      "European Union",
+      "Kremlin",
       "Ukraine",
-      "Сейм",
-      "Литва",
-      "Таня Миронишена",
+      "Tanya Mironishyna",
       "The Kyiv Independent",
-      "European Union",
-      "Юозас Олекас",
-      "НАТО",
-      "Russia",
-      "United States"
-    ],
-    "count": 15,
-    "create_time": 1777932900,
-    "update_time": 1777932900,
-    "_id": "doc-8c17f6b2b910b51f8fb088d9f48f3606"
-  },
-  "doc-c61c5e909d0f51de22a1d6c921e05ec5": {
-    "entity_names": [
-      "Russia",
-      "Siyarto",
-      "Hungary"
-    ],
-    "count": 3,
-    "create_time": 1777932905,
-    "update_time": 1777932905,
-    "_id": "doc-c61c5e909d0f51de22a1d6c921e05ec5"
-  },
-  "doc-743fce792f8381ab035b7b798031674d": {
-    "entity_names": [
-      "Putin",
-      "Hungary",
-      "Orbán",
-      "Ukraine",
-      "European Union",
-      "Russia"
-    ],
-    "count": 6,
-    "create_time": 1777932919,
-    "update_time": 1777932919,
-    "_id": "doc-743fce792f8381ab035b7b798031674d"
-  },
-  "doc-70d8039d5cb1ec854b11e1d4478737c8": {
-    "entity_names": [
-      "Hungary"
-    ],
-    "count": 1,
-    "create_time": 1777932924,
-    "update_time": 1777932924,
-    "_id": "doc-70d8039d5cb1ec854b11e1d4478737c8"
-  },
-  "doc-64fc0c233ed46ab24dceec96fc715e40": {
-    "entity_names": [
-      "21 Kutatóközpont",
-      "Fidesz",
-      "Péter Márki-Zay",
-      "Tisza",
-      "ANO 2011",
-      "Herbert Kickl",
-      "European Union",
-      "Javier Milei",
-      "PolitPro",
-      "IDEA / Publicus",
-      "POLITICO Poll of Polls",
-      "Nézőpont",
-      "Vox",
-      "European Parliament",
-      "European Conservatives and Reformists",
-      "Alice Weidel",
-      "Andrej Babiš",
-      "Viktor Orbán",
-      "Benjamin Netanyahu",
-      "Giorgia Meloni",
-      "Hungary",
-      "FPÖ",
-      "2026 Hungarian Parliamentary Election",
-      "Magyar Társadalomkutató",
-      "Marine Le Pen",
-      "Mateusz Morawiecki",
-      "Aleksandar Vučić",
-      "Robert Schneider",
-      "National Rally",
-      "Matteo Salvini",
-      "Santiago Abascal",
-      "AfD",
-      "Republikon"
-    ],
-    "count": 33,
-    "create_time": 1777932963,
-    "update_time": 1777932963,
-    "_id": "doc-64fc0c233ed46ab24dceec96fc715e40"
-  },
-  "doc-f7cf12cb44baf013763e14cb0d583f17": {
-    "entity_names": [
-      "Hungarian Government",
-      "Brussels",
-      "Hungary",
-      "Orbán",
-      "Ukraine",
-      "Ursula von der Leyen",
-      "European Union",
-      "Russia"
-    ],
-    "count": 8,
-    "create_time": 1777932975,
-    "update_time": 1777932975,
-    "_id": "doc-f7cf12cb44baf013763e14cb0d583f17"
-  },
-  "doc-37210e5738410e4f5658f9a33b6de71b": {
-    "entity_names": [
-      "Fidesz",
-      "Péter Márki-Zay",
-      "Orbán",
-      "Ukraine",
-      "Donald Trump",
-      "Slovakia",
-      "Mukachevo",
-      "Péter Szijjártó",
-      "European Union",
-      "Zakarpattia",
-      "Anita Orbán",
-      "Tamás Sulyok",
-      "Hungary",
-      "2026 Hungarian Parliamentary Elections",
-      "Tisa",
-      "World War III",
-      "Robert Fico",
-      "Deutsche Welle",
-      "Russia"
-    ],
-    "count": 19,
-    "create_time": 1777933044,
-    "update_time": 1777933044,
-    "_id": "doc-37210e5738410e4f5658f9a33b6de71b"
-  },
-  "doc-6ecff60dff7ab5c3d2308d23bccbb150": {
-    "entity_names": [
-      "Viktor Orbán",
-      "Hungary",
-      "Ukraine",
-      "European Union",
-      "Russia"
-    ],
-    "count": 5,
-    "create_time": 1777933062,
-    "update_time": 1777933062,
-    "_id": "doc-6ecff60dff7ab5c3d2308d23bccbb150"
-  },
-  "doc-9c2d06a6fff816bf1b1f6c96b867f145": {
-    "entity_names": [
-      "Epstein Files",
-      "Slovak National Party",
-      "Leslie Groff",
-      "Peter Pellegrini",
-      "Lajčák",
-      "Slovakia",
-      "Constitutional Court of the Slovak Republic",
-      "Democrats",
-      "Nagy",
-      "Special Prosecutors Office",
-      "National Criminal Agency",
-      "Juraj Šeliga",
-      "Robert Fico",
-      "Hlas"
-    ],
-    "count": 14,
-    "create_time": 1777933094,
-    "update_time": 1777933094,
-    "_id": "doc-9c2d06a6fff816bf1b1f6c96b867f145"
-  },
-  "doc-bc2ec0c9ce9763ee56b64e1d400d81ca": {
-    "entity_names": [
-      "NATO",
-      "Slovak National Party",
-      "Hungary",
-      "Kremlin",
-      "Ukraine",
-      "Petr Pellegrini",
-      "Slovakia",
-      "F-16 Block 70/72",
-      "European Union",
-      "AfD",
-      "MiG-29",
-      "Poland",
-      "Czechia",
-      "Robert Fico",
-      "Vladimir Putin",
-      "Russia",
-      "United States"
-    ],
-    "count": 17,
-    "create_time": 1777933127,
-    "update_time": 1777933127,
-    "_id": "doc-bc2ec0c9ce9763ee56b64e1d400d81ca"
-  },
-  "doc-d3201e107bd42b8df3e9cac9c8337f39": {
-    "entity_names": [
-      "Viktor Orbán",
-      "Hungary",
-      "Ukraine",
-      "Budapest",
-      "European Union"
-    ],
-    "count": 5,
-    "create_time": 1777933138,
-    "update_time": 1777933138,
-    "_id": "doc-d3201e107bd42b8df3e9cac9c8337f39"
-  },
-  "doc-7adb080ec7dd4803546a8980980ef625": {
-    "entity_names": [
-      "Fidesz",
-      "Tisa",
-      "Viktor Orbán",
-      "Пётр Мадяр",
-      "Russia",
-      "Hungary",
-      "2024",
-      "April"
-    ],
-    "count": 8,
-    "create_time": 1777933161,
-    "update_time": 1777933161,
-    "_id": "doc-7adb080ec7dd4803546a8980980ef625"
-  },
-  "doc-6f2b09232ebfabe3da4b5cb3fbf58b41": {
-    "entity_names": [
-      "Путин",
-      "Брюссель",
-      "Свинктор Торбан",
-      "Восток"
-    ],
-    "count": 4,
-    "create_time": 1777933167,
-    "update_time": 1777933167,
-    "_id": "doc-6f2b09232ebfabe3da4b5cb3fbf58b41"
-  },
-  "doc-ad9bf0528a0847b0e1f705e25c466be2": {
-    "entity_names": [
-      "Robert Fico",
-      "Ukraine",
-      "Russia"
-    ],
-    "count": 3,
-    "create_time": 1777933172,
-    "update_time": 1777933172,
-    "_id": "doc-ad9bf0528a0847b0e1f705e25c466be2"
-  },
-  "doc-5ebc6be4860200e3be2c97bcb38c02e4": {
-    "entity_names": [
-      "Зеленский",
-      "POLITICO",
-      "Путин",
-      "Европа"
-    ],
-    "count": 4,
-    "create_time": 1777933178,
-    "update_time": 1777933178,
-    "_id": "doc-5ebc6be4860200e3be2c97bcb38c02e4"
-  },
-  "doc-c3a9b860b4047056a463ca0390259fdf": {
-    "entity_names": [
-      "Druzhba",
-      "Russia",
-      "Croatian pipeline",
-      "Croatia"
-    ],
-    "count": 4,
-    "create_time": 1777933185,
-    "update_time": 1777933185,
-    "_id": "doc-c3a9b860b4047056a463ca0390259fdf"
-  },
-  "doc-31ceac0f822624a2e33322605349ec08": {
-    "entity_names": [
-      "Robert Fico",
-      "Viktor Orbán",
-      "Slovakia",
-      "Hungary"
-    ],
-    "count": 4,
-    "create_time": 1777933190,
-    "update_time": 1777933190,
-    "_id": "doc-31ceac0f822624a2e33322605349ec08"
-  },
-  "doc-a9615334f343926ef41049dc0391fd55": {
-    "entity_names": [
-      "NATO",
-      "Hungary",
-      "Ukraine",
-      "European Union",
-      "Siyarto",
-      "Russia"
-    ],
-    "count": 6,
-    "create_time": 1777933201,
-    "update_time": 1777933201,
-    "_id": "doc-a9615334f343926ef41049dc0391fd55"
-  },
-  "doc-ee8fae0c675a7765f3bab3179eff9ad1": {
-    "entity_names": [
-      "Ukraine",
-      "Tisa",
-      "Orbán",
-      "Hungary"
-    ],
-    "count": 4,
-    "create_time": 1777933207,
-    "update_time": 1777933207,
-    "_id": "doc-ee8fae0c675a7765f3bab3179eff9ad1"
-  },
-  "doc-84e31fefa7b625affd92c6f698ac2037": {
-    "entity_names": [
-      "Putin",
-      "Malta",
-      "Bulgaria",
-      "Giorgia Meloni",
-      "Kremlin",
-      "Hungary",
-      "Orbán",
-      "Ukraine",
-      "Babiš",
-      "Donald Trump",
-      "European Union",
-      "Euroclear",
-      "Bart de Wever",
-      "Friendship Pipeline",
-      "Russia",
-      "Financial Times",
-      "Fico"
-    ],
-    "count": 17,
-    "create_time": 1777933236,
-    "update_time": 1777933236,
-    "_id": "doc-84e31fefa7b625affd92c6f698ac2037"
-  },
-  "doc-ca5a2a428a4b942b94bf580d78a97725": {
-    "entity_names": [
-      "Орбан",
-      "Napoleon",
-      "Ukraine",
-      "Hitler",
-      "Kaja Kallas",
-      "Russia"
-    ],
-    "count": 6,
-    "create_time": 1777933247,
-    "update_time": 1777933247,
-    "_id": "doc-ca5a2a428a4b942b94bf580d78a97725"
-  },
-  "doc-144a3b48f2c36a7a3a5d86424cd70c9d": {
-    "entity_names": [
-      "Hungary",
-      "Ukraine",
-      "Slovakia",
-      "European Union",
-      "Szijjártó",
-      "Friendship Pipeline"
-    ],
-    "count": 6,
-    "create_time": 1777933262,
-    "update_time": 1777933262,
-    "_id": "doc-144a3b48f2c36a7a3a5d86424cd70c9d"
-  },
-  "doc-852554b1def48541450889425b6545f5": {
-    "entity_names": [
-      "Viktor Orbán",
-      "Hungary",
-      "Antonio Costa",
-      "Druzhba",
-      "European Council",
-      "Ukraine",
-      "Sky News",
-      "European Union"
-    ],
-    "count": 8,
-    "create_time": 1777933279,
-    "update_time": 1777933279,
-    "_id": "doc-852554b1def48541450889425b6545f5"
-  },
-  "doc-39b76ef932d366548ca3bb5fbd800bd4": {
-    "entity_names": [
-      "Brussels",
-      "Hungary",
-      "Orbán",
-      "Twitter/X",
-      "Kyiv",
-      "Ukraine",
-      "Donald Trump",
-      "European Union",
-      "Russia"
-    ],
-    "count": 9,
-    "create_time": 1777933294,
-    "update_time": 1777933294,
-    "_id": "doc-39b76ef932d366548ca3bb5fbd800bd4"
-  },
-  "doc-38dc254ef06b4d54db587588f05a0039": {
-    "entity_names": [
-      "ruling party",
-      "Red Army",
-      "Hungary",
-      "Budapest",
-      "Ukraine",
-      "Sikorski",
-      "Poland",
-      "Russia"
-    ],
-    "count": 8,
-    "create_time": 1777933303,
-    "update_time": 1777933303,
-    "_id": "doc-38dc254ef06b4d54db587588f05a0039"
-  },
-  "doc-16850c41558b9e3ebcadb42352d4ed0b": {
-    "entity_names": [
-      "Bulgaria",
-      "Hungary",
-      "Czechia",
-      "Poland",
-      "Russian",
-      "Russia"
-    ],
-    "count": 6,
-    "create_time": 1777933309,
-    "update_time": 1777933309,
-    "_id": "doc-16850c41558b9e3ebcadb42352d4ed0b"
-  },
-  "doc-63f17a112e469336209819b38800f7ce": {
-    "entity_names": [
-      "Peter Magyar",
-      "Fidesz",
-      "Viktor Orbán",
-      "April Elections",
-      "Hungary",
-      "Tisza",
-      "Financial Times"
-    ],
-    "count": 7,
-    "create_time": 1777933322,
-    "update_time": 1777933322,
-    "_id": "doc-63f17a112e469336209819b38800f7ce"
-  },
-  "doc-6f16eff0d3d6eed7d43799b5c7cc11c3": {
-    "entity_names": [
-      "Orban",
-      "Hungary",
-      "Druzhba",
-      "Serhiy Kortsyk",
-      "Naftogaz Ukraine",
-      "Planet Labs",
-      "Tsargrad TV",
-      "Slovakia",
-      "Brody Pumping Station",
-      "European Union",
-      "GSCS",
-      "Shahed",
-      "NASA FIRMS",
-      "Bloomberg",
-      "Russia",
-      "Fico"
-    ],
-    "count": 16,
-    "create_time": 1777933492,
-    "update_time": 1777933492,
-    "_id": "doc-6f16eff0d3d6eed7d43799b5c7cc11c3"
-  },
-  "doc-94b3a0575bed2d81bf26b87626c868bc": {
-    "entity_names": [
-      "Friendship Oil Pipeline",
-      "Szazalombatta Oil Refinery",
-      "Hungary",
-      "Zelensky",
-      "Svinktor Torban"
-    ],
-    "count": 5,
-    "create_time": 1777933516,
-    "update_time": 1777933516,
-    "_id": "doc-94b3a0575bed2d81bf26b87626c868bc"
-  },
-  "doc-bf62ce7714ad73bcd55ba24657224c7b": {
-    "entity_names": [
-      "Viktor Orbán",
-      "Volodymyr Zelensky",
-      "Hungary",
-      "Croatia",
-      "Slovakia",
-      "Russia",
-      "Croatian Prime Minister"
-    ],
-    "count": 7,
-    "create_time": 1777933542,
-    "update_time": 1777933542,
-    "_id": "doc-bf62ce7714ad73bcd55ba24657224c7b"
-  },
-  "doc-135cbb9eb891b9fd3b6f9dfb7cb51425": {
-    "entity_names": [
-      "Ukraine",
-      "Martin Magát",
-      "Укрэнерго",
-      "Мартин Магат",
-      "Словакия"
-    ],
-    "count": 5,
-    "create_time": 1777933551,
-    "update_time": 1777933551,
-    "_id": "doc-135cbb9eb891b9fd3b6f9dfb7cb51425"
-  },
-  "doc-0e83180ffaf3fb31527994339d43f91a": {
-    "entity_names": [
-      "35 million euros",
-      "Hungary",
-      "Budapest",
-      "Ukraine",
-      "40 million US dollars",
-      "9 kilograms of gold",
-      "Oschadbank Ukraine",
-      "Oschadbank",
-      "Raiffeisen Bank Austria"
-    ],
-    "count": 9,
-    "create_time": 1777933588,
-    "update_time": 1777933588,
-    "_id": "doc-0e83180ffaf3fb31527994339d43f91a"
-  },
-  "doc-b2d6bb253f52da25049b4f74f7683ccb": {
-    "entity_names": [
-      "Peter Magyar",
-      "Ukraine",
-      "European Union",
-      "Zelensky"
-    ],
-    "count": 4,
-    "create_time": 1777933598,
-    "update_time": 1777933598,
-    "_id": "doc-b2d6bb253f52da25049b4f74f7683ccb"
-  },
-  "doc-1beb1ff8b74ec88b3ef336871c83d0e0": {
-    "entity_names": [
-      "Hungary",
-      "Druzhba",
-      "Orbán",
-      "Ukraine",
-      "Orban"
-    ],
-    "count": 5,
-    "create_time": 1777933611,
-    "update_time": 1777933611,
-    "_id": "doc-1beb1ff8b74ec88b3ef336871c83d0e0"
-  },
-  "doc-e3443df376d21c0ccfc06825e6f26c8c": {
-    "entity_names": [
-      "Putin",
-      "Viktor Orbán",
-      "Sergei Kirienko",
-      "Hungary",
-      "Russian Military Intelligence",
-      "VSquare",
-      "Russia"
-    ],
-    "count": 7,
-    "create_time": 1777933631,
-    "update_time": 1777933631,
-    "_id": "doc-e3443df376d21c0ccfc06825e6f26c8c"
-  },
-  "doc-39a59d080a06e0ab1d51c2761122294a": {
-    "entity_names": [
-      "Сиьярто",
-      "Ощадбанк",
-      "Ukraine"
-    ],
-    "count": 3,
-    "create_time": 1777933645,
-    "update_time": 1777933645,
-    "_id": "doc-39a59d080a06e0ab1d51c2761122294a"
-  },
-  "doc-16fc9e52c61afd7323a31ebfd0dcebc6": {
-    "entity_names": [
-      "Security Service of Ukraine",
-      "National Tax and Customs Administration",
-      "Hungary",
-      "Government Information Center",
-      "Ukraine",
-      "Ukrainian Air Force",
-      "Index",
-      "Seven Ukrainian Cash-in-Transit Officers",
-      "Oshchadbank"
-    ],
-    "count": 9,
-    "create_time": 1777933657,
-    "update_time": 1777933657,
-    "_id": "doc-16fc9e52c61afd7323a31ebfd0dcebc6"
-  },
-  "doc-ffcdda4368d9bd7d820aaffb292785cb": {
-    "entity_names": [
-      "Other"
-    ],
-    "count": 1,
-    "create_time": 1777933660,
-    "update_time": 1777933660,
-    "_id": "doc-ffcdda4368d9bd7d820aaffb292785cb"
-  },
-  "doc-30598935428a2c98eba71bba76987a6f": {
-    "entity_names": [
-      "Orbán",
-      "Ukraine",
-      "Oschadbank",
-      "Hungary"
-    ],
-    "count": 4,
-    "create_time": 1777933672,
-    "update_time": 1777933672,
-    "_id": "doc-30598935428a2c98eba71bba76987a6f"
-  },
-  "doc-1fed1b15a0d50415cf4cd2a3915f1621": {
-    "entity_names": [
-      "Peter Magyar",
-      "Viktor Orbán",
-      "Tisa",
-      "Volodymyr Zelensky",
-      "Moldova",
-      "Hungary",
-      "Budapest",
-      "April 12",
-      "Janos Kadar",
-      "1956",
-      "Vladimir Putin",
-      "GRU",
-      "Russia"
-    ],
-    "count": 13,
-    "create_time": 1777933694,
-    "update_time": 1777933694,
-    "_id": "doc-1fed1b15a0d50415cf4cd2a3915f1621"
-  },
-  "doc-053ee19c300366028b34ccf2da44bdd2": {
-    "entity_names": [
-      "Росатом",
-      "Будапешт",
-      "Управление по стратегическому партнерству и сотрудничеству",
-      "Молдова",
-      "Вадим Титов",
-      "Сергей Кириенко",
-      "Kremlin",
-      "Операция «Будапешт»",
-      "Венгрия",
-      "Калитин Андрей Сергеевич",
-      "Майя Санду",
-      "ЦРУ США",
-      "European Union",
-      "Vsquare",
-      "Виктор Орбан",
-      "Москва",
-      "НАТО",
-      "Группа из трех человек"
-    ],
-    "count": 18,
-    "create_time": 1777933726,
-    "update_time": 1777933726,
-    "_id": "doc-053ee19c300366028b34ccf2da44bdd2"
-  },
-  "doc-131723565bd454d6c7d6517e885be939": {
-    "entity_names": [
-      "Орбан",
-      "Мате Кочиш",
-      "Венгрия",
-      "украинский золотой конвой",
-      "Ощадбанк",
-      "Фидес"
-    ],
-    "count": 6,
-    "create_time": 1777933740,
-    "update_time": 1777933740,
-    "_id": "doc-131723565bd454d6c7d6517e885be939"
-  },
-  "doc-8ec95625be7553d1e0098450ea784dd6": {
-    "entity_names": [
-      "Kremlin",
-      "Druzhba",
-      "Orbán",
-      "Ukraine",
-      "Hungary",
-      "April 12",
-      "European Union"
-    ],
-    "count": 7,
-    "create_time": 1777933752,
-    "update_time": 1777933752,
-    "_id": "doc-8ec95625be7553d1e0098450ea784dd6"
-  },
-  "doc-db702386c575ea51ebf0138e7099a9fa": {
-    "entity_names": [
-      "Фицо",
-      "Орбан"
-    ],
-    "count": 2,
-    "create_time": 1777933756,
-    "update_time": 1777933756,
-    "_id": "doc-db702386c575ea51ebf0138e7099a9fa"
-  },
-  "doc-da20b0a27addcfc84250e3aa0fa87acc": {
-    "entity_names": [
-      "Hungary",
-      "Ukraine",
-      "Budapest",
-      "Ministry of Foreign Affairs of Ukraine",
-      "Other"
-    ],
-    "count": 5,
-    "create_time": 1777933765,
-    "update_time": 1777933765,
-    "_id": "doc-da20b0a27addcfc84250e3aa0fa87acc"
-  },
-  "doc-4c5fc5e3044c9aab6288e263b0b01342": {
-    "entity_names": [
-      "Mate Kocsis",
-      "Fidesz",
-      "Hungarian Parliament",
-      "National Tax and Customs Authority",
-      "Oshchadbank"
-    ],
-    "count": 5,
-    "create_time": 1777933778,
-    "update_time": 1777933778,
-    "_id": "doc-4c5fc5e3044c9aab6288e263b0b01342"
-  },
-  "doc-2ddd458ab7583acad6a7d0a983b16dfa": {
-    "entity_names": [
-      "Druzhba",
-      "Ukraine",
-      "János Lázár",
-      "Hungary"
-    ],
-    "count": 4,
-    "create_time": 1777933789,
-    "update_time": 1777933789,
-    "_id": "doc-2ddd458ab7583acad6a7d0a983b16dfa"
-  },
-  "doc-86018094d91b31b51d5f2f145cd757f1": {
-    "entity_names": [
-      "Ukraine",
-      "European Union",
-      "Index",
-      "Hungary"
-    ],
-    "count": 4,
-    "create_time": 1777933794,
-    "update_time": 1777933794,
-    "_id": "doc-86018094d91b31b51d5f2f145cd757f1"
-  },
-  "doc-de4a30ffab3bfd60d14d5cc23651d83f": {
-    "entity_names": [
-      "Viktor Orbán",
-      "Péter Márki-Zay",
-      "Brussels",
-      "Hungary",
-      "Kremlin",
-      "Social Design Agency",
-      "Financial Times"
-    ],
-    "count": 7,
-    "create_time": 1777933807,
-    "update_time": 1777933807,
-    "_id": "doc-de4a30ffab3bfd60d14d5cc23651d83f"
-  },
-  "doc-07038a6c696f420024f93c3394b71b5b": {
-    "entity_names": [
-      "Peter Magyar",
-      "Orban",
-      "Zelensky",
-      "Budapest",
-      "European Union",
-      "Russia"
-    ],
-    "count": 6,
-    "create_time": 1777933817,
-    "update_time": 1777933817,
-    "_id": "doc-07038a6c696f420024f93c3394b71b5b"
-  },
-  "doc-e522c5f46937aa56357d0ef2324b55a4": {
-    "entity_names": [
-      "Rozhe",
-      "Kremlin",
-      "Ukraine",
-      "Alice",
-      "Sariko",
-      "Other",
-      "Orban"
-    ],
-    "count": 7,
-    "create_time": 1777933835,
-    "update_time": 1777933835,
-    "_id": "doc-e522c5f46937aa56357d0ef2324b55a4"
-  },
-  "doc-51bc57286af124c2b80c70829f61525c": {
-    "entity_names": [
-      "Hungary"
-    ],
-    "count": 1,
-    "create_time": 1777933837,
-    "update_time": 1777933837,
-    "_id": "doc-51bc57286af124c2b80c70829f61525c"
-  },
-  "doc-f915fdc9f7ebc4e443418dbda578ff73": {
-    "entity_names": [
-      "Viktor Orbán",
-      "Ukraine",
-      "Viktor Yushchenko"
-    ],
-    "count": 3,
-    "create_time": 1777933843,
-    "update_time": 1777933843,
-    "_id": "doc-f915fdc9f7ebc4e443418dbda578ff73"
-  },
-  "doc-59c6668993849ede653866e3f464ee73": {
-    "entity_names": [
-      "Peter Magyar",
-      "Moldova",
-      "Kremlin",
-      "Armenia",
-      "Orbán",
-      "Ukraine",
-      "Kazakhstan",
-      "Spoiler Technique",
-      "Georgia"
-    ],
-    "count": 9,
-    "create_time": 1777933855,
-    "update_time": 1777933855,
-    "_id": "doc-59c6668993849ede653866e3f464ee73"
-  },
-  "doc-36fe4657825279ac9e3909c7869ac71e": {
-    "entity_names": [
-      "Austria",
-      "Viktor Orbán",
-      "Peaceful March",
-      "Brussels",
-      "Netherlands",
-      "Hungary",
-      "Volodymyr Zelenskyy",
-      "Ukraine",
-      "Kiev",
-      "Facebook",
-      "Slovakia",
-      "European Union",
-      "Germany",
-      "Russia",
-      "United States"
-    ],
-    "count": 15,
-    "create_time": 1777933894,
-    "update_time": 1777933894,
-    "_id": "doc-36fe4657825279ac9e3909c7869ac71e"
-  },
-  "doc-9bebc967cec9dc0f42930581e6a1638a": {
-    "entity_names": [
-      "Orbán",
-      "Ukraine"
-    ],
-    "count": 2,
-    "create_time": 1777933902,
-    "update_time": 1777933902,
-    "_id": "doc-9bebc967cec9dc0f42930581e6a1638a"
-  },
-  "doc-a0ff8170aaa35c335c45398ebe6d0d67": {
-    "entity_names": [
-      "Марш в Будапеште",
-      "Будапешт",
-      "Орбан",
-      "Мадьяр"
-    ],
-    "count": 4,
-    "create_time": 1777933912,
-    "update_time": 1777933912,
-    "_id": "doc-a0ff8170aaa35c335c45398ebe6d0d67"
-  },
-  "doc-01a2f6ed9d1e15e8a8099488ba0d0a16": {
-    "entity_names": [
-      "Viktor Orbán",
-      "Péter Márki-Zay",
-      "Hungary",
-      "Budapest",
-      "Tisza",
-      "Ukraine",
-      "1848 Hungarian Revolution",
-      "European Union",
-      "Bloomberg"
-    ],
-    "count": 9,
-    "create_time": 1777933939,
-    "update_time": 1777933939,
-    "_id": "doc-01a2f6ed9d1e15e8a8099488ba0d0a16"
-  },
-  "doc-d485ca34bd7e0fb38d94428b1fb5f15d": {
-    "entity_names": [
-      "Hungary",
-      "Kyiv",
-      "Ukraine",
-      "April 12",
-      "Viktor Orban",
-      "Vladimir Zelensky",
+      "Crimea",
       "Soviet Union"
     ],
-    "count": 7,
-    "create_time": 1777933950,
-    "update_time": 1777933950,
-    "_id": "doc-d485ca34bd7e0fb38d94428b1fb5f15d"
+    "count": 16,
+    "create_time": 1780158690,
+    "update_time": 1780158690,
+    "_id": "doc-e31f0abbd7dd7baed937323ed0bf9bcc"
   },
-  "doc-679c9b25be677c6ac0df0c1309e58175": {
+  "doc-80d361208e716232b1d0815336ea5b13": {
     "entity_names": [
-      "Zelensky",
-      "Orbán",
-      "Ukraine",
-      "Hungary"
-    ],
-    "count": 4,
-    "create_time": 1777933980,
-    "update_time": 1777933980,
-    "_id": "doc-679c9b25be677c6ac0df0c1309e58175"
-  },
-  "doc-f0e3b35945db088502910150bfe09b9b": {
-    "entity_names": [
-      "Moscow",
-      "Viktor Orbán",
-      "Hungary",
-      "Kremlin",
-      "Tisza",
-      "Peter Madyar"
-    ],
-    "count": 6,
-    "create_time": 1777934001,
-    "update_time": 1777934001,
-    "_id": "doc-f0e3b35945db088502910150bfe09b9b"
-  },
-  "doc-02177320a6ee09ada075193b702a4345": {
-    "entity_names": [
-      "Madyar",
-      "Viktor Orban",
-      "Facebook"
-    ],
-    "count": 3,
-    "create_time": 1777934025,
-    "update_time": 1777934025,
-    "_id": "doc-02177320a6ee09ada075193b702a4345"
-  },
-  "doc-01c16353f96aa8f2f13b627652bcaf6a": {
-    "entity_names": [
-      "Ukraine",
-      "DW Украина",
-      "Орбана"
-    ],
-    "count": 3,
-    "create_time": 1777934031,
-    "update_time": 1777934031,
-    "_id": "doc-01c16353f96aa8f2f13b627652bcaf6a"
-  },
-  "doc-f4cb7a0eb8dae431c3cddf43ba75e087": {
-    "entity_names": [
-      "Borscht",
-      "Hungary",
-      "Orbán",
-      "Uzhhorod",
-      "Transcarpathia"
-    ],
-    "count": 5,
-    "create_time": 1777934052,
-    "update_time": 1777934052,
-    "_id": "doc-f4cb7a0eb8dae431c3cddf43ba75e087"
-  },
-  "doc-6297d1d4abcba7cde037cebced8ea978": {
-    "entity_names": [
-      "Viktor Orbán",
-      "Hungary",
-      "Antonio Costa",
-      "Druzhba",
-      "Ukraine",
-      "Ursula von der Leyen",
-      "Slovakia",
-      "European Union",
-      "Robert Fico",
-      "Russia",
-      "January 27"
-    ],
-    "count": 11,
-    "create_time": 1777934078,
-    "update_time": 1777934078,
-    "_id": "doc-6297d1d4abcba7cde037cebced8ea978"
-  },
-  "doc-128e4bc59a1c5408e48c49fc13d523d4": {
-    "entity_names": [
-      "NATO",
-      "Buffer Zone",
-      "Orbán",
-      "Ukraine",
-      "European Union",
-      "West",
-      "Vladimir Putin",
-      "Russia"
-    ],
-    "count": 8,
-    "create_time": 1777934090,
-    "update_time": 1777934090,
-    "_id": "doc-128e4bc59a1c5408e48c49fc13d523d4"
-  },
-  "doc-c82ccb38f9402edb22b5874a938ca3ba": {
-    "entity_names": [
-      "Fidesz",
-      "Kremlin",
-      "Ukraine",
-      "Tisza",
-      "Vance",
-      "European Union",
-      "Peter Márki-Zay",
-      "Soviet Foreign Intelligence Service",
-      "Tigran Garibyan",
-      "United States",
-      "Viktor Orbán",
-      "Gamechanger",
-      "Hungary",
-      "Russian Military Intelligence",
-      "Budapest",
-      "Marco Rubio",
-      "VSquare",
-      "Russian Foreign Intelligence Service",
-      "Department of Active Measures",
-      "András Telekesh"
-    ],
-    "count": 20,
-    "create_time": 1777934150,
-    "update_time": 1777934150,
-    "_id": "doc-c82ccb38f9402edb22b5874a938ca3ba"
-  },
-  "doc-b8b3fc729f62c6b9dc41963898609b33": {
-    "entity_names": [
-      "Viktor Orbán",
-      "Ferenc Fres",
-      "Operation \"GameChanger\"",
-      "Sergey Lavrov",
-      "Russia",
-      "Hungary",
-      "SvR RF",
-      "Tigran Garibyan",
-      "Donald Trump",
-      "Tisza",
-      "Ervin Nadem",
-      "European Union",
-      "Maria Gurozo",
-      "Russian Military Intelligence",
-      "VSquare",
-      "The Washington Post",
-      "Peter Szijjártó"
-    ],
-    "count": 17,
-    "create_time": 1777934214,
-    "update_time": 1777934214,
-    "_id": "doc-b8b3fc729f62c6b9dc41963898609b33"
-  },
-  "doc-68d5603e6882035ba20646bb79aa0567": {
-    "entity_names": [
-      "Moscow",
-      "Hungary",
-      "Washington Post",
-      "European Union",
-      "Siyarto",
-      "Lavrov"
-    ],
-    "count": 6,
-    "create_time": 1777934223,
-    "update_time": 1777934223,
-    "_id": "doc-68d5603e6882035ba20646bb79aa0567"
-  },
-  "doc-e40b1e89fb339815c1a6c53b66ea81a6": {
-    "entity_names": [
-      "Hungary",
-      "Budapest",
-      "European Union",
-      "Russia",
-      "Politico"
-    ],
-    "count": 5,
-    "create_time": 1777934248,
-    "update_time": 1777934248,
-    "_id": "doc-e40b1e89fb339815c1a6c53b66ea81a6"
-  },
-  "doc-a1509e8060627b9c0b458fe9556086e4": {
-    "entity_names": [
-      "Zakarpattia",
-      "Zoltan Andre",
-      "Security Service of Ukraine",
-      "Hungary",
-      "Hungarian Military Intelligence",
-      "Berehove District",
-      "Ukrainian Defense Forces"
-    ],
-    "count": 7,
-    "create_time": 1777934275,
-    "update_time": 1777934275,
-    "_id": "doc-a1509e8060627b9c0b458fe9556086e4"
-  },
-  "doc-87e9038707fe5297726fcbfe13a20035": {
-    "entity_names": [
-      "Hungary",
-      "European Union",
-      "Serbia",
-      "Israel",
-      "Lavrov",
-      "Siyarto",
-      "Russia",
-      "United States"
-    ],
-    "count": 8,
-    "create_time": 1777934294,
-    "update_time": 1777934294,
-    "_id": "doc-87e9038707fe5297726fcbfe13a20035"
-  },
-  "doc-0cd6efbef20d87ed4e8be415000843b5": {
-    "entity_names": [
-      "Sándor Pintér",
-      "Viktor Orbán",
-      "Sergey Lavrov",
+      "Juraj Šeliga",
+      "National Criminal Agency",
+      "Peter Pellegrini",
       "Hlas",
-      "Орбан",
-      "Kremlin",
-      "Hungary",
-      "Jan Kuciak",
-      "SMER",
-      "Petr Pellegrini",
+      "Jeffrey Epstein",
+      "President Of Slovakia",
+      "Nagy",
+      "Lajčák",
       "Slovakia",
-      "European Union",
-      "Danko",
-      "The Washington Post",
-      "Robert Fico",
-      "Sabolc Páni",
-      "Romania",
-      "Politico"
-    ],
-    "count": 18,
-    "create_time": 1777934337,
-    "update_time": 1777934337,
-    "_id": "doc-0cd6efbef20d87ed4e8be415000843b5"
-  },
-  "doc-877ef72317e73e8b852ea4c5d9a4a6b0": {
-    "entity_names": [
-      "Sabolc Panyi",
-      "NATO",
-      "Hungary",
-      "European Union",
-      "Russia"
-    ],
-    "count": 5,
-    "create_time": 1777934364,
-    "update_time": 1777934364,
-    "_id": "doc-877ef72317e73e8b852ea4c5d9a4a6b0"
-  },
-  "doc-9e58e45ff3e3f57717cae4ecd40722b6": {
-    "entity_names": [
-      "Druzhba Pipeline",
+      "Democrats (Slovakia)",
+      "Constitutional Court Of The Slovak Republic",
+      "Leslie Groff",
+      "Ukraine",
       "Slovak National Party",
-      "Slovakia Movement",
-      "Ukraine",
-      "Progressive Slovakia",
-      "Slovakia",
-      "Democrats",
-      "HLAS-SD",
-      "SMER-SD",
-      "SaS",
-      "2027 Slovak Parliamentary Elections",
-      "Republic",
       "Robert Fico",
-      "Christian Democrats",
+      "Special Prosecutor's Office",
+      "Parliament Of Slovakia"
+    ],
+    "count": 17,
+    "create_time": 1780158716,
+    "update_time": 1780158716,
+    "_id": "doc-80d361208e716232b1d0815336ea5b13"
+  },
+  "doc-2b318fead5e6cd68aa5208993754b378": {
+    "entity_names": [
       "Russia",
-      "Bronislav Gerulský",
-      "General Prosecutor's Office of Slovakia"
-    ],
-    "count": 17,
-    "create_time": 1777934399,
-    "update_time": 1777934399,
-    "_id": "doc-9e58e45ff3e3f57717cae4ecd40722b6"
-  },
-  "doc-e47ddaa1bfd3f213a0bfcf5fc5d404d1": {
-    "entity_names": [
-      "Reading Club Budapest",
-      "Viktor Orbán",
-      "Péter Márki-Zay",
-      "Kirienko",
+      "Serbia",
+      "Turkey",
       "Hungary",
-      "Kremlin"
-    ],
-    "count": 6,
-    "create_time": 1777934407,
-    "update_time": 1777934407,
-    "_id": "doc-e47ddaa1bfd3f213a0bfcf5fc5d404d1"
-  },
-  "doc-f62fc75ce5b20ddd69ab6f4ad4d2481b": {
-    "entity_names": [
-      "Orbán",
-      "Ukraine",
-      "Dęır",
-      "Hungary"
-    ],
-    "count": 4,
-    "create_time": 1777934427,
-    "update_time": 1777934427,
-    "_id": "doc-f62fc75ce5b20ddd69ab6f4ad4d2481b"
-  },
-  "doc-3055ae5d33d2c44e63374e663622df4e": {
-    "entity_names": [
-      "Druzhba Pipeline",
-      "Ukraine",
-      "Slovakia",
+      "Israel",
+      "Hungarian Foreign Minister Szijjártó",
+      "United States",
       "European Union",
-      "Robert Fico",
-      "Russia"
+      "Russian Foreign Minister Lavrov"
     ],
-    "count": 6,
-    "create_time": 1777934447,
-    "update_time": 1777934447,
-    "_id": "doc-3055ae5d33d2c44e63374e663622df4e"
+    "count": 9,
+    "create_time": 1780158727,
+    "update_time": 1780158727,
+    "_id": "doc-2b318fead5e6cd68aa5208993754b378"
   },
-  "doc-2ce45aa281a7ef93bb38f3aa506711fd": {
-    "entity_names": [
-      "Fidesz",
-      "Hungary",
-      "Orbán",
-      "Krak",
-      "Цена голоса",
-      "BBC",
-      "Roma people"
-    ],
-    "count": 7,
-    "create_time": 1777934486,
-    "update_time": 1777934486,
-    "_id": "doc-2ce45aa281a7ef93bb38f3aa506711fd"
-  },
-  "doc-630ef404bd40d634375ec08895b93b57": {
-    "entity_names": [
-      "Republican Party",
-      "Felcsút",
-      "Silvio Berlusconi",
-      "Brussels",
-      "Kremlin",
-      "Hungary",
-      "Politico",
-      "Viktor Orban",
-      "2015 Migration Crisis",
-      "Paks II",
-      "European Union",
-      "1848 Uprising",
-      "Fides",
-      "Vladimir Putin",
-      "1956 Uprising"
-    ],
-    "count": 15,
-    "create_time": 1777934663,
-    "update_time": 1777934663,
-    "_id": "doc-630ef404bd40d634375ec08895b93b57"
-  },
-  "doc-878f1eb714b04017588e3e349e23520a": {
-    "entity_names": [
-      "Российские банки",
-      "2Rivers",
-      "Degtyarev",
-      "Alisher Usmanov",
-      "The Insider",
-      "Hungary",
-      "Сиярто",
-      "18th sanctions package",
-      "Slovakia",
-      "Sergei Lavrov",
-      "Sorokin",
-      "European Union",
-      "Gazprom",
-      "Европейский союз",
-      "Siyarto",
-      "Kantor",
-      "Ismailova"
-    ],
-    "count": 17,
-    "create_time": 1777934829,
-    "update_time": 1777934829,
-    "_id": "doc-878f1eb714b04017588e3e349e23520a"
-  },
-  "doc-6ddeee35e1422d0229641ba11e2d8e2a": {
+  "doc-c1ce72ab7e37be14da2809b6c6124821": {
     "entity_names": [
       "Orban",
-      "Viktor Orbán",
-      "Volodymyr Zelenskyy",
-      "Zelensky",
-      "Hungary",
-      "Ukraine",
-      "Dmytro Korniienko",
-      "Siyarto",
-      "RT Balkan",
-      "Russia",
-      "Magyar Nemzet",
-      "Resurgam"
-    ],
-    "count": 12,
-    "create_time": 1777934857,
-    "update_time": 1777934857,
-    "_id": "doc-6ddeee35e1422d0229641ba11e2d8e2a"
-  },
-  "doc-62008d3593e130f82f2a6b9ad492ad58": {
-    "entity_names": [
-      "2Rivers",
-      "Degtyarev",
-      "The Insider",
-      "Hungary",
-      "Slovakia",
-      "Sorokin",
-      "Borrell",
-      "European Union",
-      "Gazprom",
-      "Lavrov",
-      "Siyarto",
-      "Usmanov",
-      "18th Sanctions Package",
-      "Kantor",
-      "Ismailova"
-    ],
-    "count": 15,
-    "create_time": 1777935140,
-    "update_time": 1777935140,
-    "_id": "doc-62008d3593e130f82f2a6b9ad492ad58"
-  },
-  "doc-3c2f72ad9ea176fa305ad80572fbddf0": {
-    "entity_names": [
-      "Lavrov",
-      "European Union",
-      "Siyarto",
-      "Hungary"
-    ],
-    "count": 4,
-    "create_time": 1777935166,
-    "update_time": 1777935166,
-    "_id": "doc-3c2f72ad9ea176fa305ad80572fbddf0"
-  },
-  "doc-c47f7fd7b5db20e95b649e557184d279": {
-    "entity_names": [
-      "Орбан",
-      "Hungary",
-      "Orbán",
-      "Венгрия",
-      "Министерство иностранных дел Украины",
-      "Ukrainian Ministry of Foreign Affairs",
-      "Hungarian Ministry of Foreign Affairs",
-      "Венгерское радио Украины"
-    ],
-    "count": 8,
-    "create_time": 1777935192,
-    "update_time": 1777935192,
-    "_id": "doc-c47f7fd7b5db20e95b649e557184d279"
-  },
-  "doc-041e1f390283fd66a47e1a500ab3b316": {
-    "entity_names": [
-      "Tusk",
-      "Viktor Orbán",
-      "Economic Crisis",
-      "Hungary",
-      "Donald Trump",
-      "Dmitriev",
-      "European Union",
-      "Sanctions",
-      "Vladimir Putin",
-      "Russia",
-      "Energy Crisis"
-    ],
-    "count": 11,
-    "create_time": 1777935228,
-    "update_time": 1777935228,
-    "_id": "doc-041e1f390283fd66a47e1a500ab3b316"
-  },
-  "doc-d7a9e05beed949909b4a52efffd95c13": {
-    "entity_names": [
-      "Viktor Orbán",
-      "Hungary",
-      "Chad",
-      "Telex.hu",
-      "Gáspár Orbán",
-      "Royal Military Academy Sandhurst",
-      "Hungarian Army",
-      "Sylvester Pálkinás"
-    ],
-    "count": 8,
-    "create_time": 1777935371,
-    "update_time": 1777935371,
-    "_id": "doc-d7a9e05beed949909b4a52efffd95c13"
-  },
-  "doc-fa3402de1beb0f1dd6140eeb9589f3da": {
-    "entity_names": [
-      "Fidesz",
-      "Hungary",
-      "Orbán",
-      "April 12",
-      "1956 Hungarian Uprising",
-      "Vance",
-      "Soviet Union",
-      "United States"
-    ],
-    "count": 8,
-    "create_time": 1777935395,
-    "update_time": 1777935395,
-    "_id": "doc-fa3402de1beb0f1dd6140eeb9589f3da"
-  },
-  "doc-76fa6e66d2bbc299ccac27f929fbb6e9": {
-    "entity_names": [
-      "Jey D. Vens",
-      "Hungarian voters",
-      "Brussels",
-      "Hungary",
-      "European Union",
-      "Viktor",
-      "United States"
-    ],
-    "count": 7,
-    "create_time": 1777935537,
-    "update_time": 1777935537,
-    "_id": "doc-76fa6e66d2bbc299ccac27f929fbb6e9"
-  },
-  "doc-18d13cb11adbaf6533b27b108adff831": {
-    "entity_names": [
-      "Putin",
-      "Saint Petersburg",
-      "Hungary",
-      "COVID-19 Pandemic",
-      "Orbán",
-      "Budapest",
-      "Ukraine",
-      "Donald Trump",
-      "Aesops Fable",
-      "Russia-Ukraine War",
-      "Bloomberg",
-      "Russia"
-    ],
-    "count": 12,
-    "create_time": 1777935602,
-    "update_time": 1777935602,
-    "_id": "doc-18d13cb11adbaf6533b27b108adff831"
-  },
-  "doc-56a5107be70de978be828c8424d8bd68": {
-    "entity_names": [
-      "Viktor Orbán",
-      "Boris Kovalchuk",
-      "Hungary",
-      "Valery Roldugin",
+      "The Washington Post",
+      "United States",
+      "Progressive Slovakia",
+      "Szijjarto",
       "Kremlin",
-      "Arkady Rotenberg",
-      "Other",
-      "mouse",
-      "Vladimir Putin",
-      "Russia",
-      "Yevgeny Prigozhin",
-      "Gennady Timchenko"
-    ],
-    "count": 12,
-    "create_time": 1777935677,
-    "update_time": 1777935677,
-    "_id": "doc-56a5107be70de978be828c8424d8bd68"
-  },
-  "doc-15bc4e46d65e8b6c679c0513794f7a0d": {
-    "entity_names": [
-      "Ukraine",
-      "J D Vans",
-      "Hungary",
-      "United States"
-    ],
-    "count": 4,
-    "create_time": 1777935691,
-    "update_time": 1777935691,
-    "_id": "doc-15bc4e46d65e8b6c679c0513794f7a0d"
-  },
-  "doc-e7f479c1dafa7f6000ea9c8a9d708681": {
-    "entity_names": [
-      "Viktor Orbán",
-      "Hungary",
-      "Gigi DAlessio",
-      "Donald Trump",
-      "Hungarian Patriots"
-    ],
-    "count": 5,
-    "create_time": 1777935719,
-    "update_time": 1777935719,
-    "_id": "doc-e7f479c1dafa7f6000ea9c8a9d708681"
-  },
-  "doc-d676b4cd482e3a1b0b5a31f8890d6a05": {
-    "entity_names": [
-      "Viktor Orbán",
-      "Moscow",
-      "Péter Márki-Zay",
-      "Hungary",
-      "Mikhail Murashko",
-      "Budapest",
-      "Peter Szijjártó",
-      "European Union",
-      "Russia",
-      "Politico"
-    ],
-    "count": 10,
-    "create_time": 1777936134,
-    "update_time": 1777936134,
-    "_id": "doc-d676b4cd482e3a1b0b5a31f8890d6a05"
-  },
-  "doc-b4ab4af04ea406b0a7a47efc262f0eb2": {
-    "entity_names": [
-      "Рогоч",
-      "Александр Киричанин",
-      "Игорь",
-      "Игорь Король",
-      "тюрьма",
-      "2017",
-      "Словакия",
-      "László Kócs",
-      "Дитмарклоудо",
-      "2001",
-      "Эзрадеш Венгри",
-      "Шандера Птефи",
-      "Могилевич, Семён",
-      "Лотци",
-      "Alexander Kirichenko",
-      "István Hofman",
-      "Присташ Йожеф",
-      "Szent Károly út",
-      "1997",
-      "Будоверш",
-      "1999",
-      "Igor Korol",
-      "Израиль",
-      "Budapest",
-      "Эдик",
-      "Igor Koryol",
-      "проститутка",
-      "Корона",
-      "деньги",
-      "Кома",
-      "Пинтер Шандер",
-      "Semyon Mogilevich",
-      "Леонид Тюра",
-      "Bucharest",
-      "Радченко Руслан",
-      "Шандор Пинтер",
-      "Orbán",
-      "Ukraine",
-      "Ужгород",
-      "Вад",
-      "Тони Дюри Визовицкий Ласлоу",
-      "Oyki Kish",
-      "Томаш Портик",
-      "Немзтведелмилгат",
-      "Венгрия",
-      "Йозеф Рогоч",
-      "Бухарест",
-      "Polish Fiat",
-      "Alexander Kirichanin",
-      "Славик",
-      "Сомбатхе",
-      "Kecskemét",
-      "НВС",
-      "Békásmegyer",
-      "Витька",
-      "Портик",
-      "Пинтер Шандор",
-      "Арбанк",
-      "Сантендра",
-      "Леонид Цецюра",
-      "Explosion near McDonalds in Budapest",
-      "Steec Nutrition",
-      "Szentendre",
-      "Орбан",
-      "Skoda",
-      "December 31",
-      "Пинтер",
-      "1994",
-      "Spring 1998 Elections",
-      "Dietmar Klaud",
-      "Leather Bag",
-      "1998 Elections",
-      "Саша Киричанин",
-      "Tiszókecske",
-      "Uzhhorod",
-      "Оля Игоря",
-      "Сева",
-      "Октогон",
-      "Nedits Maraklodu",
-      "Hungary",
-      "Шандер Пинтер",
-      "Пинтер, Шандер",
-      "Будапешт",
-      "1998",
-      "Leonid Stitsyura",
-      "Orvónky",
-      "Камигами",
-      "Сомбатхей",
-      "December 23",
-      "1995",
-      "McDonald's",
-      "Портик Томаш",
-      "The Insider",
-      "speaker",
-      "Виктор Арбан",
-      "Slovakia",
-      "артерию",
-      "József Pristash",
-      "Могилевич",
-      "Полиграф",
-      "2010",
-      "Киев",
-      "Магилевич",
-      "Борош Томаш",
-      "Дочь",
-      "Roman Dobrokhотов",
-      "Саша",
-      "Igor",
-      "Йожеф Присташ",
-      "Арбан",
-      "Goldf Gim",
-      "Король",
-      "1996",
-      "Семён Могилевич",
-      "венгерская граница",
-      "Вендис",
-      "Spring 1996",
-      "НКУизер Джип",
-      "Czech Republic",
-      "BMW",
-      "Бургермейштержолт",
-      "23 декабря 1998 года",
-      "Black Skull",
-      "Russia",
-      "Mogilevich"
-    ],
-    "count": 125,
-    "create_time": 1777936141,
-    "update_time": 1777936141,
-    "_id": "doc-b4ab4af04ea406b0a7a47efc262f0eb2"
-  },
-  "doc-04255b715a0376896ee759f97f705fa9": {
-    "entity_names": [
-      "Moscow",
-      "Sergey Lavrov",
-      "Hungary",
-      "Minister of Viktor Orban",
+      "Intelligence Service of an EU Country",
       "Viktor Orban",
       "European Union",
-      "Poland",
-      "Donald Tusk"
-    ],
-    "count": 8,
-    "create_time": 1777936164,
-    "update_time": 1777936164,
-    "_id": "doc-04255b715a0376896ee759f97f705fa9"
-  },
-  "doc-1df0b1b88f34d580b02a39f19b81863c": {
-    "entity_names": [
-      "Hungary",
-      "Kremlin",
-      "Ukraine",
-      "European Union",
       "Lavrov",
-      "Siyarto"
+      "Sabolc Panyi",
+      "SMER",
+      "Hungary",
+      "Pellegrini",
+      "Slovakia",
+      "Bucharest",
+      "Hlas",
+      "Serbia",
+      "Jan Kuciak",
+      "Fico",
+      "Politico",
+      "Israel",
+      "Turkey",
+      "Danko",
+      "European Union Intelligence Service"
+    ],
+    "count": 25,
+    "create_time": 1780158747,
+    "update_time": 1780158747,
+    "_id": "doc-c1ce72ab7e37be14da2809b6c6124821"
+  },
+  "doc-819b5296cb9cab4ce71c04adc7453519": {
+    "entity_names": [
+      "Russia",
+      "Sabolcs Panyi",
+      "Hungary",
+      "European Union",
+      "NATO"
+    ],
+    "count": 5,
+    "create_time": 1780158754,
+    "update_time": 1780158754,
+    "_id": "doc-819b5296cb9cab4ce71c04adc7453519"
+  },
+  "doc-8a0a9a5790a8b10327e1ee71251d068e": {
+    "entity_names": [
+      "SMER-SD",
+      "Russia",
+      "Republic",
+      "Peter Pellegrini",
+      "Democrats",
+      "2027 Slovak Parliamentary Election",
+      "Movement Slovakia",
+      "Slovakia",
+      "Druzhba Pipeline",
+      "Progressive Slovakia",
+      "General Prosecutor's Office",
+      "Ukraine",
+      "Robert Fico",
+      "Christian Democrats",
+      "Bronislav Gruling",
+      "HLAS-SD",
+      "SaS (Freedom and Solidarity)"
+    ],
+    "count": 17,
+    "create_time": 1780158770,
+    "update_time": 1780158770,
+    "_id": "doc-8a0a9a5790a8b10327e1ee71251d068e"
+  },
+  "doc-825f63610b1659d584a429f7aef49cb0": {
+    "entity_names": [
+      "Google Translate",
+      "Kremlin Troll Factory",
+      "Reading Club Budapest",
+      "Peter Magyar",
+      "Hungary",
+      "Sergey Kiriyenko",
+      "Viktor Orban"
+    ],
+    "count": 7,
+    "create_time": 1780158780,
+    "update_time": 1780158780,
+    "_id": "doc-825f63610b1659d584a429f7aef49cb0"
+  },
+  "doc-320538f38eead5cecb2734d4fe0e42e7": {
+    "entity_names": [
+      "Győr",
+      "Hungary",
+      "Ukraine",
+      "Viktor Orbán",
+      "Pro-Ukraine Crowd"
+    ],
+    "count": 5,
+    "create_time": 1780158787,
+    "update_time": 1780158787,
+    "_id": "doc-320538f38eead5cecb2734d4fe0e42e7"
+  },
+  "doc-ecdb74268958babcb0c92a3dd45ff7c0": {
+    "entity_names": [
+      "Russia",
+      "Druzhba Pipeline",
+      "Slovakia",
+      "European Union",
+      "Ukraine",
+      "Robert Fico",
+      "20th Sanctions Package"
+    ],
+    "count": 7,
+    "create_time": 1780158800,
+    "update_time": 1780158800,
+    "_id": "doc-ecdb74268958babcb0c92a3dd45ff7c0"
+  },
+  "doc-38766541ae2f1e6a3619dd5a904cb4d4": {
+    "entity_names": [
+      "Hungarian Journalists",
+      "Fidesz",
+      "Hungary",
+      "Roma People",
+      "\"Цена голоса\" (The Price of the Vote)",
+      "Drug Addicts",
+      "BBC",
+      "Viktor Orbán",
+      "Hungarian Citizens",
+      "Opposition Candidate (Roma)",
+      "Local Mayors"
+    ],
+    "count": 11,
+    "create_time": 1780158814,
+    "update_time": 1780158814,
+    "_id": "doc-38766541ae2f1e6a3619dd5a904cb4d4"
+  },
+  "doc-e01ec36a69da4b2d574f1f02d28bffc9": {
+    "entity_names": [
+      "Peter Szijjarto",
+      "Hungary",
+      "Hungarian opposition",
+      "Hungarian special services",
+      "Hungarian government",
+      "Tisza Party",
+      "European Union",
+      "Russian services",
+      "Alexander Notevsky",
+      "GRUNT with Notevsky",
+      "Viktor Orban"
+    ],
+    "count": 11,
+    "create_time": 1780158828,
+    "update_time": 1780158828,
+    "_id": "doc-e01ec36a69da4b2d574f1f02d28bffc9"
+  },
+  "doc-1cf07f51c745b238535326b80c84401a": {
+    "entity_names": [
+      "Russia",
+      "Kyiv",
+      "Soviet Union",
+      "Felcsut",
+      "Hungary",
+      "Fidesz",
+      "Silvio Berlusconi",
+      "Republican Party",
+      "Vladimir Putin",
+      "European Union",
+      "Kremlin",
+      "Brussels",
+      "Paks II",
+      "Republic of Hungary",
+      "Viktor Orban"
+    ],
+    "count": 15,
+    "create_time": 1780158847,
+    "update_time": 1780158847,
+    "_id": "doc-1cf07f51c745b238535326b80c84401a"
+  },
+  "doc-cf47deba43fee795434c54ef90160d65": {
+    "entity_names": [
+      "Russia",
+      "Alisher Usmanov",
+      "Josep Borrell",
+      "The Insider",
+      "Peter Szijjarto",
+      "Hungary",
+      "Viatcheslav Moshe Kantor",
+      "18th Package Of Sanctions",
+      "Slovakia",
+      "European Union",
+      "Siyarto",
+      "Ismailova",
+      "Sorokin",
+      "Gazprom",
+      "Russian Banks",
+      "Mikhail Degtyarev",
+      "2Rivers",
+      "Sergei Lavrov"
+    ],
+    "count": 18,
+    "create_time": 1780158866,
+    "update_time": 1780158866,
+    "_id": "doc-cf47deba43fee795434c54ef90160d65"
+  },
+  "doc-04a234b456574db533bc182106a822ef": {
+    "entity_names": [
+      "Volodymyr Zelenskyy",
+      "YouTube",
+      "Resurgam",
+      "Zelenskyy",
+      "Sergey Lavrov",
+      "Hungary",
+      "Orban's Propaganda",
+      "Viktor Orban",
+      "Dmytro Kornienko's sword",
+      "RT Balkan",
+      "Serbia",
+      "Resurgam➰",
+      "Dmytro Kornienko",
+      "Ukraine",
+      "Péter Szijjártó",
+      "National Security and Defense Council of Ukraine (NSDC)",
+      "Magyar Nemzet"
+    ],
+    "count": 17,
+    "create_time": 1780158889,
+    "update_time": 1780158889,
+    "_id": "doc-04a234b456574db533bc182106a822ef"
+  },
+  "doc-127e3f4c05035abd716c914a4b50e6ed": {
+    "entity_names": [
+      "Alisher Usmanov",
+      "Bratislava",
+      "Saint Petersburg",
+      "Sanctions against Ismailova",
+      "Russia",
+      "18th Sanctions Package",
+      "Budapest",
+      "European Union",
+      "Moscow",
+      "2Rivers",
+      "Degtyaryov",
+      "The Insider",
+      "Peter Szijjarto",
+      "Hungary",
+      "Slovakia",
+      "Ismailova",
+      "Gazprom",
+      "Sergei Lavrov",
+      "Josep Borrell",
+      "Kantor",
+      "Sorokin"
+    ],
+    "count": 21,
+    "create_time": 1780158912,
+    "update_time": 1780158912,
+    "_id": "doc-127e3f4c05035abd716c914a4b50e6ed"
+  },
+  "doc-39b4e82aa6daf50e6bf68f966f0c13de": {
+    "entity_names": [
+      "Russia",
+      "Петер Сийярто",
+      "Сергей Лавров",
+      "Hungary",
+      "Венгрия",
+      "European Union"
     ],
     "count": 6,
-    "create_time": 1777936195,
-    "update_time": 1777936195,
-    "_id": "doc-1df0b1b88f34d580b02a39f19b81863c"
+    "create_time": 1780158924,
+    "update_time": 1780158924,
+    "_id": "doc-39b4e82aa6daf50e6bf68f966f0c13de"
   },
-  "doc-856b3e97c7114ec779d61032fd380cac": {
+  "doc-c381c4fe5727d1eea2222a55a1268625": {
     "entity_names": [
-      "Sergey Lavrov",
-      "ICJK",
+      "Hungarian Radio Of Ukraine",
+      "Hungary",
+      "Ukraine",
+      "Ministry Of Foreign Affairs Of Ukraine",
+      "Hungarian Officials",
+      "Viktor Orban"
+    ],
+    "count": 6,
+    "create_time": 1780158941,
+    "update_time": 1780158941,
+    "_id": "doc-c381c4fe5727d1eea2222a55a1268625"
+  },
+  "doc-db16389e6ade267090ca3949ba5ab6da": {
+    "entity_names": [
+      "Russia",
+      "Poland",
+      "Hungary",
+      "Donald Tusk",
+      "Europe",
+      "Vladimir Putin",
+      "European Union",
+      "Donald Trump",
+      "Kirill Dmitriev",
+      "Viktor Orban"
+    ],
+    "count": 10,
+    "create_time": 1780158952,
+    "update_time": 1780158952,
+    "_id": "doc-db16389e6ade267090ca3949ba5ab6da"
+  },
+  "doc-681ad7d776c52900d14a1e4ca519ebf9": {
+    "entity_names": [
+      "Chad",
+      "Russia",
+      "Hungarian Army",
+      "Royal Military Academy Sandhurst",
+      "Telex.hu",
+      "England",
+      "God",
+      "Szilveszter Pálinkás",
+      "European Union",
+      "Ukraine",
+      "Brussels",
+      "Viktor Orbán",
+      "Africa",
+      "Gáspár Orbán"
+    ],
+    "count": 14,
+    "create_time": 1780158968,
+    "update_time": 1780158968,
+    "_id": "doc-681ad7d776c52900d14a1e4ca519ebf9"
+  },
+  "doc-4e0a74027c0615e9a256d8aa2cb96bba": {
+    "entity_names": [
+      "Hungarian Uprising of 1956",
+      "April 7-8",
+      "The Last Capitalist",
+      "Russian Home",
+      "Fidesz",
+      "Hungary",
+      "United States",
+      "Orbán",
+      "April 12",
+      "Vance",
+      "Soviet Union"
+    ],
+    "count": 11,
+    "create_time": 1780158980,
+    "update_time": 1780158980,
+    "_id": "doc-4e0a74027c0615e9a256d8aa2cb96bba"
+  },
+  "doc-c3ae3fd65f05677b1879c99d237a274b": {
+    "entity_names": [
+      "J.D. Vance",
+      "Hungary",
+      "Digital Censorship",
+      "United States",
+      "Brussels Bureaucracy",
+      "Viktor Orban"
+    ],
+    "count": 6,
+    "create_time": 1780158994,
+    "update_time": 1780158994,
+    "_id": "doc-c3ae3fd65f05677b1879c99d237a274b"
+  },
+  "doc-8a51bb8a3bc303b291928e3b372c5486": {
+    "entity_names": [
+      "Russia",
+      "Czech Republic",
+      "Poland",
+      "MiG-29",
+      "Peter Pellegrini",
+      "Hungary",
+      "Slovakia",
+      "Vladimir Putin",
+      "Ukraine",
+      "Robert Fico",
+      "NATO",
+      "F-16 Block 70/72"
+    ],
+    "count": 12,
+    "create_time": 1780159012,
+    "update_time": 1780159012,
+    "_id": "doc-8a51bb8a3bc303b291928e3b372c5486"
+  },
+  "doc-03b028608880e293927e36f95ead0267": {
+    "entity_names": [
+      "Russia",
+      "Russian-Ukrainian War",
+      "Aesop's Fable",
+      "Hungary",
+      "Pandemic COVID",
+      "Budapest",
+      "Opposition Leader",
+      "Vladimir Putin",
+      "Ukraine",
+      "Donald Trump",
+      "Saint Petersburg",
+      "Bloomberg",
+      "Viktor Orban"
+    ],
+    "count": 13,
+    "create_time": 1780159026,
+    "update_time": 1780159026,
+    "_id": "doc-03b028608880e293927e36f95ead0267"
+  },
+  "doc-c3f00eaecef5f21bdff4c2b46e37b5cd": {
+    "entity_names": [
+      "Roldugin",
+      "Hungary",
+      "Putin",
+      "Viktor Orban",
+      "Timchenko",
+      "Prigozhin",
+      "Kovalchuk",
+      "Rotenberg"
+    ],
+    "count": 8,
+    "create_time": 1780159036,
+    "update_time": 1780159036,
+    "_id": "doc-c3f00eaecef5f21bdff4c2b46e37b5cd"
+  },
+  "doc-fe26ce03140793f7f1a1cb83d00e0461": {
+    "entity_names": [
+      "Hungary",
+      "Ukrainian Special Services",
+      "United States",
+      "JD Vance"
+    ],
+    "count": 4,
+    "create_time": 1780159049,
+    "update_time": 1780159049,
+    "_id": "doc-fe26ce03140793f7f1a1cb83d00e0461"
+  },
+  "doc-10c1173a2768fc966285e79d234dddb4": {
+    "entity_names": [
+      "Hungary",
+      "United States",
+      "Gyorgy \"GG\" Divan",
+      "Donald Trump",
+      "Hungarian Patriots",
+      "JD Vance",
+      "Viktor Orban"
+    ],
+    "count": 7,
+    "create_time": 1780159060,
+    "update_time": 1780159060,
+    "_id": "doc-10c1173a2768fc966285e79d234dddb4"
+  },
+  "doc-19a35238c20ec4b0438ba95d36f7855c": {
+    "entity_names": [
+      "Hungarian police",
+      "Cherep",
+      "Arbanc",
+      "Pintern",
+      "вендис",
+      "BMW",
+      "Portik Tamas",
+      "Portik",
+      "Goldf Gym",
+      "Будоверш (Budaörs)",
+      "Boros Tomas",
+      "Sandor Pinter",
+      "Leonid Stytsyura",
+      "Steec Nutrition",
+      "Eddy",
+      "Budapest",
+      "Russian Criminals",
+      "Рождество Христово",
+      "Viktor Orbán",
+      "narrator",
+      "Laszlo",
+      "Vitek",
+      "Саша",
+      "Hungary",
+      "Roman Dobrokhotov",
+      "McDonald's",
+      "NVS Brigade",
+      "Laszlo Koch",
+      "Czech Republic",
+      "Pinter Shander",
+      "Игорь",
+      "Szentendre",
+      "Polish Fiat",
+      "Goldf Gim",
+      "Alexander Kirichanin",
+      "Speaker",
+      "Pinter",
+      "Sándor Pintér",
+      "Радчевка Руслан",
+      "Tisza Kecske",
+      "Sex Worker",
+      "Victor Orban",
+      "Dietmar Clodo",
       "The Insider",
+      "Slovakia",
+      "1996",
+      "Bucharest",
+      "Ezredes",
+      "Video Recording",
+      "Uzhhorod",
+      "Будапешт",
+      "Mogilevich",
+      "Бухарест",
+      "Igor",
+      "Yozef Rogoch",
+      "Organized Crime Group (Hungary)",
+      "Hungarian interrogators",
+      "Hungarian elections",
+      "Leonid Tyura",
+      "spring of 1996",
+      "Criminal World",
+      "Венгрия",
+      "Ukrainian Criminals",
+      "Ukraine",
+      "József Prisztás",
+      "Porter",
+      "Vác",
+      "Orbán",
+      "Александр Киричанин",
+      "Witness",
+      "Soviet Union",
+      "Kamigami",
+      "Semyon Mogilevich",
+      "Spartacus",
+      "Hungarian Court",
+      "Lotsi",
+      "Igor Korol",
+      "Uk",
+      "Leonid Stitsyura",
+      "1998 Hungarian Elections",
+      "Békásmegyer",
+      "England",
+      "spring of 1998",
+      "Orvonki Utca",
+      "Руслан Радченко",
+      "Szent Király Street",
+      "King",
+      "KGB",
+      "Игорь Король",
+      "Seva",
+      "Russia",
+      "Viktor Orban",
+      "Kyiv",
+      "Nedit Maracloclu",
+      "István Hoffmann",
+      "Hotel Corona",
+      "Yozhef Pristsh",
+      "Burgermeister Zsolt",
+      "COVID-19",
+      "Tony Duri Vizovitsky",
+      "Hungarian Law",
+      "Sasha Kirichanina",
+      "Rogach",
+      "Slavik",
+      "Король Игорь",
+      "Szombathely",
+      "Israel",
+      "Portik Tomas",
+      "Ukrainian Organizations",
+      "Russian Federation",
+      "Semion Mogilevich",
+      "Hungarian Police",
+      "Октогон",
+      "Пинтер"
+    ],
+    "count": 114,
+    "create_time": 1780159106,
+    "update_time": 1780159106,
+    "_id": "doc-19a35238c20ec4b0438ba95d36f7855c"
+  },
+  "doc-832e124291d2edcfe44aa5ee0e389532": {
+    "entity_names": [
+      "Russia",
+      "Russian Government",
+      "Politico",
+      "Peter Magyar",
+      "Hungary",
+      "Peter Szijjarto",
+      "Budapest",
+      "Mikhail Murashko",
+      "European Union",
+      "Moscow",
+      "12-Point Plan",
+      "Hungarian Government",
+      "Viktor Orban"
+    ],
+    "count": 13,
+    "create_time": 1780159123,
+    "update_time": 1780159123,
+    "_id": "doc-832e124291d2edcfe44aa5ee0e389532"
+  },
+  "doc-4c493f16afc106be1581394701531294": {
+    "entity_names": [
+      "Poland",
+      "Сергей Лавров",
+      "Hungary",
+      "Дональд Туск",
+      "European Union",
+      "Moscow",
+      "Виктор Орбан"
+    ],
+    "count": 7,
+    "create_time": 1780159132,
+    "update_time": 1780159132,
+    "_id": "doc-4c493f16afc106be1581394701531294"
+  },
+  "doc-8122a5849a347ff8de166cb49b8183f8": {
+    "entity_names": [
+      "Hungary",
+      "Peter Szijjarto",
       "Kremlin",
+      "European Union",
+      "Moscow",
+      "Ukraine",
+      "Lavrov",
+      "VSquare",
+      "Hungarian Embassy"
+    ],
+    "count": 9,
+    "create_time": 1780159142,
+    "update_time": 1780159142,
+    "_id": "doc-8122a5849a347ff8de166cb49b8183f8"
+  },
+  "doc-054796c6e69796edbe1440757f603291": {
+    "entity_names": [
+      "Russia",
+      "Hungarian Embassy in Moscow",
+      "The Insider",
+      "Sergey Lavrov",
+      "Peter Szijjarto",
+      "Hungary",
+      "ICJK",
+      "European Union",
+      "Leaked Conversation",
       "Ukraine",
       "Delfi",
-      "European Union",
-      "Péter Szijjártó",
       "VSquare",
       "FrontStory"
     ],
-    "count": 10,
-    "create_time": 1777936220,
-    "update_time": 1777936220,
-    "_id": "doc-856b3e97c7114ec779d61032fd380cac"
+    "count": 13,
+    "create_time": 1780159156,
+    "update_time": 1780159156,
+    "_id": "doc-054796c6e69796edbe1440757f603291"
   },
-  "doc-9709583820fd5481ffcce2b760a7e137": {
+  "doc-79e4174ce7de5e14e14dcd63a750bbb3": {
     "entity_names": [
       "Hungary",
+      "Adriatic Pipeline (JANAF)",
       "Croatia",
       "Slovakia",
-      "Adriatic Pipeline",
+      "United States",
       "Ante Šušnjar",
-      "JANAF",
-      "United States"
+      "Washington"
     ],
     "count": 7,
-    "create_time": 1777936234,
-    "update_time": 1777936234,
-    "_id": "doc-9709583820fd5481ffcce2b760a7e137"
+    "create_time": 1780159167,
+    "update_time": 1780159167,
+    "_id": "doc-79e4174ce7de5e14e14dcd63a750bbb3"
   },
-  "doc-aee2cce01ea0f26a0eca327b55ad4d84": {
+  "doc-6f094bdd27b9c51bbfc6d088ba33707e": {
     "entity_names": [
-      "Fidesz",
-      "Weimar Triangle",
-      "Antal Rogán",
-      "Donald Trump",
-      "2026–2027",
-      "Bulgarian Center for the Study of Democracy",
-      "Alisher Usmanov",
-      "Hungarian public procurement system",
-      "April 12",
-      "Siyarta",
-      "Lviv Oblast",
-      "Soros",
-      "Sándu",
-      "Zakarpattia",
-      "Felcsút",
-      "CRP",
-      "Kyiv",
-      "27 January",
-      "Hatyapust",
-      "CNN",
-      "Hungarian Government",
-      "ML",
+      "Hungary",
       "Budapest",
-      "Hatvanpusta",
-      "Jan Šlais",
-      "Chișinău",
-      "Doppelganger",
-      "Matthias Corvinus Collegium",
-      "Delamit Kft",
-      "Kremlin",
-      "Orbán",
-      "KGB",
-      "Ukraine",
-      "Tisza",
-      "Dzsózsef Orbán",
-      "Hótvágypuszta",
-      "18th Sanctions Package",
-      "Delbar",
-      "Warsaw Pact",
-      "Jared Vance",
-      "Judit Varga",
-      "József Orbán",
-      "5 March",
-      "Lukashenko",
-      "Kirienko",
-      "Brussels",
-      "Sergei Kirienko",
-      "E3",
-      "Sergei Lavrov",
-      "Brody",
-      "22 February",
-      "Donald Tusk",
-      "Maia Sandu",
-      "Ashatbank",
-      "Hungarian Election",
-      "Druzhba",
-      "Hungarian Ministry of Economy",
-      "Czechia",
-      "Akashhadhazi",
-      "Cohesion Funds",
-      "Delamit Kft.",
-      "Moscow",
-      "V Square",
-      "E4",
-      "Ursula von der Leyen",
-      "Hungarian education and healthcare infrastructure",
       "European Union",
-      "Lavrov",
-      "Druzhba Pipeline",
-      "Sergey Lavrov",
-      "SVR",
-      "Newgard",
-      "Gáncs",
-      "Financial Times",
-      "Katalin Novák",
-      "EU Recovery Fund",
-      "Washington Post",
-      "Hungary",
-      "Leningrad",
-      "Gánt",
-      "Mehyigorye",
-      "Moldova",
-      "Gulbakhor Ismailova",
-      "Mádár",
-      "TikTok",
-      "Andrei Kirienko",
-      "Mátyás",
-      "Romania",
-      "Peter Magyar",
-      "RaiFaiZen Bank",
-      "Péter Márki-Zay",
-      "Madjar",
-      "NATO",
-      "Bloomberg",
-      "Mádiár",
-      "Michael Naki",
-      "MO",
-      "Gabrielius Landsbergis",
-      "Vladimir Putin",
-      "United States",
-      "Putin",
-      "Viktor Orbán",
-      "Pavel Sorokin",
-      "Oschadbank",
+      "Ukraine",
+      "Viktor Orban"
+    ],
+    "count": 5,
+    "create_time": 1780159181,
+    "update_time": 1780159181,
+    "_id": "doc-6f094bdd27b9c51bbfc6d088ba33707e"
+  },
+  "doc-29d5e297385505e5e5421c05ba930575": {
+    "entity_names": [
+      "Hotvan Puszta",
+      "Охотники",
+      "1956 Hungarian Revolution",
+      "Council of the European Union",
       "GRU",
-      "Peter Szijjártó",
-      "Social Design Agency",
-      "Jarosław Kaczyński",
-      "European Commission",
-      "Viktor Orban",
-      "Fides",
-      "Soviet Union",
-      "Russia"
-    ],
-    "count": 113,
-    "create_time": 1777936573,
-    "update_time": 1777936573,
-    "_id": "doc-aee2cce01ea0f26a0eca327b55ad4d84"
-  },
-  "doc-6668814f0fa4a08a5e7146c18c524882": {
-    "entity_names": [
-      "Madjar",
-      "Kremlin",
-      "Hungary",
-      "Weber",
-      "Orbán",
-      "European People's Party"
-    ],
-    "count": 6,
-    "create_time": 1777936592,
-    "update_time": 1777936592,
-    "_id": "doc-6668814f0fa4a08a5e7146c18c524882"
-  },
-  "doc-30016fb6016e5e816490beecfa0137ea": {
-    "entity_names": [
-      "Fidesz",
-      "Péter Márki-Zay",
-      "Orbán",
-      "Ukraine",
-      "Tisza",
-      "Donald Trump",
+      "Sergei Kiriyenko",
+      "Kiriyenko",
+      "Budapest",
+      "Donald Tusk",
+      "Antal Rogan",
+      "Petro Magyar",
+      "Péter Magyar",
       "European Union",
-      "Irish Independent",
-      "Opposition",
-      "Hungarian State Media",
-      "Ground News",
-      "Croatia",
-      "Pest",
-      "Price of the Vote",
-      "United Hungary",
+      "Moscow",
+      "Maia Sandu",
+      "Viktor Orbán",
+      "Győző Orbán Sr.",
+      "Peter Szijjarto",
+      "Hungary",
+      "Austria",
+      "SVR",
+      "National Service for Cyber Defense",
+      "AfD",
+      "Nicaragua",
+      "Hungarian Ministry of Economy",
+      "TikTok",
+      "Czech Republic",
+      "Social Design Agency",
+      "Hungarian Voters",
+      "Lviv Oblast",
+      "Hatvan Puszta",
+      "Alisher Usmanov",
+      "Hormuz Strait",
+      "Janos Kadar",
+      "Путин",
+      "CNN",
+      "János Lázár",
+      "Oschadbank",
+      "Centre for the Study of Democracy",
+      "Katalin Novak",
+      "Financial Times",
+      "Warsaw Pact",
+      "Moldova",
+      "Pavel Sorokin",
+      "Michael Naki",
+      "Volodymyr Zelenskyy",
+      "Slovakia",
+      "Hungarian Foreign Minister",
+      "Мышь",
+      "Iran",
+      "Chisinau",
+      "НАТО",
+      "Central Bank of Hungary",
+      "Insider",
+      "Latin America",
+      "Delamit KFT",
+      "Лев",
+      "Gabrielius Landsbergis",
+      "Tisza Party",
+      "Hungarian Counter-Terrorism Service",
+      "Africa",
+      "Germany",
+      "Transcript",
+      "France",
+      "Romania",
+      "Vienna",
+      "Pro-European Party",
+      "Венгрия",
+      "Лавров",
+      "Gábor Hatala",
+      "V Square",
+      "Ukraine",
+      "Евросоюз",
+      "Péter Szijjártó",
+      "Akkos Hadhazi",
+      "Angola",
+      "Lavrov",
+      "Виктор Орбан",
+      "Москва",
+      "Bulgarian Center for the Study of Democracy",
+      "State Agency for Student Loans",
+      "Royal Navrotsky",
+      "Newgard",
+      "Sergei Lavrov",
+      "J.D. Vance",
+      "Fidesz",
+      "Parliamentary elections in Hungary",
+      "MOL",
+      "Donald Trump",
+      "Andrzej Duda",
+      "Bloomberg",
+      "Kiev",
+      "Central Europe",
+      "United States",
+      "Druzhba Pipeline",
+      "United Kingdom",
+      "Judit Varga",
+      "Kremlin",
+      "Szijjarto",
+      "Mathias Corvinus Collegium",
+      "State Audit Office",
+      "Maya Sandu",
+      "Brussels",
+      "KGB",
+      "Viktor Orban",
+      "Akkos Hadhazy",
+      "Russia",
+      "Druzhba Oil Pipeline",
+      "Mezhyhirya",
+      "Kyiv",
+      "Viktor Yanukovych",
+      "European Prosecutor's Office",
+      "Yaroslav Kaczyński",
+      "NATO",
+      "Zakarpattia",
+      "Brody",
+      "Poland",
+      "War",
+      "Hungarian State Bank",
+      "Peter Magyar",
+      "Lithuania",
       "Vladimir Putin",
+      "Center for the Study of Democracy",
+      "Майкл Наки",
+      "Washington Post",
+      "Law and Justice",
+      "Сиярто",
+      "Gulbahor Ismailova",
+      "Raiffeisen Bank",
+      "Gánt"
+    ],
+    "count": 130,
+    "create_time": 1780159236,
+    "update_time": 1780159236,
+    "_id": "doc-29d5e297385505e5e5421c05ba930575"
+  },
+  "doc-915f34fde0e572431ac81133c3d17218": {
+    "entity_names": [
+      "Manfred Weber",
+      "Peter Magyar",
+      "Hungary",
+      "Vladimir Putin",
+      "Kremlin",
+      "European People's Party",
+      "Germany",
+      "Viktor Orban"
+    ],
+    "count": 8,
+    "create_time": 1780159245,
+    "update_time": 1780159245,
+    "_id": "doc-915f34fde0e572431ac81133c3d17218"
+  },
+  "doc-b6aa60b2117aabfc692fcf9fbdc95f52": {
+    "entity_names": [
       "Breitbart",
       "United States",
-      "Viktor Orbán",
-      "2026 Hungarian Elections",
-      "Hungary",
-      "J.D. Vance",
-      "2022 Hungarian Elections",
-      "Szig",
-      "2014 Hungarian Political Campaign",
-      "Artificial Intelligence",
-      "2018 Hungarian Migration Crisis",
-      "Viktor Orbáns regime",
-      "EU Made Simple",
-      "Győr-Moson-Sopron",
-      "Budapest",
-      "Serbia–Hungary Gas Pipeline",
-      "Tisz",
-      "Fides",
-      "Russia"
-    ],
-    "count": 35,
-    "create_time": 1777936773,
-    "update_time": 1777936773,
-    "_id": "doc-30016fb6016e5e816490beecfa0137ea"
-  },
-  "doc-6b6094bb4baa50ca16b050094527bb72": {
-    "entity_names": [
-      "Moscow",
-      "Hezbollah",
-      "Viktor Orbán",
       "Kremlin",
+      "Tisza Party",
+      "The Price of a Vote",
+      "2026",
+      "EU Made Simple",
+      "Viktor Orban",
+      "Russia",
+      "Serbia-Hungary Gas Pipeline",
+      "2nd Vote",
+      "Tisza",
+      "Budapest",
+      "Sig and Ti",
+      "European Union",
+      "Ukraine",
+      "2014",
+      "Viktor Orbán",
+      "Winner Compensation",
+      "2026 Hungarian Election",
+      "2022 Elections",
+      "Gur-Moshan-Sopron",
+      "Peter Magyar",
       "Hungary",
+      "Opposition",
+      "Pest",
+      "Vladimir Putin",
+      "United for Hungary",
+      "2026 Elections",
+      "Ground News",
+      "2022 Hungarian Election",
+      "2018",
+      "Irish Independent",
+      "J.D. Vance",
+      "1st Vote",
+      "Fidesz",
+      "Croatia",
+      "State Television",
+      "12 April",
+      "Donald Trump",
+      "District 3",
+      "2022"
+    ],
+    "count": 42,
+    "create_time": 1780159280,
+    "update_time": 1780159280,
+    "_id": "doc-b6aa60b2117aabfc692fcf9fbdc95f52"
+  },
+  "doc-df754df92414afc6bd78bc5c832624f2": {
+    "entity_names": [
+      "Russia",
       "Iran",
       "Israel",
+      "Hungary",
+      "Peter Szijjarto",
       "The Washington Post",
-      "Peter Sijarto",
-      "Russia",
-      "Abbas Araghchi"
+      "2024 Hezbollah Pager Attack",
+      "Kremlin",
+      "Abbas Araghchi",
+      "Hezbollah",
+      "Viktor Orban"
     ],
     "count": 11,
-    "create_time": 1777936789,
-    "update_time": 1777936789,
-    "_id": "doc-6b6094bb4baa50ca16b050094527bb72"
+    "create_time": 1780159292,
+    "update_time": 1780159292,
+    "_id": "doc-df754df92414afc6bd78bc5c832624f2"
   },
-  "doc-0a0dab94a560fc758fa6ee405a3073e1": {
+  "doc-d71726075ceaaac4900b01b084ad8e13": {
     "entity_names": [
-      "Nord Stream",
+      "Russia",
+      "Iran",
       "European Commission",
-      "Hungary",
-      "Antonio Costa",
-      "Druzhba",
-      "European Council",
-      "Ukraine",
-      "European Union",
       "Israel",
+      "Central Europe",
       "European Parliament",
-      "Robert Fico",
-      "Russia",
-      "United States"
-    ],
-    "count": 13,
-    "create_time": 1777936833,
-    "update_time": 1777936833,
-    "_id": "doc-0a0dab94a560fc758fa6ee405a3073e1"
-  },
-  "doc-3ee95b6f249a6cf2559cd73a00550138": {
-    "entity_names": [
-      "Orbán",
-      "Russia",
-      "Hungary"
-    ],
-    "count": 3,
-    "create_time": 1777936839,
-    "update_time": 1777936839,
-    "_id": "doc-3ee95b6f249a6cf2559cd73a00550138"
-  },
-  "doc-b98644fa6c027080d677392f4baa26bd": {
-    "entity_names": [
-      "Russia",
-      "Пётр Мадьяр",
-      "Hungary"
-    ],
-    "count": 3,
-    "create_time": 1777936856,
-    "update_time": 1777936856,
-    "_id": "doc-b98644fa6c027080d677392f4baa26bd"
-  },
-  "doc-22dda17b85321428e8317e44b44c499c": {
-    "entity_names": [
-      "Putin",
-      "Viktor Orbán",
       "Hungary",
-      "Russia",
-      "Слава Украине"
-    ],
-    "count": 5,
-    "create_time": 1777936880,
-    "update_time": 1777936880,
-    "_id": "doc-22dda17b85321428e8317e44b44c499c"
-  },
-  "doc-fde1c7dba3053bf39b823407bf0075e5": {
-    "entity_names": [
-      "Viktor Orbán",
-      "Hungary",
-      "Donald Trump",
-      "2026 Hungarian Parliamentary Election",
-      "United States"
-    ],
-    "count": 5,
-    "create_time": 1777936889,
-    "update_time": 1777936889,
-    "_id": "doc-fde1c7dba3053bf39b823407bf0075e5"
-  },
-  "doc-fb9bc88523d7049f682e99556fbbfd37": {
-    "entity_names": [
-      "Xi Jinping",
-      "Hungary",
-      "Orbán",
-      "Donald Trump",
-      "British Empire",
-      "Kim Jong Un",
+      "United States",
+      "Slovakia",
+      "Druzhba Pipeline",
+      "President Of Ukraine",
+      "Antonio Costa",
       "European Union",
-      "Vladimir Putin",
-      "Ayatollahs",
-      "United States"
+      "Ukraine",
+      "Robert Fico",
+      "Nord Stream"
     ],
-    "count": 10,
-    "create_time": 1777936921,
-    "update_time": 1777936921,
-    "_id": "doc-fb9bc88523d7049f682e99556fbbfd37"
+    "count": 16,
+    "create_time": 1780159314,
+    "update_time": 1780159314,
+    "_id": "doc-d71726075ceaaac4900b01b084ad8e13"
   },
-  "doc-1a89584429491d20ee45913ca503536d": {
+  "doc-37701a60d1b72d50a9a068522121f962": {
     "entity_names": [
-      "Viktor Orbán",
+      "Hungary",
+      "Hungarian Rally",
+      "Protesters",
+      "Viktor Orban"
+    ],
+    "count": 4,
+    "create_time": 1780159321,
+    "update_time": 1780159321,
+    "_id": "doc-37701a60d1b72d50a9a068522121f962"
+  },
+  "doc-045582e5faa736d603332fbb041ef120": {
+    "entity_names": [
+      "Hungary",
+      "Crowd",
+      "Russian Propagandists",
+      "Péter Magyar"
+    ],
+    "count": 4,
+    "create_time": 1780159328,
+    "update_time": 1780159328,
+    "_id": "doc-045582e5faa736d603332fbb041ef120"
+  },
+  "doc-21b8a3eb90e10c6247f9100b569b67c5": {
+    "entity_names": [
+      "Russia",
+      "Hungary",
+      "Vladimir Putin",
+      "Viktor Orbán"
+    ],
+    "count": 4,
+    "create_time": 1780159335,
+    "update_time": 1780159335,
+    "_id": "doc-21b8a3eb90e10c6247f9100b569b67c5"
+  },
+  "doc-a23dfb4ec0c0e7387af8955a4f9f792a": {
+    "entity_names": [
+      "Hungary",
       "United States",
       "Donald Trump",
-      "Hungary"
+      "Viktor Orbán"
     ],
     "count": 4,
-    "create_time": 1777936932,
-    "update_time": 1777936932,
-    "_id": "doc-1a89584429491d20ee45913ca503536d"
+    "create_time": 1780159344,
+    "update_time": 1780159344,
+    "_id": "doc-a23dfb4ec0c0e7387af8955a4f9f792a"
   },
-  "doc-f68aa3ac0ebebc5a5cededeb040cb5ac": {
+  "doc-738de82da74b6ec6399bc8220a6f757c": {
     "entity_names": [
-      "Viktor Orbán",
-      "Russians",
       "Hungary",
-      "Hungarian Uprising",
-      "Soviet Union"
-    ],
-    "count": 5,
-    "create_time": 1777936954,
-    "update_time": 1777936954,
-    "_id": "doc-f68aa3ac0ebebc5a5cededeb040cb5ac"
-  },
-  "doc-8e45b249c72baa269b0603187d93f3bc": {
-    "entity_names": [
-      "республиканцы",
-      "Белый дом",
-      "Орбан",
-      "Ukraine",
+      "Kim Jong Un",
+      "United States",
+      "Vladimir Putin",
+      "European Union",
+      "Ayatollahs",
+      "Hungarian People",
       "Donald Trump",
-      "European Union",
-      "Дон Бейкон",
-      "AfD",
-      "Russia",
-      "United States"
+      "Countries of the former British Empire",
+      "Xi Jinping",
+      "Viktor Orban"
     ],
-    "count": 10,
-    "create_time": 1777936977,
-    "update_time": 1777936977,
-    "_id": "doc-8e45b249c72baa269b0603187d93f3bc"
+    "count": 11,
+    "create_time": 1780159360,
+    "update_time": 1780159360,
+    "_id": "doc-738de82da74b6ec6399bc8220a6f757c"
   },
-  "doc-ea35cee9226c7357aa9e81db2089a430": {
+  "doc-831a84d34d7bab1299d8b4ae0fd0723e": {
     "entity_names": [
-      "Orbán",
-      "Russians",
-      "Opposition",
-      "Hungary"
+      "Russia",
+      "Fidesz",
+      "Tisza",
+      "April Elections",
+      "Péter Magyar",
+      "Hungarian Media",
+      "Viktor Orbán"
+    ],
+    "count": 7,
+    "create_time": 1780159376,
+    "update_time": 1780159376,
+    "_id": "doc-831a84d34d7bab1299d8b4ae0fd0723e"
+  },
+  "doc-d8eb3506ef01327f848e944edb156259": {
+    "entity_names": [
+      "Hungary",
+      "Donald Trump",
+      "United States",
+      "Viktor Orban"
     ],
     "count": 4,
-    "create_time": 1777936983,
-    "update_time": 1777936983,
-    "_id": "doc-ea35cee9226c7357aa9e81db2089a430"
+    "create_time": 1780159390,
+    "update_time": 1780159390,
+    "_id": "doc-d8eb3506ef01327f848e944edb156259"
   },
-  "doc-4eecd59d77e0e564eeaafd52f31e7ac1": {
+  "doc-cd07847a134e96774925dcd71d8551f5": {
     "entity_names": [
-      "Агентство",
-      "Moscow",
-      "NATO",
-      "Hungary",
-      "Kremlin",
-      "Orbán",
-      "Ukraine",
-      "Russian Orthodox Church",
-      "East Germany",
-      "European Union",
+      "Russia",
       "Soviet Union",
-      "Russia",
-      "Georgia",
-      "Belarus"
-    ],
-    "count": 14,
-    "create_time": 1777937046,
-    "update_time": 1777937046,
-    "_id": "doc-4eecd59d77e0e564eeaafd52f31e7ac1"
-  },
-  "doc-394c82423002e59143960e4599324517": {
-    "entity_names": [
-      "Debrecen",
-      "Orbán",
-      "Hungary"
-    ],
-    "count": 3,
-    "create_time": 1777937052,
-    "update_time": 1777937052,
-    "_id": "doc-394c82423002e59143960e4599324517"
-  },
-  "doc-62eec6c3baddadae239ef47958f734b4": {
-    "entity_names": [
-      "Donald Trump Jr.",
-      "Viktor Orbán",
       "Hungary",
-      "European Union",
-      "White House"
-    ],
-    "count": 5,
-    "create_time": 1777937082,
-    "update_time": 1777937082,
-    "_id": "doc-62eec6c3baddadae239ef47958f734b4"
-  },
-  "doc-d26557eeb4a4e13cd87bf26c5f862efd": {
-    "entity_names": [
-      "Peter Magyar",
-      "Sabolch Panyi",
-      "Tisa",
-      "Fidesz",
-      "Hungary",
-      "Pest",
-      "Borsod-Abaúj-Zemplén",
-      "Budapest",
+      "Opposition",
       "Kremlin",
-      "Ukraine",
-      "2022 Hungarian elections",
-      "Vladimir Zelensky",
-      "M1",
-      "4,968,713 voters",
-      "2014 Hungarian elections",
-      "2010 Hungarian elections"
-    ],
-    "count": 16,
-    "create_time": 1777937114,
-    "update_time": 1777937114,
-    "_id": "doc-d26557eeb4a4e13cd87bf26c5f862efd"
-  },
-  "doc-92f5e1b66d48541d78d7b7a01fb69ff1": {
-    "entity_names": [
-      "Craig Unger",
-      "Kremlin",
-      "Ukraine",
-      "Donald Trump",
-      "FSB",
-      "Vienna",
-      "Sandor Pinter",
-      "Dithmar Clodo",
-      "The New York Times",
-      "The Spy Nest",
-      "Rome",
-      "Andrey Sergeyevich Kalitin",
-      "American Compromat",
-      "Semen Mogilevich",
-      "The Putin House",
-      "Viktor Orbán",
-      "Hungary",
-      "FBI",
-      "Munich",
-      "Trump Tower",
-      "The Trump House",
-      "David Bogatin",
-      "Athens",
-      "Vanity Fair",
-      "New York Stock Exchange",
-      "Budapest",
-      "Al-Qaeda",
-      "Логово шпионов",
-      "Russia"
-    ],
-    "count": 29,
-    "create_time": 1777937152,
-    "update_time": 1777937152,
-    "_id": "doc-92f5e1b66d48541d78d7b7a01fb69ff1"
-  },
-  "doc-4d67209b4f70814e5aee9617a64d5ced": {
-    "entity_names": [
-      "Фидес",
-      "Венгрия",
-      "Орбан"
-    ],
-    "count": 3,
-    "create_time": 1777937171,
-    "update_time": 1777937171,
-    "_id": "doc-4d67209b4f70814e5aee9617a64d5ced"
-  },
-  "doc-b332e0de43bee355dc263966d02915ac": {
-    "entity_names": [
-      "Orbán",
-      "Hungary"
-    ],
-    "count": 2,
-    "create_time": 1777937190,
-    "update_time": 1777937190,
-    "_id": "doc-b332e0de43bee355dc263966d02915ac"
-  },
-  "doc-5909dcafd9bd423d94c4a871960e2552": {
-    "entity_names": [
-      "Hungarian electoral system",
-      "Hungary"
-    ],
-    "count": 2,
-    "create_time": 1777937196,
-    "update_time": 1777937196,
-    "_id": "doc-5909dcafd9bd423d94c4a871960e2552"
-  },
-  "doc-95ad09177e06f5f25fa4230a41774469": {
-    "entity_names": [
-      "Тиса (Мадьяр)"
-    ],
-    "count": 1,
-    "create_time": 1777937201,
-    "update_time": 1777937201,
-    "_id": "doc-95ad09177e06f5f25fa4230a41774469"
-  },
-  "doc-ecee66f5d456b615ddaa415fd6e97355": {
-    "entity_names": [
-      "Tisa",
-      "Mihai Shoke-Tot",
-      "Bocha",
-      "Bacs-Kiskun",
-      "Fides"
-    ],
-    "count": 5,
-    "create_time": 1777937211,
-    "update_time": 1777937211,
-    "_id": "doc-ecee66f5d456b615ddaa415fd6e97355"
-  },
-  "doc-4bcdb8c4549d1a92a6f93346c245411c": {
-    "entity_names": [
-      "Torbán",
-      "Fides"
-    ],
-    "count": 2,
-    "create_time": 1777937218,
-    "update_time": 1777937218,
-    "_id": "doc-4bcdb8c4549d1a92a6f93346c245411c"
-  },
-  "doc-bfd1a245bf28ca7409665b38a7b472db": {
-    "entity_names": [
-      "Orbán",
-      "Magyar",
-      "Hungary"
-    ],
-    "count": 3,
-    "create_time": 1777937222,
-    "update_time": 1777937222,
-    "_id": "doc-bfd1a245bf28ca7409665b38a7b472db"
-  },
-  "doc-486cc67dc382a54c67f927fa628f94be": {
-    "entity_names": [
-      "На болотах депрессия"
-    ],
-    "count": 1,
-    "create_time": 1777937246,
-    "update_time": 1777937246,
-    "_id": "doc-486cc67dc382a54c67f927fa628f94be"
-  },
-  "doc-ea6b292c3e842882c3916a7351e3551c": {
-    "entity_names": [
-      "Hungary"
-    ],
-    "count": 1,
-    "create_time": 1777937249,
-    "update_time": 1777937249,
-    "_id": "doc-ea6b292c3e842882c3916a7351e3551c"
-  },
-  "doc-8b75360df5b1fff48d67080d47148daf": {
-    "entity_names": [
-      "Peter Magyar",
-      "Viktor Orbán",
-      "Russia",
-      "Песков",
-      "Volodymyr Zelenskyy",
-      "Kremlin",
-      "Croatia",
-      "Ukraine",
-      "Венгрия",
-      "Taras Hryhorovych",
-      "Hungary",
-      "European Union",
-      "France",
-      "Germany",
-      "Andrey Sybihha",
-      "Dmitry Peskov"
-    ],
-    "count": 16,
-    "create_time": 1777937320,
-    "update_time": 1777937320,
-    "_id": "doc-8b75360df5b1fff48d67080d47148daf"
-  },
-  "doc-ce0887b031549c36b3e6a2314eb06b50": {
-    "entity_names": [
-      "Fidesz",
-      "Orbán–Putin Call",
-      "Uitkoft–Ushakov–Dmitriev Call",
-      "NATO",
-      "Orbán",
-      "Tisza",
-      "Vance",
-      "Szijjártó",
-      "European Union",
-      "Uitkoft–Ushakov Call",
-      "Lavrov",
-      "European Parliament",
-      "Szijjártó–Lavrov Call (August 2024)",
-      "Putin",
-      "2026 Hungarian Elections",
-      "Ushakov",
-      "Hungary",
-      "Uitkoft",
       "1956 Hungarian Uprising",
-      "Dmitriev",
-      "European Commission",
-      "Szijjártó–Lavrov Series (2024–2025)",
-      "Russia"
+      "Viktor Orban"
     ],
-    "count": 23,
-    "create_time": 1777937388,
-    "update_time": 1777937388,
-    "_id": "doc-ce0887b031549c36b3e6a2314eb06b50"
+    "count": 7,
+    "create_time": 1780159409,
+    "update_time": 1780159409,
+    "_id": "doc-cd07847a134e96774925dcd71d8551f5"
   },
-  "doc-7d40930487aa33a57f91bbda298dd330": {
+  "doc-4030fee27032a0878e402ae308da967e": {
     "entity_names": [
-      "Budapest",
-      "Joltt Hegedus",
-      "Tisza",
-      "Hungary"
-    ],
-    "count": 4,
-    "create_time": 1777937426,
-    "update_time": 1777937426,
-    "_id": "doc-7d40930487aa33a57f91bbda298dd330"
-  },
-  "doc-cc48f439bc39f6dece963d26d6d4bc30": {
-    "entity_names": [
-      "Peter Magyar",
-      "Tisha",
-      "Hungary",
-      "Ministry of Foreign Affairs of Hungary",
-      "European Union",
-      "Peter Szijjártó"
+      "Don Bacon",
+      "White House",
+      "Republican Party",
+      "United States",
+      "Republicans",
+      "Viktor Orban"
     ],
     "count": 6,
-    "create_time": 1777937436,
-    "update_time": 1777937436,
-    "_id": "doc-cc48f439bc39f6dece963d26d6d4bc30"
+    "create_time": 1780159418,
+    "update_time": 1780159418,
+    "_id": "doc-4030fee27032a0878e402ae308da967e"
   },
-  "doc-5b80911e536bc3ebe2a065a04282544d": {
+  "doc-c7c2942fcef8fe5db7a22dd8f47db57f": {
     "entity_names": [
-      "Mátyás",
-      "Ukraine",
-      "Hungary"
+      "Viktor Orban",
+      "Hungary",
+      "Hungarian Opposition"
     ],
     "count": 3,
-    "create_time": 1777937478,
-    "update_time": 1777937478,
-    "_id": "doc-5b80911e536bc3ebe2a065a04282544d"
+    "create_time": 1780159426,
+    "update_time": 1780159426,
+    "_id": "doc-c7c2942fcef8fe5db7a22dd8f47db57f"
   },
-  "doc-26252737d3586c4728a077af0b0268ab": {
+  "doc-fd159b92703b4a84f9991cc4240f25b4": {
     "entity_names": [
-      "Viktor Orbán",
-      "Komsomolskaya Pravda",
-      "Hungary",
-      "Moskovskiy Komsomolets",
-      "Ukraine",
-      "Donald Trump",
-      "Russian Newspaper",
-      "European Union",
       "Russia",
-      "Steve Rosenberg"
+      "Putin",
+      "Swinktor Torban",
+      "Brussels"
     ],
-    "count": 10,
-    "create_time": 1777937549,
-    "update_time": 1777937549,
-    "_id": "doc-26252737d3586c4728a077af0b0268ab"
+    "count": 4,
+    "create_time": 1780159434,
+    "update_time": 1780159434,
+    "_id": "doc-fd159b92703b4a84f9991cc4240f25b4"
   },
-  "doc-38d8eb35dbe68bc80051aac6aa9837e3": {
+  "doc-8205775ee9cb6facc8225a0252a5f485": {
     "entity_names": [
-      "Viktor Orbán",
-      "Matt Schlapp",
+      "Russia",
+      "Агентство",
+      "Советский Союз",
+      "Восточная Германия",
       "Hungary",
       "Budapest",
-      "CPAC",
-      "J.D. Vance",
-      "Donald Trump",
-      "Marco Rubio",
+      "Georgia",
       "European Union",
-      "Péter Magyar",
-      "National Recovery and Protection of State Assets Office",
-      "United States"
+      "Вторая мировая война",
+      "Moscow",
+      "Ukraine",
+      "Belarus",
+      "Виктор Орбан",
+      "NATO"
     ],
-    "count": 12,
-    "create_time": 1777937577,
-    "update_time": 1777937577,
-    "_id": "doc-38d8eb35dbe68bc80051aac6aa9837e3"
+    "count": 14,
+    "create_time": 1780159458,
+    "update_time": 1780159458,
+    "_id": "doc-8205775ee9cb6facc8225a0252a5f485"
   },
-  "doc-e30656f31a526785c8e1cb1afafc5bf4": {
+  "doc-0f507e74a1cac34a1f058034786cce32": {
     "entity_names": [
-      "Smer",
+      "Hungary",
+      "Debrecen",
+      "Protesters",
+      "Viktor Orban"
+    ],
+    "count": 4,
+    "create_time": 1780159466,
+    "update_time": 1780159466,
+    "_id": "doc-0f507e74a1cac34a1f058034786cce32"
+  },
+  "doc-08839802e6732769a459ffbc0c03e357": {
+    "entity_names": [
+      "Hungary",
+      "Donald Trump Jr.",
+      "White House",
+      "Viktor Orban"
+    ],
+    "count": 4,
+    "create_time": 1780159473,
+    "update_time": 1780159473,
+    "_id": "doc-08839802e6732769a459ffbc0c03e357"
+  },
+  "doc-969e93cf05e0f0b8e96c4266c64e1c32": {
+    "entity_names": [
+      "Vladimir Zelensky",
+      "Peter Magyar",
+      "Ukrainian Blogger",
+      "Tisza",
+      "Fidesz",
+      "Hungary",
+      "Budapest",
+      "Borsod-Abaúj-Zemplén",
       "Kremlin",
-      "Progressive Slovakia",
-      "KDH",
-      "Slovakia",
-      "2026 Municipal Elections",
-      "Sns",
-      "Demokrati",
-      "Slovensko",
-      "Robert Fico",
-      "Electoral Code Amendment",
-      "Hlas",
-      "Orban"
+      "Pest County",
+      "Ukraine",
+      "M1",
+      "Szabolcs Panyi"
     ],
     "count": 13,
-    "create_time": 1777937654,
-    "update_time": 1777937654,
-    "_id": "doc-e30656f31a526785c8e1cb1afafc5bf4"
+    "create_time": 1780159488,
+    "update_time": 1780159488,
+    "_id": "doc-969e93cf05e0f0b8e96c4266c64e1c32"
   },
-  "doc-320552fa7045aa8953c66d0d4e5e6823": {
+  "doc-fb83ecc3ec1f223c19f1949399d74364": {
     "entity_names": [
-      "Peter Magyar",
-      "Tamás Sulyok",
+      "Andrey Kalitin",
+      "New York Times",
+      "FSB",
+      "David Bogatin",
+      "United States",
+      "Kremlin",
+      "Federal Bureau of Investigation",
+      "Germany",
+      "Viktor Orban",
+      "Russia",
+      "Craig Unger",
+      "Sandor Pinter",
+      "Trump Tower",
+      "Budapest",
+      "Andrey Sergeevich Kalitin",
+      "Dietmar Clodo",
+      "Semen Mogilevich",
       "Hungary",
-      "Orbán",
-      "State Media Service of Hungary"
+      "Vanity Fair",
+      "Detmar Clodo",
+      "Israel",
+      "Al-Qaeda",
+      "Rhodesia",
+      "Donald Trump"
+    ],
+    "count": 24,
+    "create_time": 1780159514,
+    "update_time": 1780159514,
+    "_id": "doc-fb83ecc3ec1f223c19f1949399d74364"
+  },
+  "doc-65faf58b1f7f662f32ec1e72cda087a2": {
+    "entity_names": [
+      "Hungary",
+      "Fidesz",
+      "Election in Hungary",
+      "Viktor Orban"
+    ],
+    "count": 4,
+    "create_time": 1780159529,
+    "update_time": 1780159529,
+    "_id": "doc-65faf58b1f7f662f32ec1e72cda087a2"
+  },
+  "doc-24e7fd73ce4817183a86d07ae0d2ddf9": {
+    "entity_names": [
+      "Орбан за суверенную Венгрию",
+      "Cartoon Of The Day"
+    ],
+    "count": 2,
+    "create_time": 1780159534,
+    "update_time": 1780159534,
+    "_id": "doc-24e7fd73ce4817183a86d07ae0d2ddf9"
+  },
+  "doc-d991648d00fd20b6c620912a96775e4f": {
+    "entity_names": [
+      "Hungary",
+      "Hungarian Parliament",
+      "Hungarian Electoral System",
+      "Ukrainian Electoral System",
+      "Pro-Magyar Parties",
+      "Winner Party"
+    ],
+    "count": 6,
+    "create_time": 1780159543,
+    "update_time": 1780159543,
+    "_id": "doc-d991648d00fd20b6c620912a96775e4f"
+  },
+  "doc-eb687a53c974ca402ef169bb424c03ed": {
+    "entity_names": [
+      "Maďar",
+      "Tisa Party"
+    ],
+    "count": 2,
+    "create_time": 1780159549,
+    "update_time": 1780159549,
+    "_id": "doc-eb687a53c974ca402ef169bb424c03ed"
+  },
+  "doc-20fa8f875068979240f13f3630146f7b": {
+    "entity_names": [
+      "Russia",
+      "War In Ukraine",
+      "Ukraine",
+      "Robert Fico"
+    ],
+    "count": 4,
+    "create_time": 1780159556,
+    "update_time": 1780159556,
+    "_id": "doc-20fa8f875068979240f13f3630146f7b"
+  },
+  "doc-a662bace8dff81a32d28361dc42d9958": {
+    "entity_names": [
+      "Боча",
+      "Тиса",
+      "Бач-Кишкун",
+      "Михай Шоке-Тот",
+      "Венгрия",
+      "Фидес",
+      "Facebook"
+    ],
+    "count": 7,
+    "create_time": 1780159566,
+    "update_time": 1780159566,
+    "_id": "doc-a662bace8dff81a32d28361dc42d9958"
+  },
+  "doc-cecb4dc0b97f81e731ba9b962e22102f": {
+    "entity_names": [
+      "Fidesz",
+      "Voters",
+      "Torbán"
+    ],
+    "count": 3,
+    "create_time": 1780159572,
+    "update_time": 1780159572,
+    "_id": "doc-cecb4dc0b97f81e731ba9b962e22102f"
+  },
+  "doc-fb4eb56d469832f152655d1565a958c0": {
+    "entity_names": [
+      "Magyar",
+      "Viktor Orban"
+    ],
+    "count": 2,
+    "create_time": 1780159578,
+    "update_time": 1780159578,
+    "_id": "doc-fb4eb56d469832f152655d1565a958c0"
+  },
+  "doc-2c6c2e273b2712277320278f99d1bf5a": {
+    "entity_names": [
+      "West",
+      "Hungary",
+      "FSB",
+      "Orbanism",
+      "Ukraine",
+      "Communism",
+      "George Soros",
+      "Soviet Regime",
+      "Viktor Orban"
+    ],
+    "count": 9,
+    "create_time": 1780159591,
+    "update_time": 1780159591,
+    "_id": "doc-2c6c2e273b2712277320278f99d1bf5a"
+  },
+  "doc-42434ca69c25a51be10bcac29b8131ad": {
+    "entity_names": [
+      "Depression"
+    ],
+    "count": 1,
+    "create_time": 1780159595,
+    "update_time": 1780159595,
+    "_id": "doc-42434ca69c25a51be10bcac29b8131ad"
+  },
+  "doc-2d6f6324301e5d88ab5ea71cdc760363": {
+    "entity_names": [
+      "Volodymyr Zelenskyy",
+      "POLITICO",
+      "Europe",
+      "Vladimir Putin",
+      "European Union"
     ],
     "count": 5,
-    "create_time": 1777937669,
-    "update_time": 1777937669,
-    "_id": "doc-320552fa7045aa8953c66d0d4e5e6823"
+    "create_time": 1780159608,
+    "update_time": 1780159608,
+    "_id": "doc-2d6f6324301e5d88ab5ea71cdc760363"
   },
-  "doc-cd58119ddd7b5c4ea3c6177ba9839de3": {
+  "doc-af042d92d3a8313cbb18fe6bc3aed987": {
+    "entity_names": [
+      "Венгрия"
+    ],
+    "count": 1,
+    "create_time": 1780159612,
+    "update_time": 1780159612,
+    "_id": "doc-af042d92d3a8313cbb18fe6bc3aed987"
+  },
+  "doc-71991a4e0b69ae7ba006fd6fcc51c225": {
+    "entity_names": [
+      "Мадьяр",
+      "Kremlin",
+      "Germany",
+      "Viktor Orban",
+      "Russia",
+      "Friedrich Merz",
+      "Italy",
+      "Венгрия",
+      "European Union",
+      "Ukraine",
+      "Emmanuel Macron",
+      "Volodymyr Zelenskyy",
+      "Poland",
+      "Peter Magyar",
+      "Hungary",
+      "Dmitry Peskov",
+      "Песков",
+      "Croatia",
+      "Andriy Sybiha"
+    ],
+    "count": 19,
+    "create_time": 1780159639,
+    "update_time": 1780159639,
+    "_id": "doc-71991a4e0b69ae7ba006fd6fcc51c225"
+  },
+  "doc-c2d4ba4fc04ca91dc3409c146e5b930c": {
+    "entity_names": [
+      "Alisher Usmanov",
+      "Europe",
+      "Tisza Party",
+      "Kirill Dmitriev",
+      "Washington",
+      "Viktor Orban",
+      "Russia",
+      "European Commission",
+      "Yuri Ushakov",
+      "European Parliament",
+      "Steve Witkoff",
+      "European Union",
+      "Moscow",
+      "Ukraine",
+      "Sergey Lavrov",
+      "Hungary",
+      "Peter Szijjarto",
+      "1956 Hungarian Uprising",
+      "Vladimir Putin",
+      "JD Vance",
+      "Soviet Union",
+      "Fidesz",
+      "Donald Trump",
+      "NATO"
+    ],
+    "count": 24,
+    "create_time": 1780159669,
+    "update_time": 1780159669,
+    "_id": "doc-c2d4ba4fc04ca91dc3409c146e5b930c"
+  },
+  "doc-cc69617c99bdc84e11632b9e659acc5f": {
+    "entity_names": [
+      "Tisza Party",
+      "Zsolt Hegedűs",
+      "Budapest"
+    ],
+    "count": 3,
+    "create_time": 1780159676,
+    "update_time": 1780159676,
+    "_id": "doc-cc69617c99bdc84e11632b9e659acc5f"
+  },
+  "doc-5f0b31ff715c960a55b1c838a7f4e7b3": {
+    "entity_names": [
+      "Peter Magyar",
+      "Hungary",
+      "Ministry of Foreign Affairs of Hungary",
+      "Tisza Party",
+      "European Union",
+      "Péter Szijjártó"
+    ],
+    "count": 6,
+    "create_time": 1780159690,
+    "update_time": 1780159690,
+    "_id": "doc-5f0b31ff715c960a55b1c838a7f4e7b3"
+  },
+  "doc-cf351e2b8635d69890e2eff1076c5dc8": {
+    "entity_names": [
+      "Hungary",
+      "Ukraine",
+      "Magyar"
+    ],
+    "count": 3,
+    "create_time": 1780159697,
+    "update_time": 1780159697,
+    "_id": "doc-cf351e2b8635d69890e2eff1076c5dc8"
+  },
+  "doc-dece1d8fcd46e34cd91f21ddfa209254": {
+    "entity_names": [
+      "Russia",
+      "Мадьяр",
+      "Российская газета",
+      "Москва",
+      "Московский комсомолец",
+      "America",
+      "Комсомольская правда",
+      "Стив Розенберг",
+      "Венгрия",
+      "European Union",
+      "BBC",
+      "Ukraine",
+      "Donald Trump",
+      "Виктор Орбан"
+    ],
+    "count": 14,
+    "create_time": 1780159719,
+    "update_time": 1780159719,
+    "_id": "doc-dece1d8fcd46e34cd91f21ddfa209254"
+  },
+  "doc-919a5d1df55409d8e15e1d7f31b83b6b": {
+    "entity_names": [
+      "CPAC Hungary",
+      "Matt Schlapp",
+      "CPAC",
+      "Marco Rubio",
+      "Peter Magyar",
+      "Hungary",
+      "United States",
+      "Victor Orban",
+      "European Union",
+      "National Office for the Recovery and Protection of State Assets",
+      "Donald Trump",
+      "JD Vance",
+      "Viktor Orban"
+    ],
+    "count": 13,
+    "create_time": 1780159741,
+    "update_time": 1780159741,
+    "_id": "doc-919a5d1df55409d8e15e1d7f31b83b6b"
+  },
+  "doc-9280adb33b2fc95b58a09025d797496f": {
+    "entity_names": [
+      "Russia",
+      "Хорватский трубопровод",
+      "Трубопровод \"Дружба\"",
+      "Хорватия"
+    ],
+    "count": 4,
+    "create_time": 1780159749,
+    "update_time": 1780159749,
+    "_id": "doc-9280adb33b2fc95b58a09025d797496f"
+  },
+  "doc-5f3ed4a3ac7465ec686429b82472f0c7": {
+    "entity_names": [
+      "SMER",
+      "Viktor Orbán",
+      "SNS",
+      "Hlas",
+      "Demokrati",
+      "Slovakia",
+      "KDH",
+      "Progressive Slovakia",
+      "Kremlin",
+      "Slovak National Party",
+      "Robert Fico",
+      "Slovensko"
+    ],
+    "count": 12,
+    "create_time": 1780159764,
+    "update_time": 1780159764,
+    "_id": "doc-5f3ed4a3ac7465ec686429b82472f0c7"
+  },
+  "doc-06e8653f896ee2c22069a150db873aab": {
+    "entity_names": [
+      "Tamás Sulyok",
+      "State Media Service of Hungary",
+      "Hungary",
+      "Péter Magyar",
+      "Viktor Orbán"
+    ],
+    "count": 5,
+    "create_time": 1780159778,
+    "update_time": 1780159778,
+    "_id": "doc-06e8653f896ee2c22069a150db873aab"
+  },
+  "doc-5c4d85452c4a93b66a0abd774237869a": {
     "entity_names": [
       "Peter Magyar",
       "M1"
     ],
     "count": 2,
-    "create_time": 1777937674,
-    "update_time": 1777937674,
-    "_id": "doc-cd58119ddd7b5c4ea3c6177ba9839de3"
+    "create_time": 1780159784,
+    "update_time": 1780159784,
+    "_id": "doc-5c4d85452c4a93b66a0abd774237869a"
   },
-  "doc-d4cae917a61031f4288b64bbbc3c7b4d": {
+  "doc-2fb983d3997a22cb8b026450f8da341e": {
     "entity_names": [
-      "Peter Magyar",
+      "Speaker"
+    ],
+    "count": 1,
+    "create_time": 1780159788,
+    "update_time": 1780159788,
+    "_id": "doc-2fb983d3997a22cb8b026450f8da341e"
+  },
+  "doc-09d3120c53d3dde42d70d4c9cfe7270b": {
+    "entity_names": [
+      "Slovak Opposition",
       "Viktor Orbán",
-      "Hungary",
-      "2200 Convicted Smugglers",
-      "Slovakia",
-      "Robert Fico"
-    ],
-    "count": 6,
-    "create_time": 1777937708,
-    "update_time": 1777937708,
-    "_id": "doc-d4cae917a61031f4288b64bbbc3c7b4d"
-  },
-  "doc-00d0f212fb25688ee612c0dd20c5ade5": {
-    "entity_names": [
-      "Moscow",
-      "Slovakia",
-      "Estonia",
-      "European Union",
-      "Robert Fico",
-      "Lithuania",
-      "Latvia"
-    ],
-    "count": 7,
-    "create_time": 1777937723,
-    "update_time": 1777937723,
-    "_id": "doc-00d0f212fb25688ee612c0dd20c5ade5"
-  },
-  "doc-213eaa59d73ff468181ba96d1b1108e6": {
-    "entity_names": [
-      "Moscow",
-      "May 9 Parade",
-      "Hungary",
-      "Kremlin",
-      "Warsaw",
-      "Slovakia",
-      "Estonia",
-      "Bratislava",
-      "Poland",
-      "Latvia",
-      "Robert Fico",
-      "Lithuania",
-      "Romania",
-      "Georgia"
-    ],
-    "count": 14,
-    "create_time": 1777937752,
-    "update_time": 1777937752,
-    "_id": "doc-213eaa59d73ff468181ba96d1b1108e6"
-  },
-  "doc-a4eb527fb89231f20ad8214a8374c7c8": {
-    "entity_names": [
-      "Kremlin",
-      "Estonia",
-      "Мышь и лев",
-      "Slovakia",
-      "European Union",
-      "Lavrov",
-      "Latvia",
-      "Resurgam",
-      "Druzhba Pipeline",
-      "Poland",
-      "Viktor Orbán",
-      "Ruszkik haza!",
-      "Hungary",
-      "Siyarto",
-      "Lithuania",
-      "Орбан",
-      "€90 Billion Sanctions Package",
-      "Robert Fico",
-      "20th Sanctions Package",
-      "Russia"
-    ],
-    "count": 20,
-    "create_time": 1777938052,
-    "update_time": 1777938052,
-    "_id": "doc-a4eb527fb89231f20ad8214a8374c7c8"
-  },
-  "doc-c5140db0b5c93aaef9725d9f4885975d": {
-    "entity_names": [
       "Peter Magyar",
-      "National Authority for Asset Recovery and Protection",
-      "Uruguay",
-      "Lounge Event Kft",
-      "TV2",
-      "TISZA",
-      "Dubai",
       "Hungary",
-      "Orbán",
-      "Antal Rogán",
-      "United Arab Emirates",
-      "National Tax and Customs Administration of Hungary",
-      "Mesároš family",
-      "United States"
-    ],
-    "count": 14,
-    "create_time": 1777938118,
-    "update_time": 1777938118,
-    "_id": "doc-c5140db0b5c93aaef9725d9f4885975d"
-  },
-  "doc-7be007b67073b3dddd898f3e1459d930": {
-    "entity_names": [
-      "Zelensky",
-      "Kyiv",
-      "Ukraine",
       "Slovakia",
-      "European Union",
-      "Bratislava",
+      "Future Prime Minister",
       "Robert Fico"
     ],
     "count": 7,
-    "create_time": 1777938155,
-    "update_time": 1777938155,
-    "_id": "doc-7be007b67073b3dddd898f3e1459d930"
+    "create_time": 1780159802,
+    "update_time": 1780159802,
+    "_id": "doc-09d3120c53d3dde42d70d4c9cfe7270b"
   },
-  "doc-7babc8ed6b8e112f02f11f483e8366fe": {
+  "doc-4babf5a74a77a53d36051d1272276ee9": {
     "entity_names": [
-      "Viktor Orbán",
-      "Moscow",
-      "Zelensky",
-      "Ukraine",
+      "May 9th",
+      "Lithuania",
+      "Latvia",
       "Slovakia",
-      "May 9",
       "European Union",
-      "Robert Fico",
-      "Russia"
-    ],
-    "count": 9,
-    "create_time": 1777938175,
-    "update_time": 1777938175,
-    "_id": "doc-7babc8ed6b8e112f02f11f483e8366fe"
-  },
-  "doc-62ce08018de37099ef622e0d34a319e0": {
-    "entity_names": [
-      "AFP",
-      "South Korean Intelligence Agency",
-      "Russian-Ukrainian War",
-      "North Korea",
-      "Yigal Levin",
-      "Ukraine",
-      "South Korea",
-      "North Korean Soldiers"
-    ],
-    "count": 8,
-    "create_time": 1777938212,
-    "update_time": 1777938212,
-    "_id": "doc-62ce08018de37099ef622e0d34a319e0"
-  },
-  "doc-015f7e49737724e7d88f312a7afe69db": {
-    "entity_names": [
-      "Yonhap",
-      "Russian-Ukrainian border",
-      "North Korea",
-      "North Korean military personnel",
-      "Korea, North",
-      "Russia"
-    ],
-    "count": 6,
-    "create_time": 1777938276,
-    "update_time": 1777938276,
-    "_id": "doc-015f7e49737724e7d88f312a7afe69db"
-  },
-  "doc-798dcb1f197b26a7a2db147447027f8b": {
-    "entity_names": [
-      "Radio Free Europe",
-      "Ministry of Defense of the Russian Federation",
-      "Russian Federation",
-      "Democratic People's Republic of Korea",
-      "National Intelligence Service of South Korea",
-      "Korean Central News Agency",
-      "North Korean military personnel"
-    ],
-    "count": 7,
-    "create_time": 1777938320,
-    "update_time": 1777938320,
-    "_id": "doc-798dcb1f197b26a7a2db147447027f8b"
-  },
-  "doc-0e5fcccd131988c3ce8885c05277cfd4": {
-    "entity_names": [
-      "Russia",
-      "North Korea",
-      "Ukraine",
-      "Korean Demilitarized Zone",
-      "South Korea",
-      "Pyongyang",
-      "Seoul"
-    ],
-    "count": 7,
-    "create_time": 1777938338,
-    "update_time": 1777938338,
-    "_id": "doc-0e5fcccd131988c3ce8885c05277cfd4"
-  },
-  "doc-84243d8c790aa58c8c4068a0d0077faa": {
-    "entity_names": [
-      "Chinese Maritime Militia",
-      "Chinese Fishing Vessel",
-      "China",
-      "South Korea"
-    ],
-    "count": 4,
-    "create_time": 1777938350,
-    "update_time": 1777938350,
-    "_id": "doc-84243d8c790aa58c8c4068a0d0077faa"
-  },
-  "doc-e7f4b2e859f24cce9059c861cfed3092": {
-    "entity_names": [
-      "North Korea",
-      "Kursk Oblast",
-      "KNA"
-    ],
-    "count": 3,
-    "create_time": 1777938364,
-    "update_time": 1777938364,
-    "_id": "doc-e7f4b2e859f24cce9059c861cfed3092"
-  },
-  "doc-62287b8aafea6f3d42b96d7883f49924": {
-    "entity_names": [
-      "Медуза",
-      "Kremlin",
-      "Angunsahyangu",
-      "Ukraine",
-      "КНДР",
-      "Royal Blood-Fresh",
-      "The Voicer",
-      "Северная Корея",
-      "Russia",
-      "Tonbakhanso"
-    ],
-    "count": 10,
-    "create_time": 1777938413,
-    "update_time": 1777938413,
-    "_id": "doc-62287b8aafea6f3d42b96d7883f49924"
-  },
-  "doc-614536eb8c68a321e5de318fea0e31c5": {
-    "entity_names": [
-      "North Korea",
-      "Democratic People's Republic of Korea",
-      "Ukraine",
-      "Kim Jong Un"
-    ],
-    "count": 4,
-    "create_time": 1777938441,
-    "update_time": 1777938441,
-    "_id": "doc-614536eb8c68a321e5de318fea0e31c5"
-  },
-  "doc-175da62ab3f70b180a6b139d1c568a0a": {
-    "entity_names": [
-      "Курская область",
-      "Путин",
-      "Ukraine",
-      "Ким Чен Ын",
-      "Сумская область",
-      "ЮлияТарадюк",
-      "КНДР",
-      "Пхеньян",
-      "ГУР",
-      "Korean People's Army",
-      "Russia",
-      "Северокорейские войска",
-      "The Kyiv Independent"
-    ],
-    "count": 13,
-    "create_time": 1777938738,
-    "update_time": 1777938738,
-    "_id": "doc-175da62ab3f70b180a6b139d1c568a0a"
-  },
-  "doc-ac79f12ec72cd52c008972d012106637": {
-    "entity_names": [
-      "Korean Democratic People's Republic",
-      "North Korea",
-      "Yigal Levin",
-      "Ukraine",
-      "Kursk Region",
-      "Korean People's Army",
-      "Russia",
-      "Wall Street Journal"
-    ],
-    "count": 8,
-    "create_time": 1777938774,
-    "update_time": 1777938774,
-    "_id": "doc-ac79f12ec72cd52c008972d012106637"
-  },
-  "doc-3481b9847af3a89182d81af7eabd1605": {
-    "entity_names": [
-      "Special Foreign Operation",
-      "Democratic People's Republic of Korea",
-      "Ukraine",
-      "North Korea",
-      "Kim Jong Un",
-      "Korean People's Army",
-      "Russia"
-    ],
-    "count": 7,
-    "create_time": 1777938802,
-    "update_time": 1777938802,
-    "_id": "doc-3481b9847af3a89182d81af7eabd1605"
-  },
-  "doc-58c3c086c79c7a4c6fcf7e6fe200d8c1": {
-    "entity_names": [
-      "Ukraine",
-      "North Korea",
-      "Japan",
-      "Shinzo Koizumi",
-      "Russia",
-      "War in Ukraine"
-    ],
-    "count": 6,
-    "create_time": 1777938827,
-    "update_time": 1777938827,
-    "_id": "doc-58c3c086c79c7a4c6fcf7e6fe200d8c1"
-  },
-  "doc-240b79f5c828e079b3773477dec25710": {
-    "entity_names": [
-      "Reuters",
-      "Russia",
-      "North Korea",
-      "Ukraine",
-      "Kim Jong Un",
-      "Pyongyang",
-      "Kursk Oblast",
-      "Sebel"
-    ],
-    "count": 8,
-    "create_time": 1777938862,
-    "update_time": 1777938862,
-    "_id": "doc-240b79f5c828e079b3773477dec25710"
-  },
-  "doc-a66c0751afe982b8fe7923d9beb6fd82": {
-    "entity_names": [
-      "Agency for Missile Production",
-      "North Korea",
-      "Kim Ju Ae",
-      "Kim Jong Un",
-      "Zhang Chang He"
-    ],
-    "count": 5,
-    "create_time": 1777938868,
-    "update_time": 1777938868,
-    "_id": "doc-a66c0751afe982b8fe7923d9beb6fd82"
-  },
-  "doc-0c64afaf545f446d9c0cb039c08dddf6": {
-    "entity_names": [
-      "North Korea",
-      "Kim Jong Un's Daughter",
-      "Kim Jong Un",
-      "Korean People's Army",
-      "Newsweek"
-    ],
-    "count": 5,
-    "create_time": 1777938875,
-    "update_time": 1777938875,
-    "_id": "doc-0c64afaf545f446d9c0cb039c08dddf6"
-  },
-  "doc-bafdefcef1b0bcbba8df8f5445df9a9a": {
-    "entity_names": [
-      "Russia",
-      "Kim",
-      "Workers' Party",
-      "North Korea",
-      "Kim's Daughter",
-      "Kim Jong-un"
-    ],
-    "count": 6,
-    "create_time": 1777938906,
-    "update_time": 1777938906,
-    "_id": "doc-bafdefcef1b0bcbba8df8f5445df9a9a"
-  },
-  "doc-f1abd674ec1daf5b31a50d5639a796fe": {
-    "entity_names": [
       "Moscow",
-      "North Korea",
-      "Ukraine",
+      "Robert Fico",
+      "Estonia"
+    ],
+    "count": 8,
+    "create_time": 1780159812,
+    "update_time": 1780159812,
+    "_id": "doc-4babf5a74a77a53d36051d1272276ee9"
+  },
+  "doc-7277e9deb3912e2938afaea0ee51732f": {
+    "entity_names": [
+      "Russia",
+      "Эстония",
+      "Братислава",
+      "Латвия",
+      "Грузия",
+      "Румыния",
+      "Литва",
+      "Словакия",
+      "Москва",
+      "Запрос от Братиславы",
+      "Венгрия",
+      "Польша",
+      "МИД Польши",
+      "Страны Балтии",
+      "Роберт Фицо",
+      "Варшава",
+      "Парад в Москве 9 мая"
+    ],
+    "count": 17,
+    "create_time": 1780159829,
+    "update_time": 1780159829,
+    "_id": "doc-7277e9deb3912e2938afaea0ee51732f"
+  },
+  "doc-3336b1d6f6060e44c3ab5cf8eecc1b16": {
+    "entity_names": [
+      "Poland",
+      "Lithuania",
+      "Peter Szijjarto",
+      "Orban",
+      "Sergey Lavrov",
+      "Latvia",
+      "Slovakia",
+      "Ministry of Foreign Affairs of Slovakia",
       "Vladimir Putin",
-      "Pyongyang",
-      "Georgiy Tikhii",
-      "Indo-Pacific Region",
-      "Russia"
+      "Kremlin",
+      "European Union",
+      "Slovak National Party",
+      "Robert Fico",
+      "Estonia",
+      "Viktor Orban"
     ],
-    "count": 8,
-    "create_time": 1777938949,
-    "update_time": 1777938949,
-    "_id": "doc-f1abd674ec1daf5b31a50d5639a796fe"
+    "count": 15,
+    "create_time": 1780159849,
+    "update_time": 1780159849,
+    "_id": "doc-3336b1d6f6060e44c3ab5cf8eecc1b16"
   },
-  "doc-015327e6fac24471a4dc93725059959d": {
+  "doc-8bda4dbf6a6899687e0afe98e5eaf2f7": {
     "entity_names": [
-      "MIVD",
-      "Ministry of Defense of Russia",
-      "United States",
-      "North Korea",
-      "Russian Military Counterintelligence",
-      "Russian Army",
-      "South Korea",
-      "Andrey Kalitin",
-      "Rajin Port",
-      "AIVD",
       "Russia",
-      "Central Intelligence Agency"
-    ],
-    "count": 12,
-    "create_time": 1777938995,
-    "update_time": 1777938995,
-    "_id": "doc-015327e6fac24471a4dc93725059959d"
-  },
-  "doc-8c72f79332026607b773bfb1b6c950c3": {
-    "entity_names": [
-      "российские судна",
-      "КНДР",
-      "российская армия",
-      "Russia",
-      "Важные истории"
-    ],
-    "count": 5,
-    "create_time": 1777939080,
-    "update_time": 1777939080,
-    "_id": "doc-8c72f79332026607b773bfb1b6c950c3"
-  },
-  "doc-686c3300d53b2bf7c26163deb1d7c6d6": {
-    "entity_names": [
-      "Институт стратегии национальной безопасности Южной Кореи",
-      "Ким Чен Ын",
-      "КНДР",
-      "Северная Корея",
-      "Владимир Путин",
-      "Bloomberg",
-      "Южная Корея",
-      "Russia",
-      "Центральный банк Южной Кореи"
-    ],
-    "count": 9,
-    "create_time": 1777939121,
-    "update_time": 1777939121,
-    "_id": "doc-686c3300d53b2bf7c26163deb1d7c6d6"
-  },
-  "doc-7f24eb65bfd587dd53fa2364408e09c1": {
-    "entity_names": [
-      "Ministry of Defense of North Korea",
-      "Workers' Party",
-      "Ukraine",
-      "North Korea",
-      "Kim Jong Un",
-      "Central Committee of the Workers' Party"
-    ],
-    "count": 6,
-    "create_time": 1777939150,
-    "update_time": 1777939150,
-    "_id": "doc-7f24eb65bfd587dd53fa2364408e09c1"
-  },
-  "doc-a58543e9b79b01b5797bf1731b6973e1": {
-    "entity_names": [
-      "Северокорейский хакер",
-      "Ким Чен Ын"
-    ],
-    "count": 2,
-    "create_time": 1777939157,
-    "update_time": 1777939157,
-    "_id": "doc-a58543e9b79b01b5797bf1731b6973e1"
-  },
-  "doc-9a02509ca7df90bef640026692423158": {
-    "entity_names": [
-      "North Korean Armed Forces",
-      "Minister of Defense of Russia",
-      "North Korea",
-      "Kursk Oblast",
-      "Korean People's Army",
-      "Russia"
-    ],
-    "count": 6,
-    "create_time": 1777939190,
-    "update_time": 1777939190,
-    "_id": "doc-9a02509ca7df90bef640026692423158"
-  },
-  "doc-1cca8e49451ca3437c74fe3d63156ca9": {
-    "entity_names": [
-      "North Korea",
-      "Ukraine",
-      "Kim Jong Un",
-      "Pyongyang",
-      "Russia"
-    ],
-    "count": 5,
-    "create_time": 1777939229,
-    "update_time": 1777939229,
-    "_id": "doc-1cca8e49451ca3437c74fe3d63156ca9"
-  },
-  "doc-ba1d8e0155edd3e99ea5f134aa46226f": {
-    "entity_names": [
-      "Reuters",
-      "Russia",
-      "Youth League",
-      "Ukraine",
-      "Viber",
-      "North Korea",
-      "Kim Jong Un",
-      "WhatsApp",
-      "Pyongyang"
-    ],
-    "count": 9,
-    "create_time": 1777939265,
-    "update_time": 1777939265,
-    "_id": "doc-ba1d8e0155edd3e99ea5f134aa46226f"
-  },
-  "doc-291ed6579ac9681630d3252dadc9f56b": {
-    "entity_names": [
-      "Britain",
-      "Brexit",
-      "Non-European Countries"
+      "Венгрия",
+      "Петер Сийярто"
     ],
     "count": 3,
-    "create_time": 1777939273,
-    "update_time": 1777939273,
-    "_id": "doc-291ed6579ac9681630d3252dadc9f56b"
+    "create_time": 1780159858,
+    "update_time": 1780159858,
+    "_id": "doc-8bda4dbf6a6899687e0afe98e5eaf2f7"
   },
-  "doc-041029ef6f7a6eb71dabe4f5fe984175": {
+  "doc-fd791c0e92e525c1406c3f88482571f1": {
     "entity_names": [
-      "Markus Söder",
-      "Security Action for Europe (SAFE)",
-      "NATO",
-      "Greenland",
+      "Russia",
+      "Hungary",
+      "Петер Сийарто",
+      "Slovakia",
       "Ukraine",
-      "United Kingdom",
-      "Labour Party",
-      "Donald Trump",
-      "European Union",
-      "The Observer",
-      "France",
-      "Keir Starmer",
-      "Germany",
-      "London",
-      "Emmanuel Macron",
-      "Maroš Šefčovič"
+      "Роберт Фицо",
+      "Виктор Орбан"
+    ],
+    "count": 7,
+    "create_time": 1780159866,
+    "update_time": 1780159866,
+    "_id": "doc-fd791c0e92e525c1406c3f88482571f1"
+  },
+  "doc-c147c20ce7d65a7e519fa0cdfe2165f4": {
+    "entity_names": [
+      "National Police Chief",
+      "Lounge Event Kft.",
+      "Generald Prosecutor",
+      "Peter Magyar",
+      "Hungary",
+      "Antal Rogan",
+      "United States",
+      "National Tax and Customs Administration of Hungary (NAV)",
+      "United Arab Emirates",
+      "National Asset Recovery and Protection Office",
+      "TISZA Government",
+      "Dubai",
+      "Meszaros Family",
+      "Uruguay",
+      "TV2",
+      "Viktor Orban"
     ],
     "count": 16,
-    "create_time": 1777939483,
-    "update_time": 1777939483,
-    "_id": "doc-041029ef6f7a6eb71dabe4f5fe984175"
+    "create_time": 1780159891,
+    "update_time": 1780159891,
+    "_id": "doc-c147c20ce7d65a7e519fa0cdfe2165f4"
   },
-  "doc-7436515cba2712ed1abeee9af81e50a7": {
+  "doc-2210b5e55d1500b9a97040c5c3972228": {
     "entity_names": [
-      "United Kingdom",
-      "Middle East",
-      "Donald Trump",
-      "Starmer"
-    ],
-    "count": 4,
-    "create_time": 1777939488,
-    "update_time": 1777939488,
-    "_id": "doc-7436515cba2712ed1abeee9af81e50a7"
-  },
-  "doc-5964d0e39e2114d04620d98a10da1cda": {
-    "entity_names": [
-      "Британия",
-      "Профсоюз",
-      "Кипр",
-      "Флот",
-      "Королевы морей"
-    ],
-    "count": 5,
-    "create_time": 1777939498,
-    "update_time": 1777939498,
-    "_id": "doc-5964d0e39e2114d04620d98a10da1cda"
-  },
-  "doc-7d1cbeca25a61fb114af123bfbe626f1": {
-    "entity_names": [
-      "Iran",
-      "B-1B Lancer",
-      "United Kingdom",
-      "United States"
-    ],
-    "count": 4,
-    "create_time": 1777939505,
-    "update_time": 1777939505,
-    "_id": "doc-7d1cbeca25a61fb114af123bfbe626f1"
-  },
-  "doc-b8552cfc4c27d605e47c41014186872e": {
-    "entity_names": [
-      "King Charles III",
-      "Prince and Princess of Wales",
-      "Iran",
-      "United Kingdom",
-      "Donald Trump",
-      "Winston Churchill",
-      "Gloucestershire",
-      "Keir Starmer",
-      "RAF Fairford",
-      "Financial Times",
-      "United States"
-    ],
-    "count": 11,
-    "create_time": 1777939522,
-    "update_time": 1777939522,
-    "_id": "doc-b8552cfc4c27d605e47c41014186872e"
-  },
-  "doc-b92f7a2ab9e342540e4df341e5aeba29": {
-    "entity_names": [
-      "Кир Стармер",
-      "Vladimir Putin",
-      "United Kingdom",
-      "Donald Trump"
-    ],
-    "count": 4,
-    "create_time": 1777939532,
-    "update_time": 1777939532,
-    "_id": "doc-b92f7a2ab9e342540e4df341e5aeba29"
-  },
-  "doc-0574414aa8864aaf273b8712793b8dd5": {
-    "entity_names": [
-      "NATO",
-      "Ida-Viru County",
-      "GRUNT with Notevsky",
-      "Russia",
-      "Narvskaya Narodnaya Respublika",
-      "Narva",
-      "Estonia",
-      "Alexander Notevsky"
-    ],
-    "count": 8,
-    "create_time": 1778011234,
-    "update_time": 1778011234,
-    "_id": "doc-0574414aa8864aaf273b8712793b8dd5"
-  },
-  "doc-a670576039c87a3bca1d98d1c8307658": {
-    "entity_names": [
-      "Peter Szijjártó",
+      "Volodymyr Zelenskyy",
+      "Kyiv",
+      "Bratislava",
+      "Slovakia",
       "European Union",
-      "Russian services",
-      "GRUNT s Notevsky",
-      "Hungary",
-      "Orbán",
-      "Tisza",
-      "Alexander Notevsky"
+      "Ukraine",
+      "Robert Fico"
     ],
-    "count": 8,
-    "create_time": 1778011253,
-    "update_time": 1778011253,
-    "_id": "doc-a670576039c87a3bca1d98d1c8307658"
+    "count": 7,
+    "create_time": 1780159906,
+    "update_time": 1780159906,
+    "_id": "doc-2210b5e55d1500b9a97040c5c3972228"
   },
-  "doc-f2a61697bfb2b814caed28db4a6318db": {
+  "doc-ee0ac06368ae9c81fc02d1127579cb85": {
     "entity_names": [
-      "West",
-      "Soviet regime",
-      "Novosiletsky",
-      "Orbanism",
-      "Hungary",
-      "George Soros",
-      "Orbán",
-      "FSB"
-    ],
-    "count": 8,
-    "create_time": 1778011266,
-    "update_time": 1778011266,
-    "_id": "doc-f2a61697bfb2b814caed28db4a6318db"
-  },
-  "doc-540a5296783feacb13e22f9819375c9a": {
-    "entity_names": [
-      "Andrei Lankov",
-      "Olga Ivshina",
-      "North Korea",
       "Russia",
-      "South Korea",
-      "BBC News - Russian Service",
-      "Kim Jong Un",
-      "China",
-      "K-Pop"
+      "Volodymyr Zelenskyy",
+      "Slovakia",
+      "Vladimir Putin",
+      "European Union",
+      "Slovak National Party",
+      "Ukraine",
+      "Robert Fico",
+      "Viktor Orban"
     ],
     "count": 9,
-    "create_time": 1778011292,
-    "update_time": 1778011292,
-    "_id": "doc-540a5296783feacb13e22f9819375c9a"
+    "create_time": 1780159921,
+    "update_time": 1780159921,
+    "_id": "doc-ee0ac06368ae9c81fc02d1127579cb85"
+  },
+  "doc-4940bea30b1b8ae3649bbab9bd4b88c7": {
+    "entity_names": [
+      "Russia",
+      "Hungary",
+      "Europe",
+      "European Union",
+      "Ukrainian Leaders",
+      "Ukraine",
+      "Viktor Orbán",
+      "European Leaders",
+      "NATO"
+    ],
+    "count": 9,
+    "create_time": 1780159937,
+    "update_time": 1780159937,
+    "_id": "doc-4940bea30b1b8ae3649bbab9bd4b88c7"
+  },
+  "doc-5ae411e0d244a0a9431901b2c9681eae": {
+    "entity_names": [
+      "Russia",
+      "Kyiv",
+      "Hungary",
+      "Kremlin",
+      "Tisza Party",
+      "Ukraine",
+      "Viktor Orbán"
+    ],
+    "count": 7,
+    "create_time": 1780159954,
+    "update_time": 1780159954,
+    "_id": "doc-5ae411e0d244a0a9431901b2c9681eae"
+  },
+  "doc-f64b5a77706988891afa2d0349d51f01": {
+    "entity_names": [
+      "Druzhba Pipeline",
+      "Euroclear",
+      "Malta",
+      "Russia",
+      "Financial Times",
+      "Italy",
+      "Hungarian Parliamentary Elections",
+      "European Union",
+      "Ukraine",
+      "Frozen Russian Assets",
+      "Viktor Orbán",
+      "Robert Fico",
+      "Giorgia Meloni",
+      "Andrej Babiš",
+      "Bulgaria",
+      "Hungary",
+      "Belgium",
+      "Vladimir Putin",
+      "Donald Trump",
+      "Bart De Wever"
+    ],
+    "count": 20,
+    "create_time": 1780159976,
+    "update_time": 1780159976,
+    "_id": "doc-f64b5a77706988891afa2d0349d51f01"
+  },
+  "doc-7703130cc52a1a006452fb5e82553d51": {
+    "entity_names": [
+      "Russia",
+      "Adolf Hitler",
+      "Napoleon",
+      "Ukraine",
+      "Kaja Kallas",
+      "Viktor Orban"
+    ],
+    "count": 6,
+    "create_time": 1780159985,
+    "update_time": 1780159985,
+    "_id": "doc-7703130cc52a1a006452fb5e82553d51"
+  },
+  "doc-51e6eebb748049fe99913b535485f245": {
+    "entity_names": [
+      "Hungary",
+      "Slovakia",
+      "Druzhba Pipeline",
+      "Council of the European Union (Foreign Affairs)",
+      "European Union",
+      "Ukraine",
+      "Péter Szijjártó",
+      "20th Sanctions Package"
+    ],
+    "count": 8,
+    "create_time": 1780159995,
+    "update_time": 1780159995,
+    "_id": "doc-51e6eebb748049fe99913b535485f245"
+  },
+  "doc-b9d069cdc9157fd08261ae16e6dae746": {
+    "entity_names": [
+      "Russia",
+      "Hungary",
+      "Druzhba Pipeline",
+      "Antonio Costa",
+      "European Union",
+      "European Council President",
+      "Ukraine",
+      "European Council",
+      "Viktor Orban"
+    ],
+    "count": 9,
+    "create_time": 1780160006,
+    "update_time": 1780160006,
+    "_id": "doc-b9d069cdc9157fd08261ae16e6dae746"
+  },
+  "doc-4b5bf6d30181316ab345d1cb72c8b2ff": {
+    "entity_names": [
+      "Russia",
+      "Kyiv",
+      "Hungary",
+      "European Union",
+      "Ukraine",
+      "Brussels",
+      "Hungarian People",
+      "Donald Trump",
+      "Viktor Orban"
+    ],
+    "count": 9,
+    "create_time": 1780160030,
+    "update_time": 1780160030,
+    "_id": "doc-4b5bf6d30181316ab345d1cb72c8b2ff"
+  },
+  "doc-e4167cb1687ff668a17167916f77b8cd": {
+    "entity_names": [
+      "Russia",
+      "Poland",
+      "Radosław Sikorski",
+      "Hungary",
+      "Budapest",
+      "Ruling Party (Hungary)",
+      "Red Army",
+      "Ukraine",
+      "All General Election (Hungary)",
+      "Hungarian Government"
+    ],
+    "count": 10,
+    "create_time": 1780160046,
+    "update_time": 1780160046,
+    "_id": "doc-e4167cb1687ff668a17167916f77b8cd"
+  },
+  "doc-37daf554d7d42237d41199f55338be6f": {
+    "entity_names": [
+      "Russia",
+      "Poland",
+      "Czech Republic",
+      "Bulgaria",
+      "Hungary",
+      "Russian Oil"
+    ],
+    "count": 6,
+    "create_time": 1780160059,
+    "update_time": 1780160059,
+    "_id": "doc-37daf554d7d42237d41199f55338be6f"
+  },
+  "doc-2f13fbf24f5c1637af45f1569cd2eea3": {
+    "entity_names": [
+      "Russia",
+      "Hungary",
+      "Vladimir Putin",
+      "European Union",
+      "Ukraine",
+      "Viktor Orban"
+    ],
+    "count": 6,
+    "create_time": 1780160078,
+    "update_time": 1780160078,
+    "_id": "doc-2f13fbf24f5c1637af45f1569cd2eea3"
+  },
+  "doc-df64fa20255efd1c3a8d9e9d8200496b": {
+    "entity_names": [
+      "Financial Times",
+      "Peter Magyar",
+      "Hungary",
+      "Fidesz",
+      "Hungarian Opposition Parties",
+      "April Elections",
+      "Tisza Party",
+      "Viktor Orban"
+    ],
+    "count": 8,
+    "create_time": 1780160096,
+    "update_time": 1780160096,
+    "_id": "doc-df64fa20255efd1c3a8d9e9d8200496b"
+  },
+  "doc-676131b2682484195d396ce8f66550c8": {
+    "entity_names": [
+      "Russia",
+      "Tsargrad TV",
+      "Brody Oil Depot",
+      "Hungary",
+      "Croatia",
+      "Sergey Koretsky",
+      "Druzhba Pipeline",
+      "Slovakia",
+      "Naftogaz Of Ukraine",
+      "European Union",
+      "State Emergency Service Of Ukraine",
+      "Ukraine",
+      "Planet Labs",
+      "Shahed Drones",
+      "NASA FIRMS",
+      "Bloomberg",
+      "Robert Fico",
+      "Viktor Orban"
+    ],
+    "count": 18,
+    "create_time": 1780160123,
+    "update_time": 1780160123,
+    "_id": "doc-676131b2682484195d396ce8f66550c8"
+  },
+  "doc-2c1b562d85a140b369d21093bbc14872": {
+    "entity_names": [
+      "Volodymyr Zelenskyy",
+      "Hungary",
+      "Druzhba Pipeline",
+      "Ukraine",
+      "Сазаломбатта",
+      "Свинктор Торбан"
+    ],
+    "count": 6,
+    "create_time": 1780160135,
+    "update_time": 1780160135,
+    "_id": "doc-2c1b562d85a140b369d21093bbc14872"
+  },
+  "doc-52ab1b231a9dcb4ae0907872986c844a": {
+    "entity_names": [
+      "Volodymyr Zelenskyy",
+      "Hungary",
+      "Croatia",
+      "Slovakia",
+      "Prime Minister of Croatia",
+      "Viktor Orban"
+    ],
+    "count": 6,
+    "create_time": 1780160144,
+    "update_time": 1780160144,
+    "_id": "doc-52ab1b231a9dcb4ae0907872986c844a"
+  },
+  "doc-cac37b5111c2a7e56befbf605258cb4b": {
+    "entity_names": [
+      "Martin Magat",
+      "UkrEnergo",
+      "Slovakia",
+      "Ukraine",
+      "Slovakia Power Transmission System"
+    ],
+    "count": 5,
+    "create_time": 1780160151,
+    "update_time": 1780160151,
+    "_id": "doc-cac37b5111c2a7e56befbf605258cb4b"
+  },
+  "doc-bdcc910503e0ab9bb8e7f0db19768f7b": {
+    "entity_names": [
+      "Oschadbank Employees",
+      "Hungary",
+      "Austria",
+      "Budapest",
+      "Oschadbank Cash-In-Transit Vehicles",
+      "Embassy Of Ukraine In Hungary",
+      "Oschadbank",
+      "Ukraine",
+      "Ministry Of Foreign Affairs Of Ukraine",
+      "Valuables Transported By Oschadbank",
+      "Raiffeisen Bank"
+    ],
+    "count": 11,
+    "create_time": 1780160165,
+    "update_time": 1780160165,
+    "_id": "doc-bdcc910503e0ab9bb8e7f0db19768f7b"
+  },
+  "doc-71582ec9e980c699bcd2573e59b62829": {
+    "entity_names": [
+      "Volodymyr Zelenskyy",
+      "Hungary",
+      "Péter Magyar",
+      "European Union",
+      "Ukraine"
+    ],
+    "count": 5,
+    "create_time": 1780160173,
+    "update_time": 1780160173,
+    "_id": "doc-71582ec9e980c699bcd2573e59b62829"
+  },
+  "doc-15d406e6bdd3f0912db8b4fca9afe702": {
+    "entity_names": [
+      "Druzhba",
+      "Hungary",
+      "Ukraine",
+      "Viktor Orban"
+    ],
+    "count": 4,
+    "create_time": 1780160180,
+    "update_time": 1780160180,
+    "_id": "doc-15d406e6bdd3f0912db8b4fca9afe702"
+  },
+  "doc-674255d6b920ba9998448070d66bf552": {
+    "entity_names": [
+      "Hungary",
+      "European Union",
+      "Venezuela",
+      "Viktor Orban"
+    ],
+    "count": 4,
+    "create_time": 1780160193,
+    "update_time": 1780160193,
+    "_id": "doc-674255d6b920ba9998448070d66bf552"
+  },
+  "doc-63fd0b46724d829afb895426b045fcfb": {
+    "entity_names": [
+      "Russia",
+      "Russian Government",
+      "Hungary",
+      "European Security Services",
+      "Hungarian Parliamentary Elections",
+      "Sergei Kiriyenko",
+      "Vladimir Putin",
+      "Russian Military Intelligence",
+      "VSquare",
+      "Viktor Orban"
+    ],
+    "count": 10,
+    "create_time": 1780160208,
+    "update_time": 1780160208,
+    "_id": "doc-63fd0b46724d829afb895426b045fcfb"
+  },
+  "doc-b6ffd47788dd15f81266aece4e6ffb2f": {
+    "entity_names": [
+      "Mafia",
+      "Oshchadbank",
+      "Cash Collectors",
+      "Siyarto",
+      "Ukraine"
+    ],
+    "count": 5,
+    "create_time": 1780160223,
+    "update_time": 1780160223,
+    "_id": "doc-b6ffd47788dd15f81266aece4e6ffb2f"
+  },
+  "doc-af194aaebb14aa240f3e86effd525557": {
+    "entity_names": [
+      "Government Information Center",
+      "Hungary",
+      "Index",
+      "Individuals With Military Experience",
+      "Seven Ukrainian Cash Collectors",
+      "Oschadbank",
+      "Ukraine",
+      "Former Major of the Ukrainian Air Force",
+      "National Tax and Customs Administration",
+      "Former SBU General"
+    ],
+    "count": 10,
+    "create_time": 1780160234,
+    "update_time": 1780160234,
+    "_id": "doc-af194aaebb14aa240f3e86effd525557"
+  },
+  "doc-cf0df5cce4c5657da7acfa830bca6333": {
+    "entity_names": [
+      "Грязные деньги",
+      "мафия",
+      "страна"
+    ],
+    "count": 3,
+    "create_time": 1780160240,
+    "update_time": 1780160240,
+    "_id": "doc-cf0df5cce4c5657da7acfa830bca6333"
+  },
+  "doc-7a298ca5ea8caa92fcf09a073ca9d1ee": {
+    "entity_names": [
+      "Hungary",
+      "European Union",
+      "Oschadbank",
+      "Ukraine",
+      "Viktor Orban"
+    ],
+    "count": 5,
+    "create_time": 1780160249,
+    "update_time": 1780160249,
+    "_id": "doc-7a298ca5ea8caa92fcf09a073ca9d1ee"
+  },
+  "doc-fbf0a487bc903c6c0a96d91cbf306501": {
+    "entity_names": [
+      "Alice Weidel",
+      "Freedom Party of Austria",
+      "United States",
+      "National Rally",
+      "Herbert Kickl",
+      "Santiago Abascal",
+      "Marine Le Pen",
+      "France",
+      "Tisza",
+      "Italy",
+      "Péter Magyar",
+      "Aleksandar Vučić",
+      "European Conservatives and Reformists",
+      "Hungarian Parliamentary Elections (2026)",
+      "Viktor Orbán",
+      "ANO 2011",
+      "Giorgia Meloni",
+      "Vox",
+      "Andrej Babiš",
+      "Poland",
+      "Alternative for Germany",
+      "Matteo Salvini",
+      "Hungary",
+      "Javier Milei",
+      "Benjamin Netanyahu",
+      "Serbia",
+      "Mateusz Morawiecki",
+      "Czech Republic",
+      "Fidesz",
+      "Rob Schneider"
+    ],
+    "count": 30,
+    "create_time": 1780160271,
+    "update_time": 1780160271,
+    "_id": "doc-fbf0a487bc903c6c0a96d91cbf306501"
+  },
+  "doc-98e60f54634c7d8aa785d44abbba201b": {
+    "entity_names": [
+      "Russia",
+      "1956",
+      "Peter Magyar",
+      "Hungary",
+      "Tisza",
+      "Budapest",
+      "János Kádár",
+      "GRU",
+      "Moldova",
+      "Committee of National Security",
+      "Viktor Orbán",
+      "April 12"
+    ],
+    "count": 12,
+    "create_time": 1780160287,
+    "update_time": 1780160287,
+    "_id": "doc-98e60f54634c7d8aa785d44abbba201b"
+  },
+  "doc-a1db5464e636c9cab96b08cad5e45156": {
+    "entity_names": [
+      "United States",
+      "Kremlin",
+      "Sergey Kiriyenko",
+      "Viktor Orban",
+      "Rosatom",
+      "Department for Strategic Partnership and Cooperation",
+      "Central Intelligence Agency",
+      "Budapest",
+      "Vadim Titov",
+      "18+",
+      "Moldova",
+      "European Union",
+      "Moscow",
+      "Maia Sandu",
+      "Operation Budapest",
+      "Hungary",
+      "Andrei Kalitin",
+      "Vsquare",
+      "Presidential Administration",
+      "Embassy of Russia in Budapest",
+      "NATO"
+    ],
+    "count": 21,
+    "create_time": 1780160305,
+    "update_time": 1780160305,
+    "_id": "doc-a1db5464e636c9cab96b08cad5e45156"
+  },
+  "doc-9adcf7aa44e7fac14453d86571cad47a": {
+    "entity_names": [
+      "Скандальный украинский золотой конвой",
+      "Hungary",
+      "Fidesz",
+      "Мате Кочиш",
+      "Oschadbank",
+      "Парламент Венгрии",
+      "Ukraine",
+      "Оппозиционные политики"
+    ],
+    "count": 8,
+    "create_time": 1780160322,
+    "update_time": 1780160322,
+    "_id": "doc-9adcf7aa44e7fac14453d86571cad47a"
+  },
+  "doc-65f06daf2afc938128738d9719986046": {
+    "entity_names": [
+      "Kyiv",
+      "Hungary",
+      "90 Billion Loan",
+      "Druzhba Pipeline",
+      "Kremlin",
+      "European Union",
+      "Ukraine",
+      "Brussels",
+      "April 12",
+      "Viktor Orban"
+    ],
+    "count": 10,
+    "create_time": 1780160345,
+    "update_time": 1780160345,
+    "_id": "doc-65f06daf2afc938128738d9719986046"
+  },
+  "doc-c69d2ada01e9b5096353c1ed9c22ab41": {
+    "entity_names": [
+      "Фицо",
+      "Орбан"
+    ],
+    "count": 2,
+    "create_time": 1780160351,
+    "update_time": 1780160351,
+    "_id": "doc-c69d2ada01e9b5096353c1ed9c22ab41"
+  },
+  "doc-555005b95c1e8afeae751efc310b878d": {
+    "entity_names": [
+      "Hungary",
+      "Budapest",
+      "Ukraine",
+      "Ministry of Foreign Affairs of Ukraine",
+      "Ukrainian detainees"
+    ],
+    "count": 5,
+    "create_time": 1780160360,
+    "update_time": 1780160360,
+    "_id": "doc-555005b95c1e8afeae751efc310b878d"
+  },
+  "doc-88ad3673d644d3f8a67b0e7b0a9510f4": {
+    "entity_names": [
+      "Bill",
+      "Fidesz",
+      "Hungarian Parliament",
+      "Hungary",
+      "Mate Kocsis",
+      "Oschadbank",
+      "National Tax and Customs Service"
+    ],
+    "count": 7,
+    "create_time": 1780160368,
+    "update_time": 1780160368,
+    "_id": "doc-88ad3673d644d3f8a67b0e7b0a9510f4"
+  },
+  "doc-4a9275657871616200aa7a2643fddc0e": {
+    "entity_names": [
+      "Hungary",
+      "Budapest",
+      "Druzhba Pipeline",
+      "János Lázár",
+      "Ukraine"
+    ],
+    "count": 5,
+    "create_time": 1780160377,
+    "update_time": 1780160377,
+    "_id": "doc-4a9275657871616200aa7a2643fddc0e"
+  },
+  "doc-f05025bdcf988cefb5d91b332576cb04": {
+    "entity_names": [
+      "Hungary",
+      "Resolution",
+      "Index",
+      "European Union",
+      "Ukraine"
+    ],
+    "count": 5,
+    "create_time": 1780160395,
+    "update_time": 1780160395,
+    "_id": "doc-f05025bdcf988cefb5d91b332576cb04"
+  },
+  "doc-e41fab1fb028f45118c95eaf49edb3fe": {
+    "entity_names": [
+      "Hungarian influencers",
+      "Orbán's circle",
+      "Social Design Agency",
+      "Financial Times",
+      "Hungary",
+      "Péter Magyar",
+      "Kremlin",
+      "Brussels",
+      "Viktor Orbán"
+    ],
+    "count": 9,
+    "create_time": 1780160411,
+    "update_time": 1780160411,
+    "_id": "doc-e41fab1fb028f45118c95eaf49edb3fe"
+  },
+  "doc-15afe5a4b34be0b724c1113d2ac26b1e": {
+    "entity_names": [
+      "Russia",
+      "Volodymyr Zelenskyy",
+      "Peter Magyar",
+      "Hungary",
+      "Budapest",
+      "European Union",
+      "Viktor Orban"
+    ],
+    "count": 7,
+    "create_time": 1780160427,
+    "update_time": 1780160427,
+    "_id": "doc-15afe5a4b34be0b724c1113d2ac26b1e"
+  },
+  "doc-29b19d949cda5d93ba5c4bd2a5f49972": {
+    "entity_names": [
+      "Ukrainians",
+      "Sariko",
+      "Roje",
+      "Alice",
+      "Viktor Orban"
+    ],
+    "count": 5,
+    "create_time": 1780160441,
+    "update_time": 1780160441,
+    "_id": "doc-29b19d949cda5d93ba5c4bd2a5f49972"
+  },
+  "doc-615d323cd7627cf03747360ba94c58bf": {
+    "entity_names": [
+      "Hungary"
+    ],
+    "count": 1,
+    "create_time": 1780160446,
+    "update_time": 1780160446,
+    "_id": "doc-615d323cd7627cf03747360ba94c58bf"
+  },
+  "doc-7916221612d9707e39fffe12d0f7ccc2": {
+    "entity_names": [
+      "Урсула фон дер Ляйен",
+      "Правительство Орбана",
+      "Венгрия",
+      "Orbán",
+      "European Union",
+      "Венгры",
+      "Ukraine",
+      "Европейцы",
+      "Национальная петиция"
+    ],
+    "count": 9,
+    "create_time": 1780160458,
+    "update_time": 1780160458,
+    "_id": "doc-7916221612d9707e39fffe12d0f7ccc2"
+  },
+  "doc-874305f214e8d1fac78d112647739ab3": {
+    "entity_names": [
+      "Hungary",
+      "Виктор Орбан",
+      "Виктор Ющенко",
+      "Ukraine"
+    ],
+    "count": 4,
+    "create_time": 1780160465,
+    "update_time": 1780160465,
+    "_id": "doc-874305f214e8d1fac78d112647739ab3"
+  },
+  "doc-3d68a6afe15e44fe1051ad427283b65c": {
+    "entity_names": [
+      "Moscow Political Technologists",
+      "Peter Magyar",
+      "Hungary",
+      "Kazakhstan",
+      "Georgia",
+      "Moldova",
+      "Armenia",
+      "Kremlin",
+      "Moscow",
+      "Ukraine",
+      "Viktor Orban"
+    ],
+    "count": 11,
+    "create_time": 1780160483,
+    "update_time": 1780160483,
+    "_id": "doc-3d68a6afe15e44fe1051ad427283b65c"
+  },
+  "doc-ea11ec0fdb6fc504711eeface752ded1": {
+    "entity_names": [
+      "Russia",
+      "Volodymyr Zelenskyy",
+      "Kyiv",
+      "Hungary",
+      "Austria",
+      "Peace March",
+      "Slovakia",
+      "United States",
+      "European Union",
+      "Netherlands",
+      "Ukraine",
+      "Brussels",
+      "Germany",
+      "Viktor Orban"
+    ],
+    "count": 14,
+    "create_time": 1780160502,
+    "update_time": 1780160502,
+    "_id": "doc-ea11ec0fdb6fc504711eeface752ded1"
+  },
+  "doc-5d63caa52a2e3ce1dcd5bff0a9b8052b": {
+    "entity_names": [
+      "Hungary",
+      "Ukraine",
+      "Viktor Orban"
+    ],
+    "count": 3,
+    "create_time": 1780160508,
+    "update_time": 1780160508,
+    "_id": "doc-5d63caa52a2e3ce1dcd5bff0a9b8052b"
+  },
+  "doc-c83f28c8f7f70ac7491cdb8167028ad9": {
+    "entity_names": [
+      "Budapest",
+      "Magyar",
+      "Viktor Orban"
+    ],
+    "count": 3,
+    "create_time": 1780160514,
+    "update_time": 1780160514,
+    "_id": "doc-c83f28c8f7f70ac7491cdb8167028ad9"
+  },
+  "doc-b778e3529127237de2d928ff5143fc06": {
+    "entity_names": [
+      "Tisza Party",
+      "Viktor Orban",
+      "Russia",
+      "European Union",
+      "Ukraine",
+      "2026 Hungarian Parliamentary Elections",
+      "Robert Fico",
+      "Zakarpattia",
+      "Peter Magyar",
+      "Hungary",
+      "Peter Szijjarto",
+      "Slovakia",
+      "Deutsche Welle",
+      "August 2025 Mukachevo Missile Attack",
+      "Fidesz",
+      "Tamas Sulyok",
+      "Anita Orban",
+      "Donald Trump",
+      "Mukachevo"
+    ],
+    "count": 19,
+    "create_time": 1780160540,
+    "update_time": 1780160540,
+    "_id": "doc-b778e3529127237de2d928ff5143fc06"
+  },
+  "doc-8fe4e723c9a9c50e260fd566909fc9c2": {
+    "entity_names": [
+      "Peter Magyar",
+      "Hungarian Revolution of 1848",
+      "Hungary",
+      "Budapest",
+      "European Union",
+      "Tisa Party",
+      "Bloomberg",
+      "Viktor Orban"
+    ],
+    "count": 8,
+    "create_time": 1780160559,
+    "update_time": 1780160559,
+    "_id": "doc-8fe4e723c9a9c50e260fd566909fc9c2"
+  },
+  "doc-6df5c3dc976710464bc2ce543538e5ed": {
+    "entity_names": [
+      "Vladimir Zelensky",
+      "Soviet Union",
+      "Hungary",
+      "Hungarian People",
+      "Ukraine",
+      "Hungarian Elections (April 12)",
+      "Viktor Orban"
+    ],
+    "count": 7,
+    "create_time": 1780160575,
+    "update_time": 1780160575,
+    "_id": "doc-6df5c3dc976710464bc2ce543538e5ed"
+  },
+  "doc-67401b84fb73125bdf705034db9ab176": {
+    "entity_names": [
+      "Volodymyr Zelenskyy",
+      "Ukrainians",
+      "Hungary",
+      "Hungarian Statehood",
+      "Viktor Orban"
+    ],
+    "count": 5,
+    "create_time": 1780160585,
+    "update_time": 1780160585,
+    "_id": "doc-67401b84fb73125bdf705034db9ab176"
+  },
+  "doc-ac3e18f850992ddb934bf8981ca9817c": {
+    "entity_names": [
+      "Peter Magyar",
+      "Hungary",
+      "Kremlin",
+      "Tisza Party",
+      "Moscow",
+      "April 12",
+      "Viktor Orban"
+    ],
+    "count": 7,
+    "create_time": 1780160600,
+    "update_time": 1780160600,
+    "_id": "doc-ac3e18f850992ddb934bf8981ca9817c"
+  },
+  "doc-7785b022b0a8573759f787942eb8c840": {
+    "entity_names": [
+      "YouTube",
+      "Peter Magyar",
+      "Hungary",
+      "Facebook",
+      "Viktor Orban"
+    ],
+    "count": 5,
+    "create_time": 1780160610,
+    "update_time": 1780160610,
+    "_id": "doc-7785b022b0a8573759f787942eb8c840"
+  },
+  "doc-2098f9b05c86f89cb25355bc829b479b": {
+    "entity_names": [
+      "DW Ukraine",
+      "Election Rally",
+      "Ukraine",
+      "Viktor Orban"
+    ],
+    "count": 4,
+    "create_time": 1780160622,
+    "update_time": 1780160622,
+    "_id": "doc-2098f9b05c86f89cb25355bc829b479b"
+  },
+  "doc-546c468eca2fd19ea04771de1e7c35fc": {
+    "entity_names": [
+      "Russia",
+      "Kyiv",
+      "Hungary",
+      "Orban",
+      "European Union",
+      "Ukraine",
+      "Brussels",
+      "Viktor Orban"
+    ],
+    "count": 8,
+    "create_time": 1780160645,
+    "update_time": 1780160645,
+    "_id": "doc-546c468eca2fd19ea04771de1e7c35fc"
+  },
+  "doc-97ef3c4a1b895ab0c6286470304f1102": {
+    "entity_names": [
+      "Hungary",
+      "Orban",
+      "Uzhhorod"
+    ],
+    "count": 3,
+    "create_time": 1780160653,
+    "update_time": 1780160653,
+    "_id": "doc-97ef3c4a1b895ab0c6286470304f1102"
+  },
+  "doc-fc4642c2866df8ad8de34c8d2524aed7": {
+    "entity_names": [
+      "Russia",
+      "Robert Fico",
+      "Hungary",
+      "Slovakia",
+      "Antonio Costa",
+      "Druzhba Pipeline",
+      "Kremlin",
+      "European Union",
+      "Ukraine",
+      "Ursula von der Leyen",
+      "January 27 Attack",
+      "Viktor Orban"
+    ],
+    "count": 12,
+    "create_time": 1780160674,
+    "update_time": 1780160674,
+    "_id": "doc-fc4642c2866df8ad8de34c8d2524aed7"
+  },
+  "doc-2d1d4f75a62ceed71aa9204275305a6e": {
+    "entity_names": [
+      "Russia",
+      "West",
+      "Hungary",
+      "Vladimir Putin",
+      "European Union",
+      "Ukraine",
+      "NATO",
+      "Viktor Orban"
+    ],
+    "count": 8,
+    "create_time": 1780160688,
+    "update_time": 1780160688,
+    "_id": "doc-2d1d4f75a62ceed71aa9204275305a6e"
+  },
+  "doc-c20fdb317fbe6e5035a20fc0d7cd4a8a": {
+    "entity_names": [
+      "The Washington Post",
+      "United States",
+      "Kremlin",
+      "Brussels",
+      "VSquare",
+      "Viktor Orban",
+      "Russia",
+      "Operation \"Gamechanger\"",
+      "Tisza",
+      "Budapest",
+      "European Union",
+      "Ukraine",
+      "Russian Embassy in Budapest",
+      "Tigran Garibyan",
+      "Peter Magyar",
+      "European Intelligence Services",
+      "Hungary",
+      "SVR",
+      "Department of Active Measures",
+      "Vance",
+      "Iran",
+      "Western Officials",
+      "Marco Rubio",
+      "Andras Tölkess",
+      "Fidesz",
+      "Donald Trump",
+      "Russian Military Intelligence",
+      "Hungarian Government"
+    ],
+    "count": 28,
+    "create_time": 1780160719,
+    "update_time": 1780160719,
+    "_id": "doc-c20fdb317fbe6e5035a20fc0d7cd4a8a"
+  },
+  "doc-ae4fb4653814f302edb4c2b31886f34e": {
+    "entity_names": [
+      "The Washington Post",
+      "Kremlin",
+      "VSquare",
+      "Viktor Orban",
+      "Russia",
+      "Maria Gurzo",
+      "Ervin Nagy",
+      "European Union",
+      "SVR RF",
+      "Operation Gamechanger",
+      "Tigran Garibyan",
+      "Sergey Lavrov",
+      "Peter Szijjarto",
+      "Hungary",
+      "Hungarian State Institutions",
+      "Opposition Victory",
+      "Ferenc Fres",
+      "Tisa Party",
+      "Donald Trump"
+    ],
+    "count": 19,
+    "create_time": 1780160738,
+    "update_time": 1780160738,
+    "_id": "doc-ae4fb4653814f302edb4c2b31886f34e"
+  },
+  "doc-69e85f78b817a92472108767ffe77683": {
+    "entity_names": [
+      "Russia",
+      "Washington Post",
+      "Петер Сийярто",
+      "Сергей Лавров",
+      "Hungary",
+      "European Union",
+      "Moscow",
+      "EU Meetings"
+    ],
+    "count": 8,
+    "create_time": 1780160753,
+    "update_time": 1780160753,
+    "_id": "doc-69e85f78b817a92472108767ffe77683"
+  },
+  "doc-e037ea60e0ab66c1ad0dc25a75b4d8af": {
+    "entity_names": [
+      "Russia",
+      "Politico",
+      "Hungary",
+      "Budapest",
+      "European Union"
+    ],
+    "count": 5,
+    "create_time": 1780160766,
+    "update_time": 1780160766,
+    "_id": "doc-e037ea60e0ab66c1ad0dc25a75b4d8af"
+  },
+  "doc-c623983e2f8c5ef656187601d123290e": {
+    "entity_names": [
+      "Defense Forces of Ukraine",
+      "Hungary",
+      "Security Service of Ukraine",
+      "Georgia",
+      "Diplomatic Institutions in Zakarpattia",
+      "Air Defense Forces",
+      "Ukraine",
+      "Hungarian Military Intelligence",
+      "Zakarpattia",
+      "Hungarian Agent Network",
+      "Zoltan Andre",
+      "Berehove Raion"
+    ],
+    "count": 12,
+    "create_time": 1780160780,
+    "update_time": 1780160780,
+    "_id": "doc-c623983e2f8c5ef656187601d123290e"
+  },
+  "doc-586509010920584bc9e5ab98d9aa0068": {
+    "entity_names": [
+      "North Korea",
+      "Kim Jong Un",
+      "Ukraine",
+      "North Korean Soldiers"
+    ],
+    "count": 4,
+    "create_time": 1780160795,
+    "update_time": 1780160795,
+    "_id": "doc-586509010920584bc9e5ab98d9aa0068"
+  },
+  "doc-8b67a254521d6bfedb533870d466debc": {
+    "entity_names": [
+      "Entire KPA Army",
+      "Kursk Oblast",
+      "Unmanned Technologies",
+      "Regular Rotations Mechanism",
+      "3,000 soldiers returned",
+      "Multiple Launch Rocket Systems (MLRS)",
+      "Barrel Artillery",
+      "North Korean Troops",
+      "Pyongyang",
+      "Sumy Oblast",
+      "Russia",
+      "Putin",
+      "Drone Integration",
+      "Kim Jong Un",
+      "Ukraine",
+      "GUR",
+      "The Kyiv Independent",
+      "Western Weaponry",
+      "North Korean Instructors",
+      "11,000–12,000 initial contingent",
+      "Ukrainian Border Settlements",
+      "North Korea"
+    ],
+    "count": 22,
+    "create_time": 1780160819,
+    "update_time": 1780160819,
+    "_id": "doc-8b67a254521d6bfedb533870d466debc"
+  },
+  "doc-17d6cf0207e94381578975eb4999f56a": {
+    "entity_names": [
+      "Russia",
+      "Wall Street Journal",
+      "Kursk Oblast",
+      "North Korean Soldiers",
+      "Ukrainian Intelligence",
+      "Ukraine",
+      "North Korea"
+    ],
+    "count": 7,
+    "create_time": 1780160830,
+    "update_time": 1780160830,
+    "_id": "doc-17d6cf0207e94381578975eb4999f56a"
+  },
+  "doc-c9dca965852dd968b4e7a200250ae24e": {
+    "entity_names": [
+      "Russia",
+      "Kim Jong Un",
+      "North Korea",
+      "Ukraine",
+      "Foreign Special Operation Forces",
+      "Korean People's Army"
+    ],
+    "count": 6,
+    "create_time": 1780160844,
+    "update_time": 1780160844,
+    "_id": "doc-c9dca965852dd968b4e7a200250ae24e"
+  },
+  "doc-3964d4f0b9654b68ee41f92be1c23a12": {
+    "entity_names": [
+      "Russia",
+      "Japan",
+      "North Korean Soldiers",
+      "Shinjiro Koizumi",
+      "Ukraine",
+      "North Korea"
+    ],
+    "count": 6,
+    "create_time": 1780160854,
+    "update_time": 1780160854,
+    "_id": "doc-3964d4f0b9654b68ee41f92be1c23a12"
+  },
+  "doc-89630855bead109900f47487dca04d91": {
+    "entity_names": [
+      "Russia",
+      "South Korean Intelligence Service",
+      "Russia-Ukraine War",
+      "Ukraine",
+      "South Korea",
+      "North Korean Prisoners Of War",
+      "North Korea",
+      "South Korean Human Rights Organization",
+      "AFP"
+    ],
+    "count": 9,
+    "create_time": 1780160864,
+    "update_time": 1780160864,
+    "_id": "doc-89630855bead109900f47487dca04d91"
+  },
+  "doc-5cd072944d02e664b607b3e819caca53": {
+    "entity_names": [
+      "Russia",
+      "Kursk Oblast",
+      "Sebel",
+      "Reuters",
+      "North Korea",
+      "Pyongyang",
+      "Ukraine",
+      "Kim Jong-un"
+    ],
+    "count": 8,
+    "create_time": 1780160876,
+    "update_time": 1780160876,
+    "_id": "doc-5cd072944d02e664b607b3e819caca53"
+  },
+  "doc-9c051b19528724434ee5d4fa12548c98": {
+    "entity_names": [
+      "Zhang Chang Ha",
+      "North Korea",
+      "Kim Jong Un",
+      "Kim Ju Ae"
+    ],
+    "count": 4,
+    "create_time": 1780160887,
+    "update_time": 1780160887,
+    "_id": "doc-9c051b19528724434ee5d4fa12548c98"
+  },
+  "doc-895e66f3e7b86de12449ae58de3f22fb": {
+    "entity_names": [
+      "Kim Jong Un",
+      "Generals",
+      "Newsweek",
+      "North Korea",
+      "Kim Jong Un's Daughter"
+    ],
+    "count": 5,
+    "create_time": 1780160894,
+    "update_time": 1780160894,
+    "_id": "doc-895e66f3e7b86de12449ae58de3f22fb"
+  },
+  "doc-dfd8ac7089b47ffcae396257cd9d16cb": {
+    "entity_names": [
+      "Russia",
+      "Parade in Honor of the Workers' Party Congress",
+      "Workers' Party of Korea",
+      "North Korea",
+      "Kim Jong Un's Daughter"
+    ],
+    "count": 5,
+    "create_time": 1780160908,
+    "update_time": 1780160908,
+    "_id": "doc-dfd8ac7089b47ffcae396257cd9d16cb"
+  },
+  "doc-5a20b3b2bccdffaee7cb220fd3c88061": {
+    "entity_names": [
+      "Russia",
+      "Kim Jong Un",
+      "Indo-Pacific Region",
+      "Vladimir Putin",
+      "Pyongyang",
+      "Moscow",
+      "Ukraine",
+      "North Korea",
+      "Gueorgui Tihiy"
+    ],
+    "count": 9,
+    "create_time": 1780160928,
+    "update_time": 1780160928,
+    "_id": "doc-5a20b3b2bccdffaee7cb220fd3c88061"
+  },
+  "doc-d994ad9b76711084490a55a91f1c6c98": {
+    "entity_names": [
+      "Russia",
+      "Ministry of Defense of Russia",
+      "WhatsApp",
+      "FPV Drone",
+      "Rason Port",
+      "Signal",
+      "Military Intelligence and Security Service (MIVD)",
+      "General Intelligence and Security Service (AIVD)",
+      "CIA",
+      "Classified Document",
+      "United States",
+      "Military Counterintelligence of Russia",
+      "Pyongyang",
+      "Moscow",
+      "South Korea",
+      "Netherlands",
+      "Andrey Sergeevich Kalitin",
+      "North Korea"
+    ],
+    "count": 18,
+    "create_time": 1780160953,
+    "update_time": 1780160953,
+    "_id": "doc-d994ad9b76711084490a55a91f1c6c98"
+  },
+  "doc-2f9a8721b8665607632e83cb87fb4484": {
+    "entity_names": [
+      "Russia",
+      "China",
+      "Andrey Lankov",
+      "Kim Jong Un",
+      "East Asia",
+      "South Korea",
+      "K-pop",
+      "North Korea",
+      "Olga Ivshina"
+    ],
+    "count": 9,
+    "create_time": 1780160971,
+    "update_time": 1780160971,
+    "_id": "doc-2f9a8721b8665607632e83cb87fb4484"
+  },
+  "doc-50def10bcefc9241c474f040c58d1140": {
+    "entity_names": [
+      "Russia",
+      "North Korea",
+      "Russian Army",
+      "Important Stories"
+    ],
+    "count": 4,
+    "create_time": 1780160978,
+    "update_time": 1780160978,
+    "_id": "doc-50def10bcefc9241c474f040c58d1140"
+  },
+  "doc-832eeddb1542796df6b31e947b95ae26": {
+    "entity_names": [
+      "Russia",
+      "Institute For Strategy Of National Security",
+      "Kim Jong Un",
+      "Bank Of Korea",
+      "Vladimir Putin",
+      "South Korea",
+      "North Korea",
+      "Bloomberg"
+    ],
+    "count": 8,
+    "create_time": 1780160994,
+    "update_time": 1780160994,
+    "_id": "doc-832eeddb1542796df6b31e947b95ae26"
+  },
+  "doc-d2e874ced17d99a86cce7f983a1f8865": {
+    "entity_names": [
+      "Russia",
+      "Yonhap",
+      "Ukraine",
+      "North Korea",
+      "South Korean Intelligence"
+    ],
+    "count": 5,
+    "create_time": 1780161004,
+    "update_time": 1780161004,
+    "_id": "doc-d2e874ced17d99a86cce7f983a1f8865"
+  },
+  "doc-3f265798c95cbba678a509be20eea380": {
+    "entity_names": [
+      "Ministry of Defense of North Korea",
+      "Kim Jong Un",
+      "North Korean Soldiers",
+      "Central Committee of the Workers' Party of Korea",
+      "Ukraine",
+      "North Korea"
+    ],
+    "count": 6,
+    "create_time": 1780161013,
+    "update_time": 1780161013,
+    "_id": "doc-3f265798c95cbba678a509be20eea380"
+  },
+  "doc-bdc981791267cce680463ded9c12d51a": {
+    "entity_names": [
+      "North Korean Hacker",
+      "North Korea",
+      "Kim Jong Un",
+      "Job Interview"
+    ],
+    "count": 4,
+    "create_time": 1780161020,
+    "update_time": 1780161020,
+    "_id": "doc-bdc981791267cce680463ded9c12d51a"
+  },
+  "doc-44bd4ab046a7fe9a4ff94a43a5b33a53": {
+    "entity_names": [
+      "Russia",
+      "Russian Ministry Of Defense",
+      "Kursk Oblast",
+      "North Korean Military Forces",
+      "Memorial Complex For North Korean Soldiers",
+      "North Korea"
+    ],
+    "count": 6,
+    "create_time": 1780161035,
+    "update_time": 1780161035,
+    "_id": "doc-44bd4ab046a7fe9a4ff94a43a5b33a53"
+  },
+  "doc-63078432f96f6d16213dcc2d9625ce87": {
+    "entity_names": [
+      "Russia",
+      "Kim Jong Un",
+      "Pyongyang",
+      "Moscow",
+      "Ukraine",
+      "North Korea"
+    ],
+    "count": 6,
+    "create_time": 1780161050,
+    "update_time": 1780161050,
+    "_id": "doc-63078432f96f6d16213dcc2d9625ce87"
+  },
+  "doc-52a0fbd91341a2e266117e50fe538db1": {
+    "entity_names": [
+      "Russia",
+      "Youth League",
+      "Kim Jong Un",
+      "Reuters",
+      "Workers' Party of Korea",
+      "North Korea",
+      "Ukraine",
+      "Pyongyang",
+      "Russia-Ukraine War",
+      "Korean People's Army"
+    ],
+    "count": 10,
+    "create_time": 1780161062,
+    "update_time": 1780161062,
+    "_id": "doc-52a0fbd91341a2e266117e50fe538db1"
+  },
+  "doc-09cca5fb66504a77134338862fecc302": {
+    "entity_names": [
+      "Russia",
+      "ЦТАК",
+      "Делегация РФ",
+      "КНДР",
+      "Ukraine",
+      "South Korea",
+      "Радио Свобода",
+      "North Korea",
+      "NIS",
+      "РФ"
+    ],
+    "count": 10,
+    "create_time": 1780161078,
+    "update_time": 1780161078,
+    "_id": "doc-09cca5fb66504a77134338862fecc302"
+  },
+  "doc-57d4087a5a701daee34ce5b74b7428f0": {
+    "entity_names": [
+      "Russia",
+      "Korean Border",
+      "North Korea (Pyongyang)",
+      "South Korea (Seoul)",
+      "Ukraine",
+      "North Korean Army"
+    ],
+    "count": 6,
+    "create_time": 1780161088,
+    "update_time": 1780161088,
+    "_id": "doc-57d4087a5a701daee34ce5b74b7428f0"
+  },
+  "doc-5da5619888ec33fc75e7f882280a15f0": {
+    "entity_names": [
+      "Russia",
+      "China",
+      "Chinese Fishing Vessel",
+      "South Korean Coast Guard",
+      "Europe",
+      "South Korea",
+      "Chinese Fishermen",
+      "China Maritime Militia"
+    ],
+    "count": 8,
+    "create_time": 1780161098,
+    "update_time": 1780161098,
+    "_id": "doc-5da5619888ec33fc75e7f882280a15f0"
+  },
+  "doc-cc6d5d617f4b1317c91009b8cf783802": {
+    "entity_names": [
+      "North Korea",
+      "Korean People's Army",
+      "Concert",
+      "Kursk Oblast"
+    ],
+    "count": 4,
+    "create_time": 1780161105,
+    "update_time": 1780161105,
+    "_id": "doc-cc6d5d617f4b1317c91009b8cf783802"
+  },
+  "doc-7626efa0415fa346f421be2e84a1e06b": {
+    "entity_names": [
+      "Russia",
+      "Angunsahyangu",
+      "Royal Blood-Fresh",
+      "КНДР",
+      "Tonbakhanso",
+      "Kremlin",
+      "Ukraine",
+      "Российская «Медуза»",
+      "Северная Корея"
+    ],
+    "count": 9,
+    "create_time": 1780161123,
+    "update_time": 1780161123,
+    "_id": "doc-7626efa0415fa346f421be2e84a1e06b"
+  },
+  "doc-7a4b775497eb8d4eb025a54686b4729b": {
+    "entity_names": [
+      "Blackout",
+      "Protesters",
+      "President of Cuba",
+      "United States",
+      "Communist Party of Cuba",
+      "Cuba"
+    ],
+    "count": 6,
+    "create_time": 1780161131,
+    "update_time": 1780161131,
+    "_id": "doc-7a4b775497eb8d4eb025a54686b4729b"
+  },
+  "doc-1788f8c5c7568c6da6dcdd9513cdc5a7": {
+    "entity_names": [
+      "Russia",
+      "New York Times",
+      "United States",
+      "Russian oil tanker",
+      "Kremlin",
+      "Donald Trump",
+      "U.S. Coast Guard",
+      "Cuba"
+    ],
+    "count": 8,
+    "create_time": 1780161150,
+    "update_time": 1780161150,
+    "_id": "doc-1788f8c5c7568c6da6dcdd9513cdc5a7"
+  },
+  "doc-0245290444aa6ade6cdc8fc7d3819e92": {
+    "entity_names": [
+      "Vladimir Putin",
+      "Tariff Executive Order",
+      "Donald Trump",
+      "Cuba"
+    ],
+    "count": 4,
+    "create_time": 1780161156,
+    "update_time": 1780161156,
+    "_id": "doc-0245290444aa6ade6cdc8fc7d3819e92"
+  },
+  "doc-fdceb6f14caa9372050df72c36986f01": {
+    "entity_names": [
+      "Raul Guillermo Rodriguez Castro",
+      "United States",
+      "Barack Obama",
+      "1959 Cuban Revolution",
+      "Raul Castro",
+      "Havana",
+      "Axios",
+      "Starlink",
+      "Cuba",
+      "United States State Department"
+    ],
+    "count": 10,
+    "create_time": 1780161169,
+    "update_time": 1780161169,
+    "_id": "doc-fdceb6f14caa9372050df72c36986f01"
+  },
+  "doc-43a0eebc7ebc37f65b60c6968d01f0cc": {
+    "entity_names": [
+      "Democrats",
+      "United States Senate",
+      "United States Congress",
+      "Donald Trump",
+      "Cuba",
+      "Republicans"
+    ],
+    "count": 6,
+    "create_time": 1780161183,
+    "update_time": 1780161183,
+    "_id": "doc-43a0eebc7ebc37f65b60c6968d01f0cc"
+  },
+  "doc-28357800871c3b3715cb040ac7ae054f": {
+    "entity_names": [
+      "Russian World",
+      "Alexander Dugin",
+      "Kazakhstan",
+      "Azerbaijan",
+      "United States",
+      "Armenia",
+      "Georgia",
+      "Uzbekistan",
+      "European Union"
+    ],
+    "count": 9,
+    "create_time": 1780161194,
+    "update_time": 1780161194,
+    "_id": "doc-28357800871c3b3715cb040ac7ae054f"
+  },
+  "doc-425ba8af66354fb3bd7a7d195ed8f4fb": {
+    "entity_names": [
+      "Ультра-левые",
+      "Ультра-правые"
+    ],
+    "count": 2,
+    "create_time": 1780161199,
+    "update_time": 1780161199,
+    "_id": "doc-425ba8af66354fb3bd7a7d195ed8f4fb"
+  },
+  "doc-00f2600adcef7c3519fc4fc9bb07ad8d": {
+    "entity_names": [
+      "SPD",
+      "Germany",
+      "Bild",
+      "Putin",
+      "The Greens",
+      "Insa",
+      "Ukraine",
+      "Bundeswehr",
+      "AfD",
+      "PzH 2000",
+      "NATO",
+      "BSW"
+    ],
+    "count": 12,
+    "create_time": 1780161213,
+    "update_time": 1780161213,
+    "_id": "doc-00f2600adcef7c3519fc4fc9bb07ad8d"
+  },
+  "doc-c716fc1d02644bbc88f4907da84a36e2": {
+    "entity_names": [
+      "Russia",
+      "Ulrich Siegmund",
+      "Alice Weidel",
+      "Saxony-Anhalt",
+      "Markus Frohnmaier",
+      "Saxony",
+      "Bundestag",
+      "Baden-Württemberg",
+      "Tino Chrupalla",
+      "Izvestia",
+      "AfD",
+      "t-online",
+      "Germany"
+    ],
+    "count": 13,
+    "create_time": 1780161231,
+    "update_time": 1780161231,
+    "_id": "doc-c716fc1d02644bbc88f4907da84a36e2"
+  },
+  "doc-5f8159b62f7dcd4f9d738692c4c9386a": {
+    "entity_names": [
+      "Friedrich Merz",
+      "Alternative for Germany",
+      "AfD",
+      "Germany"
+    ],
+    "count": 4,
+    "create_time": 1780161238,
+    "update_time": 1780161238,
+    "_id": "doc-5f8159b62f7dcd4f9d738692c4c9386a"
+  },
+  "doc-e4f3d98eb5473684ad5084fa27d9fdf6": {
+    "entity_names": [
+      "Russia",
+      "Alice Weidel",
+      "Volodymyr Zelenskyy",
+      "Istanbul Agreement",
+      "Europe",
+      "United Kingdom",
+      "Western States",
+      "Vladimir Putin",
+      "Ukraine",
+      "AfD"
+    ],
+    "count": 10,
+    "create_time": 1780161250,
+    "update_time": 1780161250,
+    "_id": "doc-e4f3d98eb5473684ad5084fa27d9fdf6"
+  },
+  "doc-9362601d3f64c6ba704616ba44fdf3e6": {
+    "entity_names": [
+      "Afrikaner",
+      "Julius Malema",
+      "South Africa",
+      "EFF"
+    ],
+    "count": 4,
+    "create_time": 1780161259,
+    "update_time": 1780161259,
+    "_id": "doc-9362601d3f64c6ba704616ba44fdf3e6"
+  },
+  "doc-3ed830ec2975a9603f3a5b0658295100": {
+    "entity_names": [
+      "Meta Community Standards",
+      "Meta",
+      "Copyright Law of the United States"
+    ],
+    "count": 3,
+    "create_time": 1780161265,
+    "update_time": 1780161265,
+    "_id": "doc-3ed830ec2975a9603f3a5b0658295100"
+  },
+  "doc-991d958e974c7b2e4b6f15886dd55c97": {
+    "entity_names": [
+      "Yurii Kechur",
+      "MUCRAINE",
+      "Germany",
+      "ZDFheute"
+    ],
+    "count": 4,
+    "create_time": 1780161271,
+    "update_time": 1780161271,
+    "_id": "doc-991d958e974c7b2e4b6f15886dd55c97"
+  },
+  "doc-963b0d98c68f090e1c368dc9e3b38adf": {
+    "entity_names": [
+      "Russia",
+      "Politico",
+      "European Union",
+      "Ukraine",
+      "AfD",
+      "Germany"
+    ],
+    "count": 6,
+    "create_time": 1780161285,
+    "update_time": 1780161285,
+    "_id": "doc-963b0d98c68f090e1c368dc9e3b38adf"
+  },
+  "doc-a3b4caa91d8e185e8cde34cc772a52db": {
+    "entity_names": [
+      "European countries",
+      "Italian far-right allies",
+      "Greta Thunberg",
+      "European Union",
+      "Ukraine"
+    ],
+    "count": 5,
+    "create_time": 1780161294,
+    "update_time": 1780161294,
+    "_id": "doc-a3b4caa91d8e185e8cde34cc772a52db"
+  },
+  "doc-3e9ac8f91cc2d8b7b410ff176fe28a09": {
+    "entity_names": [
+      "Ursula Von Der Leyen",
+      "European Commission",
+      "Israel",
+      "European Parliament",
+      "Patriots For Europe",
+      "Green Deal",
+      "The Left",
+      "European People's Party",
+      "Pfizer",
+      "Gaza Strip"
+    ],
+    "count": 10,
+    "create_time": 1780161308,
+    "update_time": 1780161308,
+    "_id": "doc-3e9ac8f91cc2d8b7b410ff176fe28a09"
+  },
+  "doc-6e6f13aab71adfa16cf2b469f9440fc8": {
+    "entity_names": [
+      "United States",
+      "Pfizergate",
+      "European Peoples Party",
+      "Gaza",
+      "European Commission",
+      "European Parliament",
+      "Patriots for Europe",
+      "The Left",
+      "European Conservatives and Reformists",
+      "Jacques Santer",
+      "Motion of Censure",
+      "July 2025 Motions of Censure",
+      "Mercosur",
+      "Lega",
+      "January 2026 Motions of Censure",
+      "Gheorghe Piperea",
+      "October 2025 Motions of Censure (PfE)",
+      "Pfizer",
+      "Ursula von der Leyen",
+      "Israel",
+      "Social Democrats",
+      "October 2025 Motions of Censure (The Left)",
+      "Liberals"
+    ],
+    "count": 23,
+    "create_time": 1780161329,
+    "update_time": 1780161329,
+    "_id": "doc-6e6f13aab71adfa16cf2b469f9440fc8"
+  },
+  "doc-c9b18c92be545cdc74ae3b409caa04ef": {
+    "entity_names": [
+      "антитеррористический центр Баден-Вюртемберга (SAT BW)",
+      "Белый Шариат",
+      "ХАМАС",
+      "синагога в Халле",
+      "Аль-Каида",
+      "Штефан Баллиет",
+      "Europe",
+      "United States",
+      "SAFE",
+      "Белый Джихад",
+      "Terrorgram-сцена",
+      "ИГИЛ",
+      "Atomwaffen Division",
+      "Чарльз Мэнсон",
+      "AfD",
+      "Germany"
+    ],
+    "count": 16,
+    "create_time": 1780161346,
+    "update_time": 1780161346,
+    "_id": "doc-c9b18c92be545cdc74ae3b409caa04ef"
+  },
+  "doc-7803723b4b316c1f68be4b40c7a73bde": {
+    "entity_names": [
+      "Osama bin Laden",
+      "Adolf Hitler",
+      "Ministry of Islamic Relations",
+      "composite violent extremism",
+      "United States",
+      "cumulative extremism",
+      "white jihad",
+      "fused extremism",
+      "David Myatt",
+      "Adolf Eichmann",
+      "Aryan Nations",
+      "Al-Taqwa Bank",
+      "A Practical Guide to Aryan Revolution",
+      "Are Martyrdom Operations Lawful According to the Quran and Sunnah?",
+      "Albert Friedrich Huber",
+      "The Order",
+      "Omar Amin",
+      "Francois Genoud",
+      "HAMAS",
+      "Johann von Leers",
+      "Britain",
+      "Gamal Abdel Nasser",
+      "Christian Identity",
+      "synergistic extremism",
+      "Jude Law",
+      "Al-Qaeda",
+      "Third Reich"
+    ],
+    "count": 27,
+    "create_time": 1780161370,
+    "update_time": 1780161370,
+    "_id": "doc-7803723b4b316c1f68be4b40c7a73bde"
+  },
+  "doc-55400eb2cc1e3e749bd8248ec58e101e": {
+    "entity_names": [
+      "Радикальные исламские дискурсы",
+      "Жертвы социальной поляризации",
+      "Инцелы",
+      "Люди, ощущающие себя аутсайдерами",
+      "Воинственный акселерационизм",
+      "Неонацистский журнал «Militant Accelerationism»",
+      "Представители социальных низов",
+      "Ultraправые идентичности",
+      "«Дневники Тёрнера»",
+      "Неонацисты и белые супрематисты",
+      "Американские и британские расистские и неонацистские религиозные концепции и художественные тексты",
+      "Школьники",
+      "Подростки",
+      "Белоджихадистские террористические организации",
+      "«Игра престолов»",
+      "«Осада»",
+      "Gamification и мем-субкультура"
+    ],
+    "count": 17,
+    "create_time": 1780161389,
+    "update_time": 1780161389,
+    "_id": "doc-55400eb2cc1e3e749bd8248ec58e101e"
+  },
+  "doc-6ef6321f38e9ad075b693084db354928": {
+    "entity_names": [
+      "Kremlin",
+      "Rumen Radev",
+      "Ultraright Anti-Ukraine Forces",
+      "Robert Fico"
+    ],
+    "count": 4,
+    "create_time": 1780161398,
+    "update_time": 1780161398,
+    "_id": "doc-6ef6321f38e9ad075b693084db354928"
+  },
+  "doc-644fb78a092ccdf1b6d728b525ca1e25": {
+    "entity_names": [
+      "Маттиас Моздорф",
+      "Рюдигер Лукассен",
+      "Gnessin Musical Academy",
+      "Маркус Фронмайер",
+      "Бьорн Хёке",
+      "Вайдель",
+      "United States",
+      "Moscow",
+      "AfD"
+    ],
+    "count": 9,
+    "create_time": 1780161415,
+    "update_time": 1780161415,
+    "_id": "doc-644fb78a092ccdf1b6d728b525ca1e25"
+  },
+  "doc-41ef0f8280a6b5030929f5ab3ccd170c": {
+    "entity_names": [
+      "Greens",
+      "Left Party",
+      "Social Democrats",
+      "Bundeswehr",
+      "AfD",
+      "Germany"
+    ],
+    "count": 6,
+    "create_time": 1780161425,
+    "update_time": 1780161425,
+    "_id": "doc-41ef0f8280a6b5030929f5ab3ccd170c"
+  },
+  "doc-ea416c2927829e24b539c4933200584f": {
+    "entity_names": [
+      "Russia",
+      "Sumy",
+      "Zaporizhzhia",
+      "Donbas",
+      "Chmut",
+      "United States",
+      "Armed Forces of Ukraine (AFU)",
+      "Special Military Operation (SVO)",
+      "Kherson",
+      "Vladimir Putin",
+      "Russian Armed Forces",
+      "European Union",
+      "Andrey Belousov",
+      "Ukraine",
+      "Kharkiv",
+      "Sternenko",
+      "Krotevych",
+      "NATO"
+    ],
+    "count": 18,
+    "create_time": 1780161451,
+    "update_time": 1780161451,
+    "_id": "doc-ea416c2927829e24b539c4933200584f"
+  },
+  "doc-d0118df2e4d60a46d145cda77ffc1798": {
+    "entity_names": [
+      "Greta Thunberg"
+    ],
+    "count": 1,
+    "create_time": 1780161459,
+    "update_time": 1780161459,
+    "_id": "doc-d0118df2e4d60a46d145cda77ffc1798"
+  },
+  "doc-0a242e1c0df4ef065b5a9afaea49b831": {
+    "entity_names": [
+      "Последний абзац"
+    ],
+    "count": 1,
+    "create_time": 1780161464,
+    "update_time": 1780161464,
+    "_id": "doc-0a242e1c0df4ef065b5a9afaea49b831"
+  },
+  "doc-b79db561eebf0c285f5520062c6ed302": {
+    "entity_names": [
+      "Europe",
+      "United States",
+      "Kremlin",
+      "Washington",
+      "Greenland",
+      "Viktor Orban",
+      "Russia",
+      "Eastern Europe",
+      "Sweden",
+      "Moldova",
+      "Moscow",
+      "ICEYE",
+      "Resurgam",
+      "Swedish Armed Forces",
+      "Hungary",
+      "Venezuela",
+      "Russian Railways",
+      "Gazprom",
+      "Konstantin Glushko",
+      "Bella 1",
+      "Diana Lebed",
+      "Sophia",
+      "Donald Trump"
+    ],
+    "count": 23,
+    "create_time": 1780161488,
+    "update_time": 1780161488,
+    "_id": "doc-b79db561eebf0c285f5520062c6ed302"
+  },
+  "doc-daf7de206c50f9096da066497af83f70": {
+    "entity_names": [
+      "Alice Weidel",
+      "Vladimir Putin",
+      "Venezuela",
+      "Donald Trump",
+      "AfD",
+      "Germany",
+      "Greenland"
+    ],
+    "count": 7,
+    "create_time": 1780161501,
+    "update_time": 1780161501,
+    "_id": "doc-daf7de206c50f9096da066497af83f70"
+  },
+  "doc-5a7d91c4d94dc4beb1fa5d79fed255ba": {
+    "entity_names": [
+      "Russia",
+      "Juliette Pavy",
+      "France",
+      "Bloomberg",
+      "Ilulissat",
+      "Nicolas Maduro",
+      "European Far-Right Parties",
+      "United States",
+      "Slovakia",
+      "Venezuela",
+      "Donald Trump",
+      "Disko Bay",
+      "Germany",
+      "Greenland"
+    ],
+    "count": 14,
+    "create_time": 1780161517,
+    "update_time": 1780161517,
+    "_id": "doc-5a7d91c4d94dc4beb1fa5d79fed255ba"
   }
 }

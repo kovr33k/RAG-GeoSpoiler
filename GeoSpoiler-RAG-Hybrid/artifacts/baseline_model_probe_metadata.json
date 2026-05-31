@@ -1,0 +1,113 @@
+{
+  "candidate_models_to_check": [
+    {
+      "base_url": "https://integrate.api.nvidia.com/v1",
+      "model": "qwen/qwen3-next-80b-a3b-instruct",
+      "role": "query",
+      "status": "current_config"
+    },
+    {
+      "base_url": "https://integrate.api.nvidia.com/v1",
+      "model": "mistralai/mistral-nemotron",
+      "role": "synthesis",
+      "status": "current_config"
+    },
+    {
+      "base_url": "https://integrate.api.nvidia.com/v1",
+      "model": "minimaxai/minimax-m2.7",
+      "role": "query_or_synthesis",
+      "status": "roadmap_candidate"
+    }
+  ],
+  "config_flags": {
+    "HYBRID_QUERY_CARDS_ENABLED": true,
+    "HYBRID_SYNTH_ENABLED": false,
+    "RERANKER_ENABLED": false
+  },
+  "created_at": "2026-05-27T01:42:27+00:00",
+  "fallback_synthesis": {
+    "base_url": "https://integrate.api.nvidia.com/v1",
+    "enabled": false,
+    "model": "mistralai/mistral-nemotron"
+  },
+  "notes": [
+    ".env is not modified by this probe.",
+    "Use shell-level env overrides for E1 baseline runs.",
+    "Clear only LightRAG LLM response cache when stale cross-model cache would invalidate E1.",
+    "Do not run rebuild in E1."
+  ],
+  "probe": {
+    "cache_buster": false,
+    "checked_at": "2026-05-27T01:42:27+00:00",
+    "config_flags": {
+      "HYBRID_QUERY_CARDS_ENABLED": true,
+      "HYBRID_SYNTH_ENABLED": false,
+      "RERANKER_ENABLED": false
+    },
+    "mode": "hybrid",
+    "query_base_url": "https://integrate.api.nvidia.com/v1",
+    "query_model": "qwen/qwen3-next-80b-a3b-instruct",
+    "query_profile_default": "answer",
+    "recommended_flags": {
+      "HYBRID_QUERY_CARDS_ENABLED": true,
+      "HYBRID_SYNTH_ENABLED": false,
+      "RERANKER_ENABLED": false
+    },
+    "results": [
+      {
+        "answer_chars": 990,
+        "answer_preview": "В базе данных прямо указано, что ультралевые и ультраправые группы совпадают или сходны по своим характеристикам. Это подтверждается несколькими источниками: в одном из документальных фрагментов говорится: «Ультралевые и ультраправые совпадают» [2], а в другом — «Везде ультралевые и ультраправые одинаковые» [6]. Эти утверждения отражают концепцию синергетического экстремизма, при котором крайние левые и правые идеологии, несмотря на внешние противоречия, могут сходиться в тактике, целях или ф...",
+        "case_id": "ultra_similarity",
+        "duration_seconds": 14.264,
+        "error": "",
+        "fallback": "",
+        "looks_corrupt": false,
+        "profile": "answer",
+        "question": "Что в базе говорится о сходстве ультралевых и ультраправых?",
+        "reference_count": 11,
+        "stable": true,
+        "status": "ok"
+      },
+      {
+        "answer_chars": 588,
+        "answer_preview": "Тезис о том, что ультралевые и ультраправые совпадают, присутствует в базе данных и подтверждается следующим источником:\n\n> \"Ультралевые и ультраправые совпадают.\" — [3]\n\nЭто утверждение прямо взято из документа с reference_id = 3, который соответствует файлу:  \n`D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\11.txt`\n\nТакже в Knowledge Graph Data подтверждается, что Ultra-Left и Ultra-Right описываются как группы, которые «aligning with» друг друга (сопрягаются...",
+        "case_id": "ultra_source",
+        "duration_seconds": 25.242,
+        "error": "",
+        "fallback": "",
+        "looks_corrupt": false,
+        "profile": "source",
+        "question": "Откуда в базе тезис про ультралевых и ультраправых? Дай ссылку.",
+        "reference_count": 13,
+        "stable": true,
+        "status": "ok"
+      },
+      {
+        "answer_chars": 1326,
+        "answer_preview": "Да, Дональд Трамп действительно поддерживал Виктора Орбана. Это подтверждается несколькими источниками из предоставленного контекста.\n\nВо-первых, американский политический деятель Мэтт Шлапп, возглавляющий CPAC, поддерживал Виктора Орбана вместе с другими американскими политическими фигурами, включая связь с Трампом, который сам выражал восхищение Орбаном, особенно в вопросах контроля над границами и национального суверенитета. Кроме того, Дональд Трамп-младший публично одобрил Орбана как «пр...",
+        "case_id": "trump_orban_support",
+        "duration_seconds": 19.817,
+        "error": "",
+        "fallback": "",
+        "looks_corrupt": false,
+        "profile": "source",
+        "question": "Трамп реально поддерживал Орбана?",
+        "reference_count": 13,
+        "stable": true,
+        "status": "ok"
+      }
+    ],
+    "stable_count": 3,
+    "total": 3
+  },
+  "query": {
+    "base_url": "https://integrate.api.nvidia.com/v1",
+    "model": "qwen/qwen3-next-80b-a3b-instruct",
+    "timeout_seconds": 120.0
+  },
+  "recommended_flags": {
+    "HYBRID_QUERY_CARDS_ENABLED": true,
+    "HYBRID_SYNTH_ENABLED": false,
+    "RERANKER_ENABLED": false
+  }
+}

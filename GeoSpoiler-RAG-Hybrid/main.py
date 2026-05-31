@@ -10,6 +10,19 @@ Batch mode:
   python main.py search "query" --mode [recall|broll|thesis|entity|shadow] - Multi-index search
   python main.py run [N]       - Full pipeline: fetch -> normalize -> enrich -> load
   python main.py query "?"     - Query the knowledge graph
+  python main.py baseline probe [N] - Record baseline model metadata and run N manual queries
+  python main.py wiki init     - Create the local wiki-memory scaffold
+  python main.py wiki build --claims-only - Seed source-grounded claim pages
+  python main.py wiki build --entities-topics - Seed entity/topic pages
+  python main.py wiki health   - Run wiki-memory health checks
+  python main.py wiki update   - Run incremental wiki-memory update
+  python main.py fts rebuild   - Rebuild local SQLite FTS index for enriched cards
+  python main.py fts search "query" [--top-k N] [--compare-shadow] - Search the card FTS index
+  python main.py registry rebuild - Rebuild local SQLite source registry
+  python main.py registry resolve SOURCE_ID - Resolve source id to source paths/urls
+  python main.py transcribe backfill [--limit N] [--dry-run] - Backfill a small batch of native media transcripts
+  python main.py validate enriched [--fail-on-error] - Soft-validate enriched card data contracts
+  python main.py experiments index - Build local experiment registry/report
   python main.py quality       - Show graph quality report
   python main.py review        - Show pending AI chat review items
   python main.py status        - Show progress status
@@ -31,6 +44,16 @@ from pathlib import Path
 from typing import Any
 
 import config
+from baseline_probe import collect_baseline_metadata, run_baseline_probe, write_baseline_metadata, write_probe_report
+from cli import (
+    cmd_experiments_index,
+    cmd_fts_rebuild,
+    cmd_fts_search,
+    cmd_registry_rebuild,
+    cmd_registry_resolve,
+    cmd_transcribe_backfill,
+    cmd_validate_enriched,
+)
 from fetcher.state import get_all_progress, mark_message_processed
 from fetcher.telegram_client import TelegramFetcher, TelegramMessage
 from loader.lightrag_loader import (
@@ -51,6 +74,11 @@ from normalizer.pipeline import NormalizationBatchResult, normalize_batch
 from enricher.pipeline import EnrichmentStats, enrich_all
 from retrieval.composer import search as composer_search
 from retrieval.response_formatter import format_search_results
+from retrieval.wiki_claims import seed_claim_pages
+from retrieval.wiki_health import run_wiki_health, write_health_report
+from retrieval.wiki_index import build_wiki_indexes
+from retrieval.wiki_pages import seed_entity_topic_pages
+from retrieval.wiki_update import run_wiki_incremental_update
 
 
 @dataclass
@@ -70,6 +98,16 @@ class LoadStats:
         return self.normalized_loaded + self.reviewed_loaded
 
 
+@dataclass
+class WikiInitStats:
+    """Summary of wiki scaffold paths created or left untouched."""
+
+    directories_created: list[Path]
+    directories_existing: list[Path]
+    files_created: list[Path]
+    files_existing: list[Path]
+
+
 _SOURCE_REQUEST_RE = re.compile(
     r"(откуда|источник|источники|дай ссылк|ссылк|source|sources|citation|citations|where.*from)",
     re.IGNORECASE,
@@ -79,6 +117,73 @@ _REFERENCE_BULLET_RE = re.compile(r"^\s*-\s*\[(\d+)\]", re.MULTILINE)
 _QUERY_MODES = {"local", "global", "hybrid", "naive", "mix", "bypass"}
 _QUERY_PROFILES = {"answer", "source", "overview"}
 _SEARCH_CARDS_ONLY_MODES = {"shadow", "cards", "cards-only"}
+
+_WIKI_SCAFFOLD_FILES = {
+    "_master_index.md": """# Wiki Memory
+
+This is the root index for the local wiki-memory layer.
+
+## Sections
+
+- entities/
+- topics/
+- claims/
+- indexes/
+
+## Notes
+
+- Keep source-grounded pages separate from raw normalized sources.
+- Do not treat this wiki as a replacement for original Telegram, web, or media sources.
+""",
+    "_schema.md": """# Wiki Memory Schema
+
+## Page Types
+
+- entity: people, organizations, countries, platforms, or other named actors.
+- topic: recurring subjects, events, narratives, or research areas.
+- claim: source-grounded statements tracked with explicit evidence.
+
+## Claim Status Values
+
+- supported_by_corpus: sources in the local corpus support the claim.
+- contradicted_by_corpus: sources in the local corpus explicitly contradict the claim.
+- disputed_in_corpus: local sources conflict with each other.
+- unclear_in_corpus: local evidence is insufficient.
+
+## Evidence Rules
+
+Prefer evidence in this order:
+
+1. Direct quotes.
+2. key_facts with claim_type=source_claim.
+3. Events.
+4. Provenance, post_url, and date.
+5. Summary as supporting context only.
+
+Do not use theses, hypotheses, or summaries as the only direct evidence for a claim.
+Do not call a claim fake, false, or deepfake unless an evidence item explicitly says that.
+Keep source claims separate from author interpretation.
+
+## Update Rules
+
+- Automatically created pages must keep review_status=auto until reviewed.
+- Manual edits must not be overwritten by scaffold or build commands.
+- Append to logs; do not rewrite existing log history.
+""",
+    "_health.md": """# Wiki Health
+
+No wiki health check has been run yet.
+""",
+    "_change_log.md": """# Wiki Change Log
+
+Append notable manual and automated wiki changes here.
+""",
+    "_log.md": """# Wiki Operation Log
+
+Append machine-readable operation entries here.
+""",
+    "_pending_updates.json": "[]\n",
+}
 
 
 async def _finalize_rag_safely(rag: Any) -> None:
@@ -555,6 +660,20 @@ def cmd_quality():
     print(build_quality_report())
 
 
+async def cmd_baseline_probe(limit: int = 3) -> None:
+    metadata_path = write_baseline_metadata(collect_baseline_metadata())
+    report = await run_baseline_probe(limit=limit)
+    metadata_path, report_path = write_probe_report(report)
+
+    print("Baseline model probe complete.")
+    print(f"  Query model: {report.query_model}")
+    print(f"  Query base URL: {report.query_base_url}")
+    print(f"  Mode: {report.mode}")
+    print(f"  Stable cases: {report.stable_count}/{len(report.results)}")
+    print(f"  Metadata: {metadata_path}")
+    print(f"  Report: {report_path}")
+
+
 def _question_requests_sources(question: str) -> bool:
     """Detect whether the user explicitly asked for provenance links."""
     return bool(_SOURCE_REQUEST_RE.search(question))
@@ -570,6 +689,18 @@ def _extract_answer_reference_keys(answer: str) -> tuple[set[str], set[str]]:
         answer = answer.split("### References", 1)[1]
     numbered_refs = {match.group(1) for match in _REFERENCE_BULLET_RE.finditer(answer)}
     return reference_ids, numbered_refs
+
+
+def _load_adjacent_source_metadata(file_path: str) -> dict[str, Any]:
+    """Read normalized sidecar metadata when the RAG metadata index is stale."""
+    meta_path = Path(file_path).with_suffix(".meta.json")
+    if not meta_path.exists():
+        return {}
+    try:
+        data = json.loads(meta_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return {}
+    return data if isinstance(data, dict) else {}
 
 
 def _extract_query_sources(query_result: dict[str, Any], limit: int = 5) -> list[dict[str, str]]:
@@ -604,13 +735,28 @@ def _extract_query_sources(query_result: dict[str, Any], limit: int = 5) -> list
         if not isinstance(ref, dict):
             continue
         file_path = ref.get("file_path")
+        post_url_from_ref = str(ref.get("post_url") or ref.get("youtube_url") or "").strip()
         if not isinstance(file_path, str) or not file_path:
+            if post_url_from_ref and post_url_from_ref not in seen_keys:
+                seen_keys.add(post_url_from_ref)
+                results.append(
+                    {
+                        "post_url": post_url_from_ref,
+                        "channel": str(ref.get("channel") or "").strip(),
+                        "date": str(ref.get("date") or "").strip(),
+                        "file_path": "",
+                    }
+                )
+                if len(results) >= limit:
+                    break
             continue
         canonical_path = str(Path(file_path).resolve(strict=False))
         meta = metadata_index.get(canonical_path, {})
-        post_url = str(meta.get("пост") or meta.get("post_url") or "").strip()
-        channel = str(meta.get("канал") or meta.get("channel_name") or "").strip()
-        date = str(meta.get("дата") or meta.get("date") or "").strip()
+        if not meta:
+            meta = _load_adjacent_source_metadata(canonical_path)
+        post_url = str(meta.get("пост") or meta.get("post_url") or post_url_from_ref).strip()
+        channel = str(meta.get("канал") or meta.get("channel_name") or ref.get("channel") or "").strip()
+        date = str(meta.get("дата") or meta.get("date") or ref.get("date") or "").strip()
         key = post_url or canonical_path
         if not key or key in seen_keys:
             continue
@@ -654,17 +800,196 @@ def _print_entity_autofix_summary(merges: list[dict[str, Any]]) -> None:
         print(f"  {', '.join(merge['sources'])} -> {merge['target']}")
 
 
+def _ensure_wiki_directory(path: Path, stats: WikiInitStats) -> None:
+    if path.exists() and not path.is_dir():
+        raise FileExistsError(f"Wiki scaffold path exists but is not a directory: {path}")
+    if path.exists():
+        stats.directories_existing.append(path)
+        return
+    path.mkdir(parents=True, exist_ok=True)
+    stats.directories_created.append(path)
+
+
+def _write_wiki_file_if_missing(path: Path, content: str, stats: WikiInitStats) -> None:
+    if path.exists() and not path.is_file():
+        raise FileExistsError(f"Wiki scaffold path exists but is not a file: {path}")
+    if path.exists():
+        stats.files_existing.append(path)
+        return
+    path.write_text(content, encoding="utf-8")
+    stats.files_created.append(path)
+
+
+def cmd_wiki_init() -> WikiInitStats:
+    """Create the local wiki-memory scaffold without overwriting existing files."""
+    stats = WikiInitStats([], [], [], [])
+    wiki_dir = config.WIKI_DIR
+
+    for directory in [
+        wiki_dir,
+        wiki_dir / "entities",
+        wiki_dir / "topics",
+        wiki_dir / "claims",
+        config.WIKI_INDEX_DIR,
+    ]:
+        _ensure_wiki_directory(directory, stats)
+
+    for filename, content in _WIKI_SCAFFOLD_FILES.items():
+        _write_wiki_file_if_missing(wiki_dir / filename, content, stats)
+
+    return stats
+
+
+def _print_wiki_init_summary(stats: WikiInitStats) -> None:
+    print("Wiki scaffold ready.")
+    print(f"  Directories created: {len(stats.directories_created)}")
+    print(f"  Directories existing: {len(stats.directories_existing)}")
+    print(f"  Files created: {len(stats.files_created)}")
+    print(f"  Files existing: {len(stats.files_existing)}")
+
+
+def cmd_wiki_build_claims() -> None:
+    cmd_wiki_init()
+    stats = seed_claim_pages()
+    index_stats = build_wiki_indexes()
+
+    print("Wiki claims build complete.")
+    print(f"  Claim pages created: {len(stats.created)}")
+    print(f"  Claim pages existing: {len(stats.existing)}")
+    print(f"  Claim specs skipped: {len(stats.skipped)}")
+    print(f"  Indexed pages: {index_stats.page_count}")
+    print(f"  Indexed sources: {index_stats.source_count}")
+
+
+def cmd_wiki_build_entities_topics() -> None:
+    cmd_wiki_init()
+    stats = seed_entity_topic_pages()
+    index_stats = build_wiki_indexes()
+
+    print("Wiki entity/topic build complete.")
+    print(f"  Pages created: {len(stats.created)}")
+    print(f"  Pages existing: {len(stats.existing)}")
+    print(f"  Page specs skipped: {len(stats.skipped)}")
+    print(f"  Master index: {stats.master_index_path}")
+    print(f"  Indexed pages: {index_stats.page_count}")
+    print(f"  Indexed sources: {index_stats.source_count}")
+
+
+def cmd_wiki_health() -> None:
+    cmd_wiki_init()
+    index_stats = build_wiki_indexes()
+    report = run_wiki_health()
+    report_path = write_health_report(report)
+
+    print("Wiki health complete.")
+    print(f"  Pages checked: {report.page_count}")
+    print(f"  Issues: {report.issue_count}")
+    print(f"  Indexed pages: {index_stats.page_count}")
+    print(f"  Indexed sources: {index_stats.source_count}")
+    print(f"  Report: {report_path}")
+    if report.issues:
+        print("  First issues:")
+        for issue in report.issues[:10]:
+            print(f"    - [{issue.severity}] {issue.code}: {issue.page_path} - {issue.message}")
+
+
+def cmd_wiki_update() -> None:
+    cmd_wiki_init()
+    stats = run_wiki_incremental_update()
+    index_stats = build_wiki_indexes()
+
+    print("Wiki incremental update complete.")
+    print(f"  Initialized source hash baseline: {stats.initialized}")
+    print(f"  Current sources: {stats.current_sources}")
+    print(f"  New sources: {len(stats.new_sources)}")
+    print(f"  Changed sources: {len(stats.changed_sources)}")
+    print(f"  Removed sources: {len(stats.removed_sources)}")
+    print(f"  Pages updated: {len(stats.pages_updated)}")
+    print(f"  Pending updates: {len(stats.pending_updates)}")
+    print(f"  Indexed pages: {index_stats.page_count}")
+    print(f"  Indexed sources: {index_stats.source_count}")
+    print(f"  Pending queue: {stats.pending_updates_path}")
+    print(f"  Source hashes: {stats.source_hashes_path}")
+    print(f"  Operation log: {stats.log_path}")
+
+
+def _parse_int_flag(args: list[str], flag: str, default: int) -> int:
+    if flag not in args:
+        return default
+    idx = args.index(flag)
+    if idx + 1 >= len(args):
+        return default
+    try:
+        return int(args[idx + 1])
+    except ValueError:
+        return default
+
+
+def _parse_str_flag(args: list[str], flag: str) -> str | None:
+    if flag not in args:
+        return None
+    idx = args.index(flag)
+    if idx + 1 >= len(args):
+        return None
+    value = args[idx + 1].strip()
+    return value or None
+
+
 logger = logging.getLogger("geospoiler")
 
 
 def main():
-    setup_logging()
-
     if len(sys.argv) < 2:
         print(__doc__)
         return
 
     command = sys.argv[1].lower()
+
+    if command == "baseline":
+        subcommand = sys.argv[2].lower() if len(sys.argv) > 2 else ""
+        if subcommand == "probe":
+            limit = int(sys.argv[3]) if len(sys.argv) > 3 else 3
+            asyncio.run(cmd_baseline_probe(limit=limit))
+            return
+        print("Usage: python main.py baseline probe [N]")
+        return
+
+    if command == "wiki":
+        subcommand = sys.argv[2].lower() if len(sys.argv) > 2 else ""
+        if subcommand == "init":
+            _print_wiki_init_summary(cmd_wiki_init())
+            return
+        if subcommand == "build" and "--claims-only" in sys.argv[3:]:
+            cmd_wiki_build_claims()
+            return
+        if subcommand == "build" and "--entities-topics" in sys.argv[3:]:
+            cmd_wiki_build_entities_topics()
+            return
+        if subcommand == "health":
+            cmd_wiki_health()
+            return
+        if subcommand == "update":
+            cmd_wiki_update()
+            return
+        if subcommand == "build":
+            print("Usage: python main.py wiki build --claims-only | python main.py wiki build --entities-topics")
+            return
+        print(
+            "Usage: python main.py wiki init | python main.py wiki build --claims-only | "
+            "python main.py wiki build --entities-topics | python main.py wiki health | "
+            "python main.py wiki update"
+        )
+        return
+
+    if command == "experiments":
+        subcommand = sys.argv[2].lower() if len(sys.argv) > 2 else ""
+        if subcommand == "index":
+            cmd_experiments_index()
+            return
+        print("Usage: python main.py experiments index")
+        return
+
+    setup_logging()
 
     if command == "fetch":
         limit = int(sys.argv[2]) if len(sys.argv) > 2 else None
@@ -751,6 +1076,75 @@ def main():
             return
             
         asyncio.run(cmd_search(query, mode))
+
+    elif command == "fts":
+        subcommand = sys.argv[2].lower() if len(sys.argv) > 2 else ""
+        if subcommand == "rebuild":
+            cmd_fts_rebuild()
+            return
+        if subcommand == "search":
+            args = sys.argv[3:]
+            compare_shadow = "--compare-shadow" in args
+            if compare_shadow:
+                args.remove("--compare-shadow")
+            top_k = 10
+            if "--top-k" in args:
+                idx = args.index("--top-k")
+                if idx + 1 < len(args):
+                    top_k = int(args[idx + 1])
+                    args.pop(idx + 1)
+                    args.pop(idx)
+            query = " ".join(args).strip()
+            if not query:
+                print('Usage: python main.py fts search "query" [--top-k N] [--compare-shadow]')
+                return
+            cmd_fts_search(query, top_k=top_k, compare_shadow=compare_shadow)
+            return
+        print('Usage: python main.py fts rebuild | python main.py fts search "query" [--top-k N] [--compare-shadow]')
+
+    elif command == "registry":
+        subcommand = sys.argv[2].lower() if len(sys.argv) > 2 else ""
+        if subcommand == "rebuild":
+            cmd_registry_rebuild()
+            return
+        if subcommand == "resolve":
+            source_id = " ".join(sys.argv[3:]).strip()
+            if not source_id:
+                print("Usage: python main.py registry resolve SOURCE_ID")
+                return
+            cmd_registry_resolve(source_id)
+            return
+        print("Usage: python main.py registry rebuild | python main.py registry resolve SOURCE_ID")
+
+    elif command == "transcribe":
+        subcommand = sys.argv[2].lower() if len(sys.argv) > 2 else ""
+        if subcommand == "backfill":
+            args = sys.argv[3:]
+            dry_run = "--dry-run" in args
+            limit = _parse_int_flag(args, "--limit", 3)
+            channel = _parse_str_flag(args, "--channel")
+            media_type = _parse_str_flag(args, "--media-type")
+            if media_type and media_type not in {"video", "audio", "voice"}:
+                print("--media-type must be one of: video, audio, voice")
+                return
+            cmd_transcribe_backfill(
+                limit=limit,
+                channel=channel,
+                media_type=media_type,
+                dry_run=dry_run,
+            )
+            return
+        print(
+            "Usage: python main.py transcribe backfill "
+            "[--limit N] [--channel NAME] [--media-type video|audio|voice] [--dry-run]"
+        )
+
+    elif command == "validate":
+        subcommand = sys.argv[2].lower() if len(sys.argv) > 2 else ""
+        if subcommand == "enriched":
+            cmd_validate_enriched(fail_on_error="--fail-on-error" in sys.argv[3:])
+            return
+        print("Usage: python main.py validate enriched [--fail-on-error]")
 
     elif command == "quality":
         cmd_quality()

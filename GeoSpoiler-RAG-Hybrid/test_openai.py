@@ -2,11 +2,12 @@ import os
 import asyncio
 from dotenv import load_dotenv
 from openai import AsyncOpenAI
+from llm_auth import get_openai_api_key
 
 async def main():
     load_dotenv('.env')
     client = AsyncOpenAI(
-        api_key=os.getenv('LLM_API_KEY'),
+        api_key=get_openai_api_key(os.getenv('LLM_API_KEY', ''), os.getenv('LLM_BASE_URL', '')),
         base_url=os.getenv('LLM_BASE_URL'),
     )
     try:

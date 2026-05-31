@@ -24,6 +24,7 @@ TELEGRAM_FOLDER = os.getenv("TELEGRAM_FOLDER", "GeoSpoiler")  # Telegram folder 
 LLM_API_KEY = os.getenv("LLM_API_KEY", "")
 LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://api.openai.com/v1")
 LLM_MODEL = os.getenv("LLM_MODEL", "gpt-4o-mini")
+LLM_AUTH_PROVIDER = os.getenv("LLM_AUTH_PROVIDER", "").strip().lower()
 LLM_TIMEOUT_SECONDS = float(os.getenv("LLM_TIMEOUT_SECONDS", "120"))
 LLM_MAX_ASYNC = int(os.getenv("LLM_MAX_ASYNC", "1"))
 LLM_DELAY_SECONDS = float(os.getenv("LLM_DELAY_SECONDS", "2.0"))
@@ -34,9 +35,14 @@ RAG_DELETE_TIMEOUT_SECONDS = float(os.getenv("RAG_DELETE_TIMEOUT_SECONDS", "120"
 QUERY_TIMEOUT_SECONDS = float(os.getenv("QUERY_TIMEOUT_SECONDS", "240"))
 FALLBACK_SYNTH_TIMEOUT_SECONDS = float(os.getenv("FALLBACK_SYNTH_TIMEOUT_SECONDS", "45"))
 RAG_FINALIZE_TIMEOUT_SECONDS = float(os.getenv("RAG_FINALIZE_TIMEOUT_SECONDS", "30"))
+QUERY_MAX_TOKENS = int(os.getenv("QUERY_MAX_TOKENS", "1200"))
+FALLBACK_SYNTH_MAX_TOKENS = int(os.getenv("FALLBACK_SYNTH_MAX_TOKENS", "4096"))
+LLM_REASONING_EFFORT = os.getenv("LLM_REASONING_EFFORT", "").strip().lower()
 HYBRID_QUERY_CARDS_ENABLED = os.getenv("HYBRID_QUERY_CARDS_ENABLED", "true").lower() == "true"
 HYBRID_SYNTH_ENABLED = os.getenv("HYBRID_SYNTH_ENABLED", "true").lower() == "true"
 HYBRID_QUERY_CARDS_TOP_K = int(os.getenv("HYBRID_QUERY_CARDS_TOP_K", "3"))
+WIKI_ENABLED = os.getenv("WIKI_ENABLED", "true").lower() == "true"
+WIKI_TOP_K = int(os.getenv("WIKI_TOP_K", "5"))
 
 # Role-specific chat models. Each role falls back to the main LLM_* settings.
 RAG_BUILD_API_KEY = os.getenv("RAG_BUILD_API_KEY", "") or LLM_API_KEY
@@ -54,6 +60,13 @@ FALLBACK_SYNTH_MODEL = os.getenv("FALLBACK_SYNTH_MODEL", "") or QUERY_MODEL
 TRANSLATION_API_KEY = os.getenv("TRANSLATION_API_KEY", "") or LLM_API_KEY
 TRANSLATION_BASE_URL = os.getenv("TRANSLATION_BASE_URL", "") or LLM_BASE_URL
 TRANSLATION_MODEL = os.getenv("TRANSLATION_MODEL", "") or LLM_MODEL
+
+TRANSCRIPTION_ENABLED = os.getenv("TRANSCRIPTION_ENABLED", "false").lower() == "true"
+TRANSCRIPTION_API_KEY = os.getenv("TRANSCRIPTION_API_KEY", "") or LLM_API_KEY
+TRANSCRIPTION_BASE_URL = os.getenv("TRANSCRIPTION_BASE_URL", "https://api.openai.com/v1")
+TRANSCRIPTION_MODEL = os.getenv("TRANSCRIPTION_MODEL", "whisper-1")
+TRANSCRIPTION_LANGUAGE = os.getenv("TRANSCRIPTION_LANGUAGE", "").strip()
+TRANSCRIPTION_TIMEOUT_SECONDS = float(os.getenv("TRANSCRIPTION_TIMEOUT_SECONDS", "120"))
 
 # ───────────────────────── Embedding ─────────────────────────
 EMBEDDING_API_KEY = os.getenv("EMBEDDING_API_KEY", "")
@@ -89,13 +102,29 @@ OUTPUT_DIR = PROJECT_ROOT / os.getenv("OUTPUT_DIR", "./output")
 NORMALIZED_DIR = OUTPUT_DIR / "normalized"
 ENRICHED_DIR = OUTPUT_DIR / "enriched"
 REVIEW_QUEUE_DIR = OUTPUT_DIR / "review_queue"
+TRANSCRIPTION_DIR = OUTPUT_DIR / "transcripts"
+WIKI_DIR = OUTPUT_DIR / "wiki"
+WIKI_INDEX_DIR = WIKI_DIR / "indexes"
 RAG_STORAGE_DIR = PROJECT_ROOT / os.getenv("RAG_STORAGE_DIR", "./rag_storage")
+CARD_FTS_DB_PATH = PROJECT_ROOT / os.getenv("CARD_FTS_DB_PATH", "./artifacts/card_fts.sqlite")
+SOURCE_REGISTRY_DB_PATH = PROJECT_ROOT / os.getenv("SOURCE_REGISTRY_DB_PATH", "./artifacts/source_registry.sqlite")
 STATE_DIR = PROJECT_ROOT / os.getenv("STATE_DIR", "./state")
 MEDIA_CACHE_DIR = PROJECT_ROOT / os.getenv("MEDIA_CACHE_DIR", "./media_cache")
 LOG_DIR = PROJECT_ROOT / os.getenv("LOG_DIR", "./logs")
+MEDIA_CAPTURE_ENABLED = os.getenv("MEDIA_CAPTURE_ENABLED", "true").lower() == "true"
+MEDIA_CAPTURE_MAX_BYTES = int(os.getenv("MEDIA_CAPTURE_MAX_BYTES", "0"))
 
 # Ensure all directories exist
-for d in [NORMALIZED_DIR, ENRICHED_DIR, REVIEW_QUEUE_DIR, RAG_STORAGE_DIR, STATE_DIR, MEDIA_CACHE_DIR, LOG_DIR]:
+for d in [
+    NORMALIZED_DIR,
+    ENRICHED_DIR,
+    REVIEW_QUEUE_DIR,
+    TRANSCRIPTION_DIR,
+    RAG_STORAGE_DIR,
+    STATE_DIR,
+    MEDIA_CACHE_DIR,
+    LOG_DIR,
+]:
     d.mkdir(parents=True, exist_ok=True)
 
 # ───────────────────────── Enrichment ─────────────────────────
@@ -185,7 +214,6 @@ INSTAGRAM_PATTERN = re.compile(
 )
 AI_CHAT_PATTERNS = [
     re.compile(r'(?:https?://)?(?:chat\.openai\.com|chatgpt\.com)/(?:share|c)/[\w-]+', re.IGNORECASE),
-    re.compile(r'(?:https?://)?gemini\.google\.com/(?:app|share)/[\w-]+', re.IGNORECASE),
     re.compile(r'(?:https?://)?claude\.ai/(?:chat|share)/[\w-]+', re.IGNORECASE),
 ]
 WEB_URL_PATTERN = re.compile(

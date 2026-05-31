@@ -1,0 +1,154 @@
+{
+  "checked_at": "2026-05-31T17:58:09+00:00",
+  "query_model": "deepseek-v4-flash",
+  "query_base_url": "https://api.deepseek.com",
+  "mode": "hybrid",
+  "config_flags": {
+    "RERANKER_ENABLED": false,
+    "HYBRID_SYNTH_ENABLED": true,
+    "HYBRID_QUERY_CARDS_ENABLED": true,
+    "WIKI_ENABLED": true,
+    "WIKI_TOP_K": 5
+  },
+  "total": 3,
+  "passed": 3,
+  "failed": 0,
+  "average_score": 100.0,
+  "cases": [
+    {
+      "question": "Что в базе говорится о сходстве ультралевых и ультраправых?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "source_any": [
+        "Ультра левые и ультра правые\\11.txt",
+        "3299898370/11"
+      ],
+      "source_any_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3299898370/20",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-26T19:44:07+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\20.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/21",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-26T19:47:21+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\21.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/22",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-04-13T19:54:05+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\22.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/11",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-02-09T19:05:10+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\11.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/30",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-27T12:56:09+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\30.txt"
+        }
+      ]
+    },
+    {
+      "question": "Откуда в базе тезис про ультралевых и ультраправых? Дай ссылку.",
+      "profile": "source",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": true,
+      "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3299898370/20",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-26T19:44:07+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\20.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/21",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-26T19:47:21+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\21.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/22",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-04-13T19:54:05+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\22.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/14",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:26:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\14.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/102",
+          "channel": "Венгрия Словакия",
+          "date": "2026-03-26T17:22:41+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\102.txt"
+        }
+      ]
+    },
+    {
+      "question": "Что в базе говорится про связи европейских ультраправых с Трампом?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3299898370/9",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-01-17T21:26:45+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\9.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/20",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-26T19:44:07+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\20.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/21",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-26T19:47:21+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\21.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/14",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:26:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\14.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/142",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-08T20:32:46+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\142.txt"
+        }
+      ]
+    }
+  ]
+}

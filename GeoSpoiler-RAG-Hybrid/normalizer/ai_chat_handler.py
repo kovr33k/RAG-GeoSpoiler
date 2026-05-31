@@ -1,7 +1,7 @@
 """
 AI Chat Handler - routes AI conversation links to a manual review queue.
 
-Links to ChatGPT, Gemini, Claude conversations are saved as review items.
+Links to ChatGPT and Claude conversations are saved as review items.
 The user must manually extract the relevant text and place it in the normalized output.
 """
 

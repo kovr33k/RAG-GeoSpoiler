@@ -16,7 +16,10 @@ from lightrag.prompt import PROMPTS
 from lightrag.utils import EmbeddingFunc, compute_mdhash_id
 
 import config
+from llm_auth import get_openai_api_key
 from reranker import lightrag_rerank_func
+from retrieval.wiki_index import WikiSearchResult, find_wiki_context
+from retrieval.wiki_resolver import WikiResolvedSource, resolve_wiki_references
 
 logger = logging.getLogger("geospoiler.loader")
 _LLM_ROLE = contextvars.ContextVar("geospoiler_lightrag_llm_role", default="query")
@@ -54,7 +57,7 @@ _HEADER_LINE_RE = re.compile(r"^\[(?=.*(?:Канал:|Дата:|Пост:)).*\]\
 _URL_ENTITY_RE = re.compile(r"^(?:https?://|www\.)", re.IGNORECASE)
 _DATE_ENTITY_RE = re.compile(r"^\d{4}-\d{2}-\d{2}(?:\s+\d{2}:\d{2})?$")
 _POSTHOLDER_LINE_RE = re.compile(
-    r"^\[(?:Видео:|AI-диалог:|Отправлено в очередь на ручной просмотр:|Уже обработано:).*\]$"
+    r"^\[(?:Видео:|Аудио:|Transcript|Voice transcript|Video transcript|AI-диалог:|Отправлено в очередь на ручной просмотр:|Уже обработано:).*\]$"
 )
 
 _QUERY_USER_PROMPT = (
@@ -139,6 +142,43 @@ def _chat_settings_for_role(role: str) -> tuple[str, str, str]:
     if role == "fallback":
         return config.FALLBACK_SYNTH_API_KEY, config.FALLBACK_SYNTH_BASE_URL, config.FALLBACK_SYNTH_MODEL
     return config.QUERY_API_KEY, config.QUERY_BASE_URL, config.QUERY_MODEL
+
+
+def _openai_client(api_key: str, base_url: str, **kwargs) -> AsyncOpenAI:
+    return AsyncOpenAI(
+        api_key=get_openai_api_key(api_key, base_url),
+        base_url=base_url,
+        **kwargs,
+    )
+
+
+def _uses_deepseek_v4() -> bool:
+    values = (
+        config.LLM_BASE_URL,
+        config.LLM_MODEL,
+        config.RAG_BUILD_BASE_URL,
+        config.RAG_BUILD_MODEL,
+        config.QUERY_BASE_URL,
+        config.QUERY_MODEL,
+        config.FALLBACK_SYNTH_BASE_URL,
+        config.FALLBACK_SYNTH_MODEL,
+    )
+    text = " ".join(str(value).casefold() for value in values)
+    return "api.deepseek.com" in text or "deepseek-v4" in text
+
+
+def _chat_completion_options(max_tokens: int | None = None, **kwargs) -> dict[str, Any]:
+    """Build OpenAI-compatible chat options from explicit args plus local config."""
+    options = {key: value for key, value in kwargs.items() if value is not None}
+    if max_tokens is not None and max_tokens > 0:
+        options["max_tokens"] = max_tokens
+    if config.LLM_REASONING_EFFORT:
+        options["reasoning_effort"] = config.LLM_REASONING_EFFORT
+    if _uses_deepseek_v4() and not config.LLM_REASONING_EFFORT:
+        extra_body = dict(options.get("extra_body") or {})
+        extra_body.setdefault("thinking", {"type": "disabled"})
+        options["extra_body"] = extra_body
+    return options
 
 _QUERY_PROFILES: dict[str, dict[str, Any]] = {
     "answer": {
@@ -573,9 +613,9 @@ async def create_rag() -> LightRAG:
         role = _LLM_ROLE.get()
         chat_role = "build" if role == "build" else "query"
         api_key, base_url, model = _chat_settings_for_role(chat_role)
-        llm_client = AsyncOpenAI(
-            api_key=api_key,
-            base_url=base_url,
+        llm_client = _openai_client(
+            api_key,
+            base_url,
             timeout=config.LLM_TIMEOUT_SECONDS,
         )
         messages = []
@@ -597,7 +637,11 @@ async def create_rag() -> LightRAG:
         response = await llm_client.chat.completions.create(
             model=model,
             messages=messages,
-            **{k: v for k, v in kwargs.items() if k in ("temperature", "max_tokens", "top_p")},
+            **_chat_completion_options(
+                max_tokens=kwargs.get("max_tokens") or config.QUERY_MAX_TOKENS,
+                temperature=kwargs.get("temperature"),
+                top_p=kwargs.get("top_p"),
+            ),
         )
         content = response.choices[0].message.content or ""
         if is_extraction:
@@ -960,7 +1004,7 @@ async def load_from_directory(rag: LightRAG, directory: Path | None = None) -> i
 
 _NORMALIZED_HEADER_RE = re.compile(r"^\[Канал:.*\]\s*$")
 _PLACEHOLDER_CONTENT_RE = re.compile(
-    r"^\[(?:Видео:|AI-диалог:|Отправлено в очередь|Уже обработано:|Веб-страница:.*ошибка).*\]$",
+    r"^\[(?:Видео:|Аудио:|AI-диалог:|Отправлено в очередь|Уже обработано:|Веб-страница:.*ошибка).*\]$",
     re.IGNORECASE,
 )
 
@@ -1177,6 +1221,8 @@ async def query_rag(
         # "mix" mode gives LightRAG the most candidates to rerank from
         mode = "mix" if config.RERANKER_ENABLED else "hybrid"
     profile = get_query_profile(query_profile)
+    wiki_context = _wiki_context_for_query(question)
+    user_prompt = _query_user_prompt_with_wiki(profile["user_prompt"], wiki_context)
 
     logger.info(
         f"Querying LightRAG (mode={mode}, profile={query_profile or 'answer'}, rerank={'enabled' if config.RERANKER_ENABLED else 'disabled'})"
@@ -1194,7 +1240,7 @@ async def query_rag(
                     top_k=profile["top_k"],
                     chunk_top_k=profile["chunk_top_k"],
                     response_type=_QUERY_RESPONSE_TYPE,
-                    user_prompt=profile["user_prompt"],
+                    user_prompt=user_prompt,
                 ),
             ),
             timeout=config.QUERY_TIMEOUT_SECONDS,
@@ -1287,6 +1333,9 @@ def _postprocess_answer_text(answer: str, question: str, query_profile: str | No
             "не содержится",
             "нет данных",
             "нет информации",
+            "нет прямого ответа",
+            "не содержат информации",
+            "не содержит информации",
             "нельзя определить",
             "никаких конкретных данных",
         )
@@ -1507,9 +1556,9 @@ async def _synthesize_shadow_fallback_result(
     try:
         if config.QUERY_DELAY_SECONDS > 0:
             await asyncio.sleep(config.QUERY_DELAY_SECONDS)
-        client = AsyncOpenAI(
-            api_key=config.FALLBACK_SYNTH_API_KEY,
-            base_url=config.FALLBACK_SYNTH_BASE_URL,
+        client = _openai_client(
+            config.FALLBACK_SYNTH_API_KEY,
+            config.FALLBACK_SYNTH_BASE_URL,
             timeout=min(config.LLM_TIMEOUT_SECONDS, config.FALLBACK_SYNTH_TIMEOUT_SECONDS),
             max_retries=0,
         )
@@ -1520,8 +1569,10 @@ async def _synthesize_shadow_fallback_result(
                     {"role": "system", "content": system},
                     {"role": "user", "content": user},
                 ],
-                temperature=0,
-                max_tokens=900,
+                **_chat_completion_options(
+                    max_tokens=config.FALLBACK_SYNTH_MAX_TOKENS,
+                    temperature=0,
+                ),
             ),
             timeout=config.FALLBACK_SYNTH_TIMEOUT_SECONDS + 5,
         )
@@ -1590,16 +1641,197 @@ def _card_context_for_query(question: str, query_profile: str | None) -> dict[st
     return {"references": references, "shadow_context": context_items}
 
 
-def _attach_card_context(result: dict[str, Any], card_context: dict[str, Any]) -> dict[str, Any]:
+def _attach_card_context(
+    result: dict[str, Any],
+    card_context: dict[str, Any],
+    *,
+    prefer_card_references: bool = False,
+) -> dict[str, Any]:
     fixed = result.copy()
     data = dict(fixed.get("data") or {})
-    data["references"] = _merge_references(
-        _existing_references(fixed),
-        list(card_context.get("references") or []),
-    )
+    card_references = list(card_context.get("references") or [])
+    existing_references = _existing_references(fixed)
+    if prefer_card_references:
+        data["references"] = _merge_references(card_references, existing_references)
+    else:
+        data["references"] = _merge_references(existing_references, card_references)
     data["shadow_context"] = list(card_context.get("shadow_context") or [])
     fixed["data"] = data
     return fixed
+
+
+def _should_prefer_card_references(question: str, query_profile: str | None) -> bool:
+    return True
+
+
+def _wiki_context_for_query(question: str) -> dict[str, Any] | None:
+    """Return local wiki-memory matches and primary source references."""
+    if not config.WIKI_ENABLED:
+        return None
+
+    try:
+        results = find_wiki_context(
+            question,
+            wiki_dir=config.WIKI_DIR,
+            top_k=config.WIKI_TOP_K,
+        )
+    except Exception as exc:
+        logger.warning(f"Wiki context lookup failed; continuing without wiki context: {exc}")
+        return None
+    if not results:
+        return None
+
+    page_paths = [result.page_path for result in results]
+    try:
+        resolved = resolve_wiki_references(
+            page_paths,
+            wiki_dir=config.WIKI_DIR,
+            index_dir=config.WIKI_INDEX_DIR,
+            enriched_dir=config.ENRICHED_DIR,
+        )
+    except Exception as exc:
+        logger.warning(f"Wiki reference resolution failed; continuing with unresolved wiki context: {exc}")
+        resolved = {}
+
+    wiki_pages = [_wiki_result_to_context(result, resolved.get(result.page_path, [])) for result in results]
+    references = _wiki_references_from_context(wiki_pages)
+    return {
+        "pages": wiki_pages,
+        "references": references,
+    }
+
+
+def _wiki_result_to_context(
+    result: WikiSearchResult,
+    resolved_sources: list[WikiResolvedSource],
+) -> dict[str, Any]:
+    return {
+        "page_path": result.page_path,
+        "title": result.title,
+        "score": result.score,
+        "snippet": result.snippet,
+        "source_ids": list(result.sources),
+        "resolved_sources": [
+            {
+                "source_id": source.source_id,
+                "post_url": source.post_url,
+                "youtube_url": source.youtube_url,
+                "normalized_file": source.normalized_file,
+                "card_path": source.card_path,
+                "channel_name": source.channel_name,
+                "date": source.date,
+                "primary_url": source.primary_url,
+            }
+            for source in resolved_sources
+        ],
+    }
+
+
+def _wiki_references_from_context(wiki_pages: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    references: list[dict[str, Any]] = []
+    for page_index, page in enumerate(wiki_pages, start=1):
+        resolved_sources = page.get("resolved_sources") or []
+        for source_index, source in enumerate(resolved_sources, start=1):
+            normalized_file = str(source.get("normalized_file") or "").strip()
+            card_path = str(source.get("card_path") or "").strip()
+            references.append(
+                {
+                    "reference_id": f"wiki-{page_index}-{source_index}",
+                    "file_path": _resolve_project_path(normalized_file) or card_path,
+                    "post_url": str(source.get("post_url") or "").strip(),
+                    "youtube_url": str(source.get("youtube_url") or "").strip(),
+                    "source_id": str(source.get("source_id") or "").strip(),
+                    "wiki_page": str(page.get("page_path") or "").strip(),
+                    "channel": str(source.get("channel_name") or "").strip(),
+                    "date": str(source.get("date") or "").strip(),
+                }
+            )
+    return references
+
+
+def _resolve_project_path(path_text: str) -> str:
+    if not path_text:
+        return ""
+    path = Path(path_text)
+    if path.is_absolute():
+        return str(path)
+    return str((config.PROJECT_ROOT / path).resolve(strict=False))
+
+
+def _query_user_prompt_with_wiki(user_prompt: str, wiki_context: dict[str, Any] | None) -> str:
+    if not wiki_context:
+        return user_prompt
+    formatted = _format_wiki_prompt_context(wiki_context)
+    if not formatted:
+        return user_prompt
+    return f"{user_prompt}\n\n{formatted}"
+
+
+def _format_wiki_prompt_context(wiki_context: dict[str, Any], max_pages: int = 5, max_sources: int = 3) -> str:
+    pages = list(wiki_context.get("pages") or [])[:max_pages]
+    if not pages:
+        return ""
+
+    lines = [
+        "--- Local wiki memory context (read-only) ---",
+        "Use this local wiki only as memory/context from the corpus, not as a primary source.",
+        "When citing support, prefer the Telegram/YouTube/normalized sources listed under each wiki page.",
+        "Keep source claims cautious; do not call anything fake/false/deepfake unless the listed evidence explicitly says so.",
+    ]
+    for page_index, page in enumerate(pages, start=1):
+        lines.append("")
+        lines.append(f"[wiki-{page_index}] {page.get('title', '')}")
+        lines.append(f"page: {page.get('page_path', '')}")
+        lines.append(f"score: {page.get('score', 0)}")
+        snippet = str(page.get("snippet") or "").strip()
+        if snippet:
+            lines.append(f"memory_snippet: {snippet}")
+        resolved_sources = list(page.get("resolved_sources") or [])[:max_sources]
+        if resolved_sources:
+            lines.append("primary_sources:")
+            for source in resolved_sources:
+                label = (
+                    source.get("youtube_url")
+                    or source.get("post_url")
+                    or source.get("normalized_file")
+                    or source.get("source_id")
+                )
+                parts = [str(label)]
+                if source.get("source_id"):
+                    parts.append(f"source_id={source['source_id']}")
+                if source.get("date"):
+                    parts.append(f"date={source['date']}")
+                lines.append(f"- {' | '.join(parts)}")
+        elif page.get("source_ids"):
+            lines.append("source_ids: " + ", ".join(str(item) for item in page["source_ids"]))
+    lines.append("--- End local wiki memory context ---")
+    return "\n".join(lines)
+
+
+def _attach_wiki_context(result: dict[str, Any], wiki_context: dict[str, Any] | None) -> dict[str, Any]:
+    if not wiki_context:
+        return result
+    fixed = result.copy()
+    data = dict(fixed.get("data") or {})
+    wiki_references = list(wiki_context.get("references") or [])
+    data["references"] = _merge_references(_existing_references(fixed), wiki_references)
+    data["wiki_context"] = list(wiki_context.get("pages") or [])
+    data["wiki_references"] = wiki_references
+    fixed["data"] = data
+    return fixed
+
+
+def _wiki_context_from_result(result: dict[str, Any]) -> dict[str, Any] | None:
+    data = result.get("data") if isinstance(result, dict) else {}
+    if not isinstance(data, dict):
+        return None
+    pages = list(data.get("wiki_context") or [])
+    if not pages:
+        return None
+    return {
+        "pages": pages,
+        "references": list(data.get("wiki_references") or []),
+    }
 
 
 async def _synthesize_hybrid_result(
@@ -1609,25 +1841,32 @@ async def _synthesize_hybrid_result(
     card_context: dict[str, Any],
 ) -> dict[str, Any]:
     """Compose LightRAG answer with enriched-card facts into one user-facing answer."""
+    prefer_card_references = _should_prefer_card_references(question, query_profile)
     if not config.HYBRID_SYNTH_ENABLED or not config.FALLBACK_SYNTH_API_KEY:
-        return _attach_card_context(result, card_context)
+        return _attach_card_context(result, card_context, prefer_card_references=prefer_card_references)
 
     graph_answer = str(result.get("llm_response", {}).get("content") or result.get("response") or "").strip()
     context = _format_shadow_context(list(card_context.get("shadow_context") or []))
     if not graph_answer or not context.strip():
-        return _attach_card_context(result, card_context)
+        return _attach_card_context(result, card_context, prefer_card_references=prefer_card_references)
 
+    wiki_context = _wiki_context_from_result(result)
+    wiki_prompt_context = (
+        _format_wiki_prompt_context(wiki_context, max_pages=3, max_sources=2)
+        if wiki_context
+        else ""
+    )
     include_visual = _question_requests_visuals(question)
     profile = query_profile or "answer"
     system = (
         "Ты пишешь финальный ответ RAG-системы на русском языке. "
-        "У тебя есть черновой ответ графа и дополнительные карточки источников. "
+        "У тебя есть черновой ответ графа, дополнительные карточки источников и, возможно, локальная wiki-память. "
         "Собери один связный ответ, используя только эти данные. "
-        "Не упоминай LightRAG, shadow search, fallback, карточки, технические детали системы или внутренние режимы поиска. "
+        "Не упоминай LightRAG, shadow search, fallback, wiki-память, карточки, технические детали системы или внутренние режимы поиска. "
         "Не копируй сырые поля как дамп. "
         "Сохраняй осторожные формулировки: подозрения остаются подозрениями, заявления источника остаются заявлениями источника. "
         "Не называй утверждения фальшивыми, ложными, дезинформацией или имитацией, если это явно не сказано в данных. "
-        "Если карточки добавляют только дублирующие или слабые сведения, не раздувай ответ."
+        "Если дополнительные данные только дублируют или слабо связаны с вопросом, не раздувай ответ."
     )
     if include_visual:
         system += " Вопрос просит визуалы, поэтому можно использовать визуальные заметки и кадры."
@@ -1636,19 +1875,21 @@ async def _synthesize_hybrid_result(
     if profile == "source":
         system += " Так как пользователь просит источник, укажи конкретные файлы/ссылки из контекста."
 
+    wiki_block = f"\n\nЛокальная wiki-память:\n{wiki_prompt_context}" if wiki_prompt_context else ""
     user = (
         f"Вопрос:\n{question}\n\n"
         f"Черновой ответ графа:\n{graph_answer}\n\n"
-        f"Дополнительный контекст источников:\n{context}\n\n"
+        f"Дополнительный контекст источников:\n{context}"
+        f"{wiki_block}\n\n"
         "Ответь в 2-5 абзацах. Не добавляй факты вне предоставленных данных."
     )
 
     try:
         if config.QUERY_DELAY_SECONDS > 0:
             await asyncio.sleep(config.QUERY_DELAY_SECONDS)
-        client = AsyncOpenAI(
-            api_key=config.FALLBACK_SYNTH_API_KEY,
-            base_url=config.FALLBACK_SYNTH_BASE_URL,
+        client = _openai_client(
+            config.FALLBACK_SYNTH_API_KEY,
+            config.FALLBACK_SYNTH_BASE_URL,
             timeout=min(config.LLM_TIMEOUT_SECONDS, config.FALLBACK_SYNTH_TIMEOUT_SECONDS),
             max_retries=0,
         )
@@ -1659,24 +1900,26 @@ async def _synthesize_hybrid_result(
                     {"role": "system", "content": system},
                     {"role": "user", "content": user},
                 ],
-                temperature=0,
-                max_tokens=1200,
+                **_chat_completion_options(
+                    max_tokens=config.FALLBACK_SYNTH_MAX_TOKENS,
+                    temperature=0,
+                ),
             ),
             timeout=config.FALLBACK_SYNTH_TIMEOUT_SECONDS + 5,
         )
         answer = (response.choices[0].message.content or "").strip()
     except Exception as exc:
         logger.warning(f"Hybrid synthesis failed; keeping LightRAG answer with card references: {exc}")
-        return _attach_card_context(result, card_context)
+        return _attach_card_context(result, card_context, prefer_card_references=prefer_card_references)
 
     if not answer:
-        return _attach_card_context(result, card_context)
+        return _attach_card_context(result, card_context, prefer_card_references=prefer_card_references)
     if _answer_looks_corrupt(answer):
         logger.warning("Hybrid synthesis looked corrupt; keeping LightRAG answer with card references.")
-        return _attach_card_context(result, card_context)
+        return _attach_card_context(result, card_context, prefer_card_references=prefer_card_references)
 
     answer = _postprocess_answer_text(answer, question, query_profile)
-    fixed = _attach_card_context(result, card_context)
+    fixed = _attach_card_context(result, card_context, prefer_card_references=prefer_card_references)
     llm_response = dict(fixed.get("llm_response") or {})
     llm_response["content"] = answer
     fixed["llm_response"] = llm_response
@@ -1695,6 +1938,8 @@ async def query_rag_result(
     if mode is None:
         mode = "mix" if config.RERANKER_ENABLED else "hybrid"
     profile = get_query_profile(query_profile)
+    wiki_context = _wiki_context_for_query(question)
+    user_prompt = _query_user_prompt_with_wiki(profile["user_prompt"], wiki_context)
 
     logger.info(
         f"Querying LightRAG with retrieval payload (mode={mode}, profile={query_profile or 'answer'}, rerank={'enabled' if config.RERANKER_ENABLED else 'disabled'})"
@@ -1712,7 +1957,7 @@ async def query_rag_result(
                     top_k=profile["top_k"],
                     chunk_top_k=profile["chunk_top_k"],
                     response_type=_QUERY_RESPONSE_TYPE,
-                    user_prompt=profile["user_prompt"],
+                    user_prompt=user_prompt,
                 ),
             ),
             timeout=config.QUERY_TIMEOUT_SECONDS,
@@ -1727,36 +1972,40 @@ async def query_rag_result(
         if not _is_funding_question(question):
             fallback = _shadow_fallback_result(question, query_profile)
             if fallback:
-                return await _synthesize_shadow_fallback_result(question, query_profile, fallback)
-        return {
+                fallback = await _synthesize_shadow_fallback_result(question, query_profile, fallback)
+                return _attach_wiki_context(fallback, wiki_context)
+        return _attach_wiki_context({
             "response": "В базе не удалось получить ответ за отведённое время.",
             "llm_response": {"content": "В базе не удалось получить ответ за отведённое время."},
             "data": {"references": []},
             "fallback": "timeout_no_context",
-        }
+        }, wiki_context)
     except Exception as exc:
         _LLM_ROLE.reset(token)
         logger.warning(f"LightRAG query failed; trying shadow-search fallback: {exc}")
         if not _is_funding_question(question):
             fallback = _shadow_fallback_result(question, query_profile)
             if fallback:
-                return await _synthesize_shadow_fallback_result(question, query_profile, fallback)
-        return {
+                fallback = await _synthesize_shadow_fallback_result(question, query_profile, fallback)
+                return _attach_wiki_context(fallback, wiki_context)
+        return _attach_wiki_context({
             "response": "В базе не удалось получить ответ.",
             "llm_response": {"content": "В базе не удалось получить ответ."},
             "data": {"references": []},
             "fallback": "error_no_context",
-        }
+        }, wiki_context)
     if isinstance(result, dict) and not _is_funding_question(question) and _response_has_no_context(result):
         fallback = _shadow_fallback_result(question, query_profile)
         if fallback:
             logger.info("Using shadow-search fallback after no-context LightRAG answer.")
-            return await _synthesize_shadow_fallback_result(question, query_profile, fallback)
+            fallback = await _synthesize_shadow_fallback_result(question, query_profile, fallback)
+            return _attach_wiki_context(fallback, wiki_context)
     if isinstance(result, dict) and not _is_funding_question(question) and _response_looks_corrupt(result):
         fallback = _shadow_fallback_result(question, query_profile)
         if fallback:
             logger.info("Using shadow-search fallback after corrupt LightRAG answer.")
-            return await _synthesize_shadow_fallback_result(question, query_profile, fallback)
+            fallback = await _synthesize_shadow_fallback_result(question, query_profile, fallback)
+            return _attach_wiki_context(fallback, wiki_context)
     if isinstance(result, dict):
         answer = str(result.get("llm_response", {}).get("content") or result.get("response") or "")
         fixed_answer = _postprocess_answer_text(answer, question, query_profile)
@@ -1766,6 +2015,7 @@ async def query_rag_result(
             llm_response["content"] = fixed_answer
             result["llm_response"] = llm_response
             result["response"] = fixed_answer
+        result = _attach_wiki_context(result, wiki_context)
         if not _is_funding_question(question):
             card_context = _card_context_for_query(question, query_profile)
             if card_context:

@@ -154,6 +154,34 @@ python -m unittest discover -p "test_*.py" -v
 
 If `python` resolves to the Windows Store shim, either activate your environment first or use the real interpreter path.
 
+Unit tests are intended to be no-network. To enforce that locally, run:
+
+```powershell
+$env:GEOSPOILER_NO_NETWORK = "1"
+python -m unittest discover -p "test_*.py"
+```
+
+Live model checks such as `llm_verification_probe.py`, golden-set model runs, Telegram fetches, and transcription smoke
+tests are integration checks, not unit tests.
+
+Developer tooling:
+
+```powershell
+python -m pip install -e .[dev]
+pre-commit install
+python -m ruff check . --config pyproject.toml
+python main.py validate enriched
+```
+
+Experiment/eval registry:
+
+```powershell
+python main.py experiments index
+```
+
+This writes `artifacts/experiment_registry.json` and
+`artifacts/experiment_registry.md` from existing score artifacts.
+
 ## Current Readiness
 
 The project is currently set up for:
@@ -164,3 +192,10 @@ The project is currently set up for:
 - safe index rebuilds with backup
 - reviewed AI-chat ingest during `load` and `run`
 - Windows-safe UTF-8 logging and console output
+- read-only data contracts and enriched-card validation
+- wiki-memory, FTS, source registry, focused probe, golden comparison, and
+  experiment registry workflows
+
+Current trusted live-eval baseline uses `deepseek-v4-flash` with reranker
+disabled. The latest recorded full golden validation passed `23/23` before and
+after a clean graph rebuild.

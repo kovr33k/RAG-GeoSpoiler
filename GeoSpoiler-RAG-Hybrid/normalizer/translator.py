@@ -2,6 +2,7 @@ import logging
 import requests
 
 import config
+from llm_auth import auth_headers
 
 logger = logging.getLogger("geospoiler.normalizer.translator")
 
@@ -34,14 +35,12 @@ def translate_to_russian_if_needed(text: str) -> str:
         ],
         "temperature": 0.1,  # Low temperature for accurate translation
     }
+    payload.update(_deepseek_v4_options(config.TRANSLATION_MODEL, config.TRANSLATION_BASE_URL))
 
     try:
         response = requests.post(
             f"{config.TRANSLATION_BASE_URL}/chat/completions",
-            headers={
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json",
-            },
+            headers=auth_headers(api_key, config.TRANSLATION_BASE_URL),
             json=payload,
             timeout=120,
         )
@@ -55,3 +54,12 @@ def translate_to_russian_if_needed(text: str) -> str:
     except Exception as e:
         logger.error(f"LLM translation error: {e}")
         return text
+
+
+def _deepseek_v4_options(model: str, base_url: str) -> dict:
+    endpoint = f"{model} {base_url}".casefold()
+    if config.LLM_REASONING_EFFORT:
+        return {}
+    if "deepseek-v4" not in endpoint and "api.deepseek.com" not in endpoint:
+        return {}
+    return {"thinking": {"type": "disabled"}}
