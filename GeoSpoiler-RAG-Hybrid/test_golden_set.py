@@ -1,7 +1,9 @@
 import asyncio
 import io
 import json
+import os
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -17,6 +19,9 @@ _TECHNICAL_FORBIDDEN = [
 ]
 
 _VISUAL_QUERY_TERMS = ["визуал", "кадр", "b-roll", "broll", "ролик", "сцена", "видео"]
+
+GOLDEN_RESULTS_FILE = Path("artifacts/golden_set_results.md")
+GOLDEN_SCORES_FILE = Path("artifacts/golden_set_scores.json")
 
 
 GOLDEN_CASES: list[dict[str, Any]] = [
@@ -195,26 +200,46 @@ def _score_answer(answer: str, sources: list[dict[str, str]], case: dict[str, An
 
 async def run_tests():
     rag = await create_rag()
+    query_mode = _golden_query_mode()
 
-    results_file = Path("artifacts/golden_set_results.md")
-    scores_file = Path("artifacts/golden_set_scores.json")
+    results_file = _golden_results_file()
+    scores_file = _golden_scores_file()
     results_file.parent.mkdir(exist_ok=True)
+    scores_file.parent.mkdir(exist_ok=True)
+    cases_for_run = _golden_cases_for_run()
 
     scores = []
     try:
         with results_file.open("w", encoding="utf-8") as f:
             f.write("# Golden Set Results\n\n")
+            f.write(f"Checked at: {_utc_now()}\n\n")
+            f.write(f"Query model: `{config.QUERY_MODEL}`\n\n")
+            f.write(f"Query base URL: `{config.QUERY_BASE_URL}`\n\n")
+            f.write(f"Mode: `{query_mode}`\n\n")
+            f.write(
+                "Flags: "
+                f"`RERANKER_ENABLED={config.RERANKER_ENABLED}`, "
+                f"`HYBRID_SYNTH_ENABLED={config.HYBRID_SYNTH_ENABLED}`, "
+                f"`HYBRID_QUERY_CARDS_ENABLED={config.HYBRID_QUERY_CARDS_ENABLED}`, "
+                f"`WIKI_ENABLED={config.WIKI_ENABLED}`, "
+                f"`WIKI_TOP_K={config.WIKI_TOP_K}`\n\n"
+            )
             f.write("Default profile: answer/top_k=15. Source questions use source/top_k=15. Overview questions use overview/top_k=30.\n\n")
 
-            for i, case in enumerate(GOLDEN_CASES, 1):
+            for i, case in enumerate(cases_for_run, 1):
                 question = case["question"]
                 profile = case.get("profile") or ("source" if _question_requests_sources(question) else "answer")
-                print(f"Running Q{i}/{len(GOLDEN_CASES)} [{profile}]")
+                print(f"Running Q{i}/{len(cases_for_run)} [{profile}]", flush=True)
                 f.write(f"## {i}. {question}\n\n")
                 f.write(f"Profile: `{profile}`\n\n")
 
                 try:
-                    query_result = await query_rag_result(rag, question, mode="mix", query_profile=profile)
+                    query_result = await _query_rag_result_with_retries(
+                        rag,
+                        question,
+                        mode=query_mode,
+                        query_profile=profile,
+                    )
                     answer = str(query_result.get("llm_response", {}).get("content") or "").strip()
                     sources = _extract_query_sources(query_result)
                 except Exception as exc:
@@ -248,6 +273,10 @@ async def run_tests():
                 if score["source_any"]:
                     f.write(f"- source_any_ok: {score['source_any_ok']}\n")
                 f.write("\n")
+                f.flush()
+
+                if i < len(cases_for_run):
+                    await asyncio.sleep(_golden_query_delay_seconds())
     finally:
         try:
             await asyncio.wait_for(
@@ -261,6 +290,17 @@ async def run_tests():
             )
 
     summary = {
+        "checked_at": _utc_now(),
+        "query_model": config.QUERY_MODEL,
+        "query_base_url": config.QUERY_BASE_URL,
+        "mode": query_mode,
+        "config_flags": {
+            "RERANKER_ENABLED": config.RERANKER_ENABLED,
+            "HYBRID_SYNTH_ENABLED": config.HYBRID_SYNTH_ENABLED,
+            "HYBRID_QUERY_CARDS_ENABLED": config.HYBRID_QUERY_CARDS_ENABLED,
+            "WIKI_ENABLED": config.WIKI_ENABLED,
+            "WIKI_TOP_K": config.WIKI_TOP_K,
+        },
         "total": len(scores),
         "passed": sum(1 for item in scores if item["pass"]),
         "failed": sum(1 for item in scores if not item["pass"]),
@@ -269,6 +309,88 @@ async def run_tests():
     }
     scores_file.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Golden set: {summary['passed']}/{summary['total']} passed, avg={summary['average_score']}")
+
+
+def _golden_query_mode() -> str:
+    return "mix" if config.RERANKER_ENABLED else "hybrid"
+
+
+def _golden_results_file() -> Path:
+    return Path(os.getenv("GOLDEN_RESULTS_FILE", str(GOLDEN_RESULTS_FILE)))
+
+
+def _golden_scores_file() -> Path:
+    return Path(os.getenv("GOLDEN_SCORES_FILE", str(GOLDEN_SCORES_FILE)))
+
+
+def _golden_cases_for_run() -> list[dict[str, Any]]:
+    limit = _golden_case_limit()
+    if limit is None:
+        return GOLDEN_CASES
+    return GOLDEN_CASES[:limit]
+
+
+def _golden_case_limit() -> int | None:
+    raw = os.getenv("GOLDEN_CASE_LIMIT", "").strip()
+    if not raw:
+        return None
+    try:
+        limit = int(raw)
+    except ValueError:
+        return None
+    return limit if limit > 0 else None
+
+
+async def _query_rag_result_with_retries(
+    rag: Any,
+    question: str,
+    mode: str,
+    query_profile: str,
+) -> dict[str, Any]:
+    retries = _golden_query_retries()
+    last_error: Exception | None = None
+    for attempt in range(retries + 1):
+        try:
+            return await query_rag_result(rag, question, mode=mode, query_profile=query_profile)
+        except Exception as exc:
+            last_error = exc
+            if attempt >= retries or not _is_retryable_query_error(exc):
+                raise
+            delay = _golden_retry_backoff_seconds() * (attempt + 1)
+            print(f"Retrying golden query after {delay:g}s due to transient error: {exc}", flush=True)
+            await asyncio.sleep(delay)
+    raise RuntimeError(f"Golden query failed without result: {last_error}")
+
+
+def _is_retryable_query_error(exc: Exception) -> bool:
+    text = str(exc).casefold()
+    return "429" in text or "too many requests" in text or "timeout" in text or "timed out" in text
+
+
+def _golden_query_delay_seconds() -> float:
+    return _env_float("GOLDEN_QUERY_DELAY_SECONDS", 5.0)
+
+
+def _golden_query_retries() -> int:
+    return max(0, int(_env_float("GOLDEN_QUERY_RETRIES", 2)))
+
+
+def _golden_retry_backoff_seconds() -> float:
+    return _env_float("GOLDEN_RETRY_BACKOFF_SECONDS", 30.0)
+
+
+def _env_float(name: str, default: float) -> float:
+    raw = os.getenv(name, "").strip()
+    if not raw:
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        return default
+
+
+def _utc_now() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
 
 if __name__ == "__main__":

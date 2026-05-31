@@ -24,7 +24,7 @@ CONTENT_TYPES = [
     "screenshot",        # Screenshot of social media / chat
     "quote",             # Short quote (<200 chars body)
     "video_native",      # Telegram native video (not YouTube)
-    "ai_chat",           # AI chat link (ChatGPT, Claude, Gemini)
+    "ai_chat",           # AI chat link (ChatGPT, Claude)
     "web_article",       # External web article
     "broll_candidate",   # Visual-only content for b-roll
     "mixed",             # Combination of text + video + images
@@ -34,8 +34,8 @@ CONTENT_TYPES = [
 _YOUTUBE_MARKER_RE = re.compile(r"\[YouTube:", re.IGNORECASE)
 # Vision API description marker from image_handler
 _IMAGE_DESC_RE = re.compile(r"\[Изображение(?:\s+\d+)?:", re.IGNORECASE)
-# Video placeholder from normalizer
-_VIDEO_PLACEHOLDER_RE = re.compile(r"\[Видео:.*не обработано\]", re.IGNORECASE)
+# Native media placeholders from normalizer
+_MEDIA_PLACEHOLDER_RE = re.compile(r"\[(?:Видео:|Аудио:).*не обработано.*\]", re.IGNORECASE)
 # AI-chat placeholder from normalizer
 _AI_CHAT_PLACEHOLDER_RE = re.compile(
     r"\[(?:AI-диалог:|Отправлено в очередь на ручной просмотр:)", re.IGNORECASE
@@ -167,7 +167,7 @@ def _body_text_length(body: str) -> int:
             continue
         # Skip normalized markers
         if any(pattern.match(stripped) for pattern in [
-            _YOUTUBE_MARKER_RE, _IMAGE_DESC_RE, _VIDEO_PLACEHOLDER_RE,
+            _YOUTUBE_MARKER_RE, _IMAGE_DESC_RE, _MEDIA_PLACEHOLDER_RE,
             _AI_CHAT_PLACEHOLDER_RE, _INSTAGRAM_MARKER_RE, _WEB_MARKER_RE,
         ]):
             continue

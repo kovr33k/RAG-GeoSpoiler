@@ -1,12 +1,16 @@
 import sys
+import json
+import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import Mock, patch
 
 sys.path.insert(0, str(Path(__file__).parent))
 
+from fetcher.telegram_client import TelegramMedia  # noqa: E402
 from normalizer.image_handler import _candidate_api_keys, describe_image  # noqa: E402
 from normalizer.instagram_handler import canonicalize_instagram_url  # noqa: E402
+from normalizer.transcription_handler import transcribe_media  # noqa: E402
 from normalizer.youtube_handler import _clean_description  # noqa: E402
 
 
@@ -92,3 +96,45 @@ class HandlerTests(unittest.TestCase):
         )
 
         self.assertEqual(_clean_description(description), "Полезное описание.")
+
+    def test_transcribe_media_writes_artifact(self):
+        response = Mock()
+        response.raise_for_status.return_value = None
+        response.json.return_value = {"text": "transcribed native media"}
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            media_path = root / "media_cache" / "Channel" / "voice" / "msg_11.ogg"
+            media_path.parent.mkdir(parents=True)
+            media_path.write_bytes(b"fake audio")
+            transcript_dir = root / "output" / "transcripts"
+            item = TelegramMedia(
+                media_type="voice",
+                mime_type="audio/ogg",
+                message_id=11,
+                file_path=str(media_path),
+                download_status="downloaded",
+            )
+
+            with patch("normalizer.transcription_handler.config.TRANSCRIPTION_ENABLED", True):
+                with patch("normalizer.transcription_handler.config.TRANSCRIPTION_API_KEY", "api-key"):
+                    with patch("normalizer.transcription_handler.config.TRANSCRIPTION_BASE_URL", "https://example.com/v1"):
+                        with patch("normalizer.transcription_handler.config.TRANSCRIPTION_MODEL", "whisper-1"):
+                            with patch("normalizer.transcription_handler.config.TRANSCRIPTION_LANGUAGE", ""):
+                                with patch("normalizer.transcription_handler.config.TRANSCRIPTION_TIMEOUT_SECONDS", 10):
+                                    with patch("normalizer.transcription_handler.config.TRANSCRIPTION_DIR", transcript_dir):
+                                        with patch(
+                                            "normalizer.transcription_handler.requests.post",
+                                            return_value=response,
+                                        ) as post:
+                                            result = transcribe_media(item, "Channel", 11)
+
+            artifact_path = Path(result.artifact_path)
+            payload = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+        self.assertEqual(result.status, "transcribed")
+        self.assertEqual(result.text, "transcribed native media")
+        self.assertEqual(payload["text"], "transcribed native media")
+        self.assertEqual(payload["media"]["media_type"], "voice")
+        self.assertEqual(post.call_args.kwargs["data"]["model"], "whisper-1")
+        self.assertIn("/audio/transcriptions", post.call_args.args[0])

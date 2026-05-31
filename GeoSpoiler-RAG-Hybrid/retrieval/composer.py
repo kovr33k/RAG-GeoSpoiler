@@ -11,6 +11,9 @@ from pathlib import Path
 from lightrag import LightRAG
 from loader.lightrag_loader import query_rag_result
 from retrieval import shadow_search
+from retrieval.card_fts import CardFtsMatch, search_card_index
+from retrieval.wiki_index import WikiSearchResult, find_wiki_context
+from retrieval.wiki_resolver import WikiResolvedSource, resolve_wiki_references
 import config
 
 logger = logging.getLogger("geospoiler.retrieval.composer")
@@ -35,6 +38,19 @@ class SearchPackage:
     llm_answer: str
     primary_results: list[SearchResult]
     secondary_results: list[SearchResult]
+    wiki_results: list[WikiSearchResult] = field(default_factory=list)
+    wiki_source_references: dict[str, list[WikiResolvedSource]] = field(default_factory=dict)
+
+
+@dataclass(frozen=True)
+class CardSearchHit:
+    source_path: str
+    card_path: str | None
+    title: str
+    url: str
+    score: float
+    snippet: str
+    backend: str
 
 
 def _load_all_cards() -> list[dict]:
@@ -76,6 +92,8 @@ async def search(rag: LightRAG | None, query: str, mode: str = "recall") -> Sear
     llm_answer = ""
     primary = {}
     secondary = {}
+    wiki_results = _find_wiki_results(query)
+    wiki_source_references = _resolve_wiki_references(wiki_results)
 
     cards_only = mode in _CARDS_ONLY_MODES
 
@@ -100,15 +118,15 @@ async def search(rag: LightRAG | None, query: str, mode: str = "recall") -> Sear
         llm_answer = lr_result.get("response", "No answer from LightRAG.")
     
     cards = _load_all_cards()
-    path_to_card = {c.get("provenance", {}).get("normalized_file", c["_path"]): c for c in cards}
+    path_to_card = _index_cards_by_path(cards)
 
     # Process LightRAG references
     # references is usually a list of dicts from LightRAG if we enabled it, 
     # but currently our lightrag_loader just returns the result dict which might have 'references' depending on version.
     # We will also use shadow search as a strong backup.
 
-    # 2. Run Shadow Search
-    shadow_results = shadow_search.search(query, top_k=20)
+    # 2. Run local card search. G2 prefers SQLite FTS5 and keeps shadow_search as fallback.
+    card_hits = _search_card_hits(query, top_k=20)
     
     # 3. Mode-specific filtering on cards
     query_lower = query.lower()
@@ -147,20 +165,25 @@ async def search(rag: LightRAG | None, query: str, mode: str = "recall") -> Sear
                 if path not in primary:
                     primary[path] = _card_to_result(card, "Entity Match")
 
-    # 4. Integrate shadow results
-    for sr in shadow_results:
+    # 4. Integrate local card-search results
+    for hit in card_hits:
         # If it's not already in primary, add it to secondary (or primary for broad/card-only modes).
-        if sr.source_path not in primary:
-            card = path_to_card.get(sr.source_path)
-            if card:
-                res = _card_to_result(card, f"Keyword Match (Score: {sr.score:.1f})")
-                res.snippets.append(sr.snippet)
-                
-                if (mode == "recall" and len(primary) < 5) or cards_only:
-                    primary[sr.source_path] = res
-                else:
-                    if sr.source_path not in secondary:
-                        secondary[sr.source_path] = res
+        key = hit.source_path or hit.card_path or hit.title
+        if key not in primary:
+            card = _lookup_card_for_hit(path_to_card, hit)
+            res = (
+                _card_to_result(card, _card_search_reason(hit))
+                if card
+                else _hit_to_result(hit, _card_search_reason(hit))
+            )
+            if hit.snippet:
+                res.snippets.append(hit.snippet)
+
+            if (mode == "recall" and len(primary) < 5) or cards_only:
+                primary[key] = res
+            else:
+                if key not in secondary:
+                    secondary[key] = res
 
     # Convert to lists
     primary_list = list(primary.values())
@@ -171,7 +194,9 @@ async def search(rag: LightRAG | None, query: str, mode: str = "recall") -> Sear
         mode=mode,
         llm_answer=llm_answer,
         primary_results=primary_list,
-        secondary_results=secondary_list
+        secondary_results=secondary_list,
+        wiki_results=wiki_results,
+        wiki_source_references=wiki_source_references,
     )
 
 
@@ -186,3 +211,99 @@ def _card_to_result(card: dict, reason: str) -> SearchResult:
         snippets=[],
         broll_notes=card.get("visual", {}).get("broll_notes", "")
     )
+
+
+def _index_cards_by_path(cards: list[dict]) -> dict[str, dict]:
+    indexed = {}
+    for card in cards:
+        provenance = card.get("provenance", {}) if isinstance(card.get("provenance"), dict) else {}
+        for key in (provenance.get("normalized_file"), card.get("_path")):
+            if key:
+                indexed[str(key)] = card
+    return indexed
+
+
+def _search_card_hits(query: str, top_k: int = 20) -> list[CardSearchHit]:
+    try:
+        fts_matches = search_card_index(query, top_k=top_k, db_path=config.CARD_FTS_DB_PATH)
+    except Exception as exc:
+        logger.warning("Card FTS search failed; falling back to shadow_search: %s", exc)
+        fts_matches = []
+
+    if fts_matches:
+        return [_fts_match_to_hit(match) for match in fts_matches]
+
+    return [_shadow_match_to_hit(match) for match in shadow_search.search(query, top_k=top_k)]
+
+
+def _fts_match_to_hit(match: CardFtsMatch) -> CardSearchHit:
+    return CardSearchHit(
+        source_path=match.normalized_file,
+        card_path=match.card_path or None,
+        title=match.title,
+        url=match.post_url,
+        score=match.score,
+        snippet=match.snippet,
+        backend="fts",
+    )
+
+
+def _shadow_match_to_hit(match: shadow_search.ShadowMatch) -> CardSearchHit:
+    return CardSearchHit(
+        source_path=match.source_path,
+        card_path=match.card_path,
+        title=match.title,
+        url="",
+        score=match.score,
+        snippet=match.snippet,
+        backend="shadow",
+    )
+
+
+def _lookup_card_for_hit(path_to_card: dict[str, dict], hit: CardSearchHit) -> dict | None:
+    for key in (hit.source_path, hit.card_path or ""):
+        if key and key in path_to_card:
+            return path_to_card[key]
+    return None
+
+
+def _hit_to_result(hit: CardSearchHit, reason: str) -> SearchResult:
+    return SearchResult(
+        source_path=hit.source_path,
+        card_path=hit.card_path,
+        title=hit.title,
+        url=hit.url,
+        relevance_reason=reason,
+        snippets=[],
+    )
+
+
+def _card_search_reason(hit: CardSearchHit) -> str:
+    if hit.backend == "fts":
+        return f"FTS Match (BM25 score: {hit.score:.3g})"
+    return f"Shadow fallback match (score: {hit.score:.1f})"
+
+
+def _find_wiki_results(query: str) -> list[WikiSearchResult]:
+    if not config.WIKI_ENABLED:
+        return []
+    try:
+        return find_wiki_context(query, wiki_dir=config.WIKI_DIR, top_k=config.WIKI_TOP_K)
+    except OSError as exc:
+        logger.warning("Wiki context search failed: %s", exc)
+        return []
+
+
+def _resolve_wiki_references(results: list[WikiSearchResult]) -> dict[str, list[WikiResolvedSource]]:
+    if not config.WIKI_ENABLED or not results:
+        return {}
+    try:
+        return resolve_wiki_references(
+            [result.page_path for result in results],
+            wiki_dir=config.WIKI_DIR,
+            index_dir=config.WIKI_INDEX_DIR,
+            enriched_dir=config.ENRICHED_DIR,
+        )
+    except OSError as exc:
+        logger.warning("Wiki source resolution failed: %s", exc)
+        return {}

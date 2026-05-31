@@ -16,7 +16,7 @@ import logging
 from dataclasses import dataclass, field
 
 import config
-from fetcher.telegram_client import TelegramMessage
+from fetcher.telegram_client import TelegramMedia, TelegramMessage
 
 logger = logging.getLogger("geospoiler.router")
 
@@ -33,6 +33,9 @@ class ClassifiedMessage:
     web_urls: list[str] = field(default_factory=list)
     image_paths: list[str] = field(default_factory=list)
     has_video: bool = False  # Just a flag, no processing
+    has_voice: bool = False
+    has_document: bool = False
+    media: list[TelegramMedia] = field(default_factory=list)
 
 
 def classify(msg: TelegramMessage) -> ClassifiedMessage:
@@ -75,5 +78,8 @@ def classify(msg: TelegramMessage) -> ClassifiedMessage:
 
     # Video flag
     result.has_video = msg.has_video
+    result.has_voice = msg.has_voice
+    result.has_document = msg.has_document
+    result.media = list(msg.media)
 
     return result

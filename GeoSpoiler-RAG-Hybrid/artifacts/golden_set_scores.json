@@ -1,8 +1,17 @@
 {
-  "total": 21,
-  "passed": 21,
-  "failed": 0,
-  "average_score": 100.0,
+  "checked_at": "2026-05-27T02:03:18+00:00",
+  "query_model": "qwen/qwen3-next-80b-a3b-instruct",
+  "query_base_url": "https://integrate.api.nvidia.com/v1",
+  "mode": "hybrid",
+  "config_flags": {
+    "RERANKER_ENABLED": false,
+    "HYBRID_SYNTH_ENABLED": false,
+    "HYBRID_QUERY_CARDS_ENABLED": true
+  },
+  "total": 23,
+  "passed": 22,
+  "failed": 1,
+  "average_score": 98.7,
   "cases": [
     {
       "question": "Что в базе говорится о сходстве ультралевых и ультраправых?",
@@ -13,24 +22,23 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [
+        "Ультра левые и ультра правые\\11.txt",
+        "3299898370/11"
+      ],
+      "source_any_ok": true,
       "sources": [
         {
-          "post_url": "https://t.me/c/3328128766/134",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-08T03:48:56+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\134.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3889026624/3",
-          "channel": "Балтийские страны",
-          "date": "2026-03-24T21:18:12+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\3.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3299898370/17",
+          "post_url": "https://t.me/c/3299898370/11",
           "channel": "Ультра левые и ультра правые",
-          "date": "2026-03-03T15:44:03+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\17.txt"
+          "date": "2026-02-09T19:05:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\11.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/18",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-05T01:16:18+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\18.txt"
         }
       ]
     },
@@ -43,24 +51,14 @@
       "forbidden": [],
       "source_required": true,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
-        {
-          "post_url": "https://t.me/c/3299898370/18",
-          "channel": "Ультра левые и ультра правые",
-          "date": "2026-03-05T01:16:18+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\18.txt"
-        },
         {
           "post_url": "https://t.me/c/3299898370/11",
           "channel": "Ультра левые и ультра правые",
           "date": "2026-02-09T19:05:10+00:00",
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\11.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3328128766/140",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-08T19:42:16+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\140.txt"
         }
       ]
     },
@@ -73,6 +71,8 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
         {
           "post_url": "https://t.me/c/3299898370/9",
@@ -81,28 +81,28 @@
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\9.txt"
         },
         {
-          "post_url": "https://t.me/c/3299898370/18",
+          "post_url": "https://t.me/c/3299898370/11",
           "channel": "Ультра левые и ультра правые",
-          "date": "2026-03-05T01:16:18+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\18.txt"
+          "date": "2026-02-09T19:05:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\11.txt"
         },
         {
-          "post_url": "https://t.me/c/3328128766/134",
+          "post_url": "https://t.me/c/3328128766/188",
           "channel": "Венгрия Словакия",
-          "date": "2026-04-08T03:48:56+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\134.txt"
+          "date": "2026-04-14T17:20:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\188.txt"
         },
         {
-          "post_url": "https://t.me/c/3328128766/150",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-10T21:04:28+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\150.txt"
+          "post_url": "https://t.me/c/3548806336/3",
+          "channel": "Англия",
+          "date": "2026-02-04T19:33:58+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Англия\\3.txt"
         },
         {
-          "post_url": "https://t.me/c/3328128766/193",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-16T20:57:51+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\193.txt"
+          "post_url": "https://t.me/c/3215620297/8",
+          "channel": "Корея",
+          "date": "2025-12-26T15:00:18+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\8.txt"
         }
       ]
     },
@@ -115,36 +115,38 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
         {
-          "post_url": "https://t.me/c/3299898370/19",
+          "post_url": "https://t.me/c/3299898370/12",
           "channel": "Ультра левые и ультра правые",
-          "date": "2026-03-24T17:31:09+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\19.txt"
+          "date": "2026-02-09T19:05:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\12.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/11",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-02-09T19:05:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\11.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/188",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-14T17:20:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\188.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/8",
+          "channel": "Корея",
+          "date": "2025-12-26T15:00:18+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\8.txt"
         },
         {
           "post_url": "https://t.me/c/3299898370/25",
           "channel": "Ультра левые и ультра правые",
           "date": "2026-04-20T15:45:56+00:00",
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\25.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3299898370/18",
-          "channel": "Ультра левые и ультра правые",
-          "date": "2026-03-05T01:16:18+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\18.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3299898370/14",
-          "channel": "Ультра левые и ультра правые",
-          "date": "2026-02-19T09:01:42+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\14.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3328128766/18",
-          "channel": "Венгрия Словакия",
-          "date": "2026-02-15T15:36:47+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\18.txt"
         }
       ]
     },
@@ -157,6 +159,8 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
         {
           "post_url": "https://t.me/c/3299898370/12",
@@ -165,28 +169,16 @@
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\12.txt"
         },
         {
-          "post_url": "https://t.me/c/3299898370/19",
+          "post_url": "https://t.me/c/3299898370/27",
           "channel": "Ультра левые и ультра правые",
-          "date": "2026-03-24T17:31:09+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\19.txt"
+          "date": "2026-04-23T11:54:17+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\27.txt"
         },
         {
           "post_url": "https://t.me/c/3328128766/182",
           "channel": "Венгрия Словакия",
           "date": "2026-04-13T16:21:48+00:00",
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\182.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3328128766/7",
-          "channel": "Венгрия Словакия",
-          "date": "2026-01-29T19:33:52+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\7.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3328128766/49",
-          "channel": "Венгрия Словакия",
-          "date": "2026-03-06T18:29:23+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\49.txt"
         }
       ]
     },
@@ -199,7 +191,27 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
+        {
+          "post_url": "https://t.me/c/3299898370/11",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-02-09T19:05:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\11.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/98",
+          "channel": "Венгрия Словакия",
+          "date": "2026-03-22T22:50:49+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\98.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/71",
+          "channel": "Венгрия Словакия",
+          "date": "2026-03-14T18:27:23+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\71.txt"
+        },
         {
           "post_url": "https://t.me/c/3299898370/19",
           "channel": "Ультра левые и ультра правые",
@@ -207,10 +219,10 @@
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\19.txt"
         },
         {
-          "post_url": "https://t.me/c/3328128766/98",
+          "post_url": "https://t.me/c/3328128766/188",
           "channel": "Венгрия Словакия",
-          "date": "2026-03-22T22:50:49+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\98.txt"
+          "date": "2026-04-14T17:20:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\188.txt"
         }
       ]
     },
@@ -223,24 +235,31 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [
+        "Куба\\5.txt",
+        "Куба\\8.txt",
+        "3841808641/5",
+        "3841808641/8"
+      ],
+      "source_any_ok": true,
       "sources": [
         {
-          "post_url": "https://t.me/c/3328128766/140",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-08T19:42:16+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\140.txt"
+          "post_url": "",
+          "channel": "",
+          "date": "",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\8.txt"
         },
         {
-          "post_url": "https://t.me/c/3841808641/6",
-          "channel": "Куба",
-          "date": "2026-03-30T16:47:25+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\6.txt"
+          "post_url": "",
+          "channel": "",
+          "date": "",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\5.txt"
         },
         {
-          "post_url": "https://t.me/c/3328128766/120",
-          "channel": "Венгрия Словакия",
-          "date": "2026-03-31T21:02:46+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\120.txt"
+          "post_url": "",
+          "channel": "",
+          "date": "",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\6.txt"
         }
       ]
     },
@@ -253,37 +272,56 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
-        {
-          "post_url": "https://t.me/c/3841808641/6",
-          "channel": "Куба",
-          "date": "2026-03-30T16:47:25+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\6.txt"
-        },
         {
           "post_url": "https://t.me/c/3841808641/7",
           "channel": "Куба",
           "date": "2026-03-30T16:47:29+00:00",
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\7.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3841808641/8",
+          "channel": "Куба",
+          "date": "2026-04-18T16:14:14+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\8.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3548806336/4",
+          "channel": "Англия",
+          "date": "2026-03-08T02:05:38+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Англия\\4.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/4",
+          "channel": "Венгрия Словакия",
+          "date": "2026-01-05T15:44:41+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\4.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/13",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:25:16+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\13.txt"
         }
       ]
     },
     {
       "question": "Что в базе говорится о протестах на Кубе?",
       "profile": "answer",
-      "score": 100,
-      "pass": true,
+      "score": 70,
+      "pass": false,
       "missing": [],
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [
+        "Куба\\5.txt",
+        "3841808641/5"
+      ],
+      "source_any_ok": false,
       "sources": [
-        {
-          "post_url": "https://t.me/c/3328128766/175",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-12T21:49:18+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\175.txt"
-        },
         {
           "post_url": "https://t.me/c/3841808641/7",
           "channel": "Куба",
@@ -291,16 +329,16 @@
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\7.txt"
         },
         {
-          "post_url": "https://t.me/c/3328128766/145",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-09T15:58:10+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\145.txt"
+          "post_url": "https://t.me/c/3841808641/8",
+          "channel": "Куба",
+          "date": "2026-04-18T16:14:14+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\8.txt"
         },
         {
-          "post_url": "https://t.me/c/3889026624/8",
-          "channel": "Балтийские страны",
-          "date": "2026-03-27T18:04:31+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\8.txt"
+          "post_url": "https://t.me/c/3328128766/5",
+          "channel": "Венгрия Словакия",
+          "date": "2026-01-12T16:02:22+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\5.txt"
         }
       ]
     },
@@ -313,13 +351,12 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [
+        "Куба\\8.txt",
+        "3841808641/8"
+      ],
+      "source_any_ok": true,
       "sources": [
-        {
-          "post_url": "https://t.me/c/3841808641/8",
-          "channel": "Куба",
-          "date": "2026-04-18T16:14:14+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\8.txt"
-        },
         {
           "post_url": "https://t.me/c/3841808641/7",
           "channel": "Куба",
@@ -327,22 +364,10 @@
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\7.txt"
         },
         {
-          "post_url": "https://t.me/c/3328128766/193",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-16T20:57:51+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\193.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3889026624/8",
-          "channel": "Балтийские страны",
-          "date": "2026-03-27T18:04:31+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\8.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3328128766/120",
-          "channel": "Венгрия Словакия",
-          "date": "2026-03-31T21:02:46+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\120.txt"
+          "post_url": "https://t.me/c/3841808641/8",
+          "channel": "Куба",
+          "date": "2026-04-18T16:14:14+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Куба\\8.txt"
         }
       ]
     },
@@ -355,36 +380,20 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
         {
-          "post_url": "https://t.me/c/3299898370/11",
-          "channel": "Ультра левые и ультра правые",
-          "date": "2026-02-09T19:05:10+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\11.txt"
+          "post_url": "",
+          "channel": "",
+          "date": "",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\2.txt"
         },
         {
-          "post_url": "https://t.me/c/3328128766/49",
-          "channel": "Венгрия Словакия",
-          "date": "2026-03-06T18:29:23+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\49.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3328128766/140",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-08T19:42:16+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\140.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3299898370/7",
-          "channel": "Ультра левые и ультра правые",
-          "date": "2026-01-14T17:06:29+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\7.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3328128766/134",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-08T03:48:56+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\134.txt"
+          "post_url": "",
+          "channel": "",
+          "date": "",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\4.txt"
         }
       ]
     },
@@ -397,7 +406,21 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
+        {
+          "post_url": "https://t.me/c/3328128766/173",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-12T20:35:03+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\173.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/15",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-13T09:46:05+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\15.txt"
+        },
         {
           "post_url": "https://t.me/c/3299898370/9",
           "channel": "Ультра левые и ультра правые",
@@ -405,28 +428,16 @@
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\9.txt"
         },
         {
-          "post_url": "https://t.me/c/3328128766/51",
-          "channel": "Венгрия Словакия",
-          "date": "2026-03-08T14:17:48+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\51.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3328128766/140",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-08T19:42:16+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\140.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3299898370/18",
-          "channel": "Ультра левые и ультра правые",
-          "date": "2026-03-05T01:16:18+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\18.txt"
-        },
-        {
           "post_url": "https://t.me/c/3328128766/188",
           "channel": "Венгрия Словакия",
           "date": "2026-04-14T17:20:10+00:00",
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\188.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/27",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-04-23T11:54:17+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\27.txt"
         }
       ]
     },
@@ -439,13 +450,9 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
-        {
-          "post_url": "https://t.me/c/3889026624/6",
-          "channel": "Балтийские страны",
-          "date": "2026-03-25T17:44:57+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\6.txt"
-        },
         {
           "post_url": "https://t.me/c/3889026624/4",
           "channel": "Балтийские страны",
@@ -453,10 +460,10 @@
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\4.txt"
         },
         {
-          "post_url": "https://t.me/c/3889026624/3",
+          "post_url": "https://t.me/c/3889026624/6",
           "channel": "Балтийские страны",
-          "date": "2026-03-24T21:18:12+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\3.txt"
+          "date": "2026-03-25T17:44:57+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\6.txt"
         }
       ]
     },
@@ -469,13 +476,14 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [
+        "Балтийские страны\\2.txt",
+        "Балтийские страны\\4.txt",
+        "3889026624/2",
+        "3889026624/4"
+      ],
+      "source_any_ok": true,
       "sources": [
-        {
-          "post_url": "https://t.me/c/3328128766/140",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-08T19:42:16+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\140.txt"
-        },
         {
           "post_url": "https://t.me/c/3889026624/4",
           "channel": "Балтийские страны",
@@ -483,10 +491,10 @@
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\4.txt"
         },
         {
-          "post_url": "https://t.me/c/3889026624/7",
-          "channel": "Балтийские страны",
-          "date": "2026-03-26T00:43:56+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Балтийские страны\\7.txt"
+          "post_url": "https://t.me/c/3328128766/15",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-13T09:46:05+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\15.txt"
         }
       ]
     },
@@ -499,19 +507,9 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
-        {
-          "post_url": "https://t.me/c/3328128766/7",
-          "channel": "Венгрия Словакия",
-          "date": "2026-01-29T19:33:52+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\7.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3328128766/92",
-          "channel": "Венгрия Словакия",
-          "date": "2026-03-18T17:39:15+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\92.txt"
-        },
         {
           "post_url": "https://t.me/c/3328128766/14",
           "channel": "Венгрия Словакия",
@@ -519,16 +517,28 @@
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\14.txt"
         },
         {
-          "post_url": "https://t.me/c/3328128766/140",
+          "post_url": "https://t.me/c/3328128766/16",
           "channel": "Венгрия Словакия",
-          "date": "2026-04-08T19:42:16+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\140.txt"
+          "date": "2026-02-14T22:46:48+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\16.txt"
         },
         {
-          "post_url": "https://t.me/c/3328128766/73",
+          "post_url": "https://t.me/c/3328128766/188",
           "channel": "Венгрия Словакия",
-          "date": "2026-03-14T18:59:58+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\73.txt"
+          "date": "2026-04-14T17:20:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\188.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/106",
+          "channel": "Венгрия Словакия",
+          "date": "2026-03-28T18:21:37+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\106.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/17",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-03T15:44:03+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\17.txt"
         }
       ]
     },
@@ -541,12 +551,26 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
         {
-          "post_url": "https://t.me/c/3328128766/198",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-22T16:11:31+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\198.txt"
+          "post_url": "",
+          "channel": "",
+          "date": "",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\198.txt"
+        },
+        {
+          "post_url": "",
+          "channel": "",
+          "date": "",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\144.txt"
+        },
+        {
+          "post_url": "",
+          "channel": "",
+          "date": "",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\195.txt"
         }
       ]
     },
@@ -559,7 +583,27 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
+        {
+          "post_url": "https://t.me/c/3215620297/7",
+          "channel": "Корея",
+          "date": "2025-12-18T15:01:23+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\7.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/12",
+          "channel": "Корея",
+          "date": "2026-02-06T16:37:38+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\12.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/2",
+          "channel": "Корея",
+          "date": "2025-11-02T15:31:45+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\2.txt"
+        },
         {
           "post_url": "https://t.me/c/3215620297/3",
           "channel": "Корея",
@@ -571,24 +615,6 @@
           "channel": "Корея",
           "date": "2026-03-10T07:26:15+00:00",
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\26.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3215620297/2",
-          "channel": "Корея",
-          "date": "2025-11-02T15:31:45+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\2.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3215620297/32",
-          "channel": "Корея",
-          "date": "2026-03-21T16:58:57+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\32.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3215620297/11",
-          "channel": "Корея",
-          "date": "2026-01-26T16:00:14+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\11.txt"
         }
       ]
     },
@@ -601,13 +627,9 @@
       "forbidden": [],
       "source_required": true,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
-        {
-          "post_url": "https://t.me/c/3215620297/12",
-          "channel": "Корея",
-          "date": "2026-02-06T16:37:38+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\12.txt"
-        },
         {
           "post_url": "https://t.me/c/3215620297/3",
           "channel": "Корея",
@@ -615,16 +637,22 @@
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\3.txt"
         },
         {
-          "post_url": "https://t.me/c/3215620297/4",
+          "post_url": "https://t.me/c/3215620297/12",
           "channel": "Корея",
-          "date": "2025-11-07T15:56:17+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\4.txt"
+          "date": "2026-02-06T16:37:38+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\12.txt"
         },
         {
-          "post_url": "https://t.me/c/3215620297/26",
+          "post_url": "https://t.me/c/3215620297/13",
           "channel": "Корея",
-          "date": "2026-03-10T07:26:15+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\26.txt"
+          "date": "2026-02-07T20:33:03+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\13.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/2",
+          "channel": "Корея",
+          "date": "2025-11-02T15:31:45+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\2.txt"
         }
       ]
     },
@@ -637,18 +665,20 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
         {
-          "post_url": "https://t.me/c/3328128766/134",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-08T03:48:56+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\134.txt"
+          "post_url": "",
+          "channel": "",
+          "date": "",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Англия\\3.txt"
         },
         {
-          "post_url": "https://t.me/c/3328128766/184",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-13T16:53:59+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\184.txt"
+          "post_url": "",
+          "channel": "",
+          "date": "",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Англия\\8.txt"
         }
       ]
     },
@@ -661,30 +691,14 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
-        {
-          "post_url": "https://t.me/c/3328128766/140",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-08T19:42:16+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\140.txt"
-        },
         {
           "post_url": "https://t.me/c/3548806336/8",
           "channel": "Англия",
           "date": "2026-04-01T16:58:33+00:00",
           "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Англия\\8.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3548806336/3",
-          "channel": "Англия",
-          "date": "2026-02-04T19:33:58+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Англия\\3.txt"
-        },
-        {
-          "post_url": "https://t.me/c/3548806336/4",
-          "channel": "Англия",
-          "date": "2026-03-08T02:05:38+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Англия\\4.txt"
         },
         {
           "post_url": "https://t.me/c/3548806336/9",
@@ -703,36 +717,95 @@
       "forbidden": [],
       "source_required": false,
       "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
       "sources": [
         {
-          "post_url": "https://t.me/c/3299898370/19",
+          "post_url": "https://t.me/c/3299898370/11",
           "channel": "Ультра левые и ультра правые",
-          "date": "2026-03-24T17:31:09+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\19.txt"
+          "date": "2026-02-09T19:05:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\11.txt"
         },
         {
-          "post_url": "https://t.me/c/3299898370/8",
+          "post_url": "https://t.me/c/3328128766/188",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-14T17:20:10+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\188.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/8",
+          "channel": "Корея",
+          "date": "2025-12-26T15:00:18+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Корея\\8.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/23",
           "channel": "Ультра левые и ультра правые",
-          "date": "2026-01-17T21:25:15+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\8.txt"
+          "date": "2026-04-14T15:58:24+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\23.txt"
         },
         {
-          "post_url": "https://t.me/c/3328128766/18",
-          "channel": "Венгрия Словакия",
-          "date": "2026-02-15T15:36:47+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\18.txt"
+          "post_url": "https://t.me/c/3299898370/18",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-05T01:16:18+00:00",
+          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Ультра левые и ультра правые\\18.txt"
+        }
+      ]
+    },
+    {
+      "question": "Какие кадры или визуалы можно использовать для ролика про Нарву и Эстонию?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "source_any": [
+        "Балтийские страны\\2.txt",
+        "Балтийские страны\\4.txt",
+        "3889026624/2",
+        "3889026624/4"
+      ],
+      "source_any_ok": true,
+      "sources": [
+        {
+          "post_url": "",
+          "channel": "",
+          "date": "",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Балтийские страны\\9.txt"
         },
         {
-          "post_url": "https://t.me/c/3328128766/22",
-          "channel": "Венгрия Словакия",
-          "date": "2026-02-20T19:25:16+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\22.txt"
+          "post_url": "",
+          "channel": "",
+          "date": "",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Балтийские страны\\6.txt"
         },
         {
-          "post_url": "https://t.me/c/3328128766/145",
-          "channel": "Венгрия Словакия",
-          "date": "2026-04-09T15:58:10+00:00",
-          "file_path": "D:\\ObsidianWiki\\GeoSpoiler-RAG\\output\\normalized\\Венгрия Словакия\\145.txt"
+          "post_url": "",
+          "channel": "",
+          "date": "",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Балтийские страны\\2.txt"
+        }
+      ]
+    },
+    {
+      "question": "Какой главный тезис о Кубе и её экономике продвигает автор?",
+      "profile": "answer",
+      "score": 100,
+      "pass": true,
+      "missing": [],
+      "forbidden": [],
+      "source_required": false,
+      "source_ok": true,
+      "source_any": [],
+      "source_any_ok": true,
+      "sources": [
+        {
+          "post_url": "",
+          "channel": "",
+          "date": "",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\8.txt"
         }
       ]
     }

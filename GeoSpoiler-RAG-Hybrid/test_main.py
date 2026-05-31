@@ -1,5 +1,7 @@
 import io
+import json
 import sys
+import tempfile
 import unittest
 import asyncio as py_asyncio
 from pathlib import Path
@@ -103,6 +105,57 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(sources), 1)
         self.assertEqual(sources[0]["post_url"], "https://t.me/example/2")
 
+    def test_extract_query_sources_uses_direct_reference_metadata(self):
+        result = {
+            "llm_response": {"content": "Answer\n\n### References\n- [1] Wiki source"},
+            "data": {
+                "references": [
+                    {
+                        "reference_id": "wiki-1-1",
+                        "file_path": "output/normalized/test/10.txt",
+                        "post_url": "https://t.me/c/1/10",
+                        "channel": "Test",
+                        "date": "2026-05-27T00:00:00+00:00",
+                    }
+                ]
+            },
+        }
+
+        with patch.object(main, "load_source_metadata_index", return_value={}):
+            sources = main._extract_query_sources(result)
+
+        self.assertEqual(len(sources), 1)
+        self.assertEqual(sources[0]["post_url"], "https://t.me/c/1/10")
+        self.assertEqual(sources[0]["channel"], "Test")
+
+    def test_extract_query_sources_reads_adjacent_meta_when_index_is_stale(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            source_path = Path(temp_dir) / "topic" / "148.txt"
+            source_path.parent.mkdir(parents=True, exist_ok=True)
+            source_path.write_text("Body", encoding="utf-8")
+            source_path.with_suffix(".meta.json").write_text(
+                json.dumps(
+                    {
+                        "post_url": "https://t.me/c/3328128766/148",
+                        "channel_name": "Hungary",
+                        "date": "2026-04-10T16:41:09+00:00",
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+            result = {
+                "llm_response": {"content": "Answer\n\n### References\n- [1] Source"},
+                "data": {"references": [{"reference_id": "card-1", "file_path": str(source_path)}]},
+            }
+
+            with patch.object(main, "load_source_metadata_index", return_value={}):
+                sources = main._extract_query_sources(result)
+
+        self.assertEqual(len(sources), 1)
+        self.assertEqual(sources[0]["post_url"], "https://t.me/c/3328128766/148")
+        self.assertEqual(sources[0]["channel"], "Hungary")
+
     def test_main_query_cli_joins_full_question_and_mode(self):
         captured = {}
         original_run = py_asyncio.run
@@ -155,7 +208,7 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(captured.get("mode"), "mix")
         self.assertEqual(captured.get("query_profile"), "source")
 
-    def test_main_query_cli_defaults_to_mix_when_mode_is_omitted(self):
+    def test_main_query_cli_uses_configured_default_when_mode_is_omitted(self):
         captured = {}
         original_run = py_asyncio.run
 
@@ -178,7 +231,7 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
                         main.main()
 
         self.assertEqual(captured.get("question"), "Ð§Ñ‚Ð¾ Ð² Ð±Ð°Ð·Ðµ Ð¿Ñ€Ð¾ ÐšÑƒÐ±Ñƒ")
-        self.assertEqual(captured.get("mode"), "mix")
+        self.assertEqual(captured.get("mode"), main._default_query_mode())
         self.assertIsNone(captured.get("query_profile"))
 
     def test_main_rebuild_cli_defaults_to_normalized_graph(self):
@@ -236,3 +289,170 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
                             main.main()
 
         self.assertFalse(captured.get("from_enriched"))
+
+    def test_main_fts_search_cli_parses_flags(self):
+        captured = {}
+
+        def fake_cmd_fts_search(query, top_k=10, compare_shadow=False):
+            captured["query"] = query
+            captured["top_k"] = top_k
+            captured["compare_shadow"] = compare_shadow
+
+        with patch.object(main, "setup_logging"):
+            with patch.object(main, "cmd_fts_search", fake_cmd_fts_search):
+                with patch.object(
+                    sys,
+                    "argv",
+                    [
+                        "main.py",
+                        "fts",
+                        "search",
+                        "Trump",
+                        "Orban",
+                        "--top-k",
+                        "3",
+                        "--compare-shadow",
+                    ],
+                ):
+                    main.main()
+
+        self.assertEqual(captured.get("query"), "Trump Orban")
+        self.assertEqual(captured.get("top_k"), 3)
+        self.assertTrue(captured.get("compare_shadow"))
+
+    def test_main_fts_rebuild_cli_dispatches(self):
+        captured = {}
+
+        def fake_cmd_fts_rebuild():
+            captured["called"] = True
+
+        with patch.object(main, "setup_logging"):
+            with patch.object(main, "cmd_fts_rebuild", fake_cmd_fts_rebuild):
+                with patch.object(sys, "argv", ["main.py", "fts", "rebuild"]):
+                    main.main()
+
+        self.assertTrue(captured.get("called"))
+
+    def test_main_registry_resolve_cli_passes_source_id(self):
+        captured = {}
+
+        def fake_cmd_registry_resolve(source_id):
+            captured["source_id"] = source_id
+
+        with patch.object(main, "setup_logging"):
+            with patch.object(main, "cmd_registry_resolve", fake_cmd_registry_resolve):
+                with patch.object(
+                    sys,
+                    "argv",
+                    ["main.py", "registry", "resolve", "telegram:1:10"],
+                ):
+                    main.main()
+
+        self.assertEqual(captured.get("source_id"), "telegram:1:10")
+
+    def test_main_registry_rebuild_cli_dispatches(self):
+        captured = {}
+
+        def fake_cmd_registry_rebuild():
+            captured["called"] = True
+
+        with patch.object(main, "setup_logging"):
+            with patch.object(main, "cmd_registry_rebuild", fake_cmd_registry_rebuild):
+                with patch.object(sys, "argv", ["main.py", "registry", "rebuild"]):
+                    main.main()
+
+        self.assertTrue(captured.get("called"))
+
+    def test_main_transcribe_backfill_cli_parses_flags(self):
+        captured = {}
+
+        def fake_cmd_transcribe_backfill(limit=3, channel=None, media_type=None, dry_run=False):
+            captured["limit"] = limit
+            captured["channel"] = channel
+            captured["media_type"] = media_type
+            captured["dry_run"] = dry_run
+
+        with patch.object(main, "setup_logging"):
+            with patch.object(main, "cmd_transcribe_backfill", fake_cmd_transcribe_backfill):
+                with patch.object(
+                    sys,
+                    "argv",
+                    [
+                        "main.py",
+                        "transcribe",
+                        "backfill",
+                        "--limit",
+                        "2",
+                        "--channel",
+                        "Channel",
+                        "--media-type",
+                        "voice",
+                        "--dry-run",
+                    ],
+                ):
+                    main.main()
+
+        self.assertEqual(captured.get("limit"), 2)
+        self.assertEqual(captured.get("channel"), "Channel")
+        self.assertEqual(captured.get("media_type"), "voice")
+        self.assertTrue(captured.get("dry_run"))
+
+    def test_main_validate_enriched_cli_parses_fail_flag(self):
+        captured = {}
+
+        def fake_cmd_validate_enriched(fail_on_error=False):
+            captured["fail_on_error"] = fail_on_error
+
+        with patch.object(main, "setup_logging"):
+            with patch.object(main, "cmd_validate_enriched", fake_cmd_validate_enriched):
+                with patch.object(sys, "argv", ["main.py", "validate", "enriched", "--fail-on-error"]):
+                    main.main()
+
+        self.assertTrue(captured.get("fail_on_error"))
+
+    def test_main_experiments_index_cli_dispatches(self):
+        captured = {}
+
+        def fake_cmd_experiments_index():
+            captured["called"] = True
+
+        with patch.object(main, "cmd_experiments_index", fake_cmd_experiments_index):
+            with patch.object(sys, "argv", ["main.py", "experiments", "index"]):
+                main.main()
+
+        self.assertTrue(captured.get("called"))
+
+    def test_cmd_wiki_init_creates_minimal_scaffold(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            wiki_dir = Path(tmpdir) / "wiki"
+            with patch.object(main.config, "WIKI_DIR", wiki_dir):
+                with patch.object(main.config, "WIKI_INDEX_DIR", wiki_dir / "indexes"):
+                    stats = main.cmd_wiki_init()
+
+            self.assertEqual(len(stats.directories_created), 5)
+            self.assertEqual(len(stats.files_created), 6)
+            for dirname in ["entities", "topics", "claims", "indexes"]:
+                self.assertTrue((wiki_dir / dirname).is_dir())
+            for filename in [
+                "_master_index.md",
+                "_schema.md",
+                "_health.md",
+                "_change_log.md",
+                "_log.md",
+                "_pending_updates.json",
+            ]:
+                self.assertTrue((wiki_dir / filename).is_file())
+
+    def test_cmd_wiki_init_does_not_overwrite_existing_files(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            wiki_dir = Path(tmpdir) / "wiki"
+            with patch.object(main.config, "WIKI_DIR", wiki_dir):
+                with patch.object(main.config, "WIKI_INDEX_DIR", wiki_dir / "indexes"):
+                    main.cmd_wiki_init()
+                    schema_path = wiki_dir / "_schema.md"
+                    schema_path.write_text("manual edit\n", encoding="utf-8")
+
+                    stats = main.cmd_wiki_init()
+
+            self.assertEqual(stats.files_created, [])
+            self.assertEqual(schema_path.read_text(encoding="utf-8"), "manual edit\n")

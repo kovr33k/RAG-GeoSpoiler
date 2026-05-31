@@ -38,6 +38,11 @@ function Resolve-PythonExe {
         }
     }
 
+    $projectVenvPython = Join-Path $PSScriptRoot ".venv\Scripts\python.exe"
+    if (Test-Path $projectVenvPython) {
+        return $projectVenvPython
+    }
+
     try {
         $pythonCmd = Get-Command python -ErrorAction Stop
         if ($pythonCmd.Source -and $pythonCmd.Source -notlike "*WindowsApps\python.exe") {

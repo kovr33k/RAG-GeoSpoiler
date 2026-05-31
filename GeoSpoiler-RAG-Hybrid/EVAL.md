@@ -1,0 +1,292 @@
+# Evaluation
+
+This document describes the current GeoSpoiler RAG evaluation workflow.
+It separates deterministic unit checks from live LLM quality checks.
+
+## Test Layers
+
+Use these layers in order:
+
+1. Unit tests: no network, no real Telegram, no live LLM.
+2. Local health/index checks: deterministic filesystem checks.
+3. Baseline probe: small live query sanity check.
+4. Golden set: full live query comparison.
+5. Focused LLM probe: targeted live checks for known source-grounding failures.
+
+Do not treat live LLM probes as unit tests. They measure model, retrieval, and
+source-grounding behavior under the current runtime configuration.
+
+## Current Trusted State
+
+The current trusted query/eval model is `deepseek-v4-flash` on the
+OpenAI-compatible DeepSeek endpoint.
+
+Recommended trusted flags:
+
+```text
+RERANKER_ENABLED=false
+HYBRID_SYNTH_ENABLED=true
+WIKI_ENABLED=true
+```
+
+Latest trusted results:
+
+- Focused probe: `6/6`, average score `100.0`.
+- Full golden set before rebuild: `23/23`, average score `100.0`.
+- Full golden set after clean rebuild: `23/23`, average score `100.0`.
+- Reranker experiment: `20/23`, average score `96.7`; keep reranker disabled.
+
+Primary artifacts:
+
+```text
+artifacts/llm_probe_deepseek_v4_flash_absence_fix_clearcache_scores.json
+artifacts/deepseek_v4_flash_clearcache_golden_set_scores.json
+artifacts/deepseek_v4_flash_rebuilt_clearcache_golden_set_scores.json
+artifacts/deepseek_v4_flash_reranker_clearcache_golden_set_scores.json
+artifacts/experiment_registry.md
+```
+
+## Unit Tests
+
+Run all no-network tests with:
+
+```powershell
+python -m unittest
+```
+
+Use the project Python when running from automation:
+
+```powershell
+C:\Users\artem\AppData\Local\Programs\Python\Python311\python.exe -m unittest
+```
+
+Relevant focused suites:
+
+```powershell
+python -m unittest test_golden_set_unit test_golden_compare test_baseline_probe
+python -m unittest test_wiki_index test_wiki_health test_wiki_resolver
+python -m unittest test_media_capture test_transcription_backfill
+```
+
+## Local Health Checks
+
+Wiki health:
+
+```powershell
+python main.py wiki health
+```
+
+FTS sanity:
+
+```powershell
+python main.py fts rebuild
+python main.py fts search "Trump Orban" --top-k 5
+```
+
+Source registry sanity:
+
+```powershell
+python main.py registry rebuild
+python main.py registry resolve telegram:3328128766:148
+```
+
+These checks are local and should not call a live model.
+
+## Baseline Probe
+
+The baseline probe records the active query model/config and can run a small
+manual query set.
+
+```powershell
+python main.py baseline probe 3
+```
+
+Artifacts:
+
+```text
+artifacts/baseline_model_probe_metadata.json
+artifacts/baseline_model_probe_results.md
+```
+
+For isolated baseline work, prefer:
+
+```text
+RERANKER_ENABLED=false
+HYBRID_SYNTH_ENABLED=false
+HYBRID_QUERY_CARDS_ENABLED=true
+```
+
+Use a cache buster only when stale LightRAG cache would invalidate the run:
+
+```powershell
+$env:BASELINE_PROBE_CACHE_BUSTER="run-20260528"
+python main.py baseline probe 3
+```
+
+## Golden Set
+
+The full golden set lives in `test_golden_set.py`; the human-readable question
+guide lives in `GOLDEN_SET.md`.
+
+Run a small smoke subset:
+
+```powershell
+$env:GOLDEN_CASE_LIMIT="3"
+python test_golden_set.py
+```
+
+Run the full golden set:
+
+```powershell
+python test_golden_set.py
+```
+
+Useful output overrides:
+
+```powershell
+$env:GOLDEN_RESULTS_FILE="artifacts/my_run_results.md"
+$env:GOLDEN_SCORES_FILE="artifacts/my_run_scores.json"
+python test_golden_set.py
+```
+
+Retry/delay controls:
+
+```text
+GOLDEN_QUERY_DELAY_SECONDS
+GOLDEN_QUERY_RETRIES
+GOLDEN_RETRY_BACKOFF_SECONDS
+```
+
+Artifacts:
+
+```text
+artifacts/golden_set_results.md
+artifacts/golden_set_scores.json
+```
+
+Golden scoring checks:
+
+- required answer terms;
+- forbidden hallucination/technical-leakage terms;
+- source-required questions;
+- expected source selection for known cases;
+- per-case pass/fail and average score.
+
+## Golden Comparison
+
+Compare two golden score JSON files:
+
+```powershell
+python golden_compare.py artifacts/baseline_scores.json artifacts/candidate_scores.json --output artifacts/compare.md
+```
+
+Use this after changes to:
+
+- wiki context;
+- retrieval ranking;
+- synthesis prompts;
+- reranker configuration;
+- model/provider settings.
+
+Regressions to inspect first:
+
+- pass to fail;
+- negative score delta;
+- `source_ok` or `source_any_ok` getting worse;
+- focus questions about sources, fake/deepfake separation, or provenance.
+
+## Focused Live LLM Probe
+
+`llm_verification_probe.py` is a small live probe for known weak points:
+
+- F1 Trump/Orban source grounding;
+- Q7 Cuba talks;
+- Q9 Cuba protests;
+- Q22 Narva visuals;
+- North Korea source-control query;
+- AfD funding absence-control query.
+
+Run:
+
+```powershell
+python llm_verification_probe.py
+```
+
+Optional cache clear:
+
+```powershell
+$env:LLM_PROBE_CLEAR_CACHE="true"
+python llm_verification_probe.py
+```
+
+Output overrides:
+
+```powershell
+$env:LLM_PROBE_RESULTS_FILE="artifacts/probe_results.md"
+$env:LLM_PROBE_SCORES_FILE="artifacts/probe_scores.json"
+python llm_verification_probe.py
+```
+
+## Reranker Evaluation
+
+Keep reranker evaluation separate from wiki and synthesis changes.
+
+Recommended sequence:
+
+1. Run golden with `RERANKER_ENABLED=false`.
+2. Run the same golden with `RERANKER_ENABLED=true`.
+3. Keep `WIKI_ENABLED` and `HYBRID_SYNTH_ENABLED` explicit in both runs.
+4. Compare with `golden_compare.py`.
+5. Inspect latency, source grounding, and unsupported confident claims.
+
+Do not accept the reranker only because average score improves; source
+grounding must not regress.
+
+## Experiment Registry
+
+Use the local registry after golden/probe/smoke runs to get one compact view of
+all score artifacts:
+
+```powershell
+python main.py experiments index
+```
+
+Outputs:
+
+```text
+artifacts/experiment_registry.json
+artifacts/experiment_registry.md
+```
+
+The registry is read-only over existing `*_scores.json` files. It does not run
+new LLM calls and should be regenerated after meaningful eval runs.
+
+## Recording Results
+
+Use:
+
+- `DEVELOPMENT_RETURN_LOG.md` for development breadcrumbs, blocked checks, and
+  local implementation notes.
+- `LLM_VERIFICATION_QUEUE.md` for live model/provider checks, model candidates,
+  endpoint failures, and source-grounding issues that require real LLM behavior.
+
+When a live run matters, record:
+
+- date;
+- command;
+- model and endpoint;
+- key env flags;
+- pass count and average score;
+- artifact paths;
+- failed cases and likely cause.
+
+## Safety Rules
+
+- Do not run LightRAG rebuild as part of eval unless the change explicitly
+  requires it.
+- Do not mix model change, retrieval change, synthesis change, and reranker
+  change in one comparison.
+- Clear LightRAG LLM cache only when stale cross-model answers would invalidate
+  the result, and keep the backup path.
+- Treat source-grounding failures as retrieval/evidence issues first, not as
+  proof that the LLM endpoint is unusable.

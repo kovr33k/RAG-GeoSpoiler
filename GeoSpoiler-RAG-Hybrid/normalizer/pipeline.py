@@ -11,7 +11,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 import config
-from fetcher.telegram_client import TelegramMessage
+from fetcher.telegram_client import TelegramMedia, TelegramMessage
 from normalizer.router import ClassifiedMessage, classify
 from normalizer.text_handler import normalize_text
 from normalizer.youtube_handler import extract_youtube_text
@@ -19,6 +19,7 @@ from normalizer.web_handler import extract_web_text
 from normalizer.instagram_handler import extract_instagram_text
 from normalizer.image_handler import describe_image
 from normalizer.ai_chat_handler import queue_for_review
+from normalizer.transcription_handler import TranscriptionResult, transcribe_media
 from normalizer.translator import translate_to_russian_if_needed
 
 logger = logging.getLogger("geospoiler.normalizer")
@@ -118,8 +119,8 @@ def normalize_message(
         img_desc = describe_image(img_path, caption=caption)
         sections.append(img_desc)
 
-    if classified.has_video:
-        sections.append("[Видео: пост содержал видео - не обработано]")
+    media_sections, transcription_metadata = _build_media_sections(classified, msg)
+    sections.extend(media_sections)
 
     for url in classified.youtube_urls:
         yt_text = extract_youtube_text(url)
@@ -157,7 +158,7 @@ def normalize_message(
     translated_body = translate_to_russian_if_needed(body_text)
     
     full_text = f"{header}\n\n{translated_body}"
-    metadata = _build_metadata(msg, classified)
+    metadata = _build_metadata(msg, classified, transcription_metadata)
 
     filepath = _save_normalized(msg, full_text, metadata)
     logger.info(f"  Normalized: {filepath.name} ({len(full_text)} chars)")
@@ -262,8 +263,14 @@ def _build_header(msg: TelegramMessage) -> str:
     return "[" + " | ".join(parts) + "]"
 
 
-def _build_metadata(msg: TelegramMessage, classified: ClassifiedMessage) -> dict:
+def _build_metadata(
+    msg: TelegramMessage,
+    classified: ClassifiedMessage,
+    transcriptions: list[dict] | None = None,
+) -> dict:
     """Build structured metadata saved alongside the normalized text."""
+    transcriptions = transcriptions or []
+    media = [_media_to_metadata(item, transcriptions) for item in classified.media]
     return {
         "channel_name": msg.channel_name,
         "channel_id": msg.channel_id,
@@ -278,14 +285,107 @@ def _build_metadata(msg: TelegramMessage, classified: ClassifiedMessage) -> dict
         "has_text": classified.has_text,
         "has_images": bool(classified.image_paths),
         "image_count": len(classified.image_paths),
+        "image_paths": list(classified.image_paths),
         "has_video": classified.has_video,
-        "has_voice": msg.has_voice,
-        "has_document": msg.has_document,
+        "has_voice": classified.has_voice,
+        "has_document": classified.has_document,
+        "media_count": len(media),
+        "media": media,
+        "transcriptions": transcriptions,
+        "native_media_paths": [
+            item["file_path"]
+            for item in media
+            if item["media_type"] in {"video", "audio", "voice"} and item["file_path"]
+        ],
         "youtube_urls": classified.youtube_urls,
         "instagram_urls": classified.instagram_urls,
         "ai_chat_urls": classified.ai_chat_urls,
         "web_urls": classified.web_urls,
     }
+
+
+def _build_media_sections(
+    classified: ClassifiedMessage,
+    msg: TelegramMessage,
+) -> tuple[list[str], list[dict]]:
+    """Create non-transcription placeholders for captured native media."""
+    sections = []
+    transcriptions = []
+    for item in classified.media:
+        if item.media_type not in {"video", "audio", "voice"}:
+            continue
+        sections.append(_format_media_placeholder(item))
+        result = transcribe_media(item, msg.channel_name, msg.message_id)
+        transcript_meta = _transcription_to_metadata(item, result)
+        transcriptions.append(transcript_meta)
+        if result.status == "transcribed" and result.text.strip():
+            sections.append(_format_transcript_section(item, result))
+
+    if not sections and classified.has_video:
+        sections.append("[Видео: пост содержал видео - не обработано]")
+    if not sections and classified.has_voice:
+        sections.append("[Аудио: пост содержал аудио - не обработано]")
+    return sections, transcriptions
+
+
+def _format_media_placeholder(item: TelegramMedia) -> str:
+    if item.media_type == "video":
+        prefix = "Видео: пост содержал видео - не обработано"
+    elif item.media_type == "voice":
+        prefix = "Аудио: пост содержал голосовое сообщение - не обработано"
+    else:
+        prefix = "Аудио: пост содержал аудио - не обработано"
+
+    parts = [prefix, f"status={item.download_status}"]
+    if item.file_path:
+        parts.append(f"path={item.file_path}")
+    if item.mime_type:
+        parts.append(f"mime={item.mime_type}")
+    if item.error:
+        parts.append(f"error={item.error}")
+    return "[" + " | ".join(parts) + "]"
+
+
+def _format_transcript_section(item: TelegramMedia, result: TranscriptionResult) -> str:
+    label = "Transcript"
+    if item.media_type == "voice":
+        label = "Voice transcript"
+    elif item.media_type == "video":
+        label = "Video transcript"
+    artifact = f" | artifact={result.artifact_path}" if result.artifact_path else ""
+    return f"[{label}{artifact}]\n{result.text.strip()}"
+
+
+def _transcription_to_metadata(item: TelegramMedia, result: TranscriptionResult) -> dict:
+    return {
+        "media_type": item.media_type,
+        "message_id": item.message_id,
+        "source_file_path": item.file_path,
+        "status": result.status,
+        "artifact_path": result.artifact_path,
+        "error": result.error,
+    }
+
+
+def _media_to_metadata(item: TelegramMedia, transcriptions: list[dict] | None = None) -> dict:
+    payload = {
+        "media_type": item.media_type,
+        "mime_type": item.mime_type,
+        "message_id": item.message_id,
+        "file_path": item.file_path,
+        "download_status": item.download_status,
+        "error": item.error,
+    }
+    for transcript in transcriptions or []:
+        if (
+            transcript["message_id"] == item.message_id
+            and transcript["source_file_path"] == item.file_path
+        ):
+            payload["transcription_status"] = transcript["status"]
+            payload["transcript_path"] = transcript["artifact_path"]
+            payload["transcription_error"] = transcript["error"]
+            break
+    return payload
 
 
 def _strip_urls_from_text(text: str, urls: list[str]) -> str:

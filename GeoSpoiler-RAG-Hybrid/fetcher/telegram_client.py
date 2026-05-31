@@ -32,6 +32,18 @@ logger = logging.getLogger("geospoiler.fetcher")
 
 
 @dataclass
+class TelegramMedia:
+    """Metadata for an attached Telegram media item."""
+
+    media_type: str
+    mime_type: str = ""
+    message_id: int = 0
+    file_path: str = ""
+    download_status: str = "not_attempted"
+    error: str = ""
+
+
+@dataclass
 class TelegramMessage:
     """Normalized representation of a Telegram message (or grouped album)."""
 
@@ -48,6 +60,7 @@ class TelegramMessage:
     forward_date: datetime | None = None
     # Media
     image_paths: list[str] = field(default_factory=list)   # Local paths to downloaded images
+    media: list[TelegramMedia] = field(default_factory=list)
     has_video: bool = False
     has_voice: bool = False
     has_document: bool = False
@@ -283,26 +296,117 @@ class TelegramFetcher:
                 img_path = await self._download_image(m, channel)
                 if img_path:
                     tg_msg.image_paths.append(img_path)
+                    tg_msg.media.append(TelegramMedia(
+                        media_type="image",
+                        message_id=m.id,
+                        file_path=img_path,
+                        download_status="downloaded",
+                    ))
+                else:
+                    tg_msg.media.append(TelegramMedia(
+                        media_type="image",
+                        message_id=m.id,
+                        download_status="failed",
+                        error="download_failed",
+                    ))
             elif isinstance(m.media, MessageMediaDocument):
                 doc = m.media.document
                 if doc:
                     mime = getattr(doc, "mime_type", "") or ""
-                    if mime.startswith("video/"):
+                    media_type = _document_media_type(doc)
+                    if media_type == "video":
                         tg_msg.has_video = True
-                    elif mime.startswith("audio/") or "voice" in mime:
+                        tg_msg.media.append(await self._download_native_media(
+                            m,
+                            channel,
+                            media_type=media_type,
+                            mime_type=mime,
+                        ))
+                    elif media_type in {"audio", "voice"}:
                         tg_msg.has_voice = True
-                    elif mime.startswith("image/"):
+                        tg_msg.media.append(await self._download_native_media(
+                            m,
+                            channel,
+                            media_type=media_type,
+                            mime_type=mime,
+                        ))
+                    elif media_type == "image":
                         img_path = await self._download_image(m, channel)
                         if img_path:
                             tg_msg.image_paths.append(img_path)
+                            tg_msg.media.append(TelegramMedia(
+                                media_type="image",
+                                mime_type=mime,
+                                message_id=m.id,
+                                file_path=img_path,
+                                download_status="downloaded",
+                            ))
+                        else:
+                            tg_msg.media.append(TelegramMedia(
+                                media_type="image",
+                                mime_type=mime,
+                                message_id=m.id,
+                                download_status="failed",
+                                error="download_failed",
+                            ))
                     else:
                         tg_msg.has_document = True
+                        tg_msg.media.append(TelegramMedia(
+                            media_type="document",
+                            mime_type=mime,
+                            message_id=m.id,
+                            download_status="not_attempted",
+                        ))
 
         # Extract URLs from text
         if combined_text:
             tg_msg.urls = config.WEB_URL_PATTERN.findall(combined_text)
 
         return tg_msg
+
+    async def _download_native_media(
+        self,
+        message,
+        channel: dict,
+        media_type: str,
+        mime_type: str = "",
+    ) -> TelegramMedia:
+        """Download native video/audio/voice media and return capture metadata."""
+        record = TelegramMedia(
+            media_type=media_type,
+            mime_type=mime_type,
+            message_id=message.id,
+        )
+        if not config.MEDIA_CAPTURE_ENABLED:
+            record.download_status = "disabled"
+            record.error = "MEDIA_CAPTURE_ENABLED=false"
+            return record
+
+        max_bytes = getattr(config, "MEDIA_CAPTURE_MAX_BYTES", 0)
+        size = _message_file_size(message)
+        if max_bytes > 0 and size is not None and size > max_bytes:
+            record.download_status = "skipped"
+            record.error = f"file_size_exceeds_limit:{size}>{max_bytes}"
+            return record
+
+        try:
+            media_dir = config.MEDIA_CACHE_DIR / _sanitize(channel["title"]) / media_type
+            media_dir.mkdir(parents=True, exist_ok=True)
+            path = await message.download_media(
+                file=str(media_dir / f"msg_{message.id}"),
+            )
+            if path:
+                record.file_path = str(path)
+                record.download_status = "downloaded"
+                logger.debug(f"    Downloaded {media_type}: {path}")
+            else:
+                record.download_status = "failed"
+                record.error = "download_media_returned_empty_path"
+        except Exception as e:
+            record.download_status = "failed"
+            record.error = str(e)
+            logger.warning(f"    Failed to download {media_type} msg_id={message.id}: {e}")
+        return record
 
     async def _download_image(self, message, channel: dict) -> str | None:
         """Download an image from a message to media_cache/. Returns file path."""
@@ -340,3 +444,33 @@ class TelegramFetcher:
 def _sanitize(name: str) -> str:
     """Sanitize a string for use as a directory/file name."""
     return "".join(c if c.isalnum() or c in " _-" else "_" for c in name).strip()
+
+
+def _document_media_type(document) -> str:
+    """Classify a Telegram document payload into the media type we track."""
+    mime = getattr(document, "mime_type", "") or ""
+    if mime.startswith("video/"):
+        return "video"
+    if mime.startswith("image/"):
+        return "image"
+    if mime.startswith("audio/") or "voice" in mime:
+        for attr in getattr(document, "attributes", []) or []:
+            if getattr(attr, "voice", False):
+                return "voice"
+        if "voice" in mime:
+            return "voice"
+        return "audio"
+    return "document"
+
+
+def _message_file_size(message) -> int | None:
+    """Return a best-effort Telegram media size in bytes."""
+    file_info = getattr(message, "file", None)
+    size = getattr(file_info, "size", None)
+    if size is None:
+        document = getattr(getattr(message, "media", None), "document", None)
+        size = getattr(document, "size", None)
+    try:
+        return int(size) if size is not None else None
+    except (TypeError, ValueError):
+        return None

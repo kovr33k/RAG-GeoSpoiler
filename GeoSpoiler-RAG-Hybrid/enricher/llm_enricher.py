@@ -12,6 +12,7 @@ import re
 import requests
 
 import config
+from llm_auth import auth_headers
 
 logger = logging.getLogger("geospoiler.enricher.llm")
 
@@ -267,6 +268,7 @@ def _call_llm(system: str, user: str) -> dict:
         "temperature": 0.2,
         "response_format": {"type": "json_object"},
     }
+    payload.update(_deepseek_v4_options(config.ENRICHMENT_MODEL, config.ENRICHMENT_BASE_URL))
 
     try:
         content = _post_with_hard_timeout(payload)
@@ -317,10 +319,7 @@ def _post_with_hard_timeout(payload: dict) -> str:
             
         response = requests.post(
             f"{config.ENRICHMENT_BASE_URL}/chat/completions",
-            headers={
-                "Authorization": f"Bearer {config.ENRICHMENT_API_KEY}",
-                "Content-Type": "application/json",
-            },
+            headers=auth_headers(config.ENRICHMENT_API_KEY, config.ENRICHMENT_BASE_URL),
             json=payload,
             timeout=config.LLM_TIMEOUT_SECONDS,
         )
@@ -348,14 +347,12 @@ def _call_llm_fallback(system: str, user: str) -> dict:
         ],
         "temperature": 0.2,
     }
+    payload.update(_deepseek_v4_options(config.ENRICHMENT_MODEL, config.ENRICHMENT_BASE_URL))
 
     try:
         response = requests.post(
             f"{config.ENRICHMENT_BASE_URL}/chat/completions",
-            headers={
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json",
-            },
+            headers=auth_headers(api_key, config.ENRICHMENT_BASE_URL),
             json=payload,
             timeout=config.LLM_TIMEOUT_SECONDS,
         )
@@ -369,6 +366,15 @@ def _call_llm_fallback(system: str, user: str) -> dict:
 
 
 # ── Helpers ─────────────────────────────────────────────────────────────────
+
+def _deepseek_v4_options(model: str, base_url: str) -> dict:
+    text = f"{model} {base_url}".casefold()
+    if config.LLM_REASONING_EFFORT:
+        return {}
+    if "deepseek-v4" not in text and "api.deepseek.com" not in text:
+        return {}
+    return {"thinking": {"type": "disabled"}}
+
 
 def _parse_json_response(content: str) -> dict:
     """Parse JSON from LLM response, handling markdown code blocks."""

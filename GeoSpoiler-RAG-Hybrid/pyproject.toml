@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geospoiler-rag-hybrid"
+version = "0.1.0"
+description = "Telegram-to-RAG OSINT memory pipeline with wiki, FTS, source registry, and evaluation tooling."
+requires-python = ">=3.11"
+dependencies = [
+    "telethon>=1.36.0",
+    "lightrag-hku>=1.0.0",
+    "openai>=2.0.0",
+    "trafilatura>=2.0.0",
+    "requests>=2.31.0",
+    "yt-dlp>=2024.0.0",
+    "instaloader>=4.13.0",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.0.0",
+    "aiofiles>=24.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit>=3.6.0",
+    "ruff>=0.8.0",
+]
+
+[tool.setuptools]
+packages = ["enricher", "fetcher", "loader", "normalizer", "retrieval"]
+py-modules = [
+    "auth",
+    "baseline_probe",
+    "cli",
+    "config",
+    "data_validation",
+    "experiment_registry",
+    "golden_compare",
+    "llm_auth",
+    "llm_verification_probe",
+    "main",
+    "models",
+    "reranker",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+extend-exclude = [
+    ".venv",
+    ".tmp-tests",
+    "artifacts",
+    "logs",
+    "media_cache",
+    "output",
+    "rag_storage",
+    "rag_storage_backups",
+    "rag_storage_failed_rebuild_*",
+    "state",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = [
+    "E501",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"test_*.py" = ["B011"]
+
+[tool.unittest]
+start-directory = "."
+pattern = "test_*.py"

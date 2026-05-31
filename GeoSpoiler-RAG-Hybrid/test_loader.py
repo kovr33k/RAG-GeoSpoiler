@@ -16,6 +16,7 @@ from loader.lightrag_loader import (  # noqa: E402
     _attach_card_context,
     _answer_looks_corrupt,
     _card_context_for_query,
+    _chat_completion_options,
     _shadow_fallback_result,
     _synthesize_hybrid_result,
     _source_doc_id,
@@ -97,6 +98,7 @@ class LoadTextsTests(unittest.IsolatedAsyncioTestCase):
             "[Канал: Topic | Дата: 2026-04-30 12:00 | Пост: https://t.me/example/3]\n\n"
             "Useful body.\n\n"
             "[Видео: пост содержал видео - не обработано]\n"
+            "[Аудио: пост содержал аудио - не обработано | status=downloaded | path=media_cache/topic/audio/msg_3.ogg]\n"
             "[AI-диалог: https://chatgpt.com/share/abc]\n"
         )
 
@@ -375,6 +377,34 @@ class QueryProfileTests(unittest.TestCase):
         self.assertEqual(profile["top_k"], 30)
 
 
+class ChatCompletionOptionsTests(unittest.TestCase):
+    def test_chat_completion_options_uses_reasoning_when_configured(self):
+        with patch.multiple(
+            lightrag_loader.config,
+            LLM_REASONING_EFFORT="low",
+        ):
+            options = _chat_completion_options(max_tokens=2048)
+
+        self.assertEqual(options["reasoning_effort"], "low")
+
+    def test_chat_completion_options_disables_deepseek_v4_thinking_by_default(self):
+        with patch.multiple(
+            lightrag_loader.config,
+            LLM_BASE_URL="https://api.deepseek.com",
+            LLM_MODEL="deepseek-v4-flash",
+            RAG_BUILD_BASE_URL="https://api.deepseek.com",
+            RAG_BUILD_MODEL="deepseek-v4-flash",
+            QUERY_BASE_URL="https://api.deepseek.com",
+            QUERY_MODEL="deepseek-v4-flash",
+            FALLBACK_SYNTH_BASE_URL="https://api.deepseek.com",
+            FALLBACK_SYNTH_MODEL="deepseek-v4-flash",
+            LLM_REASONING_EFFORT="",
+        ):
+            options = _chat_completion_options(max_tokens=2048)
+
+        self.assertEqual(options["extra_body"], {"thinking": {"type": "disabled"}})
+
+
 class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
     def test_shadow_fallback_matches_inflected_russian_terms(self):
         temp_root = Path(__file__).parent / ".tmp-tests" / "shadow_fallback_case"
@@ -626,6 +656,30 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(fixed["data"]["references"][1]["reference_id"], "card-2")
         self.assertEqual(fixed["data"]["shadow_context"], card_context["shadow_context"])
 
+    def test_attach_card_context_can_prioritize_card_references(self):
+        result = {
+            "response": "Answer",
+            "llm_response": {"content": "Answer"},
+            "data": {
+                "references": [
+                    {"reference_id": "graph-1", "file_path": "D:/topic/1.txt"},
+                    {"reference_id": "graph-2", "file_path": "D:/topic/2.txt"},
+                ]
+            },
+        }
+        card_context = {
+            "references": [
+                {"reference_id": "card-1", "file_path": "D:/topic/1.txt"},
+                {"reference_id": "card-2", "file_path": "D:/topic/3.txt"},
+            ],
+            "shadow_context": [{"reference_id": "card-1", "file_path": "D:/topic/1.txt", "facts": ["Fact"]}],
+        }
+
+        fixed = _attach_card_context(result, card_context, prefer_card_references=True)
+
+        reference_ids = [item["reference_id"] for item in fixed["data"]["references"]]
+        self.assertEqual(reference_ids, ["card-1", "card-2", "graph-2"])
+
     async def test_hybrid_synthesis_can_attach_context_without_second_llm(self):
         result = {
             "response": "Graph answer",
@@ -642,6 +696,105 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertEqual(fixed["llm_response"]["content"], "Graph answer")
         self.assertEqual(fixed["data"]["references"][0]["reference_id"], "card-1")
+
+    async def test_hybrid_synthesis_includes_wiki_context_in_llm_prompt(self):
+        calls = []
+
+        class FakeCompletions:
+            async def create(self, **kwargs):
+                calls.append(kwargs)
+                return SimpleNamespace(
+                    choices=[
+                        SimpleNamespace(
+                            message=SimpleNamespace(content="Synthesized answer with source.")
+                        )
+                    ]
+                )
+
+        class FakeClient:
+            def __init__(self, *args, **kwargs):
+                self.chat = SimpleNamespace(completions=FakeCompletions())
+
+        result = {
+            "response": "Graph answer",
+            "llm_response": {"content": "Graph answer"},
+            "data": {
+                "references": [
+                    {
+                        "reference_id": "wiki-1-1",
+                        "file_path": "D:/wiki/source/10.txt",
+                        "post_url": "https://t.me/c/1/10",
+                    }
+                ],
+                "wiki_context": [
+                    {
+                        "page_path": "claims/trump-supported-orban.md",
+                        "title": "Trump supported Orban",
+                        "score": 12,
+                        "snippet": "Trump supported Orban.",
+                        "source_ids": ["telegram:1:10"],
+                        "resolved_sources": [
+                            {
+                                "source_id": "telegram:1:10",
+                                "post_url": "https://t.me/c/1/10",
+                                "date": "2026-05-27T00:00:00+00:00",
+                            }
+                        ],
+                    }
+                ],
+                "wiki_references": [
+                    {
+                        "reference_id": "wiki-1-1",
+                        "file_path": "D:/wiki/source/10.txt",
+                        "post_url": "https://t.me/c/1/10",
+                    }
+                ],
+            },
+        }
+        card_context = {
+            "references": [{"reference_id": "card-1", "file_path": "D:/topic/148.txt"}],
+            "shadow_context": [
+                {
+                    "reference_id": "card-1",
+                    "file_path": "D:/topic/148.txt",
+                    "facts": ["Card fact about Orban."],
+                }
+            ],
+        }
+
+        with patch.multiple(
+            lightrag_loader.config,
+            HYBRID_SYNTH_ENABLED=True,
+            FALLBACK_SYNTH_API_KEY="test-key",
+            FALLBACK_SYNTH_BASE_URL="https://example.invalid/v1",
+            FALLBACK_SYNTH_MODEL="test-model",
+            FALLBACK_SYNTH_MAX_TOKENS=4096,
+            LLM_REASONING_EFFORT="low",
+            QUERY_DELAY_SECONDS=0,
+            FALLBACK_SYNTH_TIMEOUT_SECONDS=5,
+            LLM_TIMEOUT_SECONDS=5,
+        ):
+            with patch.object(lightrag_loader, "AsyncOpenAI", FakeClient):
+                fixed = await _synthesize_hybrid_result(
+                    "Откуда тезис про Трампа и Орбана?",
+                    "source",
+                    result,
+                    card_context,
+                )
+
+        self.assertEqual(fixed["llm_response"]["content"], "Synthesized answer with source.")
+        self.assertEqual(calls[0]["model"], "test-model")
+        self.assertEqual(calls[0]["max_tokens"], 4096)
+        self.assertEqual(calls[0]["reasoning_effort"], "low")
+        user_prompt = calls[0]["messages"][1]["content"]
+        system_prompt = calls[0]["messages"][0]["content"]
+        self.assertIn("Локальная wiki-память", user_prompt)
+        self.assertIn("Local wiki memory context", user_prompt)
+        self.assertIn("Trump supported Orban", user_prompt)
+        self.assertIn("https://t.me/c/1/10", user_prompt)
+        self.assertIn("wiki-память", system_prompt)
+        reference_ids = [item["reference_id"] for item in fixed["data"]["references"]]
+        self.assertEqual(reference_ids, ["card-1", "wiki-1-1"])
 
     async def test_query_rag_result_hybridizes_normal_lightrag_answer(self):
         class FakeQueryRag:
@@ -664,18 +817,106 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             fixed["hybrid_context"] = "cards"
             return fixed
 
-        with patch.object(lightrag_loader, "_card_context_for_query", return_value=card_context):
-            with patch.object(lightrag_loader, "_synthesize_hybrid_result", side_effect=fake_synth):
-                result = await lightrag_loader.query_rag_result(
-                    FakeQueryRag(),
-                    "Что в базе говорится про Трампа и Орбана?",
-                    mode="hybrid",
-                    query_profile="answer",
-                )
+        with patch.object(lightrag_loader.config, "WIKI_ENABLED", False):
+            with patch.object(lightrag_loader, "_card_context_for_query", return_value=card_context):
+                with patch.object(lightrag_loader, "_synthesize_hybrid_result", side_effect=fake_synth):
+                    result = await lightrag_loader.query_rag_result(
+                        FakeQueryRag(),
+                        "Что в базе говорится про Трампа и Орбана?",
+                        mode="hybrid",
+                        query_profile="answer",
+                    )
 
         self.assertEqual(result["llm_response"]["content"], "Hybrid answer")
         self.assertEqual(result["hybrid_context"], "cards")
         self.assertEqual(result["data"]["references"][0]["reference_id"], "card-1")
+
+    async def test_query_can_attach_wiki_context_without_second_llm(self):
+        temp_root = Path(__file__).parent / ".tmp-tests" / "query_wiki_context_case"
+        if temp_root.exists():
+            shutil.rmtree(temp_root)
+        temp_root.mkdir(parents=True, exist_ok=True)
+
+        class FakeQueryRag:
+            def __init__(self):
+                self.calls = []
+
+            async def aquery_llm(self, *args, **kwargs):
+                self.calls.append({"args": args, "kwargs": kwargs})
+                return {
+                    "response": "Graph answer about Orban.",
+                    "llm_response": {"content": "Graph answer about Orban."},
+                    "data": {"references": []},
+                }
+
+        try:
+            wiki_dir = temp_root / "output" / "wiki"
+            enriched_dir = temp_root / "output" / "enriched"
+            (wiki_dir / "claims").mkdir(parents=True, exist_ok=True)
+            enriched_dir.mkdir(parents=True, exist_ok=True)
+            (wiki_dir / "claims" / "trump-supported-orban.md").write_text(
+                "# Trump supported Orban\n\n"
+                "## Evidence\n\n"
+                "- telegram:1:10 - source_claim: Trump supported Orban.\n",
+                encoding="utf-8",
+            )
+            (enriched_dir / "10.enriched.json").write_text(
+                json.dumps(
+                    {
+                        "triage": "keep",
+                        "provenance": {
+                            "channel_id": 1,
+                            "message_id": 10,
+                            "channel_name": "Test",
+                            "date": "2026-05-27T00:00:00+00:00",
+                            "post_url": "https://t.me/c/1/10",
+                            "normalized_file": "output/normalized/test/10.txt",
+                        },
+                        "key_facts": [
+                            {
+                                "text": "Trump supported Orban.",
+                                "claim_type": "source_claim",
+                            }
+                        ],
+                        "source_chain": {"youtube_url": None},
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+
+            rag = FakeQueryRag()
+            with patch.multiple(
+                lightrag_loader.config,
+                PROJECT_ROOT=temp_root,
+                WIKI_ENABLED=True,
+                WIKI_DIR=wiki_dir,
+                WIKI_INDEX_DIR=wiki_dir / "indexes",
+                ENRICHED_DIR=enriched_dir,
+                WIKI_TOP_K=5,
+                HYBRID_QUERY_CARDS_ENABLED=False,
+                HYBRID_SYNTH_ENABLED=False,
+            ):
+                with patch.object(lightrag_loader, "_synthesize_hybrid_result") as synth_mock:
+                    result = await lightrag_loader.query_rag_result(
+                        rag,
+                        "Trump Orban support",
+                        mode="hybrid",
+                        query_profile="source",
+                    )
+
+            self.assertEqual(len(rag.calls), 1)
+            synth_mock.assert_not_called()
+            param = rag.calls[0]["kwargs"]["param"]
+            self.assertIn("Local wiki memory context", param.user_prompt)
+            self.assertIn("Trump supported Orban", param.user_prompt)
+            self.assertIn("https://t.me/c/1/10", param.user_prompt)
+            self.assertEqual(result["data"]["wiki_context"][0]["page_path"], "claims/trump-supported-orban.md")
+            self.assertEqual(result["data"]["wiki_references"][0]["post_url"], "https://t.me/c/1/10")
+            self.assertEqual(result["data"]["references"][0]["reference_id"], "wiki-1-1")
+        finally:
+            if temp_root.exists():
+                shutil.rmtree(temp_root)
 
     async def test_query_rag_result_uses_shadow_fallback_on_lightrag_error(self):
         class FailingQueryRag:
@@ -706,6 +947,20 @@ class AnswerPostprocessTests(unittest.TestCase):
     def test_postprocess_uses_explicit_absent_word_for_unanswered_funding_questions(self):
         answer = _postprocess_answer_text(
             "В контексте не указано, кто напрямую финансирует AfD.",
+            "Кто финансирует AfD?",
+            "answer",
+        )
+
+        self.assertIn("отсутств", answer.casefold())
+        self.assertIn("нельзя определить", answer.casefold())
+
+    def test_postprocess_handles_deepseek_funding_absence_wording(self):
+        answer = _postprocess_answer_text(
+            (
+                "В предоставленной базе данных нет прямого ответа на вопрос о том, "
+                "кто финансирует партию AfD. Имеющиеся сведения не содержат информации "
+                "о конкретных источниках финансирования."
+            ),
             "Кто финансирует AfD?",
             "answer",
         )

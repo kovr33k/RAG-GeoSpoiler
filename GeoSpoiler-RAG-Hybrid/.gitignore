@@ -15,3 +15,29 @@ venv/
 
 # Local test scratch space
 .tmp-tests/
+
+# Secrets and local credentials
+.env
+.env.*
+!.env.example
+state/
+
+# Generated local data
+logs/
+media_cache/
+output/
+rag_storage_backups/
+rag_storage_failed_rebuild_*/
+
+# Runtime caches and local databases
+rag_storage/kv_store_llm_response_cache*.json
+artifacts/*.sqlite
+artifacts/*.pid
+artifacts/*stdout.log
+artifacts/*stderr.log
+artifacts/*cache_backups/
+artifacts/reranker_cache_backups/
+artifacts/retired_model_archive/
+
+# Retired provider setup helpers
+setup_vertex_adc.ps1
