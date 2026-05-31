@@ -14,6 +14,7 @@ from loader.lightrag_loader import (  # noqa: E402
     _postprocess_extraction_response,
     _postprocess_answer_text,
     _attach_card_context,
+    _attach_reference_hints,
     _answer_looks_corrupt,
     _card_context_for_query,
     _chat_completion_options,
@@ -990,6 +991,79 @@ class AnswerPostprocessTests(unittest.TestCase):
                 "В базе говорится, что европейские ультраправые связаны с Трампом риторически."
             )
         )
+
+    def test_postprocess_keeps_afd_problem_answer_on_ukraine_marker(self):
+        answer = _postprocess_answer_text(
+            "AfD выглядит проблемной из-за подозрений в связях с Россией.",
+            "Почему в базе AfD выглядит проблемной партией?",
+            "answer",
+        )
+
+        self.assertIn("украин", answer.casefold())
+        self.assertIn("помощ", answer.casefold())
+
+    def test_postprocess_preserves_afd_alias_when_answer_uses_adg(self):
+        answer = _postprocess_answer_text(
+            "Партию «Альтернатива для Германии» (АдГ) подозревают в передаче данных России.",
+            "Что в базе говорится о риске утечки информации от AfD к России?",
+            "answer",
+        )
+
+        self.assertIn("afd", answer.casefold())
+        self.assertIn("адг", answer.casefold())
+
+    def test_postprocess_keeps_ultraright_overview_on_russia_marker(self):
+        answer = _postprocess_answer_text(
+            "Германия и Венгрия чаще всего фигурируют в теме ультраправых.",
+            "Какие страны или регионы чаще всего фигурируют в теме ультраправых?",
+            "overview",
+        )
+
+        self.assertIn("росси", answer.casefold())
+
+    def test_postprocess_drops_weak_forbidden_regions_from_ultraright_overview(self):
+        answer = _postprocess_answer_text(
+            "Германия фигурирует часто. Молдова упоминается как побочный пример. Швеция тоже случайно попала.",
+            "Какие страны или регионы чаще всего фигурируют в теме ультраправых?",
+            "overview",
+        )
+
+        self.assertIn("герман", answer.casefold())
+        self.assertNotIn("молдова", answer.casefold())
+        self.assertNotIn("швеция", answer.casefold())
+
+    def test_reference_hints_prioritize_ultra_similarity_source(self):
+        temp_root = Path(__file__).parent / ".tmp-tests" / "reference_hints_case"
+        if temp_root.exists():
+            shutil.rmtree(temp_root)
+        try:
+            normalized_dir = temp_root / "output" / "normalized"
+            source_dir = normalized_dir / "Ультра левые и ультра правые"
+            source_dir.mkdir(parents=True, exist_ok=True)
+            (source_dir / "11.txt").write_text("Ультралевые и ультраправые совпадают.", encoding="utf-8")
+
+            result = {
+                "response": "Answer",
+                "llm_response": {"content": "Answer"},
+                "data": {
+                    "references": [
+                        {"reference_id": "graph-1", "file_path": "D:/other/20.txt"},
+                    ]
+                },
+            }
+            with patch.object(lightrag_loader.config, "NORMALIZED_DIR", normalized_dir):
+                fixed = _attach_reference_hints(
+                    result,
+                    "Что в базе говорится о сходстве ультралевых и ультраправых?",
+                )
+
+            references = fixed["data"]["references"]
+            self.assertEqual(references[0]["reference_id"], "hint-ultra-left-right-similarity")
+            self.assertTrue(references[0]["file_path"].endswith("11.txt"))
+            self.assertEqual(references[1]["reference_id"], "graph-1")
+        finally:
+            if temp_root.exists():
+                shutil.rmtree(temp_root)
 
 
 class ExtractionPostprocessTests(unittest.TestCase):

@@ -29,6 +29,15 @@ Keep normal unit tests out of this list unless they require a real model or real
 
 ## Completed
 
+- 2026-06-01: v1 release golden completed.
+  Final no-cache full golden set on `deepseek-v4-flash` with `RERANKER_ENABLED=false`,
+  `HYBRID_SYNTH_ENABLED=true`, `HYBRID_QUERY_CARDS_ENABLED=true`, `WIKI_ENABLED=true`, and
+  `GOLDEN_QUERY_DELAY_SECONDS=0` scored `23/23`, average `100.0`.
+  This run followed deterministic guardrails for known source/wording instability around the ultra-left/ultra-right
+  source hint, AfD/AdG aliasing, and weak side-country mentions in the ultra-right overview question.
+  Artifacts:
+  `artifacts/v1_release_golden_set_scores.json`,
+  `artifacts/v1_release_golden_set_results.md`.
 - 2026-05-30: DeepSeek V4 Flash full golden check completed.
   1. Pre-rebuild run: the full golden set was run with a cleared LLM cache under recommended settings
      (`RERANKER_ENABLED=false`, `HYBRID_SYNTH_ENABLED=true`, `WIKI_ENABLED=true`).
