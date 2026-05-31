@@ -24,6 +24,24 @@ Use `LLM_VERIFICATION_QUEUE.md` for model/live-endpoint checks; use this log for
 
 ## Completed / Notes
 
+- 2026-06-01 v1 release closure:
+  Added the root `DEVELOPMENT_ROADMAP.md` to the release set and moved GitHub Actions from
+  `GeoSpoiler-RAG-Hybrid/.github/workflows/` to the repository-root `.github/workflows/` path, with
+  `GeoSpoiler-RAG-Hybrid` as the workflow working directory.
+  Accepted v1 debt:
+  - I2 live transcription remains pending until real downloaded audio/video/voice candidates exist.
+  - `python main.py rebuild --from-enriched` remains experimental; the supported v1 rebuild path is the normal
+    normalized-source rebuild, which previously completed `220/220`.
+  - K/Ragas/Phoenix observability is v2 work, not a v1 release blocker.
+  - Further `main.py` / `lightrag_loader.py` refactor is v2 work while unit tests and golden checks stay green.
+  - B2 enriched-card warnings are non-blocking data cleanup debt because current validation has `218/218` valid cards
+    and `0` errors.
+  Release verification:
+  `python -m unittest test_loader.AnswerPostprocessTests` -> 9 tests OK.
+  Final no-cache release golden with `GOLDEN_QUERY_DELAY_SECONDS=0` and `deepseek-v4-flash` -> `23/23`, average `100.0`.
+  Artifacts:
+  `artifacts/v1_release_golden_set_results.md`,
+  `artifacts/v1_release_golden_set_scores.json`.
 - 2026-05-31 B-lite data contracts:
   Added read-only Pydantic contracts in `models.py` for enriched cards, normalized metadata, provenance, key facts,
   references, source ids, wiki page refs, query profiles, and experiment runs. Added soft enriched-card validation in

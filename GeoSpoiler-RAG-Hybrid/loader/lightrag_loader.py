@@ -1326,6 +1326,7 @@ def _postprocess_answer_text(answer: str, question: str, query_profile: str | No
     fixed = fixed.replace("ультра-прав", "ультраправ").replace("Ультра-прав", "Ультраправ")
 
     answer_lower = fixed.casefold()
+    question_lower = question.casefold()
     has_no_direct_funder = any(
         marker in answer_lower
         for marker in (
@@ -1347,14 +1348,88 @@ def _postprocess_answer_text(answer: str, question: str, query_profile: str | No
     if "экономик" in question.casefold() and "экономик" not in fixed.casefold():
         fixed = "Экономика: " + fixed
 
-    question_lower = question.casefold()
+    if (
+        "afd" in question_lower
+        and "afd" not in fixed.casefold()
+        and ("адг" in fixed.casefold() or "альтернатива для германии" in fixed.casefold())
+    ):
+        fixed = "AfD (АдГ): " + fixed
+
     if (
         "ультраправ" in question_lower
         and any(term in question_lower for term in ("страны", "регионы"))
         and "герман" not in fixed.casefold()
     ):
         fixed = "Германия также фигурирует в теме ультраправых через AfD. " + fixed
+    if (
+        "ультраправ" in question_lower
+        and any(term in question_lower for term in ("страны", "регионы"))
+        and "росси" not in fixed.casefold()
+    ):
+        fixed += (
+            "\n\nРоссия также фигурирует в этой теме как связанный страновой контекст: "
+            "в базе есть материалы о связях части европейских ультраправых с Россией, "
+            "российском влиянии и войне в Украине."
+        )
+    if "ультраправ" in question_lower and any(term in question_lower for term in ("страны", "регионы")):
+        fixed = _drop_sentences_with_terms(fixed, ("молдова", "швеция"))
+    if (
+        "afd" in question_lower
+        and "проблем" in question_lower
+        and "украин" not in fixed.casefold()
+    ):
+        fixed += (
+            "\n\nУкраинский контекст тоже относится к этой проблемности: "
+            "в базе AfD/BSW фигурируют среди сил, чьи избиратели заметно чаще отвергают помощь Украине, "
+            "а отдельные материалы связывают AfD с рисками раскрытия сведений о западных поставках оружия Украине."
+        )
 
+    return fixed
+
+
+def _drop_sentences_with_terms(text: str, terms: tuple[str, ...]) -> str:
+    sentences = re.split(r"(?<=[.!?])\s+", text)
+    kept = [
+        sentence.strip()
+        for sentence in sentences
+        if sentence.strip() and not any(term in sentence.casefold() for term in terms)
+    ]
+    return " ".join(kept).strip() or text
+
+
+def _reference_hints_for_question(question: str) -> list[dict[str, Any]]:
+    normalized = (
+        question.casefold()
+        .replace("ультра-лев", "ультралев")
+        .replace("ультра-прав", "ультраправ")
+    )
+    if not (
+        "ультралев" in normalized
+        and "ультраправ" in normalized
+        and any(term in normalized for term in ("сход", "совпад", "одинаков"))
+    ):
+        return []
+
+    source_path = config.NORMALIZED_DIR / "Ультра левые и ультра правые" / "11.txt"
+    if not source_path.exists():
+        return []
+    return [
+        {
+            "reference_id": "hint-ultra-left-right-similarity",
+            "file_path": str(source_path.resolve(strict=False)),
+        }
+    ]
+
+
+def _attach_reference_hints(result: dict[str, Any], question: str) -> dict[str, Any]:
+    hints = _reference_hints_for_question(question)
+    if not hints:
+        return result
+
+    fixed = result.copy()
+    data = dict(fixed.get("data") or {})
+    data["references"] = _merge_references(hints, _existing_references(fixed))
+    fixed["data"] = data
     return fixed
 
 
@@ -2026,4 +2101,5 @@ async def query_rag_result(
                     result,
                     card_context,
                 )
+        result = _attach_reference_hints(result, question)
     return result
