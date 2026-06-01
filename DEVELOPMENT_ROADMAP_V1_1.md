@@ -1,6 +1,6 @@
 # GeoSpoiler RAG Development Roadmap v1.1
 
-Status: Phase 1 completed; Phase 2 is next.
+Status: Phase 1 completed; Phase 2 completed; Phase 3 is next after user confirmation.
 
 Purpose: harden the working v1 system without changing its product direction. v1.0.0 is already a usable release:
 unit tests are green, GitHub Actions is green, the final DeepSeek V4 Flash golden run passed `23/23`, and the
@@ -61,6 +61,25 @@ Acceptance criteria:
 ## Phase 2: Source-Selection Golden Expansion
 
 Goal: test whether RAG retrieves the correct evidence, not only whether the final answer text looks correct.
+
+Completion note, 2026-06-01:
+- Added `source_selection_golden.py` as a dedicated live source-grounding runner.
+- Added `test_source_selection_golden.py` with unit coverage for source scoring, forbidden top sources, slash/backslash
+  source matching, selected-case mode, and case limits.
+- Added `SOURCE_SELECTION_GOLDEN.md` with run commands, environment controls, scoring purpose, and current baseline.
+- Current measured v1.1 baseline:
+  focused selected run `q9_cuba_protests_source` -> `1/1`, average `100.0`;
+  full source-selection golden -> `9/10`, average `90.0`.
+- The suite catches the known Q22 Narva visuals retrieval weakness:
+  direct Narva source `3889026624/2` appears at rank 3 while broad Baltic visual sources `3889026624/9` and
+  `3889026624/6` occupy ranks 1-2.
+- This is intentionally left as Phase 3 retrieval work; Phase 2 only expands measurement.
+- Final Phase 2 verification:
+  `python -m unittest` -> `151` tests OK;
+  full golden -> `23/23`, average `100.0`;
+  `python main.py status` -> `220` normalized files and `0` pending reviews;
+  `python main.py wiki health` -> `22` pages checked, `0` issues;
+  `python main.py experiments index` -> `19` active records.
 
 Why this matters:
 The main v1 quality failures were not general LLM failures. They were retrieval/source-grounding failures where the

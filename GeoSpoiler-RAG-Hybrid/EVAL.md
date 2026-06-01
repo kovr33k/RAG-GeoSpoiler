@@ -11,7 +11,8 @@ Use these layers in order:
 2. Local health/index checks: deterministic filesystem checks.
 3. Baseline probe: small live query sanity check.
 4. Golden set: full live query comparison.
-5. Focused LLM probe: targeted live checks for known source-grounding failures.
+5. Source-selection golden: focused live source retrieval/provenance checks.
+6. Focused LLM probe: targeted live checks for known source-grounding failures.
 
 Do not treat live LLM probes as unit tests. They measure model, retrieval, and
 source-grounding behavior under the current runtime configuration.
@@ -34,6 +35,7 @@ Latest trusted results:
 - Focused probe: `6/6`, average score `100.0`.
 - Full golden set before rebuild: `23/23`, average score `100.0`.
 - Full golden set after clean rebuild: `23/23`, average score `100.0`.
+- Source-selection golden: `9/10`, average score `90.0`; Q22 Narva visuals remains a retrieval-ranking target.
 - Reranker experiment: `20/23`, average score `96.7`; keep reranker disabled.
 
 Primary artifacts:
@@ -42,6 +44,7 @@ Primary artifacts:
 artifacts/llm_probe_deepseek_v4_flash_absence_fix_clearcache_scores.json
 artifacts/deepseek_v4_flash_clearcache_golden_set_scores.json
 artifacts/deepseek_v4_flash_rebuilt_clearcache_golden_set_scores.json
+artifacts/v1_1_phase2_source_selection_scores.json
 artifacts/deepseek_v4_flash_reranker_clearcache_golden_set_scores.json
 artifacts/experiment_registry.md
 ```
@@ -171,6 +174,46 @@ Golden scoring checks:
 - source-required questions;
 - expected source selection for known cases;
 - per-case pass/fail and average score.
+
+## Source-Selection Golden
+
+The source-selection golden lives in `source_selection_golden.py`; usage details
+live in `SOURCE_SELECTION_GOLDEN.md`.
+
+It is a dedicated live-eval layer for retrieval/source grounding. It checks that
+canonical evidence appears in the user-visible sources within the expected rank,
+and it can fail when a broad near-miss document outranks direct evidence even if
+the answer text still looks acceptable.
+
+Run the full source-selection golden:
+
+```powershell
+python source_selection_golden.py
+```
+
+Run selected cases:
+
+```powershell
+$env:SOURCE_GOLDEN_CASE_IDS="q9_cuba_protests_source,q22_narva_visuals_top_source"
+python source_selection_golden.py
+```
+
+Current Phase 2 baseline:
+
+- full source-selection golden: `9/10`, average score `90.0`;
+- selected Q9 Cuba protests check: `1/1`, average score `100.0`;
+- known failing case: `q22_narva_visuals_top_source`, where direct Narva source
+  `3889026624/2` appears at rank 3 while broader Baltic visual sources
+  `3889026624/9` and `3889026624/6` occupy the first two ranks.
+
+Artifacts:
+
+```text
+artifacts/v1_1_phase2_source_selected_scores.json
+artifacts/v1_1_phase2_source_selected_results.md
+artifacts/v1_1_phase2_source_selection_scores.json
+artifacts/v1_1_phase2_source_selection_results.md
+```
 
 ## Golden Comparison
 

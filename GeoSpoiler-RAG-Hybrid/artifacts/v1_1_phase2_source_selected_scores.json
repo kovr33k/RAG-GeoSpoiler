@@ -1,0 +1,88 @@
+{
+  "checked_at": "2026-06-01T19:11:15+00:00",
+  "query_model": "deepseek-v4-flash",
+  "query_base_url": "https://api.deepseek.com",
+  "mode": "hybrid",
+  "config_flags": {
+    "RERANKER_ENABLED": false,
+    "HYBRID_SYNTH_ENABLED": true,
+    "HYBRID_QUERY_CARDS_ENABLED": true,
+    "WIKI_ENABLED": true,
+    "WIKI_TOP_K": 5
+  },
+  "source_limit": 8,
+  "total": 1,
+  "passed": 1,
+  "failed": 0,
+  "average_score": 100.0,
+  "average_duration_seconds": 5.76,
+  "cases": [
+    {
+      "case_id": "q9_cuba_protests_source",
+      "question": "Что в базе говорится о протестах на Кубе?",
+      "profile": "answer",
+      "status": "ok",
+      "duration_seconds": 5.76,
+      "score": 100,
+      "passed": true,
+      "answer_preview": "Согласно имеющейся информации, на Кубе продолжаются протесты, которые сопровождаются поджогами. Сообщается, что протестующие поджигают местные отделения Коммунистической партии Кубы в некоторых городах. Одной из причин выхода людей на улицы называется полное отключение электроэнергии, которое длится уже вторую неделю, а также выступление президента Кубы, объявившего о начале переговоров с США.\n\nВ контексте протестов также упоминается энергетическая блокада. Указывается, что Соединенные Штаты блокируют поставки нефти на Кубу с января, а президент США Дональд Трамп подписал указ о введении тарифов против стран, поставляющих нефть Кубе. При этом отмечается, что «другу Владимиру [Путину] можно...",
+      "answer_missing": [],
+      "source_any_ok": true,
+      "source_rank": 1,
+      "rank_ok": true,
+      "forbidden_top_hits": [],
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3841808641/5",
+          "channel": "Куба",
+          "date": "2026-03-14T18:13:41+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\5.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3841808641/7",
+          "channel": "Куба",
+          "date": "2026-03-30T16:47:29+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\7.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/185",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-13T17:09:19+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\185.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/162",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-11T19:34:30+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\162.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/24",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-04-14T15:59:00+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\24.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/14",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:26:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\14.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/160",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-11T16:18:35+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\160.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/16",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-14T22:46:48+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\16.txt"
+        }
+      ],
+      "note": "Historical Q9 failure: protest answer must prioritize the direct Cuba protests post.",
+      "error": ""
+    }
+  ]
+}

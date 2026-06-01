@@ -29,6 +29,22 @@ Keep normal unit tests out of this list unless they require a real model or real
 
 ## Completed
 
+- 2026-06-01: v1.1 Phase 2 source-selection golden completed.
+  Added and ran `source_selection_golden.py` on `deepseek-v4-flash` with the trusted runtime flags:
+  `RERANKER_ENABLED=false`, `HYBRID_SYNTH_ENABLED=true`, `HYBRID_QUERY_CARDS_ENABLED=true`, and `WIKI_ENABLED=true`.
+  Selected Q9 Cuba protests source check scored `1/1`, average `100.0`.
+  Full source-selection golden scored `9/10`, average `90.0`.
+  Full answer-quality golden after adding the source-selection runner scored `23/23`, average `100.0`.
+  The single failing case was `q22_narva_visuals_top_source`: direct Narva/Estonia source `3889026624/2` appeared at
+  rank 3, while broader Baltic visual sources `3889026624/9` and `3889026624/6` occupied ranks 1-2. This is a Phase 3
+  retrieval-ranking target, not a model/provider failure.
+  Artifacts:
+  `artifacts/v1_1_phase2_source_selected_scores.json`,
+  `artifacts/v1_1_phase2_source_selected_results.md`,
+  `artifacts/v1_1_phase2_source_selection_scores.json`,
+  `artifacts/v1_1_phase2_source_selection_results.md`,
+  `artifacts/v1_1_phase2_full_golden_scores.json`,
+  `artifacts/v1_1_phase2_full_golden_results.md`.
 - 2026-06-01: v1.1 Phase 1 golden checks completed.
   Baseline and post-refactor full golden runs on `deepseek-v4-flash` with `GOLDEN_QUERY_DELAY_SECONDS=0` both scored
   `23/23`, average `100.0`, confirming that the architecture split did not change golden behavior.

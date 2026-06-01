@@ -5,6 +5,11 @@ Use `LLM_VERIFICATION_QUEUE.md` for model/live-endpoint checks; use this log for
 
 ## Pending
 
+- v1.1 Phase 3 retrieval follow-up:
+  source-selection golden now exposes the remaining Q22 Narva visuals ranking weakness. The direct Narva/Estonia
+  visual source `3889026624/2` is present but appears at rank 3, while broader Baltic visual sources `3889026624/9`
+  and `3889026624/6` occupy ranks 1-2. Use `SOURCE_GOLDEN_CASE_IDS=q22_narva_visuals_top_source` as the first red case
+  for retrieval/source-ranking improvements.
 - A-lite local ruff report is deferred because `ruff` is not installed in the active Python 3.11 environment.
   CI installs `ruff` explicitly and runs `python -m ruff check . --config pyproject.toml --exit-zero`.
 - B2 data cleanup follow-up:
@@ -24,6 +29,31 @@ Use `LLM_VERIFICATION_QUEUE.md` for model/live-endpoint checks; use this log for
 
 ## Completed / Notes
 
+- 2026-06-01 v1.1 Phase 2 source-selection golden expansion:
+  Added a dedicated live source-grounding runner, `source_selection_golden.py`, plus unit tests in
+  `test_source_selection_golden.py` and usage documentation in `SOURCE_SELECTION_GOLDEN.md`.
+  The runner checks answer markers, canonical source presence, maximum source rank, forbidden top near-miss sources,
+  selected-case mode, source limits, and artifact output overrides.
+  Verification:
+  `python -m unittest test_source_selection_golden` -> 6 tests OK;
+  `python -m unittest` -> 151 tests OK;
+  selected live source case `q9_cuba_protests_source` -> `1/1`, average `100.0`;
+  full live source-selection golden -> `9/10`, average `90.0`;
+  full live golden set -> `23/23`, average `100.0`;
+  `python main.py status` -> 220 normalized files, 0 pending reviews;
+  `python main.py wiki health` -> 22 pages checked, 0 issues;
+  `python main.py experiments index` -> 19 active records.
+  The single failing case is intentionally left as Phase 3 retrieval work:
+  `q22_narva_visuals_top_source` finds direct Narva source `3889026624/2` at rank 3, while broad Baltic visual sources
+  `3889026624/9` and `3889026624/6` occupy ranks 1-2.
+  Artifacts:
+  `artifacts/v1_1_phase2_source_selected_results.md`,
+  `artifacts/v1_1_phase2_source_selected_scores.json`,
+  `artifacts/v1_1_phase2_source_selection_results.md`,
+  `artifacts/v1_1_phase2_source_selection_scores.json`,
+  `artifacts/v1_1_phase2_full_golden_results.md`,
+  `artifacts/v1_1_phase2_full_golden_scores.json`,
+  `artifacts/experiment_registry.md`.
 - 2026-06-01 v1.1 Phase 1 architecture split:
   Refactored without intended behavior changes:
   - `loader/clients.py` now owns OpenAI-compatible chat/embedding client helpers, chat options, and embedding calls.
