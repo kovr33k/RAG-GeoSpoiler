@@ -1206,6 +1206,48 @@ def _shadow_match_text(match: Any, card: dict[str, Any]) -> str:
     return "\n".join(parts)
 
 
+_GENERIC_CONTEXT_QUERY_TERMS = (
+    "какие",
+    "какой",
+    "какая",
+    "какую",
+    "какими",
+    "база",
+    "описывает",
+    "можно",
+    "использовать",
+    "используй",
+    "кадр",
+    "кадры",
+    "визуал",
+    "визуалы",
+    "ролик",
+    "ролика",
+    "отношение",
+    "попытку",
+    "видео",
+    "broll",
+    "source",
+    "sources",
+    "источник",
+    "источники",
+)
+
+
+def _content_query_terms(query_terms: list[str], shadow_search_module: Any) -> list[str]:
+    """Keep topic/entity terms separate from generic task wording for card ranking."""
+    content_terms = []
+    for term in query_terms:
+        if any(
+            shadow_search_module._matches_term(term, generic)
+            or shadow_search_module._matches_term(generic, term)
+            for generic in _GENERIC_CONTEXT_QUERY_TERMS
+        ):
+            continue
+        content_terms.append(term)
+    return content_terms or query_terms
+
+
 def _shadow_fallback_result(question: str, query_profile: str | None) -> dict[str, Any] | None:
     """Build a deterministic lexical fallback when vector/graph retrieval misses exact cards."""
     try:
@@ -1216,6 +1258,8 @@ def _shadow_fallback_result(question: str, query_profile: str | None) -> dict[st
 
     query_terms = list(dict.fromkeys(shadow_search._tokenize(question)))
     required_terms = 1 if len(query_terms) <= 1 else 2
+    content_terms = _content_query_terms(query_terms, shadow_search)
+    include_visual = _question_requests_visuals(question)
     candidates = []
     for match in shadow_search.search(question, top_k=8):
         card = _load_shadow_card(match.card_path)
@@ -1231,27 +1275,49 @@ def _shadow_fallback_result(question: str, query_profile: str | None) -> dict[st
             for term in query_terms
             if any(shadow_search._matches_term(token, term) for token in path_title_tokens)
         }
+        content_matched_terms = {
+            term
+            for term in content_terms
+            if any(shadow_search._matches_term(token, term) for token in text_tokens)
+        }
         if len(matched_terms) >= required_terms:
-            candidates.append((match, card, matched_terms, path_title_terms))
+            candidates.append((match, card, matched_terms, path_title_terms, content_matched_terms))
 
     if not candidates:
         return None
 
-    candidates.sort(key=lambda item: (len(item[2]), len(item[3]), item[0].score), reverse=True)
+    content_term_counts = {
+        term: sum(1 for item in candidates if term in item[4])
+        for term in content_terms
+    }
+
+    def specificity_score(item: tuple[Any, dict[str, Any], set[str], set[str], set[str]]) -> float:
+        return sum(1.0 / content_term_counts[term] for term in item[4] if content_term_counts.get(term))
+
+    if include_visual:
+        candidates.sort(
+            key=lambda item: (len(item[4]), item[0].score, specificity_score(item), len(item[2]), len(item[3])),
+            reverse=True,
+        )
+    else:
+        candidates.sort(
+            key=lambda item: (len(item[4]), len(item[3]), item[0].score, specificity_score(item), len(item[2])),
+            reverse=True,
+        )
     top_parent = Path(_resolve_match_source_path(candidates[0][0].source_path)).parent
+    max_context_matches = 1 if include_visual else 3
     strong_matches = [
         item
         for item in candidates
         if Path(_resolve_match_source_path(item[0].source_path)).parent == top_parent
-    ][:3]
+    ][:max_context_matches]
     if not strong_matches:
         return None
 
-    include_visual = _question_requests_visuals(question)
     references = []
     sections = []
     context_items = []
-    for idx, (match, card, _matched_terms, _path_title_terms) in enumerate(strong_matches, start=1):
+    for idx, (match, card, _matched_terms, _path_title_terms, _content_matched_terms) in enumerate(strong_matches, start=1):
         source_path = _resolve_match_source_path(match.source_path)
         references.append({"reference_id": str(idx), "file_path": source_path})
 

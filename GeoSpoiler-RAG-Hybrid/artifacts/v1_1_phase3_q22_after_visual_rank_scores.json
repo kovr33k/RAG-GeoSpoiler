@@ -1,0 +1,88 @@
+{
+  "checked_at": "2026-06-01T19:35:31+00:00",
+  "query_model": "deepseek-v4-flash",
+  "query_base_url": "https://api.deepseek.com",
+  "mode": "hybrid",
+  "config_flags": {
+    "RERANKER_ENABLED": false,
+    "HYBRID_SYNTH_ENABLED": true,
+    "HYBRID_QUERY_CARDS_ENABLED": true,
+    "WIKI_ENABLED": true,
+    "WIKI_TOP_K": 5
+  },
+  "source_limit": 8,
+  "total": 1,
+  "passed": 1,
+  "failed": 0,
+  "average_score": 100.0,
+  "average_duration_seconds": 6.597,
+  "cases": [
+    {
+      "case_id": "q22_narva_visuals_top_source",
+      "question": "Какие кадры или визуалы можно использовать для ролика про Нарву и Эстонию?",
+      "profile": "answer",
+      "status": "ok",
+      "duration_seconds": 6.597,
+      "score": 100,
+      "passed": true,
+      "answer_preview": "Для ролика о Нарве и Эстонии можно использовать следующие визуальные материалы, основанные на предоставленных данных.\n\n**1. Карта и графика сценария вторжения.** Покажите карту, демонстрирующую потенциальный сценарий российского вторжения в страны Балтии. Хотя эта карта не новая и циркулировала в сети ещё в 2024 году, она визуализирует актуальную тему и служит сильным иллюстративным материалом. Дополнительно можно создать графику, изображающую гипотетический захват Нарвы: кинетическую фазу операции с выведением из строя электроснабжения, глушением связи и захватом критических узлов (полицейские участки, пограничные пункты, центры местного самоуправления).\n\n**2. Визуализация «информационного...",
+      "answer_missing": [],
+      "source_any_ok": true,
+      "source_rank": 1,
+      "rank_ok": true,
+      "forbidden_top_hits": [],
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3889026624/2",
+          "channel": "Балтийские страны",
+          "date": "2026-03-24T21:18:12+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Балтийские страны\\2.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/14",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:26:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\14.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/188",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-14T17:20:10+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\188.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/4",
+          "channel": "Венгрия Словакия",
+          "date": "2026-01-05T15:44:41+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\4.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/9",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-01-17T21:26:45+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\9.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/16",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-14T22:46:48+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\16.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3889026624/6",
+          "channel": "Балтийские страны",
+          "date": "2026-03-25T17:44:57+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Балтийские страны\\6.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/187",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-13T17:10:43+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\187.txt"
+        }
+      ],
+      "note": "Historical Q22 weakness: broad Baltic visuals must not outrank direct Narva/Estonia visual sources.",
+      "error": ""
+    }
+  ]
+}

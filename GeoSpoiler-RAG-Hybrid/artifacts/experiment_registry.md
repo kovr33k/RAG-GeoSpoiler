@@ -1,7 +1,7 @@
 # Experiment Registry
 
-- generated_at: 2026-06-01T19:18:57+00:00
-- records: 19
+- generated_at: 2026-06-01T19:54:25+00:00
+- records: 23
 
 | Checked At | Kind | Model | Mode | Passed | Avg | Rerank | Synth | Wiki | Scores |
 |---|---|---|---|---:|---:|:---:|:---:|:---:|---|
@@ -24,3 +24,7 @@
 | 2026-06-01T19:11:15+00:00 | scores | deepseek-v4-flash | hybrid | 1/1 | 100 | N | Y | Y | `v1_1_phase2_source_selected_scores.json` |
 | 2026-06-01T19:12:37+00:00 | scores | deepseek-v4-flash | hybrid | 9/10 | 90 | N | Y | Y | `v1_1_phase2_source_selection_scores.json` |
 | 2026-06-01T19:18:34+00:00 | golden | deepseek-v4-flash | hybrid | 23/23 | 100 | N | Y | Y | `v1_1_phase2_full_golden_scores.json` |
+| 2026-06-01T19:28:32+00:00 | baseline | deepseek-v4-flash | hybrid | 0/1 | 0 | N | Y | Y | `v1_1_phase3_q22_baseline_scores.json` |
+| 2026-06-01T19:35:31+00:00 | scores | deepseek-v4-flash | hybrid | 1/1 | 100 | N | Y | Y | `v1_1_phase3_q22_after_visual_rank_scores.json` |
+| 2026-06-01T19:43:38+00:00 | scores | deepseek-v4-flash | hybrid | 10/10 | 100 | N | Y | Y | `v1_1_phase3_source_selection_scores.json` |
+| 2026-06-01T19:51:28+00:00 | golden | deepseek-v4-flash | hybrid | 23/23 | 100 | N | Y | Y | `v1_1_phase3_full_golden_scores.json` |

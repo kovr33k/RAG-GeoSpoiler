@@ -599,6 +599,133 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             if temp_root.exists():
                 shutil.rmtree(temp_root)
 
+    def test_card_context_for_visual_query_keeps_focused_entity_source(self):
+        temp_root = Path(__file__).parent / ".tmp-tests" / "visual_context_focus_case"
+        if temp_root.exists():
+            shutil.rmtree(temp_root)
+        temp_root.mkdir(parents=True, exist_ok=True)
+
+        try:
+            enriched_dir = temp_root / "output" / "enriched" / "Baltic"
+            normalized_dir = temp_root / "output" / "normalized" / "Baltic"
+            enriched_dir.mkdir(parents=True, exist_ok=True)
+            normalized_dir.mkdir(parents=True, exist_ok=True)
+
+            direct_source = normalized_dir / "2.txt"
+            broad_lithuania_source = normalized_dir / "9.txt"
+            broad_baltic_source = normalized_dir / "6.txt"
+            direct_source.write_text("Нарва и Эстония: прямой визуальный источник.", encoding="utf-8")
+            broad_lithuania_source.write_text("Литва и страны Балтии: общий визуальный материал.", encoding="utf-8")
+            broad_baltic_source.write_text("Общий балтийский сценарий с картой.", encoding="utf-8")
+
+            cards = [
+                (
+                    "9.enriched.json",
+                    broad_lithuania_source,
+                    "Эстония визуалы кадры можно использовать для ролика Литва страны Балтии",
+                    "Широкая балтийская карточка без прямой темы города.",
+                ),
+                (
+                    "6.enriched.json",
+                    broad_baltic_source,
+                    "Эстония визуалы кадры можно использовать карта Балтии",
+                    "Широкая балтийская карточка.",
+                ),
+                (
+                    "2.enriched.json",
+                    direct_source,
+                    "Нарва Эстония визуалы карта",
+                    "Прямая карточка про Нарву и Эстонию.",
+                ),
+            ]
+            for filename, source_path, search_text, summary in cards:
+                card = {
+                    "triage": "keep",
+                    "summary": summary,
+                    "key_facts": [{"text": summary}],
+                    "visual": {
+                        "broll_potential": "high",
+                        "broll_notes": "Карта Эстонии с выделением Нарвы.",
+                    },
+                    "provenance": {"normalized_file": str(source_path.relative_to(temp_root))},
+                    "search_text": search_text,
+                }
+                (enriched_dir / filename).write_text(
+                    json.dumps(card, ensure_ascii=False),
+                    encoding="utf-8",
+                )
+
+            with patch.object(lightrag_loader.config, "PROJECT_ROOT", temp_root):
+                with patch.object(lightrag_loader.config, "ENRICHED_DIR", temp_root / "output" / "enriched"):
+                    with patch.object(lightrag_loader.config, "HYBRID_QUERY_CARDS_ENABLED", True):
+                        context = _card_context_for_query(
+                            "Какие кадры или визуалы можно использовать для ролика про Нарву и Эстонию?",
+                            "answer",
+                        )
+
+            self.assertIsNotNone(context)
+            reference_paths = [Path(ref["file_path"]).name for ref in context["references"]]
+            self.assertEqual(reference_paths, ["2.txt"])
+        finally:
+            if temp_root.exists():
+                shutil.rmtree(temp_root)
+
+    def test_card_context_prioritizes_specific_entity_terms_over_generic_overlap(self):
+        temp_root = Path(__file__).parent / ".tmp-tests" / "entity_specificity_case"
+        if temp_root.exists():
+            shutil.rmtree(temp_root)
+        temp_root.mkdir(parents=True, exist_ok=True)
+
+        try:
+            generic_enriched = temp_root / "output" / "enriched" / "Generic"
+            direct_enriched = temp_root / "output" / "enriched" / "Ultra"
+            generic_normalized = temp_root / "output" / "normalized" / "Generic"
+            direct_normalized = temp_root / "output" / "normalized" / "Ultra"
+            for directory in (generic_enriched, direct_enriched, generic_normalized, direct_normalized):
+                directory.mkdir(parents=True, exist_ok=True)
+
+            generic_source = generic_normalized / "9.txt"
+            direct_source = direct_normalized / "12.txt"
+            generic_source.write_text("Общий материал про отношение к войне в Украине.", encoding="utf-8")
+            direct_source.write_text("AfD и война в Украине.", encoding="utf-8")
+
+            generic_card = {
+                "triage": "keep",
+                "summary": "Отношение к войне в Украине без упоминания нужной партии.",
+                "key_facts": [{"text": "Отношение к войне в Украине описано общими словами."}],
+                "provenance": {"normalized_file": str(generic_source.relative_to(temp_root))},
+                "search_text": "отношение отношение отношение войне войне Украине Украине",
+            }
+            direct_card = {
+                "triage": "keep",
+                "summary": "AfD выступает против военной помощи Украине.",
+                "key_facts": [{"text": "AfD выступает против военной помощи Украине."}],
+                "provenance": {"normalized_file": str(direct_source.relative_to(temp_root))},
+                "search_text": "AfD войне Украине",
+            }
+            (generic_enriched / "9.enriched.json").write_text(
+                json.dumps(generic_card, ensure_ascii=False),
+                encoding="utf-8",
+            )
+            (direct_enriched / "12.enriched.json").write_text(
+                json.dumps(direct_card, ensure_ascii=False),
+                encoding="utf-8",
+            )
+
+            with patch.object(lightrag_loader.config, "PROJECT_ROOT", temp_root):
+                with patch.object(lightrag_loader.config, "ENRICHED_DIR", temp_root / "output" / "enriched"):
+                    with patch.object(lightrag_loader.config, "HYBRID_QUERY_CARDS_ENABLED", True):
+                        context = _card_context_for_query(
+                            "Что в базе говорится про отношение AfD к войне в Украине?",
+                            "answer",
+                        )
+
+            self.assertIsNotNone(context)
+            self.assertEqual(Path(context["references"][0]["file_path"]).name, "12.txt")
+        finally:
+            if temp_root.exists():
+                shutil.rmtree(temp_root)
+
     def test_card_context_for_query_returns_card_references(self):
         temp_root = Path(__file__).parent / ".tmp-tests" / "hybrid_card_context_case"
         if temp_root.exists():

@@ -5,11 +5,10 @@ Use `LLM_VERIFICATION_QUEUE.md` for model/live-endpoint checks; use this log for
 
 ## Pending
 
-- v1.1 Phase 3 retrieval follow-up:
-  source-selection golden now exposes the remaining Q22 Narva visuals ranking weakness. The direct Narva/Estonia
-  visual source `3889026624/2` is present but appears at rank 3, while broader Baltic visual sources `3889026624/9`
-  and `3889026624/6` occupy ranks 1-2. Use `SOURCE_GOLDEN_CASE_IDS=q22_narva_visuals_top_source` as the first red case
-  for retrieval/source-ranking improvements.
+- v1.1 guardrail removal follow-up:
+  The ultra-left/right similarity source hint remains necessary. A no-hint check on 2026-06-01 put the canonical
+  source `3299898370/11` at rank 4 instead of rank 1. Revisit only after graph/card retrieval can surface `11.txt`
+  first without `loader/reference_hints.py`.
 - A-lite local ruff report is deferred because `ruff` is not installed in the active Python 3.11 environment.
   CI installs `ruff` explicitly and runs `python -m ruff check . --config pyproject.toml --exit-zero`.
 - B2 data cleanup follow-up:
@@ -29,6 +28,37 @@ Use `LLM_VERIFICATION_QUEUE.md` for model/live-endpoint checks; use this log for
 
 ## Completed / Notes
 
+- 2026-06-01 v1.1 Phase 3 retrieval improvements:
+  Improved card-context retrieval/source ranking without adding Q22-specific hardcoded hints:
+  - `retrieval/shadow_search.py` now matches short Slavic inflection variants such as `Нарвы` / `Нарву`, while avoiding
+    broad long-prefix collisions such as `протесты` / `против`.
+  - `loader/lightrag_loader.py` now separates content/entity query terms from generic task wording for card-context
+    ranking.
+  - Visual questions now keep only the most focused card-context source before graph references.
+  - Candidate ranking now prioritizes content-term coverage and lexical score, with specificity only as a tie-breaker.
+  Added `RETRIEVAL_GUARDRAILS.md` documenting active safety nets and the removal policy.
+  Final verification:
+  targeted regression tests -> 6 tests OK;
+  Q22 baseline before fix -> `0/1`, average `0.0`;
+  Q22 after visual ranking -> `1/1`, average `100.0`;
+  full source-selection golden -> `10/10`, average `100.0`;
+  full golden -> `23/23`, average `100.0`;
+  `python -m unittest` -> `155` tests OK;
+  `python main.py status` -> `220` normalized files and `0` pending reviews;
+  `python main.py wiki health` -> `22` pages checked, `0` issues;
+  `python main.py experiments index` -> `23` active records.
+  Guardrail removal check:
+  disabling the ultra-left/right reference hint still leaves `3299898370/11` at rank 4, so the hint remains a documented
+  safety net rather than being removed.
+  Artifacts:
+  `artifacts/v1_1_phase3_q22_baseline_results.md`,
+  `artifacts/v1_1_phase3_q22_baseline_scores.json`,
+  `artifacts/v1_1_phase3_q22_after_visual_rank_results.md`,
+  `artifacts/v1_1_phase3_q22_after_visual_rank_scores.json`,
+  `artifacts/v1_1_phase3_full_golden_results.md`,
+  `artifacts/v1_1_phase3_full_golden_scores.json`,
+  `artifacts/v1_1_phase3_source_selection_results.md`,
+  `artifacts/v1_1_phase3_source_selection_scores.json`.
 - 2026-06-01 v1.1 Phase 2 source-selection golden expansion:
   Added a dedicated live source-grounding runner, `source_selection_golden.py`, plus unit tests in
   `test_source_selection_golden.py` and usage documentation in `SOURCE_SELECTION_GOLDEN.md`.

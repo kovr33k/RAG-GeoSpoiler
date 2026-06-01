@@ -97,3 +97,25 @@ artifacts/v1_1_phase2_source_selection_scores.json
 ```
 
 Phase 3 retrieval work should use this failure as the first red case.
+
+## Phase 3 Result
+
+Phase 3 fixed the Q22 retrieval-ranking weakness with content-aware card-context
+ranking and focused visual source selection.
+
+Current result:
+
+```text
+Source-selection golden: 10/10 passed, average score 100.0
+```
+
+Artifacts:
+
+```text
+artifacts/v1_1_phase3_source_selection_results.md
+artifacts/v1_1_phase3_source_selection_scores.json
+artifacts/v1_1_phase3_q22_baseline_results.md
+artifacts/v1_1_phase3_q22_baseline_scores.json
+artifacts/v1_1_phase3_q22_after_visual_rank_results.md
+artifacts/v1_1_phase3_q22_after_visual_rank_scores.json
+```

@@ -29,6 +29,23 @@ Keep normal unit tests out of this list unless they require a real model or real
 
 ## Completed
 
+- 2026-06-01: v1.1 Phase 3 source-selection golden completed.
+  Retrieval/card-context ranking was changed, then live source-selection golden was rerun on `deepseek-v4-flash`.
+  The Q22 Narva visuals case improved from `0/1` to `1/1`: direct source `3889026624/2` moved from rank 3 to rank 1.
+  The full source-selection golden improved from the Phase 2 baseline `9/10`, average `90.0`, to `10/10`, average
+  `100.0`.
+  The full answer-quality golden after the retrieval change stayed green at `23/23`, average `100.0`.
+  A no-hint check for ultra-left/right similarity showed source `3299898370/11` still at rank 4, so the reference hint
+  remains a documented safety net rather than being removed.
+  Artifacts:
+  `artifacts/v1_1_phase3_q22_baseline_scores.json`,
+  `artifacts/v1_1_phase3_q22_baseline_results.md`,
+  `artifacts/v1_1_phase3_q22_after_visual_rank_scores.json`,
+  `artifacts/v1_1_phase3_q22_after_visual_rank_results.md`,
+  `artifacts/v1_1_phase3_full_golden_scores.json`,
+  `artifacts/v1_1_phase3_full_golden_results.md`,
+  `artifacts/v1_1_phase3_source_selection_scores.json`,
+  `artifacts/v1_1_phase3_source_selection_results.md`.
 - 2026-06-01: v1.1 Phase 2 source-selection golden completed.
   Added and ran `source_selection_golden.py` on `deepseek-v4-flash` with the trusted runtime flags:
   `RERANKER_ENABLED=false`, `HYBRID_SYNTH_ENABLED=true`, `HYBRID_QUERY_CARDS_ENABLED=true`, and `WIKI_ENABLED=true`.

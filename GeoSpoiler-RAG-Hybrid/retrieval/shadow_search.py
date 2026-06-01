@@ -59,7 +59,11 @@ def _matches_term(token: str, term: str) -> bool:
     if len(token) < 4 or len(term) < 4:
         return False
     prefix_len = min(len(token), len(term), 6)
-    return token[:prefix_len] == term[:prefix_len]
+    if token[:prefix_len] == term[:prefix_len]:
+        return True
+    if min(len(token), len(term)) <= 5:
+        return token[:4] == term[:4]
+    return False
 
 
 def _extract_snippet(text: str, query_terms: list[str], context_chars: int = 100) -> str:

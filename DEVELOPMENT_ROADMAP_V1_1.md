@@ -1,6 +1,6 @@
 # GeoSpoiler RAG Development Roadmap v1.1
 
-Status: Phase 1 completed; Phase 2 completed; Phase 3 is next after user confirmation.
+Status: Phase 1 completed; Phase 2 completed; Phase 3 completed; Phase 4 is next after user confirmation.
 
 Purpose: harden the working v1 system without changing its product direction. v1.0.0 is already a usable release:
 unit tests are green, GitHub Actions is green, the final DeepSeek V4 Flash golden run passed `23/23`, and the
@@ -116,6 +116,34 @@ Acceptance criteria:
 ## Phase 3: Retrieval Improvements To Reduce Manual Guardrails
 
 Goal: make correct source retrieval happen in the retrieval layer instead of relying on answer postprocessing.
+
+Completion note, 2026-06-01:
+- Added content-aware card-context ranking in `loader/lightrag_loader.py`.
+- Improved short Russian/Slavic lexical matching in `retrieval/shadow_search.py` while preventing broad prefix
+  collisions such as `протесты` vs `против`.
+- Visual questions now attach only the most focused card-context source before graph references, preventing broad
+  visual neighbors from outranking direct evidence.
+- Added regression coverage:
+  `test_shadow_search.py`,
+  `test_card_context_for_visual_query_keeps_focused_entity_source`,
+  and `test_card_context_prioritizes_specific_entity_terms_over_generic_overlap`.
+- Added `RETRIEVAL_GUARDRAILS.md` to document active answer/source guardrails, protected failures, and removal policy.
+- Measured guardrail removal attempt:
+  disabling the ultra-left/right reference hint still puts source `3299898370/11` at rank 4, so it remains an active
+  documented safety net rather than being removed.
+- Source-selection improvement:
+  Phase 2 baseline -> `9/10`, average `90.0`;
+  Phase 3 final -> `10/10`, average `100.0`.
+- Q22 Narva visuals improvement:
+  before -> direct source `3889026624/2` at rank 3, broad `3889026624/9` and `3889026624/6` in top 2;
+  after -> direct source `3889026624/2` at rank 1, no forbidden top hits.
+- Final Phase 3 verification:
+  `python -m unittest` -> `155` tests OK;
+  full golden -> `23/23`, average `100.0`;
+  source-selection golden -> `10/10`, average `100.0`;
+  `python main.py status` -> `220` normalized files and `0` pending reviews;
+  `python main.py wiki health` -> `22` pages checked, `0` issues;
+  `python main.py experiments index` -> `23` active records.
 
 Current guardrails to analyze:
 - AfD / AdG alias preservation.
