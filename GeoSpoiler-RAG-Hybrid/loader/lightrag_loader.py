@@ -8,42 +8,39 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-import numpy as np
-from openai import APIConnectionError, APITimeoutError, AsyncOpenAI
-
 from lightrag import LightRAG, QueryParam
 from lightrag.prompt import PROMPTS
 from lightrag.utils import EmbeddingFunc, compute_mdhash_id
 
 import config
-from llm_auth import get_openai_api_key
+from loader.answer_postprocess import (
+    _FALLBACK_TECHNICAL_MARKERS,
+    _NO_CONTEXT_MARKERS,
+    _answer_looks_corrupt,
+    _is_funding_question,
+    _postprocess_answer_text,
+    _question_requests_visuals,
+    _response_has_no_context,
+    _response_looks_corrupt,
+)
+from loader.clients import (
+    _chat_completion_options,
+    _chat_settings_for_role,
+    _embed_texts,
+    _openai_client,
+)
+from loader.reference_hints import (
+    _attach_reference_hints,
+    _existing_references,
+    _merge_references,
+    _resolve_match_source_path,
+)
 from reranker import lightrag_rerank_func
 from retrieval.wiki_index import WikiSearchResult, find_wiki_context
 from retrieval.wiki_resolver import WikiResolvedSource, resolve_wiki_references
 
 logger = logging.getLogger("geospoiler.loader")
 _LLM_ROLE = contextvars.ContextVar("geospoiler_lightrag_llm_role", default="query")
-
-# ── NIM Embedding client (handles input_type required by asymmetric models) ──
-def _client_api_key(api_key: str, base_url: str) -> str:
-    return get_openai_api_key(api_key, base_url) or "geospoiler-missing-api-key"
-
-
-_embed_client = AsyncOpenAI(
-    api_key=_client_api_key(config.EMBEDDING_API_KEY, config.EMBEDDING_BASE_URL),
-    base_url=config.EMBEDDING_BASE_URL,
-    timeout=config.EMBEDDING_TIMEOUT_SECONDS,
-)
-_embed_semaphore = asyncio.Semaphore(max(1, config.EMBEDDING_CONCURRENCY))
-
-# Models that require input_type (NIM asymmetric models)
-_NIM_ASYMMETRIC_MODELS = {
-    "nvidia/nv-embedqa-e5-v5",
-    "nvidia/nv-embedqa-mistral-7b-v2",
-    "nvidia/llama-3.2-nv-embedqa-1b-v2",
-}
-
-_needs_input_type = config.EMBEDDING_MODEL in _NIM_ASYMMETRIC_MODELS
 
 _TUPLE_DELIMITER = PROMPTS["DEFAULT_TUPLE_DELIMITER"]
 _COMPLETION_DELIMITER = PROMPTS["DEFAULT_COMPLETION_DELIMITER"]
@@ -95,95 +92,6 @@ _OVERVIEW_QUERY_USER_PROMPT = (
 _QUERY_RESPONSE_TYPE = "Short factual answer in a few paragraphs"
 _DEFAULT_QUERY_TOP_K = 15
 _DEFAULT_QUERY_CHUNK_TOP_K = 10
-_NO_CONTEXT_MARKERS = (
-    "нет информации",
-    "отсутствует прямое указание",
-    "отсутствует прямая информация",
-    "отсутствует какая-либо информация",
-    "отсутствует информация",
-    "не содержит упоминаний",
-    "не содержит информации",
-    "не удалось найти",
-    "не представлено",
-    "не представлены",
-    "никаких деталей",
-    "нельзя определить",
-    "невозможно определить",
-    "no-context",
-    "not able to provide",
-)
-
-_FALLBACK_TECHNICAL_MARKERS = (
-    "lightrag не поднял",
-    "точный поиск по карточкам",
-    "shadow_search",
-)
-_CORRUPT_ANSWER_MARKERS = (
-    "malloc",
-    "qqball",
-    "emdash",
-    "\u200c",
-    "трамппс",
-)
-
-_VISUAL_QUERY_TERMS = (
-    "визуал",
-    "визуалы",
-    "кадр",
-    "кадры",
-    "b-roll",
-    "broll",
-    "ролик",
-    "сцена",
-    "сцены",
-    "видео",
-)
-
-
-def _chat_settings_for_role(role: str) -> tuple[str, str, str]:
-    if role == "build":
-        return config.RAG_BUILD_API_KEY, config.RAG_BUILD_BASE_URL, config.RAG_BUILD_MODEL
-    if role == "fallback":
-        return config.FALLBACK_SYNTH_API_KEY, config.FALLBACK_SYNTH_BASE_URL, config.FALLBACK_SYNTH_MODEL
-    return config.QUERY_API_KEY, config.QUERY_BASE_URL, config.QUERY_MODEL
-
-
-def _openai_client(api_key: str, base_url: str, **kwargs) -> AsyncOpenAI:
-    return AsyncOpenAI(
-        api_key=_client_api_key(api_key, base_url),
-        base_url=base_url,
-        **kwargs,
-    )
-
-
-def _uses_deepseek_v4() -> bool:
-    values = (
-        config.LLM_BASE_URL,
-        config.LLM_MODEL,
-        config.RAG_BUILD_BASE_URL,
-        config.RAG_BUILD_MODEL,
-        config.QUERY_BASE_URL,
-        config.QUERY_MODEL,
-        config.FALLBACK_SYNTH_BASE_URL,
-        config.FALLBACK_SYNTH_MODEL,
-    )
-    text = " ".join(str(value).casefold() for value in values)
-    return "api.deepseek.com" in text or "deepseek-v4" in text
-
-
-def _chat_completion_options(max_tokens: int | None = None, **kwargs) -> dict[str, Any]:
-    """Build OpenAI-compatible chat options from explicit args plus local config."""
-    options = {key: value for key, value in kwargs.items() if value is not None}
-    if max_tokens is not None and max_tokens > 0:
-        options["max_tokens"] = max_tokens
-    if config.LLM_REASONING_EFFORT:
-        options["reasoning_effort"] = config.LLM_REASONING_EFFORT
-    if _uses_deepseek_v4() and not config.LLM_REASONING_EFFORT:
-        extra_body = dict(options.get("extra_body") or {})
-        extra_body.setdefault("thinking", {"type": "disabled"})
-        options["extra_body"] = extra_body
-    return options
-
 _QUERY_PROFILES: dict[str, dict[str, Any]] = {
     "answer": {
         "top_k": 15,
@@ -563,49 +471,6 @@ def _prepare_text_for_rag(text: str) -> str:
     cleaned = "\n".join(kept_lines).strip()
     cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
     return cleaned
-
-
-async def _embed_texts(texts: list[str], input_type: str = "passage") -> np.ndarray:
-    """Call NIM embedding API. Returns numpy array as required by LightRAG."""
-    if not texts:
-        return np.empty((0, config.EMBEDDING_DIM), dtype=np.float32)
-
-    all_vectors: list[list[float]] = []
-    batch_size = max(1, config.EMBEDDING_BATCH_SIZE)
-
-    for start in range(0, len(texts), batch_size):
-        batch = texts[start:start + batch_size]
-        kwargs: dict = {
-            "model": config.EMBEDDING_MODEL,
-            "input": batch,
-        }
-        if _needs_input_type:
-            kwargs["extra_body"] = {"input_type": input_type, "truncate": "END"}
-
-        for attempt in range(1, max(1, config.EMBEDDING_MAX_ATTEMPTS) + 1):
-            try:
-                async with _embed_semaphore:
-                    response = await _embed_client.embeddings.create(**kwargs)
-                all_vectors.extend(item.embedding for item in response.data)
-                break
-            except (APIConnectionError, APITimeoutError) as exc:
-                if attempt >= config.EMBEDDING_MAX_ATTEMPTS:
-                    raise
-                delay = min(12, 1.5 * attempt)
-                logger.warning(
-                    "Embedding request failed for batch %s-%s/%s on attempt %s/%s: %s. Retrying in %.1fs.",
-                    start + 1,
-                    start + len(batch),
-                    len(texts),
-                    attempt,
-                    config.EMBEDDING_MAX_ATTEMPTS,
-                    exc.__class__.__name__,
-                    delay,
-                )
-                await asyncio.sleep(delay)
-
-    return np.array(all_vectors, dtype=np.float32)
-
 
 
 async def create_rag() -> LightRAG:
@@ -1292,158 +1157,6 @@ async def query_rag(
     return result
 
 
-def _response_has_no_context(result: dict[str, Any]) -> bool:
-    answer = str(result.get("llm_response", {}).get("content") or result.get("response") or "")
-    normalized = answer.casefold()
-    return any(marker in normalized for marker in _NO_CONTEXT_MARKERS)
-
-
-def _answer_looks_corrupt(answer: str) -> bool:
-    """Detect obvious model degeneration before it reaches golden/user output."""
-    normalized = answer.casefold()
-    if any(marker in normalized for marker in _CORRUPT_ANSWER_MARKERS):
-        return True
-    if not answer.strip():
-        return False
-    odd_chars = sum(1 for char in answer if "\u0600" <= char <= "\u06ff" or "\uac00" <= char <= "\ud7af")
-    return odd_chars >= 3
-
-
-def _response_looks_corrupt(result: dict[str, Any]) -> bool:
-    answer = str(result.get("llm_response", {}).get("content") or result.get("response") or "")
-    return _answer_looks_corrupt(answer)
-
-
-def _is_funding_question(question: str) -> bool:
-    question_lower = question.casefold()
-    return any(term in question_lower for term in ("финансир", "финансирован", "fund", "financ"))
-
-
-def _question_requests_visuals(question: str) -> bool:
-    question_lower = question.casefold()
-    return any(term in question_lower for term in _VISUAL_QUERY_TERMS)
-
-
-def _postprocess_answer_text(answer: str, question: str, query_profile: str | None = None) -> str:
-    """Apply small deterministic wording fixes that keep answers evaluator- and user-friendly."""
-    fixed = answer.replace("ультра-лев", "ультралев").replace("Ультра-лев", "Ультралев")
-    fixed = fixed.replace("ультра-прав", "ультраправ").replace("Ультра-прав", "Ультраправ")
-
-    answer_lower = fixed.casefold()
-    question_lower = question.casefold()
-    has_no_direct_funder = any(
-        marker in answer_lower
-        for marker in (
-            "не указано",
-            "не содержится",
-            "нет данных",
-            "нет информации",
-            "нет прямого ответа",
-            "не содержат информации",
-            "не содержит информации",
-            "нельзя определить",
-            "никаких конкретных данных",
-        )
-    )
-    if _is_funding_question(question) and has_no_direct_funder and "отсутств" not in answer_lower:
-        prefix = "В базе отсутствует прямое указание; по имеющимся данным это нельзя определить. "
-        fixed = prefix + fixed
-
-    if "экономик" in question.casefold() and "экономик" not in fixed.casefold():
-        fixed = "Экономика: " + fixed
-
-    if (
-        "afd" in question_lower
-        and "afd" not in fixed.casefold()
-        and ("адг" in fixed.casefold() or "альтернатива для германии" in fixed.casefold())
-    ):
-        fixed = "AfD (АдГ): " + fixed
-
-    if (
-        "ультраправ" in question_lower
-        and any(term in question_lower for term in ("страны", "регионы"))
-        and "герман" not in fixed.casefold()
-    ):
-        fixed = "Германия также фигурирует в теме ультраправых через AfD. " + fixed
-    if (
-        "ультраправ" in question_lower
-        and any(term in question_lower for term in ("страны", "регионы"))
-        and "росси" not in fixed.casefold()
-    ):
-        fixed += (
-            "\n\nРоссия также фигурирует в этой теме как связанный страновой контекст: "
-            "в базе есть материалы о связях части европейских ультраправых с Россией, "
-            "российском влиянии и войне в Украине."
-        )
-    if "ультраправ" in question_lower and any(term in question_lower for term in ("страны", "регионы")):
-        fixed = _drop_sentences_with_terms(fixed, ("молдова", "швеция"))
-    if (
-        "afd" in question_lower
-        and "проблем" in question_lower
-        and "украин" not in fixed.casefold()
-    ):
-        fixed += (
-            "\n\nУкраинский контекст тоже относится к этой проблемности: "
-            "в базе AfD/BSW фигурируют среди сил, чьи избиратели заметно чаще отвергают помощь Украине, "
-            "а отдельные материалы связывают AfD с рисками раскрытия сведений о западных поставках оружия Украине."
-        )
-
-    return fixed
-
-
-def _drop_sentences_with_terms(text: str, terms: tuple[str, ...]) -> str:
-    sentences = re.split(r"(?<=[.!?])\s+", text)
-    kept = [
-        sentence.strip()
-        for sentence in sentences
-        if sentence.strip() and not any(term in sentence.casefold() for term in terms)
-    ]
-    return " ".join(kept).strip() or text
-
-
-def _reference_hints_for_question(question: str) -> list[dict[str, Any]]:
-    normalized = (
-        question.casefold()
-        .replace("ультра-лев", "ультралев")
-        .replace("ультра-прав", "ультраправ")
-    )
-    if not (
-        "ультралев" in normalized
-        and "ультраправ" in normalized
-        and any(term in normalized for term in ("сход", "совпад", "одинаков"))
-    ):
-        return []
-
-    source_path = config.NORMALIZED_DIR / "Ультра левые и ультра правые" / "11.txt"
-    if not source_path.exists():
-        return []
-    return [
-        {
-            "reference_id": "hint-ultra-left-right-similarity",
-            "file_path": str(source_path.resolve(strict=False)),
-        }
-    ]
-
-
-def _attach_reference_hints(result: dict[str, Any], question: str) -> dict[str, Any]:
-    hints = _reference_hints_for_question(question)
-    if not hints:
-        return result
-
-    fixed = result.copy()
-    data = dict(fixed.get("data") or {})
-    data["references"] = _merge_references(hints, _existing_references(fixed))
-    fixed["data"] = data
-    return fixed
-
-
-def _resolve_match_source_path(source_path: str) -> str:
-    path = Path(source_path)
-    if not path.is_absolute():
-        path = config.PROJECT_ROOT / path
-    return str(path.resolve(strict=False))
-
-
 def _card_fact_lines(
     card: dict[str, Any],
     limit: int = 4,
@@ -1672,27 +1385,6 @@ async def _synthesize_shadow_fallback_result(
     fixed["llm_response"] = {"content": answer}
     fixed["fallback"] = "shadow_search_llm"
     return fixed
-
-
-def _existing_references(result: dict[str, Any]) -> list[dict[str, Any]]:
-    data = result.get("data") if isinstance(result, dict) else {}
-    references = data.get("references", []) if isinstance(data, dict) else []
-    return [ref for ref in references if isinstance(ref, dict)]
-
-
-def _merge_references(*groups: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    merged = []
-    seen = set()
-    for group in groups:
-        for ref in group:
-            file_path = str(ref.get("file_path") or "").strip()
-            ref_id = str(ref.get("reference_id") or "").strip()
-            key = file_path or ref_id
-            if not key or key in seen:
-                continue
-            seen.add(key)
-            merged.append(dict(ref))
-    return merged
 
 
 def _card_context_for_query(question: str, query_profile: str | None) -> dict[str, Any] | None:

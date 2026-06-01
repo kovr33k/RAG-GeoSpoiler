@@ -29,6 +29,14 @@ Keep normal unit tests out of this list unless they require a real model or real
 
 ## Completed
 
+- 2026-06-01: v1.1 Phase 1 golden checks completed.
+  Baseline and post-refactor full golden runs on `deepseek-v4-flash` with `GOLDEN_QUERY_DELAY_SECONDS=0` both scored
+  `23/23`, average `100.0`, confirming that the architecture split did not change golden behavior.
+  Artifacts:
+  `artifacts/v1_1_phase1_baseline_golden_scores.json`,
+  `artifacts/v1_1_phase1_baseline_golden_results.md`,
+  `artifacts/v1_1_phase1_final_golden_scores.json`,
+  `artifacts/v1_1_phase1_final_golden_results.md`.
 - 2026-06-01: v1 release golden completed.
   Final no-cache full golden set on `deepseek-v4-flash` with `RERANKER_ENABLED=false`,
   `HYBRID_SYNTH_ENABLED=true`, `HYBRID_QUERY_CARDS_ENABLED=true`, `WIKI_ENABLED=true`, and

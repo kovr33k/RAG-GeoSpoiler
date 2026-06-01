@@ -24,6 +24,25 @@ Use `LLM_VERIFICATION_QUEUE.md` for model/live-endpoint checks; use this log for
 
 ## Completed / Notes
 
+- 2026-06-01 v1.1 Phase 1 architecture split:
+  Refactored without intended behavior changes:
+  - `loader/clients.py` now owns OpenAI-compatible chat/embedding client helpers, chat options, and embedding calls.
+  - `loader/answer_postprocess.py` now owns answer cleanup, no-context/corrupt-answer detection, and deterministic
+    wording guardrails.
+  - `loader/reference_hints.py` now owns reference merging, source path normalization, and deterministic source hints.
+  - `loader/lightrag_loader.py` remains the LightRAG creation, insert, and query orchestration layer.
+  Verification:
+  baseline full golden before editing -> `23/23`, average `100.0`;
+  post-refactor `python -m unittest` -> `145` tests OK;
+  CI-like offline unit discovery without API keys -> `145` tests OK;
+  post-refactor full golden -> `23/23`, average `100.0`;
+  `python main.py status` -> `220` normalized files, `0` pending reviews;
+  `python main.py wiki health` -> `22` pages checked, `0` issues.
+  Artifacts:
+  `artifacts/v1_1_phase1_baseline_golden_results.md`,
+  `artifacts/v1_1_phase1_baseline_golden_scores.json`,
+  `artifacts/v1_1_phase1_final_golden_results.md`,
+  `artifacts/v1_1_phase1_final_golden_scores.json`.
 - 2026-06-01 v1 release closure:
   Added the root `DEVELOPMENT_ROADMAP.md` to the release set and moved GitHub Actions from
   `GeoSpoiler-RAG-Hybrid/.github/workflows/` to the repository-root `.github/workflows/` path, with

@@ -9,6 +9,7 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).parent))
 
+from loader import clients as lightrag_clients  # noqa: E402
 from loader import lightrag_loader  # noqa: E402
 from loader.lightrag_loader import (  # noqa: E402
     _postprocess_extraction_response,
@@ -775,7 +776,7 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             FALLBACK_SYNTH_TIMEOUT_SECONDS=5,
             LLM_TIMEOUT_SECONDS=5,
         ):
-            with patch.object(lightrag_loader, "AsyncOpenAI", FakeClient):
+            with patch.object(lightrag_clients, "AsyncOpenAI", FakeClient):
                 fixed = await _synthesize_hybrid_result(
                     "Откуда тезис про Трампа и Орбана?",
                     "source",
