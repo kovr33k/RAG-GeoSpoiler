@@ -1,6 +1,6 @@
 # GeoSpoiler RAG Development Roadmap v1.1
 
-Status: Phase 1 completed; Phase 2 completed; Phase 3 completed; Phase 4 completed; final v1.1 checklist is next.
+Status: Phase 1 completed; Phase 2 completed; Phase 3 completed; Phase 4 completed; v1.1.0 release checklist completed.
 
 Purpose: harden the working v1 system without changing its product direction. v1.0.0 is already a usable release:
 unit tests are green, GitHub Actions is green, the final DeepSeek V4 Flash golden run passed `23/23`, and the
@@ -234,13 +234,13 @@ Acceptance criteria:
 
 ## Final v1.1 Release Checklist
 
-- `python -m unittest`
-- Full golden set
-- Source-selection golden
-- `python main.py status`
-- `python main.py wiki health`
-- GitHub Actions success
-- `DEVELOPMENT_RETURN_LOG.md` updated
-- `LLM_VERIFICATION_QUEUE.md` updated if live LLM checks were run
-- Release commit
-- Optional tag: `v1.1.0`
+Completion note, 2026-06-02:
+- Added `RELEASE_V1_1.md` with final release summary, accepted debt, supported rebuild path, and artifact links.
+- `python -m unittest` -> `156` tests OK.
+- Full golden set -> `23/23`, average `100.0`.
+- Source-selection golden -> `10/10`, average `100.0`.
+- `python main.py status` -> `220` normalized files and `0` pending reviews.
+- `python main.py wiki health` -> `22` pages checked and `0` issues.
+- `python main.py experiments index` -> `27` active records.
+- `DEVELOPMENT_RETURN_LOG.md` and `LLM_VERIFICATION_QUEUE.md` updated.
+- Release commit and `v1.1.0` tag are the final repository actions.

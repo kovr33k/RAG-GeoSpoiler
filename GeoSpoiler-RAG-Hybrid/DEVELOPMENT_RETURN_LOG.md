@@ -28,6 +28,23 @@ Use `LLM_VERIFICATION_QUEUE.md` for model/live-endpoint checks; use this log for
 
 ## Completed / Notes
 
+- 2026-06-02 v1.1.0 release closure:
+  Added `RELEASE_V1_1.md` with final release summary, trusted runtime, final verification, artifact links, accepted
+  debt, and supported rebuild path. Telegram re-auth is an external operational issue and was not needed for release
+  checks because final verification uses local storage/eval paths rather than Telegram fetch.
+  Verification:
+  `python -m unittest` -> `156` tests OK;
+  source-selection golden -> `10/10`, average `100.0`;
+  full golden -> `23/23`, average `100.0`;
+  `python main.py status` -> `220` normalized files and `0` pending reviews;
+  `python main.py wiki health` -> `22` pages checked and `0` issues;
+  `python main.py experiments index` -> `27` active records.
+  Artifacts:
+  `artifacts/v1_1_release_source_selection_results.md`,
+  `artifacts/v1_1_release_source_selection_scores.json`,
+  `artifacts/v1_1_release_full_golden_results.md`,
+  `artifacts/v1_1_release_full_golden_scores.json`,
+  `artifacts/experiment_registry.md`.
 - 2026-06-02 v1.1 Phase 4 enriched rebuild retirement:
   Removed enriched-card graph loading/rebuild from the supported main CLI workflow. `python main.py load --from-enriched`
   and `python main.py rebuild --from-enriched` now print an unsupported experimental-path message and return without

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-02T13:54:06+00:00",
+  "generated_at": "2026-06-02T20:01:46+00:00",
   "records": [
     {
       "run_id": "e2_baseline_golden_set",
@@ -424,6 +424,40 @@
       "wiki_enabled": true,
       "scores_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\artifacts\\v1_1_phase4_full_golden_scores.json",
       "results_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\artifacts\\v1_1_phase4_full_golden_results.md",
+      "pass_rate": 100.0
+    },
+    {
+      "run_id": "v1_1_release_source_selection",
+      "kind": "scores",
+      "checked_at": "2026-06-02T19:59:12+00:00",
+      "model": "deepseek-v4-flash",
+      "mode": "hybrid",
+      "passed": 10,
+      "total": 10,
+      "average_score": 100.0,
+      "average_duration_seconds": 4.684,
+      "reranker_enabled": false,
+      "hybrid_synth_enabled": true,
+      "wiki_enabled": true,
+      "scores_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\artifacts\\v1_1_release_source_selection_scores.json",
+      "results_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\artifacts\\v1_1_release_source_selection_results.md",
+      "pass_rate": 100.0
+    },
+    {
+      "run_id": "v1_1_release_full_golden",
+      "kind": "golden",
+      "checked_at": "2026-06-02T20:01:13+00:00",
+      "model": "deepseek-v4-flash",
+      "mode": "hybrid",
+      "passed": 23,
+      "total": 23,
+      "average_score": 100.0,
+      "average_duration_seconds": null,
+      "reranker_enabled": false,
+      "hybrid_synth_enabled": true,
+      "wiki_enabled": true,
+      "scores_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\artifacts\\v1_1_release_full_golden_scores.json",
+      "results_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\artifacts\\v1_1_release_full_golden_results.md",
       "pass_rate": 100.0
     }
   ]

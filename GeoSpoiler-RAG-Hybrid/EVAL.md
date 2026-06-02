@@ -35,7 +35,7 @@ Latest trusted results:
 - Focused probe: `6/6`, average score `100.0`.
 - Full golden set before rebuild: `23/23`, average score `100.0`.
 - Full golden set after clean rebuild: `23/23`, average score `100.0`.
-- Full golden set after v1.1 Phase 4 CLI cleanup: `23/23`, average score `100.0`.
+- Full golden set for v1.1.0 release: `23/23`, average score `100.0`.
 - Source-selection golden: `10/10`, average score `100.0`; Q22 Narva visuals now ranks the direct source first.
 - Reranker experiment: `20/23`, average score `96.7`; keep reranker disabled.
 
@@ -45,8 +45,8 @@ Primary artifacts:
 artifacts/llm_probe_deepseek_v4_flash_absence_fix_clearcache_scores.json
 artifacts/deepseek_v4_flash_clearcache_golden_set_scores.json
 artifacts/deepseek_v4_flash_rebuilt_clearcache_golden_set_scores.json
-artifacts/v1_1_phase4_full_golden_scores.json
-artifacts/v1_1_phase4_source_selection_scores.json
+artifacts/v1_1_release_full_golden_scores.json
+artifacts/v1_1_release_source_selection_scores.json
 artifacts/deepseek_v4_flash_reranker_clearcache_golden_set_scores.json
 artifacts/experiment_registry.md
 ```

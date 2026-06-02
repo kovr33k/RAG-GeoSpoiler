@@ -1,7 +1,7 @@
 # Experiment Registry
 
-- generated_at: 2026-06-02T13:54:06+00:00
-- records: 25
+- generated_at: 2026-06-02T20:01:46+00:00
+- records: 27
 
 | Checked At | Kind | Model | Mode | Passed | Avg | Rerank | Synth | Wiki | Scores |
 |---|---|---|---|---:|---:|:---:|:---:|:---:|---|
@@ -30,3 +30,5 @@
 | 2026-06-01T19:51:28+00:00 | golden | deepseek-v4-flash | hybrid | 23/23 | 100 | N | Y | Y | `v1_1_phase3_full_golden_scores.json` |
 | 2026-06-02T13:51:20+00:00 | scores | deepseek-v4-flash | hybrid | 10/10 | 100 | N | Y | Y | `v1_1_phase4_source_selection_scores.json` |
 | 2026-06-02T13:53:38+00:00 | golden | deepseek-v4-flash | hybrid | 23/23 | 100 | N | Y | Y | `v1_1_phase4_full_golden_scores.json` |
+| 2026-06-02T19:59:12+00:00 | scores | deepseek-v4-flash | hybrid | 10/10 | 100 | N | Y | Y | `v1_1_release_source_selection_scores.json` |
+| 2026-06-02T20:01:13+00:00 | golden | deepseek-v4-flash | hybrid | 23/23 | 100 | N | Y | Y | `v1_1_release_full_golden_scores.json` |

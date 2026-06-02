@@ -24,6 +24,15 @@ Keep normal unit tests out of this list unless they require a real model or real
 
 ## Completed
 
+- 2026-06-02: v1.1.0 release live checks completed.
+  Final release live checks on `deepseek-v4-flash` remained green:
+  source-selection golden -> `10/10`, average `100.0`;
+  full golden -> `23/23`, average `100.0`.
+  Artifacts:
+  `artifacts/v1_1_release_source_selection_scores.json`,
+  `artifacts/v1_1_release_source_selection_results.md`,
+  `artifacts/v1_1_release_full_golden_scores.json`,
+  `artifacts/v1_1_release_full_golden_results.md`.
 - 2026-06-02: v1.1 Phase 4 enriched rebuild live-check decision completed.
   `python main.py rebuild --from-enriched` is no longer a live-LLM investigation target because enriched-card graph
   rebuild has been removed from the supported main CLI path. The historical failed attempt remains documented in
