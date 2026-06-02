@@ -235,11 +235,11 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
         self.assertIsNone(captured.get("query_profile"))
 
     def test_main_rebuild_cli_defaults_to_normalized_graph(self):
-        captured = {}
+        captured = {"called": False}
         original_run = py_asyncio.run
 
-        async def fake_cmd_rebuild(from_enriched=False):
-            captured["from_enriched"] = from_enriched
+        async def fake_cmd_rebuild():
+            captured["called"] = True
 
         def fake_run(coro):
             original_run(coro)
@@ -250,32 +250,36 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
                     with patch.object(sys, "argv", ["main.py", "rebuild"]):
                         main.main()
 
-        self.assertFalse(captured.get("from_enriched"))
+        self.assertTrue(captured["called"])
 
-    def test_main_rebuild_cli_requires_explicit_enriched_flag(self):
-        captured = {}
+    def test_main_rebuild_cli_rejects_enriched_flag(self):
+        captured = {"called": False}
+        output = io.StringIO()
         original_run = py_asyncio.run
 
-        async def fake_cmd_rebuild(from_enriched=False):
-            captured["from_enriched"] = from_enriched
+        async def fake_cmd_rebuild():
+            captured["called"] = True
 
         def fake_run(coro):
             original_run(coro)
 
         with patch.object(main, "setup_logging"):
             with patch.object(main, "cmd_rebuild", fake_cmd_rebuild):
-                with patch.object(main.asyncio, "run", side_effect=fake_run):
-                    with patch.object(sys, "argv", ["main.py", "rebuild", "--from-enriched"]):
-                        main.main()
+                with patch("sys.stdout", output):
+                    with patch.object(main.asyncio, "run", side_effect=fake_run):
+                        with patch.object(sys, "argv", ["main.py", "rebuild", "--from-enriched"]):
+                            main.main()
 
-        self.assertTrue(captured.get("from_enriched"))
+        self.assertFalse(captured["called"])
+        self.assertIn("not supported", output.getvalue())
+        self.assertIn("experimental", output.getvalue())
 
     def test_main_load_cli_defaults_to_normalized_graph(self):
         captured = {}
         original_run = py_asyncio.run
 
-        async def fake_cmd_load(texts_with_paths=None, from_enriched=False):
-            captured["from_enriched"] = from_enriched
+        async def fake_cmd_load(texts_with_paths=None):
+            captured["texts_with_paths"] = texts_with_paths
             return main.LoadStats()
 
         def fake_run(coro):
@@ -288,7 +292,30 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
                         with patch.object(sys, "argv", ["main.py", "load"]):
                             main.main()
 
-        self.assertFalse(captured.get("from_enriched"))
+        self.assertIsNone(captured.get("texts_with_paths"))
+
+    def test_main_load_cli_rejects_enriched_flag(self):
+        captured = {"called": False}
+        output = io.StringIO()
+        original_run = py_asyncio.run
+
+        async def fake_cmd_load(texts_with_paths=None):
+            captured["called"] = True
+            return main.LoadStats()
+
+        def fake_run(coro):
+            return original_run(coro)
+
+        with patch.object(main, "setup_logging"):
+            with patch.object(main, "cmd_load", fake_cmd_load):
+                with patch("sys.stdout", output):
+                    with patch.object(main.asyncio, "run", side_effect=fake_run):
+                        with patch.object(sys, "argv", ["main.py", "load", "--from-enriched"]):
+                            main.main()
+
+        self.assertFalse(captured["called"])
+        self.assertIn("not supported", output.getvalue())
+        self.assertIn("experimental", output.getvalue())
 
     def test_main_fts_search_cli_parses_flags(self):
         captured = {}

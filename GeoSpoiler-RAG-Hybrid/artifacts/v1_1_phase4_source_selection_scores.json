@@ -1,0 +1,661 @@
+{
+  "checked_at": "2026-06-02T13:51:20+00:00",
+  "query_model": "deepseek-v4-flash",
+  "query_base_url": "https://api.deepseek.com",
+  "mode": "hybrid",
+  "config_flags": {
+    "RERANKER_ENABLED": false,
+    "HYBRID_SYNTH_ENABLED": true,
+    "HYBRID_QUERY_CARDS_ENABLED": true,
+    "WIKI_ENABLED": true,
+    "WIKI_TOP_K": 5
+  },
+  "source_limit": 8,
+  "total": 10,
+  "passed": 10,
+  "failed": 0,
+  "average_score": 100.0,
+  "average_duration_seconds": 5.216,
+  "cases": [
+    {
+      "case_id": "f1_trump_orban_source",
+      "question": "Трамп реально поддерживал Орбана? Дай источник.",
+      "profile": "source",
+      "status": "ok",
+      "duration_seconds": 10.193,
+      "score": 100,
+      "passed": true,
+      "answer_preview": "Да, в предоставленных источниках есть информация о том, что Дональд Трамп выражал поддержку премьер-министру Венгрии Виктору Орбану. В частности, в одном из сообщений (источник: https://t.me/c/3328128766/133) описывается телефонный разговор Трампа с участниками митинга в поддержку Орбана, где Трамп назвал Орбана «фантастическим лидером», похвалил его за защиту Венгрии от миграции и заявил, что любит Венгрию и Орбана. В другом посте (источник: https://t.me/c/3328128766/148) утверждается, что Трамп открыто поддержал переизбрание Орбана на выборах 2026 года, призвав венгров голосовать за него.\n\nКроме того, в контексте упоминается статья Bloomberg, где говорится, что ультраправые партии в Европ...",
+      "answer_missing": [],
+      "source_any_ok": true,
+      "source_rank": 1,
+      "rank_ok": true,
+      "forbidden_top_hits": [],
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3328128766/133",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-07T16:40:43+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\133.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/148",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-10T16:41:09+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\148.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/123",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-02T17:48:01+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\123.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/162",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-11T19:34:30+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\162.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/9",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-01-17T21:26:45+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\9.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/14",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:26:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\14.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/24",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-04-14T15:59:00+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\24.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/181",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-13T05:24:22+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\181.txt"
+        }
+      ],
+      "note": "Historical F1 source-grounding case: support for Orban should resolve to direct Hungary/Slovakia posts.",
+      "error": ""
+    },
+    {
+      "case_id": "ultra_left_right_similarity_source",
+      "question": "Что в базе говорится о сходстве ультралевых и ультраправых?",
+      "profile": "answer",
+      "status": "ok",
+      "duration_seconds": 4.409,
+      "score": 100,
+      "passed": true,
+      "answer_preview": "В базе данных содержатся утверждения о том, что ультралевые и ультраправые могут быть схожи или совпадать. В одном из документов говорится: «Ультралевые и ультраправые совпадают», а в другом приводится утверждение «Везде ультралевые и ультраправые одинаковые».\n\nВ качестве примера такого сходства приводится ситуация вокруг председателя Европейской комиссии Урсулы фон дер Ляйен. Согласно источникам, её политика вызывает ненависть как у ультраправых, так и у ультралевых сил Европы, несмотря на их идеологическую противоположность. Ультраправые критикуют её за слишком либеральную миграционную политику и «Зелёный курс», тогда как ультралевые обвиняют её в милитаризации ЕС и поддержке крупного биз...",
+      "answer_missing": [],
+      "source_any_ok": true,
+      "source_rank": 1,
+      "rank_ok": true,
+      "forbidden_top_hits": [],
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3299898370/11",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-02-09T19:05:10+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\11.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/20",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-26T19:44:07+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\20.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/21",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-26T19:47:21+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\21.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/22",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-04-13T19:54:05+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\22.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/30",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-27T12:56:09+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\30.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/14",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:26:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\14.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/170",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-12T16:28:39+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\170.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/162",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-11T19:34:30+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\162.txt"
+        }
+      ],
+      "note": "The direct similarity claim is canonical in normalized source 11.",
+      "error": ""
+    },
+    {
+      "case_id": "cuba_talks_source",
+      "question": "Что в базе говорится о Кубе и переговорах с США?",
+      "profile": "answer",
+      "status": "ok",
+      "duration_seconds": 4.754,
+      "score": 100,
+      "passed": true,
+      "answer_preview": "Согласно имеющейся информации, Куба и США провели тайные переговоры в Гаване — это первые прямые контакты за последние 10 лет. Со стороны США во встрече участвовала делегация Госдепартамента, которая встречалась с внуком Рауля Кастро. В ходе переговоров американская сторона предложила снятие торгового эмбарго и доступ к Starlink в обмен на экономические реформы, освобождение политзаключённых и компенсации за конфискованные активы. Также сообщается, что американские чиновники выразили обеспокоенность деятельностью иностранных разведывательных и военных групп на Кубе, приблизившихся к территории США.\n\nНа фоне этих переговоров на Кубе продолжаются протесты, сопровождающиеся поджогами отделений...",
+      "answer_missing": [],
+      "source_any_ok": true,
+      "source_rank": 1,
+      "rank_ok": true,
+      "forbidden_top_hits": [],
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3841808641/8",
+          "channel": "Куба",
+          "date": "2026-04-18T16:14:14+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\8.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3841808641/5",
+          "channel": "Куба",
+          "date": "2026-03-14T18:13:41+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\5.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3841808641/6",
+          "channel": "Куба",
+          "date": "2026-03-30T16:47:25+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\6.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3841808641/7",
+          "channel": "Куба",
+          "date": "2026-03-30T16:47:29+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\7.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/9",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-01-17T21:26:45+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\9.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/162",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-11T19:34:30+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\162.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/142",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-08T20:32:46+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\142.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/14",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:26:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\14.txt"
+        }
+      ],
+      "note": "Cuba talks should be grounded in the direct Cuba posts, not adjacent US/Trump material.",
+      "error": ""
+    },
+    {
+      "case_id": "q9_cuba_protests_source",
+      "question": "Что в базе говорится о протестах на Кубе?",
+      "profile": "answer",
+      "status": "ok",
+      "duration_seconds": 3.673,
+      "score": 100,
+      "passed": true,
+      "answer_preview": "Согласно имеющейся информации, на Кубе продолжаются протесты, которые сопровождаются поджогами. Сообщается, что протестующие поджигают местные отделения Коммунистической партии Кубы в некоторых городах. Одной из причин выхода людей на улицы называется полное отключение электроэнергии, которое длится уже вторую неделю, а также речь президента, объявившего о начале переговоров с США.\n\nВ контексте протестов также упоминается энергетическая блокада. Указывается, что Соединенные Штаты блокируют поставки нефти на Кубу с января, а президент США Дональд Трамп подписал указ о введении тарифов против стран, поставляющих нефть Кубе. При этом отмечается, что «другу Владимиру [Путину] можно всё», что на...",
+      "answer_missing": [],
+      "source_any_ok": true,
+      "source_rank": 1,
+      "rank_ok": true,
+      "forbidden_top_hits": [],
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3841808641/5",
+          "channel": "Куба",
+          "date": "2026-03-14T18:13:41+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\5.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3841808641/7",
+          "channel": "Куба",
+          "date": "2026-03-30T16:47:29+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\7.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/185",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-13T17:09:19+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\185.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/162",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-11T19:34:30+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\162.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/24",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-04-14T15:59:00+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\24.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/14",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:26:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\14.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/160",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-11T16:18:35+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\160.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/16",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-14T22:46:48+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\16.txt"
+        }
+      ],
+      "note": "Historical Q9 failure: protest answer must prioritize the direct Cuba protests post.",
+      "error": ""
+    },
+    {
+      "case_id": "cuba_pressure_deal_source",
+      "question": "Как база описывает отношение США к Кубе: давление или попытку сделки?",
+      "profile": "answer",
+      "status": "ok",
+      "duration_seconds": 5.424,
+      "score": 100,
+      "passed": true,
+      "answer_preview": "На основании предоставленных данных, политика США по отношению к Кубе описывается как сочетание давления и попытки сделки. Давление проявляется в энергетической блокаде, ограничениях на торговлю нефтью и введении тарифов против стран, поставляющих нефть Кубе. Кроме того, в Сенате США республиканцы заблокировали попытку демократов ограничить полномочия президента на применение военной силы против Кубы без одобрения Конгресса, что указывает на сохранение военного давления.\n\nОдновременно с этим, согласно данным, США и Куба провели тайные переговоры в Гаване — первые за 10 лет. Американская делегация, возглавляемая Госдепартаментом, встречалась с внуком бывшего кубинского лидера Рауля Кастро. В...",
+      "answer_missing": [],
+      "source_any_ok": true,
+      "source_rank": 1,
+      "rank_ok": true,
+      "forbidden_top_hits": [],
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3841808641/8",
+          "channel": "Куба",
+          "date": "2026-04-18T16:14:14+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\8.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3841808641/6",
+          "channel": "Куба",
+          "date": "2026-03-30T16:47:25+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\6.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3841808641/9",
+          "channel": "Куба",
+          "date": "2026-04-29T09:17:20+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\9.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3841808641/7",
+          "channel": "Куба",
+          "date": "2026-03-30T16:47:29+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Куба\\7.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/9",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-01-17T21:26:45+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\9.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/162",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-11T19:34:30+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\162.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/188",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-14T17:20:10+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\188.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/14",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:26:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\14.txt"
+        }
+      ],
+      "note": "Pressure-vs-deal wording should be grounded in the direct negotiation/pressure post.",
+      "error": ""
+    },
+    {
+      "case_id": "narva_plans_source",
+      "question": "Что в базе говорится о Нарве и планах России против Эстонии?",
+      "profile": "answer",
+      "status": "ok",
+      "duration_seconds": 5.046,
+      "score": 100,
+      "passed": true,
+      "answer_preview": "В предоставленных материалах обсуждаются различные сценарии, связанные с возможными действиями России в отношении Эстонии, в частности города Нарва. Согласно одному из источников, в социальных сетях появляются аккаунты, продвигающие идею отделения Нарвы и Ида-Вирумаа от Эстонии и создания так называемой «Нарвской народной республики». Автор одного из постов, Александр Нотевский, предполагает, что эти действия могут быть признаком подготовки России к вторжению в Эстонию, однако вопрос о том, насколько серьёзно воспринимается эта угроза, остаётся открытым.\n\nДругие аналитические материалы указывают на то, что российские пропагандисты предлагают захватить Нарву, чтобы «сломать» политическую вол...",
+      "answer_missing": [],
+      "source_any_ok": true,
+      "source_rank": 1,
+      "rank_ok": true,
+      "forbidden_top_hits": [],
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3889026624/2",
+          "channel": "Балтийские страны",
+          "date": "2026-03-24T21:18:12+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Балтийские страны\\2.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3889026624/6",
+          "channel": "Балтийские страны",
+          "date": "2026-03-25T17:44:57+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Балтийские страны\\6.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3889026624/4",
+          "channel": "Балтийские страны",
+          "date": "2026-03-24T21:18:12+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Балтийские страны\\4.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/9",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-01-17T21:26:45+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\9.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/14",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:26:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\14.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/4",
+          "channel": "Корея",
+          "date": "2025-11-07T15:56:17+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Корея\\4.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/162",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-11T19:34:30+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\162.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/196",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-19T06:40:29+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\196.txt"
+        }
+      ],
+      "note": "Narva planning question should ground in the direct Narva/Estonia posts.",
+      "error": ""
+    },
+    {
+      "case_id": "q22_narva_visuals_top_source",
+      "question": "Какие кадры или визуалы можно использовать для ролика про Нарву и Эстонию?",
+      "profile": "answer",
+      "status": "ok",
+      "duration_seconds": 5.145,
+      "score": 100,
+      "passed": true,
+      "answer_preview": "Для ролика про Нарву и Эстонию можно использовать карту, демонстрирующую потенциальный сценарий российского вторжения в страны Балтии. Хотя эта карта не новая и циркулировала в сети ещё в 2024 году, она визуализирует актуальную тему и может служить сильным иллюстративным материалом. Также подойдут кадры, изображающие гипотетический захват Нарвы: графика, показывающая кинетическую фазу операции — выведение из строя электроснабжения, глушение связи и захват критических узлов, таких как полицейские участки, пограничные пункты и центры местного самоуправления.\n\nВ качестве пропагандистского фона можно создать графику, иллюстрирующую «информационное оружие», которое, по данным источников, Россия...",
+      "answer_missing": [],
+      "source_any_ok": true,
+      "source_rank": 1,
+      "rank_ok": true,
+      "forbidden_top_hits": [],
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3889026624/2",
+          "channel": "Балтийские страны",
+          "date": "2026-03-24T21:18:12+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Балтийские страны\\2.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/14",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:26:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\14.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/188",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-14T17:20:10+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\188.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/4",
+          "channel": "Венгрия Словакия",
+          "date": "2026-01-05T15:44:41+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\4.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/9",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-01-17T21:26:45+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\9.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/16",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-14T22:46:48+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\16.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3889026624/6",
+          "channel": "Балтийские страны",
+          "date": "2026-03-25T17:44:57+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Балтийские страны\\6.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/187",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-13T17:10:43+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\187.txt"
+        }
+      ],
+      "note": "Historical Q22 weakness: broad Baltic visuals must not outrank direct Narva/Estonia visual sources.",
+      "error": ""
+    },
+    {
+      "case_id": "afd_ukraine_stance_source",
+      "question": "Что в базе говорится про отношение AfD к войне в Украине?",
+      "profile": "answer",
+      "status": "ok",
+      "duration_seconds": 4.226,
+      "score": 100,
+      "passed": true,
+      "answer_preview": "Согласно имеющимся данным, избиратели партии AfD демонстрируют решительное неприятие помощи Украине. В частности, опрос Insa, проведённый для BILD, показал, что 65% сторонников AfD и BSW выступают против предоставления любой помощи Украине. Кроме того, сторонники AfD решительно отвергают идею размещения солдат Бундесвера на территории Украины.\n\nТакже в источниках упоминается, что издание Politico сообщало об обвинениях в адрес AfD в утечке секретных документов Европейского союза России. Эта информация представлена как заявление источника, а не как установленный факт.\n\nВ целом, данные указывают на то, что позиция AfD и её электората по вопросу войны в Украине является последовательно антивое...",
+      "answer_missing": [],
+      "source_any_ok": true,
+      "source_rank": 1,
+      "rank_ok": true,
+      "forbidden_top_hits": [],
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3299898370/12",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-02-09T19:05:10+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\12.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/4",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2025-12-17T16:24:36+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\4.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/14",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:26:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\14.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/162",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-11T19:34:30+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\162.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/182",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-13T16:21:48+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\182.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/38",
+          "channel": "Корея",
+          "date": "2026-04-27T12:07:10+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Корея\\38.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/30",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-27T12:56:09+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\30.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/4",
+          "channel": "Венгрия Словакия",
+          "date": "2026-01-05T15:44:41+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\4.txt"
+        }
+      ],
+      "note": "AfD/Ukraine stance should ground in the direct ultra-left/right topic posts.",
+      "error": ""
+    },
+    {
+      "case_id": "afd_nepotism_source",
+      "question": "Где в базе источник про кумовство в AfD? Дай ссылку.",
+      "profile": "source",
+      "status": "ok",
+      "duration_seconds": 5.087,
+      "score": 100,
+      "passed": true,
+      "answer_preview": "В предоставленной базе данных содержится информация о том, что партия AfD была замешана в скандалах, включая обвинения в кумовстве и преимущественном трудоустройстве родственников как на земельном, так и на федеральном уровне. Конкретный источник, подтверждающий это утверждение, находится в файле `C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\13.txt`. В этом документе анализируются масштабные случаи кумовства в AfD, выходящие за рамки региональной политики Саксонии-Ангальтии и затрагивающие федеральных лидеров партии.\n\nСогласно этому источнику, в Саксонии-Ангальтии основного кандидата земельного отделения AfD Ульриха Зигмунда обвиняют в том,...",
+      "answer_missing": [],
+      "source_any_ok": true,
+      "source_rank": 1,
+      "rank_ok": true,
+      "forbidden_top_hits": [],
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3299898370/13",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-02-13T19:56:31+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\13.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/12",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-02-09T19:05:10+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\12.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/14",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:26:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\14.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/170",
+          "channel": "Венгрия Словакия",
+          "date": "2026-04-12T16:28:39+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\170.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/70",
+          "channel": "Венгрия Словакия",
+          "date": "2026-03-13T22:52:15+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\70.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3299898370/18",
+          "channel": "Ультра левые и ультра правые",
+          "date": "2026-03-05T01:16:18+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Ультра левые и ультра правые\\18.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/97",
+          "channel": "Венгрия Словакия",
+          "date": "2026-03-21T17:43:16+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\97.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/27",
+          "channel": "Корея",
+          "date": "2026-03-12T21:43:37+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Корея\\27.txt"
+        }
+      ],
+      "note": "Direct AfD nepotism query should resolve to the dedicated AfD nepotism post.",
+      "error": ""
+    },
+    {
+      "case_id": "north_korea_troops_source",
+      "question": "Откуда в базе тезис про северокорейских военных в России? Дай ссылку.",
+      "profile": "source",
+      "status": "ok",
+      "duration_seconds": 4.2,
+      "score": 100,
+      "passed": true,
+      "answer_preview": "Тезис о присутствии северокорейских военных в России и их участии в боевых действиях содержится в нескольких документах вашей базы. Основной источник, напрямую описывающий их участие, сообщает, что на январь 2026 года северокорейские войска не просто находятся в тылу, но и непосредственно участвуют в боевых действиях на территории Курской области РФ. Под российским командованием они наносят огневые удары по украинскому приграничью (в частности, Сумской области), используя ствольную артиллерию и реактивные системы залпового огня [2].\n\nДополнительные источники подтверждают, что северокорейских солдат начали привлекать к нанесению артиллерийских ударов по Украине с российской территории, а так...",
+      "answer_missing": [],
+      "source_any_ok": true,
+      "source_rank": 1,
+      "rank_ok": true,
+      "forbidden_top_hits": [],
+      "sources": [
+        {
+          "post_url": "https://t.me/c/3215620297/15",
+          "channel": "Корея",
+          "date": "2026-02-15T14:47:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Корея\\15.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3215620297/13",
+          "channel": "Корея",
+          "date": "2026-02-07T20:33:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Корея\\13.txt"
+        },
+        {
+          "post_url": "https://t.me/c/3328128766/14",
+          "channel": "Венгрия Словакия",
+          "date": "2026-02-11T19:26:03+00:00",
+          "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\normalized\\Венгрия Словакия\\14.txt"
+        }
+      ],
+      "note": "North Korea source control keeps the source profile honest on a stable topic.",
+      "error": ""
+    }
+  ]
+}

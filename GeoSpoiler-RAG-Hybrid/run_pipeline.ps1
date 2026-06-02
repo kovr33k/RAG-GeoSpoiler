@@ -194,7 +194,7 @@ switch ($step) {
         Write-Host "  auth           - First-time Telegram login (saves session)"
         Write-Host "  fetch [N]      - Fetch last N messages per channel (default: all new)"
         Write-Host "  normalize [N]  - Fetch + normalize only (no LightRAG load)"
-        Write-Host "  load [flags]   - Load normalized texts into LightRAG (--from-enriched for experimental mode)"
+        Write-Host "  load [flags]   - Load normalized texts into LightRAG"
         Write-Host "  rebuild [flags]- Backup current LightRAG storage and rebuild from normalized files"
         Write-Host "  run [N]        - Full pipeline: fetch + normalize + load"
         Write-Host "  query `"?`" [m]  - Query the knowledge graph (default: mix; modes: hybrid/mix/local/global)"

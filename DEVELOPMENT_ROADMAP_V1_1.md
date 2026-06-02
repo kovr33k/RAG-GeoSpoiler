@@ -1,6 +1,6 @@
 # GeoSpoiler RAG Development Roadmap v1.1
 
-Status: Phase 1 completed; Phase 2 completed; Phase 3 completed; Phase 4 is next after user confirmation.
+Status: Phase 1 completed; Phase 2 completed; Phase 3 completed; Phase 4 completed; final v1.1 checklist is next.
 
 Purpose: harden the working v1 system without changing its product direction. v1.0.0 is already a usable release:
 unit tests are green, GitHub Actions is green, the final DeepSeek V4 Flash golden run passed `23/23`, and the
@@ -188,6 +188,24 @@ Acceptance criteria:
 ## Phase 4: Remove Enriched Rebuild From The Main Workflow
 
 Goal: stop presenting `rebuild --from-enriched` as a supported release path.
+
+Completion note, 2026-06-02:
+- Removed `--from-enriched` from the supported main CLI flow for both `load` and `rebuild`.
+- `python main.py load --from-enriched` and `python main.py rebuild --from-enriched` now print an unsupported
+  experimental-path message and do not touch `rag_storage/`.
+- Normal `python main.py load` and `python main.py rebuild` remain normalized-source workflows.
+- Removed enriched rebuild commands from README, Operations, and Architecture docs.
+- Added `experiments/enriched_rebuild/README.md` as a historical note for the retired experiment.
+- Moved the old enriched rebuild investigation out of live-LLM pending work because it is no longer a supported
+  release path.
+- Final Phase 4 verification:
+  targeted CLI tests -> `4` tests OK;
+  `python -m unittest` -> `156` tests OK;
+  full golden -> `23/23`, average `100.0`;
+  source-selection golden -> `10/10`, average `100.0`;
+  `python main.py status` -> `220` normalized files and `0` pending reviews;
+  `python main.py wiki health` -> `22` pages checked, `0` issues;
+  `python main.py experiments index` -> `25` active records.
 
 Decision:
 The official v1/v1.1 rebuild path is the normalized-source rebuild. Enriched cards remain useful as auxiliary retrieval

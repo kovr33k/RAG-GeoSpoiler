@@ -5,8 +5,8 @@ Batch mode:
   python main.py fetch [N]     - Fetch last N messages from Telegram (default: all new)
   python main.py normalize [N] - Fetch + normalize only (NO load into LightRAG)
   python main.py enrich        - Enrich normalized posts into memory cards
-  python main.py load          - Load normalized .txt files into LightRAG (default) or --from-enriched
-  python main.py rebuild       - Backup current LightRAG storage and rebuild from normalized texts (default) or --from-enriched
+  python main.py load          - Load normalized .txt files into LightRAG
+  python main.py rebuild       - Backup current LightRAG storage and rebuild from normalized texts
   python main.py search "query" --mode [recall|broll|thesis|entity|shadow] - Multi-index search
   python main.py run [N]       - Full pipeline: fetch -> normalize -> enrich -> load
   python main.py query "?"     - Query the knowledge graph
@@ -61,7 +61,6 @@ from loader.lightrag_loader import (
     create_rag,
     get_query_profile,
     load_from_directory,
-    load_from_enriched,
     load_source_metadata_index,
     load_texts,
     query_rag,
@@ -267,15 +266,8 @@ async def cmd_normalize(channel_messages: list[tuple[str, list[TelegramMessage]]
     return summary
 
 
-async def cmd_load(
-    texts_with_paths: list[tuple[str, str]] | None = None,
-    from_enriched: bool = False,
-) -> LoadStats:
-    """Load texts into LightRAG.
-
-    By default loads normalized texts into LightRAG. Enriched-card graph
-    loading is retained only as an explicit experimental mode.
-    """
+async def cmd_load(texts_with_paths: list[tuple[str, str]] | None = None) -> LoadStats:
+    """Load normalized texts into LightRAG."""
     logger.info("=== LOAD: Loading into LightRAG ===")
 
     rag = await create_rag()
@@ -286,26 +278,6 @@ async def cmd_load(
             # Explicit texts passed (e.g. from cmd_run after normalize)
             load_stats.normalized_attempted = len(texts_with_paths)
             load_stats.normalized_loaded = await load_texts(rag, texts_with_paths)
-        elif from_enriched:
-            # Experimental mode: load from enriched cards
-            enriched_stats = await load_from_enriched(rag)
-            load_stats.normalized_attempted = enriched_stats.get(
-                "normalized_found",
-                enriched_stats["loaded"] + enriched_stats["skipped_triage"]
-                + enriched_stats["skipped_dedup"],
-            )
-            load_stats.normalized_loaded = enriched_stats["loaded"]
-            if (
-                enriched_stats["skipped_triage"]
-                or enriched_stats["skipped_dedup"]
-                or enriched_stats.get("missing_enriched")
-            ):
-                logger.info(
-                    f"  Enriched load: skipped {enriched_stats['skipped_triage']} triage, "
-                    f"{enriched_stats['skipped_dedup']} dedup, "
-                    f"{enriched_stats['fallback_normalized']} fallback to normalized, "
-                    f"{enriched_stats.get('missing_enriched', 0)} missing enriched"
-                )
         else:
             # Default: load raw normalized texts
             load_stats.normalized_attempted = sum(1 for _ in config.NORMALIZED_DIR.rglob("*.txt"))
@@ -369,20 +341,27 @@ async def cmd_run(limit: int | None = None):
     logger.info("=== FULL PIPELINE COMPLETE ===")
 
 
-async def cmd_rebuild(from_enriched: bool = False):
-    """Backup current RAG storage, then rebuild from normalized sources by default."""
-    source = "enriched" if from_enriched else "normalized"
-    logger.info(f"=== REBUILD: Resetting LightRAG storage (source: {source}) ===")
+async def cmd_rebuild():
+    """Backup current RAG storage, then rebuild from normalized sources."""
+    logger.info("=== REBUILD: Resetting LightRAG storage (source: normalized) ===")
 
     backup_path = rebuild_rag_storage()
     if backup_path:
         logger.info(f"RAG storage backup created at: {backup_path}")
     _clear_lightrag_query_cache()
 
-    logger.info(f"=== REBUILD: Loading all {source} sources into fresh LightRAG storage ===")
-    load_stats = await cmd_load(from_enriched=from_enriched)
+    logger.info("=== REBUILD: Loading all normalized sources into fresh LightRAG storage ===")
+    load_stats = await cmd_load()
     _print_load_summary(load_stats, heading="REBUILD SUMMARY")
     logger.info("=== REBUILD COMPLETE ===")
+
+
+def _print_enriched_graph_load_unsupported() -> None:
+    print(
+        "`--from-enriched` is not supported in the main CLI. "
+        "Enriched-card graph loading was experimental and is no longer a v1.1 release path. "
+        "Use `python main.py load` or `python main.py rebuild` to load normalized sources."
+    )
 
 
 def _clear_lightrag_query_cache() -> None:
@@ -1012,13 +991,17 @@ def main():
         asyncio.run(_fetch_and_normalize())
 
     elif command == "load":
-        from_enriched = "--from-enriched" in sys.argv[2:]
-        load_stats = asyncio.run(cmd_load(from_enriched=from_enriched))
+        if "--from-enriched" in sys.argv[2:]:
+            _print_enriched_graph_load_unsupported()
+            return
+        load_stats = asyncio.run(cmd_load())
         _print_load_summary(load_stats)
 
     elif command == "rebuild":
-        from_enriched = "--from-enriched" in sys.argv[2:]
-        asyncio.run(cmd_rebuild(from_enriched=from_enriched))
+        if "--from-enriched" in sys.argv[2:]:
+            _print_enriched_graph_load_unsupported()
+            return
+        asyncio.run(cmd_rebuild())
 
     elif command == "enrich":
         channel_filter = None

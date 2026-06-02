@@ -158,13 +158,9 @@ Cards include:
 - graph/search text.
 
 The default LightRAG graph is still loaded from normalized source text, not from
-enriched cards. Loading enriched cards into LightRAG is retained only as an
-explicit experimental mode:
-
-```powershell
-python main.py load --from-enriched
-python main.py rebuild --from-enriched
-```
+enriched cards. Loading enriched cards directly into LightRAG was retired as a
+main CLI path in v1.1 because it did not improve quality enough to justify the
+operational cost.
 
 ## LightRAG Storage
 
@@ -184,7 +180,7 @@ Document ids are stable and path-based. `load` also includes reviewed AI-chat
 items from `output/review_queue/` when they have `status=processed`.
 
 `rebuild` moves the current `rag_storage/` into `rag_storage_backups/`, clears
-the active query cache, and reloads the chosen source layer.
+the active query cache, and reloads normalized sources.
 
 ## Wiki Memory
 

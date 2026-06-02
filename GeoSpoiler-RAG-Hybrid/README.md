@@ -110,7 +110,8 @@ This will:
 
 During the **enrich** stage, the system uses an LLM to analyze the raw text and extract structured intelligence (summaries, key facts, entities, quotes, theses, visual b-roll notes). These are saved as `*.enriched.json` files.
 
-Enriched cards are treated as a separate memory/retrieval layer. The default LightRAG graph is built from normalized source text. Experimental enriched-card graph loading is still available with `--from-enriched`, but it is not the default path.
+Enriched cards are treated as a separate memory/retrieval layer. The default LightRAG graph is built from normalized
+source text. Enriched-card graph loading was an experiment and is no longer exposed through the main CLI.
 
 Hybrid query controls:
 
@@ -139,11 +140,7 @@ What it does:
 3. reloads all normalized source texts
 4. reloads all reviewed AI-chat items with `status=processed`
 
-Experimental enriched-card graph rebuild:
-
-```powershell
-.\run_pipeline.cmd rebuild --from-enriched
-```
+Enriched-card rebuild is not a supported release path. Use the normalized-source rebuild above.
 
 ## Testing
 

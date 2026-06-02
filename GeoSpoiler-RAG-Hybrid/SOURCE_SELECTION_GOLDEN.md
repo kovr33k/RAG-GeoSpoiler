@@ -109,6 +109,13 @@ Current result:
 Source-selection golden: 10/10 passed, average score 100.0
 ```
 
+Phase 4 kept this result green after retiring enriched graph rebuild from the
+main CLI:
+
+```text
+Source-selection golden: 10/10 passed, average score 100.0
+```
+
 Artifacts:
 
 ```text
@@ -118,4 +125,6 @@ artifacts/v1_1_phase3_q22_baseline_results.md
 artifacts/v1_1_phase3_q22_baseline_scores.json
 artifacts/v1_1_phase3_q22_after_visual_rank_results.md
 artifacts/v1_1_phase3_q22_after_visual_rank_scores.json
+artifacts/v1_1_phase4_source_selection_results.md
+artifacts/v1_1_phase4_source_selection_scores.json
 ```

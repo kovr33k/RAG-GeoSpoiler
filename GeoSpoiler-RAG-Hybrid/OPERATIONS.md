@@ -312,14 +312,8 @@ python main.py rebuild
 This moves the existing `rag_storage/` into `rag_storage_backups/` and loads
 from `output/normalized/`.
 
-Experimental enriched-card graph rebuild:
-
-```powershell
-python main.py rebuild --from-enriched
-```
-
-Use the enriched rebuild only as an explicit experiment, not as the default
-knowledge base.
+Enriched-card graph rebuild is not a supported release path. It was an
+experiment and is no longer exposed through the main CLI.
 
 ## Rebuild And Recovery Runbook
 
@@ -353,8 +347,8 @@ If rebuild quality regresses:
    search before another live probe.
 5. Record the failed attempt and artifact paths in `DEVELOPMENT_RETURN_LOG.md`.
 
-Do not use `python main.py rebuild --from-enriched` as a recovery path. It is
-experimental and previously proved slow/unstable on the full corpus.
+Do not use enriched-card graph rebuild as a recovery path. It previously proved
+slow/unstable on the full corpus and was removed from the main CLI.
 
 ## Evaluation After Operational Changes
 

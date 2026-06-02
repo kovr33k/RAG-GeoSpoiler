@@ -12,11 +12,6 @@ Keep normal unit tests out of this list unless they require a real model or real
   2026-05-31 recheck: `python main.py transcribe backfill --limit 5 --dry-run` still found `0` downloaded native
   media candidates, and `media_cache/` has no local audio/video files. Report:
   `artifacts/transcription_live_check_20260531.md`.
-- Investigate full `python main.py rebuild --from-enriched` before relying on it for fresh live probes:
-  2026-05-29 controlled attempt was stopped after it reached only 22/218 cards (~10.1%) and doc statuses degraded to
-  failed (`13 failed`, `2 processing`, `7 pending`). Working `rag_storage` was restored from
-  `rag_storage_backups/rag_storage_20260529_005659`; partial storage is saved as
-  `rag_storage_failed_rebuild_20260529_015124`.
 - Evaluate paid model candidates only if DeepSeek V4 Flash stops meeting quality/latency needs.
   Current trusted model remains `deepseek-v4-flash`.
 
@@ -29,6 +24,18 @@ Keep normal unit tests out of this list unless they require a real model or real
 
 ## Completed
 
+- 2026-06-02: v1.1 Phase 4 enriched rebuild live-check decision completed.
+  `python main.py rebuild --from-enriched` is no longer a live-LLM investigation target because enriched-card graph
+  rebuild has been removed from the supported main CLI path. The historical failed attempt remains documented in
+  `DEVELOPMENT_RETURN_LOG.md`; future work should revisit it only as a separate experiment, not as v1.1 release work.
+  After this CLI retirement, live checks on `deepseek-v4-flash` remained green:
+  source-selection golden -> `10/10`, average `100.0`;
+  full golden -> `23/23`, average `100.0`.
+  Artifacts:
+  `artifacts/v1_1_phase4_source_selection_scores.json`,
+  `artifacts/v1_1_phase4_source_selection_results.md`,
+  `artifacts/v1_1_phase4_full_golden_scores.json`,
+  `artifacts/v1_1_phase4_full_golden_results.md`.
 - 2026-06-01: v1.1 Phase 3 source-selection golden completed.
   Retrieval/card-context ranking was changed, then live source-selection golden was rerun on `deepseek-v4-flash`.
   The Q22 Narva visuals case improved from `0/1` to `1/1`: direct source `3889026624/2` moved from rank 3 to rank 1.

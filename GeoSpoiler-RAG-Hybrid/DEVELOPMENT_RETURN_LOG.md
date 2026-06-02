@@ -23,11 +23,34 @@ Use `LLM_VERIFICATION_QUEUE.md` for model/live-endpoint checks; use this log for
   `media_cache/` currently has image files but no local audio/video extensions suitable for transcription.
   Report: `artifacts/transcription_live_check_20260531.md`.
 - Re-test paid model candidates only if current DeepSeek V4 Flash quality or latency becomes insufficient.
-- Local shell still does not have `git` on PATH, so diff/status checks cannot be run from this session.
-  Revisit when commits or repository hygiene become part of the workflow.
+- Local shell still does not have `git` on PATH. Use the explicit Git executable path
+  `C:\Program Files\Git\cmd\git.exe` for status, diff, commit, and push checks.
 
 ## Completed / Notes
 
+- 2026-06-02 v1.1 Phase 4 enriched rebuild retirement:
+  Removed enriched-card graph loading/rebuild from the supported main CLI workflow. `python main.py load --from-enriched`
+  and `python main.py rebuild --from-enriched` now print an unsupported experimental-path message and return without
+  touching `rag_storage/`. Normal `python main.py load` and `python main.py rebuild` continue to use normalized source
+  text.
+  Updated `README.md`, `OPERATIONS.md`, and `ARCHITECTURE.md` so they point users to normalized-source rebuild only.
+  Added `experiments/enriched_rebuild/README.md` as a historical note for the retired experiment rather than a supported
+  command path.
+  Verification:
+  targeted CLI tests -> `4` tests OK;
+  `python main.py rebuild --from-enriched` -> unsupported message, no rebuild;
+  `python main.py load --from-enriched` -> unsupported message, no load;
+  `python -m unittest` -> `156` tests OK;
+  source-selection golden -> `10/10`, average `100.0`;
+  full golden -> `23/23`, average `100.0`;
+  `python main.py status` -> `220` normalized files and `0` pending reviews;
+  `python main.py wiki health` -> `22` pages checked, `0` issues;
+  `python main.py experiments index` -> `25` active records.
+  Artifacts:
+  `artifacts/v1_1_phase4_source_selection_results.md`,
+  `artifacts/v1_1_phase4_source_selection_scores.json`,
+  `artifacts/v1_1_phase4_full_golden_results.md`,
+  `artifacts/v1_1_phase4_full_golden_scores.json`.
 - 2026-06-01 v1.1 Phase 3 retrieval improvements:
   Improved card-context retrieval/source ranking without adding Q22-specific hardcoded hints:
   - `retrieval/shadow_search.py` now matches short Slavic inflection variants such as `Нарвы` / `Нарву`, while avoiding
@@ -109,8 +132,9 @@ Use `LLM_VERIFICATION_QUEUE.md` for model/live-endpoint checks; use this log for
   `GeoSpoiler-RAG-Hybrid` as the workflow working directory.
   Accepted v1 debt:
   - I2 live transcription remains pending until real downloaded audio/video/voice candidates exist.
-  - `python main.py rebuild --from-enriched` remains experimental; the supported v1 rebuild path is the normal
-    normalized-source rebuild, which previously completed `220/220`.
+  - At v1 release time, `python main.py rebuild --from-enriched` remained experimental; v1.1 Phase 4 later removed it
+    from the supported main CLI. The supported rebuild path is the normal normalized-source rebuild, which previously
+    completed `220/220`.
   - K/Ragas/Phoenix observability is v2 work, not a v1 release blocker.
   - Further `main.py` / `lightrag_loader.py` refactor is v2 work while unit tests and golden checks stay green.
   - B2 enriched-card warnings are non-blocking data cleanup debt because current validation has `218/218` valid cards

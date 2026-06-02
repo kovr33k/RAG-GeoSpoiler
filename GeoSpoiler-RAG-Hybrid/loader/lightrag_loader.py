@@ -944,8 +944,12 @@ def _read_all_normalized_texts() -> dict[str, str]:
 
 async def load_from_enriched(rag: LightRAG) -> dict:
     """
-    Load enriched memory cards into LightRAG using graph_text, without losing
-    curated normalized posts.
+    Retired experimental graph-load path for enriched cards.
+
+    The supported v1.1 LightRAG graph source is normalized text. Keep this
+    helper only for historical/experimental investigation outside the main CLI.
+    It loads enriched memory cards using graph_text, without losing curated
+    normalized posts.
 
     For each enriched card:
       - is_duplicate → skip
