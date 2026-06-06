@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"from normalizer.youtube_handler import extract_youtube_text; print\\('import OK'\\)\")",
+      "Bash(python3 -c \"from normalizer.youtube_handler import extract_youtube_text; print\\('import OK'\\)\")",
+      "Bash(py -c \"from normalizer.youtube_handler import extract_youtube_text; print\\('import OK'\\)\")",
+      "Bash(where python *)",
+      "Bash(where python3 *)",
+      "Bash(where py *)",
+      "Bash(cmd.exe *)",
+      "Bash(\"/c/Users/artem/AppData/Local/Programs/Python/Python314/python.exe\" --version)",
+      "Bash(\"/c/Users/artem/AppData/Local/Microsoft/WindowsApps/python3.exe\" --version)",
+      "Bash(ls /c/Python*)",
+      "Bash(ls /d/Python*)",
+      "Read(//c/Users/artem/**)",
+      "Bash(/c/Users/artem/AppData/Local/Python/pythoncore-3.14-64/python.exe *)",
+      "WebFetch(domain:openrouter.ai)"
+    ]
+  }
+}

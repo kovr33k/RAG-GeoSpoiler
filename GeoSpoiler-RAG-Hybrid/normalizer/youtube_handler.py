@@ -4,7 +4,8 @@ YouTube Handler — extracts subtitles/transcript from YouTube videos via yt-dlp
 Strategy:
 1. Try to get manual subtitles in: ru, uk, es, en
 2. Fall back to auto-generated subtitles
-3. If no subtitles available, extract video title + description
+3. Fall back to Whisper transcription (if TRANSCRIPTION_ENABLED)
+4. If nothing works, extract video title + description
 """
 
 import subprocess
@@ -13,7 +14,10 @@ import logging
 import re
 from pathlib import Path
 
+import requests
+
 import config
+from llm_auth import get_openai_api_key
 
 logger = logging.getLogger("geospoiler.normalizer.youtube")
 
@@ -43,16 +47,19 @@ def extract_youtube_text(url: str) -> str:
 
         if subtitles:
             parts.append(subtitles)
-        elif description:
-            # No subs — use description as fallback
-            # Trim overly long descriptions (channel promos etc.)
-            desc_clean = _clean_description(description)
-            if desc_clean:
-                parts.append(f"[Описание видео]\n{desc_clean}")
+        else:
+            # No subs — try Whisper transcription
+            transcript = _transcribe_audio(url, info)
+            if transcript:
+                parts.append(transcript)
+            elif description:
+                desc_clean = _clean_description(description)
+                if desc_clean:
+                    parts.append(f"[Описание видео]\n{desc_clean}")
+                else:
+                    parts.append("[Субтитры и описание недоступны]")
             else:
                 parts.append("[Субтитры и описание недоступны]")
-        else:
-            parts.append("[Субтитры и описание недоступны]")
 
         return "\n\n".join(parts)
 
@@ -151,6 +158,136 @@ def _get_subtitles(url: str, info: dict) -> str | None:
         pass
 
     return clean if clean.strip() else None
+
+
+CHUNK_DURATION_SEC = 600  # 10-minute chunks for Whisper
+
+
+def _transcribe_audio(url: str, info: dict) -> str | None:
+    """Download audio, split into chunks, transcribe via Whisper API."""
+    if not config.TRANSCRIPTION_ENABLED:
+        return None
+
+    api_key = config.TRANSCRIPTION_API_KEY
+    if not api_key or api_key == "your-api-key-here":
+        return None
+
+    audio_dir = config.MEDIA_CACHE_DIR / "youtube_audio"
+    audio_dir.mkdir(parents=True, exist_ok=True)
+    video_id = info.get("id", "unknown")
+    raw_path = audio_dir / f"{video_id}_raw.%(ext)s"
+
+    # Step 1: download audio
+    try:
+        subprocess.run(
+            [
+                "yt-dlp",
+                "-x",
+                "--no-warnings",
+                "-o", str(raw_path),
+                url,
+            ],
+            capture_output=True,
+            text=True,
+            timeout=120,
+            encoding="utf-8",
+        )
+    except subprocess.TimeoutExpired:
+        logger.warning(f"yt-dlp audio download timeout for {url}")
+        return None
+
+    raw_files = list(audio_dir.glob(f"{video_id}_raw.*"))
+    if not raw_files:
+        return None
+    raw_file = raw_files[0]
+
+    # Step 2: split into 10-min chunks as low-bitrate mp3
+    chunks = _split_audio(raw_file, audio_dir, video_id)
+    raw_file.unlink(missing_ok=True)
+
+    if not chunks:
+        return None
+
+    # Step 3: transcribe each chunk
+    texts = []
+    try:
+        for chunk_path in chunks:
+            text = _call_whisper(chunk_path)
+            if text:
+                texts.append(text)
+    finally:
+        for chunk_path in chunks:
+            chunk_path.unlink(missing_ok=True)
+
+    return " ".join(texts) if texts else None
+
+
+def _split_audio(input_path: Path, out_dir: Path, prefix: str) -> list[Path]:
+    """Split audio into 10-minute mono 48kbps mp3 chunks."""
+    pattern = out_dir / f"{prefix}_chunk_%03d.mp3"
+    try:
+        subprocess.run(
+            [
+                "ffmpeg", "-y",
+                "-i", str(input_path),
+                "-ac", "1",
+                "-b:a", "48k",
+                "-f", "segment",
+                "-segment_time", str(CHUNK_DURATION_SEC),
+                "-reset_timestamps", "1",
+                str(pattern),
+            ],
+            capture_output=True,
+            text=True,
+            timeout=180,
+        )
+    except subprocess.TimeoutExpired:
+        logger.warning(f"ffmpeg split timeout for {input_path}")
+        return []
+
+    chunks = sorted(out_dir.glob(f"{prefix}_chunk_*.mp3"))
+    return chunks
+
+
+def _call_whisper(audio_path: Path) -> str | None:
+    """Transcribe audio via configured API (supports chat-completions and STT endpoints)."""
+    import base64
+
+    api_key = get_openai_api_key(config.TRANSCRIPTION_API_KEY, config.TRANSCRIPTION_BASE_URL)
+    audio_b64 = base64.b64encode(audio_path.read_bytes()).decode("utf-8")
+    base_url = config.TRANSCRIPTION_BASE_URL.rstrip("/")
+
+    # Use chat completions for LLM-based transcription (Gemini, etc.)
+    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+    lang = config.TRANSCRIPTION_LANGUAGE or "ru"
+
+    try:
+        response = requests.post(
+            f"{base_url}/chat/completions",
+            headers=headers,
+            json={
+                "model": config.TRANSCRIPTION_MODEL,
+                "messages": [{
+                    "role": "user",
+                    "content": [
+                        {"type": "input_audio", "input_audio": {"data": audio_b64, "format": "mp3"}},
+                        {"type": "text", "text": f"Транскрибируй это аудио дословно на русском языке. Верни только текст транскрипции, без комментариев."},
+                    ],
+                }],
+                "max_tokens": 16000,
+            },
+            timeout=config.TRANSCRIPTION_TIMEOUT_SECONDS,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        text = str(payload["choices"][0]["message"].get("content") or "").strip()
+        return text if text else None
+    except requests.Timeout:
+        logger.warning(f"Transcription API timeout for {audio_path}")
+        return None
+    except Exception as exc:
+        logger.warning(f"Transcription failed for {audio_path}: {exc}")
+        return None
 
 
 def _srt_to_text(srt: str) -> str:
