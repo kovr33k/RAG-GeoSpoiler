@@ -9,9 +9,7 @@ Or automatically via:
 """
 
 import json
-import shutil
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 import streamlit as st
@@ -25,8 +23,8 @@ import config  # noqa: E402
 from normalizer.review_queue import (  # noqa: E402
     REVIEW_TYPE_AI_CHAT,
     REVIEW_TYPE_EXTERNAL_LINK,
+    REVIEW_TYPE_INSTAGRAM_LONG_REEL,
     REVIEW_TYPE_UNINFORMATIVE,
-    get_pending_reviews,
     mark_reviewed,
 )
 
@@ -212,6 +210,7 @@ st.markdown("""
 TYPE_BADGES = {
     REVIEW_TYPE_AI_CHAT: ("AI Диалог", "type-ai-chat"),
     REVIEW_TYPE_EXTERNAL_LINK: ("Внешняя ссылка", "type-external-link"),
+    REVIEW_TYPE_INSTAGRAM_LONG_REEL: ("Длинный Reel", "type-external-link"),
     REVIEW_TYPE_UNINFORMATIVE: ("Малоинформативный", "type-uninformative"),
 }
 
@@ -235,24 +234,6 @@ def _load_all_items() -> list[dict]:
     status_order = {"pending": 0, "processed": 1, "skipped": 2}
     items.sort(key=lambda x: (status_order.get(x.get("status", ""), 3), x.get("queued_at", "")))
     return items
-
-
-def _save_override_text(item: dict, new_text: str) -> str | None:
-    """Save override text to the normalized directory, replacing the original."""
-    normalized_path = item.get("normalized_filepath")
-    if not normalized_path:
-        # Try to reconstruct the path from channel + message_id
-        channel = item.get("channel", "unknown")
-        msg_id = item.get("message_id", 0)
-        sanitized_channel = "".join(
-            c if c.isalnum() or c in " _-" else "_" for c in channel
-        ).strip()
-        normalized_path = str(config.NORMALIZED_DIR / sanitized_channel / f"{msg_id}.txt")
-
-    path = Path(normalized_path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(new_text, encoding="utf-8")
-    return str(path)
 
 
 def _save_uploaded_image(item: dict, uploaded_file) -> str | None:
@@ -312,7 +293,14 @@ def main():
     """, unsafe_allow_html=True)
 
     # Filter
-    filter_options = ["Все ожидающие", "AI Диалоги", "Внешние ссылки", "Малоинформативные", "Обработанные"]
+    filter_options = [
+        "Все ожидающие",
+        "AI Диалоги",
+        "Внешние ссылки",
+        "Длинные Reels",
+        "Малоинформативные",
+        "Обработанные",
+    ]
     selected_filter = st.selectbox("Фильтр:", filter_options, label_visibility="collapsed")
 
     if selected_filter == "Все ожидающие":
@@ -321,6 +309,8 @@ def main():
         display_items = [i for i in pending if i.get("review_type") == REVIEW_TYPE_AI_CHAT]
     elif selected_filter == "Внешние ссылки":
         display_items = [i for i in pending if i.get("review_type") == REVIEW_TYPE_EXTERNAL_LINK]
+    elif selected_filter == "Длинные Reels":
+        display_items = [i for i in pending if i.get("review_type") == REVIEW_TYPE_INSTAGRAM_LONG_REEL]
     elif selected_filter == "Малоинформативные":
         display_items = [i for i in pending if i.get("review_type") == REVIEW_TYPE_UNINFORMATIVE]
     elif selected_filter == "Обработанные":
@@ -401,8 +391,11 @@ def _render_review_card(item: dict, idx: int):
 
         with col2:
             if st.button("✅ Одобрить", key=f"approve_{idx}", use_container_width=True):
-                mark_reviewed(filepath, extracted_text=message_text)
-                st.rerun()
+                if review_type == REVIEW_TYPE_UNINFORMATIVE and message_text.strip():
+                    mark_reviewed(filepath, extracted_text=message_text.strip())
+                    st.rerun()
+                else:
+                    st.warning("Для AI-диалога или внешней ссылки сначала добавьте извлечённый текст через редактирование.")
 
         with col3:
             if st.button("✏️ Редактировать", key=f"edit_{idx}", use_container_width=True):
@@ -417,6 +410,7 @@ def _render_review_card(item: dict, idx: int):
                 if st.button("🕸️ Извлечь текст (Crawl4AI)", key=f"auto_{idx}"):
                     with st.spinner("Загрузка и парсинг сайта..."):
                         import asyncio
+
                         from normalizer.web_handler import extract_web_text
                         extracted = asyncio.run(extract_web_text(url))
                         st.session_state[f"text_{idx}"] = extracted
@@ -442,10 +436,6 @@ def _render_review_card(item: dict, idx: int):
                     img_path = None
                     if uploaded_image:
                         img_path = _save_uploaded_image(item, uploaded_image)
-
-                    # Save override text to normalized directory
-                    if edited_text.strip():
-                        _save_override_text(item, edited_text.strip())
 
                     mark_reviewed(
                         filepath,

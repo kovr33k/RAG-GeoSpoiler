@@ -1,5 +1,5 @@
-import sys
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -10,15 +10,15 @@ sys.path.insert(0, str(Path(__file__).parent))
 from fetcher.telegram_client import TelegramMedia  # noqa: E402
 from normalizer.image_handler import _candidate_api_keys, describe_image  # noqa: E402
 from normalizer.instagram_handler import (  # noqa: E402
-    canonicalize_instagram_url,
-    _extract_post_id,
-    _compute_phash,
-    _hamming_distance,
-    _dedup_frames,
-    _filter_empty_frames,
     _compute_edge_density,
+    _compute_phash,
+    _dedup_frames,
+    _extract_post_id,
+    _filter_empty_frames,
+    _hamming_distance,
     _read_cache,
     _write_cache,
+    canonicalize_instagram_url,
 )
 from normalizer.transcription_handler import transcribe_media  # noqa: E402
 from normalizer.youtube_handler import _clean_description  # noqa: E402
@@ -352,6 +352,40 @@ class InstagramCacheTests(unittest.TestCase):
             with patch("normalizer.instagram_handler.config.INSTAGRAM_CACHE_DIR", cache_dir):
                 self.assertIsNone(_read_cache("corrupt"))
 
+    def test_read_cache_ignores_different_signature(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            cache_dir = Path(tmpdir)
+            (cache_dir / "ABC123.json").write_text(
+                json.dumps(
+                    {
+                        "post_id": "ABC123",
+                        "text": "old cached text",
+                        "cache_version": 2,
+                        "signature": {"deep_extract_enabled": False},
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+            with patch("normalizer.instagram_handler.config.INSTAGRAM_CACHE_DIR", cache_dir):
+                with patch("normalizer.instagram_handler.config.INSTAGRAM_DEEP_EXTRACT_ENABLED", True):
+                    self.assertIsNone(_read_cache("ABC123"))
+
+    def test_deep_extract_failure_does_not_cache_caption_only_fallback(self):
+        info = {"description": "Caption", "uploader": "user", "duration": 10}
+        with tempfile.TemporaryDirectory() as tmpdir:
+            cache_dir = Path(tmpdir)
+            with patch("normalizer.instagram_handler.config.INSTAGRAM_CACHE_DIR", cache_dir):
+                with patch("normalizer.instagram_handler.config.INSTAGRAM_DEEP_EXTRACT_ENABLED", True):
+                    with patch("normalizer.instagram_handler._get_info_ytdlp", return_value=info):
+                        with patch("normalizer.instagram_handler._deep_extract_reel", return_value=None):
+                            from normalizer.instagram_handler import extract_instagram_text
+
+                            result = extract_instagram_text("https://www.instagram.com/reel/ABC123/")
+
+            self.assertIn("Caption", result)
+            self.assertFalse((cache_dir / "ABC123.json").exists())
+
 
 class InstagramFallbackTests(unittest.TestCase):
     """Tests for fallback behavior when deep extract is disabled."""
@@ -382,3 +416,35 @@ class InstagramFallbackTests(unittest.TestCase):
     def test_canonicalize_preserves_normal_url(self):
         url = "https://www.instagram.com/p/ABC123/"
         self.assertEqual(canonicalize_instagram_url(url), url)
+
+    def test_long_reel_uses_unified_review_queue(self):
+        info = {"description": "Caption", "uploader": "user", "duration": 999}
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            queue_dir = root / "review_queue"
+            cache_dir = root / "instagram_cache"
+            queue_dir.mkdir()
+            cache_dir.mkdir()
+            with patch("normalizer.instagram_handler.config.REVIEW_QUEUE_DIR", queue_dir):
+                with patch("normalizer.instagram_handler.config.INSTAGRAM_CACHE_DIR", cache_dir):
+                    with patch("normalizer.instagram_handler.config.INSTAGRAM_DEEP_EXTRACT_ENABLED", True):
+                        with patch("normalizer.instagram_handler.config.INSTAGRAM_MAX_VIDEO_DURATION_SEC", 180):
+                            with patch("normalizer.instagram_handler._get_info_ytdlp", return_value=info):
+                                from normalizer.instagram_handler import extract_instagram_text
+
+                                result = extract_instagram_text(
+                                    "https://www.instagram.com/reel/ABC123/",
+                                    channel_name="Channel",
+                                    message_id=42,
+                                    message_text="Post text",
+                                )
+
+            files = list(queue_dir.glob("*.json"))
+            self.assertEqual(len(files), 1)
+            payload = json.loads(files[0].read_text(encoding="utf-8"))
+            self.assertEqual(payload["review_type"], "instagram_long_reel")
+            self.assertEqual(payload["status"], "pending")
+            self.assertEqual(payload["channel"], "Channel")
+            self.assertEqual(payload["message_id"], 42)
+            self.assertIn("очеред", result.lower())
+            self.assertFalse((cache_dir / "ABC123.json").exists())

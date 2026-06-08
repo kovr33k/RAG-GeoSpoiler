@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import logging
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -148,7 +148,7 @@ def _write_artifact(
         "status": result.status,
         "text": result.text,
         "model": config.TRANSCRIPTION_MODEL,
-        "transcribed_at": datetime.now(timezone.utc).isoformat(),
+        "transcribed_at": datetime.now(UTC).isoformat(),
         "media": {
             "media_type": item.media_type,
             "mime_type": item.mime_type,

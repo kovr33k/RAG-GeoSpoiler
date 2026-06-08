@@ -10,7 +10,8 @@ from data_validation import EnrichedValidationReport, scan_enriched_cards, write
 from experiment_registry import ExperimentRegistry, write_experiment_registry
 from normalizer.transcription_backfill import BackfillStats, backfill_transcripts
 from retrieval.card_fts import CardFtsBuildStats, CardFtsMatch, rebuild_card_index, search_card_index
-from retrieval.shadow_search import ShadowMatch, search as shadow_search_cards
+from retrieval.shadow_search import ShadowMatch
+from retrieval.shadow_search import search as shadow_search_cards
 from retrieval.source_registry import (
     SourcePassport,
     SourceRegistryStats,

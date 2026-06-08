@@ -10,10 +10,9 @@ Key design decisions:
 
 import json
 import os
-from pathlib import Path
-from datetime import datetime, timezone
-import config
+from datetime import UTC, datetime
 
+import config
 
 PROGRESS_FILE = config.STATE_DIR / "progress.json"
 
@@ -36,7 +35,7 @@ def _load() -> dict:
 
 def _save(state: dict) -> None:
     """Persist progress state to disk via atomic rename (crash-safe)."""
-    state["last_run"] = datetime.now(timezone.utc).isoformat()
+    state["last_run"] = datetime.now(UTC).isoformat()
     tmp_path = PROGRESS_FILE.with_suffix(".json.tmp")
     tmp_path.write_text(
         json.dumps(state, indent=2, ensure_ascii=False),
@@ -72,7 +71,7 @@ def set_last_message_id(channel_id: int, channel_title: str, message_id: int) ->
         state["channels"][key] = {}
     state["channels"][key]["title"] = channel_title          # informational only
     state["channels"][key]["last_message_id"] = message_id
-    state["channels"][key]["updated_at"] = datetime.now(timezone.utc).isoformat()
+    state["channels"][key]["updated_at"] = datetime.now(UTC).isoformat()
     _save(state)
 
 

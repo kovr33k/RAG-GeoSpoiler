@@ -13,9 +13,8 @@ LightRAG API (rerank_model_func):
 Если RERANKER_ENABLED=false — функция возвращает None, LightRAG rerank не будет подключён.
 """
 
-import logging
 import asyncio
-from typing import Any
+import logging
 
 import httpx
 

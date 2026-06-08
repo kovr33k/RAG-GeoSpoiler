@@ -10,6 +10,7 @@ Rules:
 
 import json
 import logging
+import re
 from pathlib import Path
 
 import config
@@ -17,8 +18,6 @@ import config
 logger = logging.getLogger("geospoiler.enricher.dedup")
 
 # ── YouTube video ID extraction ──
-import re
-
 _YT_VIDEO_ID_RE = re.compile(
     r"(?:youtu\.be/|youtube\.com/(?:watch\?v=|embed/|v/|shorts/))([a-zA-Z0-9_-]{11})"
 )

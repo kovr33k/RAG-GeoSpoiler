@@ -2,6 +2,7 @@ import sys
 import unittest
 from datetime import datetime
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import ANY, patch
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -44,8 +45,15 @@ class PipelineStatsTests(unittest.TestCase):
         with patch("normalizer.pipeline.normalize_text", side_effect=lambda text: text):
             with patch("normalizer.pipeline.extract_youtube_text", return_value="[yt]"):
                 with patch("normalizer.pipeline.extract_instagram_text", return_value="[ig]"):
-                    with patch("normalizer.pipeline.extract_web_text", return_value="[web]"):
-                        with patch("normalizer.pipeline.describe_image", return_value="[img]"):
+                    with patch("normalizer.pipeline.describe_image", return_value="[img]"):
+                        with patch(
+                            "normalizer.pipeline.queue_review_item",
+                            return_value=SimpleNamespace(
+                                placeholder_text="[review]",
+                                action="queued",
+                                filepath="review.json",
+                            ),
+                        ):
                             with patch(
                                 "normalizer.pipeline.queue_for_review",
                                 side_effect=[
@@ -83,6 +91,7 @@ class PipelineStatsTests(unittest.TestCase):
         self.assertEqual(result.failed_messages, 0)
         self.assertEqual(result.ai_review_created, 1)
         self.assertEqual(result.ai_review_already_reviewed, 1)
+        self.assertEqual(result.link_review_created, 4)
         self.assertEqual(len(result.texts_with_paths), 1)
         self.assertEqual(Path(result.texts_with_paths[0][0]), Path("D:/fake/101.txt"))
         self.assertEqual(ANY, result.texts_with_paths[0][1])

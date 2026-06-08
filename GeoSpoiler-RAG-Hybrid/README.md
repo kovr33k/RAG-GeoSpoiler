@@ -7,7 +7,7 @@ Telegram-to-RAG pipeline for collecting posts, normalizing linked content, and l
 The pipeline can:
 
 - fetch new messages from Telegram channels in a chosen Telegram folder
-- normalize plain text, web pages, YouTube links, Instagram links, and reviewed AI chat shares
+- normalize plain text, web pages, YouTube links, Instagram links, and reviewed manual-queue items
 - load normalized texts into LightRAG with stable source-based document IDs
 - rebuild the RAG index from current normalized files when you need a clean corpus
 - answer questions over the resulting knowledge graph
@@ -19,7 +19,7 @@ The pipeline can:
 - `run_pipeline.cmd` — wrapper that bypasses restrictive PowerShell execution policies
 - `auth.py` — one-time Telegram authorization
 - `output/normalized/` — normalized `.txt` files used as source of truth for ingest
-- `output/review_queue/` — manual review queue for AI chat share links
+- `output/review_queue/` — manual review queue for AI chat shares, external links that need human triage, long Instagram Reels, and low-information posts
 - `rag_storage/` — active LightRAG storage
 - `rag_storage_backups/` — rebuild backups
 - `state/telegram.session` — saved Telegram session
@@ -138,7 +138,7 @@ What it does:
 1. moves the current `rag_storage/` into `rag_storage_backups/`
 2. creates a fresh empty `rag_storage/`
 3. reloads all normalized source texts
-4. reloads all reviewed AI-chat items with `status=processed`
+4. reloads all review queue items with `status=processed` and non-empty `extracted_text`
 
 Enriched-card rebuild is not a supported release path. Use the normalized-source rebuild above.
 
@@ -187,7 +187,7 @@ The project is currently set up for:
 - Multi-index Retrieval Composer with specialized search modes
 - stable path-based LightRAG document IDs
 - safe index rebuilds with backup
-- reviewed AI-chat ingest during `load` and `run`
+- reviewed manual-queue ingest during `load` and `run`
 - Windows-safe UTF-8 logging and console output
 - read-only data contracts and enriched-card validation
 - wiki-memory, FTS, source registry, focused probe, golden comparison, and

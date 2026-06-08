@@ -1,10 +1,11 @@
+import asyncio as py_asyncio
 import io
 import json
 import sys
 import tempfile
 import unittest
-import asyncio as py_asyncio
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -105,6 +106,27 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(sources), 1)
         self.assertEqual(sources[0]["post_url"], "https://t.me/example/2")
 
+    def test_extract_query_sources_accepts_explicit_reference_id_tokens(self):
+        result = {
+            "llm_response": {"content": "Answer cites [card-2]."},
+            "data": {
+                "references": [
+                    {"reference_id": "card-1", "file_path": str(Path("D:/topic/1.txt").resolve(strict=False))},
+                    {"reference_id": "card-2", "file_path": str(Path("D:/topic/2.txt").resolve(strict=False))},
+                ]
+            },
+        }
+        source_index = {
+            str(Path("D:/topic/1.txt").resolve(strict=False)): {"post_url": "https://t.me/example/1"},
+            str(Path("D:/topic/2.txt").resolve(strict=False)): {"post_url": "https://t.me/example/2"},
+        }
+
+        with patch.object(main, "load_source_metadata_index", return_value=source_index):
+            sources = main._extract_query_sources(result)
+
+        self.assertEqual(len(sources), 1)
+        self.assertEqual(sources[0]["post_url"], "https://t.me/example/2")
+
     def test_extract_query_sources_uses_direct_reference_metadata(self):
         result = {
             "llm_response": {"content": "Answer\n\n### References\n- [1] Wiki source"},
@@ -155,6 +177,31 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(sources), 1)
         self.assertEqual(sources[0]["post_url"], "https://t.me/c/3328128766/148")
         self.assertEqual(sources[0]["channel"], "Hungary")
+
+    def test_mark_contiguous_processed_stops_at_first_failed_message(self):
+        messages = [
+            SimpleNamespace(channel_id=1, channel_name="Channel", message_id=101),
+            SimpleNamespace(channel_id=1, channel_name="Channel", message_id=102),
+            SimpleNamespace(channel_id=1, channel_name="Channel", message_id=103),
+        ]
+
+        with patch.object(main, "mark_message_processed") as mark:
+            count = main._mark_contiguous_processed(messages, {101, 103})
+
+        self.assertEqual(count, 1)
+        mark.assert_called_once_with(1, "Channel", 101)
+
+    def test_mark_contiguous_processed_does_not_advance_when_first_message_failed(self):
+        messages = [
+            SimpleNamespace(channel_id=1, channel_name="Channel", message_id=101),
+            SimpleNamespace(channel_id=1, channel_name="Channel", message_id=102),
+        ]
+
+        with patch.object(main, "mark_message_processed") as mark:
+            count = main._mark_contiguous_processed(messages, {102})
+
+        self.assertEqual(count, 0)
+        mark.assert_not_called()
 
     def test_main_query_cli_joins_full_question_and_mode(self):
         captured = {}

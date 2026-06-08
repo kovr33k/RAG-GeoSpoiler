@@ -7,7 +7,6 @@ import json
 import logging
 import re
 from dataclasses import dataclass
-from pathlib import Path
 
 import config
 
@@ -69,8 +68,6 @@ def _matches_term(token: str, term: str) -> bool:
 def _extract_snippet(text: str, query_terms: list[str], context_chars: int = 100) -> str:
     """Find the best window of text containing query terms."""
     text_lower = text.lower()
-    best_pos = -1
-    best_score = 0
 
     for term in query_terms:
         pos = text_lower.find(term)

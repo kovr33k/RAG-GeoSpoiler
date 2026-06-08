@@ -1,8 +1,11 @@
-import os
 import asyncio
+import os
+
 from dotenv import load_dotenv
 from openai import AsyncOpenAI
+
 from llm_auth import get_openai_api_key
+
 
 async def main():
     load_dotenv('.env')

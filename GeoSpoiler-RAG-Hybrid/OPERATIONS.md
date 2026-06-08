@@ -99,7 +99,7 @@ Important local paths:
 output/normalized/        source-of-truth normalized text and .meta.json files
 output/enriched/          structured evidence cards
 output/wiki/              wiki-memory markdown and JSON indexes
-output/review_queue/      manual AI-chat review queue
+output/review_queue/      manual review queue for AI chats, external links, long Reels, and low-info posts
 output/transcripts/       native media transcript artifacts
 artifacts/card_fts.sqlite local FTS index for enriched cards
 artifacts/source_registry.sqlite source registry
@@ -257,6 +257,13 @@ Review files live in:
 output/review_queue/
 ```
 
+You can inspect the queue from the CLI or launch the Streamlit reviewer:
+
+```powershell
+python main.py review
+python main.py review --web
+```
+
 To process one item, edit its JSON:
 
 ```json
@@ -272,7 +279,10 @@ Then run:
 python main.py load
 ```
 
-The load step includes reviewed AI-chat items with `status=processed`.
+The load step includes all review queue items with `status=processed` and non-empty `extracted_text`.
+Review JSON files are treated as their own stable source paths.
+
+Do not edit `output/normalized/*.txt` to paste reviewed external-link text unless you intentionally want to replace the original normalized post. Prefer `python main.py review --web`, which stores reviewed text in the review JSON.
 
 ## Query Modes
 

@@ -7,13 +7,12 @@ pages, and claim pages resolve to source ids via page_to_sources/source_to_pages
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
-from typing import Iterable
 
 import config
-
 
 GENERATED_BY = "wiki_entity_topic_seed_v1"
 AUTO_START = "<!-- WIKI_MASTER_INDEX_AUTO_START -->"

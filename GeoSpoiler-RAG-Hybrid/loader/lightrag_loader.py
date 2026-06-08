@@ -14,7 +14,6 @@ from lightrag.utils import EmbeddingFunc, compute_mdhash_id
 
 import config
 from loader.answer_postprocess import (
-    _FALLBACK_TECHNICAL_MARKERS,
     _NO_CONTEXT_MARKERS,
     _answer_looks_corrupt,
     _is_funding_question,
@@ -58,7 +57,9 @@ _HEADER_LINE_RE = re.compile(r"^\[(?=.*(?:Канал:|Дата:|Пост:)).*\]\
 _URL_ENTITY_RE = re.compile(r"^(?:https?://|www\.)", re.IGNORECASE)
 _DATE_ENTITY_RE = re.compile(r"^\d{4}-\d{2}-\d{2}(?:\s+\d{2}:\d{2})?$")
 _POSTHOLDER_LINE_RE = re.compile(
-    r"^\[(?:Видео:|Аудио:|Transcript|Voice transcript|Video transcript|AI-диалог:|Отправлено в очередь на ручной просмотр:|Уже обработано:).*\]$"
+    r"^\[(?:Видео:|Аудио:|Transcript|Voice transcript|Video transcript|AI-диалог:|"
+    r"Внешняя ссылка:|Малоинформативный пост:|Instagram Reel:.*очередь|"
+    r"Отправлено в очередь на ручной просмотр:|Уже обработано:).*\]$"
 )
 
 _QUERY_USER_PROMPT = (
@@ -451,7 +452,7 @@ async def _wait_for_doc_terminal_status(
             return last_status_doc
 
         if asyncio.get_running_loop().time() >= deadline:
-            raise asyncio.TimeoutError
+            raise TimeoutError
         await asyncio.sleep(1.0)
 
 
@@ -477,7 +478,7 @@ async def create_rag() -> LightRAG:
     """Initialize a LightRAG instance with configured LLM and Embedding."""
     _configure_lightrag_prompts()
 
-    async def llm_func(prompt, system_prompt=None, history_messages=[], **kwargs):
+    async def llm_func(prompt, system_prompt=None, history_messages=None, **kwargs):
         is_extraction = _is_extraction_prompt(prompt, system_prompt)
         role = _LLM_ROLE.get()
         chat_role = "build" if role == "build" else "query"
@@ -780,7 +781,7 @@ async def load_texts(
                 _remove_source_metadata_index(canonical_path)
                 continue
             inserted += 1
-        except asyncio.TimeoutError:
+        except TimeoutError:
             reason = f"insert timeout after {insert_timeout:.0f}s"
             skipped.append(
                 {
@@ -873,7 +874,8 @@ async def load_from_directory(rag: LightRAG, directory: Path | None = None) -> i
 
 _NORMALIZED_HEADER_RE = re.compile(r"^\[Канал:.*\]\s*$")
 _PLACEHOLDER_CONTENT_RE = re.compile(
-    r"^\[(?:Видео:|Аудио:|AI-диалог:|Отправлено в очередь|Уже обработано:|Веб-страница:.*ошибка).*\]$",
+    r"^\[(?:Видео:|Аудио:|AI-диалог:|Внешняя ссылка:|Малоинформативный пост:|"
+    r"Instagram Reel:.*очередь|Отправлено в очередь|Уже обработано:|Веб-страница:.*ошибка).*\]$",
     re.IGNORECASE,
 )
 
@@ -1119,7 +1121,7 @@ async def query_rag(
             timeout=config.QUERY_TIMEOUT_SECONDS,
         )
         _LLM_ROLE.reset(token)
-    except asyncio.TimeoutError:
+    except TimeoutError:
         _LLM_ROLE.reset(token)
         logger.warning(
             "LightRAG query timed out after %ss; trying shadow-search fallback.",
@@ -1804,7 +1806,7 @@ async def query_rag_result(
             timeout=config.QUERY_TIMEOUT_SECONDS,
         )
         _LLM_ROLE.reset(token)
-    except asyncio.TimeoutError:
+    except TimeoutError:
         _LLM_ROLE.reset(token)
         logger.warning(
             "LightRAG query timed out after %ss; trying shadow-search fallback.",

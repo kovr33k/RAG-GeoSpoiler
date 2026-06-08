@@ -1,5 +1,5 @@
-import json
 import asyncio
+import json
 import sys
 import tempfile
 import unittest
@@ -12,8 +12,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from fetcher import telegram_client as fetcher_module  # noqa: E402
 from fetcher.telegram_client import (  # noqa: E402
-    TelegramMedia,
     TelegramFetcher,
+    TelegramMedia,
     TelegramMessage,
     _document_media_type,
 )

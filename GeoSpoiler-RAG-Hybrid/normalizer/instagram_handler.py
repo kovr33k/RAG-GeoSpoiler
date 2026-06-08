@@ -16,13 +16,12 @@ Strategy:
 """
 
 import base64
-import hashlib
 import json
 import logging
 import re
 import shutil
 import subprocess
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
@@ -30,13 +29,23 @@ import requests
 
 import config
 from llm_auth import get_openai_api_key
+from normalizer.review_queue import REVIEW_TYPE_INSTAGRAM_LONG_REEL
+from normalizer.review_queue import queue_item as queue_review_item
 
 logger = logging.getLogger("geospoiler.normalizer.instagram")
+_INSTAGRAM_CACHE_VERSION = 2
 
 # ─────────────────────── Public API ───────────────────────
 
 
-def extract_instagram_text(url: str) -> str:
+def extract_instagram_text(
+    url: str,
+    *,
+    channel_name: str = "instagram",
+    message_id: int = 0,
+    message_text: str = "",
+    message_date: datetime | None = None,
+) -> str:
     """
     Extract text content from an Instagram post/Reel.
     Returns formatted text with caption, transcription, OCR, and summary.
@@ -68,9 +77,19 @@ def extract_instagram_text(url: str) -> str:
     # Deep extract path
     if config.INSTAGRAM_DEEP_EXTRACT_ENABLED:
         if is_reel:
-            result = _deep_extract_reel(canonical_url, info, caption, uploader, duration)
+            result = _deep_extract_reel(
+                canonical_url,
+                info,
+                caption,
+                uploader,
+                duration,
+                channel_name=channel_name,
+                message_id=message_id,
+                message_text=message_text,
+                message_date=message_date,
+            )
             if result:
-                if post_id:
+                if post_id and not _is_review_queue_placeholder(result):
                     _write_cache(post_id, result)
                 return result
         else:
@@ -82,7 +101,7 @@ def extract_instagram_text(url: str) -> str:
 
     # Fallback: caption-only (original behavior)
     result = _caption_only(canonical_url, info, caption, uploader, is_reel)
-    if post_id:
+    if post_id and not config.INSTAGRAM_DEEP_EXTRACT_ENABLED:
         _write_cache(post_id, result)
     return result
 
@@ -115,7 +134,16 @@ def canonicalize_instagram_url(url: str) -> str:
 
 
 def _deep_extract_reel(
-    url: str, info: dict, caption: str, uploader: str, duration: float
+    url: str,
+    info: dict,
+    caption: str,
+    uploader: str,
+    duration: float,
+    *,
+    channel_name: str,
+    message_id: int,
+    message_text: str,
+    message_date: datetime | None,
 ) -> str | None:
     """Full pipeline: video → audio transcription + frame OCR → LLM summary."""
 
@@ -125,7 +153,16 @@ def _deep_extract_reel(
             f"Instagram Reel longer than {config.INSTAGRAM_MAX_VIDEO_DURATION_SEC}s "
             f"({duration}s), queuing for review: {url}"
         )
-        return _queue_long_reel_for_review(url, caption, uploader, duration)
+        return _queue_long_reel_for_review(
+            url,
+            caption,
+            uploader,
+            duration,
+            channel_name=channel_name,
+            message_id=message_id,
+            message_text=message_text,
+            message_date=message_date,
+        )
 
     work_dir = config.MEDIA_CACHE_DIR / "instagram_work"
     work_dir.mkdir(parents=True, exist_ok=True)
@@ -278,48 +315,26 @@ def _deep_extract_carousel(
 
 
 def _queue_long_reel_for_review(
-    url: str, caption: str, uploader: str, duration: float
+    url: str,
+    caption: str,
+    uploader: str,
+    duration: float,
+    *,
+    channel_name: str,
+    message_id: int,
+    message_text: str,
+    message_date: datetime | None,
 ) -> str:
-    """
-    Queue a long Reel for manual review instead of auto-processing.
-    Creates a JSON in output/review_queue/ for the user to approve/reject.
-    Returns a placeholder text for the normalized output.
-    """
-    post_id = _extract_post_id(url) or "unknown"
-    review_item = {
-        "type": "instagram_long_reel",
-        "url": url,
-        "post_id": post_id,
-        "uploader": uploader,
-        "duration_sec": duration,
-        "caption_preview": (caption[:500] + "...") if len(caption) > 500 else caption,
-        "queued_at": datetime.now(timezone.utc).isoformat(),
-        "status": "pending",  # pending | approved | skipped
-        "reason": f"Duration {duration}s exceeds limit {config.INSTAGRAM_MAX_VIDEO_DURATION_SEC}s",
-    }
-
-    filename = f"ig_long_reel_{post_id}.json"
-    filepath = config.REVIEW_QUEUE_DIR / filename
-
-    # Don't overwrite already-reviewed items
-    if filepath.exists():
-        try:
-            existing = json.loads(filepath.read_text(encoding="utf-8"))
-            if existing.get("status") in ("approved", "skipped"):
-                logger.info(f"  Long Reel already reviewed ({existing['status']}): {post_id}")
-                return (
-                    f"[Instagram Reel: {url} - @{uploader}]\n"
-                    f"[Длинное видео ({duration}с) — уже обработано: {filepath.name}]"
-                )
-        except (json.JSONDecodeError, OSError):
-            pass
-
-    filepath.write_text(
-        json.dumps(review_item, indent=2, ensure_ascii=False),
-        encoding="utf-8",
+    """Queue a long Reel through the unified manual review queue."""
+    result = queue_review_item(
+        review_type=REVIEW_TYPE_INSTAGRAM_LONG_REEL,
+        channel_name=channel_name,
+        message_id=message_id,
+        message_text=message_text or caption,
+        message_date=message_date,
+        url=url,
+        reason=f"Duration {duration}s exceeds limit {config.INSTAGRAM_MAX_VIDEO_DURATION_SEC}s",
     )
-    logger.info(f"  Long Instagram Reel queued for review: {url} -> {filepath}")
-
     parts = [
         f"[Instagram Reel: {url}" + (f" - @{uploader}" if uploader else "") + "]",
     ]
@@ -327,9 +342,7 @@ def _queue_long_reel_for_review(
         if len(caption) > 3000:
             caption = caption[:3000] + "..."
         parts.append(caption)
-    parts.append(
-        f"[Длинное видео ({duration}с) — отправлено в очередь на ручной просмотр: {filepath.name}]"
-    )
+    parts.append(result.placeholder_text)
     return "\n\n".join(parts)
 
 
@@ -401,7 +414,7 @@ def _download_video(url: str, work_dir: Path, post_id: str) -> Path | None:
                 "yt-dlp",
                 "-f", "best[ext=mp4]/best",
                 "--no-warnings",
-                f"--max-filesize", f"{config.INSTAGRAM_MAX_VIDEO_SIZE_MB}M",
+                "--max-filesize", f"{config.INSTAGRAM_MAX_VIDEO_SIZE_MB}M",
                 "-o", str(out_path),
                 url,
             ],
@@ -728,7 +741,7 @@ def _ocr_single_batch(frames: list[Path], start_idx: int) -> str | None:
         }
     ]
 
-    for i, frame_path in enumerate(frames):
+    for frame_path in frames:
         try:
             img_b64 = base64.b64encode(frame_path.read_bytes()).decode("utf-8")
             content_parts.append(
@@ -976,6 +989,24 @@ def _srt_to_text(srt: str) -> str:
 # ─────────────────────── Cache ───────────────────────
 
 
+def _is_review_queue_placeholder(text: str) -> bool:
+    """Return True for review placeholders that should not be cached as extraction output."""
+    return (
+        "Отправлено в очередь на ручной просмотр:" in text
+        or "Уже обработано:" in text
+    )
+
+
+def _cache_signature() -> dict:
+    return {
+        "deep_extract_enabled": config.INSTAGRAM_DEEP_EXTRACT_ENABLED,
+        "transcription_model": config.TRANSCRIPTION_MODEL,
+        "vision_base_url": config.INSTAGRAM_VISION_BASE_URL,
+        "vision_model": config.INSTAGRAM_VISION_MODEL,
+        "llm_model": config.LLM_MODEL,
+    }
+
+
 def _read_cache(post_id: str) -> str | None:
     """Read cached extraction result for a post."""
     cache_path = config.INSTAGRAM_CACHE_DIR / f"{post_id}.json"
@@ -983,6 +1014,10 @@ def _read_cache(post_id: str) -> str | None:
         return None
     try:
         payload = json.loads(cache_path.read_text(encoding="utf-8"))
+        if payload.get("cache_version") != _INSTAGRAM_CACHE_VERSION:
+            return None
+        if payload.get("signature") != _cache_signature():
+            return None
         text = payload.get("text")
         return text if text else None
     except (OSError, json.JSONDecodeError, KeyError):
@@ -993,14 +1028,13 @@ def _write_cache(post_id: str, text: str) -> None:
     """Write extraction result to cache."""
     cache_path = config.INSTAGRAM_CACHE_DIR / f"{post_id}.json"
     try:
+        config.INSTAGRAM_CACHE_DIR.mkdir(parents=True, exist_ok=True)
         payload = {
             "post_id": post_id,
             "text": text,
-            "cached_at": datetime.now(timezone.utc).isoformat(),
-            "deep_extract_enabled": config.INSTAGRAM_DEEP_EXTRACT_ENABLED,
-            "transcription_model": config.TRANSCRIPTION_MODEL,
-            "vision_model": config.INSTAGRAM_VISION_MODEL,
-            "llm_model": config.LLM_MODEL,
+            "cached_at": datetime.now(UTC).isoformat(),
+            "cache_version": _INSTAGRAM_CACHE_VERSION,
+            "signature": _cache_signature(),
         }
         cache_path.write_text(
             json.dumps(payload, ensure_ascii=False, indent=2),

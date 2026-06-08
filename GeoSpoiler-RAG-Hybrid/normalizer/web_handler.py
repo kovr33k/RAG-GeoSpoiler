@@ -3,6 +3,7 @@ Web Handler — extracts article text from web URLs using crawl4ai.
 """
 
 import logging
+
 from crawl4ai import AsyncWebCrawler
 
 logger = logging.getLogger("geospoiler.normalizer.web")
@@ -16,13 +17,13 @@ async def extract_web_text(url: str) -> str:
     try:
         async with AsyncWebCrawler() as crawler:
             result = await crawler.arun(url=url)
-            
+
             if not result.success:
                 logger.warning(f"Crawl4AI failed for {url}: {result.error_message}")
                 return f'[Веб: {url}]\n[Содержание не удалось извлечь]'
-            
+
             markdown_content = result.markdown
-            
+
             if not markdown_content or len(markdown_content.strip()) < 50:
                 return f'[Веб: {url}]\n[Содержание не удалось извлечь]'
 

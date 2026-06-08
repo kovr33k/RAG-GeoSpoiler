@@ -23,7 +23,7 @@ fetcher/
 
 normalizer/
   TelegramMessage -> normalized .txt + .meta.json.
-  Expands text, images, YouTube, Instagram, web links, AI-chat review
+  Expands text, images, YouTube, Instagram, web links, unified review
   placeholders, and native audio/video transcripts.
 
 enricher/
@@ -108,7 +108,7 @@ The normalizer assembles a single text document from:
 - native media placeholders and optional transcripts;
 - YouTube subtitles/description;
 - Instagram caption/subtitles;
-- queued AI-chat review placeholders;
+- queued review placeholders for AI chats, external links, long Instagram Reels, and low-information posts;
 - extracted web article text.
 
 The first line is a metadata header for source parsing. Loader code strips
@@ -176,8 +176,11 @@ Default load path:
 output/normalized/*.txt -> LightRAG
 ```
 
-Document ids are stable and path-based. `load` also includes reviewed AI-chat
-items from `output/review_queue/` when they have `status=processed`.
+Document ids are stable and path-based. The review queue is a unified
+manual-ingestion layer. Normalization and enrichment may enqueue AI chat links,
+external links, long Instagram Reels, and low-information posts. Processed items
+are loaded as review JSON sources during `load` when they have
+`status=processed` and non-empty `extracted_text`.
 
 `rebuild` moves the current `rag_storage/` into `rag_storage_backups/`, clears
 the active query cache, and reloads normalized sources.

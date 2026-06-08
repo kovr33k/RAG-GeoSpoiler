@@ -11,12 +11,12 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+from collections.abc import Iterable
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 import config
-
 
 SOURCE_INDEX_FILENAME = "source_to_pages.json"
 PAGE_INDEX_FILENAME = "page_to_sources.json"

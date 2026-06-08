@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -172,14 +172,14 @@ def write_enriched_validation_report(
 ) -> Path:
     """Write a compact Markdown validation report."""
     if output_path is None:
-        stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+        stamp = datetime.now(UTC).strftime("%Y%m%d_%H%M%S")
         output_path = config.PROJECT_ROOT / "artifacts" / f"enriched_validation_{stamp}.md"
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     lines = [
         "# Enriched Card Validation Report",
         "",
-        f"- generated_at: {datetime.now(timezone.utc).replace(microsecond=0).isoformat()}",
+        f"- generated_at: {datetime.now(UTC).replace(microsecond=0).isoformat()}",
         f"- cards_seen: {report.cards_seen}",
         f"- cards_valid: {report.cards_valid}",
         f"- cards_invalid: {report.cards_invalid}",

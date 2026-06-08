@@ -1,10 +1,12 @@
 """Check channel usernames in GeoSpoiler folder."""
-import asyncio, sys
+import asyncio
+import sys
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-import config
 from fetcher.telegram_client import TelegramFetcher
+
 
 async def main():
     fetcher = TelegramFetcher()

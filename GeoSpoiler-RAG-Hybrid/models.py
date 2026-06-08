@@ -12,7 +12,6 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-
 ALLOWED_CLAIM_TYPES = {"fact", "source_claim", "hypothesis"}
 
 
@@ -26,7 +25,7 @@ class SourceId(ContractModel):
     value: str
 
     @classmethod
-    def from_provenance(cls, provenance: "Provenance | dict[str, Any]") -> "SourceId | None":
+    def from_provenance(cls, provenance: Provenance | dict[str, Any]) -> SourceId | None:
         data = provenance.model_dump() if isinstance(provenance, BaseModel) else provenance
         existing = _clean_str(data.get("source_id"))
         if existing:

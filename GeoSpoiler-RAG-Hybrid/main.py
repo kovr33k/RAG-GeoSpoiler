@@ -55,8 +55,10 @@ from cli import (
     cmd_transcribe_backfill,
     cmd_validate_enriched,
 )
+from enricher.pipeline import EnrichmentStats, enrich_all
 from fetcher.state import get_all_progress, mark_message_processed
 from fetcher.telegram_client import TelegramFetcher, TelegramMessage
+from loader.graph_quality import build_quality_report
 from loader.lightrag_loader import (
     auto_fix_safe_entity_merges,
     create_rag,
@@ -64,14 +66,11 @@ from loader.lightrag_loader import (
     load_from_directory,
     load_source_metadata_index,
     load_texts,
-    query_rag,
     query_rag_result,
     rebuild_rag_storage,
 )
-from loader.graph_quality import build_quality_report
-from normalizer.review_queue import get_pending_reviews
 from normalizer.pipeline import NormalizationBatchResult, normalize_batch
-from enricher.pipeline import EnrichmentStats, enrich_all
+from normalizer.review_queue import get_pending_reviews
 from retrieval.composer import search as composer_search
 from retrieval.response_formatter import format_search_results
 from retrieval.wiki_claims import seed_claim_pages
@@ -113,7 +112,8 @@ _SOURCE_REQUEST_RE = re.compile(
     re.IGNORECASE,
 )
 _REFERENCE_ID_RE = re.compile(r"\[reference_id:\s*([^\]]+)\]", re.IGNORECASE)
-_REFERENCE_INLINE_RE = re.compile(r"\[([A-Za-z0-9\-]+)\]")
+_REFERENCE_BULLET_RE = re.compile(r"^\s*-\s*\[(\d+)\]", re.MULTILINE)
+_REFERENCE_TOKEN_RE = re.compile(r"\[([A-Za-z][A-Za-z0-9_-]*)\]")
 _QUERY_MODES = {"local", "global", "hybrid", "naive", "mix", "bypass"}
 _QUERY_PROFILES = {"answer", "source", "overview"}
 _SEARCH_CARDS_ONLY_MODES = {"shadow", "cards", "cards-only"}
@@ -192,7 +192,7 @@ async def _finalize_rag_safely(rag: Any) -> None:
             rag.finalize_storages(),
             timeout=config.RAG_FINALIZE_TIMEOUT_SECONDS,
         )
-    except asyncio.TimeoutError:
+    except TimeoutError:
         logger.warning(
             "LightRAG finalize_storages timed out after %ss; continuing.",
             config.RAG_FINALIZE_TIMEOUT_SECONDS,
@@ -237,6 +237,17 @@ async def cmd_fetch(limit: int | None = None) -> list[tuple[str, list[TelegramMe
         await fetcher.disconnect()
 
 
+def _mark_contiguous_processed(messages: list[TelegramMessage], successful_ids: set[int]) -> int:
+    """Advance fetch progress only through the first contiguous successful prefix."""
+    marked = 0
+    for msg in sorted(messages, key=lambda item: item.message_id):
+        if msg.message_id not in successful_ids:
+            break
+        mark_message_processed(msg.channel_id, msg.channel_name, msg.message_id)
+        marked += 1
+    return marked
+
+
 async def cmd_normalize(channel_messages: list[tuple[str, list[TelegramMessage]]]) -> NormalizationBatchResult:
     """Normalize fetched messages into text files."""
     logger.info("=== NORMALIZE: Processing messages ===")
@@ -250,12 +261,13 @@ async def cmd_normalize(channel_messages: list[tuple[str, list[TelegramMessage]]
 
         result = normalize_batch(messages)
         successful_ids = {int(Path(fp).stem) for fp, _ in result.texts_with_paths}
+        marked_count = _mark_contiguous_processed(messages, successful_ids)
+        result.processed_messages += marked_count
+        sorted_messages = sorted(messages, key=lambda item: item.message_id)
+        marked_ids = {msg.message_id for msg in sorted_messages[:marked_count]}
 
         for msg in messages:
-            if msg.message_id in successful_ids:
-                mark_message_processed(msg.channel_id, msg.channel_name, msg.message_id)
-                result.processed_messages += 1
-            else:
+            if msg.message_id not in marked_ids:
                 logger.warning(
                     f"  Message {msg.message_id} from '{msg.channel_name}' not marked processed "
                     "(will be retried next run)."
@@ -284,9 +296,9 @@ async def cmd_load(texts_with_paths: list[tuple[str, str]] | None = None) -> Loa
             load_stats.normalized_attempted = sum(1 for _ in config.NORMALIZED_DIR.rglob("*.txt"))
             load_stats.normalized_loaded = await load_from_directory(rag)
 
-        reviewed = _collect_reviewed_ai_texts()
+        reviewed = _collect_reviewed_texts()
         if reviewed:
-            logger.info(f"  Loading {len(reviewed)} reviewed AI-chat item(s) into LightRAG.")
+            logger.info(f"  Loading {len(reviewed)} reviewed item(s) into LightRAG.")
             load_stats.reviewed_attempted = len(reviewed)
             load_stats.reviewed_loaded = await load_texts(rag, reviewed)
 
@@ -334,7 +346,7 @@ async def cmd_run(limit: int | None = None):
         logger.info("No new Telegram messages to normalize.")
 
     # Enrich all posts (incremental — only new/changed)
-    enrich_stats = cmd_enrich()
+    cmd_enrich()
 
     load_stats = await cmd_load(normalize_stats.texts_with_paths)
     _print_run_summary(channel_messages, normalize_stats, load_stats)
@@ -377,19 +389,24 @@ def _clear_lightrag_query_cache() -> None:
         logger.warning(f"Could not clear LightRAG LLM response cache: {exc}")
 
 
-def _collect_reviewed_ai_texts() -> list[tuple[str, str]]:
-    """
-    Collect all reviewed AI-chat items whose extracted_text is non-empty.
-    Returns list of (source_path, text) ready for LightRAG insertion.
-    """
+def _collect_reviewed_texts() -> list[tuple[str, str]]:
+    """Collect processed review items whose extracted_text is non-empty."""
     results = []
     for f in config.REVIEW_QUEUE_DIR.glob("*.json"):
         try:
             data = json.loads(f.read_text(encoding="utf-8"))
-            if data.get("status") == "processed" and data.get("extracted_text"):
-                text = data["extracted_text"].strip()
-                if text:
-                    results.append((str(f), text))
+            if data.get("status") != "processed" or not data.get("extracted_text"):
+                continue
+            extracted = str(data["extracted_text"]).strip()
+            if not extracted:
+                continue
+            header = (
+                f"[Review type: {data.get('review_type', 'unknown')} | "
+                f"Channel: {data.get('channel', '')} | "
+                f"Message: {data.get('message_id', '')} | "
+                f"URL: {data.get('url', '')}]"
+            )
+            results.append((str(f), f"{header}\n\n{extracted}"))
         except (json.JSONDecodeError, OSError):
             continue
     return results
@@ -477,8 +494,8 @@ def _print_run_summary(
     print("Дошло до LightRAG:")
     print(f"  Нормализованных текстов к загрузке: {load_stats.normalized_attempted}")
     print(f"  Нормализованных текстов загружено: {load_stats.normalized_loaded}")
-    print(f"  Reviewed AI items к загрузке: {load_stats.reviewed_attempted}")
-    print(f"  Reviewed AI items загружено: {load_stats.reviewed_loaded}")
+    print(f"  Reviewed items к загрузке: {load_stats.reviewed_attempted}")
+    print(f"  Reviewed items загружено: {load_stats.reviewed_loaded}")
     print(f"  Итого загружено в LightRAG: {load_stats.total_loaded}")
     print("═" * 60)
 
@@ -489,8 +506,8 @@ def _print_load_summary(load_stats: LoadStats, heading: str = "LOAD SUMMARY") ->
     print("═" * 60)
     print(f"Нормализованных текстов к загрузке: {load_stats.normalized_attempted}")
     print(f"Нормализованных текстов загружено: {load_stats.normalized_loaded}")
-    print(f"Reviewed AI items к загрузке: {load_stats.reviewed_attempted}")
-    print(f"Reviewed AI items загружено: {load_stats.reviewed_loaded}")
+    print(f"Reviewed items к загрузке: {load_stats.reviewed_attempted}")
+    print(f"Reviewed items загружено: {load_stats.reviewed_loaded}")
     print(f"Pending review сейчас: {load_stats.review_pending}")
     print(f"Processed review сейчас: {load_stats.review_processed}")
     print(f"Skipped review сейчас: {load_stats.review_skipped}")
@@ -590,8 +607,8 @@ async def cmd_search(query: str, mode: str = "recall"):
 def launch_reviewer_web() -> None:
     """Launch the Streamlit reviewer web UI and open it in the default browser."""
     import subprocess
-    import webbrowser
     import time
+    import webbrowser
 
     app_path = config.PROJECT_ROOT / "reviewer_app.py"
     if not app_path.exists():
@@ -612,7 +629,9 @@ def launch_reviewer_web() -> None:
 
     subprocess.run(
         [
-            str(config.PROJECT_ROOT / ".venv" / "Scripts" / "streamlit.exe"),
+            sys.executable,
+            "-m",
+            "streamlit",
             "run",
             str(app_path),
             "--server.port",
@@ -649,7 +668,12 @@ def cmd_review(web: bool = False):
     print(f"\n📋 Pending review items: {len(items)}\n")
     for i, item in enumerate(items, 1):
         review_type = item.get('review_type', 'unknown')
-        type_label = {'ai_chat': 'AI Chat', 'external_link': 'Link', 'uninformative': 'Low-info'}
+        type_label = {
+            'ai_chat': 'AI Chat',
+            'external_link': 'Link',
+            'uninformative': 'Low-info',
+            'instagram_long_reel': 'Long Reel',
+        }
         badge = type_label.get(review_type, review_type)
         print(f"  {i}. [{badge}] [{item.get('channel', '?')}] msg_id={item.get('message_id', '?')}")
         url = item.get('url', '')
@@ -723,12 +747,18 @@ def _question_requests_sources(question: str) -> bool:
 
 
 def _extract_answer_reference_keys(answer: str) -> tuple[set[str], set[str]]:
-    """Collect explicit citation keys that the LLM mentioned in the answer."""
+    """Collect explicit citation keys and numbered reference bullets mentioned in the answer."""
     if not answer:
         return set(), set()
 
     reference_ids = {match.group(1).strip() for match in _REFERENCE_ID_RE.finditer(answer)}
-    numbered_refs = {match.group(1) for match in _REFERENCE_INLINE_RE.finditer(answer)}
+    refs_section = answer.split("### References", 1)[1] if "### References" in answer else answer
+    numbered_refs = {match.group(1) for match in _REFERENCE_BULLET_RE.finditer(refs_section)}
+    reference_ids.update(
+        token
+        for token in _REFERENCE_TOKEN_RE.findall(answer)
+        if not token.isdigit() and token.lower() != "reference_id"
+    )
     return reference_ids, numbered_refs
 
 
@@ -763,13 +793,10 @@ def _extract_query_sources(query_result: dict[str, Any], limit: int = 5) -> list
             continue
         ref_id = str(ref.get("reference_id") or "").strip()
         if explicit_ids or numbered_refs:
+            if str(idx) in numbered_refs:
+                filtered_references.append(ref)
+                continue
             if ref_id and ref_id in explicit_ids:
-                filtered_references.append(ref)
-                continue
-            if ref_id and ref_id in numbered_refs:
-                filtered_references.append(ref)
-                continue
-            if not ref_id and str(idx) in numbered_refs:
                 filtered_references.append(ref)
                 continue
             continue

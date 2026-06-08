@@ -1,8 +1,8 @@
-import sys
-import shutil
-import unittest
-import json
 import asyncio
+import json
+import shutil
+import sys
+import unittest
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -12,16 +12,16 @@ sys.path.insert(0, str(Path(__file__).parent))
 from loader import clients as lightrag_clients  # noqa: E402
 from loader import lightrag_loader  # noqa: E402
 from loader.lightrag_loader import (  # noqa: E402
-    _postprocess_extraction_response,
-    _postprocess_answer_text,
+    _answer_looks_corrupt,
     _attach_card_context,
     _attach_reference_hints,
-    _answer_looks_corrupt,
     _card_context_for_query,
     _chat_completion_options,
+    _postprocess_answer_text,
+    _postprocess_extraction_response,
     _shadow_fallback_result,
-    _synthesize_hybrid_result,
     _source_doc_id,
+    _synthesize_hybrid_result,
     get_query_profile,
     load_from_enriched,
     load_texts,
@@ -102,6 +102,9 @@ class LoadTextsTests(unittest.IsolatedAsyncioTestCase):
             "[Видео: пост содержал видео - не обработано]\n"
             "[Аудио: пост содержал аудио - не обработано | status=downloaded | path=media_cache/topic/audio/msg_3.ogg]\n"
             "[AI-диалог: https://chatgpt.com/share/abc]\n"
+            "[Внешняя ссылка: https://example.com/story]\n"
+            "[Малоинформативный пост: Uninformative post]\n"
+            "[Отправлено в очередь на ручной просмотр: Channel_3_external.json]\n"
         )
 
         inserted = await load_texts(rag, [(path, text)], batch_size=5)

@@ -7,7 +7,6 @@ to classify a post into one of the 15 content types.
 
 import logging
 import re
-from pathlib import Path
 
 logger = logging.getLogger("geospoiler.enricher.classifier")
 

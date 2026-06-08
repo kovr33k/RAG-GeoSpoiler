@@ -333,7 +333,7 @@ def _post_with_hard_timeout(payload: dict) -> str:
             return future.result(timeout=config.LLM_TIMEOUT_SECONDS)
         except concurrent.futures.TimeoutError:
             future.cancel()
-            raise _HardTimeoutError()
+            raise _HardTimeoutError() from None
 
 
 def _call_llm_fallback(system: str, user: str) -> dict:

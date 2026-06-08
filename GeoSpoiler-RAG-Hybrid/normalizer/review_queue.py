@@ -13,7 +13,7 @@ import hashlib
 import json
 import logging
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import config
@@ -24,6 +24,7 @@ logger = logging.getLogger("geospoiler.normalizer.review_queue")
 REVIEW_TYPE_AI_CHAT = "ai_chat"
 REVIEW_TYPE_EXTERNAL_LINK = "external_link"
 REVIEW_TYPE_UNINFORMATIVE = "uninformative"
+REVIEW_TYPE_INSTAGRAM_LONG_REEL = "instagram_long_reel"
 
 
 @dataclass
@@ -61,7 +62,7 @@ def queue_item(
         "message_date": message_date.isoformat() if message_date else None,
         "reason": reason,
         "normalized_filepath": normalized_filepath,
-        "queued_at": datetime.now(timezone.utc).isoformat(),
+        "queued_at": datetime.now(UTC).isoformat(),
         "status": "pending",  # pending | processed | skipped
         "extracted_text": None,  # User fills this in
         "attached_image": None,  # Path to user-attached image
@@ -148,7 +149,7 @@ def mark_reviewed(
     data["status"] = "skipped" if skip else "processed"
     data["extracted_text"] = extracted_text
     data["attached_image"] = attached_image
-    data["reviewed_at"] = datetime.now(timezone.utc).isoformat()
+    data["reviewed_at"] = datetime.now(UTC).isoformat()
 
     path.write_text(
         json.dumps(data, indent=2, ensure_ascii=False),
@@ -178,6 +179,7 @@ def _type_label(review_type: str) -> str:
         REVIEW_TYPE_AI_CHAT: "AI-диалог",
         REVIEW_TYPE_EXTERNAL_LINK: "Внешняя ссылка",
         REVIEW_TYPE_UNINFORMATIVE: "Малоинформативный пост",
+        REVIEW_TYPE_INSTAGRAM_LONG_REEL: "Длинный Instagram Reel",
     }
     return labels.get(review_type, "Ревью")
 

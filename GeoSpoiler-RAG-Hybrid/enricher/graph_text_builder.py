@@ -11,7 +11,6 @@ Two outputs per card:
 
 import json
 import logging
-from pathlib import Path
 
 import config
 

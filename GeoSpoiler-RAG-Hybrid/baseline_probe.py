@@ -13,13 +13,12 @@ import json
 import os
 import time
 from dataclasses import asdict, dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
 import config
 from loader.lightrag_loader import create_rag, query_rag_result
-
 
 RECOMMENDED_FLAGS = {
     "RERANKER_ENABLED": False,
@@ -247,7 +246,7 @@ async def run_baseline_probe(limit: int = 3, mode: str | None = None) -> Baselin
         if finalize is not None:
             try:
                 await asyncio.wait_for(finalize(), timeout=config.RAG_FINALIZE_TIMEOUT_SECONDS)
-            except asyncio.TimeoutError:
+            except TimeoutError:
                 pass
 
     return BaselineProbeReport(
@@ -403,4 +402,4 @@ def _truncate(text: str, max_chars: int) -> str:
 
 
 def _utc_now() -> str:
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    return datetime.now(UTC).replace(microsecond=0).isoformat()

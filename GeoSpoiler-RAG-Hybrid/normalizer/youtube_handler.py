@@ -8,10 +8,10 @@ Strategy:
 4. If nothing works, extract video title + description
 """
 
-import subprocess
 import json
 import logging
 import re
+import subprocess
 from pathlib import Path
 
 import requests
@@ -259,8 +259,6 @@ def _call_whisper(audio_path: Path) -> str | None:
 
     # Use chat completions for LLM-based transcription (Gemini, etc.)
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-    lang = config.TRANSCRIPTION_LANGUAGE or "ru"
-
     try:
         response = requests.post(
             f"{base_url}/chat/completions",
@@ -271,7 +269,7 @@ def _call_whisper(audio_path: Path) -> str | None:
                     "role": "user",
                     "content": [
                         {"type": "input_audio", "input_audio": {"data": audio_b64, "format": "mp3"}},
-                        {"type": "text", "text": f"Транскрибируй это аудио дословно на русском языке. Верни только текст транскрипции, без комментариев."},
+                        {"type": "text", "text": "Транскрибируй это аудио дословно на русском языке. Верни только текст транскрипции, без комментариев."},
                     ],
                 }],
                 "max_tokens": 16000,

@@ -210,7 +210,7 @@ async def run_source_selection_golden() -> dict[str, Any]:
     finally:
         try:
             await asyncio.wait_for(rag.finalize_storages(), timeout=config.RAG_FINALIZE_TIMEOUT_SECONDS)
-        except asyncio.TimeoutError:
+        except TimeoutError:
             print(f"WARNING: finalize timed out after {config.RAG_FINALIZE_TIMEOUT_SECONDS}s", flush=True)
 
     summary = {

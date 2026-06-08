@@ -8,14 +8,13 @@ Summaries, theses, and hypotheses are not promoted into evidence here.
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
-from typing import Iterable
 
 import config
 from retrieval import wiki_index
-
 
 CLAIM_STATUSES = {
     "supported_by_corpus",

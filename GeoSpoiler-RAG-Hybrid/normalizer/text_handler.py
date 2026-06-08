@@ -3,8 +3,8 @@ Text Handler — normalizes plain text content from Telegram messages.
 Strips Telegram formatting artifacts, excessive whitespace, and bot commands.
 """
 
-import re
 import logging
+import re
 
 logger = logging.getLogger("geospoiler.normalizer.text")
 

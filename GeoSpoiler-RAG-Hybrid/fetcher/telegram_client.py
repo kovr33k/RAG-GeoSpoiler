@@ -9,24 +9,20 @@ Key features:
 - Resumable via state.py (tracks last_message_id per channel)
 """
 
-import asyncio
 import logging
-from pathlib import Path
-from datetime import datetime, timezone
 from dataclasses import dataclass, field
+from datetime import UTC, datetime
 
 from telethon import TelegramClient
+from telethon.tl.functions.messages import GetDialogFiltersRequest
 from telethon.tl.types import (
     Channel,
-    MessageMediaPhoto,
     MessageMediaDocument,
-    MessageMediaWebPage,
-    InputPeerChannel,
+    MessageMediaPhoto,
 )
-from telethon.tl.functions.messages import GetDialogFiltersRequest
 
 import config
-from fetcher.state import get_last_message_id, mark_message_processed
+from fetcher.state import get_last_message_id
 
 logger = logging.getLogger("geospoiler.fetcher")
 
@@ -269,7 +265,7 @@ class TelegramFetcher:
             channel_id=channel["id"],
             channel_username=channel.get("name", "") or "",
             message_id=max(m.id for m in messages),
-            date=first.date.replace(tzinfo=timezone.utc) if first.date.tzinfo is None else first.date,
+            date=first.date.replace(tzinfo=UTC) if first.date.tzinfo is None else first.date,
             text=combined_text,
         )
 

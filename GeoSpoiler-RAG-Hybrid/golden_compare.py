@@ -3,7 +3,6 @@ import json
 from pathlib import Path
 from typing import Any
 
-
 FOCUS_TERMS = (
     "deepfake",
     "fake",

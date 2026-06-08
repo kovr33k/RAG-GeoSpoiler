@@ -12,13 +12,12 @@ from __future__ import annotations
 import json
 import re
 from dataclasses import asdict, dataclass
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any
 
 import config
 from retrieval import wiki_index
-
 
 SOURCE_HASHES_FILENAME = "source_hashes.json"
 PENDING_UPDATES_FILENAME = "_pending_updates.json"
@@ -356,7 +355,7 @@ def _append_log(stats: WikiIncrementalUpdateStats) -> None:
         stats.log_path.write_text("# Wiki Operation Log\n\n", encoding="utf-8")
 
     event = {
-        "timestamp": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        "timestamp": datetime.now(UTC).replace(microsecond=0).isoformat(),
         "event": "wiki_incremental_update",
         "initialized": stats.initialized,
         "current_sources": stats.current_sources,

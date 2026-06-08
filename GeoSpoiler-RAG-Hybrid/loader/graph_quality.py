@@ -2,10 +2,8 @@ import json
 import re
 import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict
-from pathlib import Path
 
 import config
-
 
 _GRAPHML_NS = {"g": "http://graphml.graphdrawing.org/xmlns"}
 _URL_ENTITY_RE = re.compile(r"^(?:https?://|www\.)", re.IGNORECASE)

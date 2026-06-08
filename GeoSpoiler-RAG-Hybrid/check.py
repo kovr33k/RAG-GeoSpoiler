@@ -1,14 +1,16 @@
 import asyncio
-import sys
 import os
+import sys
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 sys.path.insert(0, os.path.dirname(__file__))
 
-import config
 from telethon import TelegramClient
+
+import config
+
 
 async def check():
     session_path = str(config.STATE_DIR / 'telegram')

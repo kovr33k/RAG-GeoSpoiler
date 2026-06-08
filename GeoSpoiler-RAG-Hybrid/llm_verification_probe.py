@@ -14,14 +14,13 @@ import os
 import shutil
 import time
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
 import config
 from loader.lightrag_loader import create_rag, query_rag_result
 from main import _extract_query_sources
-
 
 PROBE_RESULTS_FILE = Path("artifacts/llm_verification_probe_results.md")
 PROBE_SCORES_FILE = Path("artifacts/llm_verification_probe_scores.json")
@@ -150,7 +149,7 @@ async def run_probe() -> dict[str, Any]:
     finally:
         try:
             await asyncio.wait_for(rag.finalize_storages(), timeout=config.RAG_FINALIZE_TIMEOUT_SECONDS)
-        except asyncio.TimeoutError:
+        except TimeoutError:
             print(f"WARNING: finalize timed out after {config.RAG_FINALIZE_TIMEOUT_SECONDS}s", flush=True)
 
     summary = {
@@ -295,7 +294,7 @@ def _maybe_backup_lightrag_cache() -> Path | None:
         return None
     backup_dir = config.PROJECT_ROOT / "artifacts" / "llm_probe_cache_backups"
     backup_dir.mkdir(parents=True, exist_ok=True)
-    stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    stamp = datetime.now(UTC).strftime("%Y%m%d_%H%M%S")
     backup_path = backup_dir / f"kv_store_llm_response_cache.{stamp}.json"
     shutil.move(str(cache_path), str(backup_path))
     return backup_path
@@ -313,7 +312,7 @@ def _yes_no(value: bool) -> str:
 
 
 def _utc_now() -> str:
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    return datetime.now(UTC).replace(microsecond=0).isoformat()
 
 
 if __name__ == "__main__":

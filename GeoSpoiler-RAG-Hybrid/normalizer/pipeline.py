@@ -5,27 +5,27 @@ Takes classified messages from the router and runs appropriate handlers,
 then assembles everything into a single normalized text file per message.
 """
 
-import logging
 import json
+import logging
 from dataclasses import dataclass, field
 from pathlib import Path
 
 import config
 from fetcher.telegram_client import TelegramMedia, TelegramMessage
-from normalizer.router import ClassifiedMessage, classify
-from normalizer.text_handler import normalize_text
-from normalizer.youtube_handler import extract_youtube_text
-from normalizer.web_handler import extract_web_text
-from normalizer.instagram_handler import extract_instagram_text
-from normalizer.image_handler import describe_image
 from normalizer.ai_chat_handler import queue_for_review
+from normalizer.image_handler import describe_image
+from normalizer.instagram_handler import extract_instagram_text
 from normalizer.review_queue import (
     REVIEW_TYPE_EXTERNAL_LINK,
-    REVIEW_TYPE_UNINFORMATIVE,
+)
+from normalizer.review_queue import (
     queue_item as queue_review_item,
 )
+from normalizer.router import ClassifiedMessage, classify
+from normalizer.text_handler import normalize_text
 from normalizer.transcription_handler import TranscriptionResult, transcribe_media
 from normalizer.translator import translate_to_russian_if_needed
+from normalizer.youtube_handler import extract_youtube_text
 
 logger = logging.getLogger("geospoiler.normalizer")
 
@@ -174,7 +174,13 @@ def normalize_message(
             if rv.action == "queued":
                 link_review_created += 1
         else:
-            ig_text = extract_instagram_text(url)
+            ig_text = extract_instagram_text(
+                url,
+                channel_name=msg.channel_name,
+                message_id=msg.message_id,
+                message_text=msg.text,
+                message_date=msg.date,
+            )
             sections.append(ig_text)
 
     for url in classified.ai_chat_urls:

@@ -16,8 +16,8 @@ After this you can run:
 """
 
 import asyncio
-import sys
 import os
+import sys
 
 # Force UTF-8 console output on Windows
 if hasattr(sys.stdout, "reconfigure"):
@@ -26,8 +26,9 @@ if hasattr(sys.stdout, "reconfigure"):
 # Add project root to path so config imports work
 sys.path.insert(0, os.path.dirname(__file__))
 
-import config
 from telethon import TelegramClient
+
+import config
 
 
 async def main():

@@ -26,6 +26,7 @@ state/
 logs/
 media_cache/
 output/
+rag_storage/
 rag_storage_backups/
 rag_storage_failed_rebuild_*/
 
@@ -35,6 +36,8 @@ artifacts/*.sqlite
 artifacts/*.pid
 artifacts/*stdout.log
 artifacts/*stderr.log
+artifacts/ig_test_*.txt
+artifacts/telegram_qr*.png
 artifacts/*cache_backups/
 artifacts/reranker_cache_backups/
 artifacts/retired_model_archive/

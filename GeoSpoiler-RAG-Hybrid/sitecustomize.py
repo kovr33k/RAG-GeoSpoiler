@@ -6,5 +6,4 @@ Python imports this module automatically when the repository root is on
 
 from testing.no_network import install_from_env
 
-
 install_from_env()

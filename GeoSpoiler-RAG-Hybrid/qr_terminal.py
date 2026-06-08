@@ -1,15 +1,17 @@
 import asyncio
-import sys
 import os
+import sys
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 sys.path.insert(0, os.path.dirname(__file__))
 
-import config
-from telethon import TelegramClient
 import qrcode
+from telethon import TelegramClient
+
+import config
+
 
 async def main():
     session_path = str(config.STATE_DIR / "telegram")
@@ -52,13 +54,13 @@ async def main():
             os.makedirs(os.path.dirname(img_path), exist_ok=True)
             img.save(img_path)
             
-            print(f"Если в консоли считывается плохо, откройте этот файл:")
+            print("Если в консоли считывается плохо, откройте этот файл:")
             print(img_path)
             
             await qr_login.wait(timeout=30)
             print("\nУРА! Вы успешно авторизовались.")
             break
-        except Exception as e:
+        except Exception:
             print("\n[!] Время действия QR-кода вышло. Генерирую свежий...")
             await asyncio.sleep(1)
         

@@ -10,13 +10,12 @@ from __future__ import annotations
 import json
 import re
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
 import config
 from retrieval import wiki_index
-
 
 MAX_PAGE_CHARS = 40000
 CLAIM_STATUSES = {
@@ -85,7 +84,7 @@ def run_wiki_health(
 
     _check_indexes(page_to_sources, source_to_pages, wiki_dir, issues)
 
-    checked_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    checked_at = datetime.now(UTC).replace(microsecond=0).isoformat()
     return WikiHealthReport(
         wiki_dir=wiki_dir,
         checked_at=checked_at,

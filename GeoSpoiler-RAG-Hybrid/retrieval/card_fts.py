@@ -2,10 +2,11 @@ import json
 import logging
 import re
 import sqlite3
+from collections.abc import Iterable
 from contextlib import closing
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 import config
 from retrieval.wiki_index import extract_source_id

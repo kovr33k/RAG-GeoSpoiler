@@ -6,7 +6,9 @@ so you can swap between OpenAI, Nvidia NIM, Together AI, etc. by changing URL an
 
 import json
 import os
+import re
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 # Load .env from project root
@@ -68,20 +70,6 @@ TRANSCRIPTION_MODEL = os.getenv("TRANSCRIPTION_MODEL", "whisper-1")
 TRANSCRIPTION_LANGUAGE = os.getenv("TRANSCRIPTION_LANGUAGE", "").strip()
 TRANSCRIPTION_TIMEOUT_SECONDS = float(os.getenv("TRANSCRIPTION_TIMEOUT_SECONDS", "120"))
 
-# ───────────────────────── Instagram Deep Extract ─────────────────────────
-INSTAGRAM_DEEP_EXTRACT_ENABLED = os.getenv("INSTAGRAM_DEEP_EXTRACT_ENABLED", "false").lower() == "true"
-
-# Vision model for Instagram frames OCR (defaults to same as transcription model)
-INSTAGRAM_VISION_API_KEY = os.getenv("INSTAGRAM_VISION_API_KEY", "") or TRANSCRIPTION_API_KEY
-INSTAGRAM_VISION_BASE_URL = os.getenv("INSTAGRAM_VISION_BASE_URL", "") or TRANSCRIPTION_BASE_URL
-INSTAGRAM_VISION_MODEL = os.getenv("INSTAGRAM_VISION_MODEL", "") or TRANSCRIPTION_MODEL
-
-# Frame extraction settings
-INSTAGRAM_FRAME_INTERVAL_SEC = float(os.getenv("INSTAGRAM_FRAME_INTERVAL_SEC", "2.0"))
-INSTAGRAM_FRAME_BATCH_SIZE = int(os.getenv("INSTAGRAM_FRAME_BATCH_SIZE", "5"))
-INSTAGRAM_MAX_VIDEO_DURATION_SEC = int(os.getenv("INSTAGRAM_MAX_VIDEO_DURATION_SEC", "180"))
-INSTAGRAM_MAX_VIDEO_SIZE_MB = int(os.getenv("INSTAGRAM_MAX_VIDEO_SIZE_MB", "100"))
-
 # ───────────────────────── Embedding ─────────────────────────
 EMBEDDING_API_KEY = os.getenv("EMBEDDING_API_KEY", "")
 EMBEDDING_BASE_URL = os.getenv("EMBEDDING_BASE_URL", "https://api.openai.com/v1")
@@ -96,6 +84,16 @@ EMBEDDING_CONCURRENCY = int(os.getenv("EMBEDDING_CONCURRENCY", "1"))
 VISION_API_KEY = os.getenv("VISION_API_KEY", "")
 VISION_BASE_URL = os.getenv("VISION_BASE_URL", "https://api.openai.com/v1")
 VISION_MODEL = os.getenv("VISION_MODEL", "gpt-4o")
+
+# ───────────────────────── Instagram Deep Extract ─────────────────────────
+INSTAGRAM_DEEP_EXTRACT_ENABLED = os.getenv("INSTAGRAM_DEEP_EXTRACT_ENABLED", "false").lower() == "true"
+INSTAGRAM_VISION_API_KEY = os.getenv("INSTAGRAM_VISION_API_KEY", "") or VISION_API_KEY or LLM_API_KEY
+INSTAGRAM_VISION_BASE_URL = os.getenv("INSTAGRAM_VISION_BASE_URL", "") or VISION_BASE_URL or LLM_BASE_URL
+INSTAGRAM_VISION_MODEL = os.getenv("INSTAGRAM_VISION_MODEL", "") or VISION_MODEL
+INSTAGRAM_FRAME_INTERVAL_SEC = float(os.getenv("INSTAGRAM_FRAME_INTERVAL_SEC", "2.0"))
+INSTAGRAM_FRAME_BATCH_SIZE = int(os.getenv("INSTAGRAM_FRAME_BATCH_SIZE", "5"))
+INSTAGRAM_MAX_VIDEO_DURATION_SEC = int(os.getenv("INSTAGRAM_MAX_VIDEO_DURATION_SEC", "180"))
+INSTAGRAM_MAX_VIDEO_SIZE_MB = int(os.getenv("INSTAGRAM_MAX_VIDEO_SIZE_MB", "100"))
 
 # ───────────────────────── Reranker ─────────────────────────
 # Set RERANKER_ENABLED=true to activate. Recommended after corpus reaches ~500 docs.
@@ -218,8 +216,6 @@ if _alias_json:
         pass
 
 # ───────────────────────── URL Patterns ─────────────────────────
-import re
-
 YOUTUBE_PATTERN = re.compile(
     r'(?:https?://)?(?:www\.)?(?:youtube\.com/(?:watch\?v=|shorts/)|youtu\.be/)[\w-]+',
     re.IGNORECASE,

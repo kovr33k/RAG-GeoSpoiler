@@ -6,15 +6,15 @@ Supports multiple retrieval modes optimized for different analytical tasks.
 import json
 import logging
 from dataclasses import dataclass, field
-from pathlib import Path
 
 from lightrag import LightRAG
+
+import config
 from loader.lightrag_loader import query_rag_result
 from retrieval import shadow_search
 from retrieval.card_fts import CardFtsMatch, search_card_index
 from retrieval.wiki_index import WikiSearchResult, find_wiki_context
 from retrieval.wiki_resolver import WikiResolvedSource, resolve_wiki_references
-import config
 
 logger = logging.getLogger("geospoiler.retrieval.composer")
 
@@ -155,7 +155,7 @@ async def search(rag: LightRAG | None, query: str, mode: str = "recall") -> Sear
         for card in cards:
             entities = card.get("entities", {})
             found = False
-            for cat, ents in entities.items():
+            for ents in entities.values():
                 for e in ents:
                     if query_lower in str(e).lower():
                         found = True

@@ -11,28 +11,29 @@ and merged. Dedup runs after all cards are created.
 
 import json
 import logging
-import os
 import re
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import config
+from enricher.chunker import chunk_text, needs_chunking
 from enricher.content_classifier import classify_content
-from enricher.triage import auto_triage, TRIAGE_KEEP, TRIAGE_REVIEW
-from normalizer.review_queue import (
-    REVIEW_TYPE_UNINFORMATIVE,
-    queue_item as queue_review_item,
-)
-from enricher.llm_enricher import (
-    enrich_short_post,
-    enrich_full_post,
-    enrich_chunk,
-    merge_chunk_results,
-)
-from enricher.chunker import needs_chunking, chunk_text
 from enricher.dedup import mark_duplicates
 from enricher.graph_text_builder import populate_graph_texts
+from enricher.llm_enricher import (
+    enrich_chunk,
+    enrich_full_post,
+    enrich_short_post,
+    merge_chunk_results,
+)
+from enricher.triage import TRIAGE_KEEP, TRIAGE_REVIEW, auto_triage
+from normalizer.review_queue import (
+    REVIEW_TYPE_UNINFORMATIVE,
+)
+from normalizer.review_queue import (
+    queue_item as queue_review_item,
+)
 
 logger = logging.getLogger("geospoiler.enricher")
 
@@ -173,7 +174,7 @@ def enrich_all(
                     
                     # Full success — save to progress
                     progress["enriched"][progress_key] = {
-                        "enriched_at": datetime.now(timezone.utc).isoformat(),
+                        "enriched_at": datetime.now(UTC).isoformat(),
                         "normalized_mtime": normalized_mtime,
                         "version": config.ENRICHMENT_SCHEMA_VERSION,
                     }
@@ -297,7 +298,7 @@ def _enrich_single_post(
     # ── Build card ──
     card = {
         "version": config.ENRICHMENT_SCHEMA_VERSION,
-        "enriched_at": datetime.now(timezone.utc).isoformat(),
+        "enriched_at": datetime.now(UTC).isoformat(),
         "provenance": provenance,
         "content_type": content_type,
         "triage": triage_status,
@@ -455,8 +456,8 @@ def _card_has_extracted_content(card: dict) -> bool:
     if str(card.get("summary") or "").strip():
         return True
 
-    for field in ("key_facts", "topics", "theses", "quotes", "events", "chunks"):
-        if card.get(field):
+    for content_field in ("key_facts", "topics", "theses", "quotes", "events", "chunks"):
+        if card.get(content_field):
             return True
 
     entities = card.get("entities", {})
@@ -510,7 +511,7 @@ def _load_progress() -> dict:
 
 def _save_progress(progress: dict) -> None:
     """Save enrichment progress state."""
-    progress["last_run"] = datetime.now(timezone.utc).isoformat()
+    progress["last_run"] = datetime.now(UTC).isoformat()
     _PROGRESS_FILE.write_text(
         json.dumps(progress, ensure_ascii=False, indent=2),
         encoding="utf-8",
