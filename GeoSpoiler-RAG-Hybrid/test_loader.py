@@ -112,6 +112,38 @@ class LoadTextsTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(inserted, 1)
         self.assertEqual(rag.inserted[0]["texts"], ["Useful body."])
 
+    async def test_load_texts_strips_long_instagram_reel_review_wrappers(self):
+        path = str((Path(__file__).parent / "output" / "normalized" / "topic" / "5.txt").resolve())
+        rag = _FakeRag()
+        text = (
+            "[\u041a\u0430\u043d\u0430\u043b: Topic | \u0414\u0430\u0442\u0430: 2026-04-30 12:00 | "
+            "\u041f\u043e\u0441\u0442: https://t.me/example/5]\n\n"
+            "[Instagram Reel: https://www.instagram.com/reel/ABC/ - @source]\n\n"
+            "Useful caption.\n\n"
+            "[\u0414\u043b\u0438\u043d\u043d\u044b\u0439 Instagram Reel: https://www.instagram.com/reel/ABC/]\n"
+            "[\u041e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043e \u0432 \u043e\u0447\u0435\u0440\u0435\u0434\u044c "
+            "\u043d\u0430 \u0440\u0443\u0447\u043d\u043e\u0439 \u043f\u0440\u043e\u0441\u043c\u043e\u0442\u0440: "
+            "Channel_5_instagram_long_reel.json]\n"
+        )
+
+        inserted = await load_texts(rag, [(path, text)], batch_size=5)
+
+        self.assertEqual(inserted, 1)
+        self.assertEqual(rag.inserted[0]["texts"], ["Useful caption."])
+
+    def test_long_instagram_reel_review_wrappers_are_not_meaningful_without_caption(self):
+        text = (
+            "[\u041a\u0430\u043d\u0430\u043b: Topic | \u0414\u0430\u0442\u0430: 2026-04-30 12:00 | "
+            "\u041f\u043e\u0441\u0442: https://t.me/example/6]\n\n"
+            "[Instagram Reel: https://www.instagram.com/reel/ABC/ - @source]\n"
+            "[\u0414\u043b\u0438\u043d\u043d\u044b\u0439 Instagram Reel: https://www.instagram.com/reel/ABC/]\n"
+            "[\u041e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043e \u0432 \u043e\u0447\u0435\u0440\u0435\u0434\u044c "
+            "\u043d\u0430 \u0440\u0443\u0447\u043d\u043e\u0439 \u043f\u0440\u043e\u0441\u043c\u043e\u0442\u0440: "
+            "Channel_6_instagram_long_reel.json]\n"
+        )
+
+        self.assertFalse(lightrag_loader._has_meaningful_normalized_body(text))
+
     async def test_load_texts_writes_source_metadata_index(self):
         temp_root = Path(__file__).parent / ".tmp-tests" / "source_index_case"
         if temp_root.exists():

@@ -61,6 +61,10 @@ _POSTHOLDER_LINE_RE = re.compile(
     r"Внешняя ссылка:|Малоинформативный пост:|Instagram Reel:.*очередь|"
     r"Отправлено в очередь на ручной просмотр:|Уже обработано:).*\]$"
 )
+_INSTAGRAM_REEL_WRAPPER_RE = re.compile(
+    "^\\[(?:Instagram Reel:|\u0414\u043b\u0438\u043d\u043d\u044b\u0439 Instagram Reel:).*\\]$",
+    re.IGNORECASE,
+)
 
 _QUERY_USER_PROMPT = (
     "Use only the context that directly answers the specific question asked. "
@@ -465,7 +469,7 @@ def _prepare_text_for_rag(text: str) -> str:
     kept_lines = []
     for line in lines:
         stripped = line.strip()
-        if _POSTHOLDER_LINE_RE.match(stripped):
+        if _POSTHOLDER_LINE_RE.match(stripped) or _INSTAGRAM_REEL_WRAPPER_RE.match(stripped):
             continue
         kept_lines.append(line)
 
@@ -891,7 +895,10 @@ def _has_meaningful_normalized_body(text: str) -> bool:
     lines = [ln.strip() for ln in body.split("\n") if ln.strip()]
     if not lines:
         return False
-    return any(not _PLACEHOLDER_CONTENT_RE.match(ln) for ln in lines)
+    return any(
+        not _PLACEHOLDER_CONTENT_RE.match(ln) and not _INSTAGRAM_REEL_WRAPPER_RE.match(ln)
+        for ln in lines
+    )
 
 
 def _card_has_extracted_content(card: dict) -> bool:
