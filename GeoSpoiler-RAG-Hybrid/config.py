@@ -68,6 +68,20 @@ TRANSCRIPTION_MODEL = os.getenv("TRANSCRIPTION_MODEL", "whisper-1")
 TRANSCRIPTION_LANGUAGE = os.getenv("TRANSCRIPTION_LANGUAGE", "").strip()
 TRANSCRIPTION_TIMEOUT_SECONDS = float(os.getenv("TRANSCRIPTION_TIMEOUT_SECONDS", "120"))
 
+# ───────────────────────── Instagram Deep Extract ─────────────────────────
+INSTAGRAM_DEEP_EXTRACT_ENABLED = os.getenv("INSTAGRAM_DEEP_EXTRACT_ENABLED", "false").lower() == "true"
+
+# Vision model for Instagram frames OCR (defaults to same as transcription model)
+INSTAGRAM_VISION_API_KEY = os.getenv("INSTAGRAM_VISION_API_KEY", "") or TRANSCRIPTION_API_KEY
+INSTAGRAM_VISION_BASE_URL = os.getenv("INSTAGRAM_VISION_BASE_URL", "") or TRANSCRIPTION_BASE_URL
+INSTAGRAM_VISION_MODEL = os.getenv("INSTAGRAM_VISION_MODEL", "") or TRANSCRIPTION_MODEL
+
+# Frame extraction settings
+INSTAGRAM_FRAME_INTERVAL_SEC = float(os.getenv("INSTAGRAM_FRAME_INTERVAL_SEC", "2.0"))
+INSTAGRAM_FRAME_BATCH_SIZE = int(os.getenv("INSTAGRAM_FRAME_BATCH_SIZE", "5"))
+INSTAGRAM_MAX_VIDEO_DURATION_SEC = int(os.getenv("INSTAGRAM_MAX_VIDEO_DURATION_SEC", "180"))
+INSTAGRAM_MAX_VIDEO_SIZE_MB = int(os.getenv("INSTAGRAM_MAX_VIDEO_SIZE_MB", "100"))
+
 # ───────────────────────── Embedding ─────────────────────────
 EMBEDDING_API_KEY = os.getenv("EMBEDDING_API_KEY", "")
 EMBEDDING_BASE_URL = os.getenv("EMBEDDING_BASE_URL", "https://api.openai.com/v1")
@@ -103,6 +117,7 @@ NORMALIZED_DIR = OUTPUT_DIR / "normalized"
 ENRICHED_DIR = OUTPUT_DIR / "enriched"
 REVIEW_QUEUE_DIR = OUTPUT_DIR / "review_queue"
 TRANSCRIPTION_DIR = OUTPUT_DIR / "transcripts"
+INSTAGRAM_CACHE_DIR = OUTPUT_DIR / "instagram_cache"
 WIKI_DIR = OUTPUT_DIR / "wiki"
 WIKI_INDEX_DIR = WIKI_DIR / "indexes"
 RAG_STORAGE_DIR = PROJECT_ROOT / os.getenv("RAG_STORAGE_DIR", "./rag_storage")
@@ -120,6 +135,7 @@ for d in [
     ENRICHED_DIR,
     REVIEW_QUEUE_DIR,
     TRANSCRIPTION_DIR,
+    INSTAGRAM_CACHE_DIR,
     RAG_STORAGE_DIR,
     STATE_DIR,
     MEDIA_CACHE_DIR,
@@ -215,6 +231,7 @@ INSTAGRAM_PATTERN = re.compile(
 AI_CHAT_PATTERNS = [
     re.compile(r'(?:https?://)?(?:chat\.openai\.com|chatgpt\.com)/(?:share|c)/[\w-]+', re.IGNORECASE),
     re.compile(r'(?:https?://)?claude\.ai/(?:chat|share)/[\w-]+', re.IGNORECASE),
+    re.compile(r'(?:https?://)?gemini\.google\.com/(?:app|share)/[\w-]+', re.IGNORECASE),
 ]
 WEB_URL_PATTERN = re.compile(
     r'https?://[^\s<>"\']+',

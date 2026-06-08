@@ -6,7 +6,7 @@ lightrag-hku>=1.0.0
 openai>=2.0.0
 
 # Web scraping
-trafilatura>=2.0.0
+crawl4ai>=0.4.0
 requests>=2.31.0
 
 # YouTube subtitles
@@ -21,3 +21,6 @@ pydantic>=2.0.0
 
 # Utilities
 aiofiles>=24.0.0
+
+# Reviewer Web UI
+streamlit>=1.40.0

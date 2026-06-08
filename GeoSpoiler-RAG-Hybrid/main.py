@@ -24,7 +24,8 @@ Batch mode:
   python main.py validate enriched [--fail-on-error] - Soft-validate enriched card data contracts
   python main.py experiments index - Build local experiment registry/report
   python main.py quality       - Show graph quality report
-  python main.py review        - Show pending AI chat review items
+  python main.py review        - Show pending review items
+  python main.py review --web  - Open the Reviewer Web UI in browser
   python main.py status        - Show progress status
 
 Enrich options:
@@ -68,7 +69,7 @@ from loader.lightrag_loader import (
     rebuild_rag_storage,
 )
 from loader.graph_quality import build_quality_report
-from normalizer.ai_chat_handler import get_pending_reviews
+from normalizer.review_queue import get_pending_reviews
 from normalizer.pipeline import NormalizationBatchResult, normalize_batch
 from enricher.pipeline import EnrichmentStats, enrich_all
 from retrieval.composer import search as composer_search
@@ -112,7 +113,7 @@ _SOURCE_REQUEST_RE = re.compile(
     re.IGNORECASE,
 )
 _REFERENCE_ID_RE = re.compile(r"\[reference_id:\s*([^\]]+)\]", re.IGNORECASE)
-_REFERENCE_BULLET_RE = re.compile(r"^\s*-\s*\[(\d+)\]", re.MULTILINE)
+_REFERENCE_INLINE_RE = re.compile(r"\[([A-Za-z0-9\-]+)\]")
 _QUERY_MODES = {"local", "global", "hybrid", "naive", "mix", "bypass"}
 _QUERY_PROFILES = {"answer", "source", "overview"}
 _SEARCH_CARDS_ONLY_MODES = {"shadow", "cards", "cards-only"}
@@ -464,9 +465,11 @@ def _print_run_summary(
     print(f"  Ошибок: {normalize_stats.failed_messages}")
     print(f"  Отмечено processed в state: {normalize_stats.processed_messages}")
     print()
-    print("AI review queue:")
-    print(f"  Новых ссылок отправлено на ручной review: {normalize_stats.ai_review_created}")
-    print(f"  Уже ранее обработанных AI ссылок встречено: {normalize_stats.ai_review_already_reviewed}")
+    print("Review queue:")
+    print(f"  AI чатов отправлено на review: {normalize_stats.ai_review_created}")
+    print(f"  Внешних ссылок отправлено на review: {normalize_stats.link_review_created}")
+    print(f"  Малоинформативных постов на review: {normalize_stats.uninformative_review_created}")
+    print(f"  AI ссылок уже обработано ранее: {normalize_stats.ai_review_already_reviewed}")
     print(f"  Pending сейчас: {load_stats.review_pending}")
     print(f"  Processed сейчас: {load_stats.review_processed}")
     print(f"  Skipped сейчас: {load_stats.review_skipped}")
@@ -584,25 +587,86 @@ async def cmd_search(query: str, mode: str = "recall"):
         await _finalize_rag_safely(rag)
 
 
-def cmd_review():
-    """Show pending AI chat review items."""
+def launch_reviewer_web() -> None:
+    """Launch the Streamlit reviewer web UI and open it in the default browser."""
+    import subprocess
+    import webbrowser
+    import time
+
+    app_path = config.PROJECT_ROOT / "reviewer_app.py"
+    if not app_path.exists():
+        print(f"Reviewer app not found at {app_path}")
+        return
+
+    port = 8501
+    print(f"\n🌐 Запускаю Reviewer Web UI на http://localhost:{port}")
+    print("Нажмите Ctrl+C в терминале, чтобы остановить.\n")
+
+    # Open browser after a short delay
+    def _open_browser():
+        time.sleep(2)
+        webbrowser.open(f"http://localhost:{port}")
+
+    import threading
+    threading.Thread(target=_open_browser, daemon=True).start()
+
+    subprocess.run(
+        [
+            str(config.PROJECT_ROOT / ".venv" / "Scripts" / "streamlit.exe"),
+            "run",
+            str(app_path),
+            "--server.port",
+            str(port),
+            "--server.headless",
+            "true",
+        ],
+        cwd=str(config.PROJECT_ROOT),
+    )
+
+
+def _maybe_launch_reviewer() -> None:
+    """Check for pending reviews and offer to launch the web UI."""
+    pending = get_pending_reviews()
+    if not pending:
+        return
+
+    print(f"\n🔍 Обнаружено {len(pending)} элемент(ов) в очереди ревью.")
+    print("   Запустите: python main.py review --web")
+
+
+def cmd_review(web: bool = False):
+    """Show pending review items or launch the web UI."""
+    if web:
+        launch_reviewer_web()
+        return
+
     items = get_pending_reviews()
     if not items:
         print("✅ Нет элементов в очереди на проверку.")
+        print("\nДля веб-интерфейса: python main.py review --web")
         return
 
     print(f"\n📋 Pending review items: {len(items)}\n")
     for i, item in enumerate(items, 1):
-        print(f"  {i}. [{item['channel']}] msg_id={item['message_id']}")
-        print(f"     URL: {item['url']}")
+        review_type = item.get('review_type', 'unknown')
+        type_label = {'ai_chat': 'AI Chat', 'external_link': 'Link', 'uninformative': 'Low-info'}
+        badge = type_label.get(review_type, review_type)
+        print(f"  {i}. [{badge}] [{item.get('channel', '?')}] msg_id={item.get('message_id', '?')}")
+        url = item.get('url', '')
+        if url:
+            print(f"     URL: {url}")
+        reason = item.get('reason', '')
+        if reason and not url:
+            print(f"     Reason: {reason}")
         if item.get("message_text"):
             preview = item["message_text"][:80]
             print(f"     Text: {preview}...")
         print(f"     File: {item['_filepath']}")
         print()
 
-    print("Чтобы обработать: отредактируй JSON файл, заполни 'extracted_text' и измени 'status' на 'processed'.")
-    print("Затем запусти: python main.py load")
+    print(f"Всего: {len(items)} элемент(ов) ожидают ревью.")
+    print("Для веб-интерфейса: python main.py review --web")
+    print("Или отредактируй JSON файл вручную и запусти: python main.py load")
 
 
 def cmd_status():
@@ -664,9 +728,7 @@ def _extract_answer_reference_keys(answer: str) -> tuple[set[str], set[str]]:
         return set(), set()
 
     reference_ids = {match.group(1).strip() for match in _REFERENCE_ID_RE.finditer(answer)}
-    if "### References" in answer:
-        answer = answer.split("### References", 1)[1]
-    numbered_refs = {match.group(1) for match in _REFERENCE_BULLET_RE.finditer(answer)}
+    numbered_refs = {match.group(1) for match in _REFERENCE_INLINE_RE.finditer(answer)}
     return reference_ids, numbered_refs
 
 
@@ -704,7 +766,10 @@ def _extract_query_sources(query_result: dict[str, Any], limit: int = 5) -> list
             if ref_id and ref_id in explicit_ids:
                 filtered_references.append(ref)
                 continue
-            if str(idx) in numbered_refs:
+            if ref_id and ref_id in numbered_refs:
+                filtered_references.append(ref)
+                continue
+            if not ref_id and str(idx) in numbered_refs:
                 filtered_references.append(ref)
                 continue
             continue
@@ -987,6 +1052,7 @@ def main():
             print(f"\nDone: {normalize_stats.normalized_messages} texts normalized to output/normalized/")
             _print_run_summary(channel_messages, normalize_stats, LoadStats())
             print("Run 'python main.py load' when ready to load into LightRAG.")
+            _maybe_launch_reviewer()
 
         asyncio.run(_fetch_and_normalize())
 
@@ -1019,6 +1085,7 @@ def main():
     elif command == "run":
         limit = int(sys.argv[2]) if len(sys.argv) > 2 else None
         asyncio.run(cmd_run(limit))
+        _maybe_launch_reviewer()
 
     elif command == "query":
         if len(sys.argv) < 3:
@@ -1133,7 +1200,8 @@ def main():
         cmd_quality()
 
     elif command == "review":
-        cmd_review()
+        web = "--web" in sys.argv[2:]
+        cmd_review(web=web)
 
     elif command == "status":
         cmd_status()

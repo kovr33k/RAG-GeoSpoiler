@@ -19,6 +19,11 @@ from normalizer.web_handler import extract_web_text
 from normalizer.instagram_handler import extract_instagram_text
 from normalizer.image_handler import describe_image
 from normalizer.ai_chat_handler import queue_for_review
+from normalizer.review_queue import (
+    REVIEW_TYPE_EXTERNAL_LINK,
+    REVIEW_TYPE_UNINFORMATIVE,
+    queue_item as queue_review_item,
+)
 from normalizer.transcription_handler import TranscriptionResult, transcribe_media
 from normalizer.translator import translate_to_russian_if_needed
 
@@ -34,6 +39,8 @@ class NormalizedMessageResult:
     text: str | None = None
     ai_review_created: int = 0
     ai_review_already_reviewed: int = 0
+    link_review_created: int = 0
+    uninformative_review_created: int = 0
 
 
 @dataclass
@@ -61,6 +68,8 @@ class NormalizationBatchResult:
     failed_messages: int = 0
     processed_messages: int = 0
     ai_review_created: int = 0
+    link_review_created: int = 0
+    uninformative_review_created: int = 0
     ai_review_already_reviewed: int = 0
 
     def merge(self, other: "NormalizationBatchResult") -> None:
@@ -87,6 +96,8 @@ class NormalizationBatchResult:
         self.processed_messages += other.processed_messages
         self.ai_review_created += other.ai_review_created
         self.ai_review_already_reviewed += other.ai_review_already_reviewed
+        self.link_review_created += other.link_review_created
+        self.uninformative_review_created += other.uninformative_review_created
 
 
 def normalize_message(
@@ -104,15 +115,20 @@ def normalize_message(
     sections = []
     ai_review_created = 0
     ai_review_already_reviewed = 0
+    link_review_created = 0
+    uninformative_review_created = 0
 
     header = _build_header(msg)
     sections.append(header)
 
+    # Check if post has meaningful text beyond just URLs
+    has_body_text = False
     if classified.has_text:
         clean_text = normalize_text(msg.text)
         text_without_urls = _strip_urls_from_text(clean_text, msg.urls)
         if text_without_urls.strip():
             sections.append(text_without_urls)
+            has_body_text = True
 
     for img_path in classified.image_paths:
         caption = msg.text if not classified.has_text else ""
@@ -122,13 +138,44 @@ def normalize_message(
     media_sections, transcription_metadata = _build_media_sections(classified, msg)
     sections.extend(media_sections)
 
+    # YouTube: auto-process only if the post is just a link (no body text).
+    # If the post has text + YouTube link, route to review.
     for url in classified.youtube_urls:
-        yt_text = extract_youtube_text(url)
-        sections.append(yt_text)
+        if has_body_text:
+            rv = queue_review_item(
+                review_type=REVIEW_TYPE_EXTERNAL_LINK,
+                channel_name=msg.channel_name,
+                message_id=msg.message_id,
+                message_text=msg.text,
+                message_date=msg.date,
+                url=url,
+                reason="YouTube link in post with text",
+            )
+            sections.append(rv.placeholder_text)
+            if rv.action == "queued":
+                link_review_created += 1
+        else:
+            yt_text = extract_youtube_text(url)
+            sections.append(yt_text)
 
+    # Instagram: same rule — auto-process only link-only posts.
     for url in classified.instagram_urls:
-        ig_text = extract_instagram_text(url)
-        sections.append(ig_text)
+        if has_body_text:
+            rv = queue_review_item(
+                review_type=REVIEW_TYPE_EXTERNAL_LINK,
+                channel_name=msg.channel_name,
+                message_id=msg.message_id,
+                message_text=msg.text,
+                message_date=msg.date,
+                url=url,
+                reason="Instagram link in post with text",
+            )
+            sections.append(rv.placeholder_text)
+            if rv.action == "queued":
+                link_review_created += 1
+        else:
+            ig_text = extract_instagram_text(url)
+            sections.append(ig_text)
 
     for url in classified.ai_chat_urls:
         review_result = queue_for_review(
@@ -144,9 +191,20 @@ def normalize_message(
         elif review_result.action == "already_reviewed":
             ai_review_already_reviewed += 1
 
+    # ALL external web URLs go to review queue.
     for url in classified.web_urls:
-        web_text = extract_web_text(url)
-        sections.append(web_text)
+        rv = queue_review_item(
+            review_type=REVIEW_TYPE_EXTERNAL_LINK,
+            channel_name=msg.channel_name,
+            message_id=msg.message_id,
+            message_text=msg.text,
+            message_date=msg.date,
+            url=url,
+            reason="External web link",
+        )
+        sections.append(rv.placeholder_text)
+        if rv.action == "queued":
+            link_review_created += 1
 
     if len(sections) <= 1:
         logger.debug(f"  Message {msg.message_id} from '{msg.channel_name}' has no content - skipping.")
@@ -169,6 +227,8 @@ def normalize_message(
         text=full_text,
         ai_review_created=ai_review_created,
         ai_review_already_reviewed=ai_review_already_reviewed,
+        link_review_created=link_review_created,
+        uninformative_review_created=uninformative_review_created,
     )
 
 
@@ -189,6 +249,8 @@ def normalize_batch(messages: list[TelegramMessage]) -> NormalizationBatchResult
             result = normalize_message(msg, classified=classified)
             batch.ai_review_created += result.ai_review_created
             batch.ai_review_already_reviewed += result.ai_review_already_reviewed
+            batch.link_review_created += result.link_review_created
+            batch.uninformative_review_created += result.uninformative_review_created
 
             if result.status == "normalized" and result.filepath and result.text is not None:
                 batch.normalized_messages += 1

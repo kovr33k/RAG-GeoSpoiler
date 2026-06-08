@@ -9,7 +9,17 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from fetcher.telegram_client import TelegramMedia  # noqa: E402
 from normalizer.image_handler import _candidate_api_keys, describe_image  # noqa: E402
-from normalizer.instagram_handler import canonicalize_instagram_url  # noqa: E402
+from normalizer.instagram_handler import (  # noqa: E402
+    canonicalize_instagram_url,
+    _extract_post_id,
+    _compute_phash,
+    _hamming_distance,
+    _dedup_frames,
+    _filter_empty_frames,
+    _compute_edge_density,
+    _read_cache,
+    _write_cache,
+)
 from normalizer.transcription_handler import transcribe_media  # noqa: E402
 from normalizer.youtube_handler import _clean_description  # noqa: E402
 
@@ -138,3 +148,237 @@ class HandlerTests(unittest.TestCase):
         self.assertEqual(payload["media"]["media_type"], "voice")
         self.assertEqual(post.call_args.kwargs["data"]["model"], "whisper-1")
         self.assertIn("/audio/transcriptions", post.call_args.args[0])
+
+
+# ─────────────────────── Instagram Deep Extract Tests ───────────────────────
+
+
+class InstagramPostIdTests(unittest.TestCase):
+    """Tests for _extract_post_id utility."""
+
+    def test_extracts_reel_id(self):
+        url = "https://www.instagram.com/reel/DVRCLW0DZT9/?igsh=cWI0ejYzYnZvMzVi"
+        self.assertEqual(_extract_post_id(url), "DVRCLW0DZT9")
+
+    def test_extracts_post_id(self):
+        url = "https://www.instagram.com/p/ABC123def/"
+        self.assertEqual(_extract_post_id(url), "ABC123def")
+
+    def test_returns_none_for_invalid_url(self):
+        self.assertIsNone(_extract_post_id("https://www.instagram.com/stories/user/"))
+        self.assertIsNone(_extract_post_id("https://example.com"))
+
+
+class InstagramPhashTests(unittest.TestCase):
+    """Tests for perceptual hashing and frame deduplication."""
+
+    def test_hamming_distance_identical(self):
+        self.assertEqual(_hamming_distance(0, 0), 0)
+
+    def test_hamming_distance_different(self):
+        self.assertEqual(_hamming_distance(0b1111, 0b0000), 4)
+        self.assertEqual(_hamming_distance(0b1010, 0b0101), 4)
+
+    def test_hamming_distance_one_bit(self):
+        self.assertEqual(_hamming_distance(0b1000, 0b0000), 1)
+
+    def test_phash_identical_images_returns_same_hash(self):
+        """Two identical images should have the same phash."""
+        try:
+            from PIL import Image
+        except ImportError:
+            self.skipTest("Pillow not installed")
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            img = Image.new("L", (64, 64), color=128)
+            path1 = Path(tmpdir) / "img1.jpg"
+            path2 = Path(tmpdir) / "img2.jpg"
+            img.save(path1)
+            img.save(path2)
+
+            h1 = _compute_phash(path1)
+            h2 = _compute_phash(path2)
+
+            self.assertIsNotNone(h1)
+            self.assertEqual(h1, h2)
+
+    def test_phash_different_images_returns_different_hash(self):
+        """Very different images should have different phashes."""
+        try:
+            from PIL import Image
+        except ImportError:
+            self.skipTest("Pillow not installed")
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            # Solid gray image (uniform → all phash bits identical)
+            img1 = Image.new("L", (64, 64), color=128)
+            # Checkerboard pattern (alternating bright/dark → very different phash)
+            img2 = Image.new("L", (64, 64))
+            for x in range(64):
+                for y in range(64):
+                    img2.putpixel((x, y), 255 if (x + y) % 2 == 0 else 0)
+
+            path1 = Path(tmpdir) / "solid.jpg"
+            path2 = Path(tmpdir) / "checker.png"  # Use PNG to avoid JPEG compression artifacts
+            img1.save(path1)
+            img2.save(path2)
+
+            h1 = _compute_phash(path1)
+            h2 = _compute_phash(path2)
+
+            self.assertIsNotNone(h1)
+            self.assertIsNotNone(h2)
+            self.assertGreater(_hamming_distance(h1, h2), 5)
+
+    def test_dedup_frames_removes_duplicates(self):
+        """Dedup should remove near-identical frames."""
+        try:
+            from PIL import Image
+        except ImportError:
+            self.skipTest("Pillow not installed")
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            paths = []
+            # Create 5 identical frames
+            for i in range(5):
+                img = Image.new("L", (64, 64), color=100)
+                p = Path(tmpdir) / f"frame_{i:04d}.jpg"
+                img.save(p)
+                paths.append(p)
+
+            # Different frame: checkerboard (very different phash from solid color)
+            img_diff = Image.new("L", (64, 64))
+            for x in range(64):
+                for y in range(64):
+                    img_diff.putpixel((x, y), 255 if (x + y) % 2 == 0 else 0)
+            p_diff = Path(tmpdir) / "frame_0005.png"
+            img_diff.save(p_diff)
+            paths.append(p_diff)
+
+            result = _dedup_frames(paths)
+
+            # Should keep first + the different one
+            self.assertLessEqual(len(result), 3)
+            self.assertIn(paths[0], result)
+            self.assertIn(p_diff, result)
+
+    def test_dedup_empty_list(self):
+        self.assertEqual(_dedup_frames([]), [])
+
+
+class InstagramEdgeFilterTests(unittest.TestCase):
+    """Tests for edge-based frame filtering."""
+
+    def test_blank_frame_has_low_edge_density(self):
+        """A solid-color image should have very low edge density."""
+        try:
+            from PIL import Image
+        except ImportError:
+            self.skipTest("Pillow not installed")
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            img = Image.new("L", (160, 120), color=128)
+            path = Path(tmpdir) / "blank.jpg"
+            img.save(path)
+
+            density = _compute_edge_density(path)
+            self.assertIsNotNone(density)
+            self.assertLess(density, 0.05)
+
+    def test_textured_frame_has_higher_edge_density(self):
+        """An image with strong edges should have higher density."""
+        try:
+            from PIL import Image
+        except ImportError:
+            self.skipTest("Pillow not installed")
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            img = Image.new("L", (160, 120))
+            # Create stripes pattern (lots of edges)
+            for x in range(160):
+                for y in range(120):
+                    img.putpixel((x, y), 255 if x % 4 < 2 else 0)
+            path = Path(tmpdir) / "stripes.jpg"
+            img.save(path)
+
+            density = _compute_edge_density(path)
+            self.assertIsNotNone(density)
+            self.assertGreater(density, 0.10)
+
+    def test_filter_empty_keeps_at_least_one(self):
+        """Even if all frames are 'empty', keep at least one."""
+        try:
+            from PIL import Image
+        except ImportError:
+            self.skipTest("Pillow not installed")
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            paths = []
+            for i in range(3):
+                img = Image.new("L", (160, 120), color=128)
+                p = Path(tmpdir) / f"blank_{i}.jpg"
+                img.save(p)
+                paths.append(p)
+
+            result = _filter_empty_frames(paths)
+            self.assertGreaterEqual(len(result), 1)
+
+
+class InstagramCacheTests(unittest.TestCase):
+    """Tests for cache read/write."""
+
+    def test_write_and_read_cache(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            cache_dir = Path(tmpdir)
+            with patch("normalizer.instagram_handler.config.INSTAGRAM_CACHE_DIR", cache_dir):
+                with patch("normalizer.instagram_handler.config.INSTAGRAM_DEEP_EXTRACT_ENABLED", True):
+                    with patch("normalizer.instagram_handler.config.TRANSCRIPTION_MODEL", "test-model"):
+                        with patch("normalizer.instagram_handler.config.INSTAGRAM_VISION_MODEL", "test-vision"):
+                            with patch("normalizer.instagram_handler.config.LLM_MODEL", "test-llm"):
+                                _write_cache("ABC123", "cached text content")
+                                result = _read_cache("ABC123")
+
+            self.assertEqual(result, "cached text content")
+
+    def test_read_cache_returns_none_when_missing(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            with patch("normalizer.instagram_handler.config.INSTAGRAM_CACHE_DIR", Path(tmpdir)):
+                self.assertIsNone(_read_cache("nonexistent"))
+
+    def test_read_cache_returns_none_for_corrupt_json(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            cache_dir = Path(tmpdir)
+            (cache_dir / "corrupt.json").write_text("{bad json", encoding="utf-8")
+            with patch("normalizer.instagram_handler.config.INSTAGRAM_CACHE_DIR", cache_dir):
+                self.assertIsNone(_read_cache("corrupt"))
+
+
+class InstagramFallbackTests(unittest.TestCase):
+    """Tests for fallback behavior when deep extract is disabled."""
+
+    def test_deep_extract_disabled_uses_caption_only(self):
+        """When INSTAGRAM_DEEP_EXTRACT_ENABLED=False, should use caption-only path."""
+        info = {
+            "description": "Test caption",
+            "uploader": "testuser",
+            "subtitles": {},
+            "automatic_captions": {},
+        }
+
+        with patch("normalizer.instagram_handler.config.INSTAGRAM_DEEP_EXTRACT_ENABLED", False):
+            with patch("normalizer.instagram_handler._get_info_ytdlp", return_value=info):
+                with patch("normalizer.instagram_handler.config.INSTAGRAM_CACHE_DIR", Path(tempfile.mkdtemp())):
+                    with patch("normalizer.instagram_handler.config.INSTAGRAM_DEEP_EXTRACT_ENABLED", False):
+                        from normalizer.instagram_handler import extract_instagram_text
+                        result = extract_instagram_text("https://www.instagram.com/reel/ABC123/")
+
+        self.assertIn("Test caption", result)
+        self.assertIn("@testuser", result)
+        self.assertIn("[Instagram Reel:", result)
+        # Should NOT contain deep extract sections
+        self.assertNotIn("[Транскрипция аудио]", result)
+        self.assertNotIn("[Текст с экрана", result)
+
+    def test_canonicalize_preserves_normal_url(self):
+        url = "https://www.instagram.com/p/ABC123/"
+        self.assertEqual(canonicalize_instagram_url(url), url)

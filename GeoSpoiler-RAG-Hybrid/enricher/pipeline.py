@@ -19,7 +19,11 @@ from pathlib import Path
 
 import config
 from enricher.content_classifier import classify_content
-from enricher.triage import auto_triage, TRIAGE_KEEP
+from enricher.triage import auto_triage, TRIAGE_KEEP, TRIAGE_REVIEW
+from normalizer.review_queue import (
+    REVIEW_TYPE_UNINFORMATIVE,
+    queue_item as queue_review_item,
+)
 from enricher.llm_enricher import (
     enrich_short_post,
     enrich_full_post,
@@ -139,6 +143,15 @@ def enrich_all(
 
                 ct = card.get("content_type", "unknown")
                 tr = card.get("triage", "unknown")
+
+                # Route uninformative posts to the review queue
+                if tr == TRIAGE_REVIEW:
+                    _queue_uninformative_review(
+                        card=card,
+                        txt_path=txt_path,
+                        channel_name=channel_name,
+                        msg_id=msg_id,
+                    )
 
                 if is_partial:
                     # Don't save to progress — will retry on next run
@@ -393,6 +406,49 @@ def _extract_noise(text: str) -> list[dict]:
                 "action": "exclude_from_graph",
             })
     return noise
+
+
+def _queue_uninformative_review(
+    card: dict,
+    txt_path: Path,
+    channel_name: str,
+    msg_id: str,
+) -> None:
+    """Create a review queue item for a post flagged as uninformative by auto_triage."""
+    provenance = card.get("provenance", {})
+    triage_reason = card.get("triage_reason", "Uninformative post")
+
+    # Read a preview of the normalized text for context
+    try:
+        message_text = txt_path.read_text(encoding="utf-8")[:500]
+    except OSError:
+        message_text = ""
+
+    # Parse message_id as int if possible
+    try:
+        mid = int(msg_id)
+    except ValueError:
+        mid = 0
+
+    # Parse date
+    date_str = provenance.get("date")
+    message_date = None
+    if date_str:
+        try:
+            from datetime import datetime
+            message_date = datetime.fromisoformat(date_str)
+        except (ValueError, TypeError):
+            pass
+
+    queue_review_item(
+        review_type=REVIEW_TYPE_UNINFORMATIVE,
+        channel_name=channel_name,
+        message_id=mid,
+        message_text=message_text,
+        message_date=message_date,
+        reason=triage_reason,
+        normalized_filepath=str(txt_path),
+    )
 
 
 def _card_has_extracted_content(card: dict) -> bool:
