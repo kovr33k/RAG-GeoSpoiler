@@ -1,0 +1,19 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:14:00+00:00",
+  "model_id": "mistralai/mistral-large-2512",
+  "provider": "openrouter",
+  "role": "script_pack",
+  "suite": "western_quality_query",
+  "case_id": "quality_script_pack_001",
+  "prompt_hash": "c0969ccb192e679f2a7084779649c8b164d8b930e6e7a24062d45661564da345",
+  "input_tokens": 140,
+  "output_tokens": 156,
+  "latency_ms": 3880,
+  "estimated_cost_usd": 0.000304,
+  "raw_response": "**Research Pack: Давление Китая на Тайвань**\n\n1. **Военное давление со стороны Китая**\n   Согласно источнику *source_a*, Пекин усилил военное давление в районе Тайваня.\n\n2. **Оценка ситуации Тайванем**\n   В *source_b* отмечается, что официальные лица Тайваня охарактеризовали действия Китая как \"принудительные\" (coercive).\n\n**Примечание:**\nИсточники не противоречат друг другу, но предоставляют разные аспекты ситуации: *source_a* описывает действия Китая, а *source_b* — реакцию Тайваня. Дополнительные данные отсутствуют.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

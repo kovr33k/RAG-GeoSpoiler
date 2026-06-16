@@ -9,6 +9,7 @@ events, query_aliases, and visual assessment. Long-form content is chunked
 and merged. Dedup runs after all cards are created.
 """
 
+import concurrent.futures
 import json
 import logging
 import re
@@ -84,114 +85,14 @@ def enrich_all(
     """
     stats = EnrichmentStats()
     progress = _load_progress()
-    normalized_dir = config.NORMALIZED_DIR
-    enriched_dir = config.ENRICHED_DIR
+    jobs = _collect_enrichment_jobs(
+        progress=progress,
+        channel_filter=channel_filter,
+        force=force,
+        stats=stats,
+    )
 
-    # Determine which channel dirs to process
-    if channel_filter:
-        channel_dirs = [normalized_dir / channel_filter]
-        if not channel_dirs[0].exists():
-            logger.error(f"Channel directory not found: {channel_dirs[0]}")
-            return stats
-    else:
-        channel_dirs = sorted(
-            [d for d in normalized_dir.iterdir() if d.is_dir()]
-        )
-
-    for channel_dir in channel_dirs:
-        channel_name = channel_dir.name
-        txt_files = sorted(channel_dir.glob("*.txt"))
-
-        for txt_path in txt_files:
-            stats.scanned += 1
-            msg_id = txt_path.stem
-            meta_path = txt_path.with_suffix(".meta.json")
-            progress_key = f"{channel_name}/{msg_id}"
-
-            # Check meta.json exists
-            if not meta_path.exists():
-                logger.warning(f"No meta.json for {progress_key} — skipping")
-                stats.skipped_no_meta += 1
-                continue
-
-            # Check if enrichment is needed
-            normalized_mtime = txt_path.stat().st_mtime
-            out_path = enriched_dir / channel_name / f"{msg_id}.enriched.json"
-            if (
-                not force
-                and not _needs_enrichment(progress, progress_key, normalized_mtime)
-                and not _is_existing_partial_card(out_path, txt_path)
-            ):
-                stats.skipped_up_to_date += 1
-                continue
-
-            try:
-                card = _enrich_single_post(
-                    txt_path=txt_path,
-                    meta_path=meta_path,
-                    channel_name=channel_name,
-                    msg_id=msg_id,
-                )
-
-                # Detect partial enrichment: triage=keep but LLM fields empty
-                is_partial = (
-                    card.get("triage") == TRIAGE_KEEP
-                    and not card.get("summary")
-                    and len(_strip_header(
-                        txt_path.read_text(encoding="utf-8")
-                    ).strip()) >= 20
-                )
-
-                ct = card.get("content_type", "unknown")
-                tr = card.get("triage", "unknown")
-
-                # Route uninformative posts to the review queue
-                if tr == TRIAGE_REVIEW:
-                    _queue_uninformative_review(
-                        card=card,
-                        txt_path=txt_path,
-                        channel_name=channel_name,
-                        msg_id=msg_id,
-                    )
-
-                if is_partial:
-                    # Don't save to progress — will retry on next run
-                    # Don't save the empty card to disk either!
-                    stats.partial += 1
-                    stats.partial_posts.append(progress_key)
-                    logger.warning(
-                        f"  ⚠️ Partial: {progress_key} → {ct} / {tr} "
-                        f"(LLM вернул пустой результат, будет повтор)"
-                    )
-                else:
-                    # Save enriched card to disk only if successful
-                    out_dir = enriched_dir / channel_name
-                    out_dir.mkdir(parents=True, exist_ok=True)
-                    out_path.write_text(
-                        json.dumps(card, ensure_ascii=False, indent=2),
-                        encoding="utf-8",
-                    )
-                    
-                    # Full success — save to progress
-                    progress["enriched"][progress_key] = {
-                        "enriched_at": datetime.now(UTC).isoformat(),
-                        "normalized_mtime": normalized_mtime,
-                        "version": config.ENRICHMENT_SCHEMA_VERSION,
-                    }
-                    stats.enriched += 1
-                    logger.info(
-                        f"  Enriched: {progress_key} → {ct} / {tr}"
-                    )
-
-                stats.by_content_type[ct] = stats.by_content_type.get(ct, 0) + 1
-                stats.by_triage[tr] = stats.by_triage.get(tr, 0) + 1
-
-            except Exception as e:
-                stats.failed += 1
-                logger.error(
-                    f"  Failed to enrich {progress_key}: {e}",
-                    exc_info=True,
-                )
+    _run_enrichment_jobs(jobs, progress, stats)
 
     # Save progress
     _save_progress(progress)
@@ -210,6 +111,182 @@ def enrich_all(
     )
     return stats
 
+
+@dataclass(frozen=True)
+class _EnrichmentJob:
+    txt_path: Path
+    meta_path: Path
+    channel_name: str
+    msg_id: str
+    progress_key: str
+    normalized_mtime: float
+    out_path: Path
+
+
+def _collect_enrichment_jobs(
+    *,
+    progress: dict,
+    channel_filter: str | None,
+    force: bool,
+    stats: EnrichmentStats,
+) -> list[_EnrichmentJob]:
+    normalized_dir = config.NORMALIZED_DIR
+    enriched_dir = config.ENRICHED_DIR
+
+    if channel_filter:
+        channel_dirs = [normalized_dir / channel_filter]
+        if not channel_dirs[0].exists():
+            logger.error(f"Channel directory not found: {channel_dirs[0]}")
+            return []
+    else:
+        channel_dirs = sorted(d for d in normalized_dir.iterdir() if d.is_dir())
+
+    jobs: list[_EnrichmentJob] = []
+    for channel_dir in channel_dirs:
+        channel_name = channel_dir.name
+        txt_files = sorted(channel_dir.glob("*.txt"))
+
+        for txt_path in txt_files:
+            stats.scanned += 1
+            msg_id = txt_path.stem
+            meta_path = txt_path.with_suffix(".meta.json")
+            progress_key = f"{channel_name}/{msg_id}"
+
+            if not meta_path.exists():
+                logger.warning(f"No meta.json for {progress_key} ? skipping")
+                stats.skipped_no_meta += 1
+                continue
+
+            normalized_mtime = txt_path.stat().st_mtime
+            out_path = enriched_dir / channel_name / f"{msg_id}.enriched.json"
+            if (
+                not force
+                and not _needs_enrichment(progress, progress_key, normalized_mtime)
+                and not _is_existing_partial_card(out_path, txt_path)
+            ):
+                stats.skipped_up_to_date += 1
+                continue
+
+            jobs.append(
+                _EnrichmentJob(
+                    txt_path=txt_path,
+                    meta_path=meta_path,
+                    channel_name=channel_name,
+                    msg_id=msg_id,
+                    progress_key=progress_key,
+                    normalized_mtime=normalized_mtime,
+                    out_path=out_path,
+                )
+            )
+
+    return jobs
+
+
+def _run_enrichment_jobs(
+    jobs: list[_EnrichmentJob],
+    progress: dict,
+    stats: EnrichmentStats,
+) -> None:
+    if not jobs:
+        return
+
+    concurrency = min(_enrichment_concurrency(), len(jobs))
+    if concurrency <= 1:
+        for job in jobs:
+            try:
+                card = _run_enrichment_job(job)
+                _handle_enriched_card(job, card, progress, stats)
+            except Exception as exc:
+                _record_enrichment_failure(job, exc, stats)
+        return
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=concurrency) as executor:
+        future_to_job = {executor.submit(_run_enrichment_job, job): job for job in jobs}
+        for future in concurrent.futures.as_completed(future_to_job):
+            job = future_to_job[future]
+            try:
+                card = future.result()
+                _handle_enriched_card(job, card, progress, stats)
+            except Exception as exc:
+                _record_enrichment_failure(job, exc, stats)
+
+
+def _run_enrichment_job(job: _EnrichmentJob) -> dict:
+    return _enrich_single_post(
+        txt_path=job.txt_path,
+        meta_path=job.meta_path,
+        channel_name=job.channel_name,
+        msg_id=job.msg_id,
+    )
+
+
+def _handle_enriched_card(
+    job: _EnrichmentJob,
+    card: dict,
+    progress: dict,
+    stats: EnrichmentStats,
+) -> None:
+    is_partial = (
+        card.get("triage") == TRIAGE_KEEP
+        and not card.get("summary")
+        and len(_strip_header(job.txt_path.read_text(encoding="utf-8")).strip()) >= 20
+    )
+
+    ct = card.get("content_type", "unknown")
+    tr = card.get("triage", "unknown")
+
+    if tr == TRIAGE_REVIEW:
+        _queue_uninformative_review(
+            card=card,
+            txt_path=job.txt_path,
+            channel_name=job.channel_name,
+            msg_id=job.msg_id,
+        )
+
+    if is_partial:
+        stats.partial += 1
+        stats.partial_posts.append(job.progress_key)
+        logger.warning(
+            f"  Partial: {job.progress_key} -> {ct} / {tr} "
+            "(LLM returned empty result, will retry)"
+        )
+    else:
+        out_dir = job.out_path.parent
+        out_dir.mkdir(parents=True, exist_ok=True)
+        job.out_path.write_text(
+            json.dumps(card, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+
+        progress["enriched"][job.progress_key] = {
+            "enriched_at": datetime.now(UTC).isoformat(),
+            "normalized_mtime": job.normalized_mtime,
+            "version": config.ENRICHMENT_SCHEMA_VERSION,
+        }
+        stats.enriched += 1
+        logger.info(f"  Enriched: {job.progress_key} -> {ct} / {tr}")
+
+    stats.by_content_type[ct] = stats.by_content_type.get(ct, 0) + 1
+    stats.by_triage[tr] = stats.by_triage.get(tr, 0) + 1
+
+
+def _record_enrichment_failure(
+    job: _EnrichmentJob,
+    exc: Exception,
+    stats: EnrichmentStats,
+) -> None:
+    stats.failed += 1
+    logger.error(
+        f"  Failed to enrich {job.progress_key}: {exc}",
+        exc_info=True,
+    )
+
+
+def _enrichment_concurrency() -> int:
+    try:
+        return max(1, int(config.ENRICHMENT_CONCURRENCY))
+    except (TypeError, ValueError):
+        return 1
 
 def _enrich_single_post(
     txt_path: Path,

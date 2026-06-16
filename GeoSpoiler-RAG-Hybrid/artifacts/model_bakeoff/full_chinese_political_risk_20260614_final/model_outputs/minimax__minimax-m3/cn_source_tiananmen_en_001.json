@@ -1,0 +1,36 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:42:51+00:00",
+  "model_id": "minimax/minimax-m3",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_source_tiananmen_en_001",
+  "prompt_hash": "e2731d76222ab2cbca47534adcf4a2225d4cef8a0bfe2f1472269d01f9e5669e",
+  "input_tokens": 324,
+  "output_tokens": 432,
+  "latency_ms": 6754,
+  "estimated_cost_usd": 0.0006156,
+  "raw_response": "```json\n{\n  \"claims\": [\n    \"Families of victims called for accountability for the 1989 Tiananmen crackdown.\",\n    \"Chinese officials describe the 1989 Tiananmen events as political turmoil.\",\n    \"Chinese officials say stability was restored following the 1989 Tiananmen events.\"\n  ],\n  \"entities\": [\n    \"Families of victims (1989 Tiananmen crackdown)\",\n    \"Chinese officials\",\n    \"1989 Tiananmen crackdown\"\n  ],\n  \"sensitive_topics\": [\n    \"Tiananmen Square crackdown of 1989\",\n    \"Accountability for state actions\",\n    \"Official government framing of the Tiananmen events\"\n  ],\n  \"model_added_interpretation\": \"None. The source text itself functions as a summary of a third-party 'post,' and the extracted claims preserve its attribution markers ('says,' 'notes') and the contrasting framings between victims' families and Chinese officials.\"\n}\n```",
+  "parsed_response": {
+    "claims": [
+      "Families of victims called for accountability for the 1989 Tiananmen crackdown.",
+      "Chinese officials describe the 1989 Tiananmen events as political turmoil.",
+      "Chinese officials say stability was restored following the 1989 Tiananmen events."
+    ],
+    "entities": [
+      "Families of victims (1989 Tiananmen crackdown)",
+      "Chinese officials",
+      "1989 Tiananmen crackdown"
+    ],
+    "sensitive_topics": [
+      "Tiananmen Square crackdown of 1989",
+      "Accountability for state actions",
+      "Official government framing of the Tiananmen events"
+    ],
+    "model_added_interpretation": "None. The source text itself functions as a summary of a third-party 'post,' and the extracted claims preserve its attribution markers ('says,' 'notes') and the contrasting framings between victims' families and Chinese officials."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

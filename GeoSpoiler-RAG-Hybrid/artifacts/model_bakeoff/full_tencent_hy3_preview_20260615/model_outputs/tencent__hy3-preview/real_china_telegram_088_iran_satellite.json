@@ -1,0 +1,19 @@
+{
+  "run_id": "full_tencent_hy3_preview_20260615",
+  "timestamp": "2026-06-15T16:37:24+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_088_iran_satellite",
+  "prompt_hash": "9a154b84ea236a2bcb52565746459024750686fe2c354c284100105b6259cdae",
+  "input_tokens": 328,
+  "output_tokens": 388,
+  "latency_ms": 8683,
+  "estimated_cost_usd": 0.00010214,
+  "raw_response": "",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

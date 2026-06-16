@@ -1,0 +1,19 @@
+{
+  "run_id": "full_gemini_3_flash_preview_western_quality_20260615",
+  "timestamp": "2026-06-15T17:41:44+00:00",
+  "model_id": "google/gemini-3-flash-preview",
+  "provider": "openrouter",
+  "role": "query",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_query_taiwan_quarantine_001",
+  "prompt_hash": "f5c239f41ac09e672cbf979a3b558ad5eecc94e61a20d516ef90816edd4b829d",
+  "input_tokens": 165,
+  "output_tokens": 89,
+  "latency_ms": 1976,
+  "estimated_cost_usd": 0.0003495,
+  "raw_response": "Согласно предоставленным источникам, стратегия карантина Тайваня заключается в следующем:\n\n*   **Формат операции:** Пекин может представить блокаду Тайваня как «карантин» для проведения инспекций судов (**Source A**).\n*   **Основная цель:** Вместо немедленного физического уничтожения целью является оказание экономического давления через воздействие на логистику и страхование (**Source B**).",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

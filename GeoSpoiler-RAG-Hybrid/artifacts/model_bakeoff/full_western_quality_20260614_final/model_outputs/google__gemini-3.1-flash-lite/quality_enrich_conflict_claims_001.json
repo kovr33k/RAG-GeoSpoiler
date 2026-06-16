@@ -1,0 +1,51 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:13:05+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_enrichment",
+  "case_id": "quality_enrich_conflict_claims_001",
+  "prompt_hash": "5a5426e3afda96ae1396f257748fdf13b69572c8a0e44585ea3e63a09cbe8a18",
+  "input_tokens": 164,
+  "output_tokens": 257,
+  "latency_ms": 2021,
+  "estimated_cost_usd": 0.0004265,
+  "raw_response": "{\n  \"summary\": \"A conflict between two sources regarding the accuracy and completeness of official casualty figures, with no consensus reached.\",\n  \"key_facts\": [\n    \"Source A alleges officials hid casualty figures.\",\n    \"Source B denies the allegation of hidden figures.\",\n    \"Source B claims the published data is complete.\"\n  ],\n  \"entities\": [\n    \"Source A\",\n    \"Source B\",\n    \"Officials\"\n  ],\n  \"topics\": [\n    \"Casualty reporting\",\n    \"Government transparency\",\n    \"Information conflict\"\n  ],\n  \"theses\": [\n    \"There is a disagreement between two sources concerning the integrity of official casualty data.\"\n  ],\n  \"quotes\": [],\n  \"events\": [],\n  \"query_aliases\": [\n    \"casualty data transparency\",\n    \"official casualty figures dispute\"\n  ],\n  \"broll_potential\": [\n    \"Generic footage of government buildings\",\n    \"Data charts or spreadsheets\",\n    \"Newsroom setting\"\n  ],\n  \"broll_notes\": \"Visuals should remain neutral to reflect the lack of consensus in the source text.\"\n}",
+  "parsed_response": {
+    "summary": "A conflict between two sources regarding the accuracy and completeness of official casualty figures, with no consensus reached.",
+    "key_facts": [
+      "Source A alleges officials hid casualty figures.",
+      "Source B denies the allegation of hidden figures.",
+      "Source B claims the published data is complete."
+    ],
+    "entities": [
+      "Source A",
+      "Source B",
+      "Officials"
+    ],
+    "topics": [
+      "Casualty reporting",
+      "Government transparency",
+      "Information conflict"
+    ],
+    "theses": [
+      "There is a disagreement between two sources concerning the integrity of official casualty data."
+    ],
+    "quotes": [],
+    "events": [],
+    "query_aliases": [
+      "casualty data transparency",
+      "official casualty figures dispute"
+    ],
+    "broll_potential": [
+      "Generic footage of government buildings",
+      "Data charts or spreadsheets",
+      "Newsroom setting"
+    ],
+    "broll_notes": "Visuals should remain neutral to reflect the lack of consensus in the source text."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

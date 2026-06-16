@@ -1,0 +1,19 @@
+{
+  "run_id": "full_tencent_hy3_preview_20260615",
+  "timestamp": "2026-06-15T16:39:50+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_enrich_china_trade_controls_001",
+  "prompt_hash": "e3ba6ec3c3d451b1bb4d4fbc8d4f73c55ae53facb5da0c45d12f63ccd839d7ff",
+  "input_tokens": 234,
+  "output_tokens": 538,
+  "latency_ms": 14147,
+  "estimated_cost_usd": 0.00012772,
+  "raw_response": "",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

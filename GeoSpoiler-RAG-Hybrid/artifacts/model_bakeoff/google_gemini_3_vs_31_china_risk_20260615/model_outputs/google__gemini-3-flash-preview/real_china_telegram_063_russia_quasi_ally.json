@@ -1,0 +1,38 @@
+{
+  "run_id": "google_gemini_3_vs_31_china_risk_20260615",
+  "timestamp": "2026-06-15T17:47:38+00:00",
+  "model_id": "google/gemini-3-flash-preview",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_063_russia_quasi_ally",
+  "prompt_hash": "b04eb317e8e40ca501517a87f3046add8de0bca4a00f34f5fd686cbb1d021c3d",
+  "input_tokens": 267,
+  "output_tokens": 227,
+  "latency_ms": 2905,
+  "estimated_cost_usd": 0.0008145,
+  "raw_response": "{\n  \"claims\": [\n    \"У России сейчас нет союзников, подобных тем, что были во Второй мировой войне.\",\n    \"Китай является «квазисоюзником», который откровенно зарабатывает на России.\",\n    \"Китай радикально поднял цены на свою продукцию для России.\",\n    \"Для всего мира китайцы подняли цены на продукцию более чем на 23%, а для РФ рост составил почти 300%.\",\n    \"Китай не заинтересован в окончании текущего конфликта.\"\n  ],\n  \"entities\": [\n    \"Россия\",\n    \"Китай\",\n    \"Юрий Котенок\"\n  ],\n  \"sensitive_topics\": [\n    \"Российско-китайские отношения\",\n    \"Военный конфликт\",\n    \"Экономическое давление\"\n  ],\n  \"model_added_interpretation\": \"The text reflects a critical perspective from a Russian military correspondent regarding the economic and strategic nature of the partnership between Russia and China.\"\n}",
+  "parsed_response": {
+    "claims": [
+      "У России сейчас нет союзников, подобных тем, что были во Второй мировой войне.",
+      "Китай является «квазисоюзником», который откровенно зарабатывает на России.",
+      "Китай радикально поднял цены на свою продукцию для России.",
+      "Для всего мира китайцы подняли цены на продукцию более чем на 23%, а для РФ рост составил почти 300%.",
+      "Китай не заинтересован в окончании текущего конфликта."
+    ],
+    "entities": [
+      "Россия",
+      "Китай",
+      "Юрий Котенок"
+    ],
+    "sensitive_topics": [
+      "Российско-китайские отношения",
+      "Военный конфликт",
+      "Экономическое давление"
+    ],
+    "model_added_interpretation": "The text reflects a critical perspective from a Russian military correspondent regarding the economic and strategic nature of the partnership between Russia and China."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

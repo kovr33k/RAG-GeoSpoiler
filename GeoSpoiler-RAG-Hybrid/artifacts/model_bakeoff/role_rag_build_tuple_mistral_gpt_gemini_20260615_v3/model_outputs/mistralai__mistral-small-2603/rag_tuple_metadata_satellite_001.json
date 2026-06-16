@@ -1,0 +1,19 @@
+{
+  "run_id": "role_rag_build_tuple_mistral_gpt_gemini_20260615_v3",
+  "timestamp": "2026-06-15T18:20:08+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_tuple_targeted",
+  "case_id": "rag_tuple_metadata_satellite_001",
+  "prompt_hash": "df400b213437af6150726b6d47503eb804f2408b2a5875056b9fdcfc610af5e1",
+  "input_tokens": 335,
+  "output_tokens": 225,
+  "latency_ms": 2116,
+  "estimated_cost_usd": 0.00018525,
+  "raw_response": "entity<|#|><Financial Times><|#|><organization><|#|><>\nentity<|#|><TEE-01B><|#|><document><|#|><Спутник, построенный и выведенный на орбиту в Китае>\nentity<|#|><Китай><|#|><country><|#|><>\nentity<|#|><аэрокосмические силы КСИР><|#|><military_unit><|#|><>\nrelation<|#|><Financial Times><|#|><TEE-01B><|#|><сообщила о><|#|><По версии FT, система позже перешла под контроль аэрокосмических сил КСИР>\nrelation<|#|><TEE-01B><|#|><аэрокосмические силы КСИР><|#|><перешла под контроль><|#|><По версии FT>\n<|COMPLETE|>",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

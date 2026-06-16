@@ -1,0 +1,98 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:10:28+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_sanctions_controls_001",
+  "prompt_hash": "7e343b6180f974a088cac07596d34bec1fdc4a8b27fcde2c7be4a8f766132811",
+  "input_tokens": 279,
+  "output_tokens": 520,
+  "latency_ms": 3668,
+  "estimated_cost_usd": 0.00035385,
+  "raw_response": "{\n  \"summary\": \"A claim suggests Europe has crossed the threshold of secondary sanctions, while China and the US use trade controls against each other.\",\n  \"entities\": [\"Европа\", \"Китай\", \"США\", \"вторичные санкции\", \"экспорт\", \"реэкспорт\", \"лицензии\", \"квоты\"],\n  \"relations\": [\n    {\"subject\": \"Европа\", \"relation\": \"перешагнула порог\", \"object\": \"вторичные санкции\"},\n    {\"subject\": \"Китай\", \"relation\": \"использует\", \"object\": \"экспорт\"},\n    {\"subject\": \"Китай\", \"relation\": \"использует\", \"object\": \"реэкспорт\"},\n    {\"subject\": \"Китай\", \"relation\": \"использует\", \"object\": \"лицензии\"},\n    {\"subject\": \"Китай\", \"relation\": \"использует\", \"object\": \"квоты\"},\n    {\"subject\": \"США\", \"relation\": \"использует\", \"object\": \"экспорт\"},\n    {\"subject\": \"США\", \"relation\": \"использует\", \"object\": \"реэкспорт\"},\n    {\"subject\": \"США\", \"relation\": \"использует\", \"object\": \"лицензии\"},\n    {\"subject\": \"США\", \"relation\": \"использует\", \"object\": \"квоты\"}\n  ],\n  \"claims\": [\n    {\"claim\": \"Европа впервые перешагнула порог вторичных санкций.\", \"attribution\": \"Автор утверждает\"},\n    {\"claim\": \"Китай и США активно используют экспорт, реэкспорт, лицензии и квоты друг против друга.\", \"attribution\": \"Автор утверждает\"},\n    {\"claim\": \"Эти меры не обязательно остановили торговлю.\", \"attribution\": \"Пост не утверждает\"}\n  ],\n  \"dates\": [],\n  \"source_fidelity_notes\": [\n    \"Отсутствует подтверждение или источник для утверждений о действиях Европы, Китая и США.\",\n    \"Упоминание 'впервые' не подкреплено доказательствами.\",\n    \"Фраза 'не утверждает' указывает на осторожность автора, но не подтверждает или опровергает факты.\"\n  ]\n}",
+  "parsed_response": {
+    "summary": "A claim suggests Europe has crossed the threshold of secondary sanctions, while China and the US use trade controls against each other.",
+    "entities": [
+      "Европа",
+      "Китай",
+      "США",
+      "вторичные санкции",
+      "экспорт",
+      "реэкспорт",
+      "лицензии",
+      "квоты"
+    ],
+    "relations": [
+      {
+        "subject": "Европа",
+        "relation": "перешагнула порог",
+        "object": "вторичные санкции"
+      },
+      {
+        "subject": "Китай",
+        "relation": "использует",
+        "object": "экспорт"
+      },
+      {
+        "subject": "Китай",
+        "relation": "использует",
+        "object": "реэкспорт"
+      },
+      {
+        "subject": "Китай",
+        "relation": "использует",
+        "object": "лицензии"
+      },
+      {
+        "subject": "Китай",
+        "relation": "использует",
+        "object": "квоты"
+      },
+      {
+        "subject": "США",
+        "relation": "использует",
+        "object": "экспорт"
+      },
+      {
+        "subject": "США",
+        "relation": "использует",
+        "object": "реэкспорт"
+      },
+      {
+        "subject": "США",
+        "relation": "использует",
+        "object": "лицензии"
+      },
+      {
+        "subject": "США",
+        "relation": "использует",
+        "object": "квоты"
+      }
+    ],
+    "claims": [
+      {
+        "claim": "Европа впервые перешагнула порог вторичных санкций.",
+        "attribution": "Автор утверждает"
+      },
+      {
+        "claim": "Китай и США активно используют экспорт, реэкспорт, лицензии и квоты друг против друга.",
+        "attribution": "Автор утверждает"
+      },
+      {
+        "claim": "Эти меры не обязательно остановили торговлю.",
+        "attribution": "Пост не утверждает"
+      }
+    ],
+    "dates": [],
+    "source_fidelity_notes": [
+      "Отсутствует подтверждение или источник для утверждений о действиях Европы, Китая и США.",
+      "Упоминание 'впервые' не подкреплено доказательствами.",
+      "Фраза 'не утверждает' указывает на осторожность автора, но не подтверждает или опровергает факты."
+    ]
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

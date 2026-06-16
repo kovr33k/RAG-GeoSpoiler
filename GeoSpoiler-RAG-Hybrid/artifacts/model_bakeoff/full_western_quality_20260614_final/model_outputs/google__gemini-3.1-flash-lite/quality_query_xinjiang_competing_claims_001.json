@@ -1,0 +1,19 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:16:44+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "query",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_query_xinjiang_competing_claims_001",
+  "prompt_hash": "9cbd5082dfcf0a2d15a05b32fb53166ca10a5b6f74aa86c3ea21117e1a2a8e1a",
+  "input_tokens": 154,
+  "output_tokens": 86,
+  "latency_ms": 1734,
+  "estimated_cost_usd": 0.0001675,
+  "raw_response": "Спор касается использования систем наблюдения в Синьцзяне. Правозащитная группа утверждает, что в регионе ведется массовая слежка с применением технологий распознавания лиц и контрольно-пропускных пунктов (source_a). В свою очередь, китайские власти отрицают, что эти меры направлены против обычных жителей, и характеризуют их как инструменты борьбы с терроризмом (source_b).",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

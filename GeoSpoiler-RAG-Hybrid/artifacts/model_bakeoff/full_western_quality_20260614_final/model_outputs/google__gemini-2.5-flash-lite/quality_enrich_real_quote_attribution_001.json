@@ -1,0 +1,52 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:14:36+00:00",
+  "model_id": "google/gemini-2.5-flash-lite",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_enrich_real_quote_attribution_001",
+  "prompt_hash": "e6126559b1ac61849747a9265389a915c043d70f6a2df70c4f79ca6571c6d6bf",
+  "input_tokens": 170,
+  "output_tokens": 294,
+  "latency_ms": 1680,
+  "estimated_cost_usd": 0.0001346,
+  "raw_response": "{\n  \"summary\": \"A source claims that a certain measure creates a \\\"legal gray area.\\\" The post's author suggests that Beijing might label a quarantine of Taiwan as a vessel inspection rather than a blockade.\",\n  \"key_facts\": [\n    \"A measure has created a legal gray area.\",\n    \"Beijing might label a quarantine of Taiwan as a vessel inspection, not a blockade.\"\n  ],\n  \"entities\": {\n    \"locations\": [\n      \"Taiwan\",\n      \"Beijing\"\n    ]\n  },\n  \"topics\": [\n    \"International relations\",\n    \"Maritime law\",\n    \"Geopolitics\",\n    \"Taiwan Strait\"\n  ],\n  \"theses\": [\n    \"The measure in question creates legal ambiguity.\",\n    \"China may use a legal loophole to justify actions against Taiwan.\"\n  ],\n  \"quotes\": [\n    \"эта мера создает юридическую серую зону\"\n  ],\n  \"events\": [],\n  \"query_aliases\": [\n    \"Taiwan quarantine\",\n    \"Beijing Taiwan blockade\",\n    \"Taiwan vessel inspection\"\n  ],\n  \"broll_potential\": true,\n  \"broll_notes\": \"Footage of Taiwan's coastline, Chinese naval vessels, international shipping traffic in the Taiwan Strait, newsroom discussions about international law and geopolitical tensions.\"\n}",
+  "parsed_response": {
+    "summary": "A source claims that a certain measure creates a \"legal gray area.\" The post's author suggests that Beijing might label a quarantine of Taiwan as a vessel inspection rather than a blockade.",
+    "key_facts": [
+      "A measure has created a legal gray area.",
+      "Beijing might label a quarantine of Taiwan as a vessel inspection, not a blockade."
+    ],
+    "entities": {
+      "locations": [
+        "Taiwan",
+        "Beijing"
+      ]
+    },
+    "topics": [
+      "International relations",
+      "Maritime law",
+      "Geopolitics",
+      "Taiwan Strait"
+    ],
+    "theses": [
+      "The measure in question creates legal ambiguity.",
+      "China may use a legal loophole to justify actions against Taiwan."
+    ],
+    "quotes": [
+      "эта мера создает юридическую серую зону"
+    ],
+    "events": [],
+    "query_aliases": [
+      "Taiwan quarantine",
+      "Beijing Taiwan blockade",
+      "Taiwan vessel inspection"
+    ],
+    "broll_potential": true,
+    "broll_notes": "Footage of Taiwan's coastline, Chinese naval vessels, international shipping traffic in the Taiwan Strait, newsroom discussions about international law and geopolitical tensions."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

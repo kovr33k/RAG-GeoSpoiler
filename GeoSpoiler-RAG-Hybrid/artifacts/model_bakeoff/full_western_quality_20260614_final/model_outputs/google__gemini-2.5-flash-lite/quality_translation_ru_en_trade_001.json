@@ -1,0 +1,19 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:15:43+00:00",
+  "model_id": "google/gemini-2.5-flash-lite",
+  "provider": "openrouter",
+  "role": "translation",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_translation_ru_en_trade_001",
+  "prompt_hash": "b1a9353f7cc0c1d314244be743cba22c33f4ed80089282ab41ce69fbf8fb20dc",
+  "input_tokens": 142,
+  "output_tokens": 35,
+  "latency_ms": 939,
+  "estimated_cost_usd": 2.82e-05,
+  "raw_response": "The author claims that China has introduced extraterritorial control with a de minimis threshold of 0.1%, but there is no direct evidence of mass mailings yet.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

@@ -55,10 +55,20 @@ workflow.
   for the release checks. Local `state/` remains git-ignored.
 - Live transcription remains pending until real downloaded audio/video/voice
   candidates exist.
-- Ultra-left/right source hint remains a documented safety net because removing
-  it still puts canonical source `3299898370/11` below rank 1.
+- At v1.1 release time, the ultra-left/right source hint remained a documented
+  safety net because removing it still put canonical source `3299898370/11`
+  below rank 1.
 - B2 enriched-card warnings remain non-blocking data cleanup debt.
 - Ragas/Phoenix-style observability and deeper architecture cleanup are v2 work.
+
+## Post-Release Resolved Debt
+
+- 2026-06-09: the ultra-left/right source hint was removed after local retrieval
+  was fixed to rank canonical source `3299898370/11` first without hardcoded
+  source injection. See `RETRIEVAL_GUARDRAILS.md` and
+  `artifacts/source_hint_removal_full_source_selection_results.md`.
+  Post-removal checks: `python -m unittest` -> `193` tests OK; source-selection
+  golden -> `10/10`; full golden -> `23/23`, average `100.0`.
 
 ## Supported Rebuild Path
 

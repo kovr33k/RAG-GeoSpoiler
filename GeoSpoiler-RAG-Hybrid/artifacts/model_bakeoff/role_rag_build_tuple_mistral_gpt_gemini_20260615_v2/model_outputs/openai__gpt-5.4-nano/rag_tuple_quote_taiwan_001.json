@@ -1,0 +1,19 @@
+{
+  "run_id": "role_rag_build_tuple_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:17:44+00:00",
+  "model_id": "openai/gpt-5.4-nano",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_tuple_targeted",
+  "case_id": "rag_tuple_quote_taiwan_001",
+  "prompt_hash": "4be70769de9d5f0b3ec1756410af57eebcb286c7dc1d0d003e0e08cb8daa8296",
+  "input_tokens": 235,
+  "output_tokens": 613,
+  "latency_ms": 5202,
+  "estimated_cost_usd": 0.00081325,
+  "raw_response": "entity{tuple_delimiter}эта мера{tuple_delimiter}other{tuple_delimiter}Упомянута как предмет высказывания о создании юридической «серой зоны».{completion_delimiter}\nentity{tuple_delimiter}Пекин{tuple_delimiter}location{tuple_delimiter}Упомянут как субъект, который может назвать карантин Тайваня проверкой судов, а не блокадой.{completion_delimiter}\nentity{tuple_delimiter}карантин Тайваня{tuple_delimiter}other{tuple_delimiter}Упомянут как предполагаемая формулировка, которую Пекин может назвать «проверкой судов» вместо «блокады».{completion_delimiter}\nentity{tuple_delimiter}Тайвань{tuple_delimiter}location{tuple_delimiter}Упомянут в выражении «карантин Тайваня».{completion_delimiter}\nentity{tuple_delimiter}блокада{tuple_delimiter}other{tuple_delimiter}Упомянута как альтернатива формулировке «проверка судов» в возможном названии карантина.{completion_delimiter}\nentity{tuple_delimiter}проверкой судов{tuple_delimiter}other{tuple_delimiter}Упомянуто как возможное название карантина Тайваня вместо «блокады».{completion_delimiter}\nrelation{tuple_delimiter}Источник заявил{tuple_delimiter}эта мера{tuple_delimiter}юридическая серая зона{tuple_delimiter}юридическая зона, мера, высказывание{tuple_delimiter}«Источник» заявил, что эта мера создает юридическую «серую зону».{completion_delimiter}\nrelation{tuple_delimiter}Автор поста добавляет{tuple_delimiter}Пекин{tuple_delimiter}карантин Тайваня{tuple_delimiter}Пекин, Тайвань, карантин{tuple_delimiter}Автор поста добавляет, что Пекин может назвать карантин Тайваня проверкой судов, а не блокадой.{completion_delimiter}\nrelation{tuple_delimiter}Автор поста добавляет{tuple_delimiter}карантин Тайваня{tuple_delimiter}проверкой судов{tuple_delimiter}формулировка, проверка судов{tuple_delimiter}Указано предположение автора: Пекин может назвать карантин Тайваня «проверкой судов».{completion_delimiter}\nrelation{tuple_delimiter}Автор поста добавляет{tuple_delimiter}карантин Тайваня{tuple_delimiter}блокадой{tuple_delimiter}альтернатива, блокада{tuple_delimiter}Указано предположение автора: Пекин может назвать карантин Тайваня не «блокадой».{completion_delimiter}",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

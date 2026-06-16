@@ -1,0 +1,19 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:11:05+00:00",
+  "model_id": "openai/gpt-5.4-nano",
+  "provider": "openrouter",
+  "role": "fallback_synth",
+  "suite": "role_fallback_synth_targeted",
+  "case_id": "fallback_source_request_001",
+  "prompt_hash": "8c450044f4741026b99e26231881f875411cf3702e9552dc9335771cdd22555e",
+  "input_tokens": 290,
+  "output_tokens": 132,
+  "latency_ms": 2904,
+  "estimated_cost_usd": 0.000223,
+  "raw_response": "Информация про спутник **TEE-01B** содержится в публикации, указанной в источнике **telegram:china:88** (файл **«Китай/88.txt»**, ссылка: https://t.me/c/1941233567/88). В этом сообщении говорится, что **Financial Times** сообщала, что **Иран** использовал китайский разведывательный спутник **TEE-01B**, а также утверждается, что спутник был построен и запущен в Китае и позже перешёл под контроль аэрокосмических подразделений **IRGC**.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

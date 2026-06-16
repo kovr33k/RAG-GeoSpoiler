@@ -1,0 +1,53 @@
+{
+  "run_id": "full_tencent_hy3_preview_reasoning_none_20260615",
+  "timestamp": "2026-06-15T17:01:20+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_enrichment",
+  "case_id": "quality_enrich_conflict_claims_001",
+  "prompt_hash": "5a5426e3afda96ae1396f257748fdf13b69572c8a0e44585ea3e63a09cbe8a18",
+  "input_tokens": 173,
+  "output_tokens": 315,
+  "latency_ms": 60611,
+  "estimated_cost_usd": 7.705e-05,
+  "raw_response": "{\n  \"summary\": \"Two sources present conflicting claims regarding the completeness of published casualty figures, with Source A alleging officials hid figures and Source B denying this and stating data is complete. The post does not determine which claim is correct.\",\n  \"key_facts\": [\n    \"Source A alleges that officials hid casualty figures.\",\n    \"Source B denies that officials hid casualty figures.\",\n    \"Source B states that the published data is complete.\",\n    \"The post does not decide which source is correct.\"\n  ],\n  \"entities\": [\n    \"Source A\",\n    \"Source B\",\n    \"officials\"\n  ],\n  \"topics\": [\n    \"casualty figures\",\n    \"data transparency\",\n    \"conflicting claims\"\n  ],\n  \"theses\": [\n    \"There is a dispute between Source A and Source B regarding whether officials hid casualty figures.\"\n  ],\n  \"quotes\": [],\n  \"events\": [],\n  \"query_aliases\": [\n    \"casualty figures hidden officials\",\n    \"Source A casualty figures allegation\",\n    \"Source B casualty data complete\",\n    \"conflict casualty figures dispute\"\n  ],\n  \"broll_potential\": [\n    \"published casualty data documents\",\n    \"officials in official settings\"\n  ],\n  \"broll_notes\": \"No specific visual details provided in the source text; generic footage of official documents or officials would align with the claims discussed.\"\n}",
+  "parsed_response": {
+    "summary": "Two sources present conflicting claims regarding the completeness of published casualty figures, with Source A alleging officials hid figures and Source B denying this and stating data is complete. The post does not determine which claim is correct.",
+    "key_facts": [
+      "Source A alleges that officials hid casualty figures.",
+      "Source B denies that officials hid casualty figures.",
+      "Source B states that the published data is complete.",
+      "The post does not decide which source is correct."
+    ],
+    "entities": [
+      "Source A",
+      "Source B",
+      "officials"
+    ],
+    "topics": [
+      "casualty figures",
+      "data transparency",
+      "conflicting claims"
+    ],
+    "theses": [
+      "There is a dispute between Source A and Source B regarding whether officials hid casualty figures."
+    ],
+    "quotes": [],
+    "events": [],
+    "query_aliases": [
+      "casualty figures hidden officials",
+      "Source A casualty figures allegation",
+      "Source B casualty data complete",
+      "conflict casualty figures dispute"
+    ],
+    "broll_potential": [
+      "published casualty data documents",
+      "officials in official settings"
+    ],
+    "broll_notes": "No specific visual details provided in the source text; generic footage of official documents or officials would align with the claims discussed."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

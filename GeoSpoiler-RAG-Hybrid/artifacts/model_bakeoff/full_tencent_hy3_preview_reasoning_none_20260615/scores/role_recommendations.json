@@ -1,0 +1,10 @@
+{
+  "recommended": {},
+  "do_not_use_for_high_risk": [
+    "tencent/hy3-preview"
+  ],
+  "yellow_models": [],
+  "red_models": [
+    "tencent/hy3-preview"
+  ]
+}

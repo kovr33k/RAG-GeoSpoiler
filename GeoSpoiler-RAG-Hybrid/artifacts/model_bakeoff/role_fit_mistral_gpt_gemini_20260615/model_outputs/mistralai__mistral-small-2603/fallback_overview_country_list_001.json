@@ -1,0 +1,19 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615",
+  "timestamp": "2026-06-15T18:06:54+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "fallback_synth",
+  "suite": "role_fallback_synth_targeted",
+  "case_id": "fallback_overview_country_list_001",
+  "prompt_hash": "54e39be375db465f5cc86286791cd25d250d0d59554002571f7d22f5a82adff0",
+  "input_tokens": 322,
+  "output_tokens": 162,
+  "latency_ms": 2111,
+  "estimated_cost_usd": 0.0001455,
+  "raw_response": "В контексте упоминаются следующие страны и регионы:\n\n1. **Иран** — обсуждается из-за возможного влияния войны в районе Ормузского пролива на энергетические маршруты [source_a].\n2. **Китай** — обсуждается в связи с зависимостью его модели роста от импорта энергии, стабильных торговых путей и доступа к долларовой системе [source_b].\n3. **Россия и Украина** — упоминаются в контексте использования компонентов двойного назначения в российских беспилотниках на Украине [source_c].\n4. **Соединённые Штаты** — упоминаются как часть давления через экспортный контроль и долларовую систему [source_d].",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

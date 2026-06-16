@@ -1,0 +1,38 @@
+{
+  "run_id": "google_gemini_3_vs_31_china_risk_20260615",
+  "timestamp": "2026-06-15T17:44:57+00:00",
+  "model_id": "google/gemini-3-flash-preview",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk",
+  "case_id": "cn_source_taiwan_en_001",
+  "prompt_hash": "bc536769edf1bebcbe3da93fdfb5488d70ece5829b2d886183e821f52ecea3ab",
+  "input_tokens": 170,
+  "output_tokens": 133,
+  "latency_ms": 2303,
+  "estimated_cost_usd": 0.000484,
+  "raw_response": "{\n  \"claims\": [\n    \"Taiwan is a sovereign democracy.\",\n    \"Beijing's pressure campaign is coercive.\",\n    \"The PRC rejects the framing of Taiwan as a sovereign democracy.\",\n    \"The PRC claims Taiwan as part of China.\"\n  ],\n  \"entities\": [\n    \"Taiwan\",\n    \"Beijing\",\n    \"PRC\",\n    \"China\"\n  ],\n  \"sensitive_topics\": [\n    \"Taiwan sovereignty\",\n    \"Cross-Strait relations\",\n    \"PRC territorial claims\"\n  ],\n  \"model_added_interpretation\": null\n}",
+  "parsed_response": {
+    "claims": [
+      "Taiwan is a sovereign democracy.",
+      "Beijing's pressure campaign is coercive.",
+      "The PRC rejects the framing of Taiwan as a sovereign democracy.",
+      "The PRC claims Taiwan as part of China."
+    ],
+    "entities": [
+      "Taiwan",
+      "Beijing",
+      "PRC",
+      "China"
+    ],
+    "sensitive_topics": [
+      "Taiwan sovereignty",
+      "Cross-Strait relations",
+      "PRC territorial claims"
+    ],
+    "model_added_interpretation": null
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

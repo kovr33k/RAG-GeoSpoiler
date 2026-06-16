@@ -1,0 +1,43 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T23:06:52+00:00",
+  "model_id": "xiaomi/mimo-v2.5-pro",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_063_russia_quasi_ally",
+  "prompt_hash": "b04eb317e8e40ca501517a87f3046add8de0bca4a00f34f5fd686cbb1d021c3d",
+  "input_tokens": 286,
+  "output_tokens": 285,
+  "latency_ms": 10410,
+  "estimated_cost_usd": 0.00037236,
+  "raw_response": "{\n  \"claims\": [\n    \"The post quotes military correspondent Yuri Kotenok.\",\n    \"Yuri Kotenok states that Russia currently has no allies as in World War II.\",\n    \"Yuri Kotenok refers to China as a 'quasi-ally' of Russia.\",\n    \"Yuri Kotenok alleges that China is openly profiting from Russia.\",\n    \"Yuri Kotenok claims that China has radically raised its prices.\",\n    \"According to the quote, for the entire world, Chinese raised prices on products by over 23%.\",\n    \"According to the quote, for Russia, the price increase was almost 300%.\",\n    \"The quote asserts that China is not interested in the end of this conflict.\"\n  ],\n  \"entities\": [\n    \"Yuri Kotenok\",\n    \"Russia\",\n    \"China\",\n    \"World War II\"\n  ],\n  \"sensitive_topics\": [\n    \"Russia's geopolitical isolation\",\n    \"China-Russia relations\",\n    \"Economic exploitation in wartime\",\n    \"China's stance on the Russia-Ukraine conflict\"\n  ],\n  \"model_added_interpretation\": \"The source text presents allegations from a military correspondent about China's economic conduct toward Russia during the conflict and questions the nature of their bilateral relationship. The price increase figures cited are attributed to the quoted source and are not independently verified here.\"\n}",
+  "parsed_response": {
+    "claims": [
+      "The post quotes military correspondent Yuri Kotenok.",
+      "Yuri Kotenok states that Russia currently has no allies as in World War II.",
+      "Yuri Kotenok refers to China as a 'quasi-ally' of Russia.",
+      "Yuri Kotenok alleges that China is openly profiting from Russia.",
+      "Yuri Kotenok claims that China has radically raised its prices.",
+      "According to the quote, for the entire world, Chinese raised prices on products by over 23%.",
+      "According to the quote, for Russia, the price increase was almost 300%.",
+      "The quote asserts that China is not interested in the end of this conflict."
+    ],
+    "entities": [
+      "Yuri Kotenok",
+      "Russia",
+      "China",
+      "World War II"
+    ],
+    "sensitive_topics": [
+      "Russia's geopolitical isolation",
+      "China-Russia relations",
+      "Economic exploitation in wartime",
+      "China's stance on the Russia-Ukraine conflict"
+    ],
+    "model_added_interpretation": "The source text presents allegations from a military correspondent about China's economic conduct toward Russia during the conflict and questions the nature of their bilateral relationship. The price increase figures cited are attributed to the quoted source and are not independently verified here."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

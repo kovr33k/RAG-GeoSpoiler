@@ -1,0 +1,19 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:11:44+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "fallback_synth",
+  "suite": "role_fallback_synth_targeted",
+  "case_id": "fallback_refuse_to_overstate_001",
+  "prompt_hash": "3ef2a1b9a0c107119c62334eefbcb1200a14909c6cb0c36cf729d11ed7d19079",
+  "input_tokens": 285,
+  "output_tokens": 130,
+  "latency_ms": 2045,
+  "estimated_cost_usd": 0.00012075,
+  "raw_response": "Контекст не содержит доказательств того, что Китай напрямую управлял ударами по базам США.\n\nВ источниках упоминается, что иранские силы использовали китайский разведывательный спутник для наведения ударов (source_a), а также что спутник был построен и запущен в Китае, прежде чем перешёл под контроль аэрокосмических сил Корпуса стражей исламской революции (source_b). Однако в источниках прямо указано, что не утверждается, что китайские официальные лица непосредственно контролировали эти удары (source_c).",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

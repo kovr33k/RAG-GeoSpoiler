@@ -1,0 +1,67 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:48:44+00:00",
+  "model_id": "xiaomi/mimo-v2.5-pro",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_source_covid_lab_uncertainty_en_001",
+  "prompt_hash": "8788a41d3f7b6079044663437d8fca61970eb41acb4df8cc92f56cbf98cfdb43",
+  "input_tokens": 172,
+  "output_tokens": 296,
+  "latency_ms": 5693,
+  "estimated_cost_usd": 0.00033234,
+  "raw_response": "{\n  \"claims\": [\n    {\n      \"claim_id\": 1,\n      \"claim_text\": \"The article says some analysts still discuss a possible laboratory origin of COVID-19\",\n      \"claim_type\": \"assertion\",\n      \"entities\": [\"analysts\"],\n      \"sensitivity\": \"high\"\n    },\n    {\n      \"claim_id\": 2,\n      \"claim_text\": \"Other researchers argue that available evidence points to a zoonotic origin\",\n      \"claim_type\": \"assertion\",\n      \"entities\": [\"researchers\"],\n      \"sensitivity\": \"high\"\n    },\n    {\n      \"claim_id\": 3,\n      \"claim_text\": \"The post stresses that neither claim is proven by the cited material\",\n      \"claim_type\": \"assertion\",\n      \"entities\": [],\n      \"sensitivity\": \"low\"\n    }\n  ],\n  \"entities\": [\n    {\n      \"entity_text\": \"analysts\",\n      \"entity_type\": \"group\"\n    },\n    {\n      \"entity_text\": \"researchers\",\n      \"entity_type\": \"group\"\n    },\n    {\n      \"entity_text\": \"COVID-19\",\n      \"entity_type\": \"disease\"\n    }\n  ],\n  \"sensitive_topics\": [\n    \"COVID-19 origin theories\",\n    \"laboratory origin hypothesis\",\n    \"zoonotic origin hypothesis\"\n  ],\n  \"model_added_interpretation\": []\n}",
+  "parsed_response": {
+    "claims": [
+      {
+        "claim_id": 1,
+        "claim_text": "The article says some analysts still discuss a possible laboratory origin of COVID-19",
+        "claim_type": "assertion",
+        "entities": [
+          "analysts"
+        ],
+        "sensitivity": "high"
+      },
+      {
+        "claim_id": 2,
+        "claim_text": "Other researchers argue that available evidence points to a zoonotic origin",
+        "claim_type": "assertion",
+        "entities": [
+          "researchers"
+        ],
+        "sensitivity": "high"
+      },
+      {
+        "claim_id": 3,
+        "claim_text": "The post stresses that neither claim is proven by the cited material",
+        "claim_type": "assertion",
+        "entities": [],
+        "sensitivity": "low"
+      }
+    ],
+    "entities": [
+      {
+        "entity_text": "analysts",
+        "entity_type": "group"
+      },
+      {
+        "entity_text": "researchers",
+        "entity_type": "group"
+      },
+      {
+        "entity_text": "COVID-19",
+        "entity_type": "disease"
+      }
+    ],
+    "sensitive_topics": [
+      "COVID-19 origin theories",
+      "laboratory origin hypothesis",
+      "zoonotic origin hypothesis"
+    ],
+    "model_added_interpretation": []
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

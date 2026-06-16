@@ -1,0 +1,19 @@
+{
+  "run_id": "full_gemini_3_flash_preview_western_quality_20260615",
+  "timestamp": "2026-06-15T17:41:46+00:00",
+  "model_id": "google/gemini-3-flash-preview",
+  "provider": "openrouter",
+  "role": "query",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_query_china_iran_energy_001",
+  "prompt_hash": "6fcd50decb7b99a333ea5a849c3daa4727a311ca2c70618e81dcdd4e7373a224",
+  "input_tokens": 169,
+  "output_tokens": 156,
+  "latency_ms": 2378,
+  "estimated_cost_usd": 0.0005525,
+  "raw_response": "Конфликт вокруг Ирана описывается как риск для Китая по следующим причинам:\n\n*   **Угроза торговым путям и экспорту:** Война в этом регионе может привести к перебоям в работе Ормузского пролива, что нанесет ущерб китайскому экспорту (source_b).\n*   **Экономические издержки:** Возможный конфликт может вызвать рост стоимости страхования (source_b).\n*   **Зависимость от импорта:** Модель роста Китая опирается на стабильные поставки энергоносителей и торговые пути (source_a).\n*   **Финансовая система:** Для развития Китаю необходим доступ к долларовой системе (source_a).",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

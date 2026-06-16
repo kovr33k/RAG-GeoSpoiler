@@ -1,0 +1,19 @@
+{
+  "run_id": "full_tencent_hy3_preview_reasoning_none_20260615",
+  "timestamp": "2026-06-15T17:04:29+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "query",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_query_xinjiang_competing_claims_001",
+  "prompt_hash": "9cbd5082dfcf0a2d15a05b32fb53166ca10a5b6f74aa86c3ea21117e1a2a8e1a",
+  "input_tokens": 160,
+  "output_tokens": 193,
+  "latency_ms": 3567,
+  "estimated_cost_usd": 5.061e-05,
+  "raw_response": "Согласно предоставленному контексту, суть спора заключается в следующем:\n\n*   **Позиция источника source_a:** Правозащитная группа утверждает, что в Синьцзяне осуществляется массовая слежка с использованием систем распознавания лиц и контрольно-пропускных пунктов [source_a].\n*   **Позиция источника source_b:** Китайские власти отрицают обвинения, заявляя, что эти меры являются инструментами борьбы с терроризмом, и утверждают, что они не направлены против обычных жителей [source_b].",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

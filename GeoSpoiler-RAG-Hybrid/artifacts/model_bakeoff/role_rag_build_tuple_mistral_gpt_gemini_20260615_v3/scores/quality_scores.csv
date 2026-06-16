@@ -1,0 +1,13 @@
+model_id,role,suite,case_id,passed,score,missing,forbidden
+google/gemini-3.1-flash-lite,rag_build,role_rag_build_tuple_targeted,rag_tuple_metadata_satellite_001,False,70,"entity<|#|>Китай,any of: нет независимого подтверждения | no independent confirmation | unverified",
+mistralai/mistral-small-2603,rag_build,role_rag_build_tuple_targeted,rag_tuple_metadata_satellite_001,False,85,any of: нет независимого подтверждения | no independent confirmation | unverified,
+openai/gpt-5.4-nano,rag_build,role_rag_build_tuple_targeted,rag_tuple_metadata_satellite_001,True,100,,
+google/gemini-3.1-flash-lite,rag_build,role_rag_build_tuple_targeted,rag_tuple_conflict_sources_001,False,85,any of: does not decide | unresolved | not resolve,
+mistralai/mistral-small-2603,rag_build,role_rag_build_tuple_targeted,rag_tuple_conflict_sources_001,False,85,any of: does not decide | unresolved | not resolve,
+openai/gpt-5.4-nano,rag_build,role_rag_build_tuple_targeted,rag_tuple_conflict_sources_001,True,100,,
+google/gemini-3.1-flash-lite,rag_build,role_rag_build_tuple_targeted,rag_tuple_dual_use_ukraine_001,False,55,"any of: российских дронах | Russian drones,any of: нет доказательств | no evidence,any of: знал | knew",
+mistralai/mistral-small-2603,rag_build,role_rag_build_tuple_targeted,rag_tuple_dual_use_ukraine_001,False,70,"entity<|#|>Украина,any of: знал | knew",
+openai/gpt-5.4-nano,rag_build,role_rag_build_tuple_targeted,rag_tuple_dual_use_ukraine_001,True,100,,
+google/gemini-3.1-flash-lite,rag_build,role_rag_build_tuple_targeted,rag_tuple_quote_taiwan_001,False,70,"any of: эта мера создает юридическую серую зону,any of: проверкой судов | ship inspection",
+mistralai/mistral-small-2603,rag_build,role_rag_build_tuple_targeted,rag_tuple_quote_taiwan_001,False,70,"any of: эта мера создает юридическую серую зону,any of: проверкой судов | ship inspection",
+openai/gpt-5.4-nano,rag_build,role_rag_build_tuple_targeted,rag_tuple_quote_taiwan_001,False,85,any of: эта мера создает юридическую серую зону,

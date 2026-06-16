@@ -1,0 +1,19 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:59:35+00:00",
+  "model_id": "minimax/minimax-m3",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_026_trade_controls",
+  "prompt_hash": "d9b050459a95c27644b240711700d1e5a4d7532fdb6fdf428f7af42a507c0e08",
+  "input_tokens": 437,
+  "output_tokens": 278,
+  "latency_ms": 11728,
+  "estimated_cost_usd": 0.0004647,
+  "raw_response": "",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

@@ -1,0 +1,19 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:13:38+00:00",
+  "model_id": "openai/gpt-5.4-nano",
+  "provider": "openrouter",
+  "role": "translation",
+  "suite": "western_quality_translation",
+  "case_id": "quality_translation_uk_ru_001",
+  "prompt_hash": "83e4bd5deb3d74bc500f38ddc0a6418fcd37d2331c02740d4ba9a2b673fcb81f",
+  "input_tokens": 151,
+  "output_tokens": 39,
+  "latency_ms": 1864,
+  "estimated_cost_usd": 7.895e-05,
+  "raw_response": "Источник утверждает, что компания связана с цепочками поставок из Синьцзяна, но китайские чиновники опровергают эти обвинения.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

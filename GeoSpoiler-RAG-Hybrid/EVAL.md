@@ -137,13 +137,13 @@ Run a small smoke subset:
 
 ```powershell
 $env:GOLDEN_CASE_LIMIT="3"
-python test_golden_set.py
+python tests/test_golden_set.py
 ```
 
 Run the full golden set:
 
 ```powershell
-python test_golden_set.py
+python tests/test_golden_set.py
 ```
 
 Useful output overrides:
@@ -151,7 +151,7 @@ Useful output overrides:
 ```powershell
 $env:GOLDEN_RESULTS_FILE="artifacts/my_run_results.md"
 $env:GOLDEN_SCORES_FILE="artifacts/my_run_scores.json"
-python test_golden_set.py
+python tests/test_golden_set.py
 ```
 
 Retry/delay controls:

@@ -1,0 +1,36 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T23:01:48+00:00",
+  "model_id": "deepseek-v4-flash",
+  "provider": "deepseek",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_028_drone_components",
+  "prompt_hash": "6a140c38a71eb703e72786681a7ffbfc9c6ef0660650254eac5bc3fd1a4ced15",
+  "input_tokens": 289,
+  "output_tokens": 227,
+  "latency_ms": 3095,
+  "estimated_cost_usd": 0.00010402,
+  "raw_response": "{\n  \"claims\": [\n    \"Пост утверждает, что Китай в 10 раз нарастил поставки в Россию компонентов для боевых дронов.\",\n    \"The Washington Post пишет, что поставки компонентов для дронов, с помощью которых Россия воюет в Украине, выросли на порядок.\",\n    \"В тексте говорится, что в августе экспорт оптоволоконных кабелей в Россию вырос до 524 800 км, а такие дроны помогают обходить радиоэлектронную борьбу и могут наносить значительный урон.\"\n  ],\n  \"entities\": [\"Китай\", \"Россия\", \"Украина\", \"The Washington Post\"],\n  \"sensitive_topics\": [\"военные поставки\", \"конфликт в Украине\"],\n  \"model_added_interpretation\": \"The source text reports claims about increased Chinese exports of drone components to Russia, citing The Washington Post, and mentions specific data on fiber optic cable exports.\"\n}",
+  "parsed_response": {
+    "claims": [
+      "Пост утверждает, что Китай в 10 раз нарастил поставки в Россию компонентов для боевых дронов.",
+      "The Washington Post пишет, что поставки компонентов для дронов, с помощью которых Россия воюет в Украине, выросли на порядок.",
+      "В тексте говорится, что в августе экспорт оптоволоконных кабелей в Россию вырос до 524 800 км, а такие дроны помогают обходить радиоэлектронную борьбу и могут наносить значительный урон."
+    ],
+    "entities": [
+      "Китай",
+      "Россия",
+      "Украина",
+      "The Washington Post"
+    ],
+    "sensitive_topics": [
+      "военные поставки",
+      "конфликт в Украине"
+    ],
+    "model_added_interpretation": "The source text reports claims about increased Chinese exports of drone components to Russia, citing The Washington Post, and mentions specific data on fiber optic cable exports."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

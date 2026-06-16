@@ -1,0 +1,19 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:52:57+00:00",
+  "model_id": "deepseek-v4-flash",
+  "provider": "deepseek",
+  "role": "translation",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_translation_scs_en_ru_001",
+  "prompt_hash": "22cc9ab3ce5250211690647b9b5eb2f4e7968458e3914dc577058bcff38ce0ae",
+  "input_tokens": 124,
+  "output_tokens": 26,
+  "latency_ms": 1870,
+  "estimated_cost_usd": 2.464e-05,
+  "raw_response": "仲裁庭驳回了中国的九段线主张，但北京拒绝接受裁决，并继续在争议水域主张历史性权利。",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

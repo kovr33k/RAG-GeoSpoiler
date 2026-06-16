@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "enriched_at": "2026-06-16T17:40:24.957981+00:00",
+  "provenance": {
+    "channel_name": "testchina",
+    "channel_id": 4494958326,
+    "message_id": 4,
+    "date": "2026-06-16T17:14:21+00:00",
+    "post_url": "https://t.me/c/4494958326/4",
+    "normalized_file": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\4.txt",
+    "meta_file": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\4.meta.json",
+    "is_forward": true,
+    "forward_from": "Тарас Григорович повідомляє"
+  },
+  "content_type": "news",
+  "triage": "keep",
+  "triage_reason": "Content meets minimum quality threshold",
+  "language": "ru",
+  "summary": "Китайские компании продолжают поставлять компоненты для дронов в Иран и Россию, несмотря на санкции США. Среди компонентов — двигатели, аккумуляторы, оптоволоконные кабели и микросхемы. Компания Xiamen Victory Technology продавала двигатели L550, использовавшиеся в иранских дронах Shahed-136. Американские чиновники отмечают сложность остановки этой торговли из-за коммерческого характера деталей и малого размера китайских фирм.",
+  "key_facts": [
+    {
+      "text": "Китайские компании экспортируют компоненты для дронов двойного назначения в Иран и Россию.",
+      "claim_type": "source_claim"
+    },
+    {
+      "text": "Компания Xiamen Victory Technology продавала двигатели L550, использовавшиеся в иранских дронах Shahed-136.",
+      "claim_type": "source_claim"
+    },
+    {
+      "text": "Американские чиновники заявляют, что остановить эту торговлю сложно из-за стандартных коммерческих деталей и малых китайских фирм.",
+      "claim_type": "source_claim"
+    }
+  ],
+  "entities": {
+    "people": [],
+    "organizations": [
+      "Xiamen Victory Technology",
+      "The Wall Street Journal"
+    ],
+    "countries": [
+      "Китай",
+      "Иран",
+      "Россия",
+      "США"
+    ],
+    "locations": [],
+    "military_units": [],
+    "equipment": [
+      "Shahed-136",
+      "двигатель L550"
+    ]
+  },
+  "topics": [
+    "санкции",
+    "военные технологии",
+    "дроны",
+    "торговля оружием"
+  ],
+  "theses": [],
+  "quotes": [],
+  "events": [],
+  "query_aliases": [
+    "Китай компоненты дронов Иран Россия",
+    "China drone components Iran Russia",
+    "Xiamen Victory Technology Shahed-136"
+  ],
+  "visual": {
+    "has_images": true,
+    "has_video": false,
+    "video_type": null,
+    "broll_potential": "low",
+    "broll_notes": "",
+    "image_descriptions": []
+  },
+  "source_chain": {
+    "original_source": "Тарас Григорович повідомляє",
+    "cited_sources": [],
+    "youtube_url": null
+  },
+  "chunks": [],
+  "noise": [],
+  "dedup": {
+    "is_duplicate": false,
+    "duplicate_group_id": null,
+    "canonical_memory_id": null,
+    "duplicate_reason": null
+  },
+  "graph_text": "[Канал: testchina | Дата: 2026-06-16 17:14 | Пост: https://t.me/c/4494958326/4]\n\n\nКитайские компании продолжают поставлять компоненты для дронов в Иран и Россию, несмотря на санкции США. Среди компонентов — двигатели, аккумуляторы, оптоволоконные кабели и микросхемы. Компания Xiamen Victory Technology продавала двигатели L550, использовавшиеся в иранских дронах Shahed-136. Американские чиновники отмечают сложность остановки этой торговли из-за коммерческого характера деталей и малого размера китайских фирм.\n\nКлючевые факты:\n- Китайские компании экспортируют компоненты для дронов двойного назначения в Иран и Россию. [source_claim]\n- Компания Xiamen Victory Technology продавала двигатели L550, использовавшиеся в иранских дронах Shahed-136. [source_claim]\n- Американские чиновники заявляют, что остановить эту торговлю сложно из-за стандартных коммерческих деталей и малых китайских фирм. [source_claim]\n\nСущности: Xiamen Victory Technology, The Wall Street Journal, Китай, Иран, Россия, США, Shahed-136, двигатель L550\n\nИсточник: Тарас Григорович повідомляє",
+  "search_text": "[Канал: testchina | Дата: 2026-06-16 17:14 | Пост: https://t.me/c/4494958326/4]\n\n\nКитайские компании продолжают поставлять компоненты для дронов в Иран и Россию, несмотря на санкции США. Среди компонентов — двигатели, аккумуляторы, оптоволоконные кабели и микросхемы. Компания Xiamen Victory Technology продавала двигатели L550, использовавшиеся в иранских дронах Shahed-136. Американские чиновники отмечают сложность остановки этой торговли из-за коммерческого характера деталей и малого размера китайских фирм.\n\nКлючевые факты:\n- Китайские компании экспортируют компоненты для дронов двойного назначения в Иран и Россию. [source_claim]\n- Компания Xiamen Victory Technology продавала двигатели L550, использовавшиеся в иранских дронах Shahed-136. [source_claim]\n- Американские чиновники заявляют, что остановить эту торговлю сложно из-за стандартных коммерческих деталей и малых китайских фирм. [source_claim]\n\nСущности: Xiamen Victory Technology, The Wall Street Journal, Китай, Иран, Россия, США, Shahed-136, двигатель L550\n\nИсточник: Тарас Григорович повідомляє\n\nСинонимы для поиска: Китай компоненты дронов Иран Россия | China drone components Iran Russia | Xiamen Victory Technology Shahed-136\n\nТемы: санкции, военные технологии, дроны, торговля оружием\n\nТип контента: news"
+}

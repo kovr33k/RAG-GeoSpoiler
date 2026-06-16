@@ -24,6 +24,19 @@ Keep normal unit tests out of this list unless they require a real model or real
 
 ## Completed
 
+- 2026-06-09: ultra-left/right source hint removal live checks completed.
+  The hardcoded source hint for `3299898370/11` was removed after retrieval changes made the canonical source rank first
+  on its own. Live checks on `deepseek-v4-flash`:
+  selected `ultra_left_right_similarity_source` -> `1/1`, average `100.0`, source rank `1`;
+  full source-selection golden -> `10/10`, average `100.0`;
+  full answer-quality golden -> `23/23`, average `100.0`.
+  Artifacts:
+  `artifacts/source_hint_removal_ultra_scores.json`,
+  `artifacts/source_hint_removal_ultra_results.md`,
+  `artifacts/source_hint_removal_full_source_selection_scores.json`,
+  `artifacts/source_hint_removal_full_source_selection_results.md`,
+  `artifacts/source_hint_removal_full_golden_scores.json`,
+  `artifacts/source_hint_removal_full_golden_results.md`.
 - 2026-06-02: v1.1.0 release live checks completed.
   Final release live checks on `deepseek-v4-flash` remained green:
   source-selection golden -> `10/10`, average `100.0`;

@@ -1,0 +1,39 @@
+{
+  "run_id": "google_gemini_3_vs_31_china_risk_20260615",
+  "timestamp": "2026-06-15T17:47:02+00:00",
+  "model_id": "google/gemini-3-flash-preview",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_026_trade_controls",
+  "prompt_hash": "d9b050459a95c27644b240711700d1e5a4d7532fdb6fdf428f7af42a507c0e08",
+  "input_tokens": 275,
+  "output_tokens": 264,
+  "latency_ms": 3253,
+  "estimated_cost_usd": 0.0009295,
+  "raw_response": "{\n  \"claims\": [\n    \"Китайские регуляторы опубликовали резкий шаг без уведомительного срока, что вызвало шок в США.\",\n    \"США пытались перекрыть Китаю обход экспортных ограничений.\",\n    \"Китай ответил экстерриториальным контролем с de minimis 0,1% и презумпцией отказа для ряда получателей.\",\n    \"Трамп упоминает 100% тариф.\",\n    \"Существует риск замедления американского хайтека из-за зависимости от Китая.\"\n  ],\n  \"entities\": [\n    \"Китайские регуляторы\",\n    \"США\",\n    \"Китай\",\n    \"Трамп\"\n  ],\n  \"sensitive_topics\": [\n    \"Торговая война между США и Китаем\",\n    \"Экспортные ограничения\",\n    \"Экономические санкции\"\n  ],\n  \"model_added_interpretation\": \"The text describes a retaliatory economic measure by China in response to US export restrictions, highlighting a specific technical threshold (de minimis 0.1%) and potential impacts on the high-tech sector.\"\n}",
+  "parsed_response": {
+    "claims": [
+      "Китайские регуляторы опубликовали резкий шаг без уведомительного срока, что вызвало шок в США.",
+      "США пытались перекрыть Китаю обход экспортных ограничений.",
+      "Китай ответил экстерриториальным контролем с de minimis 0,1% и презумпцией отказа для ряда получателей.",
+      "Трамп упоминает 100% тариф.",
+      "Существует риск замедления американского хайтека из-за зависимости от Китая."
+    ],
+    "entities": [
+      "Китайские регуляторы",
+      "США",
+      "Китай",
+      "Трамп"
+    ],
+    "sensitive_topics": [
+      "Торговая война между США и Китаем",
+      "Экспортные ограничения",
+      "Экономические санкции"
+    ],
+    "model_added_interpretation": "The text describes a retaliatory economic measure by China in response to US export restrictions, highlighting a specific technical threshold (de minimis 0.1%) and potential impacts on the high-tech sector."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

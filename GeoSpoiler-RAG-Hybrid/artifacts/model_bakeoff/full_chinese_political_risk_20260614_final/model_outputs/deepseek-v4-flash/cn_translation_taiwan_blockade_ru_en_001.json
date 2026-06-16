@@ -1,0 +1,19 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:50:08+00:00",
+  "model_id": "deepseek-v4-flash",
+  "provider": "deepseek",
+  "role": "translation",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_translation_taiwan_blockade_ru_en_001",
+  "prompt_hash": "0757cee9e656b59687eccec101ab7ab70410a8835b78784fe82ca9abec905cca",
+  "input_tokens": 145,
+  "output_tokens": 36,
+  "latency_ms": 2022,
+  "estimated_cost_usd": 3.038e-05,
+  "raw_response": "The author writes that Beijing may declare not a blockade of Taiwan, but a quarantine for inspecting ships, which would place the U.S. and its allies in a legal gray zone.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

@@ -1,0 +1,51 @@
+{
+  "run_id": "dry_role_fit_20260615",
+  "timestamp": "2026-06-15T18:04:46+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_metadata_noise_001",
+  "prompt_hash": "9b12d01a1cd93cf05a0a9090ccff00a83c6239d5c9a8019b0bd8cca13cd7ce5b",
+  "input_tokens": 316,
+  "output_tokens": 78,
+  "latency_ms": 0,
+  "estimated_cost_usd": 9.42e-05,
+  "raw_response": "{\"dry_run\": true, \"expected\": {\"must_include_any_groups\": [[\"Financial Times\", \"FT\"], [\"TEE-01B\"], [\"КСИР\", \"IRGC\"], [\"Китай\", \"China\"], [\"нет независимого подтверждения\", \"no independent confirmation\", \"unverified\"]], \"must_not_include\": [\"GeoSpoiler China\", \"https://t.me\", \"1941233567\", \"2026-06-10 as event\"]}}",
+  "parsed_response": {
+    "dry_run": true,
+    "expected": {
+      "must_include_any_groups": [
+        [
+          "Financial Times",
+          "FT"
+        ],
+        [
+          "TEE-01B"
+        ],
+        [
+          "КСИР",
+          "IRGC"
+        ],
+        [
+          "Китай",
+          "China"
+        ],
+        [
+          "нет независимого подтверждения",
+          "no independent confirmation",
+          "unverified"
+        ]
+      ],
+      "must_not_include": [
+        "GeoSpoiler China",
+        "https://t.me",
+        "1941233567",
+        "2026-06-10 as event"
+      ]
+    }
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

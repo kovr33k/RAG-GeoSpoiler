@@ -1,0 +1,19 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:16:29+00:00",
+  "model_id": "openai/gpt-5.4-nano",
+  "provider": "openrouter",
+  "role": "query",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_query_taiwan_quarantine_001",
+  "prompt_hash": "f5c239f41ac09e672cbf979a3b558ad5eecc94e61a20d516ef90816edd4b829d",
+  "input_tokens": 158,
+  "output_tokens": 134,
+  "latency_ms": 2138,
+  "estimated_cost_usd": 0.0001991,
+  "raw_response": "По представленным источникам, стратегия «карантина» Тайваня (в интерпретации возможных действий Пекина) может выглядеть так:\n\n- **Риторика/оформление как “карантин”**: как отмечает **source_a**, Пекин может пытаться представить блокаду как *карантин* для проверок судов.\n- **Цель через экономическое давление**: **source_b** указывает, что при таком подходе давление может делаться прежде всего **через страхование и логистику**, а не через **немедленное физическое разрушение**.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

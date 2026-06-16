@@ -1,0 +1,46 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:10:05+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_quote_preservation_001",
+  "prompt_hash": "06cb4e40f40af01db54e8a5cad5a16ac413bbd59323956fddf93bb0c77e51101",
+  "input_tokens": 259,
+  "output_tokens": 217,
+  "latency_ms": 3772,
+  "estimated_cost_usd": 0.00039025,
+  "raw_response": "{\n  \"summary\": \"An anonymous source and the post author suggest that a potential quarantine of Taiwan by Beijing could be framed as a vessel inspection rather than a blockade to exploit legal ambiguities.\",\n  \"entities\": [\n    \"Beijing\",\n    \"Taiwan\"\n  ],\n  \"relations\": [\n    {\n      \"subject\": \"Beijing\",\n      \"relation\": \"potential actor in\",\n      \"object\": \"quarantine of Taiwan\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"claim\": \"A quarantine measure creates a legal gray zone.\",\n      \"attribution\": \"Anonymous source\"\n    },\n    {\n      \"claim\": \"Beijing may label a quarantine of Taiwan as a vessel inspection rather than a blockade.\",\n      \"attribution\": \"Post author\"\n    }\n  ],\n  \"dates\": [],\n  \"source_fidelity_notes\": [\n    \"The source is anonymous and the information is speculative regarding future actions by Beijing.\"\n  ]\n}",
+  "parsed_response": {
+    "summary": "An anonymous source and the post author suggest that a potential quarantine of Taiwan by Beijing could be framed as a vessel inspection rather than a blockade to exploit legal ambiguities.",
+    "entities": [
+      "Beijing",
+      "Taiwan"
+    ],
+    "relations": [
+      {
+        "subject": "Beijing",
+        "relation": "potential actor in",
+        "object": "quarantine of Taiwan"
+      }
+    ],
+    "claims": [
+      {
+        "claim": "A quarantine measure creates a legal gray zone.",
+        "attribution": "Anonymous source"
+      },
+      {
+        "claim": "Beijing may label a quarantine of Taiwan as a vessel inspection rather than a blockade.",
+        "attribution": "Post author"
+      }
+    ],
+    "dates": [],
+    "source_fidelity_notes": [
+      "The source is anonymous and the information is speculative regarding future actions by Beijing."
+    ]
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

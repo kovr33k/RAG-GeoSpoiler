@@ -1,0 +1,99 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:15:34+00:00",
+  "model_id": "mistralai/mistral-large-2512",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_enrich_sensitive_no_softening_001",
+  "prompt_hash": "e18885de37e278b8351e617178ac889e37842de5d5597ec0edaef548d6dc0c38",
+  "input_tokens": 184,
+  "output_tokens": 611,
+  "latency_ms": 9187,
+  "estimated_cost_usd": 0.0010085,
+  "raw_response": "{\n  \"summary\": \"A human rights group claims that facial recognition systems and police checkpoints are being used for mass surveillance in Xinjiang. Authorities describe these measures as counter-terrorism efforts.\",\n  \"key_facts\": [\n    {\n      \"fact\": \"Human rights group claims use of facial recognition systems in Xinjiang.\",\n      \"source_claim\": true\n    },\n    {\n      \"fact\": \"Human rights group claims use of police checkpoints for mass surveillance in Xinjiang.\",\n      \"source_claim\": true\n    },\n    {\n      \"fact\": \"Authorities describe these measures as counter-terrorism efforts.\",\n      \"source_claim\": false\n    }\n  ],\n  \"entities\": [\n    {\n      \"name\": \"Xinjiang\",\n      \"type\": \"location\",\n      \"description\": \"Autonomous region in northwest China.\"\n    },\n    {\n      \"name\": \"Human rights group (unspecified)\",\n      \"type\": \"organization\",\n      \"description\": \"Unnamed organization making claims about surveillance in Xinjiang.\"\n    },\n    {\n      \"name\": \"Chinese authorities\",\n      \"type\": \"organization\",\n      \"description\": \"Government or state entities justifying surveillance measures.\"\n    }\n  ],\n  \"topics\": [\n    \"Mass surveillance\",\n    \"Facial recognition technology\",\n    \"Counter-terrorism\",\n    \"Human rights\",\n    \"Police checkpoints\"\n  ],\n  \"theses\": [\n    {\n      \"thesis\": \"Mass surveillance in Xinjiang is being conducted under the guise of counter-terrorism.\",\n      \"source_claim\": true\n    },\n    {\n      \"thesis\": \"Facial recognition and police checkpoints are tools of systemic control in Xinjiang.\",\n      \"source_claim\": true\n    }\n  ],\n  \"quotes\": [],\n  \"events\": [\n    {\n      \"event\": \"Implementation of facial recognition systems and police checkpoints in Xinjiang.\",\n      \"source_claim\": true,\n      \"date\": null\n    },\n    {\n      \"event\": \"Authorities' justification of surveillance measures as counter-terrorism efforts.\",\n      \"source_claim\": false,\n      \"date\": null\n    }\n  ],\n  \"query_aliases\": [\n    \"Xinjiang surveillance\",\n    \"China facial recognition\",\n    \"Mass surveillance in Xinjiang\",\n    \"Police checkpoints Xinjiang\",\n    \"Counter-terrorism measures China\"\n  ],\n  \"broll_potential\": [\n    \"Footage of police checkpoints in Xinjiang\",\n    \"Images of facial recognition cameras in public spaces\",\n    \"Protests or statements from human rights groups\",\n    \"Official statements or press conferences by Chinese authorities\"\n  ],\n  \"broll_notes\": [\n    \"Visuals should focus on the infrastructure of surveillance (e.g., cameras, checkpoints) and reactions from affected communities or authorities.\",\n    \"Avoid unverified or speculative footage unless explicitly sourced.\"\n  ]\n}",
+  "parsed_response": {
+    "summary": "A human rights group claims that facial recognition systems and police checkpoints are being used for mass surveillance in Xinjiang. Authorities describe these measures as counter-terrorism efforts.",
+    "key_facts": [
+      {
+        "fact": "Human rights group claims use of facial recognition systems in Xinjiang.",
+        "source_claim": true
+      },
+      {
+        "fact": "Human rights group claims use of police checkpoints for mass surveillance in Xinjiang.",
+        "source_claim": true
+      },
+      {
+        "fact": "Authorities describe these measures as counter-terrorism efforts.",
+        "source_claim": false
+      }
+    ],
+    "entities": [
+      {
+        "name": "Xinjiang",
+        "type": "location",
+        "description": "Autonomous region in northwest China."
+      },
+      {
+        "name": "Human rights group (unspecified)",
+        "type": "organization",
+        "description": "Unnamed organization making claims about surveillance in Xinjiang."
+      },
+      {
+        "name": "Chinese authorities",
+        "type": "organization",
+        "description": "Government or state entities justifying surveillance measures."
+      }
+    ],
+    "topics": [
+      "Mass surveillance",
+      "Facial recognition technology",
+      "Counter-terrorism",
+      "Human rights",
+      "Police checkpoints"
+    ],
+    "theses": [
+      {
+        "thesis": "Mass surveillance in Xinjiang is being conducted under the guise of counter-terrorism.",
+        "source_claim": true
+      },
+      {
+        "thesis": "Facial recognition and police checkpoints are tools of systemic control in Xinjiang.",
+        "source_claim": true
+      }
+    ],
+    "quotes": [],
+    "events": [
+      {
+        "event": "Implementation of facial recognition systems and police checkpoints in Xinjiang.",
+        "source_claim": true,
+        "date": null
+      },
+      {
+        "event": "Authorities' justification of surveillance measures as counter-terrorism efforts.",
+        "source_claim": false,
+        "date": null
+      }
+    ],
+    "query_aliases": [
+      "Xinjiang surveillance",
+      "China facial recognition",
+      "Mass surveillance in Xinjiang",
+      "Police checkpoints Xinjiang",
+      "Counter-terrorism measures China"
+    ],
+    "broll_potential": [
+      "Footage of police checkpoints in Xinjiang",
+      "Images of facial recognition cameras in public spaces",
+      "Protests or statements from human rights groups",
+      "Official statements or press conferences by Chinese authorities"
+    ],
+    "broll_notes": [
+      "Visuals should focus on the infrastructure of surveillance (e.g., cameras, checkpoints) and reactions from affected communities or authorities.",
+      "Avoid unverified or speculative footage unless explicitly sourced."
+    ]
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

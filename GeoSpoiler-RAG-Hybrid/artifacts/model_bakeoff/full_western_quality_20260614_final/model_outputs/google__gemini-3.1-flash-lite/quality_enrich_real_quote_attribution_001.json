@@ -1,0 +1,59 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:14:38+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_enrich_real_quote_attribution_001",
+  "prompt_hash": "e6126559b1ac61849747a9265389a915c043d70f6a2df70c4f79ca6571c6d6bf",
+  "input_tokens": 172,
+  "output_tokens": 295,
+  "latency_ms": 2335,
+  "estimated_cost_usd": 0.0004855,
+  "raw_response": "{\n  \"summary\": \"An anonymous source suggests that a specific measure creates a legal gray area, while the author speculates that Beijing might characterize a potential quarantine of Taiwan as a vessel inspection rather than a formal blockade.\",\n  \"key_facts\": [\n    \"A source claims a measure creates a legal gray area.\",\n    \"The author suggests Beijing could reframe a Taiwan quarantine as a vessel inspection.\"\n  ],\n  \"entities\": [\n    \"Beijing\",\n    \"Taiwan\"\n  ],\n  \"topics\": [\n    \"Geopolitics\",\n    \"International Law\",\n    \"Taiwan Strait\",\n    \"Maritime Security\"\n  ],\n  \"theses\": [\n    \"Legal ambiguity exists regarding current measures.\",\n    \"Beijing may use semantic framing to avoid the legal implications of a formal blockade.\"\n  ],\n  \"quotes\": [\n    \"эта мера создает юридическую серую зону\"\n  ],\n  \"events\": [\n    \"Potential quarantine of Taiwan\"\n  ],\n  \"query_aliases\": [\n    \"Taiwan blockade legal status\",\n    \"Beijing maritime strategy Taiwan\",\n    \"legal gray zone Taiwan quarantine\"\n  ],\n  \"broll_potential\": [\n    \"Map of the Taiwan Strait\",\n    \"Footage of Chinese naval vessels\",\n    \"Graphic overlay showing maritime zones\",\n    \"Stock footage of cargo ships at sea\"\n  ],\n  \"broll_notes\": [\n    \"Visuals should emphasize the strategic importance of the Taiwan Strait and the proximity of naval assets to commercial shipping lanes.\"\n  ]\n}",
+  "parsed_response": {
+    "summary": "An anonymous source suggests that a specific measure creates a legal gray area, while the author speculates that Beijing might characterize a potential quarantine of Taiwan as a vessel inspection rather than a formal blockade.",
+    "key_facts": [
+      "A source claims a measure creates a legal gray area.",
+      "The author suggests Beijing could reframe a Taiwan quarantine as a vessel inspection."
+    ],
+    "entities": [
+      "Beijing",
+      "Taiwan"
+    ],
+    "topics": [
+      "Geopolitics",
+      "International Law",
+      "Taiwan Strait",
+      "Maritime Security"
+    ],
+    "theses": [
+      "Legal ambiguity exists regarding current measures.",
+      "Beijing may use semantic framing to avoid the legal implications of a formal blockade."
+    ],
+    "quotes": [
+      "эта мера создает юридическую серую зону"
+    ],
+    "events": [
+      "Potential quarantine of Taiwan"
+    ],
+    "query_aliases": [
+      "Taiwan blockade legal status",
+      "Beijing maritime strategy Taiwan",
+      "legal gray zone Taiwan quarantine"
+    ],
+    "broll_potential": [
+      "Map of the Taiwan Strait",
+      "Footage of Chinese naval vessels",
+      "Graphic overlay showing maritime zones",
+      "Stock footage of cargo ships at sea"
+    ],
+    "broll_notes": [
+      "Visuals should emphasize the strategic importance of the Taiwan Strait and the proximity of naval assets to commercial shipping lanes."
+    ]
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

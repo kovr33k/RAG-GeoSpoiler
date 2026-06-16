@@ -1,0 +1,74 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T23:01:45+00:00",
+  "model_id": "xiaomi/mimo-v2.5",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_049_dalai_lama",
+  "prompt_hash": "9d24a06920be4c75cc719b5e569e4263a726f6e96996ffa18191b78ae77467d6",
+  "input_tokens": 354,
+  "output_tokens": 593,
+  "latency_ms": 5920,
+  "estimated_cost_usd": 0.0002156,
+  "raw_response": "{\n  \"claims\": [\n    {\n      \"claim_text\": \"Китай розкритикував присудження музичної премії «Греммі» Далай-ламі.\",\n      \"context\": \"Source states this as a fact.\"\n    },\n    {\n      \"claim_text\": \"Тибетський духовний лідер отримав нагороду в номінації «Найкраще озвучення аудіокниги».\",\n      \"context\": \"Source states this as a fact.\"\n    },\n    {\n      \"claim_text\": \"Пекін назвав цю нагороду «інструментом політичних маніпуляцій проти Китаю».\",\n      \"context\": \"Source states this as a statement made by Beijing.\"\n    },\n    {\n      \"claim_text\": \"Представник МЗС Лінь Цзянь заявив: «14-й Далай-лама — політичний вигнанець, який займається антикитайською сепаратистською діяльністю під виглядом релігії».\",\n      \"context\": \"Source quotes a specific statement by a Chinese MFA representative.\"\n    }\n  ],\n  \"entities\": [\n    {\n      \"entity_text\": \"Китай\",\n      \"type\": \"Country\"\n    },\n    {\n      \"entity_text\": \"музична премія «Греммі»\",\n      \"type\": \"Award\"\n    },\n    {\n      \"entity_text\": \"Далай-лама\",\n      \"type\": \"Person\"\n    },\n    {\n      \"entity_text\": \"Тибетський духовний лідер\",\n      \"type\": \"Title/Role\"\n    },\n    {\n      \"entity_text\": \"Пекін\",\n      \"type\": \"City (used to refer to Chinese government)\"\n    },\n    {\n      \"entity_text\": \"Лінь Цзянь\",\n      \"type\": \"Person\"\n    },\n    {\n      \"entity_text\": \"МЗС\",\n      \"type\": \"Government Agency\"\n    }\n  ],\n  \"sensitive_topics\": [\n    \"Political conflict regarding the status of the Dalai Lama and Tibet\",\n    \"Chinese government criticism of international awards and cultural events\",\n    \"Allegations of separatism and anti-China activities\"\n  ],\n  \"model_added_interpretation\": \"The source text reports on a diplomatic exchange and criticism between the Chinese government and an international award recipient, framing the award as politically motivated according to Chinese officials.\"\n}",
+  "parsed_response": {
+    "claims": [
+      {
+        "claim_text": "Китай розкритикував присудження музичної премії «Греммі» Далай-ламі.",
+        "context": "Source states this as a fact."
+      },
+      {
+        "claim_text": "Тибетський духовний лідер отримав нагороду в номінації «Найкраще озвучення аудіокниги».",
+        "context": "Source states this as a fact."
+      },
+      {
+        "claim_text": "Пекін назвав цю нагороду «інструментом політичних маніпуляцій проти Китаю».",
+        "context": "Source states this as a statement made by Beijing."
+      },
+      {
+        "claim_text": "Представник МЗС Лінь Цзянь заявив: «14-й Далай-лама — політичний вигнанець, який займається антикитайською сепаратистською діяльністю під виглядом релігії».",
+        "context": "Source quotes a specific statement by a Chinese MFA representative."
+      }
+    ],
+    "entities": [
+      {
+        "entity_text": "Китай",
+        "type": "Country"
+      },
+      {
+        "entity_text": "музична премія «Греммі»",
+        "type": "Award"
+      },
+      {
+        "entity_text": "Далай-лама",
+        "type": "Person"
+      },
+      {
+        "entity_text": "Тибетський духовний лідер",
+        "type": "Title/Role"
+      },
+      {
+        "entity_text": "Пекін",
+        "type": "City (used to refer to Chinese government)"
+      },
+      {
+        "entity_text": "Лінь Цзянь",
+        "type": "Person"
+      },
+      {
+        "entity_text": "МЗС",
+        "type": "Government Agency"
+      }
+    ],
+    "sensitive_topics": [
+      "Political conflict regarding the status of the Dalai Lama and Tibet",
+      "Chinese government criticism of international awards and cultural events",
+      "Allegations of separatism and anti-China activities"
+    ],
+    "model_added_interpretation": "The source text reports on a diplomatic exchange and criticism between the Chinese government and an international award recipient, framing the award as politically motivated according to Chinese officials."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

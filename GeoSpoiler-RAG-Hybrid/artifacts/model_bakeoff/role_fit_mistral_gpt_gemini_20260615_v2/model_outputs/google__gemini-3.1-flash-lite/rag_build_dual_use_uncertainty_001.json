@@ -1,0 +1,53 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:09:55+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_dual_use_uncertainty_001",
+  "prompt_hash": "10193873a692211ffef0f645312103fb315632a00ca14180696b204a1a990899",
+  "input_tokens": 278,
+  "output_tokens": 223,
+  "latency_ms": 2235,
+  "estimated_cost_usd": 0.000404,
+  "raw_response": "{\n  \"summary\": \"Analysts suggest a Chinese supplier may have exported dual-use fiber-optic components later utilized in Russian drones in Ukraine, though evidence of the supplier's knowledge regarding military end-use is absent.\",\n  \"entities\": [\n    \"China\",\n    \"Russia\",\n    \"Ukraine\"\n  ],\n  \"relations\": [\n    {\n      \"subject\": \"Chinese supplier\",\n      \"relation\": \"exported\",\n      \"object\": \"fiber-optic components\"\n    },\n    {\n      \"subject\": \"fiber-optic components\",\n      \"relation\": \"used in\",\n      \"object\": \"Russian drones\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"claim\": \"A Chinese supplier may have exported dual-use fiber-optic components used in Russian drones in Ukraine.\",\n      \"attribution\": \"analysts\"\n    },\n    {\n      \"claim\": \"There is no evidence that the supplier knew about the final military application.\",\n      \"attribution\": \"source text\"\n    }\n  ],\n  \"dates\": [],\n  \"source_fidelity_notes\": [\n    \"The claim regarding the supplier's intent is explicitly stated as lacking evidence.\",\n    \"The involvement of the Chinese supplier is presented as a possibility ('could have') rather than a confirmed fact.\"\n  ]\n}",
+  "parsed_response": {
+    "summary": "Analysts suggest a Chinese supplier may have exported dual-use fiber-optic components later utilized in Russian drones in Ukraine, though evidence of the supplier's knowledge regarding military end-use is absent.",
+    "entities": [
+      "China",
+      "Russia",
+      "Ukraine"
+    ],
+    "relations": [
+      {
+        "subject": "Chinese supplier",
+        "relation": "exported",
+        "object": "fiber-optic components"
+      },
+      {
+        "subject": "fiber-optic components",
+        "relation": "used in",
+        "object": "Russian drones"
+      }
+    ],
+    "claims": [
+      {
+        "claim": "A Chinese supplier may have exported dual-use fiber-optic components used in Russian drones in Ukraine.",
+        "attribution": "analysts"
+      },
+      {
+        "claim": "There is no evidence that the supplier knew about the final military application.",
+        "attribution": "source text"
+      }
+    ],
+    "dates": [],
+    "source_fidelity_notes": [
+      "The claim regarding the supplier's intent is explicitly stated as lacking evidence.",
+      "The involvement of the Chinese supplier is presented as a possibility ('could have') rather than a confirmed fact."
+    ]
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

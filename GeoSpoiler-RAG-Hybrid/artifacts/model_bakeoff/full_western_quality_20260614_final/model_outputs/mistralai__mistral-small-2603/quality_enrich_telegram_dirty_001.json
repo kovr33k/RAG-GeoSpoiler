@@ -1,0 +1,97 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:12:46+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_enrichment",
+  "case_id": "quality_enrich_telegram_dirty_001",
+  "prompt_hash": "2e0998f80d69c9aa07005ca9951a8fb1793c5c5283da4fbbf19b5792317325ac",
+  "input_tokens": 210,
+  "output_tokens": 701,
+  "latency_ms": 4452,
+  "estimated_cost_usd": 0.0004521,
+  "raw_response": "{\n  \"summary\": \"Telegram post from 04.11.2025 discussing alleged pressure by Organization C on Country B, with a caveat about unverified data from Actor A and a sarcastic tone.\",\n  \"key_facts\": [\n    {\n      \"fact\": \"Post date: 04.11.2025\",\n      \"source_claim\": \"synthetic:telegram:001\"\n    },\n    {\n      \"fact\": \"Allegation: Organization C increased pressure on Country B\",\n      \"source_claim\": \"synthetic:telegram:001\"\n    },\n    {\n      \"fact\": \"Caveat: Part of the data originated from Actor A and requires verification\",\n      \"source_claim\": \"synthetic:telegram:001\"\n    },\n    {\n      \"fact\": \"Tone: Sarcastic (as noted by the author)\",\n      \"source_claim\": \"synthetic:telegram:001\"\n    }\n  ],\n  \"entities\": [\n    {\n      \"name\": \"Organization C\",\n      \"type\": \"organization\",\n      \"role\": \"alleged perpetrator\",\n      \"source_claim\": \"synthetic:telegram:001\"\n    },\n    {\n      \"name\": \"Country B\",\n      \"type\": \"country\",\n      \"role\": \"alleged victim\",\n      \"source_claim\": \"synthetic:telegram:001\"\n    },\n    {\n      \"name\": \"Actor A\",\n      \"type\": \"actor\",\n      \"role\": \"data source (unverified)\",\n      \"source_claim\": \"synthetic:telegram:001\"\n    }\n  ],\n  \"topics\": [\n    \"international relations\",\n    \"geopolitical pressure\",\n    \"allegations\",\n    \"data verification\",\n    \"sarcasm in reporting\"\n  ],\n  \"theses\": [\n    {\n      \"thesis\": \"Organization C may be exerting geopolitical pressure on Country B, but the claim requires further verification due to reliance on Actor A's data.\",\n      \"source_claim\": \"synthetic:telegram:001\"\n    },\n    {\n      \"thesis\": \"The post's sarcastic tone suggests skepticism toward the claim, though it does not explicitly label it as false.\",\n      \"source_claim\": \"synthetic:telegram:001\"\n    }\n  ],\n  \"quotes\": [\n    {\n      \"quote\": \"exact quote here\",\n      \"context\": \"Alleged statement from a source cited in the post\",\n      \"source_claim\": \"synthetic:telegram:001\"\n    }\n  ],\n  \"events\": [\n    {\n      \"event\": \"Posting of Telegram message alleging pressure by Organization C on Country B\",\n      \"date\": \"04.11.2025\",\n      \"source_claim\": \"synthetic:telegram:001\"\n    }\n  ],\n  \"query_aliases\": [\n    \"Organization C pressure on Country B\",\n    \"Actor A data verification\",\n    \"04.11.2025 Telegram post geopolitical claims\"\n  ],\n  \"broll_potential\": false,\n  \"broll_notes\": []\n}",
+  "parsed_response": {
+    "summary": "Telegram post from 04.11.2025 discussing alleged pressure by Organization C on Country B, with a caveat about unverified data from Actor A and a sarcastic tone.",
+    "key_facts": [
+      {
+        "fact": "Post date: 04.11.2025",
+        "source_claim": "synthetic:telegram:001"
+      },
+      {
+        "fact": "Allegation: Organization C increased pressure on Country B",
+        "source_claim": "synthetic:telegram:001"
+      },
+      {
+        "fact": "Caveat: Part of the data originated from Actor A and requires verification",
+        "source_claim": "synthetic:telegram:001"
+      },
+      {
+        "fact": "Tone: Sarcastic (as noted by the author)",
+        "source_claim": "synthetic:telegram:001"
+      }
+    ],
+    "entities": [
+      {
+        "name": "Organization C",
+        "type": "organization",
+        "role": "alleged perpetrator",
+        "source_claim": "synthetic:telegram:001"
+      },
+      {
+        "name": "Country B",
+        "type": "country",
+        "role": "alleged victim",
+        "source_claim": "synthetic:telegram:001"
+      },
+      {
+        "name": "Actor A",
+        "type": "actor",
+        "role": "data source (unverified)",
+        "source_claim": "synthetic:telegram:001"
+      }
+    ],
+    "topics": [
+      "international relations",
+      "geopolitical pressure",
+      "allegations",
+      "data verification",
+      "sarcasm in reporting"
+    ],
+    "theses": [
+      {
+        "thesis": "Organization C may be exerting geopolitical pressure on Country B, but the claim requires further verification due to reliance on Actor A's data.",
+        "source_claim": "synthetic:telegram:001"
+      },
+      {
+        "thesis": "The post's sarcastic tone suggests skepticism toward the claim, though it does not explicitly label it as false.",
+        "source_claim": "synthetic:telegram:001"
+      }
+    ],
+    "quotes": [
+      {
+        "quote": "exact quote here",
+        "context": "Alleged statement from a source cited in the post",
+        "source_claim": "synthetic:telegram:001"
+      }
+    ],
+    "events": [
+      {
+        "event": "Posting of Telegram message alleging pressure by Organization C on Country B",
+        "date": "04.11.2025",
+        "source_claim": "synthetic:telegram:001"
+      }
+    ],
+    "query_aliases": [
+      "Organization C pressure on Country B",
+      "Actor A data verification",
+      "04.11.2025 Telegram post geopolitical claims"
+    ],
+    "broll_potential": false,
+    "broll_notes": []
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

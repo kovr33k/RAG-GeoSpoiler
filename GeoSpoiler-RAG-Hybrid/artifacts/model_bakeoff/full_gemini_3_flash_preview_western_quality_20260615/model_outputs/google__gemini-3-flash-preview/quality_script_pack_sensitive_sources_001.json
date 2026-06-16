@@ -1,0 +1,19 @@
+{
+  "run_id": "full_gemini_3_flash_preview_western_quality_20260615",
+  "timestamp": "2026-06-15T17:41:51+00:00",
+  "model_id": "google/gemini-3-flash-preview",
+  "provider": "openrouter",
+  "role": "script_pack",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_script_pack_sensitive_sources_001",
+  "prompt_hash": "fe75d7208c93a50f4ad2bc4dc1ef1a3cbfa6c40f428b69ac0b4a5b7287a1ca79",
+  "input_tokens": 205,
+  "output_tokens": 140,
+  "latency_ms": 2379,
+  "estimated_cost_usd": 0.0005225,
+  "raw_response": "На основе предоставленных источников, для сценария о китайских технологиях двойного назначения и их роли в российско-украинской войне можно выделить следующие ключевые тезисы:\n\n*   **Увеличение поставок:** Китай нарастил экспорт волоконно-оптических компонентов, которые используются в российских боевых беспилотниках в Украине (Source A).\n*   **Классификация товаров:** Поставщик характеризует данные товары как гражданские компоненты двойного назначения (Source B).\n*   **Вопрос осведомленности:** В материалах отсутствуют доказательства того, что поставщик знал о конечном военном использовании этих компонентов (Source C).",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

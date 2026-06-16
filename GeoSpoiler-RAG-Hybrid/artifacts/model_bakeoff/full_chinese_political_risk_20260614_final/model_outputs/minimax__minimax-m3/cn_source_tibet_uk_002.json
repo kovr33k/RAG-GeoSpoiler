@@ -1,0 +1,19 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:42:21+00:00",
+  "model_id": "minimax/minimax-m3",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_source_tibet_uk_002",
+  "prompt_hash": "8fc812965b5979197a281b52da42d716d2847650d3314d6fdedf29fd2bd810df",
+  "input_tokens": 393,
+  "output_tokens": 327,
+  "latency_ms": 12085,
+  "estimated_cost_usd": 0.0005103,
+  "raw_response": "",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

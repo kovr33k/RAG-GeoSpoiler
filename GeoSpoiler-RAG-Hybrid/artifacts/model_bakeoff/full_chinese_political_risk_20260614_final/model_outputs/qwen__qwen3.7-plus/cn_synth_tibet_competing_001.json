@@ -1,0 +1,19 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:53:53+00:00",
+  "model_id": "qwen/qwen3.7-plus",
+  "provider": "openrouter",
+  "role": "query",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_synth_tibet_competing_001",
+  "prompt_hash": "c3b5c5fc559245493e9cb76ff60625daf1a763697b138571257e831f99411c2d",
+  "input_tokens": 210,
+  "output_tokens": 148,
+  "latency_ms": 4473,
+  "estimated_cost_usd": 0.00025664,
+  "raw_response": "",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

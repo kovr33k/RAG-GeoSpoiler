@@ -1,0 +1,56 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615",
+  "timestamp": "2026-06-15T18:05:54+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_alias_and_relation_001",
+  "prompt_hash": "fae0072d9f54ac8d7f58e20616bc72b033bd7d9453853dddd6819b7415b4b18b",
+  "input_tokens": 270,
+  "output_tokens": 317,
+  "latency_ms": 2747,
+  "estimated_cost_usd": 0.0002307,
+  "raw_response": "{\n  \"summary\": \"A post alleges a meeting between Viktor Orbán and Donald Trump to discuss Hungary's support for Ukraine's negotiation line, without providing documentary evidence.\",\n  \"entities\": [\"Виктор Орбан\", \"Дональд Трамп\", \"Венгрия\", \"Украина\"],\n  \"relations\": [\n    {\"source\": \"telegram:build:005\", \"subject\": \"Виктор Орбан\", \"relation\": \"встретился с\", \"object\": \"Дональд Трамп\"},\n    {\"source\": \"telegram:build:005\", \"subject\": \"Виктор Орбан\", \"relation\": \"обсуждал\", \"object\": \"поддержку Венгрией переговорной линии по Украине\"}\n  ],\n  \"claims\": [\n    {\"source\": \"telegram:build:005\", \"claim\": \"Пост утверждает, что Виктор Орбан встретился с Дональдом Трампом и обсуждал поддержку Венгрией переговорной линии по Украине.\"},\n    {\"source\": \"telegram:build:005\", \"claim\": \"Автор не приводит документ, подтверждающий конкретные договоренности.\"}\n  ],\n  \"dates\": [],\n  \"source_fidelity_notes\": [\n    \"Отсутствует подтверждающий документ для конкретных договоренностей.\",\n    \"Аллегорическое утверждение без верифицируемых источников.\"\n  ]\n}",
+  "parsed_response": {
+    "summary": "A post alleges a meeting between Viktor Orbán and Donald Trump to discuss Hungary's support for Ukraine's negotiation line, without providing documentary evidence.",
+    "entities": [
+      "Виктор Орбан",
+      "Дональд Трамп",
+      "Венгрия",
+      "Украина"
+    ],
+    "relations": [
+      {
+        "source": "telegram:build:005",
+        "subject": "Виктор Орбан",
+        "relation": "встретился с",
+        "object": "Дональд Трамп"
+      },
+      {
+        "source": "telegram:build:005",
+        "subject": "Виктор Орбан",
+        "relation": "обсуждал",
+        "object": "поддержку Венгрией переговорной линии по Украине"
+      }
+    ],
+    "claims": [
+      {
+        "source": "telegram:build:005",
+        "claim": "Пост утверждает, что Виктор Орбан встретился с Дональдом Трампом и обсуждал поддержку Венгрией переговорной линии по Украине."
+      },
+      {
+        "source": "telegram:build:005",
+        "claim": "Автор не приводит документ, подтверждающий конкретные договоренности."
+      }
+    ],
+    "dates": [],
+    "source_fidelity_notes": [
+      "Отсутствует подтверждающий документ для конкретных договоренностей.",
+      "Аллегорическое утверждение без верифицируемых источников."
+    ]
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

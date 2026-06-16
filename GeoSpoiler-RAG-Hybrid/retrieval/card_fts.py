@@ -9,6 +9,8 @@ from pathlib import Path
 from typing import Any
 
 import config
+from retrieval.card_text import card_search_text, strip_metadata_lines
+from retrieval.query_terms import add_compound_terms, expand_query_terms, matches_term
 from retrieval.wiki_index import extract_source_id
 
 logger = logging.getLogger("geospoiler.retrieval.card_fts")
@@ -107,10 +109,13 @@ def search_card_index(
     db_path: Path = config.CARD_FTS_DB_PATH,
 ) -> list[CardFtsMatch]:
     """Search the local card FTS index without calling LightRAG or an LLM."""
+    query_terms = _query_terms(query)
     match_query = _to_fts_query(query)
     if not match_query or not db_path.exists():
         return []
 
+    limit = max(1, top_k)
+    fetch_limit = max(limit, min(100, limit * 5))
     with closing(sqlite3.connect(db_path)) as conn:
         conn.row_factory = sqlite3.Row
         _create_schema(conn)
@@ -122,6 +127,7 @@ def search_card_index(
                 normalized_file,
                 post_url,
                 title,
+                search_text,
                 bm25(cards_fts) AS rank,
                 snippet(cards_fts, 5, '...', '...', ' ', 24) AS snippet
             FROM cards_fts
@@ -129,20 +135,26 @@ def search_card_index(
             ORDER BY rank
             LIMIT ?
             """,
-            (match_query, max(1, top_k)),
+            (match_query, fetch_limit),
         ).fetchall()
-        return [
-            CardFtsMatch(
-                source_id=row["source_id"],
-                card_path=row["card_path"],
-                normalized_file=row["normalized_file"],
-                post_url=row["post_url"],
-                title=row["title"],
-                score=round(-float(row["rank"]), 6),
-                snippet=_clean_snippet(row["snippet"]),
+        ranked = [
+            (
+                _coverage_score(str(row["search_text"] or ""), query_terms),
+                -float(row["rank"]),
+                CardFtsMatch(
+                    source_id=row["source_id"],
+                    card_path=row["card_path"],
+                    normalized_file=row["normalized_file"],
+                    post_url=row["post_url"],
+                    title=row["title"],
+                    score=round(-float(row["rank"]), 6),
+                    snippet=_clean_snippet(row["snippet"]),
+                ),
             )
             for row in rows
         ]
+        ranked.sort(key=lambda item: (item[0], item[1]), reverse=True)
+        return [item[2] for item in ranked[:limit]]
 
 
 def iter_card_records(enriched_dir: Path = config.ENRICHED_DIR) -> Iterable[CardFtsRecord]:
@@ -165,11 +177,7 @@ def card_to_fts_record(card: dict[str, Any], card_path: Path) -> CardFtsRecord |
         return None
 
     provenance = card.get("provenance") if isinstance(card.get("provenance"), dict) else {}
-    search_text = _first_text(
-        card.get("search_text"),
-        card.get("graph_text"),
-        card.get("summary"),
-    )
+    search_text = card_search_text(card, card_path)
     if not search_text:
         return None
 
@@ -211,14 +219,33 @@ def _create_schema(conn: sqlite3.Connection) -> None:
 
 
 def _to_fts_query(query: str) -> str:
+    terms = _query_terms(query)
+    return " OR ".join(f"{term}*" for term in terms)
+
+
+def _query_terms(query: str) -> list[str]:
     terms = []
     seen = set()
-    for term in _TOKEN_RE.findall(query.casefold()):
+    for term in expand_query_terms(_TOKEN_RE.findall(query.casefold())):
         if term in seen:
             continue
         seen.add(term)
-        terms.append(f"{term}*")
-    return " OR ".join(terms)
+        terms.append(term)
+    return terms
+
+
+def _coverage_score(search_text: str, query_terms: list[str]) -> int:
+    ranking_text = strip_metadata_lines(search_text)
+    text_tokens = add_compound_terms(_TOKEN_RE.findall(ranking_text.casefold()))
+    return sum(
+        1
+        for term in query_terms
+        if any(_matches_term(token, term) for token in text_tokens)
+    )
+
+
+def _matches_term(token: str, term: str) -> bool:
+    return matches_term(token, term)
 
 
 def _count_enriched_cards(enriched_dir: Path) -> int:
@@ -254,14 +281,6 @@ def _join_texts(value: Any) -> str:
         return " ".join(str(item) for item in value if str(item).strip())
     if str(value).strip():
         return str(value)
-    return ""
-
-
-def _first_text(*values: Any) -> str:
-    for value in values:
-        text = _clean_str(value)
-        if text:
-            return text
     return ""
 
 

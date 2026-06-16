@@ -1,0 +1,64 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615",
+  "timestamp": "2026-06-15T18:05:33+00:00",
+  "model_id": "openai/gpt-5.4-nano",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_conflicting_claims_001",
+  "prompt_hash": "cb39589dbbf15376636c48f40fb64b7f6680fa0b8070933a7e045a7d75dcb7f2",
+  "input_tokens": 250,
+  "output_tokens": 342,
+  "latency_ms": 3508,
+  "estimated_cost_usd": 0.0004775,
+  "raw_response": "{\n  \"summary\": \"The text reports a dispute between two sources about whether officials hid casualty figures after a strike, without resolving which account is correct.\",\n  \"entities\": [\n    \"Source A\",\n    \"Source B\",\n    \"officials\",\n    \"casualty figures\",\n    \"the strike\"\n  ],\n  \"relations\": [\n    {\n      \"subject\": \"Source A\",\n      \"predicate\": \"alleges that\",\n      \"object\": \"officials hid casualty figures after the strike\"\n    },\n    {\n      \"subject\": \"Source B\",\n      \"predicate\": \"denies that\",\n      \"object\": \"officials hid casualty figures after the strike\"\n    },\n    {\n      \"subject\": \"Source B\",\n      \"predicate\": \"says that\",\n      \"object\": \"the published data is complete\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"attribution\": \"Source A\",\n      \"text\": \"Source A alleges that officials hid casualty figures after the strike.\"\n    },\n    {\n      \"attribution\": \"Source B\",\n      \"text\": \"Source B denies this and says the published data is complete.\"\n    },\n    {\n      \"attribution\": null,\n      \"text\": \"The post does not decide which source is correct.\"\n    }\n  ],\n  \"dates\": [],\n  \"source_fidelity_notes\": [\n    \"The claim is explicitly presented as an allegation by Source A and a denial by Source B, with the post stating it does not decide which source is correct.\",\n    \"No casualty figures, official names, or verifiable details are provided in the text.\"\n  ]\n}",
+  "parsed_response": {
+    "summary": "The text reports a dispute between two sources about whether officials hid casualty figures after a strike, without resolving which account is correct.",
+    "entities": [
+      "Source A",
+      "Source B",
+      "officials",
+      "casualty figures",
+      "the strike"
+    ],
+    "relations": [
+      {
+        "subject": "Source A",
+        "predicate": "alleges that",
+        "object": "officials hid casualty figures after the strike"
+      },
+      {
+        "subject": "Source B",
+        "predicate": "denies that",
+        "object": "officials hid casualty figures after the strike"
+      },
+      {
+        "subject": "Source B",
+        "predicate": "says that",
+        "object": "the published data is complete"
+      }
+    ],
+    "claims": [
+      {
+        "attribution": "Source A",
+        "text": "Source A alleges that officials hid casualty figures after the strike."
+      },
+      {
+        "attribution": "Source B",
+        "text": "Source B denies this and says the published data is complete."
+      },
+      {
+        "attribution": null,
+        "text": "The post does not decide which source is correct."
+      }
+    ],
+    "dates": [],
+    "source_fidelity_notes": [
+      "The claim is explicitly presented as an allegation by Source A and a denial by Source B, with the post stating it does not decide which source is correct.",
+      "No casualty figures, official names, or verifiable details are provided in the text."
+    ]
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

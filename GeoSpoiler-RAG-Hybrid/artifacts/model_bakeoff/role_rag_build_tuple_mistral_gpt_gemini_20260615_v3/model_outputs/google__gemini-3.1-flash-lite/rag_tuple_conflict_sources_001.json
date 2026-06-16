@@ -1,0 +1,19 @@
+{
+  "run_id": "role_rag_build_tuple_mistral_gpt_gemini_20260615_v3",
+  "timestamp": "2026-06-15T18:20:14+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_tuple_targeted",
+  "case_id": "rag_tuple_conflict_sources_001",
+  "prompt_hash": "d22244c38fd4ead06ed37575a3f35fff18a7ec52e5e06ee9bce2dba0f45287aa",
+  "input_tokens": 236,
+  "output_tokens": 157,
+  "latency_ms": 1566,
+  "estimated_cost_usd": 0.0002945,
+  "raw_response": "entity<|#|>Source A<|#|>other<|#|>An entity alleging that officials hid casualty figures.\nentity<|#|>Source B<|#|>other<|#|>An entity denying that officials hid casualty figures.\nentity<|#|>officials<|#|>person<|#|>Individuals accused by Source A of hiding casualty figures.\nrelation<|#|>Source A<|#|>officials<|#|>allegation<|#|>Source A alleges that officials hid casualty figures after the strike.\nrelation<|#|>Source B<|#|>Source A<|#|>denial<|#|>Source B denies the allegation made by Source A regarding hidden casualty figures.\n<|COMPLETE|>",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

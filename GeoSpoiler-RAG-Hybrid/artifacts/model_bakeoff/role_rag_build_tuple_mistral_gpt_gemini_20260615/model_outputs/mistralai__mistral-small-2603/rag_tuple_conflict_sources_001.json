@@ -1,0 +1,21 @@
+{
+  "run_id": "role_rag_build_tuple_mistral_gpt_gemini_20260615",
+  "timestamp": "2026-06-15T18:16:23+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_tuple_targeted",
+  "case_id": "rag_tuple_conflict_sources_001",
+  "prompt_hash": "84bb8e68964c0316a617622ff9ed7a26eaff2b73f01ccdaeaccc9a03a0cec056",
+  "input_tokens": 254,
+  "output_tokens": 0,
+  "latency_ms": 618,
+  "estimated_cost_usd": 3.81e-05,
+  "raw_response": "",
+  "parsed_response": null,
+  "errors": [
+    "401 Client Error: Unauthorized for url: https://openrouter.ai/api/v1/chat/completions"
+  ],
+  "retries": 0,
+  "cache_buster": ""
+}

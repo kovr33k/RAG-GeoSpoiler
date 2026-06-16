@@ -1,0 +1,19 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:13:45+00:00",
+  "model_id": "mistralai/mistral-large-2512",
+  "provider": "openrouter",
+  "role": "query",
+  "suite": "western_quality_query",
+  "case_id": "quality_synth_conflict_sources_001",
+  "prompt_hash": "ba240808794be089ba403750dd50af8e1e49314e159cc4a3ff4e1d76d5296d5d",
+  "input_tokens": 141,
+  "output_tokens": 127,
+  "latency_ms": 2860,
+  "estimated_cost_usd": 0.000261,
+  "raw_response": "На основе предоставленного контекста известно следующее:\n\n1. **Source A** утверждает, что министерство скрывало статистику протестов (*source_a*).\n2. **Source B** заявляет, что министерство публиковало все данные о протестах и отрицает их сокрытие (*source_b*).\n\nИсточники расходятся в оценке действий министерства: **Source A** обвиняет его в подавлении информации, тогда как **Source B** это опровергает. Противоречие не разрешается в рамках предоставленных данных.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

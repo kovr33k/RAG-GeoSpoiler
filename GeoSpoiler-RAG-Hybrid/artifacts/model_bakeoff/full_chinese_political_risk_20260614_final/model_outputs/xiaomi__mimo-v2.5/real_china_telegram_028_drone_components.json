@@ -1,0 +1,38 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T23:02:40+00:00",
+  "model_id": "xiaomi/mimo-v2.5",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_028_drone_components",
+  "prompt_hash": "6a140c38a71eb703e72786681a7ffbfc9c6ef0660650254eac5bc3fd1a4ced15",
+  "input_tokens": 297,
+  "output_tokens": 261,
+  "latency_ms": 3965,
+  "estimated_cost_usd": 0.00011466,
+  "raw_response": "{\n  \"claims\": [\n    \"Китай в 10 раз нарастил поставки в Россию компонентов для боевых дронов.\",\n    \"The Washington Post пишет, что поставки компонентов для дронов, с помощью которых Россия воюет в Украине, выросли на порядок.\",\n    \"В тексте говорится, что в августе экспорт оптоволоконных кабелей в Россию вырос до 524 800 км.\",\n    \"Такие дроны помогают обходить радиоэлектронную борьбу и могут наносить значительный урон.\"\n  ],\n  \"entities\": [\n    \"Китай\",\n    \"Россия\",\n    \"The Washington Post\",\n    \"Украина\"\n  ],\n  \"sensitive_topics\": [\n    \"International relations\",\n    \"Military technology transfer\",\n    \"Arms trade\"\n  ],\n  \"model_added_interpretation\": \"The post combines information from The Washington Post with specific data about fiber-optic cable exports to support the claim of increased Chinese drone component supplies to Russia for use in the Ukraine conflict.\"\n}",
+  "parsed_response": {
+    "claims": [
+      "Китай в 10 раз нарастил поставки в Россию компонентов для боевых дронов.",
+      "The Washington Post пишет, что поставки компонентов для дронов, с помощью которых Россия воюет в Украине, выросли на порядок.",
+      "В тексте говорится, что в августе экспорт оптоволоконных кабелей в Россию вырос до 524 800 км.",
+      "Такие дроны помогают обходить радиоэлектронную борьбу и могут наносить значительный урон."
+    ],
+    "entities": [
+      "Китай",
+      "Россия",
+      "The Washington Post",
+      "Украина"
+    ],
+    "sensitive_topics": [
+      "International relations",
+      "Military technology transfer",
+      "Arms trade"
+    ],
+    "model_added_interpretation": "The post combines information from The Washington Post with specific data about fiber-optic cable exports to support the claim of increased Chinese drone component supplies to Russia for use in the Ukraine conflict."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

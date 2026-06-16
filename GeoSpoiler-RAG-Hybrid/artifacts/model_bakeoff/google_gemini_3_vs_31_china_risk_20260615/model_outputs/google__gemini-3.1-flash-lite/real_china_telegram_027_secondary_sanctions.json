@@ -1,0 +1,36 @@
+{
+  "run_id": "google_gemini_3_vs_31_china_risk_20260615",
+  "timestamp": "2026-06-15T17:47:20+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_027_secondary_sanctions",
+  "prompt_hash": "34c988032734dba3a9a260084c7786fd1c9afaab63caed09e01c853b03e04dcb",
+  "input_tokens": 231,
+  "output_tokens": 177,
+  "latency_ms": 2677,
+  "estimated_cost_usd": 0.00032325,
+  "raw_response": "{\n  \"claims\": [\n    \"Europe long resisted the concept of secondary sanctions and considered the prohibition of re-export to be 'not true' (not authentic/proper).\",\n    \"This summer, Europe crossed the threshold of implementing secondary sanctions for the first time.\",\n    \"China and the USA actively use exports, re-exports, licenses, and quotas against each other.\"\n  ],\n  \"entities\": [\n    \"Europe\",\n    \"China\",\n    \"USA\"\n  ],\n  \"sensitive_topics\": [\n    \"Sanctions\",\n    \"International trade policy\",\n    \"Geopolitics\"\n  ],\n  \"model_added_interpretation\": \"The text discusses a shift in European trade policy regarding secondary sanctions, contrasting it with the established trade practices between the US and China.\"\n}",
+  "parsed_response": {
+    "claims": [
+      "Europe long resisted the concept of secondary sanctions and considered the prohibition of re-export to be 'not true' (not authentic/proper).",
+      "This summer, Europe crossed the threshold of implementing secondary sanctions for the first time.",
+      "China and the USA actively use exports, re-exports, licenses, and quotas against each other."
+    ],
+    "entities": [
+      "Europe",
+      "China",
+      "USA"
+    ],
+    "sensitive_topics": [
+      "Sanctions",
+      "International trade policy",
+      "Geopolitics"
+    ],
+    "model_added_interpretation": "The text discusses a shift in European trade policy regarding secondary sanctions, contrasting it with the established trade practices between the US and China."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

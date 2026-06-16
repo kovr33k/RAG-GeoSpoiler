@@ -1,0 +1,19 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:52:58+00:00",
+  "model_id": "deepseek-v4-pro",
+  "provider": "deepseek",
+  "role": "translation",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_translation_scs_en_ru_001",
+  "prompt_hash": "22cc9ab3ce5250211690647b9b5eb2f4e7968458e3914dc577058bcff38ce0ae",
+  "input_tokens": 124,
+  "output_tokens": 52,
+  "latency_ms": 1852,
+  "estimated_cost_usd": 9.918e-05,
+  "raw_response": "Трибунал отклонил претензии Китая на «девятипунктирную линию», но Пекин отверг это решение и продолжил заявлять об исторических правах в спорных водах.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

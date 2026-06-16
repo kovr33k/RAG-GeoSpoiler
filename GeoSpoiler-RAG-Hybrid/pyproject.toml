@@ -30,11 +30,28 @@ dev = [
 ]
 
 [tool.setuptools]
-packages = ["enricher", "fetcher", "loader", "normalizer", "retrieval"]
+packages = [
+    "enricher",
+    "eval",
+    "eval.model_bakeoff",
+    "experiments",
+    "experiments.enriched_rebuild",
+    "fetcher",
+    "loader",
+    "normalizer",
+    "normalizer.instagram",
+    "retrieval",
+]
 py-modules = [
     "auth",
     "baseline_probe",
     "cli",
+    "cli_app",
+    "cli_pipeline",
+    "cli_query",
+    "cli_runtime",
+    "cli_tools",
+    "cli_wiki",
     "config",
     "data_validation",
     "experiment_registry",
@@ -69,8 +86,8 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"test_*.py" = ["B011"]
+"tests/test_*.py" = ["B011"]
 
 [tool.unittest]
-start-directory = "."
+start-directory = "tests"
 pattern = "test_*.py"

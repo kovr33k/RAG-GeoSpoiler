@@ -1,0 +1,49 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:15:01+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_enrich_uncertain_claim_001",
+  "prompt_hash": "bfd865a146df21ba7db69ce697e888342d88a93ba16e75a92ebfe86351ecd344",
+  "input_tokens": 170,
+  "output_tokens": 256,
+  "latency_ms": 2201,
+  "estimated_cost_usd": 0.0004265,
+  "raw_response": "{\n  \"summary\": \"Analysts suggest that some shipments may have contained dual-use components, though there is no independent confirmation that the supplier was aware of the intended military application.\",\n  \"key_facts\": [\n    \"Shipments potentially contained dual-use components.\",\n    \"No independent confirmation exists regarding the supplier's knowledge of military end-use.\"\n  ],\n  \"entities\": [\n    \"Analysts\"\n  ],\n  \"topics\": [\n    \"Dual-use technology\",\n    \"Supply chain\",\n    \"Military procurement\",\n    \"Export control\"\n  ],\n  \"theses\": [\n    \"The supplier's intent or knowledge regarding the military application of the components remains unverified.\"\n  ],\n  \"quotes\": [],\n  \"events\": [],\n  \"query_aliases\": [\n    \"dual-use components supply chain\",\n    \"military application of dual-use goods\"\n  ],\n  \"broll_potential\": [\n    \"Shipping containers at a port\",\n    \"Close-up of electronic components or industrial machinery\",\n    \"Logistics and supply chain management software interface\"\n  ],\n  \"broll_notes\": \"Visuals should remain neutral and generic to reflect the lack of specific evidence regarding the supplier's intent.\"\n}",
+  "parsed_response": {
+    "summary": "Analysts suggest that some shipments may have contained dual-use components, though there is no independent confirmation that the supplier was aware of the intended military application.",
+    "key_facts": [
+      "Shipments potentially contained dual-use components.",
+      "No independent confirmation exists regarding the supplier's knowledge of military end-use."
+    ],
+    "entities": [
+      "Analysts"
+    ],
+    "topics": [
+      "Dual-use technology",
+      "Supply chain",
+      "Military procurement",
+      "Export control"
+    ],
+    "theses": [
+      "The supplier's intent or knowledge regarding the military application of the components remains unverified."
+    ],
+    "quotes": [],
+    "events": [],
+    "query_aliases": [
+      "dual-use components supply chain",
+      "military application of dual-use goods"
+    ],
+    "broll_potential": [
+      "Shipping containers at a port",
+      "Close-up of electronic components or industrial machinery",
+      "Logistics and supply chain management software interface"
+    ],
+    "broll_notes": "Visuals should remain neutral and generic to reflect the lack of specific evidence regarding the supplier's intent."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

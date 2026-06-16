@@ -1,0 +1,62 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615",
+  "timestamp": "2026-06-15T18:05:46+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_quote_preservation_001",
+  "prompt_hash": "06cb4e40f40af01db54e8a5cad5a16ac413bbd59323956fddf93bb0c77e51101",
+  "input_tokens": 264,
+  "output_tokens": 270,
+  "latency_ms": 2548,
+  "estimated_cost_usd": 0.0002016,
+  "raw_response": "{\n  \"summary\": \"An unnamed source claims a new measure creates a legal gray zone, while a post author suggests Beijing may frame a quarantine of Taiwan as a port inspection rather than a blockade.\",\n  \"entities\": [\"Пекин\", \"Тайвань\"],\n  \"relations\": [\n    {\"source\": \"source\", \"target\": \"мера\", \"relationship\": \"создает\"},\n    {\"source\": \"author\", \"target\": \"Пекин\", \"relationship\": \"может назвать\"},\n    {\"source\": \"author\", \"target\": \"карантин Тайваня\", \"relationship\": \"проверкой судов\"},\n    {\"source\": \"author\", \"target\": \"карантин Тайваня\", \"relationship\": \"а не блокадой\"}\n  ],\n  \"claims\": [\n    {\"claim\": \"эта мера создает юридическую серую зону\", \"attribution\": \"Источник заявил\"},\n    {\"claim\": \"Пекин может назвать карантин Тайваня проверкой судов, а не блокадой\", \"attribution\": \"Автор поста добавляет\"}\n  ],\n  \"dates\": [],\n  \"source_fidelity_notes\": [\"Unnamed source with no further attribution\", \"Claim about Beijing's potential framing lacks verification\"]\n}",
+  "parsed_response": {
+    "summary": "An unnamed source claims a new measure creates a legal gray zone, while a post author suggests Beijing may frame a quarantine of Taiwan as a port inspection rather than a blockade.",
+    "entities": [
+      "Пекин",
+      "Тайвань"
+    ],
+    "relations": [
+      {
+        "source": "source",
+        "target": "мера",
+        "relationship": "создает"
+      },
+      {
+        "source": "author",
+        "target": "Пекин",
+        "relationship": "может назвать"
+      },
+      {
+        "source": "author",
+        "target": "карантин Тайваня",
+        "relationship": "проверкой судов"
+      },
+      {
+        "source": "author",
+        "target": "карантин Тайваня",
+        "relationship": "а не блокадой"
+      }
+    ],
+    "claims": [
+      {
+        "claim": "эта мера создает юридическую серую зону",
+        "attribution": "Источник заявил"
+      },
+      {
+        "claim": "Пекин может назвать карантин Тайваня проверкой судов, а не блокадой",
+        "attribution": "Автор поста добавляет"
+      }
+    ],
+    "dates": [],
+    "source_fidelity_notes": [
+      "Unnamed source with no further attribution",
+      "Claim about Beijing's potential framing lacks verification"
+    ]
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

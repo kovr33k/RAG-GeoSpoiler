@@ -1,0 +1,19 @@
+{
+  "run_id": "full_tencent_hy3_preview_reasoning_none_20260615",
+  "timestamp": "2026-06-15T16:56:38+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "translation",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_translation_taiwan_blockade_ru_en_001",
+  "prompt_hash": "0757cee9e656b59687eccec101ab7ab70410a8835b78784fe82ca9abec905cca",
+  "input_tokens": 168,
+  "output_tokens": 34,
+  "latency_ms": 2880,
+  "estimated_cost_usd": 1.772e-05,
+  "raw_response": "The author writes that Beijing may declare not a blockade of Taiwan, but a quarantine to inspect vessels, which will put the US and allies in a legal gray zone.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

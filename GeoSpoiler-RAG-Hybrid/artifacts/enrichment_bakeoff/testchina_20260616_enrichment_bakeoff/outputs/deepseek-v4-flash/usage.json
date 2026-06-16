@@ -1,0 +1,146 @@
+[
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 1161,
+    "completion_tokens": 955,
+    "estimated_cost_usd": 0.00042994,
+    "latency_ms": 8764
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 707,
+    "completion_tokens": 387,
+    "estimated_cost_usd": 0.00020734,
+    "latency_ms": 4590
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 1299,
+    "completion_tokens": 1301,
+    "estimated_cost_usd": 0.00054614,
+    "latency_ms": 10245
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 1291,
+    "completion_tokens": 606,
+    "estimated_cost_usd": 0.00035042,
+    "latency_ms": 6551
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 1054,
+    "completion_tokens": 845,
+    "estimated_cost_usd": 0.00038416,
+    "latency_ms": 8192
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 1460,
+    "completion_tokens": 1460,
+    "estimated_cost_usd": 0.0006132,
+    "latency_ms": 11054
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 1218,
+    "completion_tokens": 466,
+    "estimated_cost_usd": 0.000301,
+    "latency_ms": 4945
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 1072,
+    "completion_tokens": 612,
+    "estimated_cost_usd": 0.00032144,
+    "latency_ms": 6264
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 815,
+    "completion_tokens": 582,
+    "estimated_cost_usd": 0.00027706,
+    "latency_ms": 6044
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 1260,
+    "completion_tokens": 1167,
+    "estimated_cost_usd": 0.00050316,
+    "latency_ms": 8962
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 1233,
+    "completion_tokens": 767,
+    "estimated_cost_usd": 0.00038738,
+    "latency_ms": 6794
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 1534,
+    "completion_tokens": 1180,
+    "estimated_cost_usd": 0.00054516,
+    "latency_ms": 9211
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 1244,
+    "completion_tokens": 804,
+    "estimated_cost_usd": 0.00039928,
+    "latency_ms": 7159
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 1614,
+    "completion_tokens": 770,
+    "estimated_cost_usd": 0.00044156,
+    "latency_ms": 7049
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 1788,
+    "completion_tokens": 988,
+    "estimated_cost_usd": 0.00052696,
+    "latency_ms": 8898
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 1285,
+    "completion_tokens": 825,
+    "estimated_cost_usd": 0.0004109,
+    "latency_ms": 7476
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 872,
+    "completion_tokens": 589,
+    "estimated_cost_usd": 0.000287,
+    "latency_ms": 5622
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "status_code": 200,
+    "prompt_tokens": 1435,
+    "completion_tokens": 1553,
+    "estimated_cost_usd": 0.00063574,
+    "latency_ms": 11666
+  }
+]

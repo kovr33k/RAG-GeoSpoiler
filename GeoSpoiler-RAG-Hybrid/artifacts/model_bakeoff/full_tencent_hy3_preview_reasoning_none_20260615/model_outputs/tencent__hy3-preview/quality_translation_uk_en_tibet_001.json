@@ -1,0 +1,19 @@
+{
+  "run_id": "full_tencent_hy3_preview_reasoning_none_20260615",
+  "timestamp": "2026-06-15T17:04:02+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "translation",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_translation_uk_en_tibet_001",
+  "prompt_hash": "8f1c8e26aed0d611f4de8f291d08128f304e6e40c156aeb1734f520e3eebae3c",
+  "input_tokens": 154,
+  "output_tokens": 24,
+  "latency_ms": 12817,
+  "estimated_cost_usd": 1.474e-05,
+  "raw_response": "Beijing called the award to the Dalai Lama a tool of political manipulation against China, a Foreign Ministry representative stated.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

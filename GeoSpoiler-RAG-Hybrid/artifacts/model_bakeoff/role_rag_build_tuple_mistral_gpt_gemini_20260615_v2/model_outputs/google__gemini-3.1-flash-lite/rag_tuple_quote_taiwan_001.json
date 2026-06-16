@@ -1,0 +1,19 @@
+{
+  "run_id": "role_rag_build_tuple_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:17:36+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_tuple_targeted",
+  "case_id": "rag_tuple_quote_taiwan_001",
+  "prompt_hash": "4be70769de9d5f0b3ec1756410af57eebcb286c7dc1d0d003e0e08cb8daa8296",
+  "input_tokens": 242,
+  "output_tokens": 135,
+  "latency_ms": 1604,
+  "estimated_cost_usd": 0.000263,
+  "raw_response": "entity{tuple_delimiter}Пекин{tuple_delimiter}country{tuple_delimiter}Столица и политический центр Китая.\nentity{tuple_delimiter}Тайвань{tuple_delimiter}country{tuple_delimiter}Островное государство, статус которого является предметом спора.\nrelation{tuple_delimiter}Пекин{tuple_delimiter}Тайвань{tuple_delimiter}карантин, блокада, проверка судов{tuple_delimiter}Автор поста предполагает, что Пекин может классифицировать возможный карантин Тайваня как проверку судов, а не как блокаду.\n{completion_delimiter}",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

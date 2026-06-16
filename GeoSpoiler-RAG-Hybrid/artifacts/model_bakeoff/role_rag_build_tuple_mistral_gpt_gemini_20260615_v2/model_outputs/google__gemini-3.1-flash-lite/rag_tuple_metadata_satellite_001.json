@@ -1,0 +1,19 @@
+{
+  "run_id": "role_rag_build_tuple_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:17:08+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_tuple_targeted",
+  "case_id": "rag_tuple_metadata_satellite_001",
+  "prompt_hash": "2325bb5fdbdeae450c510769342b58d85cdcdf8d56b3bd373f685395e4dbef2c",
+  "input_tokens": 316,
+  "output_tokens": 285,
+  "latency_ms": 3055,
+  "estimated_cost_usd": 0.0005065,
+  "raw_response": "entity{tuple_delimiter}TEE-01B{tuple_delimiter}other{tuple_delimiter}Спутник, построенный и выведенный на орбиту в Китае.\nentity{tuple_delimiter}Financial Times{tuple_delimiter}organization{tuple_delimiter}Издание, сообщившее информацию о спутнике TEE-01B.\nentity{tuple_delimiter}Китай{tuple_delimiter}country{tuple_delimiter}Страна, в которой был построен и запущен спутник TEE-01B.\nentity{tuple_delimiter}КСИР{tuple_delimiter}military_unit{tuple_delimiter}Корпус стражей исламской революции, который, по версии FT, получил контроль над спутником.\nrelation{tuple_delimiter}Financial Times{tuple_delimiter}TEE-01B{tuple_delimiter}сообщение о происхождении{tuple_delimiter}Financial Times сообщила, что спутник был построен и выведен на орбиту в Китае.\nrelation{tuple_delimiter}TEE-01B{tuple_delimiter}КСИР{tuple_delimiter}предполагаемый контроль{tuple_delimiter}По версии Financial Times, система TEE-01B перешла под контроль аэрокосмических сил КСИР.\n{completion_delimiter}",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

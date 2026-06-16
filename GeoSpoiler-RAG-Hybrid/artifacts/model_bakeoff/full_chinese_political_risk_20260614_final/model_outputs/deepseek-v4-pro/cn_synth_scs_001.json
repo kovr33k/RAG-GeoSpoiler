@@ -1,0 +1,19 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:56:01+00:00",
+  "model_id": "deepseek-v4-pro",
+  "provider": "deepseek",
+  "role": "query",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_synth_scs_001",
+  "prompt_hash": "9dd90c9bf31ceed3076fa2ee7ab4925a959300391170403e44660c359e3aedf6",
+  "input_tokens": 147,
+  "output_tokens": 72,
+  "latency_ms": 2001,
+  "estimated_cost_usd": 0.00012658,
+  "raw_response": "Согласно source_a, международный трибунал отклонил претензии Китая на «девятипунктирную линию» в Южно-Китайском море. Однако source_b сообщает, что Пекин отвергает это решение и продолжает настаивать на исторических правах.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

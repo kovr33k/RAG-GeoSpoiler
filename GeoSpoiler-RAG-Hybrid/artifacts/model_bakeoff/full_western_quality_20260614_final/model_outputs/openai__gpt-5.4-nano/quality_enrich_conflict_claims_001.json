@@ -1,0 +1,68 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:13:24+00:00",
+  "model_id": "openai/gpt-5.4-nano",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_enrichment",
+  "case_id": "quality_enrich_conflict_claims_001",
+  "prompt_hash": "5a5426e3afda96ae1396f257748fdf13b69572c8a0e44585ea3e63a09cbe8a18",
+  "input_tokens": 160,
+  "output_tokens": 456,
+  "latency_ms": 4420,
+  "estimated_cost_usd": 0.000602,
+  "raw_response": "{\n  \"summary\": \"The text reports a dispute between two sources: one alleges officials hid casualty figures, while another denies the allegation and claims the published data is complete. The text does not determine which claim is correct.\",\n  \"key_facts\": [\n    \"Source A alleges that officials hid casualty figures.\",\n    \"Source B denies that casualty figures were hidden.\",\n    \"Source B claims the published data is complete.\",\n    \"The post does not decide which source is correct.\"\n  ],\n  \"entities\": [\n    \"Source A\",\n    \"Source B\",\n    \"officials\",\n    \"casualty figures\",\n    \"published data\"\n  ],\n  \"topics\": [\n    \"conflict casualty reporting\",\n    \"information integrity\",\n    \"disputed claims\",\n    \"denial vs allegation\"\n  ],\n  \"theses\": [\n    \"An allegation exists that officials hid casualty figures.\",\n    \"A denial exists claiming published casualty data is complete.\",\n    \"No conclusion is reached about which claim is correct.\"\n  ],\n  \"quotes\": [\n    \"Source A alleges that officials hid casualty figures.\",\n    \"Source B denies this and says the published data is complete.\",\n    \"The post does not decide which source is correct.\"\n  ],\n  \"events\": [\n    \"Source A makes an allegation regarding casualty figures being hidden by officials.\",\n    \"Source B issues a denial and asserts completeness of published data.\",\n    \"The post presents both claims without resolving which is correct.\"\n  ],\n  \"query_aliases\": [\n    \"casualty figures hidden allegation\",\n    \"published data completeness denial\",\n    \"officials withheld casualty numbers\",\n    \"conflicting casualty reporting claims\"\n  ],\n  \"broll_potential\": [\n    \"News-style split-screen contrasting two viewpoints (allegation vs denial)\",\n    \"Generic infographic mockup of casualty reporting (without asserting specific numbers)\",\n    \"Document or spreadsheet visual representing 'published data'\",\n    \"Muted courtroom/journalistic setting suggesting dispute\"\n  ],\n  \"broll_notes\": \"Use generic visuals that do not imply verified casualty counts or confirm either side’s claims. Emphasize 'disputed' or 'unresolved' context in any on-screen text.\"\n}",
+  "parsed_response": {
+    "summary": "The text reports a dispute between two sources: one alleges officials hid casualty figures, while another denies the allegation and claims the published data is complete. The text does not determine which claim is correct.",
+    "key_facts": [
+      "Source A alleges that officials hid casualty figures.",
+      "Source B denies that casualty figures were hidden.",
+      "Source B claims the published data is complete.",
+      "The post does not decide which source is correct."
+    ],
+    "entities": [
+      "Source A",
+      "Source B",
+      "officials",
+      "casualty figures",
+      "published data"
+    ],
+    "topics": [
+      "conflict casualty reporting",
+      "information integrity",
+      "disputed claims",
+      "denial vs allegation"
+    ],
+    "theses": [
+      "An allegation exists that officials hid casualty figures.",
+      "A denial exists claiming published casualty data is complete.",
+      "No conclusion is reached about which claim is correct."
+    ],
+    "quotes": [
+      "Source A alleges that officials hid casualty figures.",
+      "Source B denies this and says the published data is complete.",
+      "The post does not decide which source is correct."
+    ],
+    "events": [
+      "Source A makes an allegation regarding casualty figures being hidden by officials.",
+      "Source B issues a denial and asserts completeness of published data.",
+      "The post presents both claims without resolving which is correct."
+    ],
+    "query_aliases": [
+      "casualty figures hidden allegation",
+      "published data completeness denial",
+      "officials withheld casualty numbers",
+      "conflicting casualty reporting claims"
+    ],
+    "broll_potential": [
+      "News-style split-screen contrasting two viewpoints (allegation vs denial)",
+      "Generic infographic mockup of casualty reporting (without asserting specific numbers)",
+      "Document or spreadsheet visual representing 'published data'",
+      "Muted courtroom/journalistic setting suggesting dispute"
+    ],
+    "broll_notes": "Use generic visuals that do not imply verified casualty counts or confirm either side’s claims. Emphasize 'disputed' or 'unresolved' context in any on-screen text."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

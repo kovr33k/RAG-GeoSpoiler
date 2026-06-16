@@ -1,0 +1,38 @@
+{
+  "channel_name": "testchina",
+  "channel_id": 4494958326,
+  "channel_username": "4494958326",
+  "message_id": 4,
+  "date": "2026-06-16T17:14:21+00:00",
+  "post_url": "https://t.me/c/4494958326/4",
+  "is_forward": true,
+  "forward_from_name": "Тарас Григорович повідомляє",
+  "forward_from_id": 1673614390,
+  "forward_date": "2026-05-06T10:27:39+00:00",
+  "has_text": true,
+  "has_images": true,
+  "image_count": 1,
+  "image_paths": [
+    "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\media_cache\\testchina\\msg_4.jpg"
+  ],
+  "has_video": false,
+  "has_voice": false,
+  "has_document": false,
+  "media_count": 1,
+  "media": [
+    {
+      "media_type": "image",
+      "mime_type": "",
+      "message_id": 4,
+      "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\media_cache\\testchina\\msg_4.jpg",
+      "download_status": "downloaded",
+      "error": ""
+    }
+  ],
+  "transcriptions": [],
+  "native_media_paths": [],
+  "youtube_urls": [],
+  "instagram_urls": [],
+  "ai_chat_urls": [],
+  "web_urls": []
+}

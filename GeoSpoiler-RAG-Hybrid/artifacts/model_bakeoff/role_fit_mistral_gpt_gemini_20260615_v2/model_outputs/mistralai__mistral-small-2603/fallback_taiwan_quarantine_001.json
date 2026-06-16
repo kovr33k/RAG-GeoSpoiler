@@ -1,0 +1,19 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:11:25+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "fallback_synth",
+  "suite": "role_fallback_synth_targeted",
+  "case_id": "fallback_taiwan_quarantine_001",
+  "prompt_hash": "b8a6e2940da42fffa773ca14f2dc3a104dbb0c252a774fbab9014f0cc000a4ba",
+  "input_tokens": 253,
+  "output_tokens": 84,
+  "latency_ms": 1892,
+  "estimated_cost_usd": 8.835e-05,
+  "raw_response": "Стратегия карантина Тайваня, согласно представленным источникам, может интерпретироваться двояко:\n\n1. **Возможная формулировка блокады как карантина** (source_a).\n2. **Цель — экономическое давление через страхование и логистику**, а не немедленное физическое уничтожение (source_b).",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

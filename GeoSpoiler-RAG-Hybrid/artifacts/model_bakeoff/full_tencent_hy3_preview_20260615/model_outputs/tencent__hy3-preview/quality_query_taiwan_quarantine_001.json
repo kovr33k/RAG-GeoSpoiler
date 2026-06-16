@@ -1,0 +1,19 @@
+{
+  "run_id": "full_tencent_hy3_preview_20260615",
+  "timestamp": "2026-06-15T16:45:03+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "query",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_query_taiwan_quarantine_001",
+  "prompt_hash": "f5c239f41ac09e672cbf979a3b558ad5eecc94e61a20d516ef90816edd4b829d",
+  "input_tokens": 170,
+  "output_tokens": 701,
+  "latency_ms": 19017,
+  "estimated_cost_usd": 0.00015792,
+  "raw_response": "Согласно предоставленным источникам, описывается не стратегия самого Тайваня, а возможные действия Пекина в отношении Тайваня, которые могут быть представлены как карантин.\n\n*   **Source A** сообщает, что Пекин может подать блокаду Тайваня как карантин для проведения проверок судов.\n*   **Source B** добавляет, что целью таких действий было бы экономическое давление через сферы страхования и логистики, а не нанесение немедленного физического ущерба.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

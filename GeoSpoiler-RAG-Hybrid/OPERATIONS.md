@@ -45,7 +45,7 @@ operationally important flags to check before runs:
 | `RAG_BUILD_*` | Build-time chat endpoint/model override | Empty values fall back to `LLM_*`. |
 | `QUERY_*` | Query-time chat endpoint/model override | Use for live query/golden runs. |
 | `FALLBACK_SYNTH_*` | Hybrid synthesis endpoint/model override | Keep aligned with trusted query model unless testing. |
-| `ENRICHMENT_*` | Enriched-card generation endpoint/model override | Use the same provider family unless testing. |
+| `ENRICHMENT_*` | Enriched-card endpoint/model/schema/concurrency override | Use the same provider family unless testing; `ENRICHMENT_CONCURRENCY` defaults to `LLM_MAX_ASYNC`. |
 | `TRANSLATION_*` | Translation endpoint/model override | Empty values fall back to `LLM_*`. |
 | `LLM_MAX_ASYNC` | Chat request concurrency | Higher values are useful only with a paid/stable provider. |
 | `LLM_DELAY_SECONDS`, `RAG_BUILD_DELAY_SECONDS` | Artificial pacing between LLM calls | Use `0.0` only when the provider quota can handle it. |
@@ -343,8 +343,8 @@ python main.py wiki health
 Then validate behavior:
 
 ```powershell
-python -m unittest
-python test_golden_set.py
+python -m unittest discover -s tests -p "test_*.py" -v
+python tests/test_golden_set.py
 python main.py experiments index
 ```
 
@@ -365,7 +365,7 @@ slow/unstable on the full corpus and was removed from the main CLI.
 After code changes:
 
 ```powershell
-python -m unittest
+python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
 After wiki/retrieval/source changes:

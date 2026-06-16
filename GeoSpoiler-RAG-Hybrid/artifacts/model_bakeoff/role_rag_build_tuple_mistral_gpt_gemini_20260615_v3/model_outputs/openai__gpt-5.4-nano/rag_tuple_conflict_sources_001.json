@@ -1,0 +1,19 @@
+{
+  "run_id": "role_rag_build_tuple_mistral_gpt_gemini_20260615_v3",
+  "timestamp": "2026-06-15T18:20:20+00:00",
+  "model_id": "openai/gpt-5.4-nano",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_tuple_targeted",
+  "case_id": "rag_tuple_conflict_sources_001",
+  "prompt_hash": "d22244c38fd4ead06ed37575a3f35fff18a7ec52e5e06ee9bce2dba0f45287aa",
+  "input_tokens": 228,
+  "output_tokens": 418,
+  "latency_ms": 3988,
+  "estimated_cost_usd": 0.0005681,
+  "raw_response": "entity<|#|>Source A<|#|>other<|#|>Alleges that officials hid casualty figures after the strike.\nentity<|#|>Source B<|#|>other<|#|>Denies that officials hid casualty figures and says the published data is complete.\nentity<|#|>officials<|#|>other<|#|>Unspecified officials alleged to have hidden casualty figures.\nentity<|#|>strike<|#|>event<|#|>Referenced as the event after which casualty figures were allegedly hidden.\nrelation<|#|>Source A<|#|>officials<|#|>relation<|#|>keywords<|#|>alleges hiding casualty figures<|#|><description>Source A alleges that officials hid casualty figures after the strike.\nrelation<|#|>Source B<|#|>officials<|#|>relation<|#|>keywords<|#|>denies hiding casualty figures<|#|><description>Source B denies that officials hid casualty figures and says the published data is complete.\nrelation<|#|>Source A<|#|>strike<|#|>relation<|#|>keywords<|#|>allegation after strike<|#|><description>Source A alleges the hiding occurred after the strike.\nrelation<|#|>Source B<|#|>strike<|#|>relation<|#|>keywords<|#|>denial after strike<|#|><description>Source B denies the alleged hiding following the strike.\nrelation<|#|>Source A<|#|>Source B<|#|>relation<|#|>keywords<|#|>disagreement<|#|><description>Source A alleges hiding of casualty figures, while Source B denies it; the post does not decide which is correct.\n<|COMPLETE|>",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

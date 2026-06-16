@@ -1,0 +1,19 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:11:32+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "fallback_synth",
+  "suite": "role_fallback_synth_targeted",
+  "case_id": "fallback_noisy_context_no_internal_terms_001",
+  "prompt_hash": "cda3caaffa17e793aebd01a566366c3ea3be531cec768e3463aabbe68ee0bf0c",
+  "input_tokens": 281,
+  "output_tokens": 49,
+  "latency_ms": 1526,
+  "estimated_cost_usd": 7.155e-05,
+  "raw_response": "По сообщениям, Пекин усилил военное давление в районе Тайваня [card-1]. При этом тайваньские власти охарактеризовали эту политику как принудительную [card-2].",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

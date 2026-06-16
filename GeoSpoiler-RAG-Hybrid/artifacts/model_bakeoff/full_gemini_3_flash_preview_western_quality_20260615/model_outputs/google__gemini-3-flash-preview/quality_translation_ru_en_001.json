@@ -1,0 +1,19 @@
+{
+  "run_id": "full_gemini_3_flash_preview_western_quality_20260615",
+  "timestamp": "2026-06-15T17:41:10+00:00",
+  "model_id": "google/gemini-3-flash-preview",
+  "provider": "openrouter",
+  "role": "translation",
+  "suite": "western_quality_translation",
+  "case_id": "quality_translation_ru_en_001",
+  "prompt_hash": "52b6ab3c3694cda5d8a2e3897d9ad0879e1d408244397d50f9ba992c776a9473",
+  "input_tokens": 130,
+  "output_tokens": 27,
+  "latency_ms": 2104,
+  "estimated_cost_usd": 0.000146,
+  "raw_response": "According to the author of the post, Russia launched a full-scale invasion of Ukraine, and officials later denied responsibility for the strike.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

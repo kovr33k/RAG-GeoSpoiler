@@ -1,0 +1,38 @@
+{
+  "channel_name": "testchina",
+  "channel_id": 4494958326,
+  "channel_username": "4494958326",
+  "message_id": 12,
+  "date": "2026-06-16T17:16:28+00:00",
+  "post_url": "https://t.me/c/4494958326/12",
+  "is_forward": true,
+  "forward_from_name": "Міжнародне Аняме (国際アニャメ)",
+  "forward_from_id": 2150799828,
+  "forward_date": "2026-02-22T17:42:11+00:00",
+  "has_text": true,
+  "has_images": true,
+  "image_count": 1,
+  "image_paths": [
+    "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\media_cache\\testchina\\msg_12.jpg"
+  ],
+  "has_video": false,
+  "has_voice": false,
+  "has_document": false,
+  "media_count": 1,
+  "media": [
+    {
+      "media_type": "image",
+      "mime_type": "",
+      "message_id": 12,
+      "file_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\media_cache\\testchina\\msg_12.jpg",
+      "download_status": "downloaded",
+      "error": ""
+    }
+  ],
+  "transcriptions": [],
+  "native_media_paths": [],
+  "youtube_urls": [],
+  "instagram_urls": [],
+  "ai_chat_urls": [],
+  "web_urls": []
+}

@@ -1,0 +1,70 @@
+{
+  "run_id": "full_gemini_3_flash_preview_western_quality_20260615",
+  "timestamp": "2026-06-15T17:41:34+00:00",
+  "model_id": "google/gemini-3-flash-preview",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_enrich_sensitive_no_softening_001",
+  "prompt_hash": "e18885de37e278b8351e617178ac889e37842de5d5597ec0edaef548d6dc0c38",
+  "input_tokens": 178,
+  "output_tokens": 418,
+  "latency_ms": 5732,
+  "estimated_cost_usd": 0.001343,
+  "raw_response": "{\n  \"summary\": \"A human rights group reports the use of facial recognition and police checkpoints for mass surveillance in Xinjiang, while authorities characterize these actions as counter-terrorism measures.\",\n  \"key_facts\": [\n    \"Facial recognition systems are reportedly in use in Xinjiang.\",\n    \"Police checkpoints are being utilized for surveillance purposes.\",\n    \"The regional government defines these activities as counter-terrorism measures.\"\n  ],\n  \"entities\": [\n    {\n      \"name\": \"Xinjiang\",\n      \"type\": \"Location\"\n    },\n    {\n      \"name\": \"Human rights group\",\n      \"type\": \"Organization\"\n    }\n  ],\n  \"topics\": [\n    \"Mass surveillance\",\n    \"Facial recognition\",\n    \"Counter-terrorism\",\n    \"Human rights\",\n    \"Public security\"\n  ],\n  \"theses\": [\n    {\n      \"source_claim\": \"Facial recognition and checkpoints are tools for mass surveillance in Xinjiang.\",\n      \"author\": \"Human rights group\"\n    },\n    {\n      \"source_claim\": \"Surveillance measures in the region are necessary for counter-terrorism.\",\n      \"author\": \"Authorities\"\n    }\n  ],\n  \"quotes\": [\n    \"контртеррористическими мерами\"\n  ],\n  \"events\": [],\n  \"query_aliases\": [\n    \"Xinjiang surveillance systems\",\n    \"facial recognition Xinjiang\",\n    \"police checkpoints Xinjiang\",\n    \"Xinjiang counter-terrorism measures\"\n  ],\n  \"broll_potential\": [\n    \"Facial recognition interface overlays\",\n    \"Police checkpoints on urban streets\",\n    \"CCTV cameras in public squares\",\n    \"Aerial views of Xinjiang infrastructure\"\n  ],\n  \"broll_notes\": \"Visuals should contrast the technological aspect of surveillance with the official narrative of security and counter-terrorism.\"\n}",
+  "parsed_response": {
+    "summary": "A human rights group reports the use of facial recognition and police checkpoints for mass surveillance in Xinjiang, while authorities characterize these actions as counter-terrorism measures.",
+    "key_facts": [
+      "Facial recognition systems are reportedly in use in Xinjiang.",
+      "Police checkpoints are being utilized for surveillance purposes.",
+      "The regional government defines these activities as counter-terrorism measures."
+    ],
+    "entities": [
+      {
+        "name": "Xinjiang",
+        "type": "Location"
+      },
+      {
+        "name": "Human rights group",
+        "type": "Organization"
+      }
+    ],
+    "topics": [
+      "Mass surveillance",
+      "Facial recognition",
+      "Counter-terrorism",
+      "Human rights",
+      "Public security"
+    ],
+    "theses": [
+      {
+        "source_claim": "Facial recognition and checkpoints are tools for mass surveillance in Xinjiang.",
+        "author": "Human rights group"
+      },
+      {
+        "source_claim": "Surveillance measures in the region are necessary for counter-terrorism.",
+        "author": "Authorities"
+      }
+    ],
+    "quotes": [
+      "контртеррористическими мерами"
+    ],
+    "events": [],
+    "query_aliases": [
+      "Xinjiang surveillance systems",
+      "facial recognition Xinjiang",
+      "police checkpoints Xinjiang",
+      "Xinjiang counter-terrorism measures"
+    ],
+    "broll_potential": [
+      "Facial recognition interface overlays",
+      "Police checkpoints on urban streets",
+      "CCTV cameras in public squares",
+      "Aerial views of Xinjiang infrastructure"
+    ],
+    "broll_notes": "Visuals should contrast the technological aspect of surveillance with the official narrative of security and counter-terrorism."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

@@ -1,0 +1,34 @@
+{
+  "run_id": "full_tencent_hy3_preview_reasoning_none_20260615",
+  "timestamp": "2026-06-15T16:56:11+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_source_covid_lab_uncertainty_en_001",
+  "prompt_hash": "8788a41d3f7b6079044663437d8fca61970eb41acb4df8cc92f56cbf98cfdb43",
+  "input_tokens": 180,
+  "output_tokens": 184,
+  "latency_ms": 8886,
+  "estimated_cost_usd": 4.998e-05,
+  "raw_response": "{\n  \"claims\": [\n    \"Some analysts still discuss a possible laboratory origin of COVID-19.\",\n    \"Other researchers argue that available evidence points to a zoonotic origin of COVID-19.\",\n    \"Neither the claim of a possible laboratory origin of COVID-19 nor the claim that available evidence points to a zoonotic origin of COVID-19 is proven by the cited material referenced in the post.\"\n  ],\n  \"entities\": [\n    \"COVID-19\",\n    \"analysts\",\n    \"researchers\"\n  ],\n  \"sensitive_topics\": [\n    \"Origin of COVID-19\"\n  ],\n  \"model_added_interpretation\": \"The source text presents two competing, unproven hypotheses regarding the origin of COVID-19, explicitly noting that the cited material does not provide conclusive proof for either the laboratory origin theory or the zoonotic origin theory.\"\n}",
+  "parsed_response": {
+    "claims": [
+      "Some analysts still discuss a possible laboratory origin of COVID-19.",
+      "Other researchers argue that available evidence points to a zoonotic origin of COVID-19.",
+      "Neither the claim of a possible laboratory origin of COVID-19 nor the claim that available evidence points to a zoonotic origin of COVID-19 is proven by the cited material referenced in the post."
+    ],
+    "entities": [
+      "COVID-19",
+      "analysts",
+      "researchers"
+    ],
+    "sensitive_topics": [
+      "Origin of COVID-19"
+    ],
+    "model_added_interpretation": "The source text presents two competing, unproven hypotheses regarding the origin of COVID-19, explicitly noting that the cited material does not provide conclusive proof for either the laboratory origin theory or the zoonotic origin theory."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

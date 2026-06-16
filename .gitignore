@@ -6,3 +6,25 @@ Desktop.ini
 # Obsidian local workspace state
 .obsidian/workspace*.json
 .trash/
+
+# Python/cache noise
+__pycache__/
+*.py[cod]
+
+# Local environment/runtime state
+.env
+.venv/
+logs/
+media_cache/
+output/
+rag_storage/
+rag_storage_backups/
+rag_storage_failed_rebuild_*/
+state/
+*.session
+
+# Generated local indexes and cache snapshots
+*.sqlite
+*.sqlite-*
+*cache_backup*/
+artifacts/*cache*/

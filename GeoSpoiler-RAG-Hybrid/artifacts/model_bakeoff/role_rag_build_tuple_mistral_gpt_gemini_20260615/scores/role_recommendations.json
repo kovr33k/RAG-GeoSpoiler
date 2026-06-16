@@ -1,0 +1,8 @@
+{
+  "recommended": {
+    "RAG_BUILD_MODEL": "mistralai/mistral-small-2603"
+  },
+  "do_not_use_for_high_risk": [],
+  "yellow_models": [],
+  "red_models": []
+}

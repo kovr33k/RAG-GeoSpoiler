@@ -1,0 +1,19 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:16:08+00:00",
+  "model_id": "mistralai/mistral-large-2512",
+  "provider": "openrouter",
+  "role": "translation",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_translation_en_ru_scs_001",
+  "prompt_hash": "7da4cb83b6f88728a3d5abfa600e33822e24e3317c497326a6611620653f4292",
+  "input_tokens": 126,
+  "output_tokens": 48,
+  "latency_ms": 2113,
+  "estimated_cost_usd": 0.000135,
+  "raw_response": "Трибунал отклонил притязания Китая на «девятипунктирную линию», в то время как Пекин отверг решение и продолжил отстаивать исторические права.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

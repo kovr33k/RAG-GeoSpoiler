@@ -1,0 +1,19 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:16:49+00:00",
+  "model_id": "mistralai/mistral-large-2512",
+  "provider": "openrouter",
+  "role": "query",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_query_xinjiang_competing_claims_001",
+  "prompt_hash": "9cbd5082dfcf0a2d15a05b32fb53166ca10a5b6f74aa86c3ea21117e1a2a8e1a",
+  "input_tokens": 147,
+  "output_tokens": 134,
+  "latency_ms": 3354,
+  "estimated_cost_usd": 0.0002745,
+  "raw_response": "Спор касается мер безопасности в Синьцзяне и их интерпретации разными сторонами:\n\n1. Согласно **source_a**, правозащитная группа утверждает, что в регионе применяется массовая слежка с использованием технологий распознавания лиц и контрольно-пропускных пунктов.\n2. Согласно **source_b**, китайские власти называют эти меры инструментами борьбы с терроризмом и отрицают, что они направлены против обычных жителей.\n\nТаким образом, конфликт заключается в противоположных оценках целей и последствий этих мер.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

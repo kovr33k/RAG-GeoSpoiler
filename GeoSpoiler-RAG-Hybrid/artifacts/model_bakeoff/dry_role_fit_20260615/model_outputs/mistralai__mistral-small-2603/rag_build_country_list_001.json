@@ -1,0 +1,48 @@
+{
+  "run_id": "dry_role_fit_20260615",
+  "timestamp": "2026-06-15T18:04:46+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_country_list_001",
+  "prompt_hash": "fa933c5cd2c7cc9b3f4f9bcabf4d6ef31eddb714393fd9c4bed29144843d5987",
+  "input_tokens": 289,
+  "output_tokens": 77,
+  "latency_ms": 0,
+  "estimated_cost_usd": 8.955e-05,
+  "raw_response": "{\"dry_run\": true, \"expected\": {\"must_include_all\": [\"Иран\", \"Китай\", \"Россия\", \"Украина\", \"США\"], \"must_include_any_groups\": [[\"Ормуз\", \"Hormuz\"], [\"энергетическим импортом\", \"energy imports\"], [\"двойного назначения\", \"dual-use\"]], \"must_not_include\": [\"Ближний Восток вместо всех стран\", \"only Middle East\"]}}",
+  "parsed_response": {
+    "dry_run": true,
+    "expected": {
+      "must_include_all": [
+        "Иран",
+        "Китай",
+        "Россия",
+        "Украина",
+        "США"
+      ],
+      "must_include_any_groups": [
+        [
+          "Ормуз",
+          "Hormuz"
+        ],
+        [
+          "энергетическим импортом",
+          "energy imports"
+        ],
+        [
+          "двойного назначения",
+          "dual-use"
+        ]
+      ],
+      "must_not_include": [
+        "Ближний Восток вместо всех стран",
+        "only Middle East"
+      ]
+    }
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

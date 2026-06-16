@@ -1,4 +1,4 @@
-"""Reference merging, source path normalization, and deterministic source hints."""
+"""Reference merging and source path normalization helpers."""
 
 from pathlib import Path
 from typing import Any
@@ -34,37 +34,5 @@ def _resolve_match_source_path(source_path: str) -> str:
     return str(path.resolve(strict=False))
 
 
-def _reference_hints_for_question(question: str) -> list[dict[str, Any]]:
-    normalized = (
-        question.casefold()
-        .replace("ультра-лев", "ультралев")
-        .replace("ультра-прав", "ультраправ")
-    )
-    if not (
-        "ультралев" in normalized
-        and "ультраправ" in normalized
-        and any(term in normalized for term in ("сход", "совпад", "одинаков"))
-    ):
-        return []
-
-    source_path = config.NORMALIZED_DIR / "Ультра левые и ультра правые" / "11.txt"
-    if not source_path.exists():
-        return []
-    return [
-        {
-            "reference_id": "hint-ultra-left-right-similarity",
-            "file_path": str(source_path.resolve(strict=False)),
-        }
-    ]
-
-
 def _attach_reference_hints(result: dict[str, Any], question: str) -> dict[str, Any]:
-    hints = _reference_hints_for_question(question)
-    if not hints:
-        return result
-
-    fixed = result.copy()
-    data = dict(fixed.get("data") or {})
-    data["references"] = _merge_references(hints, _existing_references(fixed))
-    fixed["data"] = data
-    return fixed
+    return result

@@ -1,0 +1,112 @@
+[
+  {
+    "message_id": "2",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\mistralai__mistral-small-2603\\testchina\\2.enriched.json",
+    "summary_chars": 529,
+    "key_facts": 13,
+    "topics": 6,
+    "quotes": 1,
+    "events": 3,
+    "triage": "keep",
+    "content_type": "analysis"
+  },
+  {
+    "message_id": "3",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\mistralai__mistral-small-2603\\testchina\\3.enriched.json",
+    "summary_chars": 406,
+    "key_facts": 12,
+    "topics": 8,
+    "quotes": 5,
+    "events": 3,
+    "triage": "keep",
+    "content_type": "analysis"
+  },
+  {
+    "message_id": "4",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\mistralai__mistral-small-2603\\testchina\\4.enriched.json",
+    "summary_chars": 304,
+    "key_facts": 5,
+    "topics": 4,
+    "quotes": 4,
+    "events": 0,
+    "triage": "keep",
+    "content_type": "news"
+  },
+  {
+    "message_id": "5",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\mistralai__mistral-small-2603\\testchina\\5.enriched.json",
+    "summary_chars": 546,
+    "key_facts": 18,
+    "topics": 10,
+    "quotes": 0,
+    "events": 3,
+    "triage": "keep",
+    "content_type": "analysis"
+  },
+  {
+    "message_id": "6",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\mistralai__mistral-small-2603\\testchina\\6.enriched.json",
+    "summary_chars": 345,
+    "key_facts": 9,
+    "topics": 5,
+    "quotes": 0,
+    "events": 1,
+    "triage": "keep",
+    "content_type": "news"
+  },
+  {
+    "message_id": "7",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\mistralai__mistral-small-2603\\testchina\\7.enriched.json",
+    "summary_chars": 277,
+    "key_facts": 16,
+    "topics": 5,
+    "quotes": 4,
+    "events": 0,
+    "triage": "keep",
+    "content_type": "analysis"
+  },
+  {
+    "message_id": "9",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\mistralai__mistral-small-2603\\testchina\\9.enriched.json",
+    "summary_chars": 350,
+    "key_facts": 6,
+    "topics": 6,
+    "quotes": 0,
+    "events": 0,
+    "triage": "keep",
+    "content_type": "news"
+  },
+  {
+    "message_id": "11",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\mistralai__mistral-small-2603\\testchina\\11.enriched.json",
+    "summary_chars": 315,
+    "key_facts": 13,
+    "topics": 6,
+    "quotes": 3,
+    "events": 0,
+    "triage": "keep",
+    "content_type": "analysis"
+  },
+  {
+    "message_id": "12",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\mistralai__mistral-small-2603\\testchina\\12.enriched.json",
+    "summary_chars": 370,
+    "key_facts": 13,
+    "topics": 5,
+    "quotes": 2,
+    "events": 2,
+    "triage": "keep",
+    "content_type": "analysis"
+  },
+  {
+    "message_id": "13",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\mistralai__mistral-small-2603\\testchina\\13.enriched.json",
+    "summary_chars": 443,
+    "key_facts": 18,
+    "topics": 9,
+    "quotes": 2,
+    "events": 3,
+    "triage": "keep",
+    "content_type": "analysis"
+  }
+]

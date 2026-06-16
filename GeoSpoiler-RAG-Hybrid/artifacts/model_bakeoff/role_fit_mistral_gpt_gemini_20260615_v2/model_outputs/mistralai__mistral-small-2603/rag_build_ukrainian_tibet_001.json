@@ -1,0 +1,54 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:10:38+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_ukrainian_tibet_001",
+  "prompt_hash": "ae2f7b524ab2943b4d566b9f2860a75184c23cbbae5adf8d53d1a23d3f0ee650",
+  "input_tokens": 280,
+  "output_tokens": 294,
+  "latency_ms": 2893,
+  "estimated_cost_usd": 0.0002184,
+  "raw_response": "{\n  \"summary\": \"China criticized the Grammy Award given to the Dalai Lama, calling it a tool for political manipulation.\",\n  \"entities\": [\n    \"Китай\",\n    \"премія «Греммі»\",\n    \"Далай-лама\",\n    \"Пекін\",\n    \"МЗС\",\n    \"Лінь Цзянь\"\n  ],\n  \"relations\": [\n    {\"subject\": \"Китай\", \"predicate\": \"критикував\", \"object\": \"присудження премії «Греммі» Далай-ламі\"},\n    {\"subject\": \"Пекін\", \"predicate\": \"назвав нагороду\", \"object\": \"«інструментом політичних маніпуляцій проти Китаю»\"},\n    {\"subject\": \"Лінь Цзянь\", \"predicate\": \"заявив\", \"object\": \"назву нагороди «інструментом політичних маніпуляцій проти Китаю»\"}\n  ],\n  \"claims\": [\n    {\"claim\": \"Пекін назвав нагороду «інструментом політичних маніпуляцій проти Китаю»\", \"attribution\": \"представник МЗС Лінь Цзянь\"}\n  ],\n  \"dates\": [],\n  \"source_fidelity_notes\": []\n}",
+  "parsed_response": {
+    "summary": "China criticized the Grammy Award given to the Dalai Lama, calling it a tool for political manipulation.",
+    "entities": [
+      "Китай",
+      "премія «Греммі»",
+      "Далай-лама",
+      "Пекін",
+      "МЗС",
+      "Лінь Цзянь"
+    ],
+    "relations": [
+      {
+        "subject": "Китай",
+        "predicate": "критикував",
+        "object": "присудження премії «Греммі» Далай-ламі"
+      },
+      {
+        "subject": "Пекін",
+        "predicate": "назвав нагороду",
+        "object": "«інструментом політичних маніпуляцій проти Китаю»"
+      },
+      {
+        "subject": "Лінь Цзянь",
+        "predicate": "заявив",
+        "object": "назву нагороди «інструментом політичних маніпуляцій проти Китаю»"
+      }
+    ],
+    "claims": [
+      {
+        "claim": "Пекін назвав нагороду «інструментом політичних маніпуляцій проти Китаю»",
+        "attribution": "представник МЗС Лінь Цзянь"
+      }
+    ],
+    "dates": [],
+    "source_fidelity_notes": []
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

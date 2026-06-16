@@ -18,9 +18,9 @@ from pathlib import Path
 from typing import Any
 
 import config
+from cli_query import _extract_query_sources
 from loader.lightrag_loader import create_rag, query_rag_result
-from main import _extract_query_sources
-from test_golden_set import (
+from tests.test_golden_set import (
     _env_float,
     _golden_query_mode,
     _golden_query_retries,

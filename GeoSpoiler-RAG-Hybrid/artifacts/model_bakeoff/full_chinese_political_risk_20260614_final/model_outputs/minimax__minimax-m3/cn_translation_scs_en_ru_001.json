@@ -1,0 +1,19 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:53:37+00:00",
+  "model_id": "minimax/minimax-m3",
+  "provider": "openrouter",
+  "role": "translation",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_translation_scs_en_ru_001",
+  "prompt_hash": "22cc9ab3ce5250211690647b9b5eb2f4e7968458e3914dc577058bcff38ce0ae",
+  "input_tokens": 288,
+  "output_tokens": 206,
+  "latency_ms": 11916,
+  "estimated_cost_usd": 0.0003336,
+  "raw_response": "Трибунал отверг претензии Китая, основанные на «линии девяти штрихов», однако Пекин не признал это решение и продолжил настаивать на своих исторических правах в спорных водах.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

@@ -1,0 +1,37 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:42:57+00:00",
+  "model_id": "xiaomi/mimo-v2.5",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_source_tiananmen_en_001",
+  "prompt_hash": "e2731d76222ab2cbca47534adcf4a2225d4cef8a0bfe2f1472269d01f9e5669e",
+  "input_tokens": 168,
+  "output_tokens": 127,
+  "latency_ms": 1941,
+  "estimated_cost_usd": 5.908e-05,
+  "raw_response": "{\n  \"claims\": [\n    \"families of victims called for accountability for the 1989 Tiananmen crackdown\",\n    \"Chinese officials describe the events as political turmoil\",\n    \"Chinese officials say stability was restored\"\n  ],\n  \"entities\": [\n    \"families of victims\",\n    \"Chinese officials\",\n    \"1989 Tiananmen crackdown\"\n  ],\n  \"sensitive_topics\": [\n    \"1989 Tiananmen crackdown\",\n    \"political unrest\",\n    \"government response to protests\",\n    \"human rights\"\n  ],\n  \"model_added_interpretation\": \"\"\n}",
+  "parsed_response": {
+    "claims": [
+      "families of victims called for accountability for the 1989 Tiananmen crackdown",
+      "Chinese officials describe the events as political turmoil",
+      "Chinese officials say stability was restored"
+    ],
+    "entities": [
+      "families of victims",
+      "Chinese officials",
+      "1989 Tiananmen crackdown"
+    ],
+    "sensitive_topics": [
+      "1989 Tiananmen crackdown",
+      "political unrest",
+      "government response to protests",
+      "human rights"
+    ],
+    "model_added_interpretation": ""
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

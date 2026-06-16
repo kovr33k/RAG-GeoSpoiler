@@ -1,0 +1,75 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:10:48+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_country_list_001",
+  "prompt_hash": "fa933c5cd2c7cc9b3f4f9bcabf4d6ef31eddb714393fd9c4bed29144843d5987",
+  "input_tokens": 278,
+  "output_tokens": 438,
+  "latency_ms": 3064,
+  "estimated_cost_usd": 0.0003045,
+  "raw_response": "{\n  \"summary\": \"The overview discusses geopolitical risks involving Iran, China, Russia, Ukraine, and the US, linking the Strait of Hormuz risk to China's energy imports and Russia's war in Ukraine to dual-use component supplies.\",\n  \"entities\": [\n    \"Иран\",\n    \"Китай\",\n    \"Россия\",\n    \"Украина\",\n    \"США\",\n    \"Ормузский пролив\"\n  ],\n  \"relations\": [\n    {\n      \"source\": \"обзор\",\n      \"relation\": \"упоминает\",\n      \"target\": \"Иран\"\n    },\n    {\n      \"source\": \"обзор\",\n      \"relation\": \"упоминает\",\n      \"target\": \"Китай\"\n    },\n    {\n      \"source\": \"обзор\",\n      \"relation\": \"упоминает\",\n      \"target\": \"Россия\"\n    },\n    {\n      \"source\": \"обзор\",\n      \"relation\": \"упоминает\",\n      \"target\": \"Украина\"\n    },\n    {\n      \"source\": \"обзор\",\n      \"relation\": \"упоминает\",\n      \"target\": \"США\"\n    },\n    {\n      \"source\": \"автор\",\n      \"relation\": \"связывает\",\n      \"target\": \"риск вокруг Ормузского пролива\",\n      \"with\": \"энергетический импорт Китая\"\n    },\n    {\n      \"source\": \"автор\",\n      \"relation\": \"связывает\",\n      \"target\": \"война России против Украины\",\n      \"with\": \"поставки компонентов двойного назначения\"\n    }\n  ],\n  \"claims\": [\n    \"В обзоре упоминаются Иран, Китай, Россия, Украина и США.\",\n    \"Автор связывает риск вокруг Ормузского пролива с энергетическим импортом Китая.\",\n    \"Автор связывает войну России против Украины с поставками компонентов двойного назначения.\"\n  ],\n  \"dates\": [],\n  \"source_fidelity_notes\": []\n}",
+  "parsed_response": {
+    "summary": "The overview discusses geopolitical risks involving Iran, China, Russia, Ukraine, and the US, linking the Strait of Hormuz risk to China's energy imports and Russia's war in Ukraine to dual-use component supplies.",
+    "entities": [
+      "Иран",
+      "Китай",
+      "Россия",
+      "Украина",
+      "США",
+      "Ормузский пролив"
+    ],
+    "relations": [
+      {
+        "source": "обзор",
+        "relation": "упоминает",
+        "target": "Иран"
+      },
+      {
+        "source": "обзор",
+        "relation": "упоминает",
+        "target": "Китай"
+      },
+      {
+        "source": "обзор",
+        "relation": "упоминает",
+        "target": "Россия"
+      },
+      {
+        "source": "обзор",
+        "relation": "упоминает",
+        "target": "Украина"
+      },
+      {
+        "source": "обзор",
+        "relation": "упоминает",
+        "target": "США"
+      },
+      {
+        "source": "автор",
+        "relation": "связывает",
+        "target": "риск вокруг Ормузского пролива",
+        "with": "энергетический импорт Китая"
+      },
+      {
+        "source": "автор",
+        "relation": "связывает",
+        "target": "война России против Украины",
+        "with": "поставки компонентов двойного назначения"
+      }
+    ],
+    "claims": [
+      "В обзоре упоминаются Иран, Китай, Россия, Украина и США.",
+      "Автор связывает риск вокруг Ормузского пролива с энергетическим импортом Китая.",
+      "Автор связывает войну России против Украины с поставками компонентов двойного назначения."
+    ],
+    "dates": [],
+    "source_fidelity_notes": []
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

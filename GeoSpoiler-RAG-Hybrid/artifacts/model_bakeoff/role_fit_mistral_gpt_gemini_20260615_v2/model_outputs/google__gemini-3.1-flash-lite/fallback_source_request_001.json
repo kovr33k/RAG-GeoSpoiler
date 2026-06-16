@@ -1,0 +1,19 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:11:01+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "fallback_synth",
+  "suite": "role_fallback_synth_targeted",
+  "case_id": "fallback_source_request_001",
+  "prompt_hash": "8c450044f4741026b99e26231881f875411cf3702e9552dc9335771cdd22555e",
+  "input_tokens": 324,
+  "output_tokens": 75,
+  "latency_ms": 1912,
+  "estimated_cost_usd": 0.0001935,
+  "raw_response": "Информация о спутнике TEE-01B содержится в источнике `telegram:china:88`. Согласно этому сообщению, Financial Times сообщила, что Иран использовал данный китайский разведывательный спутник, который был построен и запущен в Китае, а впоследствии перешел под контроль аэрокосмических сил КСИР.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

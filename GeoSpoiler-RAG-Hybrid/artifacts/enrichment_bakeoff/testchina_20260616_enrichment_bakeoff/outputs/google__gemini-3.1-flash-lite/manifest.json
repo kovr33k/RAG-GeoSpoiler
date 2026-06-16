@@ -1,0 +1,112 @@
+[
+  {
+    "message_id": "2",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\google__gemini-3.1-flash-lite\\testchina\\2.enriched.json",
+    "summary_chars": 417,
+    "key_facts": 9,
+    "topics": 5,
+    "quotes": 1,
+    "events": 1,
+    "triage": "keep",
+    "content_type": "analysis"
+  },
+  {
+    "message_id": "3",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\google__gemini-3.1-flash-lite\\testchina\\3.enriched.json",
+    "summary_chars": 490,
+    "key_facts": 9,
+    "topics": 5,
+    "quotes": 4,
+    "events": 2,
+    "triage": "keep",
+    "content_type": "analysis"
+  },
+  {
+    "message_id": "4",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\google__gemini-3.1-flash-lite\\testchina\\4.enriched.json",
+    "summary_chars": 283,
+    "key_facts": 4,
+    "topics": 4,
+    "quotes": 1,
+    "events": 0,
+    "triage": "keep",
+    "content_type": "news"
+  },
+  {
+    "message_id": "5",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\google__gemini-3.1-flash-lite\\testchina\\5.enriched.json",
+    "summary_chars": 0,
+    "key_facts": 0,
+    "topics": 0,
+    "quotes": 0,
+    "events": 0,
+    "triage": "keep",
+    "content_type": "analysis"
+  },
+  {
+    "message_id": "6",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\google__gemini-3.1-flash-lite\\testchina\\6.enriched.json",
+    "summary_chars": 404,
+    "key_facts": 6,
+    "topics": 4,
+    "quotes": 0,
+    "events": 1,
+    "triage": "keep",
+    "content_type": "news"
+  },
+  {
+    "message_id": "7",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\google__gemini-3.1-flash-lite\\testchina\\7.enriched.json",
+    "summary_chars": 274,
+    "key_facts": 6,
+    "topics": 4,
+    "quotes": 0,
+    "events": 0,
+    "triage": "keep",
+    "content_type": "analysis"
+  },
+  {
+    "message_id": "9",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\google__gemini-3.1-flash-lite\\testchina\\9.enriched.json",
+    "summary_chars": 0,
+    "key_facts": 0,
+    "topics": 0,
+    "quotes": 0,
+    "events": 0,
+    "triage": "keep",
+    "content_type": "news"
+  },
+  {
+    "message_id": "11",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\google__gemini-3.1-flash-lite\\testchina\\11.enriched.json",
+    "summary_chars": 375,
+    "key_facts": 7,
+    "topics": 5,
+    "quotes": 0,
+    "events": 0,
+    "triage": "keep",
+    "content_type": "analysis"
+  },
+  {
+    "message_id": "12",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\google__gemini-3.1-flash-lite\\testchina\\12.enriched.json",
+    "summary_chars": 442,
+    "key_facts": 7,
+    "topics": 4,
+    "quotes": 0,
+    "events": 1,
+    "triage": "keep",
+    "content_type": "analysis"
+  },
+  {
+    "message_id": "13",
+    "output_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\outputs\\google__gemini-3.1-flash-lite\\testchina\\13.enriched.json",
+    "summary_chars": 430,
+    "key_facts": 10,
+    "topics": 5,
+    "quotes": 1,
+    "events": 1,
+    "triage": "keep",
+    "content_type": "analysis"
+  }
+]

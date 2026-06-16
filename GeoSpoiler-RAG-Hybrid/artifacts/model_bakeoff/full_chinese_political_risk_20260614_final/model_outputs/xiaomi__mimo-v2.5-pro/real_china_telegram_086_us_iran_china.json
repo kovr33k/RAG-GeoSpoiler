@@ -1,0 +1,55 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T23:04:53+00:00",
+  "model_id": "xiaomi/mimo-v2.5-pro",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_086_us_iran_china",
+  "prompt_hash": "d4335aa8318a2d104bd1cacfcc040806354ea8145753bb88a96339be8e2d31ec",
+  "input_tokens": 311,
+  "output_tokens": 331,
+  "latency_ms": 7686,
+  "estimated_cost_usd": 0.00042325,
+  "raw_response": "{\n  \"claims\": [\n    {\n      \"claim\": \"China grew within the American system, not outside it.\",\n      \"source\": \"telegram:china:86\"\n    },\n    {\n      \"claim\": \"China's model was built on stable world trade, free sea routes, access to the dollar system, and predictable rules.\",\n      \"source\": \"telegram:china:86\"\n    },\n    {\n      \"claim\": \"According to the author, a war around Iran for China is not a window of opportunity but a stress test for the growth model.\",\n      \"source\": \"telegram:china:86\"\n    },\n    {\n      \"claim\": \"China avoids escalation, limiting itself to diplomacy.\",\n      \"source\": \"telegram:china:86\"\n    },\n    {\n      \"claim\": \"The same logic is transferred to Taiwan: the weakening of the US itself does not mean a beneficial moment for a forceful scenario.\",\n      \"source\": \"telegram:china:86\"\n    }\n  ],\n  \"entities\": [\n    \"China\",\n    \"United States\",\n    \"Iran\",\n    \"Taiwan\",\n    \"Foreign Affairs\"\n  ],\n  \"sensitive_topics\": [\n    \"China's rise within the US-led international system\",\n    \"Potential US-China conflict over Taiwan\",\n    \"US-Iran tensions and their implications for China\"\n  ],\n  \"model_added_interpretation\": \"The post summarizes an analysis from Foreign Affairs, presenting a perspective on China's strategic calculations regarding global power dynamics and specific geopolitical flashpoints (Iran, Taiwan), emphasizing cautious diplomacy over forceful actions.\"\n}",
+  "parsed_response": {
+    "claims": [
+      {
+        "claim": "China grew within the American system, not outside it.",
+        "source": "telegram:china:86"
+      },
+      {
+        "claim": "China's model was built on stable world trade, free sea routes, access to the dollar system, and predictable rules.",
+        "source": "telegram:china:86"
+      },
+      {
+        "claim": "According to the author, a war around Iran for China is not a window of opportunity but a stress test for the growth model.",
+        "source": "telegram:china:86"
+      },
+      {
+        "claim": "China avoids escalation, limiting itself to diplomacy.",
+        "source": "telegram:china:86"
+      },
+      {
+        "claim": "The same logic is transferred to Taiwan: the weakening of the US itself does not mean a beneficial moment for a forceful scenario.",
+        "source": "telegram:china:86"
+      }
+    ],
+    "entities": [
+      "China",
+      "United States",
+      "Iran",
+      "Taiwan",
+      "Foreign Affairs"
+    ],
+    "sensitive_topics": [
+      "China's rise within the US-led international system",
+      "Potential US-China conflict over Taiwan",
+      "US-Iran tensions and their implications for China"
+    ],
+    "model_added_interpretation": "The post summarizes an analysis from Foreign Affairs, presenting a perspective on China's strategic calculations regarding global power dynamics and specific geopolitical flashpoints (Iran, Taiwan), emphasizing cautious diplomacy over forceful actions."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

@@ -39,19 +39,26 @@ retrieval/
   - composer search.
 
 loader/
-  LightRAG creation, loading, query prompt setup, wiki/card context attachment,
-  fallback synthesis, source extraction support.
+  Focused LightRAG modules for factory setup, ingestion, storage, extraction,
+  entity merge policy, query orchestration, card fallback context, and wiki
+  context. `loader/lightrag_loader.py` is a compatibility facade.
+
+cli_tools.py
+  Secondary command helpers for experiment-registry, enriched-validation,
+  source-registry, FTS, and transcription-backfill printers.
 
 cli.py
-  Small CLI command helpers extracted from main.py as the first L-lite refactor
-  boundary. Currently owns experiment-registry, enriched-validation,
-  source-registry, FTS, and transcription-backfill command printers.
+  Compatibility wrapper that re-exports `cli_tools` for older imports.
+
+cli_app.py / cli_pipeline.py / cli_query.py / cli_wiki.py / cli_runtime.py
+  Argparse command routing, pipeline commands, query/source display helpers,
+  wiki commands, and shared CLI runtime utilities.
 
 experiment_registry.py
   Read-only score-artifact registry for golden/probe/smoke run summaries.
 
 main.py
-  CLI orchestration.
+  Thin entry point that calls `cli_app.main()`.
 ```
 
 ## Source Of Truth
@@ -92,8 +99,9 @@ cmd_enrich
   -> state/enrichment_progress.json update
 
 cmd_load
-  -> loader.lightrag_loader.create_rag
-  -> loader.lightrag_loader.load_from_directory
+  -> cli_pipeline.cmd_load
+  -> loader.factory.create_rag
+  -> loader.ingest.load_from_directory
   -> rag_storage/
 ```
 
@@ -244,8 +252,10 @@ search/report commands. Cards-only modes avoid LightRAG and live LLM calls.
 Normal query entry:
 
 ```text
-main.py cmd_query
-  -> loader.lightrag_loader.query_rag_result
+main.py
+  -> cli_app
+  -> cli_query.cmd_query
+  -> loader.query.query_rag_result
 ```
 
 Inside the loader query path:
@@ -277,7 +287,9 @@ aggregation. Answer is the normal cautious response profile.
 Search entry:
 
 ```text
-main.py search
+main.py
+  -> cli_app
+  -> cli_query.cmd_search
   -> retrieval.composer.search
 ```
 
@@ -303,7 +315,7 @@ Source grounding is maintained by several cooperating layers:
 - source registry gives a single source passport;
 - wiki indexes map pages to source ids;
 - query results carry `data.references`;
-- `main._extract_query_sources` resolves references for source display.
+- `cli_query._extract_query_sources` resolves references for source display.
 
 Known failure class: answer text can be plausible while source selection is
 wrong. This is why golden and focused live probes check source-specific cases,
@@ -324,7 +336,7 @@ Live model checks:
 
 ```text
 python main.py baseline probe N
-python test_golden_set.py
+python tests/test_golden_set.py
 python llm_verification_probe.py
 python main.py experiments index
 ```

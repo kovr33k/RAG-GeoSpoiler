@@ -14,7 +14,9 @@ The pipeline can:
 
 ## Project Layout
 
-- `main.py` — CLI entry point
+- `main.py` — thin CLI entry point
+- `cli_app.py`, `cli_pipeline.py`, `cli_query.py`, `cli_wiki.py`, `cli_tools.py` — command routing and CLI command groups
+- `loader/` — focused LightRAG factory, ingest, storage, query, card-context, and wiki-context modules
 - `run_pipeline.ps1` — Windows-friendly runner with UTF-8 and Python resolution
 - `run_pipeline.cmd` — wrapper that bypasses restrictive PowerShell execution policies
 - `auth.py` — one-time Telegram authorization
@@ -145,8 +147,8 @@ Enriched-card rebuild is not a supported release path. Use the normalized-source
 ## Testing
 
 ```powershell
-python test_golden_set.py
-python -m unittest discover -p "test_*.py" -v
+python tests/test_golden_set.py
+python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
 If `python` resolves to the Windows Store shim, either activate your environment first or use the real interpreter path.
@@ -155,7 +157,7 @@ Unit tests are intended to be no-network. To enforce that locally, run:
 
 ```powershell
 $env:GEOSPOILER_NO_NETWORK = "1"
-python -m unittest discover -p "test_*.py"
+python -m unittest discover -s tests -p "test_*.py"
 ```
 
 Live model checks such as `llm_verification_probe.py`, golden-set model runs, Telegram fetches, and transcription smoke

@@ -19,8 +19,8 @@ from pathlib import Path
 from typing import Any
 
 import config
+from cli_query import _extract_query_sources
 from loader.lightrag_loader import create_rag, query_rag_result
-from main import _extract_query_sources
 
 PROBE_RESULTS_FILE = Path("artifacts/llm_verification_probe_results.md")
 PROBE_SCORES_FILE = Path("artifacts/llm_verification_probe_scores.json")

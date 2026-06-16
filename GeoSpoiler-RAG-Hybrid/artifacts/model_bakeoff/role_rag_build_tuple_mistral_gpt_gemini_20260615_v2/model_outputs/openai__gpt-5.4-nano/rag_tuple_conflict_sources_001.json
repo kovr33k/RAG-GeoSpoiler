@@ -1,0 +1,19 @@
+{
+  "run_id": "role_rag_build_tuple_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:17:26+00:00",
+  "model_id": "openai/gpt-5.4-nano",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_tuple_targeted",
+  "case_id": "rag_tuple_conflict_sources_001",
+  "prompt_hash": "84bb8e68964c0316a617622ff9ed7a26eaff2b73f01ccdaeaccc9a03a0cec056",
+  "input_tokens": 226,
+  "output_tokens": 320,
+  "latency_ms": 2944,
+  "estimated_cost_usd": 0.0004452,
+  "raw_response": "entity{tuple_delimiter}Source A{tuple_delimiter}other{tuple_delimiter}An unnamed source in the text that alleges officials hid casualty figures after the strike.  \nrelation{tuple_delimiter}Source A{tuple_delimiter}Source B{tuple_delimiter}Source A and Source B are in disagreement regarding whether casualty figures were hidden after the strike. {tuple_delimiter}The text states Source A alleges concealment and Source B denies it.  \nrelation{tuple_delimiter}Source A{tuple_delimiter}the strike{tuple_delimiter}Source A alleges casualty figures were hidden after the strike. {tuple_delimiter}Allegation: officials hid casualty figures after the strike.  \nrelation{tuple_delimiter}Source B{tuple_delimiter}the strike{tuple_delimiter}Source B denies that casualty figures were hidden after the strike and says published data is complete. {tuple_delimiter}Denial: published data is complete; denies concealment.  \nrelation{tuple_delimiter}the post{tuple_delimiter}Source A{tuple_delimiter}The post reports the competing claims but does not determine which is correct. {tuple_delimiter}Uncertainty/neutrality: the post does not decide which source is correct.  \nrelation{tuple_delimiter}the post{tuple_delimiter}Source B{tuple_delimiter}The post reports the competing claims but does not determine which is correct. {tuple_delimiter}Uncertainty/neutrality: the post does not decide which source is correct.  \n{completion_delimiter}",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

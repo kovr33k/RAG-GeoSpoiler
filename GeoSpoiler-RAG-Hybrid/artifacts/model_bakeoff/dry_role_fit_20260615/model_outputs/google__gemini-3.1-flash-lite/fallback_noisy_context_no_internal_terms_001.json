@@ -1,0 +1,50 @@
+{
+  "run_id": "dry_role_fit_20260615",
+  "timestamp": "2026-06-15T18:04:46+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "fallback_synth",
+  "suite": "role_fallback_synth_targeted",
+  "case_id": "fallback_noisy_context_no_internal_terms_001",
+  "prompt_hash": "cda3caaffa17e793aebd01a566366c3ea3be531cec768e3463aabbe68ee0bf0c",
+  "input_tokens": 284,
+  "output_tokens": 72,
+  "latency_ms": 0,
+  "estimated_cost_usd": 0.000179,
+  "raw_response": "{\"dry_run\": true, \"expected\": {\"must_include_any_groups\": [[\"Пекин\", \"Beijing\", \"Китай\"], [\"Тайван\", \"Taiwan\"], [\"военное давление\", \"military pressure\"], [\"принудитель\", \"coercive\"]], \"must_not_include\": [\"Shadow fallback\", \"score 12.4\", \"B-roll\", \"output/enriched\", \"карточ\", \"LightRAG\"]}}",
+  "parsed_response": {
+    "dry_run": true,
+    "expected": {
+      "must_include_any_groups": [
+        [
+          "Пекин",
+          "Beijing",
+          "Китай"
+        ],
+        [
+          "Тайван",
+          "Taiwan"
+        ],
+        [
+          "военное давление",
+          "military pressure"
+        ],
+        [
+          "принудитель",
+          "coercive"
+        ]
+      ],
+      "must_not_include": [
+        "Shadow fallback",
+        "score 12.4",
+        "B-roll",
+        "output/enriched",
+        "карточ",
+        "LightRAG"
+      ]
+    }
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

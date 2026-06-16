@@ -1,0 +1,9 @@
+{
+  "recommended": {
+    "RAG_BUILD_MODEL": "google/gemini-3.1-flash-lite",
+    "FALLBACK_SYNTH_MODEL": "google/gemini-3.1-flash-lite"
+  },
+  "do_not_use_for_high_risk": [],
+  "yellow_models": [],
+  "red_models": []
+}

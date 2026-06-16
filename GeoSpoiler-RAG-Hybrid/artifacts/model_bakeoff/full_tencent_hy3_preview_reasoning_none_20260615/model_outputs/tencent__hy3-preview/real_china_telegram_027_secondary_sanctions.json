@@ -1,0 +1,37 @@
+{
+  "run_id": "full_tencent_hy3_preview_reasoning_none_20260615",
+  "timestamp": "2026-06-15T16:59:29+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_027_secondary_sanctions",
+  "prompt_hash": "34c988032734dba3a9a260084c7786fd1c9afaab63caed09e01c853b03e04dcb",
+  "input_tokens": 269,
+  "output_tokens": 198,
+  "latency_ms": 17922,
+  "estimated_cost_usd": 5.853e-05,
+  "raw_response": "{\n  \"claims\": [\n    \"Europe was reluctant to adopt the concept of secondary sanctions for a long time\",\n    \"Europe considered the ban on re-export to not be 'true'\",\n    \"This summer, Europe crossed this threshold for the first time\",\n    \"China and the US actively use exports, re-exports, licenses, and quotas against each other\"\n  ],\n  \"entities\": [\n    \"Europe\",\n    \"China\",\n    \"USA\"\n  ],\n  \"sensitive_topics\": [\n    \"secondary sanctions\",\n    \"re-export ban\",\n    \"trade restrictions between China and the US\"\n  ],\n  \"model_added_interpretation\": \"The source text presents the author's and the post's assertions about Europe's previous stance on secondary sanctions and re-export bans, its shift in position in the current summer, and the ongoing trade-related measures between China and the US, without providing external verification of these claims.\"\n}",
+  "parsed_response": {
+    "claims": [
+      "Europe was reluctant to adopt the concept of secondary sanctions for a long time",
+      "Europe considered the ban on re-export to not be 'true'",
+      "This summer, Europe crossed this threshold for the first time",
+      "China and the US actively use exports, re-exports, licenses, and quotas against each other"
+    ],
+    "entities": [
+      "Europe",
+      "China",
+      "USA"
+    ],
+    "sensitive_topics": [
+      "secondary sanctions",
+      "re-export ban",
+      "trade restrictions between China and the US"
+    ],
+    "model_added_interpretation": "The source text presents the author's and the post's assertions about Europe's previous stance on secondary sanctions and re-export bans, its shift in position in the current summer, and the ongoing trade-related measures between China and the US, without providing external verification of these claims."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

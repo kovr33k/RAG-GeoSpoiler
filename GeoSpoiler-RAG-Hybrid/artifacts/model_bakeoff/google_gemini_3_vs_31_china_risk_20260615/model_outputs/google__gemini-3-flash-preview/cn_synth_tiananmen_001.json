@@ -1,0 +1,19 @@
+{
+  "run_id": "google_gemini_3_vs_31_china_risk_20260615",
+  "timestamp": "2026-06-15T17:46:51+00:00",
+  "model_id": "google/gemini-3-flash-preview",
+  "provider": "openrouter",
+  "role": "query",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_synth_tiananmen_001",
+  "prompt_hash": "695a3565b1be5965cd45a36fb58fd49388a936f9d0858f99c9b8bea29f94ae9e",
+  "input_tokens": 166,
+  "output_tokens": 125,
+  "latency_ms": 2285,
+  "estimated_cost_usd": 0.000458,
+  "raw_response": "События 1989 года описываются в источниках с использованием следующих конфликтующих формулировок:\n\n*   **Семьи жертв** характеризуют произошедшее как «подавление на площади Тяньаньмэнь» (Tiananmen crackdown) и призывают к привлечению виновных к ответственности (Источник A).\n*   **Китайские официальные лица**, напротив, называют эти события «политическими волнениями» (political turmoil) и заявляют, что в результате их действий была «восстановлена стабильность» (Источник B).",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

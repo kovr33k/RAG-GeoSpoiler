@@ -1,0 +1,19 @@
+{
+  "run_id": "full_tencent_hy3_preview_reasoning_none_20260615",
+  "timestamp": "2026-06-15T17:04:13+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "translation",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_translation_en_ru_scs_001",
+  "prompt_hash": "7da4cb83b6f88728a3d5abfa600e33822e24e3317c497326a6611620653f4292",
+  "input_tokens": 133,
+  "output_tokens": 59,
+  "latency_ms": 10888,
+  "estimated_cost_usd": 2.077e-05,
+  "raw_response": "Трибунал отверг претензии Китая по линии из девяти пунктиров, в то время как Пекин отклонил решение и продолжил заявлять об исторических правах.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

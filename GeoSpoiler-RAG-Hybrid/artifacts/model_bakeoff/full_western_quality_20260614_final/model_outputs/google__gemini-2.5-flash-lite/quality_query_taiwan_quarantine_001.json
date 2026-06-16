@@ -1,0 +1,19 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:16:18+00:00",
+  "model_id": "google/gemini-2.5-flash-lite",
+  "provider": "openrouter",
+  "role": "query",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_query_taiwan_quarantine_001",
+  "prompt_hash": "f5c239f41ac09e672cbf979a3b558ad5eecc94e61a20d516ef90816edd4b829d",
+  "input_tokens": 165,
+  "output_tokens": 58,
+  "latency_ms": 1312,
+  "estimated_cost_usd": 3.97e-05,
+  "raw_response": "Согласно источнику А, Пекин может представить блокаду Тайваня как карантин для досмотра судов. Источник Б утверждает, что целью такого действия будет оказание экономического давления через страхование и логистику, а не немедленное физическое разрушение.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

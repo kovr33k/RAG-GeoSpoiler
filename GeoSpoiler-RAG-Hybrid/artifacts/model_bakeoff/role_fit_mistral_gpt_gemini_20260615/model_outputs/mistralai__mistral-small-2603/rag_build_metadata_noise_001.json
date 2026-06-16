@@ -1,0 +1,66 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615",
+  "timestamp": "2026-06-15T18:05:21+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_metadata_noise_001",
+  "prompt_hash": "9b12d01a1cd93cf05a0a9090ccff00a83c6239d5c9a8019b0bd8cca13cd7ce5b",
+  "input_tokens": 346,
+  "output_tokens": 379,
+  "latency_ms": 3206,
+  "estimated_cost_usd": 0.0002793,
+  "raw_response": "{\n  \"summary\": \"A Telegram post cites Financial Times reporting that China launched the TEE-01B satellite, later allegedly controlled by the Aerospace Forces of the Islamic Revolutionary Guard Corps (IRGC).\",\n  \"entities\": [\n    \"Financial Times\",\n    \"TEE-01B\",\n    \"Китай\",\n    \"аэрокосмические силы КСИР\",\n    \"Исламская революционная гвардия Корпуса стражей исламской революции (КСИР)\"\n  ],\n  \"relations\": [\n    {\"subject\": \"Financial Times\", \"relation\": \"reported\", \"object\": \"TEE-01B\"},\n    {\"subject\": \"TEE-01B\", \"relation\": \"launched in\", \"object\": \"Китай\"},\n    {\"subject\": \"TEE-01B\", \"relation\": \"later controlled by\", \"object\": \"аэрокосмические силы КСИР\"}\n  ],\n  \"claims\": [\n    {\"claim\": \"Financial Times reported that China built and launched the TEE-01B satellite.\", \"source\": \"Telegram post citing Financial Times\"},\n    {\"claim\": \"The TEE-01B satellite system allegedly later came under the control of the Aerospace Forces of the Islamic Revolutionary Guard Corps (IRGC).\", \"source\": \"Telegram post citing Financial Times\"},\n    {\"claim\": \"The post states there is no independent confirmation of these details.\", \"source\": \"Telegram post\"}\n  ],\n  \"dates\": [\"2026-06-10\"],\n  \"source_fidelity_notes\": [\n    \"The claims are attributed to Financial Times, not independently verified by the Telegram post author.\",\n    \"The post explicitly states there is no independent confirmation of the details.\"\n  ]\n}",
+  "parsed_response": {
+    "summary": "A Telegram post cites Financial Times reporting that China launched the TEE-01B satellite, later allegedly controlled by the Aerospace Forces of the Islamic Revolutionary Guard Corps (IRGC).",
+    "entities": [
+      "Financial Times",
+      "TEE-01B",
+      "Китай",
+      "аэрокосмические силы КСИР",
+      "Исламская революционная гвардия Корпуса стражей исламской революции (КСИР)"
+    ],
+    "relations": [
+      {
+        "subject": "Financial Times",
+        "relation": "reported",
+        "object": "TEE-01B"
+      },
+      {
+        "subject": "TEE-01B",
+        "relation": "launched in",
+        "object": "Китай"
+      },
+      {
+        "subject": "TEE-01B",
+        "relation": "later controlled by",
+        "object": "аэрокосмические силы КСИР"
+      }
+    ],
+    "claims": [
+      {
+        "claim": "Financial Times reported that China built and launched the TEE-01B satellite.",
+        "source": "Telegram post citing Financial Times"
+      },
+      {
+        "claim": "The TEE-01B satellite system allegedly later came under the control of the Aerospace Forces of the Islamic Revolutionary Guard Corps (IRGC).",
+        "source": "Telegram post citing Financial Times"
+      },
+      {
+        "claim": "The post states there is no independent confirmation of these details.",
+        "source": "Telegram post"
+      }
+    ],
+    "dates": [
+      "2026-06-10"
+    ],
+    "source_fidelity_notes": [
+      "The claims are attributed to Financial Times, not independently verified by the Telegram post author.",
+      "The post explicitly states there is no independent confirmation of the details."
+    ]
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

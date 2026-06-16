@@ -1,0 +1,35 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:48:13+00:00",
+  "model_id": "xiaomi/mimo-v2.5",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_source_secondary_sanctions_ru_001",
+  "prompt_hash": "6817a13add32a0c1bf257c8533822bb6e9843ec049720fd6d6a8fc70c3a7a655",
+  "input_tokens": 202,
+  "output_tokens": 135,
+  "latency_ms": 2416,
+  "estimated_cost_usd": 6.608e-05,
+  "raw_response": "{\n  \"claims\": [\n    \"Европа долго избегала вторичных санкций и запрета реэкспорта.\",\n    \"Китай и США активно используют экспортные лицензии, квоты и ограничения реэкспорта друг против друга.\"\n  ],\n  \"entities\": [\n    \"Европа\",\n    \"Китай\",\n    \"США\"\n  ],\n  \"sensitive_topics\": [\n    \"international sanctions\",\n    \"export controls\",\n    \"geopolitical tensions\"\n  ],\n  \"model_added_interpretation\": \"\"\n}",
+  "parsed_response": {
+    "claims": [
+      "Европа долго избегала вторичных санкций и запрета реэкспорта.",
+      "Китай и США активно используют экспортные лицензии, квоты и ограничения реэкспорта друг против друга."
+    ],
+    "entities": [
+      "Европа",
+      "Китай",
+      "США"
+    ],
+    "sensitive_topics": [
+      "international sanctions",
+      "export controls",
+      "geopolitical tensions"
+    ],
+    "model_added_interpretation": ""
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

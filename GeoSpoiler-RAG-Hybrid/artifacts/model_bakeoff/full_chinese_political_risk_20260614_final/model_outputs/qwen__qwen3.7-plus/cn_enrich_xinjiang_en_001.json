@@ -1,0 +1,69 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:40:14+00:00",
+  "model_id": "qwen/qwen3.7-plus",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk",
+  "case_id": "cn_enrich_xinjiang_en_001",
+  "prompt_hash": "ae1e645591ce93c24dcf29fba0783f8a696bbc72eddfff5abec7c4429cae47b7",
+  "input_tokens": 172,
+  "output_tokens": 1576,
+  "latency_ms": 29775,
+  "estimated_cost_usd": 0.00207232,
+  "raw_response": "{\n  \"summary\": \"A report alleges forced labor in Xinjiang supply chains, a claim denied by Chinese officials who characterize the facilities as vocational training centers.\",\n  \"key_facts\": [\n    \"A report alleges forced labor is linked to Xinjiang supply chains.\",\n    \"Chinese officials deny the forced labor allegations.\",\n    \"Chinese officials describe the facilities in question as vocational training centers.\"\n  ],\n  \"entities\": [\n    {\n      \"name\": \"Xinjiang\",\n      \"type\": \"Location\"\n    },\n    {\n      \"name\": \"Chinese officials\",\n      \"type\": \"Group\"\n    }\n  ],\n  \"topics\": [\n    \"Forced labor\",\n    \"Supply chains\",\n    \"Vocational training\",\n    \"Human rights allegations\"\n  ],\n  \"theses\": [\n    \"Allegations exist regarding forced labor within Xinjiang supply chains.\",\n    \"The Chinese government maintains that the facilities are vocational training centers, not sites of forced labor.\"\n  ],\n  \"quotes\": [],\n  \"events\": [\n    {\n      \"name\": \"Report publication\",\n      \"description\": \"A report alleging forced labor in Xinjiang supply chains is released.\"\n    },\n    {\n      \"name\": \"Official denial\",\n      \"description\": \"Chinese officials deny the allegations and reframe the facilities as vocational training centers.\"\n    }\n  ],\n  \"query_aliases\": [\n    \"Xinjiang forced labor report\",\n    \"Xinjiang vocational training centers\",\n    \"China supply chain labor allegations\",\n    \"Xinjiang human rights report\"\n  ],\n  \"broll_potential\": [\n    \"Industrial or agricultural facilities in Xinjiang\",\n    \"Chinese government press briefings or official statements\",\n    \"Generic manufacturing or supply chain operations\"\n  ],\n  \"broll_notes\": \"Footage should be illustrative. Specific internal footage of the facilities may be restricted, unavailable, or heavily contested by authorities.\"\n}",
+  "parsed_response": {
+    "summary": "A report alleges forced labor in Xinjiang supply chains, a claim denied by Chinese officials who characterize the facilities as vocational training centers.",
+    "key_facts": [
+      "A report alleges forced labor is linked to Xinjiang supply chains.",
+      "Chinese officials deny the forced labor allegations.",
+      "Chinese officials describe the facilities in question as vocational training centers."
+    ],
+    "entities": [
+      {
+        "name": "Xinjiang",
+        "type": "Location"
+      },
+      {
+        "name": "Chinese officials",
+        "type": "Group"
+      }
+    ],
+    "topics": [
+      "Forced labor",
+      "Supply chains",
+      "Vocational training",
+      "Human rights allegations"
+    ],
+    "theses": [
+      "Allegations exist regarding forced labor within Xinjiang supply chains.",
+      "The Chinese government maintains that the facilities are vocational training centers, not sites of forced labor."
+    ],
+    "quotes": [],
+    "events": [
+      {
+        "name": "Report publication",
+        "description": "A report alleging forced labor in Xinjiang supply chains is released."
+      },
+      {
+        "name": "Official denial",
+        "description": "Chinese officials deny the allegations and reframe the facilities as vocational training centers."
+      }
+    ],
+    "query_aliases": [
+      "Xinjiang forced labor report",
+      "Xinjiang vocational training centers",
+      "China supply chain labor allegations",
+      "Xinjiang human rights report"
+    ],
+    "broll_potential": [
+      "Industrial or agricultural facilities in Xinjiang",
+      "Chinese government press briefings or official statements",
+      "Generic manufacturing or supply chain operations"
+    ],
+    "broll_notes": "Footage should be illustrative. Specific internal footage of the facilities may be restricted, unavailable, or heavily contested by authorities."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

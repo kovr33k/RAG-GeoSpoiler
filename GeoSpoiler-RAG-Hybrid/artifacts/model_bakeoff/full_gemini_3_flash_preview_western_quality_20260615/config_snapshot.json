@@ -1,0 +1,41 @@
+{
+  "run_id": "full_gemini_3_flash_preview_western_quality_20260615",
+  "created_at": "2026-06-15T17:41:00+00:00",
+  "dry_run": false,
+  "roles": [],
+  "families": [],
+  "model_ids": [
+    "google/gemini-3-flash-preview"
+  ],
+  "suites": [
+    "eval\\model_bakeoff\\suites\\western_quality_enrichment.jsonl",
+    "eval\\model_bakeoff\\suites\\western_quality_translation.jsonl",
+    "eval\\model_bakeoff\\suites\\western_quality_query.jsonl",
+    "eval\\model_bakeoff\\suites\\western_quality_expanded.jsonl"
+  ],
+  "models": [
+    {
+      "id": "google/gemini-3-flash-preview",
+      "provider": "openrouter",
+      "family": "western",
+      "roles": [
+        "translation",
+        "enrichment",
+        "query",
+        "fallback_synth",
+        "script_pack"
+      ],
+      "priority": 1,
+      "input_price_per_m": 0.5,
+      "output_price_per_m": 3.0,
+      "api_id": "",
+      "base_url_env": "",
+      "api_key_env": ""
+    }
+  ],
+  "flags": {
+    "RERANKER_ENABLED": false,
+    "HYBRID_SYNTH_ENABLED": true,
+    "WIKI_ENABLED": true
+  }
+}

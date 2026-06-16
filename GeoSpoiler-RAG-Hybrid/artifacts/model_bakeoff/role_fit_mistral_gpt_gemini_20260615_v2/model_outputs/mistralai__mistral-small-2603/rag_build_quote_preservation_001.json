@@ -1,0 +1,55 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:10:07+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_quote_preservation_001",
+  "prompt_hash": "06cb4e40f40af01db54e8a5cad5a16ac413bbd59323956fddf93bb0c77e51101",
+  "input_tokens": 264,
+  "output_tokens": 238,
+  "latency_ms": 2592,
+  "estimated_cost_usd": 0.0001824,
+  "raw_response": "{\n  \"summary\": \"An unnamed source alleges that a measure creates a legal gray zone regarding Taiwan.\",\n  \"entities\": [\"Пекин\", \"Тайвань\"],\n  \"relations\": [\n    {\"source\": \"anonymous_source\", \"subject\": \"мера\", \"predicate\": \"создает\", \"object\": \"юридическая серая зона\"},\n    {\"source\": \"anonymous_source\", \"subject\": \"Пекин\", \"predicate\": \"может назвать\", \"object\": \"карантин Тайваня\", \"context\": \"проверкой судов, а не блокадой\"}\n  ],\n  \"claims\": [\n    {\"claim\": \"эта мера создает юридическую серую зону\", \"source\": \"анонимный источник\"},\n    {\"claim\": \"Пекин может назвать карантин Тайваня проверкой судов, а не блокадой\", \"source\": \"автор поста\"}\n  ],\n  \"dates\": [],\n  \"source_fidelity_notes\": [\"анонимный источник без подтверждения\", \"предположительный характер утверждений\"]\n}",
+  "parsed_response": {
+    "summary": "An unnamed source alleges that a measure creates a legal gray zone regarding Taiwan.",
+    "entities": [
+      "Пекин",
+      "Тайвань"
+    ],
+    "relations": [
+      {
+        "source": "anonymous_source",
+        "subject": "мера",
+        "predicate": "создает",
+        "object": "юридическая серая зона"
+      },
+      {
+        "source": "anonymous_source",
+        "subject": "Пекин",
+        "predicate": "может назвать",
+        "object": "карантин Тайваня",
+        "context": "проверкой судов, а не блокадой"
+      }
+    ],
+    "claims": [
+      {
+        "claim": "эта мера создает юридическую серую зону",
+        "source": "анонимный источник"
+      },
+      {
+        "claim": "Пекин может назвать карантин Тайваня проверкой судов, а не блокадой",
+        "source": "автор поста"
+      }
+    ],
+    "dates": [],
+    "source_fidelity_notes": [
+      "анонимный источник без подтверждения",
+      "предположительный характер утверждений"
+    ]
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

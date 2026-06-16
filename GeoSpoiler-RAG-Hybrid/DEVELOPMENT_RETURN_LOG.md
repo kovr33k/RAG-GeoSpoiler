@@ -5,10 +5,6 @@ Use `LLM_VERIFICATION_QUEUE.md` for model/live-endpoint checks; use this log for
 
 ## Pending
 
-- v1.1 guardrail removal follow-up:
-  The ultra-left/right similarity source hint remains necessary. A no-hint check on 2026-06-01 put the canonical
-  source `3299898370/11` at rank 4 instead of rank 1. Revisit only after graph/card retrieval can surface `11.txt`
-  first without `loader/reference_hints.py`.
 - A-lite local ruff report is deferred because `ruff` is not installed in the active Python 3.11 environment.
   CI installs `ruff` explicitly and runs `python -m ruff check . --config pyproject.toml --exit-zero`.
 - B2 data cleanup follow-up:
@@ -28,6 +24,30 @@ Use `LLM_VERIFICATION_QUEUE.md` for model/live-endpoint checks; use this log for
 
 ## Completed / Notes
 
+- 2026-06-09 ultra-left/right source hint removal:
+  Removed the hardcoded `hint-ultra-left-right-similarity` source injection from `loader/reference_hints.py`.
+  The root cause was that thin enriched cards such as `3299898370/11` could lose their normalized source body in
+  card search, while broad channel/header terms and loose prefix matching let adjacent posts outrank direct evidence.
+  Fixes:
+  - thin enriched cards fall back to normalized source text for local card search;
+  - similarity query terms expand lexically without hardcoding source ids;
+  - card ranking ignores metadata/header lines for content coverage;
+  - `ультралев*` and `ультраправ*` no longer match only on the shared `ультра` prefix;
+  - `AfD` / `АдГ` aliases expand during retrieval ranking;
+  - card-context ranking uses a wider candidate pool before trimming final context.
+  Verification:
+  `python main.py fts rebuild` -> 218/218 cards indexed;
+  selected source-selection golden `ultra_left_right_similarity_source` -> `1/1`, average `100.0`, source rank `1`;
+  full source-selection golden -> `10/10`, average `100.0`;
+  `python -m unittest` -> `193` tests OK;
+  full answer-quality golden -> `23/23`, average `100.0`.
+  Artifacts:
+  `artifacts/source_hint_removal_ultra_results.md`,
+  `artifacts/source_hint_removal_ultra_scores.json`,
+  `artifacts/source_hint_removal_full_source_selection_results.md`,
+  `artifacts/source_hint_removal_full_source_selection_scores.json`,
+  `artifacts/source_hint_removal_full_golden_results.md`,
+  `artifacts/source_hint_removal_full_golden_scores.json`.
 - 2026-06-02 v1.1.0 release closure:
   Added `RELEASE_V1_1.md` with final release summary, trusted runtime, final verification, artifact links, accepted
   debt, and supported rebuild path. Telegram re-auth is an external operational issue and was not needed for release

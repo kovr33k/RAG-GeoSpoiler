@@ -160,7 +160,7 @@ Wiki context is read by:
 - `retrieval/wiki_index.py` for lightweight page ranking;
 - `retrieval/wiki_resolver.py` for source resolution;
 - `retrieval/composer.py` for search/report context;
-- `loader/lightrag_loader.py` for query prompt/context assembly.
+- `loader/query.py` and `loader/wiki_context.py` for query prompt/context assembly.
 
 The wiki should help select and constrain sources, but final answers should
 still cite original posts, normalized files, or enriched cards.

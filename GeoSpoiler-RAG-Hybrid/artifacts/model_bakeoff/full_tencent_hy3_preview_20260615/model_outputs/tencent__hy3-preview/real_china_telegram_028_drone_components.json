@@ -1,0 +1,19 @@
+{
+  "run_id": "full_tencent_hy3_preview_20260615",
+  "timestamp": "2026-06-15T16:37:42+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_028_drone_components",
+  "prompt_hash": "6a140c38a71eb703e72786681a7ffbfc9c6ef0660650254eac5bc3fd1a4ced15",
+  "input_tokens": 309,
+  "output_tokens": 331,
+  "latency_ms": 6364,
+  "estimated_cost_usd": 8.898e-05,
+  "raw_response": "",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

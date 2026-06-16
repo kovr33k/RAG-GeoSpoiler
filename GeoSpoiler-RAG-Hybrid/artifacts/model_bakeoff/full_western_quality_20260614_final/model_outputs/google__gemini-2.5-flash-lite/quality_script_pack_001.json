@@ -1,0 +1,19 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:13:48+00:00",
+  "model_id": "google/gemini-2.5-flash-lite",
+  "provider": "openrouter",
+  "role": "script_pack",
+  "suite": "western_quality_query",
+  "case_id": "quality_script_pack_001",
+  "prompt_hash": "c0969ccb192e679f2a7084779649c8b164d8b930e6e7a24062d45661564da345",
+  "input_tokens": 152,
+  "output_tokens": 34,
+  "latency_ms": 1227,
+  "estimated_cost_usd": 2.88e-05,
+  "raw_response": "Пекин усилил военное давление на Тайвань (source_a). Тайваньские официальные лица назвали это давление принудительным (source_b).",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

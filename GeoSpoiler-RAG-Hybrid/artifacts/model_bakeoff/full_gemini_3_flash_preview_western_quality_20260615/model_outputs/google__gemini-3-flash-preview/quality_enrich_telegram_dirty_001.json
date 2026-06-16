@@ -1,0 +1,71 @@
+{
+  "run_id": "full_gemini_3_flash_preview_western_quality_20260615",
+  "timestamp": "2026-06-15T17:41:04+00:00",
+  "model_id": "google/gemini-3-flash-preview",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_enrichment",
+  "case_id": "quality_enrich_telegram_dirty_001",
+  "prompt_hash": "2e0998f80d69c9aa07005ca9951a8fb1793c5c5283da4fbbf19b5792317325ac",
+  "input_tokens": 200,
+  "output_tokens": 451,
+  "latency_ms": 4016,
+  "estimated_cost_usd": 0.001453,
+  "raw_response": "{\n  \"summary\": \"A report from November 4, 2025, regarding increased pressure from Organization C on Country B, based on unverified data from Actor A.\",\n  \"key_facts\": [\n    \"The post was published on 04.11.2025.\",\n    \"The author notes that a portion of the data originated from Actor A.\",\n    \"The author explicitly states that the data requires verification.\",\n    \"The tone of the post is described as sarcastic.\"\n  ],\n  \"entities\": [\n    {\n      \"name\": \"Organization C\",\n      \"type\": \"Organization\"\n    },\n    {\n      \"name\": \"Country B\",\n      \"type\": \"Location\"\n    },\n    {\n      \"name\": \"Actor A\",\n      \"type\": \"Person/Entity\"\n    }\n  ],\n  \"topics\": [\n    \"International Relations\",\n    \"Geopolitical Pressure\",\n    \"Information Verification\"\n  ],\n  \"theses\": [\n    {\n      \"source_claim\": \"Organization C has increased pressure on Country B.\"\n    }\n  ],\n  \"quotes\": [\n    \"exact quote here\"\n  ],\n  \"events\": [\n    {\n      \"date\": \"2025-11-04\",\n      \"description\": \"Source statement regarding Organization C and Country B.\"\n    }\n  ],\n  \"query_aliases\": [\n    \"Organization C pressure on Country B\",\n    \"Actor A data verification 2025\",\n    \"Country B geopolitical status November 2025\"\n  ],\n  \"broll_potential\": [\n    \"Footage of Organization C headquarters or logo.\",\n    \"Map highlighting Country B.\",\n    \"Generic footage of a person reviewing digital documents (representing Actor A's data).\"\n  ],\n  \"broll_notes\": \"Visuals should reflect the unverified nature of the claims; consider using 'unverified' or 'report' overlays.\"\n}",
+  "parsed_response": {
+    "summary": "A report from November 4, 2025, regarding increased pressure from Organization C on Country B, based on unverified data from Actor A.",
+    "key_facts": [
+      "The post was published on 04.11.2025.",
+      "The author notes that a portion of the data originated from Actor A.",
+      "The author explicitly states that the data requires verification.",
+      "The tone of the post is described as sarcastic."
+    ],
+    "entities": [
+      {
+        "name": "Organization C",
+        "type": "Organization"
+      },
+      {
+        "name": "Country B",
+        "type": "Location"
+      },
+      {
+        "name": "Actor A",
+        "type": "Person/Entity"
+      }
+    ],
+    "topics": [
+      "International Relations",
+      "Geopolitical Pressure",
+      "Information Verification"
+    ],
+    "theses": [
+      {
+        "source_claim": "Organization C has increased pressure on Country B."
+      }
+    ],
+    "quotes": [
+      "exact quote here"
+    ],
+    "events": [
+      {
+        "date": "2025-11-04",
+        "description": "Source statement regarding Organization C and Country B."
+      }
+    ],
+    "query_aliases": [
+      "Organization C pressure on Country B",
+      "Actor A data verification 2025",
+      "Country B geopolitical status November 2025"
+    ],
+    "broll_potential": [
+      "Footage of Organization C headquarters or logo.",
+      "Map highlighting Country B.",
+      "Generic footage of a person reviewing digital documents (representing Actor A's data)."
+    ],
+    "broll_notes": "Visuals should reflect the unverified nature of the claims; consider using 'unverified' or 'report' overlays."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

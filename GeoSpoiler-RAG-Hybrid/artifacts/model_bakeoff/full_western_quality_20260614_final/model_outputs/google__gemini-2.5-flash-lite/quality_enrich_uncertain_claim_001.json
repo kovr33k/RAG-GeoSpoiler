@@ -1,0 +1,55 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:14:59+00:00",
+  "model_id": "google/gemini-2.5-flash-lite",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_enrich_uncertain_claim_001",
+  "prompt_hash": "bfd865a146df21ba7db69ce697e888342d88a93ba16e75a92ebfe86351ecd344",
+  "input_tokens": 168,
+  "output_tokens": 354,
+  "latency_ms": 2129,
+  "estimated_cost_usd": 0.0001584,
+  "raw_response": "{\n  \"summary\": \"Analysts suggest that some dual-use components may have been supplied. There is no independent confirmation that the supplier was aware of the military application.\",\n  \"key_facts\": [\n    \"Analysts suggest that some supplied components might have been dual-use.\",\n    \"There is no independent confirmation that the supplier knew about the military application of the components.\"\n  ],\n  \"entities\": {\n    \"organizations\": [],\n    \"persons\": [],\n    \"locations\": [],\n    \"products\": [],\n    \"other\": [\n      \"dual-use components\"\n    ]\n  },\n  \"topics\": [\n    \"supply chain\",\n    \"military applications\",\n    \"dual-use technology\"\n  ],\n  \"theses\": [\n    \"The supplier may have unknowingly provided components for military use.\",\n    \"The nature of the supplied components (dual-use) raises questions about their intended application.\"\n  ],\n  \"quotes\": [\n    \"По словам аналитиков, часть поставок могла быть компонентами двойного назначения.\",\n    \"В посте нет независимого подтверждения, что поставщик прямо знал о военном применении.\"\n  ],\n  \"events\": [],\n  \"query_aliases\": [\n    \"dual-use components supply\",\n    \"supplier knowledge military use\",\n    \"analyst claims dual-use\"\n  ],\n  \"broll_potential\": true,\n  \"broll_notes\": \"Visuals could include: supply chain logistics, factory production lines (generic), diagrams illustrating dual-use technology, newsroom graphics discussing supply chains or military tech.\"\n}",
+  "parsed_response": {
+    "summary": "Analysts suggest that some dual-use components may have been supplied. There is no independent confirmation that the supplier was aware of the military application.",
+    "key_facts": [
+      "Analysts suggest that some supplied components might have been dual-use.",
+      "There is no independent confirmation that the supplier knew about the military application of the components."
+    ],
+    "entities": {
+      "organizations": [],
+      "persons": [],
+      "locations": [],
+      "products": [],
+      "other": [
+        "dual-use components"
+      ]
+    },
+    "topics": [
+      "supply chain",
+      "military applications",
+      "dual-use technology"
+    ],
+    "theses": [
+      "The supplier may have unknowingly provided components for military use.",
+      "The nature of the supplied components (dual-use) raises questions about their intended application."
+    ],
+    "quotes": [
+      "По словам аналитиков, часть поставок могла быть компонентами двойного назначения.",
+      "В посте нет независимого подтверждения, что поставщик прямо знал о военном применении."
+    ],
+    "events": [],
+    "query_aliases": [
+      "dual-use components supply",
+      "supplier knowledge military use",
+      "analyst claims dual-use"
+    ],
+    "broll_potential": true,
+    "broll_notes": "Visuals could include: supply chain logistics, factory production lines (generic), diagrams illustrating dual-use technology, newsroom graphics discussing supply chains or military tech."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

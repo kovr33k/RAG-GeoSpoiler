@@ -1,0 +1,19 @@
+{
+  "run_id": "role_rag_build_tuple_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:17:38+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_tuple_targeted",
+  "case_id": "rag_tuple_quote_taiwan_001",
+  "prompt_hash": "4be70769de9d5f0b3ec1756410af57eebcb286c7dc1d0d003e0e08cb8daa8296",
+  "input_tokens": 251,
+  "output_tokens": 136,
+  "latency_ms": 1846,
+  "estimated_cost_usd": 0.00011925,
+  "raw_response": "entity{tuple_delimiter}Пекин{tuple_delimiter}organization{tuple_delimiter}mentioned entity\nentity{tuple_delimiter}Тайвань{tuple_delimiter}location{tuple_delimiter}mentioned entity\nentity{tuple_delimiter}карантин Тайваня{tuple_delimiter}event{tuple_delimiter}described as a quarantine measure\nrelation{tuple_delimiter}Пекин{tuple_delimiter}Тайвань{tuple_delimiter}карантин, проверка судов{tuple_delimiter}source claims Пекин may frame Тайвань quarantine as суд проверка rather than блокада\n{completion_delimiter}",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

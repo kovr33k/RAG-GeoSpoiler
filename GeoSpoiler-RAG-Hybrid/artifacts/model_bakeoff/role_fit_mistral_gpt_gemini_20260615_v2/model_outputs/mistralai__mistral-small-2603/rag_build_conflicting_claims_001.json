@@ -1,0 +1,38 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:09:50+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_conflicting_claims_001",
+  "prompt_hash": "cb39589dbbf15376636c48f40fb64b7f6680fa0b8070933a7e045a7d75dcb7f2",
+  "input_tokens": 254,
+  "output_tokens": 134,
+  "latency_ms": 1887,
+  "estimated_cost_usd": 0.0001185,
+  "raw_response": "{\n  \"summary\": \"Two sources provide conflicting claims about the completeness of casualty figures following a strike, with no resolution provided.\",\n  \"entities\": [],\n  \"relations\": [],\n  \"claims\": [\n    {\"claim\": \"Source A alleges that officials hid casualty figures after the strike.\", \"attribution\": \"Source A\"},\n    {\"claim\": \"Source B denies this and says the published data is complete.\", \"attribution\": \"Source B\"}\n  ],\n  \"dates\": [],\n  \"source_fidelity_notes\": [\n    \"No evidence or dates provided to verify claims.\",\n    \"Conflict between sources is unresolved.\"\n  ]\n}",
+  "parsed_response": {
+    "summary": "Two sources provide conflicting claims about the completeness of casualty figures following a strike, with no resolution provided.",
+    "entities": [],
+    "relations": [],
+    "claims": [
+      {
+        "claim": "Source A alleges that officials hid casualty figures after the strike.",
+        "attribution": "Source A"
+      },
+      {
+        "claim": "Source B denies this and says the published data is complete.",
+        "attribution": "Source B"
+      }
+    ],
+    "dates": [],
+    "source_fidelity_notes": [
+      "No evidence or dates provided to verify claims.",
+      "Conflict between sources is unresolved."
+    ]
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

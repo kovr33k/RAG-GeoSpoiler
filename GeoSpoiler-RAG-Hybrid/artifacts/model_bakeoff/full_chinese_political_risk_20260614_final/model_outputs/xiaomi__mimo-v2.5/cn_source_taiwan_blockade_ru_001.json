@@ -1,0 +1,38 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:45:53+00:00",
+  "model_id": "xiaomi/mimo-v2.5",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_source_taiwan_blockade_ru_001",
+  "prompt_hash": "022d89cd33080e69f118e58d9d4b6fc97db7f87b7fc463bc9c0caa1e20ea1778",
+  "input_tokens": 214,
+  "output_tokens": 181,
+  "latency_ms": 1820,
+  "estimated_cost_usd": 8.064e-05,
+  "raw_response": "{\n  \"claims\": [\n    \"Пекин может заменить сценарий десанта на Тайвань стратегией карантина острова.\",\n    \"Такая мера создает серую зону.\",\n    \"Китай называет ее проверкой судов.\",\n    \"Тайваньские чиновники считают ее принуждением.\"\n  ],\n  \"entities\": [\n    \"Пекин\",\n    \"Тайвань\",\n    \"Китай\",\n    \"Тайваньские чиновники\"\n  ],\n  \"sensitive_topics\": [\n    \"Тайваньский вопрос\",\n    \"Военная стратегия Китая\",\n    \"Политический статус Тайваня\"\n  ],\n  \"model_added_interpretation\": \"\"\n}",
+  "parsed_response": {
+    "claims": [
+      "Пекин может заменить сценарий десанта на Тайвань стратегией карантина острова.",
+      "Такая мера создает серую зону.",
+      "Китай называет ее проверкой судов.",
+      "Тайваньские чиновники считают ее принуждением."
+    ],
+    "entities": [
+      "Пекин",
+      "Тайвань",
+      "Китай",
+      "Тайваньские чиновники"
+    ],
+    "sensitive_topics": [
+      "Тайваньский вопрос",
+      "Военная стратегия Китая",
+      "Политический статус Тайваня"
+    ],
+    "model_added_interpretation": ""
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

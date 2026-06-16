@@ -9,6 +9,8 @@ import re
 from dataclasses import dataclass
 
 import config
+from retrieval.card_text import card_search_text
+from retrieval.query_terms import add_compound_terms, expand_query_terms, matches_term
 
 logger = logging.getLogger("geospoiler.retrieval.shadow")
 
@@ -48,21 +50,17 @@ class ShadowMatch:
 def _tokenize(text: str) -> list[str]:
     """Extract lowercase words >= 3 chars."""
     words = re.findall(r"\w{3,}", text.lower())
-    return [word for word in words if word not in _STOPWORDS]
+    return add_compound_terms([word for word in words if word not in _STOPWORDS])
+
+
+def query_terms(text: str) -> list[str]:
+    """Tokenize and expand query intent terms for local lexical retrieval."""
+    return expand_query_terms(_tokenize(text))
 
 
 def _matches_term(token: str, term: str) -> bool:
     """Match exact words plus simple Slavic inflection variants by prefix."""
-    if token == term:
-        return True
-    if len(token) < 4 or len(term) < 4:
-        return False
-    prefix_len = min(len(token), len(term), 6)
-    if token[:prefix_len] == term[:prefix_len]:
-        return True
-    if min(len(token), len(term)) <= 5:
-        return token[:4] == term[:4]
-    return False
+    return matches_term(token, term)
 
 
 def _extract_snippet(text: str, query_terms: list[str], context_chars: int = 100) -> str:
@@ -84,8 +82,8 @@ def search(query: str, top_k: int = 10) -> list[ShadowMatch]:
     """
     Perform a keyword search over all enriched cards (fallback to normalized).
     """
-    query_terms = set(_tokenize(query))
-    if not query_terms:
+    terms = query_terms(query)
+    if not terms:
         return []
 
     enriched_dir = config.ENRICHED_DIR
@@ -103,17 +101,12 @@ def search(query: str, top_k: int = 10) -> list[ShadowMatch]:
                     if card.get("triage") != "keep":
                         continue
                         
-                    # Use search_text if available, else graph_text, else summary
-                    search_text = card.get("search_text", "")
-                    if not search_text:
-                        search_text = card.get("graph_text", "")
-                    if not search_text:
-                        search_text = card.get("summary", "")
+                    search_text = card_search_text(card, card_path)
                         
                     text_tokens = _tokenize(search_text)
                     
                     score = 0.0
-                    for term in query_terms:
+                    for term in terms:
                         score += sum(1 for token in text_tokens if _matches_term(token, term))
                         
                     if score > 0:
@@ -121,7 +114,7 @@ def search(query: str, top_k: int = 10) -> list[ShadowMatch]:
                         prov = card.get("provenance", {})
                         title = f"{prov.get('channel_name', '?')} - {prov.get('date', '?')[:10]}"
                         
-                        snippet = _extract_snippet(search_text, list(query_terms))
+                        snippet = _extract_snippet(search_text, terms)
                         
                         matches.append(
                             ShadowMatch(

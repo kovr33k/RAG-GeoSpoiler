@@ -1,0 +1,61 @@
+{
+  "run_id": "full_gemini_3_flash_preview_western_quality_20260615",
+  "timestamp": "2026-06-15T17:41:20+00:00",
+  "model_id": "google/gemini-3-flash-preview",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_enrich_china_trade_controls_001",
+  "prompt_hash": "e3ba6ec3c3d451b1bb4d4fbc8d4f73c55ae53facb5da0c45d12f63ccd839d7ff",
+  "input_tokens": 198,
+  "output_tokens": 431,
+  "latency_ms": 4269,
+  "estimated_cost_usd": 0.001392,
+  "raw_response": "{\n  \"summary\": \"The author discusses China's response to US export restrictions, highlighting the implementation of extraterritorial controls with a 0.1% de minimis threshold and a presumption of denial, potentially impacting the US high-tech sector.\",\n  \"key_facts\": [\n    \"China has introduced extraterritorial export controls.\",\n    \"The controls include a de minimis threshold of 0.1%.\",\n    \"The controls operate under a 'presumption of denial' policy.\",\n    \"The US high-tech sector is dependent on Chinese rare earth materials.\"\n  ],\n  \"entities\": [\n    \"China\",\n    \"USA\"\n  ],\n  \"topics\": [\n    \"Export controls\",\n    \"Trade war\",\n    \"High-tech industry\",\n    \"Rare earth materials\",\n    \"Extraterritoriality\"\n  ],\n  \"theses\": [\n    {\n      \"source_claim\": \"China's new export controls are a direct response to US restrictions.\"\n    },\n    {\n      \"source_claim\": \"The US high-tech industry faces a risk of slowing down due to its dependence on Chinese rare earth materials.\"\n    }\n  ],\n  \"quotes\": [],\n  \"events\": [],\n  \"query_aliases\": [\n    \"China export control de minimis 0.1\",\n    \"China presumption of denial rare earths\",\n    \"US dependence on Chinese rare earth materials\",\n    \"China extraterritorial trade restrictions\"\n  ],\n  \"broll_potential\": [\n    \"Cargo ships at a Chinese port\",\n    \"Close-up of rare earth mineral samples\",\n    \"High-tech laboratory or semiconductor manufacturing line\",\n    \"Digital map showing trade routes between China and the USA\"\n  ],\n  \"broll_notes\": \"Visuals should emphasize the industrial and logistical scale of trade between the two nations, specifically focusing on mineral processing and high-end electronics.\"\n}",
+  "parsed_response": {
+    "summary": "The author discusses China's response to US export restrictions, highlighting the implementation of extraterritorial controls with a 0.1% de minimis threshold and a presumption of denial, potentially impacting the US high-tech sector.",
+    "key_facts": [
+      "China has introduced extraterritorial export controls.",
+      "The controls include a de minimis threshold of 0.1%.",
+      "The controls operate under a 'presumption of denial' policy.",
+      "The US high-tech sector is dependent on Chinese rare earth materials."
+    ],
+    "entities": [
+      "China",
+      "USA"
+    ],
+    "topics": [
+      "Export controls",
+      "Trade war",
+      "High-tech industry",
+      "Rare earth materials",
+      "Extraterritoriality"
+    ],
+    "theses": [
+      {
+        "source_claim": "China's new export controls are a direct response to US restrictions."
+      },
+      {
+        "source_claim": "The US high-tech industry faces a risk of slowing down due to its dependence on Chinese rare earth materials."
+      }
+    ],
+    "quotes": [],
+    "events": [],
+    "query_aliases": [
+      "China export control de minimis 0.1",
+      "China presumption of denial rare earths",
+      "US dependence on Chinese rare earth materials",
+      "China extraterritorial trade restrictions"
+    ],
+    "broll_potential": [
+      "Cargo ships at a Chinese port",
+      "Close-up of rare earth mineral samples",
+      "High-tech laboratory or semiconductor manufacturing line",
+      "Digital map showing trade routes between China and the USA"
+    ],
+    "broll_notes": "Visuals should emphasize the industrial and logistical scale of trade between the two nations, specifically focusing on mineral processing and high-end electronics."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

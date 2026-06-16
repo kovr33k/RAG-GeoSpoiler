@@ -1,0 +1,19 @@
+{
+  "run_id": "role_rag_build_tuple_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:17:20+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_tuple_targeted",
+  "case_id": "rag_tuple_conflict_sources_001",
+  "prompt_hash": "84bb8e68964c0316a617622ff9ed7a26eaff2b73f01ccdaeaccc9a03a0cec056",
+  "input_tokens": 235,
+  "output_tokens": 172,
+  "latency_ms": 2500,
+  "estimated_cost_usd": 0.00031675,
+  "raw_response": "entity{tuple_delimiter}Source A{tuple_delimiter}other{tuple_delimiter}An entity alleging that officials hid casualty figures.\nentity{tuple_delimiter}Source B{tuple_delimiter}other{tuple_delimiter}An entity denying that officials hid casualty figures.\nentity{tuple_delimiter}officials{tuple_delimiter}other{tuple_delimiter}Individuals accused of hiding casualty figures.\nrelation{tuple_delimiter}Source A{tuple_delimiter}officials{tuple_delimiter}allegation{tuple_delimiter}Source A alleges that officials hid casualty figures after the strike.\nrelation{tuple_delimiter}Source B{tuple_delimiter}Source A{tuple_delimiter}denial{tuple_delimiter}Source B denies the allegation made by Source A regarding hidden casualty figures.\n{completion_delimiter}",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

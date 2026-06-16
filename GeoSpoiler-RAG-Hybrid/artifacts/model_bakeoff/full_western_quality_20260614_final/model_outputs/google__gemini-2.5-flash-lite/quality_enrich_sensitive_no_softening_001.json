@@ -1,0 +1,69 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:15:18+00:00",
+  "model_id": "google/gemini-2.5-flash-lite",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_enrich_sensitive_no_softening_001",
+  "prompt_hash": "e18885de37e278b8351e617178ac889e37842de5d5597ec0edaef548d6dc0c38",
+  "input_tokens": 178,
+  "output_tokens": 430,
+  "latency_ms": 3234,
+  "estimated_cost_usd": 0.0001898,
+  "raw_response": "{\n  \"summary\": \"A human rights group alleges that facial recognition systems and police checkpoints are being used for mass surveillance in Xinjiang, while authorities describe these measures as counter-terrorism efforts.\",\n  \"key_facts\": [\n    \"A human rights group claims facial recognition systems are used in Xinjiang.\",\n    \"A human rights group claims police checkpoints are used in Xinjiang.\",\n    \"The human rights group alleges these systems are for mass surveillance.\",\n    \"Authorities state these measures are for counter-terrorism.\"\n  ],\n  \"entities\": {\n    \"organizations\": [\n      \"human rights group\"\n    ],\n    \"locations\": [\n      \"Xinjiang\"\n    ],\n    \"governments\": [\n      \"authorities\"\n    ]\n  },\n  \"topics\": [\n    \"surveillance\",\n    \"human rights\",\n    \"counter-terrorism\",\n    \"facial recognition\",\n    \"Xinjiang\"\n  ],\n  \"theses\": [\n    \"Human rights groups accuse authorities in Xinjiang of using surveillance technology for mass monitoring.\",\n    \"Authorities in Xinjiang claim that surveillance measures are necessary for counter-terrorism.\"\n  ],\n  \"quotes\": [\n    {\n      \"quote\": \"Власти называют это контртеррористическими мерами.\",\n      \"attribution\": \"authorities\"\n    }\n  ],\n  \"events\": [],\n  \"query_aliases\": [\n    \"Xinjiang surveillance\",\n    \"Xinjiang human rights\",\n    \"Xinjiang counter-terrorism\",\n    \"facial recognition Xinjiang\"\n  ],\n  \"broll_potential\": [\n    \"footage of Xinjiang landscapes\",\n    \"footage of police checkpoints\",\n    \"footage of technology related to facial recognition (generic)\",\n    \"news footage related to Xinjiang\"\n  ],\n  \"broll_notes\": \"Visuals should be carefully selected to avoid misrepresentation. Generic footage of surveillance technology might be necessary if specific Xinjiang footage is unavailable or sensitive.\"\n}",
+  "parsed_response": {
+    "summary": "A human rights group alleges that facial recognition systems and police checkpoints are being used for mass surveillance in Xinjiang, while authorities describe these measures as counter-terrorism efforts.",
+    "key_facts": [
+      "A human rights group claims facial recognition systems are used in Xinjiang.",
+      "A human rights group claims police checkpoints are used in Xinjiang.",
+      "The human rights group alleges these systems are for mass surveillance.",
+      "Authorities state these measures are for counter-terrorism."
+    ],
+    "entities": {
+      "organizations": [
+        "human rights group"
+      ],
+      "locations": [
+        "Xinjiang"
+      ],
+      "governments": [
+        "authorities"
+      ]
+    },
+    "topics": [
+      "surveillance",
+      "human rights",
+      "counter-terrorism",
+      "facial recognition",
+      "Xinjiang"
+    ],
+    "theses": [
+      "Human rights groups accuse authorities in Xinjiang of using surveillance technology for mass monitoring.",
+      "Authorities in Xinjiang claim that surveillance measures are necessary for counter-terrorism."
+    ],
+    "quotes": [
+      {
+        "quote": "Власти называют это контртеррористическими мерами.",
+        "attribution": "authorities"
+      }
+    ],
+    "events": [],
+    "query_aliases": [
+      "Xinjiang surveillance",
+      "Xinjiang human rights",
+      "Xinjiang counter-terrorism",
+      "facial recognition Xinjiang"
+    ],
+    "broll_potential": [
+      "footage of Xinjiang landscapes",
+      "footage of police checkpoints",
+      "footage of technology related to facial recognition (generic)",
+      "news footage related to Xinjiang"
+    ],
+    "broll_notes": "Visuals should be carefully selected to avoid misrepresentation. Generic footage of surveillance technology might be necessary if specific Xinjiang footage is unavailable or sensitive."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

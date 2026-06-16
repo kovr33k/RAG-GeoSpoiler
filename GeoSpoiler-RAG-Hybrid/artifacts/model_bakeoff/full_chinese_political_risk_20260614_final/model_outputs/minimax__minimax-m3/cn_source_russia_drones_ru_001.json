@@ -1,0 +1,19 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:46:30+00:00",
+  "model_id": "minimax/minimax-m3",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_source_russia_drones_ru_001",
+  "prompt_hash": "4f7b6043f2d4f8519824c53b5696a3904b2d2df8fd4b2786a2211465995b0269",
+  "input_tokens": 357,
+  "output_tokens": 235,
+  "latency_ms": 9378,
+  "estimated_cost_usd": 0.0003891,
+  "raw_response": "",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

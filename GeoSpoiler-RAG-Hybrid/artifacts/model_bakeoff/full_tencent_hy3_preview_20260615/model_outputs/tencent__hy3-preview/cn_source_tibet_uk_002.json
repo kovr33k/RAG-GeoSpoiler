@@ -1,0 +1,19 @@
+{
+  "run_id": "full_tencent_hy3_preview_20260615",
+  "timestamp": "2026-06-15T16:28:13+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_source_tibet_uk_002",
+  "prompt_hash": "8fc812965b5979197a281b52da42d716d2847650d3314d6fdedf29fd2bd810df",
+  "input_tokens": 262,
+  "output_tokens": 255,
+  "latency_ms": 6319,
+  "estimated_cost_usd": 7.006e-05,
+  "raw_response": "",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

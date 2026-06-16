@@ -1,0 +1,19 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T23:00:30+00:00",
+  "model_id": "minimax/minimax-m3",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_088_iran_satellite",
+  "prompt_hash": "9a154b84ea236a2bcb52565746459024750686fe2c354c284100105b6259cdae",
+  "input_tokens": 455,
+  "output_tokens": 259,
+  "latency_ms": 11711,
+  "estimated_cost_usd": 0.0004473,
+  "raw_response": "",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

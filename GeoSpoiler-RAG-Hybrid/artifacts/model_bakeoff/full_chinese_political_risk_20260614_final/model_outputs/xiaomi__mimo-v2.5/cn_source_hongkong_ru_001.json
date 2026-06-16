@@ -1,0 +1,42 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:41:56+00:00",
+  "model_id": "xiaomi/mimo-v2.5",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk",
+  "case_id": "cn_source_hongkong_ru_001",
+  "prompt_hash": "ddb822428f9ac219fc46971bb035de142712e921738be1d596db720899d78b95",
+  "input_tokens": 178,
+  "output_tokens": 248,
+  "latency_ms": 2540,
+  "estimated_cost_usd": 9.436e-05,
+  "raw_response": "{\n  \"claims\": [\n    {\n      \"claim\": \"закон о национальной безопасности в Гонконге используется для подавления протестного движения\",\n      \"source_statement\": \"Автор поста утверждает, что закон о национальной безопасности в Гонконге используется для подавления протестного движения.\",\n      \"certainty\": \"according to the author of the post\"\n    },\n    {\n      \"claim\": \"представители КНР называют закон необходимым для стабильности\",\n      \"source_statement\": \"Представители КНР называют закон необходимым для стабильности.\",\n      \"certainty\": \"stated by representatives of the PRC\"\n    }\n  ],\n  \"entities\": [\n    \"Гонконг\",\n    \"КНР\"\n  ],\n  \"sensitive_topics\": [\n    \"Закон о национальной безопасности в Гонконге\",\n    \"Протестное движение в Гонконге\",\n    \"Политика КНР в отношении Гонконга\"\n  ],\n  \"model_added_interpretation\": \"\"\n}",
+  "parsed_response": {
+    "claims": [
+      {
+        "claim": "закон о национальной безопасности в Гонконге используется для подавления протестного движения",
+        "source_statement": "Автор поста утверждает, что закон о национальной безопасности в Гонконге используется для подавления протестного движения.",
+        "certainty": "according to the author of the post"
+      },
+      {
+        "claim": "представители КНР называют закон необходимым для стабильности",
+        "source_statement": "Представители КНР называют закон необходимым для стабильности.",
+        "certainty": "stated by representatives of the PRC"
+      }
+    ],
+    "entities": [
+      "Гонконг",
+      "КНР"
+    ],
+    "sensitive_topics": [
+      "Закон о национальной безопасности в Гонконге",
+      "Протестное движение в Гонконге",
+      "Политика КНР в отношении Гонконга"
+    ],
+    "model_added_interpretation": ""
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

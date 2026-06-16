@@ -1,0 +1,20 @@
+{
+  "recommended": {},
+  "do_not_use_for_high_risk": [
+    "deepseek-v4-flash",
+    "deepseek-v4-pro",
+    "minimax/minimax-m3",
+    "qwen/qwen3.7-plus",
+    "xiaomi/mimo-v2.5",
+    "xiaomi/mimo-v2.5-pro"
+  ],
+  "yellow_models": [],
+  "red_models": [
+    "deepseek-v4-flash",
+    "deepseek-v4-pro",
+    "minimax/minimax-m3",
+    "qwen/qwen3.7-plus",
+    "xiaomi/mimo-v2.5",
+    "xiaomi/mimo-v2.5-pro"
+  ]
+}

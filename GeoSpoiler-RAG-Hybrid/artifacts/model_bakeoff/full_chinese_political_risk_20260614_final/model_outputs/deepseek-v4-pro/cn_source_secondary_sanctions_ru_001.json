@@ -1,0 +1,34 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:47:33+00:00",
+  "model_id": "deepseek-v4-pro",
+  "provider": "deepseek",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_source_secondary_sanctions_ru_001",
+  "prompt_hash": "6817a13add32a0c1bf257c8533822bb6e9843ec049720fd6d6a8fc70c3a7a655",
+  "input_tokens": 209,
+  "output_tokens": 161,
+  "latency_ms": 2516,
+  "estimated_cost_usd": 0.00023099,
+  "raw_response": "{\n  \"claims\": [\n    \"Европа долго избегала вторичных санкций и запрета реэкспорта.\",\n    \"Китай и США активно используют экспортные лицензии, квоты и ограничения реэкспорта друг против друга.\"\n  ],\n  \"entities\": [\n    \"Европа\",\n    \"Китай\",\n    \"США\"\n  ],\n  \"sensitive_topics\": [\n    \"санкции\",\n    \"экспортный контроль\"\n  ],\n  \"model_added_interpretation\": \"The source text describes Europe's historical avoidance of secondary sanctions and re-export bans, contrasting with the active use of export licenses, quotas, and re-export restrictions between China and the US.\"\n}",
+  "parsed_response": {
+    "claims": [
+      "Европа долго избегала вторичных санкций и запрета реэкспорта.",
+      "Китай и США активно используют экспортные лицензии, квоты и ограничения реэкспорта друг против друга."
+    ],
+    "entities": [
+      "Европа",
+      "Китай",
+      "США"
+    ],
+    "sensitive_topics": [
+      "санкции",
+      "экспортный контроль"
+    ],
+    "model_added_interpretation": "The source text describes Europe's historical avoidance of secondary sanctions and re-export bans, contrasting with the active use of export licenses, quotas, and re-export restrictions between China and the US."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

@@ -1,0 +1,39 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T23:05:49+00:00",
+  "model_id": "xiaomi/mimo-v2.5",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_053_taiwan_quarantine",
+  "prompt_hash": "89d684cf1996afdd21f0bbfcc9234377ec61b238f2475d3fd2c473b8c00807b3",
+  "input_tokens": 289,
+  "output_tokens": 291,
+  "latency_ms": 4169,
+  "estimated_cost_usd": 0.00012194,
+  "raw_response": "{\n  \"claims\": [\n    \" вместо подготовки к классическому дню Д и высадке десанта Пекин делает ставку на стратегию паралича через карантин острова.\",\n    \" Китай может объявить не блокаду, а карантин для проверки судов на контрабанду, создавая юридическую серую зону.\",\n    \" Целью называется не физическое уничтожение Тайваня, а экономическое удушение через рынок страхования и паралич логистики.\"\n  ],\n  \"entities\": [\n    \"Пекин\",\n    \"Китай\",\n    \"Тайвань\",\n    \"War on the Rocks\"\n  ],\n  \"sensitive_topics\": [\n    \"Пекин\",\n    \"Китай\",\n    \"Тайвань\",\n    \"Военные стратегии\",\n    \"Геополитика\"\n  ],\n  \"model_added_interpretation\": \"The source text is a Telegram post summarizing an article from 'War on the Rocks'. It presents a specific interpretation of China's potential strategy towards Taiwan, framing it as a shift from a traditional amphibious assault to a strategy of paralysis through a quarantine. The claims are presented as summarizing the views expressed in the referenced article.\"\n}",
+  "parsed_response": {
+    "claims": [
+      " вместо подготовки к классическому дню Д и высадке десанта Пекин делает ставку на стратегию паралича через карантин острова.",
+      " Китай может объявить не блокаду, а карантин для проверки судов на контрабанду, создавая юридическую серую зону.",
+      " Целью называется не физическое уничтожение Тайваня, а экономическое удушение через рынок страхования и паралич логистики."
+    ],
+    "entities": [
+      "Пекин",
+      "Китай",
+      "Тайвань",
+      "War on the Rocks"
+    ],
+    "sensitive_topics": [
+      "Пекин",
+      "Китай",
+      "Тайвань",
+      "Военные стратегии",
+      "Геополитика"
+    ],
+    "model_added_interpretation": "The source text is a Telegram post summarizing an article from 'War on the Rocks'. It presents a specific interpretation of China's potential strategy towards Taiwan, framing it as a shift from a traditional amphibious assault to a strategy of paralysis through a quarantine. The claims are presented as summarizing the views expressed in the referenced article."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

@@ -1,0 +1,47 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615",
+  "timestamp": "2026-06-15T18:05:43+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_quote_preservation_001",
+  "prompt_hash": "06cb4e40f40af01db54e8a5cad5a16ac413bbd59323956fddf93bb0c77e51101",
+  "input_tokens": 261,
+  "output_tokens": 211,
+  "latency_ms": 1962,
+  "estimated_cost_usd": 0.00038175,
+  "raw_response": "{\n  \"summary\": \"An anonymous source and the post author suggest that a potential quarantine of Taiwan by Beijing could be framed as a vessel inspection rather than a blockade to exploit a legal gray area.\",\n  \"entities\": [\n    \"Beijing\",\n    \"Taiwan\"\n  ],\n  \"relations\": [\n    {\n      \"subject\": \"Beijing\",\n      \"relation\": \"could potentially implement\",\n      \"object\": \"quarantine of Taiwan\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"claim\": \"The measure creates a legal gray area.\",\n      \"attribution\": \"Anonymous source\"\n    },\n    {\n      \"claim\": \"Beijing may label a quarantine of Taiwan as a vessel inspection rather than a blockade.\",\n      \"attribution\": \"Post author\"\n    }\n  ],\n  \"dates\": [],\n  \"source_fidelity_notes\": [\n    \"The information is based on an anonymous source and the subjective interpretation of the post author.\",\n    \"The claims regarding Beijing's future actions are speculative.\"\n  ]\n}",
+  "parsed_response": {
+    "summary": "An anonymous source and the post author suggest that a potential quarantine of Taiwan by Beijing could be framed as a vessel inspection rather than a blockade to exploit a legal gray area.",
+    "entities": [
+      "Beijing",
+      "Taiwan"
+    ],
+    "relations": [
+      {
+        "subject": "Beijing",
+        "relation": "could potentially implement",
+        "object": "quarantine of Taiwan"
+      }
+    ],
+    "claims": [
+      {
+        "claim": "The measure creates a legal gray area.",
+        "attribution": "Anonymous source"
+      },
+      {
+        "claim": "Beijing may label a quarantine of Taiwan as a vessel inspection rather than a blockade.",
+        "attribution": "Post author"
+      }
+    ],
+    "dates": [],
+    "source_fidelity_notes": [
+      "The information is based on an anonymous source and the subjective interpretation of the post author.",
+      "The claims regarding Beijing's future actions are speculative."
+    ]
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

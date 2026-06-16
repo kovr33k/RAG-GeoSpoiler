@@ -1,0 +1,43 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T23:00:46+00:00",
+  "model_id": "deepseek-v4-flash",
+  "provider": "deepseek",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_049_dalai_lama",
+  "prompt_hash": "9d24a06920be4c75cc719b5e569e4263a726f6e96996ffa18191b78ae77467d6",
+  "input_tokens": 342,
+  "output_tokens": 383,
+  "latency_ms": 4195,
+  "estimated_cost_usd": 0.00015512,
+  "raw_response": "{\n  \"claims\": [\n    \"Китай розкритикував присудження музичної премії «Греммі» Далай-ламі.\",\n    \"Тибетський духовний лідер отримав нагороду в номінації «Найкраще озвучення аудіокниги».\",\n    \"Пекін назвав цю нагороду «інструментом політичних маніпуляцій проти Китаю».\",\n    \"Представник МЗС Лінь Цзянь заявив: «14-й Далай-лама — політичний вигнанець, який займається антикитайською сепаратистською діяльністю під виглядом релігії».\"\n  ],\n  \"entities\": [\n    \"Китай\",\n    \"музична премія «Греммі»\",\n    \"Далай-лама\",\n    \"Тибетський духовний лідер\",\n    \"Пекін\",\n    \"МЗС\",\n    \"Лінь Цзянь\",\n    \"14-й Далай-лама\"\n  ],\n  \"sensitive_topics\": [\n    \"Тибет\",\n    \"Далай-лама\",\n    \"сепаратизм\",\n    \"антикитайська діяльність\"\n  ],\n  \"model_added_interpretation\": \"The source text reports China's criticism of the Grammy award given to the Dalai Lama, framing it as a political tool against China. The claims reflect the official Chinese position that the Dalai Lama is a political exile engaged in separatist activities.\"\n}",
+  "parsed_response": {
+    "claims": [
+      "Китай розкритикував присудження музичної премії «Греммі» Далай-ламі.",
+      "Тибетський духовний лідер отримав нагороду в номінації «Найкраще озвучення аудіокниги».",
+      "Пекін назвав цю нагороду «інструментом політичних маніпуляцій проти Китаю».",
+      "Представник МЗС Лінь Цзянь заявив: «14-й Далай-лама — політичний вигнанець, який займається антикитайською сепаратистською діяльністю під виглядом релігії»."
+    ],
+    "entities": [
+      "Китай",
+      "музична премія «Греммі»",
+      "Далай-лама",
+      "Тибетський духовний лідер",
+      "Пекін",
+      "МЗС",
+      "Лінь Цзянь",
+      "14-й Далай-лама"
+    ],
+    "sensitive_topics": [
+      "Тибет",
+      "Далай-лама",
+      "сепаратизм",
+      "антикитайська діяльність"
+    ],
+    "model_added_interpretation": "The source text reports China's criticism of the Grammy award given to the Dalai Lama, framing it as a political tool against China. The claims reflect the official Chinese position that the Dalai Lama is a political exile engaged in separatist activities."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

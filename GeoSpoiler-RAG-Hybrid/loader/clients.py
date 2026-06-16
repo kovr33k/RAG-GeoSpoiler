@@ -9,6 +9,7 @@ from openai import APIConnectionError, APITimeoutError, AsyncOpenAI
 
 import config
 from llm_auth import get_openai_api_key
+from loader.runtime import LLM_ROLE as _LLM_ROLE
 
 logger = logging.getLogger("geospoiler.loader")
 
@@ -62,23 +63,63 @@ def _chat_completion_options(max_tokens: int | None = None, **kwargs) -> dict[st
     return options
 
 
-_embed_client = AsyncOpenAI(
-    api_key=_client_api_key(config.EMBEDDING_API_KEY, config.EMBEDDING_BASE_URL),
-    base_url=config.EMBEDDING_BASE_URL,
-    timeout=config.EMBEDDING_TIMEOUT_SECONDS,
-)
-_embed_semaphore = asyncio.Semaphore(max(1, config.EMBEDDING_CONCURRENCY))
+_embed_client_cache: tuple[tuple[str, str, int], AsyncOpenAI] | None = None
+_embed_semaphore_cache: tuple[int, asyncio.Semaphore] | None = None
 
 _NIM_ASYMMETRIC_MODELS = {
+    "nvidia/llama-nemotron-embed-vl-1b-v2",
     "nvidia/nv-embedqa-e5-v5",
     "nvidia/nv-embedqa-mistral-7b-v2",
     "nvidia/llama-3.2-nv-embedqa-1b-v2",
 }
 
-_needs_input_type = config.EMBEDDING_MODEL in _NIM_ASYMMETRIC_MODELS
+
+def _needs_embedding_input_type() -> bool:
+    model = config.EMBEDDING_MODEL.casefold()
+    base_url = config.EMBEDDING_BASE_URL.casefold()
+    if model in _NIM_ASYMMETRIC_MODELS:
+        return True
+    return "api.nvidia.com" in base_url and "embed" in model
 
 
-async def _embed_texts(texts: list[str], input_type: str = "passage") -> np.ndarray:
+def _default_embedding_input_type() -> str:
+    return "passage" if _LLM_ROLE.get() == "build" else "query"
+
+
+def _embedding_dimensions_override() -> int | None:
+    if "api.nvidia.com" in config.EMBEDDING_BASE_URL.casefold() and config.EMBEDDING_DIM > 0:
+        return config.EMBEDDING_DIM
+    return None
+
+
+def _get_embed_client() -> AsyncOpenAI:
+    global _embed_client_cache
+    cache_key = (
+        config.EMBEDDING_API_KEY,
+        config.EMBEDDING_BASE_URL,
+        config.EMBEDDING_TIMEOUT_SECONDS,
+    )
+    if _embed_client_cache is None or _embed_client_cache[0] != cache_key:
+        _embed_client_cache = (
+            cache_key,
+            AsyncOpenAI(
+                api_key=_client_api_key(config.EMBEDDING_API_KEY, config.EMBEDDING_BASE_URL),
+                base_url=config.EMBEDDING_BASE_URL,
+                timeout=config.EMBEDDING_TIMEOUT_SECONDS,
+            ),
+        )
+    return _embed_client_cache[1]
+
+
+def _get_embed_semaphore() -> asyncio.Semaphore:
+    global _embed_semaphore_cache
+    concurrency = max(1, config.EMBEDDING_CONCURRENCY)
+    if _embed_semaphore_cache is None or _embed_semaphore_cache[0] != concurrency:
+        _embed_semaphore_cache = (concurrency, asyncio.Semaphore(concurrency))
+    return _embed_semaphore_cache[1]
+
+
+async def _embed_texts(texts: list[str], input_type: str | None = None) -> np.ndarray:
     """Call NIM embedding API. Returns numpy array as required by LightRAG."""
     if not texts:
         return np.empty((0, config.EMBEDDING_DIM), dtype=np.float32)
@@ -92,13 +133,17 @@ async def _embed_texts(texts: list[str], input_type: str = "passage") -> np.ndar
             "model": config.EMBEDDING_MODEL,
             "input": batch,
         }
-        if _needs_input_type:
-            kwargs["extra_body"] = {"input_type": input_type, "truncate": "END"}
+        if _needs_embedding_input_type():
+            embedding_input_type = input_type or _default_embedding_input_type()
+            kwargs["extra_body"] = {"input_type": embedding_input_type, "truncate": "END"}
+        dimensions = _embedding_dimensions_override()
+        if dimensions is not None:
+            kwargs["dimensions"] = dimensions
 
         for attempt in range(1, max(1, config.EMBEDDING_MAX_ATTEMPTS) + 1):
             try:
-                async with _embed_semaphore:
-                    response = await _embed_client.embeddings.create(**kwargs)
+                async with _get_embed_semaphore():
+                    response = await _get_embed_client().embeddings.create(**kwargs)
                 all_vectors.extend(item.embedding for item in response.data)
                 break
             except (APIConnectionError, APITimeoutError) as exc:

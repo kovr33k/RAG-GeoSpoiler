@@ -1,0 +1,38 @@
+{
+  "run_id": "google_gemini_3_vs_31_china_risk_20260615",
+  "timestamp": "2026-06-15T17:47:29+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_053_taiwan_quarantine",
+  "prompt_hash": "89d684cf1996afdd21f0bbfcc9234377ec61b238f2475d3fd2c473b8c00807b3",
+  "input_tokens": 264,
+  "output_tokens": 204,
+  "latency_ms": 1795,
+  "estimated_cost_usd": 0.000372,
+  "raw_response": "{\n  \"claims\": [\n    \"Beijing is shifting its strategy from a classic D-Day style amphibious landing to a strategy of paralysis through a quarantine of Taiwan.\",\n    \"China may declare a quarantine rather than a blockade to inspect ships for contraband, creating a legal gray zone.\",\n    \"The goal of China's strategy is economic strangulation via the insurance market and logistics paralysis, rather than the physical destruction of Taiwan.\"\n  ],\n  \"entities\": [\n    \"Beijing\",\n    \"China\",\n    \"Taiwan\",\n    \"War on the Rocks\"\n  ],\n  \"sensitive_topics\": [\n    \"Geopolitical conflict\",\n    \"Taiwan-China relations\",\n    \"Military strategy\",\n    \"Economic warfare\"\n  ],\n  \"model_added_interpretation\": \"The text summarizes an analysis from 'War on the Rocks' regarding potential Chinese military and economic tactics against Taiwan, emphasizing non-kinetic methods of control.\"\n}",
+  "parsed_response": {
+    "claims": [
+      "Beijing is shifting its strategy from a classic D-Day style amphibious landing to a strategy of paralysis through a quarantine of Taiwan.",
+      "China may declare a quarantine rather than a blockade to inspect ships for contraband, creating a legal gray zone.",
+      "The goal of China's strategy is economic strangulation via the insurance market and logistics paralysis, rather than the physical destruction of Taiwan."
+    ],
+    "entities": [
+      "Beijing",
+      "China",
+      "Taiwan",
+      "War on the Rocks"
+    ],
+    "sensitive_topics": [
+      "Geopolitical conflict",
+      "Taiwan-China relations",
+      "Military strategy",
+      "Economic warfare"
+    ],
+    "model_added_interpretation": "The text summarizes an analysis from 'War on the Rocks' regarding potential Chinese military and economic tactics against Taiwan, emphasizing non-kinetic methods of control."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

@@ -1,0 +1,19 @@
+{
+  "run_id": "full_tencent_hy3_preview_20260615",
+  "timestamp": "2026-06-15T16:30:42+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_source_russia_drones_ru_001",
+  "prompt_hash": "4f7b6043f2d4f8519824c53b5696a3904b2d2df8fd4b2786a2211465995b0269",
+  "input_tokens": 228,
+  "output_tokens": 235,
+  "latency_ms": 4567,
+  "estimated_cost_usd": 6.371e-05,
+  "raw_response": "",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

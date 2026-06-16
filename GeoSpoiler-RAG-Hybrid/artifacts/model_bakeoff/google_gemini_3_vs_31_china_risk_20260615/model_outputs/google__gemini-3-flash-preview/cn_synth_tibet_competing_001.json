@@ -1,0 +1,19 @@
+{
+  "run_id": "google_gemini_3_vs_31_china_risk_20260615",
+  "timestamp": "2026-06-15T17:46:30+00:00",
+  "model_id": "google/gemini-3-flash-preview",
+  "provider": "openrouter",
+  "role": "query",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_synth_tibet_competing_001",
+  "prompt_hash": "c3b5c5fc559245493e9cb76ff60625daf1a763697b138571257e831f99411c2d",
+  "input_tokens": 164,
+  "output_tokens": 96,
+  "latency_ms": 2358,
+  "estimated_cost_usd": 0.00037,
+  "raw_response": "Источники представляют противоположные взгляды на событие:\n\n*   **Source A** фокусируется на факте получения Далай-ламой награды за аудиокнигу и характеризует его как тибетского духовного лидера.\n*   **Source B** отражает позицию Пекина, согласно которой данное награждение является политической манипуляцией против Китая, а сам Далай-лама обвиняется в сепаратистской деятельности.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

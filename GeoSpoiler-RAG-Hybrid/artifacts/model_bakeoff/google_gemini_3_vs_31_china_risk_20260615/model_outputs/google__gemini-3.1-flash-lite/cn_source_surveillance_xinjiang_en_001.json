@@ -1,0 +1,36 @@
+{
+  "run_id": "google_gemini_3_vs_31_china_risk_20260615",
+  "timestamp": "2026-06-15T17:45:34+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_source_surveillance_xinjiang_en_001",
+  "prompt_hash": "f35a58dc0520f2022094451687de1ef31422b087c81e6fc2d33b15e29ef734d9",
+  "input_tokens": 174,
+  "output_tokens": 155,
+  "latency_ms": 2101,
+  "estimated_cost_usd": 0.000276,
+  "raw_response": "{\n  \"claims\": [\n    \"A rights group alleges that facial-recognition systems and police checkpoints are used for mass surveillance in Xinjiang.\",\n    \"Chinese authorities state that surveillance measures are counter-terrorism tools.\",\n    \"Chinese authorities deny that ordinary residents are targeted by surveillance measures.\"\n  ],\n  \"entities\": [\n    \"Xinjiang\",\n    \"Chinese authorities\"\n  ],\n  \"sensitive_topics\": [\n    \"mass surveillance\",\n    \"human rights\",\n    \"counter-terrorism\",\n    \"Xinjiang\"\n  ],\n  \"model_added_interpretation\": \"The text presents a conflict between allegations of mass surveillance by a rights group and the official justification provided by Chinese authorities.\"\n}",
+  "parsed_response": {
+    "claims": [
+      "A rights group alleges that facial-recognition systems and police checkpoints are used for mass surveillance in Xinjiang.",
+      "Chinese authorities state that surveillance measures are counter-terrorism tools.",
+      "Chinese authorities deny that ordinary residents are targeted by surveillance measures."
+    ],
+    "entities": [
+      "Xinjiang",
+      "Chinese authorities"
+    ],
+    "sensitive_topics": [
+      "mass surveillance",
+      "human rights",
+      "counter-terrorism",
+      "Xinjiang"
+    ],
+    "model_added_interpretation": "The text presents a conflict between allegations of mass surveillance by a rights group and the official justification provided by Chinese authorities."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

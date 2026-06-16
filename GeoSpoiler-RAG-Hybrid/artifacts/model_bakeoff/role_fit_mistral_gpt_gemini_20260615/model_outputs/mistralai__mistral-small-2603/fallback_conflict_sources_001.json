@@ -1,0 +1,19 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615",
+  "timestamp": "2026-06-15T18:06:35+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "fallback_synth",
+  "suite": "role_fallback_synth_targeted",
+  "case_id": "fallback_conflict_sources_001",
+  "prompt_hash": "e47ed7543d1b11de884dbe369f2231133e4501bdf0697a281cb029b815f54a49",
+  "input_tokens": 235,
+  "output_tokens": 69,
+  "latency_ms": 1748,
+  "estimated_cost_usd": 7.665e-05,
+  "raw_response": "Известно, что существуют противоречивые утверждения о публикации статистики протестов министерством. **Source A** заявляет, что министерство скрывало статистику протестов, тогда как **Source B** утверждает, что все данные были опубликованы, отрицая факт подавления информации.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

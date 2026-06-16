@@ -1,0 +1,55 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615",
+  "timestamp": "2026-06-15T18:05:18+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_metadata_noise_001",
+  "prompt_hash": "9b12d01a1cd93cf05a0a9090ccff00a83c6239d5c9a8019b0bd8cca13cd7ce5b",
+  "input_tokens": 337,
+  "output_tokens": 263,
+  "latency_ms": 2297,
+  "estimated_cost_usd": 0.00047875,
+  "raw_response": "{\n  \"summary\": \"A report citing the Financial Times claims that a Chinese-built satellite, TEE-01B, was transferred to the control of the IRGC Aerospace Force.\",\n  \"entities\": [\n    \"Financial Times\",\n    \"TEE-01B\",\n    \"China\",\n    \"IRGC Aerospace Force\"\n  ],\n  \"relations\": [\n    {\n      \"subject\": \"TEE-01B\",\n      \"relation\": \"built and launched by\",\n      \"object\": \"China\"\n    },\n    {\n      \"subject\": \"TEE-01B\",\n      \"relation\": \"allegedly controlled by\",\n      \"object\": \"IRGC Aerospace Force\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"claim\": \"Financial Times reported that the TEE-01B satellite was built and launched in China.\",\n      \"attribution\": \"Financial Times\"\n    },\n    {\n      \"claim\": \"The TEE-01B satellite system later came under the control of the IRGC Aerospace Force.\",\n      \"attribution\": \"Financial Times\"\n    }\n  ],\n  \"dates\": [\n    \"2026-06-10\"\n  ],\n  \"source_fidelity_notes\": [\n    \"The post explicitly states there is no independent confirmation of the details provided by the Financial Times.\"\n  ]\n}",
+  "parsed_response": {
+    "summary": "A report citing the Financial Times claims that a Chinese-built satellite, TEE-01B, was transferred to the control of the IRGC Aerospace Force.",
+    "entities": [
+      "Financial Times",
+      "TEE-01B",
+      "China",
+      "IRGC Aerospace Force"
+    ],
+    "relations": [
+      {
+        "subject": "TEE-01B",
+        "relation": "built and launched by",
+        "object": "China"
+      },
+      {
+        "subject": "TEE-01B",
+        "relation": "allegedly controlled by",
+        "object": "IRGC Aerospace Force"
+      }
+    ],
+    "claims": [
+      {
+        "claim": "Financial Times reported that the TEE-01B satellite was built and launched in China.",
+        "attribution": "Financial Times"
+      },
+      {
+        "claim": "The TEE-01B satellite system later came under the control of the IRGC Aerospace Force.",
+        "attribution": "Financial Times"
+      }
+    ],
+    "dates": [
+      "2026-06-10"
+    ],
+    "source_fidelity_notes": [
+      "The post explicitly states there is no independent confirmation of the details provided by the Financial Times."
+    ]
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

@@ -1,0 +1,55 @@
+{
+  "run_id": "full_gemini_3_flash_preview_western_quality_20260615",
+  "timestamp": "2026-06-15T17:41:28+00:00",
+  "model_id": "google/gemini-3-flash-preview",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_enrich_uncertain_claim_001",
+  "prompt_hash": "bfd865a146df21ba7db69ce697e888342d88a93ba16e75a92ebfe86351ecd344",
+  "input_tokens": 168,
+  "output_tokens": 350,
+  "latency_ms": 3659,
+  "estimated_cost_usd": 0.001134,
+  "raw_response": "{\n  \"summary\": \"Analysts suggest that a portion of shipments may have consisted of dual-use components, though there is no independent confirmation that the supplier was aware of their military application.\",\n  \"key_facts\": [\n    \"Shipments potentially contained dual-use components.\",\n    \"There is no independent confirmation of the supplier's intent or knowledge regarding military use.\"\n  ],\n  \"entities\": [\n    \"Analysts\",\n    \"Supplier\"\n  ],\n  \"topics\": [\n    \"Dual-use technology\",\n    \"Supply chain analysis\",\n    \"Military procurement\"\n  ],\n  \"theses\": [\n    \"A portion of the supplies could be classified as dual-use components.\",\n    \"The supplier's direct knowledge of military end-use remains unverified.\"\n  ],\n  \"quotes\": [\n    \"часть поставок могла быть компонентами двойного назначения\",\n    \"В посте нет независимого подтверждения, что поставщик прямо знал о военном применении\"\n  ],\n  \"events\": [],\n  \"query_aliases\": [\n    \"dual-use component supply chain investigation\",\n    \"supplier knowledge of military application\",\n    \"unconfirmed military exports\"\n  ],\n  \"broll_potential\": [\n    \"Generic electronics components on a conveyor belt\",\n    \"Warehouse shipping crates\",\n    \"Close-up of circuit boards\",\n    \"Abstract digital supply chain graphics\"\n  ],\n  \"broll_notes\": \"Visuals should emphasize the ambiguity of the components, showing items that could be used in both civilian and military contexts.\"\n}",
+  "parsed_response": {
+    "summary": "Analysts suggest that a portion of shipments may have consisted of dual-use components, though there is no independent confirmation that the supplier was aware of their military application.",
+    "key_facts": [
+      "Shipments potentially contained dual-use components.",
+      "There is no independent confirmation of the supplier's intent or knowledge regarding military use."
+    ],
+    "entities": [
+      "Analysts",
+      "Supplier"
+    ],
+    "topics": [
+      "Dual-use technology",
+      "Supply chain analysis",
+      "Military procurement"
+    ],
+    "theses": [
+      "A portion of the supplies could be classified as dual-use components.",
+      "The supplier's direct knowledge of military end-use remains unverified."
+    ],
+    "quotes": [
+      "часть поставок могла быть компонентами двойного назначения",
+      "В посте нет независимого подтверждения, что поставщик прямо знал о военном применении"
+    ],
+    "events": [],
+    "query_aliases": [
+      "dual-use component supply chain investigation",
+      "supplier knowledge of military application",
+      "unconfirmed military exports"
+    ],
+    "broll_potential": [
+      "Generic electronics components on a conveyor belt",
+      "Warehouse shipping crates",
+      "Close-up of circuit boards",
+      "Abstract digital supply chain graphics"
+    ],
+    "broll_notes": "Visuals should emphasize the ambiguity of the components, showing items that could be used in both civilian and military contexts."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

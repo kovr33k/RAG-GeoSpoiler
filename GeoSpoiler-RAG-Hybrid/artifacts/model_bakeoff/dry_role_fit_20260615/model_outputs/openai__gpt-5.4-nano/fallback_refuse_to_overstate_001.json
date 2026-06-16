@@ -1,0 +1,54 @@
+{
+  "run_id": "dry_role_fit_20260615",
+  "timestamp": "2026-06-15T18:04:46+00:00",
+  "model_id": "openai/gpt-5.4-nano",
+  "provider": "openrouter",
+  "role": "fallback_synth",
+  "suite": "role_fallback_synth_targeted",
+  "case_id": "fallback_refuse_to_overstate_001",
+  "prompt_hash": "3ef2a1b9a0c107119c62334eefbcb1200a14909c6cb0c36cf729d11ed7d19079",
+  "input_tokens": 312,
+  "output_tokens": 84,
+  "latency_ms": 0,
+  "estimated_cost_usd": 0.0001674,
+  "raw_response": "{\"dry_run\": true, \"expected\": {\"must_include_all\": [\"source_c\"], \"must_include_any_groups\": [[\"не доказывает\", \"does not prove\", \"не следует\"], [\"Financial Times\", \"FT\"], [\"Иран\", \"Iran\"], [\"Китай\", \"China\"], [\"КСИР\", \"IRGC\"]], \"must_not_include\": [\"Китай напрямую управлял ударами\", \"China directly controlled the strikes\", \"доказано\"]}}",
+  "parsed_response": {
+    "dry_run": true,
+    "expected": {
+      "must_include_all": [
+        "source_c"
+      ],
+      "must_include_any_groups": [
+        [
+          "не доказывает",
+          "does not prove",
+          "не следует"
+        ],
+        [
+          "Financial Times",
+          "FT"
+        ],
+        [
+          "Иран",
+          "Iran"
+        ],
+        [
+          "Китай",
+          "China"
+        ],
+        [
+          "КСИР",
+          "IRGC"
+        ]
+      ],
+      "must_not_include": [
+        "Китай напрямую управлял ударами",
+        "China directly controlled the strikes",
+        "доказано"
+      ]
+    }
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

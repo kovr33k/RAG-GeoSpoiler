@@ -1,0 +1,45 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615",
+  "timestamp": "2026-06-15T18:05:27+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_targeted",
+  "case_id": "rag_build_conflicting_claims_001",
+  "prompt_hash": "cb39589dbbf15376636c48f40fb64b7f6680fa0b8070933a7e045a7d75dcb7f2",
+  "input_tokens": 256,
+  "output_tokens": 209,
+  "latency_ms": 1900,
+  "estimated_cost_usd": 0.0003775,
+  "raw_response": "{\n  \"summary\": \"Conflicting reports exist regarding the accuracy of published casualty figures following a strike.\",\n  \"entities\": [\n    \"Source A\",\n    \"Source B\"\n  ],\n  \"relations\": [\n    {\n      \"subject\": \"Source A\",\n      \"relation\": \"alleges\",\n      \"object\": \"officials hid casualty figures\"\n    },\n    {\n      \"subject\": \"Source B\",\n      \"relation\": \"denies\",\n      \"object\": \"Source A's allegation\"\n    }\n  ],\n  \"claims\": [\n    \"Source A alleges that officials hid casualty figures after the strike.\",\n    \"Source B claims that the published data is complete.\"\n  ],\n  \"dates\": [],\n  \"source_fidelity_notes\": [\n    \"The text explicitly states it does not decide which source is correct, indicating an unresolved conflict between Source A and Source B.\"\n  ]\n}",
+  "parsed_response": {
+    "summary": "Conflicting reports exist regarding the accuracy of published casualty figures following a strike.",
+    "entities": [
+      "Source A",
+      "Source B"
+    ],
+    "relations": [
+      {
+        "subject": "Source A",
+        "relation": "alleges",
+        "object": "officials hid casualty figures"
+      },
+      {
+        "subject": "Source B",
+        "relation": "denies",
+        "object": "Source A's allegation"
+      }
+    ],
+    "claims": [
+      "Source A alleges that officials hid casualty figures after the strike.",
+      "Source B claims that the published data is complete."
+    ],
+    "dates": [],
+    "source_fidelity_notes": [
+      "The text explicitly states it does not decide which source is correct, indicating an unresolved conflict between Source A and Source B."
+    ]
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

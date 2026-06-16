@@ -1,0 +1,19 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615",
+  "timestamp": "2026-06-15T18:07:18+00:00",
+  "model_id": "mistralai/mistral-small-2603",
+  "provider": "openrouter",
+  "role": "fallback_synth",
+  "suite": "role_fallback_synth_targeted",
+  "case_id": "fallback_quote_attribution_001",
+  "prompt_hash": "c45dd30449868ae8360534b012f6487a07771986ce8bc3fc540e48f341fa49b7",
+  "input_tokens": 241,
+  "output_tokens": 94,
+  "latency_ms": 1634,
+  "estimated_cost_usd": 9.255e-05,
+  "raw_response": "Согласно источнику **source_quote**, цитата, которую необходимо сохранить:\n*«эта мера создает юридическую серую зону»*.\n\nОна связана с темой, так как в том же источнике упоминается, что Пекин может интерпретировать карантин Тайваня как проверку судов, а не блокаду, что подчеркивает неопределённость в юридической оценке таких действий.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

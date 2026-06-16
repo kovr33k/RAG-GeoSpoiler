@@ -1,0 +1,122 @@
+[
+  {
+    "message_id": 2,
+    "date": "2026-06-16T17:13:53+00:00",
+    "post_url": "https://t.me/c/4494958326/2",
+    "text_chars": 3109,
+    "normalized_chars": 3219,
+    "is_forward": true,
+    "forward_from_name": "UnRealpolitik",
+    "urls": [],
+    "txt_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\2.txt",
+    "meta_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\2.meta.json"
+  },
+  {
+    "message_id": 3,
+    "date": "2026-06-16T17:14:07+00:00",
+    "post_url": "https://t.me/c/4494958326/3",
+    "text_chars": 4010,
+    "normalized_chars": 4105,
+    "is_forward": true,
+    "forward_from_name": "✙Resurgam✙",
+    "urls": [],
+    "txt_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\3.txt",
+    "meta_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\3.meta.json"
+  },
+  {
+    "message_id": 4,
+    "date": "2026-06-16T17:14:21+00:00",
+    "post_url": "https://t.me/c/4494958326/4",
+    "text_chars": 906,
+    "normalized_chars": 1038,
+    "is_forward": true,
+    "forward_from_name": "Тарас Григорович повідомляє",
+    "urls": [],
+    "txt_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\4.txt",
+    "meta_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\4.meta.json"
+  },
+  {
+    "message_id": 5,
+    "date": "2026-06-16T17:14:46+00:00",
+    "post_url": "https://t.me/c/4494958326/5",
+    "text_chars": 4080,
+    "normalized_chars": 4170,
+    "is_forward": true,
+    "forward_from_name": "Китай",
+    "urls": [],
+    "txt_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\5.txt",
+    "meta_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\5.meta.json"
+  },
+  {
+    "message_id": 6,
+    "date": "2026-06-16T17:14:56+00:00",
+    "post_url": "https://t.me/c/4494958326/6",
+    "text_chars": 1372,
+    "normalized_chars": 1485,
+    "is_forward": true,
+    "forward_from_name": "YIGAL LEVIN",
+    "urls": [],
+    "txt_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\6.txt",
+    "meta_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\6.meta.json"
+  },
+  {
+    "message_id": 7,
+    "date": "2026-06-16T17:15:11+00:00",
+    "post_url": "https://t.me/c/4494958326/7",
+    "text_chars": 2475,
+    "normalized_chars": 2589,
+    "is_forward": true,
+    "forward_from_name": "YIGAL LEVIN",
+    "urls": [],
+    "txt_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\7.txt",
+    "meta_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\7.meta.json"
+  },
+  {
+    "message_id": 9,
+    "date": "2026-06-16T17:15:19+00:00",
+    "post_url": "https://t.me/c/4494958326/9",
+    "text_chars": 1429,
+    "normalized_chars": 1545,
+    "is_forward": true,
+    "forward_from_name": "YIGAL LEVIN",
+    "urls": [],
+    "txt_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\9.txt",
+    "meta_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\9.meta.json"
+  },
+  {
+    "message_id": 11,
+    "date": "2026-06-16T17:15:56+00:00",
+    "post_url": "https://t.me/c/4494958326/11",
+    "text_chars": 1868,
+    "normalized_chars": 1985,
+    "is_forward": true,
+    "forward_from_name": "UnRealpolitik",
+    "urls": [],
+    "txt_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\11.txt",
+    "meta_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\11.meta.json"
+  },
+  {
+    "message_id": 12,
+    "date": "2026-06-16T17:16:28+00:00",
+    "post_url": "https://t.me/c/4494958326/12",
+    "text_chars": 2343,
+    "normalized_chars": 2475,
+    "is_forward": true,
+    "forward_from_name": "Міжнародне Аняме (国際アニャメ)",
+    "urls": [],
+    "txt_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\12.txt",
+    "meta_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\12.meta.json"
+  },
+  {
+    "message_id": 13,
+    "date": "2026-06-16T17:16:38+00:00",
+    "post_url": "https://t.me/c/4494958326/13",
+    "text_chars": 3692,
+    "normalized_chars": 3811,
+    "is_forward": true,
+    "forward_from_name": "Ціна держави",
+    "urls": [],
+    "txt_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\13.txt",
+    "meta_path": "artifacts\\enrichment_bakeoff\\testchina_20260616_enrichment_bakeoff\\inputs\\normalized\\testchina\\13.meta.json"
+  }
+]

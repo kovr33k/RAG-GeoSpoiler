@@ -1,0 +1,67 @@
+{
+  "run_id": "full_tencent_hy3_preview_20260615",
+  "timestamp": "2026-06-15T16:43:10+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_enrich_sensitive_no_softening_001",
+  "prompt_hash": "e18885de37e278b8351e617178ac889e37842de5d5597ec0edaef548d6dc0c38",
+  "input_tokens": 217,
+  "output_tokens": 4002,
+  "latency_ms": 84090,
+  "estimated_cost_usd": 0.00085409,
+  "raw_response": "{\n  \"summary\": \"A human rights group claims that facial recognition systems and police checkpoints are used for mass surveillance in Xinjiang. Authorities characterize these measures as counter-terrorism.\",\n  \"key_facts\": [\n    \"Human rights group asserts that in Xinjiang, facial recognition systems and police checkpoints are used for mass surveillance.\",\n    \"Authorities call these measures counter-terrorism measures.\"\n  ],\n  \"entities\": [\n    \"Xinjiang\",\n    \"facial recognition systems\",\n    \"police checkpoints\",\n    \"human rights group\",\n    \"authorities\"\n  ],\n  \"topics\": [\n    \"mass surveillance\",\n    \"counter-terrorism\",\n    \"Xinjiang\",\n    \"facial recognition\",\n    \"police checkpoints\",\n    \"human rights\"\n  ],\n  \"theses\": [\n    \"Human rights groups allege widespread surveillance in Xinjiang using advanced technology and checkpoints.\",\n    \"Government authorities justify the measures as necessary for counter-terrorism.\"\n  ],\n  \"quotes\": [],\n  \"events\": [\n    \"Human rights group makes claim about mass surveillance in Xinjiang.\",\n    \"Authorities respond by labeling measures as counter-terrorism.\"\n  ],\n  \"query_aliases\": [\n    \"Xinjiang surveillance\",\n    \"Xinjiang facial recognition\",\n    \"Xinjiang police checkpoints\",\n    \"mass surveillance Xinjiang\",\n    \"counter-terrorism Xinjiang\",\n    \"China surveillance\",\n    \"Синьцзян слежка\",\n    \"распознавание лиц Синьцзян\"\n  ],\n  \"broll_potential\": [\n    \"Surveillance cameras\",\n    \"Police checkpoints\",\n    \"Xinjiang region footage\",\n    \"Facial recognition technology\",\n    \"Counter-terrorism operations\"\n  ],\n  \"broll_notes\": \"No specific footage referenced; visual representations of surveillance infrastructure and Xinjiang landscapes could be used.\"\n}",
+  "parsed_response": {
+    "summary": "A human rights group claims that facial recognition systems and police checkpoints are used for mass surveillance in Xinjiang. Authorities characterize these measures as counter-terrorism.",
+    "key_facts": [
+      "Human rights group asserts that in Xinjiang, facial recognition systems and police checkpoints are used for mass surveillance.",
+      "Authorities call these measures counter-terrorism measures."
+    ],
+    "entities": [
+      "Xinjiang",
+      "facial recognition systems",
+      "police checkpoints",
+      "human rights group",
+      "authorities"
+    ],
+    "topics": [
+      "mass surveillance",
+      "counter-terrorism",
+      "Xinjiang",
+      "facial recognition",
+      "police checkpoints",
+      "human rights"
+    ],
+    "theses": [
+      "Human rights groups allege widespread surveillance in Xinjiang using advanced technology and checkpoints.",
+      "Government authorities justify the measures as necessary for counter-terrorism."
+    ],
+    "quotes": [],
+    "events": [
+      "Human rights group makes claim about mass surveillance in Xinjiang.",
+      "Authorities respond by labeling measures as counter-terrorism."
+    ],
+    "query_aliases": [
+      "Xinjiang surveillance",
+      "Xinjiang facial recognition",
+      "Xinjiang police checkpoints",
+      "mass surveillance Xinjiang",
+      "counter-terrorism Xinjiang",
+      "China surveillance",
+      "Синьцзян слежка",
+      "распознавание лиц Синьцзян"
+    ],
+    "broll_potential": [
+      "Surveillance cameras",
+      "Police checkpoints",
+      "Xinjiang region footage",
+      "Facial recognition technology",
+      "Counter-terrorism operations"
+    ],
+    "broll_notes": "No specific footage referenced; visual representations of surveillance infrastructure and Xinjiang landscapes could be used."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

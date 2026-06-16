@@ -1,0 +1,19 @@
+{
+  "run_id": "role_rag_build_tuple_mistral_gpt_gemini_20260615_v3",
+  "timestamp": "2026-06-15T18:20:36+00:00",
+  "model_id": "openai/gpt-5.4-nano",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_tuple_targeted",
+  "case_id": "rag_tuple_quote_taiwan_001",
+  "prompt_hash": "d6de57af7e5a03aaeae86ef3a7be32d06a330231a570b1cd0ef3aeacdef24c55",
+  "input_tokens": 237,
+  "output_tokens": 215,
+  "latency_ms": 2641,
+  "estimated_cost_usd": 0.00031615,
+  "raw_response": "entity<|#|>Пекин<|#|>organization<|#|>Упомянут в тексте как возможный субъект, который может переименовать меры в отношении Тайваня.<|#|>\nentity<|#|>Тайвань<|#|>location<|#|>Упомянут как территория/объект, к которому может быть отнесен карантин.<|#|>\nrelation<|#|>Пекин<|#|>Тайвань<|#|>может переименовать карантин как проверку судов, а не блокаду (заявление/предположение автора поста).<|#|><keywords><|#|>карантин; проверка судов; блокада<|#|>Автор поста добавляет, что Пекин может назвать карантин Тайваня проверкой судов, а не блокадой.<|#|>\n<|COMPLETE|>",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

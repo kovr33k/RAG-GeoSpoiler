@@ -1,0 +1,146 @@
+[
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 935,
+    "completion_tokens": 1013,
+    "estimated_cost_usd": 0.00145325,
+    "latency_ms": 9394
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 566,
+    "completion_tokens": 605,
+    "estimated_cost_usd": 0.00086945,
+    "latency_ms": 5477
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 1484,
+    "completion_tokens": 2226,
+    "estimated_cost_usd": 0.0030793,
+    "latency_ms": 14314
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 1047,
+    "completion_tokens": 863,
+    "estimated_cost_usd": 0.00128815,
+    "latency_ms": 7955
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 858,
+    "completion_tokens": 1112,
+    "estimated_cost_usd": 0.0015616,
+    "latency_ms": 9019
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 1719,
+    "completion_tokens": 2257,
+    "estimated_cost_usd": 0.00316505,
+    "latency_ms": 14653
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 1042,
+    "completion_tokens": 1094,
+    "estimated_cost_usd": 0.0015759,
+    "latency_ms": 9579
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 942,
+    "completion_tokens": 1164,
+    "estimated_cost_usd": 0.0016434,
+    "latency_ms": 9460
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 701,
+    "completion_tokens": 1066,
+    "estimated_cost_usd": 0.0014727,
+    "latency_ms": 9780
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 1861,
+    "completion_tokens": 2716,
+    "estimated_cost_usd": 0.0037672,
+    "latency_ms": 17967
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 1098,
+    "completion_tokens": 1242,
+    "estimated_cost_usd": 0.0017721,
+    "latency_ms": 10179
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 1351,
+    "completion_tokens": 1652,
+    "estimated_cost_usd": 0.0023352,
+    "latency_ms": 12714
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 1100,
+    "completion_tokens": 1419,
+    "estimated_cost_usd": 0.00199375,
+    "latency_ms": 12151
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 1362,
+    "completion_tokens": 1696,
+    "estimated_cost_usd": 0.0023924,
+    "latency_ms": 15801
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 1488,
+    "completion_tokens": 1842,
+    "estimated_cost_usd": 0.0026001,
+    "latency_ms": 20532
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 1026,
+    "completion_tokens": 1131,
+    "estimated_cost_usd": 0.00161895,
+    "latency_ms": 9178
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 714,
+    "completion_tokens": 785,
+    "estimated_cost_usd": 0.00112405,
+    "latency_ms": 6779
+  },
+  {
+    "model_id": "openai/gpt-5.4-nano",
+    "status_code": 200,
+    "prompt_tokens": 1612,
+    "completion_tokens": 2091,
+    "estimated_cost_usd": 0.00293615,
+    "latency_ms": 14919
+  }
+]

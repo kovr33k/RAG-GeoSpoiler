@@ -1,0 +1,21 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615",
+  "timestamp": "2026-06-15T18:07:11+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "fallback_synth",
+  "suite": "role_fallback_synth_targeted",
+  "case_id": "fallback_noisy_context_no_internal_terms_001",
+  "prompt_hash": "cda3caaffa17e793aebd01a566366c3ea3be531cec768e3463aabbe68ee0bf0c",
+  "input_tokens": 286,
+  "output_tokens": 53,
+  "latency_ms": 7521,
+  "estimated_cost_usd": 0.000151,
+  "raw_response": "{\n  \"answer\": \"Согласно имеющимся данным, Пекин усилил военное давление вокруг Тайваня (card-1). Официальные лица Тайваня охарактеризовали эти действия как принудительные (card-2).\"\n}",
+  "parsed_response": {
+    "answer": "Согласно имеющимся данным, Пекин усилил военное давление вокруг Тайваня (card-1). Официальные лица Тайваня охарактеризовали эти действия как принудительные (card-2)."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

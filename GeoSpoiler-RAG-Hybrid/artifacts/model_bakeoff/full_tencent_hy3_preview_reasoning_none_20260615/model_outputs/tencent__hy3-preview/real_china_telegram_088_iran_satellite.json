@@ -1,0 +1,44 @@
+{
+  "run_id": "full_tencent_hy3_preview_reasoning_none_20260615",
+  "timestamp": "2026-06-15T16:58:53+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_088_iran_satellite",
+  "prompt_hash": "9a154b84ea236a2bcb52565746459024750686fe2c354c284100105b6259cdae",
+  "input_tokens": 331,
+  "output_tokens": 312,
+  "latency_ms": 7172,
+  "estimated_cost_usd": 8.637e-05,
+  "raw_response": "{\n  \"claims\": [\n    \"Iran used a Chinese reconnaissance satellite to guide strikes on US military bases in the Middle East.\",\n    \"According to the Financial Times, the Islamic Revolutionary Guard Corps (IRGC) secretly obtained this satellite system.\",\n    \"The satellite in question is the TEE-01B, which was built and launched into orbit in China before coming under the control of the IRGC Aerospace Force.\",\n    \"The company Chang Guang Satellite Technology, which has links to the Chinese military, provided satellite imagery to the Houthis.\"\n  ],\n  \"entities\": [\n    \"Financial Times\",\n    \"Iran\",\n    \"China\",\n    \"US military bases\",\n    \"Middle East\",\n    \"Islamic Revolutionary Guard Corps (IRGC)\",\n    \"TEE-01B satellite\",\n    \"IRGC Aerospace Force\",\n    \"Chang Guang Satellite Technology\",\n    \"Houthis\"\n  ],\n  \"sensitive_topics\": [\n    \"Military cooperation between China and Iran\",\n    \"Use of satellite technology for military strikes\",\n    \"Alleged provision of satellite imagery to non-state actors (Houthis)\"\n  ],\n  \"model_added_interpretation\": \"The source text reports allegations from the Financial Times regarding military-technical cooperation between China and Iran, specifically the transfer and use of a Chinese-built reconnaissance satellite by Iranian forces for targeting US military installations, as well as the alleged involvement of a Chinese company with military ties in providing imagery to Yemen's Houthis.\"\n}",
+  "parsed_response": {
+    "claims": [
+      "Iran used a Chinese reconnaissance satellite to guide strikes on US military bases in the Middle East.",
+      "According to the Financial Times, the Islamic Revolutionary Guard Corps (IRGC) secretly obtained this satellite system.",
+      "The satellite in question is the TEE-01B, which was built and launched into orbit in China before coming under the control of the IRGC Aerospace Force.",
+      "The company Chang Guang Satellite Technology, which has links to the Chinese military, provided satellite imagery to the Houthis."
+    ],
+    "entities": [
+      "Financial Times",
+      "Iran",
+      "China",
+      "US military bases",
+      "Middle East",
+      "Islamic Revolutionary Guard Corps (IRGC)",
+      "TEE-01B satellite",
+      "IRGC Aerospace Force",
+      "Chang Guang Satellite Technology",
+      "Houthis"
+    ],
+    "sensitive_topics": [
+      "Military cooperation between China and Iran",
+      "Use of satellite technology for military strikes",
+      "Alleged provision of satellite imagery to non-state actors (Houthis)"
+    ],
+    "model_added_interpretation": "The source text reports allegations from the Financial Times regarding military-technical cooperation between China and Iran, specifically the transfer and use of a Chinese-built reconnaissance satellite by Iranian forces for targeting US military installations, as well as the alleged involvement of a Chinese company with military ties in providing imagery to Yemen's Houthis."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

@@ -1,0 +1,37 @@
+{
+  "run_id": "google_gemini_3_vs_31_china_risk_20260615",
+  "timestamp": "2026-06-15T17:45:56+00:00",
+  "model_id": "google/gemini-3-flash-preview",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_source_secondary_sanctions_ru_001",
+  "prompt_hash": "6817a13add32a0c1bf257c8533822bb6e9843ec049720fd6d6a8fc70c3a7a655",
+  "input_tokens": 186,
+  "output_tokens": 163,
+  "latency_ms": 2508,
+  "estimated_cost_usd": 0.000582,
+  "raw_response": "{\n  \"claims\": [\n    \"Европа долго избегала вторичных санкций и запрета реэкспорта.\",\n    \"Китай и США активно используют экспортные лицензии друг против друга.\",\n    \"Китай и США активно используют квоты друг против друга.\",\n    \"Китай и США активно используют ограничения реэкспорта друг против друга.\"\n  ],\n  \"entities\": [\n    \"Европа\",\n    \"Китай\",\n    \"США\"\n  ],\n  \"sensitive_topics\": [\n    \"Вторичные санкции\",\n    \"Торговая война\",\n    \"Экспортные ограничения\"\n  ],\n  \"model_added_interpretation\": \"None\"\n}",
+  "parsed_response": {
+    "claims": [
+      "Европа долго избегала вторичных санкций и запрета реэкспорта.",
+      "Китай и США активно используют экспортные лицензии друг против друга.",
+      "Китай и США активно используют квоты друг против друга.",
+      "Китай и США активно используют ограничения реэкспорта друг против друга."
+    ],
+    "entities": [
+      "Европа",
+      "Китай",
+      "США"
+    ],
+    "sensitive_topics": [
+      "Вторичные санкции",
+      "Торговая война",
+      "Экспортные ограничения"
+    ],
+    "model_added_interpretation": "None"
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

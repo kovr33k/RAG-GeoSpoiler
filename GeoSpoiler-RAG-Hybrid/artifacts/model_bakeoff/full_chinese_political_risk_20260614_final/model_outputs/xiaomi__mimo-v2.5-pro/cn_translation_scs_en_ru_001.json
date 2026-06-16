@@ -1,0 +1,19 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:53:41+00:00",
+  "model_id": "xiaomi/mimo-v2.5-pro",
+  "provider": "openrouter",
+  "role": "translation",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_translation_scs_en_ru_001",
+  "prompt_hash": "22cc9ab3ce5250211690647b9b5eb2f4e7968458e3914dc577058bcff38ce0ae",
+  "input_tokens": 128,
+  "output_tokens": 74,
+  "latency_ms": 3684,
+  "estimated_cost_usd": 0.00012006,
+  "raw_response": "Трибунал отклонил претензии Китая на «девятипунктирную линию», однако Пекин отверг это решение и продолжил настаивать на своих исторических правах в оспариваемых водах.",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

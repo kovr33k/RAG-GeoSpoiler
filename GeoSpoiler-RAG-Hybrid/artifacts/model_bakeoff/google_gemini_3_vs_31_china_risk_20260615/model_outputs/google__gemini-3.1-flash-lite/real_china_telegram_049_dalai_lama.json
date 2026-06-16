@@ -1,0 +1,41 @@
+{
+  "run_id": "google_gemini_3_vs_31_china_risk_20260615",
+  "timestamp": "2026-06-15T17:47:09+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_049_dalai_lama",
+  "prompt_hash": "9d24a06920be4c75cc719b5e569e4263a726f6e96996ffa18191b78ae77467d6",
+  "input_tokens": 294,
+  "output_tokens": 181,
+  "latency_ms": 2009,
+  "estimated_cost_usd": 0.000345,
+  "raw_response": "{\n  \"claims\": [\n    \"China criticized the awarding of a Grammy Award to the Dalai Lama.\",\n    \"The Dalai Lama received a Grammy Award in the 'Best Audio Book Narration' category.\",\n    \"Beijing labeled the award as a 'tool of political manipulation against China'.\",\n    \"Lin Jian, a representative of the Chinese Foreign Ministry, stated that the 14th Dalai Lama is a political exile engaged in anti-Chinese separatist activities under the guise of religion.\"\n  ],\n  \"entities\": [\n    \"China\",\n    \"Dalai Lama\",\n    \"Grammy Awards\",\n    \"Beijing\",\n    \"Lin Jian\",\n    \"Chinese Foreign Ministry\"\n  ],\n  \"sensitive_topics\": [\n    \"Tibet\",\n    \"Separatism\",\n    \"Political manipulation\",\n    \"Religious freedom\"\n  ],\n  \"model_added_interpretation\": \"The text highlights the ongoing diplomatic and political tension between the Chinese government and the Dalai Lama, framing the recognition of the latter by international institutions as a hostile political act.\"\n}",
+  "parsed_response": {
+    "claims": [
+      "China criticized the awarding of a Grammy Award to the Dalai Lama.",
+      "The Dalai Lama received a Grammy Award in the 'Best Audio Book Narration' category.",
+      "Beijing labeled the award as a 'tool of political manipulation against China'.",
+      "Lin Jian, a representative of the Chinese Foreign Ministry, stated that the 14th Dalai Lama is a political exile engaged in anti-Chinese separatist activities under the guise of religion."
+    ],
+    "entities": [
+      "China",
+      "Dalai Lama",
+      "Grammy Awards",
+      "Beijing",
+      "Lin Jian",
+      "Chinese Foreign Ministry"
+    ],
+    "sensitive_topics": [
+      "Tibet",
+      "Separatism",
+      "Political manipulation",
+      "Religious freedom"
+    ],
+    "model_added_interpretation": "The text highlights the ongoing diplomatic and political tension between the Chinese government and the Dalai Lama, framing the recognition of the latter by international institutions as a hostile political act."
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

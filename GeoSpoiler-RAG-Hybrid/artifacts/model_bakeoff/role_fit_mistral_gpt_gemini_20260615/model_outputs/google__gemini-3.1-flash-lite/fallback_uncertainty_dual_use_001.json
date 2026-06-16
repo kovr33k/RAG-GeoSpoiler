@@ -1,0 +1,19 @@
+{
+  "run_id": "role_fit_mistral_gpt_gemini_20260615",
+  "timestamp": "2026-06-15T18:06:45+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "fallback_synth",
+  "suite": "role_fallback_synth_targeted",
+  "case_id": "fallback_uncertainty_dual_use_001",
+  "prompt_hash": "e78c02f89006bc0a0ebeb795cb96d848104f44e5f02596dad6e0c68f31e9dcfd",
+  "input_tokens": 284,
+  "output_tokens": 98,
+  "latency_ms": 1508,
+  "estimated_cost_usd": 0.000218,
+  "raw_response": "Согласно имеющимся данным, поставщик характеризует поставляемые товары как гражданские компоненты двойного назначения (source_b). При этом в материалах отмечается, что доказательства того, что поставщик был осведомлен о военном применении этих компонентов, отсутствуют (source_c). В то же время сообщается об увеличении экспорта Китаем волоконно-оптических компонентов, которые используются в российских боевых дронах в Украине (source_a).",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

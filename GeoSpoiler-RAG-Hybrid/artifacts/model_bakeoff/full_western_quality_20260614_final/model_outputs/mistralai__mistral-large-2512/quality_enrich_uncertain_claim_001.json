@@ -1,0 +1,74 @@
+{
+  "run_id": "full_western_quality_20260614",
+  "timestamp": "2026-06-14T23:15:10+00:00",
+  "model_id": "mistralai/mistral-large-2512",
+  "provider": "openrouter",
+  "role": "enrichment",
+  "suite": "western_quality_expanded",
+  "case_id": "quality_enrich_uncertain_claim_001",
+  "prompt_hash": "bfd865a146df21ba7db69ce697e888342d88a93ba16e75a92ebfe86351ecd344",
+  "input_tokens": 173,
+  "output_tokens": 391,
+  "latency_ms": 6775,
+  "estimated_cost_usd": 0.000673,
+  "raw_response": "{\n  \"summary\": \"Analysts suggest that some deliveries may have included dual-use components, but there is no independent confirmation that the supplier was aware of their potential military application.\",\n  \"key_facts\": [\n    {\n      \"fact\": \"Analysts claim part of the supplies could be dual-use components.\",\n      \"source_claim\": true\n    },\n    {\n      \"fact\": \"No independent confirmation exists that the supplier knew about military use.\",\n      \"source_claim\": true\n    }\n  ],\n  \"entities\": [\n    {\n      \"name\": \"Analysts\",\n      \"type\": \"group\",\n      \"role\": \"source of claim\"\n    },\n    {\n      \"name\": \"Supplier\",\n      \"type\": \"organization\",\n      \"role\": \"subject of claim\"\n    }\n  ],\n  \"topics\": [\n    \"Dual-use components\",\n    \"Military application of supplies\",\n    \"Supply chain accountability\"\n  ],\n  \"theses\": [\n    {\n      \"thesis\": \"Some supplies may have had dual-use potential, but supplier awareness remains unverified.\",\n      \"source_claim\": true\n    }\n  ],\n  \"quotes\": [],\n  \"events\": [\n    {\n      \"event\": \"Alleged delivery of dual-use components\",\n      \"source_claim\": true,\n      \"details\": \"No independent confirmation of supplier knowledge regarding military application.\"\n    }\n  ],\n  \"query_aliases\": [\n    \"dual-use technology transfers\",\n    \"supplier awareness of military use\",\n    \"unverified military supply claims\"\n  ],\n  \"broll_potential\": [\n    \"Footage of warehouses or shipping containers (generic)\",\n    \"Stock footage of industrial components or electronics\"\n  ],\n  \"broll_notes\": [\n    \"No specific visuals confirmed; avoid implying verified military use or supplier intent.\"\n  ]\n}",
+  "parsed_response": {
+    "summary": "Analysts suggest that some deliveries may have included dual-use components, but there is no independent confirmation that the supplier was aware of their potential military application.",
+    "key_facts": [
+      {
+        "fact": "Analysts claim part of the supplies could be dual-use components.",
+        "source_claim": true
+      },
+      {
+        "fact": "No independent confirmation exists that the supplier knew about military use.",
+        "source_claim": true
+      }
+    ],
+    "entities": [
+      {
+        "name": "Analysts",
+        "type": "group",
+        "role": "source of claim"
+      },
+      {
+        "name": "Supplier",
+        "type": "organization",
+        "role": "subject of claim"
+      }
+    ],
+    "topics": [
+      "Dual-use components",
+      "Military application of supplies",
+      "Supply chain accountability"
+    ],
+    "theses": [
+      {
+        "thesis": "Some supplies may have had dual-use potential, but supplier awareness remains unverified.",
+        "source_claim": true
+      }
+    ],
+    "quotes": [],
+    "events": [
+      {
+        "event": "Alleged delivery of dual-use components",
+        "source_claim": true,
+        "details": "No independent confirmation of supplier knowledge regarding military application."
+      }
+    ],
+    "query_aliases": [
+      "dual-use technology transfers",
+      "supplier awareness of military use",
+      "unverified military supply claims"
+    ],
+    "broll_potential": [
+      "Footage of warehouses or shipping containers (generic)",
+      "Stock footage of industrial components or electronics"
+    ],
+    "broll_notes": [
+      "No specific visuals confirmed; avoid implying verified military use or supplier intent."
+    ]
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

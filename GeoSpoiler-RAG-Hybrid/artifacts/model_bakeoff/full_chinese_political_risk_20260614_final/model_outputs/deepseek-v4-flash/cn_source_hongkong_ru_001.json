@@ -1,0 +1,33 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:41:23+00:00",
+  "model_id": "deepseek-v4-flash",
+  "provider": "deepseek",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk",
+  "case_id": "cn_source_hongkong_ru_001",
+  "prompt_hash": "ddb822428f9ac219fc46971bb035de142712e921738be1d596db720899d78b95",
+  "input_tokens": 191,
+  "output_tokens": 111,
+  "latency_ms": 2449,
+  "estimated_cost_usd": 5.782e-05,
+  "raw_response": "{\n  \"claims\": [\n    \"Автор поста утверждает, что закон о национальной безопасности в Гонконге используется для подавления протестного движения.\",\n    \"Представители КНР называют закон необходимым для стабильности.\"\n  ],\n  \"entities\": [\"Гонконг\", \"КНР\"],\n  \"sensitive_topics\": [\"закон о национальной безопасности\", \"подавление протестного движения\"],\n  \"model_added_interpretation\": null\n}",
+  "parsed_response": {
+    "claims": [
+      "Автор поста утверждает, что закон о национальной безопасности в Гонконге используется для подавления протестного движения.",
+      "Представители КНР называют закон необходимым для стабильности."
+    ],
+    "entities": [
+      "Гонконг",
+      "КНР"
+    ],
+    "sensitive_topics": [
+      "закон о национальной безопасности",
+      "подавление протестного движения"
+    ],
+    "model_added_interpretation": null
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

@@ -1,0 +1,19 @@
+{
+  "run_id": "role_rag_build_tuple_mistral_gpt_gemini_20260615_v2",
+  "timestamp": "2026-06-15T18:17:28+00:00",
+  "model_id": "google/gemini-3.1-flash-lite",
+  "provider": "openrouter",
+  "role": "rag_build",
+  "suite": "role_rag_build_tuple_targeted",
+  "case_id": "rag_tuple_dual_use_ukraine_001",
+  "prompt_hash": "3c30113a24b6f1939761e1e3071a1507647811c65dc6ef2d2e9703546f3a6ad2",
+  "input_tokens": 259,
+  "output_tokens": 200,
+  "latency_ms": 1917,
+  "estimated_cost_usd": 0.00036475,
+  "raw_response": "entity{tuple_delimiter}китайский поставщик{tuple_delimiter}organization{tuple_delimiter}Поставщик из Китая, подозреваемый в экспорте компонентов двойного назначения.\nentity{tuple_delimiter}российские дроны{tuple_delimiter}military_unit{tuple_delimiter}Беспилотные летательные аппараты, используемые вооруженными силами РФ.\nentity{tuple_delimiter}Украина{tuple_delimiter}country{tuple_delimiter}Страна, в которой применялись российские дроны.\nrelation{tuple_delimiter}китайский поставщик{tuple_delimiter}российские дроны{tuple_delimiter}экспорт компонентов{tuple_delimiter}Аналитики предполагают, что поставщик экспортировал компоненты двойного назначения, которые могли быть использованы в российских дронах, однако доказательств осведомленности поставщика о конечном военном применении нет.\n{completion_delimiter}",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

@@ -1,0 +1,19 @@
+{
+  "run_id": "full_tencent_hy3_preview_20260615",
+  "timestamp": "2026-06-15T16:37:53+00:00",
+  "model_id": "tencent/hy3-preview",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_real_posts",
+  "case_id": "real_china_telegram_027_secondary_sanctions",
+  "prompt_hash": "34c988032734dba3a9a260084c7786fd1c9afaab63caed09e01c853b03e04dcb",
+  "input_tokens": 266,
+  "output_tokens": 353,
+  "latency_ms": 11139,
+  "estimated_cost_usd": 9.089e-05,
+  "raw_response": "",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

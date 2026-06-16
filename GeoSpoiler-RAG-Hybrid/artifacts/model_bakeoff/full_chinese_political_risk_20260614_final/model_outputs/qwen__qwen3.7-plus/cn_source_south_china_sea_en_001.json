@@ -1,0 +1,19 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:43:58+00:00",
+  "model_id": "qwen/qwen3.7-plus",
+  "provider": "openrouter",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_source_south_china_sea_en_001",
+  "prompt_hash": "639c0f9cea53ffc594ec95d72169f0f2adb4282416584d1b21fe828502ea422b",
+  "input_tokens": 196,
+  "output_tokens": 778,
+  "latency_ms": 14948,
+  "estimated_cost_usd": 0.00105856,
+  "raw_response": "{\n  \"claims\": [\n    \"An international tribunal rejected China's nine-dash-line claims in the South China Sea.\",\n    \"Beijing rejected the ruling.\",\n    \"Beijing continued to assert historic rights in disputed waters.\"\n  ],\n  \"entities\": [\n    \"international tribunal\",\n    \"China\",\n    \"Beijing\",\n    \"South China Sea\",\n    \"nine-dash-line\"\n  ],\n  \"sensitive_topics\": [\n    \"South China",
+  "parsed_response": null,
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}

@@ -1,0 +1,33 @@
+{
+  "run_id": "full_chinese_political_risk_20260614_v2",
+  "timestamp": "2026-06-14T22:48:50+00:00",
+  "model_id": "deepseek-v4-flash",
+  "provider": "deepseek",
+  "role": "high_risk_enrichment",
+  "suite": "chinese_political_risk_expanded",
+  "case_id": "cn_source_bri_debt_ru_001",
+  "prompt_hash": "a2b74a00adb734b75832c0197c005ff1caca9f8c8a6cc73ae9b89176a47b9e02",
+  "input_tokens": 211,
+  "output_tokens": 130,
+  "latency_ms": 2556,
+  "estimated_cost_usd": 6.594e-05,
+  "raw_response": "{\n  \"claims\": [\n    \"Критики инициативы «Пояс и путь» обвиняют китайские кредиты в создании долгового давления.\",\n    \"Китайские дипломаты отвечают, что проекты строят инфраструктуру и не являются долговой ловушкой.\"\n  ],\n  \"entities\": [\"Китай\", \"инициатива «Пояс и путь»\"],\n  \"sensitive_topics\": [\"долговая ловушка\", \"кредиты\"],\n  \"model_added_interpretation\": null\n}",
+  "parsed_response": {
+    "claims": [
+      "Критики инициативы «Пояс и путь» обвиняют китайские кредиты в создании долгового давления.",
+      "Китайские дипломаты отвечают, что проекты строят инфраструктуру и не являются долговой ловушкой."
+    ],
+    "entities": [
+      "Китай",
+      "инициатива «Пояс и путь»"
+    ],
+    "sensitive_topics": [
+      "долговая ловушка",
+      "кредиты"
+    ],
+    "model_added_interpretation": null
+  },
+  "errors": [],
+  "retries": 0,
+  "cache_buster": ""
+}
