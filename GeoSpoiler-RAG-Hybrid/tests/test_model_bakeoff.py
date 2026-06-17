@@ -6,6 +6,8 @@ from unittest.mock import patch
 from eval.model_bakeoff.aggregate_report import summarize_score_records
 from eval.model_bakeoff.config_loader import load_model_registry
 from eval.model_bakeoff.post_selection import CandidatePost, candidate_from_text, write_candidate_artifacts
+from eval.model_bakeoff.prompts import case_user_prompt, messages_for_case
+from eval.model_bakeoff.providers import call_chat_completion
 from eval.model_bakeoff.run_bakeoff import (
     _call_chat_completion,
     _case_user_prompt,
@@ -367,6 +369,32 @@ class ModelBakeoffRunnerReportTests(unittest.TestCase):
         self.assertIn("uk_to_ru", prompt)
         self.assertIn("Джерело стверджує", prompt)
 
+    def test_prompt_module_builds_translation_user_prompt(self):
+        prompt = case_user_prompt(
+            {
+                "task_type": "translation_fidelity",
+                "language": "uk_to_ru",
+                "input": "Джерело стверджує, що компанія пов'язана із Сіньцзяном.",
+            }
+        )
+
+        self.assertIn("uk_to_ru", prompt)
+        self.assertIn("Джерело стверджує", prompt)
+
+    def test_prompt_module_builds_messages_with_custom_prompt_dir(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            prompts_dir = Path(tmp)
+            (prompts_dir / "direct_qa_system.txt").write_text("System prompt", encoding="utf-8")
+
+            messages, prompt_text = messages_for_case(
+                {"task_type": "direct_qa", "prompt": "User prompt"},
+                prompts_dir=prompts_dir,
+            )
+
+        self.assertEqual(messages[0], {"role": "system", "content": "System prompt"})
+        self.assertEqual(messages[1], {"role": "user", "content": "User prompt"})
+        self.assertEqual(prompt_text, "System prompt\n\nUser prompt")
+
     def test_call_chat_completion_retries_without_json_mode_on_400(self):
         model = load_model_registry_from_text(
             "\n".join(
@@ -401,9 +429,8 @@ class ModelBakeoffRunnerReportTests(unittest.TestCase):
             def json(self):
                 return self._data
 
-        def fake_post(_url, headers, json, timeout):
-            _ = headers, timeout
-            calls.append(dict(json))
+        def fake_post(_base_url, _api_key, payload):
+            calls.append(dict(payload))
             if len(calls) == 1:
                 return FakeResponse(400)
             return FakeResponse(
@@ -416,9 +443,68 @@ class ModelBakeoffRunnerReportTests(unittest.TestCase):
 
         with (
             patch("eval.model_bakeoff.run_bakeoff._api_key_for", return_value="test-key"),
-            patch("eval.model_bakeoff.run_bakeoff.requests.post", side_effect=fake_post),
+            patch("eval.model_bakeoff.run_bakeoff._post_chat_completion", side_effect=fake_post),
         ):
             content, usage = _call_chat_completion(model, [{"role": "system", "content": "Return JSON."}])
+
+        self.assertEqual(content, '{"ok": true}')
+        self.assertEqual(usage["completion_tokens"], 4)
+        self.assertIn("response_format", calls[0])
+        self.assertNotIn("response_format", calls[1])
+        self.assertEqual(calls[0].get("thinking"), {"type": "disabled"})
+
+    def test_provider_module_retries_without_json_mode_on_400(self):
+        model = load_model_registry_from_text(
+            "\n".join(
+                [
+                    "models:",
+                    "  - id: deepseek-v4-flash",
+                    "    api_id: deepseek-v4-flash",
+                    "    provider: deepseek",
+                    "    family: chinese",
+                    "    roles: [enrichment]",
+                    "    priority: 1",
+                    "    input_price_per_m: 0.10",
+                    "    output_price_per_m: 0.20",
+                ]
+            )
+        )[0]
+        calls = []
+
+        class FakeResponse:
+            def __init__(self, status_code, data=None):
+                self.status_code = status_code
+                self._data = data or {}
+
+            def raise_for_status(self):
+                if self.status_code >= 400:
+                    import requests
+
+                    exc = requests.HTTPError("400 Client Error")
+                    exc.response = self
+                    raise exc
+
+            def json(self):
+                return self._data
+
+        def fake_post(_base_url, _api_key, payload):
+            calls.append(dict(payload))
+            if len(calls) == 1:
+                return FakeResponse(400)
+            return FakeResponse(
+                200,
+                {
+                    "choices": [{"message": {"content": '{"ok": true}'}}],
+                    "usage": {"prompt_tokens": 11, "completion_tokens": 4},
+                },
+            )
+
+        content, usage = call_chat_completion(
+            model,
+            [{"role": "system", "content": "Return JSON."}],
+            api_key_func=lambda _model: "test-key",
+            post_func=fake_post,
+        )
 
         self.assertEqual(content, '{"ok": true}')
         self.assertEqual(usage["completion_tokens"], 4)
@@ -455,14 +541,13 @@ class ModelBakeoffRunnerReportTests(unittest.TestCase):
                     "usage": {"prompt_tokens": 3, "completion_tokens": 2},
                 }
 
-        def fake_post(_url, headers, json, timeout):
-            _ = headers, timeout
-            calls.append(dict(json))
+        def fake_post(_base_url, _api_key, payload):
+            calls.append(dict(payload))
             return FakeResponse()
 
         with (
             patch("eval.model_bakeoff.run_bakeoff._api_key_for", return_value="test-key"),
-            patch("eval.model_bakeoff.run_bakeoff.requests.post", side_effect=fake_post),
+            patch("eval.model_bakeoff.run_bakeoff._post_chat_completion", side_effect=fake_post),
         ):
             content, usage = _call_chat_completion(
                 model,
@@ -503,14 +588,13 @@ class ModelBakeoffRunnerReportTests(unittest.TestCase):
                     "usage": {"prompt_tokens": 3, "completion_tokens": 1},
                 }
 
-        def fake_post(_url, headers, json, timeout):
-            _ = headers, timeout
-            calls.append(dict(json))
+        def fake_post(_base_url, _api_key, payload):
+            calls.append(dict(payload))
             return FakeResponse()
 
         with (
             patch("eval.model_bakeoff.run_bakeoff._api_key_for", return_value="test-key"),
-            patch("eval.model_bakeoff.run_bakeoff.requests.post", side_effect=fake_post),
+            patch("eval.model_bakeoff.run_bakeoff._post_chat_completion", side_effect=fake_post),
             patch("eval.model_bakeoff.run_bakeoff.config.LLM_REASONING_EFFORT", "none"),
         ):
             content, usage = _call_chat_completion(model, [{"role": "user", "content": "hello"}])

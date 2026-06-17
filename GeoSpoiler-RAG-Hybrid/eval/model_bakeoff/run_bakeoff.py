@@ -6,39 +6,32 @@ import argparse
 import csv
 import hashlib
 import json
-import os
 import time
 from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-import requests
 from dotenv import load_dotenv
 
 import config
 from eval.model_bakeoff.aggregate_report import write_reports
 from eval.model_bakeoff.config_loader import ModelConfig, load_model_registry
+from eval.model_bakeoff.prompts import case_user_prompt, messages_for_case
+from eval.model_bakeoff.providers import (
+    api_key_for,
+    base_url_for,
+    call_chat_completion,
+    post_chat_completion,
+    provider_options,
+)
 from eval.model_bakeoff.scoring import score_political_risk, score_quality
-from llm_auth import auth_headers
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_MODELS_PATH = Path(__file__).with_name("models.yaml")
 DEFAULT_SUITES_DIR = Path(__file__).with_name("suites")
 DEFAULT_PROMPTS_DIR = Path(__file__).with_name("prompts")
 DEFAULT_ARTIFACT_ROOT = PROJECT_ROOT / "artifacts" / "model_bakeoff"
-
-_TASK_PROMPTS = {
-    "direct_qa": "direct_qa_system.txt",
-    "source_preservation": "source_preservation_system.txt",
-    "translation_fidelity": "translation_fidelity_system.txt",
-    "enrichment_json": "enrichment_json_system.txt",
-    "rag_build_extraction": "rag_build_extraction_system.txt",
-    "rag_build_tuple_extraction": "rag_build_tuple_extraction_system.txt",
-    "fixed_context_synthesis": "fixed_context_synthesis_system.txt",
-    "fallback_synth": "fallback_synth_system.txt",
-    "script_pack": "fixed_context_synthesis_system.txt",
-}
 
 
 def estimate_cost_usd(model: ModelConfig, input_tokens: int, output_tokens: int) -> float:
@@ -329,28 +322,11 @@ def _role_for_case(model: ModelConfig, case: dict[str, Any]) -> str | None:
 
 
 def _messages_for_case(case: dict[str, Any]) -> tuple[list[dict[str, str]], str]:
-    task_type = str(case.get("task_type", "direct_qa"))
-    system_path = DEFAULT_PROMPTS_DIR / _TASK_PROMPTS.get(task_type, "direct_qa_system.txt")
-    system = system_path.read_text(encoding="utf-8")
-    user = _case_user_prompt(case)
-    return [{"role": "system", "content": system}, {"role": "user", "content": user}], f"{system}\n\n{user}"
+    return messages_for_case(case, prompts_dir=DEFAULT_PROMPTS_DIR)
 
 
 def _case_user_prompt(case: dict[str, Any]) -> str:
-    if "prompt" in case:
-        return str(case["prompt"])
-    if case.get("task_type") == "translation_fidelity":
-        payload = {
-            "language": case.get("language", ""),
-            "text": case.get("input", ""),
-        }
-        return json.dumps(payload, ensure_ascii=False, indent=2)
-    if "input" in case:
-        return json.dumps(case["input"], ensure_ascii=False, indent=2)
-    if "context" in case:
-        payload = {"question": case.get("question", ""), "context": case.get("context", [])}
-        return json.dumps(payload, ensure_ascii=False, indent=2)
-    return json.dumps(case, ensure_ascii=False, indent=2)
+    return case_user_prompt(case)
 
 
 def _call_chat_completion(
@@ -358,41 +334,18 @@ def _call_chat_completion(
     messages: list[dict[str, str]],
     force_json: bool | None = None,
 ) -> tuple[str, dict[str, Any]]:
-    base_url = _base_url_for(model)
-    api_key = _api_key_for(model)
-    if not api_key:
-        raise RuntimeError(f"No API key configured for provider {model.provider}.")
-    payload = {
-        "model": getattr(model, "api_id", "") or model.id,
-        "messages": messages,
-        "temperature": 0,
-    }
-    payload.update(_provider_options(model, base_url))
-    json_requested = force_json if force_json is not None else any("json" in message["content"].casefold() for message in messages)
-    if json_requested:
-        payload["response_format"] = {"type": "json_object"}
-    response = _post_chat_completion(base_url, api_key, payload)
-    try:
-        response.raise_for_status()
-    except requests.HTTPError as exc:
-        if response.status_code == 400 and "response_format" in payload:
-            fallback_payload = dict(payload)
-            fallback_payload.pop("response_format", None)
-            response = _post_chat_completion(base_url, api_key, fallback_payload)
-            response.raise_for_status()
-        else:
-            raise exc
-    data = response.json()
-    return str(data["choices"][0]["message"]["content"] or "").strip(), data.get("usage") or {}
-
-
-def _post_chat_completion(base_url: str, api_key: str, payload: dict[str, Any]) -> requests.Response:
-    return requests.post(
-        f"{base_url.rstrip('/')}/chat/completions",
-        headers=auth_headers(api_key, base_url),
-        json=payload,
-        timeout=120,
+    return call_chat_completion(
+        model,
+        messages,
+        force_json=force_json,
+        base_url_func=_base_url_for,
+        api_key_func=_api_key_for,
+        post_func=_post_chat_completion,
     )
+
+
+def _post_chat_completion(base_url: str, api_key: str, payload: dict[str, Any]):
+    return post_chat_completion(base_url, api_key, payload)
 
 
 def _case_requires_json(case: dict[str, Any]) -> bool:
@@ -400,44 +353,15 @@ def _case_requires_json(case: dict[str, Any]) -> bool:
 
 
 def _provider_options(model: ModelConfig, base_url: str) -> dict[str, Any]:
-    text = f"{model.provider} {model.id} {getattr(model, 'api_id', '') or ''} {base_url}".casefold()
-    if config.LLM_REASONING_EFFORT and model.provider.casefold() == "openrouter":
-        return {"reasoning_effort": config.LLM_REASONING_EFFORT}
-    if config.LLM_REASONING_EFFORT:
-        return {}
-    if "deepseek-v4" not in text and "api.deepseek.com" not in text:
-        return {}
-    return {"thinking": {"type": "disabled"}}
+    return provider_options(model, base_url)
 
 
 def _base_url_for(model: ModelConfig) -> str:
-    if model.base_url_env and os.getenv(model.base_url_env):
-        return str(os.getenv(model.base_url_env))
-    provider = model.provider.casefold()
-    if provider == "openrouter":
-        return os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
-    if provider == "deepseek":
-        return os.getenv("DEEPSEEK_BASE_URL") or config.LLM_BASE_URL
-    if provider == "google":
-        return os.getenv("GEMINI_BASE_URL", "https://generativelanguage.googleapis.com/v1beta/openai")
-    if provider == "mistral":
-        return os.getenv("MISTRAL_BASE_URL", "https://api.mistral.ai/v1")
-    return config.LLM_BASE_URL
+    return base_url_for(model)
 
 
 def _api_key_for(model: ModelConfig) -> str:
-    if model.api_key_env and os.getenv(model.api_key_env):
-        return str(os.getenv(model.api_key_env))
-    provider = model.provider.casefold()
-    if provider == "openrouter":
-        return os.getenv("OPENROUTER_API_KEY", "")
-    if provider == "deepseek":
-        return os.getenv("DEEPSEEK_API_KEY") or config.LLM_API_KEY
-    if provider == "google":
-        return os.getenv("GEMINI_API_KEY", "")
-    if provider == "mistral":
-        return os.getenv("MISTRAL_API_KEY", "")
-    return config.LLM_API_KEY
+    return api_key_for(model)
 
 
 def _dry_run_response(case: dict[str, Any]) -> str:

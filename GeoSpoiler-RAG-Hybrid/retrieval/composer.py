@@ -13,7 +13,8 @@ import config
 from loader.lightrag_loader import query_rag_result
 from retrieval import shadow_search
 from retrieval.card_fts import CardFtsMatch, search_card_index
-from retrieval.wiki_index import WikiSearchResult, find_wiki_context
+from retrieval.source_registry import SourcePassport, resolve_source
+from retrieval.wiki_index import WikiSearchResult, extract_source_id, find_wiki_context
 from retrieval.wiki_resolver import WikiResolvedSource, resolve_wiki_references
 
 logger = logging.getLogger("geospoiler.retrieval.composer")
@@ -29,6 +30,8 @@ class SearchResult:
     snippets: list[str] = field(default_factory=list)
     broll_notes: str = ""
     is_primary: bool = True
+    source_id: str = ""
+    primary_url: str = ""
 
 
 @dataclass
@@ -51,6 +54,7 @@ class CardSearchHit:
     score: float
     snippet: str
     backend: str
+    source_id: str = ""
 
 
 def _load_all_cards() -> list[dict]:
@@ -202,14 +206,31 @@ async def search(rag: LightRAG | None, query: str, mode: str = "recall") -> Sear
 
 def _card_to_result(card: dict, reason: str) -> SearchResult:
     prov = card.get("provenance", {})
+    source_id = extract_source_id(card) or ""
+    passport = _resolve_source_passport(source_id)
+    source_path = prov.get("normalized_file", card.get("_path", ""))
+    card_path = card.get("_path")
+    title = f"{prov.get('channel_name', '?')} - {prov.get('date', '?')[:10]}"
+    url = prov.get("post_url", "")
+    primary_url = ""
+    if passport:
+        source_id = passport.source_id
+        source_path = passport.normalized_file or source_path
+        card_path = passport.card_path or card_path
+        title = _title_from_passport(passport, title)
+        url = passport.primary_url or passport.post_url or url
+        primary_url = passport.primary_url
+
     return SearchResult(
-        source_path=prov.get("normalized_file", card.get("_path", "")),
-        card_path=card.get("_path"),
-        title=f"{prov.get('channel_name', '?')} - {prov.get('date', '?')[:10]}",
-        url=prov.get("post_url", ""),
+        source_path=source_path,
+        card_path=card_path,
+        title=title,
+        url=url,
         relevance_reason=reason,
         snippets=[],
-        broll_notes=card.get("visual", {}).get("broll_notes", "")
+        broll_notes=card.get("visual", {}).get("broll_notes", ""),
+        source_id=source_id,
+        primary_url=primary_url,
     )
 
 
@@ -245,6 +266,7 @@ def _fts_match_to_hit(match: CardFtsMatch) -> CardSearchHit:
         score=match.score,
         snippet=match.snippet,
         backend="fts",
+        source_id=match.source_id,
     )
 
 
@@ -268,13 +290,30 @@ def _lookup_card_for_hit(path_to_card: dict[str, dict], hit: CardSearchHit) -> d
 
 
 def _hit_to_result(hit: CardSearchHit, reason: str) -> SearchResult:
+    passport = _resolve_source_passport(hit.source_id)
+    source_path = hit.source_path
+    card_path = hit.card_path
+    title = hit.title
+    url = hit.url
+    source_id = hit.source_id
+    primary_url = ""
+    if passport:
+        source_path = passport.normalized_file or source_path
+        card_path = passport.card_path or card_path
+        title = _title_from_passport(passport, title)
+        url = passport.primary_url or passport.post_url or url
+        source_id = passport.source_id
+        primary_url = passport.primary_url
+
     return SearchResult(
-        source_path=hit.source_path,
-        card_path=hit.card_path,
-        title=hit.title,
-        url=hit.url,
+        source_path=source_path,
+        card_path=card_path,
+        title=title,
+        url=url,
         relevance_reason=reason,
         snippets=[],
+        source_id=source_id,
+        primary_url=primary_url,
     )
 
 
@@ -282,6 +321,23 @@ def _card_search_reason(hit: CardSearchHit) -> str:
     if hit.backend == "fts":
         return f"FTS Match (BM25 score: {hit.score:.3g})"
     return f"Shadow fallback match (score: {hit.score:.1f})"
+
+
+def _resolve_source_passport(source_id: str) -> SourcePassport | None:
+    if not source_id:
+        return None
+    try:
+        return resolve_source(source_id, db_path=config.SOURCE_REGISTRY_DB_PATH)
+    except Exception as exc:
+        logger.debug("Source registry lookup failed for %s: %s", source_id, exc)
+        return None
+
+
+def _title_from_passport(passport: SourcePassport, fallback: str) -> str:
+    channel = passport.channel_name or "?"
+    date = passport.date[:10] if passport.date else "?"
+    title = f"{channel} - {date}"
+    return title if title != "? - ?" else fallback
 
 
 def _find_wiki_results(query: str) -> list[WikiSearchResult]:

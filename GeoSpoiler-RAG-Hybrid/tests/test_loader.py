@@ -45,6 +45,7 @@ from loader.storage import (  # noqa: E402
     rebuild_rag_storage,
 )
 from retrieval import shadow_search  # noqa: E402
+from retrieval.source_registry import rebuild_source_registry  # noqa: E402
 
 
 class LightragLoaderFacadeTests(unittest.TestCase):
@@ -66,6 +67,49 @@ class LightragLoaderFacadeTests(unittest.TestCase):
     def test_facade_does_not_export_experimental_enriched_loader(self):
         self.assertNotIn("load_from_enriched", lightrag_loader.__all__)
         self.assertFalse(hasattr(lightrag_loader, "load_from_enriched"))
+
+
+class QueryRagWrapperTests(unittest.IsolatedAsyncioTestCase):
+    async def test_query_rag_returns_content_from_query_rag_result(self):
+        calls = []
+
+        async def fake_query_rag_result(rag, question, mode=None, query_profile=None):
+            calls.append(
+                {
+                    "rag": rag,
+                    "question": question,
+                    "mode": mode,
+                    "query_profile": query_profile,
+                }
+            )
+            return {
+                "response": "Fallback response",
+                "llm_response": {"content": "Structured answer"},
+                "data": {"references": []},
+            }
+
+        rag = object()
+        with patch.object(lightrag_query, "query_rag_result", side_effect=fake_query_rag_result):
+            with patch.object(lightrag_query, "_try_shadow_fallback_result", return_value=None):
+                answer = await lightrag_query.query_rag(
+                    rag,
+                    "What is in the corpus?",
+                    mode="hybrid",
+                    query_profile="source",
+                )
+
+        self.assertEqual(answer, "Structured answer")
+        self.assertEqual(
+            calls,
+            [
+                {
+                    "rag": rag,
+                    "question": "What is in the corpus?",
+                    "mode": "hybrid",
+                    "query_profile": "source",
+                }
+            ],
+        )
 
 
 class _FakeDocStatus:
@@ -1158,6 +1202,61 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(context["references"][0]["reference_id"], "card-1")
             self.assertIn("148.txt", context["references"][0]["file_path"])
             self.assertIn("explicit political support", "\n".join(context["shadow_context"][0]["facts"]))
+        finally:
+            if temp_root.exists():
+                shutil.rmtree(temp_root)
+
+    def test_card_context_references_use_source_registry_passport(self):
+        temp_root = Path(__file__).resolve().parents[1] / ".tmp-tests" / "hybrid_card_context_registry_case"
+        if temp_root.exists():
+            shutil.rmtree(temp_root)
+        temp_root.mkdir(parents=True, exist_ok=True)
+
+        try:
+            enriched_dir = temp_root / "output" / "enriched" / "Hungary"
+            normalized_dir = temp_root / "output" / "normalized" / "Hungary"
+            enriched_dir.mkdir(parents=True, exist_ok=True)
+            normalized_dir.mkdir(parents=True, exist_ok=True)
+
+            source_path = normalized_dir / "148.txt"
+            source_path.write_text("Trump supported Orban in Hungary.", encoding="utf-8")
+            card = {
+                "triage": "keep",
+                "summary": "Trump publicly supported Orban before Hungarian elections.",
+                "key_facts": [{"text": "The post frames this as explicit political support."}],
+                "provenance": {
+                    "channel_name": "Hungary",
+                    "channel_id": 1,
+                    "message_id": 148,
+                    "date": "2026-05-27T00:00:00+00:00",
+                    "post_url": "https://t.me/c/1/148",
+                    "normalized_file": str(source_path.relative_to(temp_root)),
+                },
+                "search_text": "Trump Orban Hungary explicit political support election",
+            }
+            (enriched_dir / "148.enriched.json").write_text(
+                json.dumps(card, ensure_ascii=False),
+                encoding="utf-8",
+            )
+            registry_db = temp_root / "state" / "source_registry.sqlite"
+            rebuild_source_registry(
+                normalized_dir=temp_root / "output" / "normalized",
+                enriched_dir=temp_root / "output" / "enriched",
+                db_path=registry_db,
+            )
+
+            with patch.object(config, "PROJECT_ROOT", temp_root):
+                with patch.object(config, "ENRICHED_DIR", temp_root / "output" / "enriched"):
+                    with patch.object(config, "SOURCE_REGISTRY_DB_PATH", registry_db):
+                        with patch.object(config, "HYBRID_QUERY_CARDS_ENABLED", True):
+                            context = _card_context_for_query("Trump Orban Hungary", "answer")
+
+            self.assertIsNotNone(context)
+            reference = context["references"][0]
+            self.assertEqual(reference["source_id"], "telegram:1:148")
+            self.assertEqual(reference["post_url"], "https://t.me/c/1/148")
+            self.assertEqual(reference["channel"], "Hungary")
+            self.assertEqual(reference["date"], "2026-05-27T00:00:00+00:00")
         finally:
             if temp_root.exists():
                 shutil.rmtree(temp_root)

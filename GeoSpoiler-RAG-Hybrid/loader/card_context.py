@@ -15,6 +15,8 @@ from loader.clients import _chat_completion_options, _openai_client
 from loader.reference_hints import _existing_references, _merge_references, _resolve_match_source_path
 from loader.runtime import logger
 from retrieval.card_text import card_ranking_text
+from retrieval.source_registry import resolve_source
+from retrieval.wiki_index import extract_source_id
 
 _CLAIM_TYPE_LABELS = {
     "source_claim": "утверждение источника",
@@ -81,6 +83,34 @@ def _load_shadow_card(card_path: str | None) -> dict[str, Any]:
     except Exception:
         return {}
     return card if isinstance(card, dict) else {}
+
+
+def _reference_from_card(reference_id: str, file_path: str, card: dict[str, Any]) -> dict[str, Any]:
+    reference: dict[str, Any] = {"reference_id": reference_id, "file_path": file_path}
+    source_id = extract_source_id(card)
+    if not source_id:
+        return reference
+
+    reference["source_id"] = source_id
+    try:
+        passport = resolve_source(source_id, db_path=config.SOURCE_REGISTRY_DB_PATH)
+    except Exception as exc:
+        logger.debug("Source registry lookup failed for %s: %s", source_id, exc)
+        passport = None
+    if not passport:
+        return reference
+
+    if passport.post_url:
+        reference["post_url"] = passport.post_url
+    if passport.primary_url:
+        reference["primary_url"] = passport.primary_url
+    if passport.youtube_url:
+        reference["youtube_url"] = passport.youtube_url
+    if passport.channel_name:
+        reference["channel"] = passport.channel_name
+    if passport.date:
+        reference["date"] = passport.date
+    return reference
 
 
 def _shadow_body_text(match: Any, card: dict[str, Any]) -> str:
@@ -221,7 +251,8 @@ def _shadow_fallback_result(question: str, query_profile: str | None) -> dict[st
     context_items = []
     for idx, (match, card, _matched_terms, _path_title_terms, _content_matched_terms) in enumerate(strong_matches, start=1):
         source_path = _resolve_match_source_path(match.source_path)
-        references.append({"reference_id": str(idx), "file_path": source_path})
+        reference = _reference_from_card(str(idx), source_path, card)
+        references.append(reference)
 
         facts = _card_fact_lines(card, include_visual=include_visual)
         if facts:
@@ -230,15 +261,15 @@ def _shadow_fallback_result(question: str, query_profile: str | None) -> dict[st
             body = f"- {match.snippet.strip()}"
             facts = [match.snippet.strip()]
         sections.append(f"[{idx}] Источник: {source_path}\n{body}")
-        context_items.append(
+        context_item = dict(reference)
+        context_item.update(
             {
-                "reference_id": str(idx),
-                "file_path": source_path,
                 "facts": facts,
                 "snippet": str(match.snippet or "").strip(),
                 "title": str(match.title or "").strip(),
             }
         )
+        context_items.append(context_item)
 
     if query_profile == "source":
         intro = "Найденные источники по этому тезису:"
@@ -388,7 +419,12 @@ def _card_context_for_query(question: str, query_profile: str | None) -> dict[st
         item["reference_id"] = f"card-{idx}"
         file_path = str(item.get("file_path") or "").strip()
         if file_path:
-            references.append({"reference_id": f"card-{idx}", "file_path": file_path})
+            reference = {"reference_id": f"card-{idx}", "file_path": file_path}
+            for key in ("source_id", "post_url", "primary_url", "youtube_url", "channel", "date"):
+                value = item.get(key)
+                if value:
+                    reference[key] = value
+            references.append(reference)
     if not references:
         return None
 

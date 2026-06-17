@@ -7,7 +7,6 @@ from lightrag import LightRAG, QueryParam
 
 import config
 from loader.answer_postprocess import (
-    _NO_CONTEXT_MARKERS,
     _answer_looks_corrupt,
     _is_funding_question,
     _postprocess_answer_text,
@@ -71,69 +70,13 @@ async def query_rag(
     Returns:
         The answer from LightRAG
     """
-    if mode is None:
-        # "mix" mode gives LightRAG the most candidates to rerank from
-        mode = "mix" if config.RERANKER_ENABLED else "hybrid"
-    profile = get_query_profile(query_profile)
-    wiki_context = _wiki_context_for_query(question)
-    user_prompt = _query_user_prompt_with_wiki(profile["user_prompt"], wiki_context)
-
-    logger.info(
-        f"Querying LightRAG (mode={mode}, profile={query_profile or 'answer'}, rerank={'enabled' if config.RERANKER_ENABLED else 'disabled'})"
+    result = await query_rag_result(
+        rag,
+        question,
+        mode=mode,
+        query_profile=query_profile,
     )
-
-    # enable_rerank=True tells LightRAG to call our rerank_model_func on retrieved chunks
-    try:
-        token = _LLM_ROLE.set("query")
-        result = await asyncio.wait_for(
-            rag.aquery(
-                question,
-                param=QueryParam(
-                    mode=mode,
-                    enable_rerank=config.RERANKER_ENABLED,
-                    top_k=profile["top_k"],
-                    chunk_top_k=profile["chunk_top_k"],
-                    response_type=_QUERY_RESPONSE_TYPE,
-                    user_prompt=user_prompt,
-                ),
-            ),
-            timeout=config.QUERY_TIMEOUT_SECONDS,
-        )
-        _LLM_ROLE.reset(token)
-    except TimeoutError:
-        _LLM_ROLE.reset(token)
-        logger.warning(
-            "LightRAG query timed out after %ss; trying shadow-search fallback.",
-            config.QUERY_TIMEOUT_SECONDS,
-        )
-        fallback = await _try_shadow_fallback_result(question, query_profile)
-        if fallback:
-            return str(fallback["llm_response"]["content"])
-        return "В базе не удалось получить ответ за отведённое время."
-    except Exception as exc:
-        _LLM_ROLE.reset(token)
-        logger.warning(f"LightRAG query failed; trying shadow-search fallback: {exc}")
-        fallback = await _try_shadow_fallback_result(question, query_profile)
-        if fallback:
-            return str(fallback["llm_response"]["content"])
-        return "В базе не удалось получить ответ."
-    if (
-        isinstance(result, str)
-        and not _is_funding_question(question)
-        and any(marker in result.casefold() for marker in _NO_CONTEXT_MARKERS)
-    ):
-        fallback = await _try_shadow_fallback_result(question, query_profile)
-        if fallback:
-            logger.info("Using shadow-search fallback after no-context LightRAG answer.")
-            return str(fallback["llm_response"]["content"])
-    if isinstance(result, str) and not _is_funding_question(question) and _answer_looks_corrupt(result):
-        fallback = await _try_shadow_fallback_result(question, query_profile)
-        if fallback:
-            logger.info("Using shadow-search fallback after corrupt LightRAG answer.")
-            return str(fallback["llm_response"]["content"])
-    if isinstance(result, str):
-        return _postprocess_answer_text(result, question, query_profile)
-    return result
+    return str(result.get("llm_response", {}).get("content") or result.get("response") or "")
 
 async def _synthesize_hybrid_result(
     question: str,
