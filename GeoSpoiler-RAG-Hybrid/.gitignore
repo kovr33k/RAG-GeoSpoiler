@@ -44,3 +44,6 @@ artifacts/retired_model_archive/
 
 # Retired provider setup helpers
 setup_vertex_adc.ps1
+
+# Local test archive (development-era experiment results)
+_test_archive/

@@ -1,8 +1,0 @@
-{
-  "recommended": {
-    "RAG_BUILD_MODEL": "openai/gpt-5.4-nano"
-  },
-  "do_not_use_for_high_risk": [],
-  "yellow_models": [],
-  "red_models": []
-}
