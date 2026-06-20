@@ -35,7 +35,6 @@ packages = [
     "eval",
     "eval.model_bakeoff",
     "experiments",
-    "experiments.enriched_rebuild",
     "fetcher",
     "loader",
     "normalizer",

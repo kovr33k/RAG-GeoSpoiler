@@ -1,4 +1,4 @@
-﻿import asyncio
+import asyncio
 import json
 import shutil
 import sys
@@ -12,10 +12,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import config  # noqa: E402
 import loader as loader_package  # noqa: E402
 import loader.lightrag_loader as lightrag_loader  # noqa: E402
-from experiments.enriched_rebuild.loader import (  # noqa: E402
-    _has_meaningful_normalized_body,
-    load_from_enriched,
-)
 from loader import clients as lightrag_clients  # noqa: E402
 from loader import query as lightrag_query  # noqa: E402
 from loader.answer_postprocess import (  # noqa: E402
@@ -215,18 +211,6 @@ class LoadTextsTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(inserted, 1)
         self.assertEqual(rag.inserted[0]["texts"], ["Useful caption."])
 
-    def test_long_instagram_reel_review_wrappers_are_not_meaningful_without_caption(self):
-        text = (
-            "[\u041a\u0430\u043d\u0430\u043b: Topic | \u0414\u0430\u0442\u0430: 2026-04-30 12:00 | "
-            "\u041f\u043e\u0441\u0442: https://t.me/example/6]\n\n"
-            "[Instagram Reel: https://www.instagram.com/reel/ABC/ - @source]\n"
-            "[\u0414\u043b\u0438\u043d\u043d\u044b\u0439 Instagram Reel: https://www.instagram.com/reel/ABC/]\n"
-            "[\u041e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043e \u0432 \u043e\u0447\u0435\u0440\u0435\u0434\u044c "
-            "\u043d\u0430 \u0440\u0443\u0447\u043d\u043e\u0439 \u043f\u0440\u043e\u0441\u043c\u043e\u0442\u0440: "
-            "Channel_6_instagram_long_reel.json]\n"
-        )
-
-        self.assertFalse(_has_meaningful_normalized_body(text))
 
     async def test_load_texts_writes_source_metadata_index(self):
         temp_root = Path(__file__).resolve().parents[1] / ".tmp-tests" / "source_index_case"
@@ -383,155 +367,6 @@ class LoadTextsTests(unittest.IsolatedAsyncioTestCase):
             if temp_root.exists():
                 shutil.rmtree(temp_root)
 
-    async def test_load_from_enriched_falls_back_for_partial_cards(self):
-        temp_root = Path(__file__).resolve().parents[1] / ".tmp-tests" / "partial_enriched_case"
-        if temp_root.exists():
-            shutil.rmtree(temp_root)
-        temp_root.mkdir(parents=True, exist_ok=True)
-
-        try:
-            enriched_dir = temp_root / "output" / "enriched"
-            normalized_dir = temp_root / "output" / "normalized"
-            card_dir = enriched_dir / "topic"
-            norm_dir = normalized_dir / "topic"
-            card_dir.mkdir(parents=True, exist_ok=True)
-            norm_dir.mkdir(parents=True, exist_ok=True)
-
-            txt_path = norm_dir / "1.txt"
-            txt_path.write_text(
-                "[Канал: topic | Дата: 2026-04-30 12:00 | Пост: https://t.me/example/1]\n\n"
-                "AfD выступает против помощи Украине и призывает к переговорам.",
-                encoding="utf-8",
-            )
-            card = {
-                "triage": "keep",
-                "summary": "",
-                "key_facts": [],
-                "entities": {
-                    "people": [],
-                    "organizations": [],
-                    "countries": [],
-                    "locations": [],
-                    "military_units": [],
-                    "equipment": [],
-                },
-                "topics": [],
-                "theses": [],
-                "quotes": [],
-                "events": [],
-                "chunks": [],
-                "visual": {"broll_notes": ""},
-                "source_chain": {"original_source": "Some Source"},
-                "provenance": {
-                    "normalized_file": str(txt_path.relative_to(temp_root)),
-                },
-                "graph_text": (
-                    "[Канал: topic | Дата: 2026-04-30 12:00 | Пост: https://t.me/example/1]\n\n"
-                    "Источник: Some Source"
-                ),
-            }
-            (card_dir / "1.enriched.json").write_text(
-                json.dumps(card, ensure_ascii=False),
-                encoding="utf-8",
-            )
-
-            rag = _FakeRag()
-            with patch.object(config, "PROJECT_ROOT", temp_root):
-                with patch.object(config, "ENRICHED_DIR", enriched_dir):
-                    with patch.object(config, "NORMALIZED_DIR", normalized_dir):
-                        with patch.object(config, "RAG_STORAGE_DIR", temp_root / "rag_storage"):
-                            stats = await load_from_enriched(rag)
-
-            self.assertEqual(stats["loaded"], 1)
-            self.assertEqual(stats["fallback_normalized"], 1)
-            self.assertEqual(rag.inserted[0]["texts"], [
-                "AfD выступает против помощи Украине и призывает к переговорам."
-            ])
-        finally:
-            if temp_root.exists():
-                shutil.rmtree(temp_root)
-
-    async def test_load_from_enriched_falls_back_for_review_cards_with_text(self):
-        temp_root = Path(__file__).resolve().parents[1] / ".tmp-tests" / "review_enriched_case"
-        if temp_root.exists():
-            shutil.rmtree(temp_root)
-        temp_root.mkdir(parents=True, exist_ok=True)
-
-        try:
-            enriched_dir = temp_root / "output" / "enriched"
-            normalized_dir = temp_root / "output" / "normalized"
-            card_dir = enriched_dir / "topic"
-            norm_dir = normalized_dir / "topic"
-            card_dir.mkdir(parents=True, exist_ok=True)
-            norm_dir.mkdir(parents=True, exist_ok=True)
-
-            txt_path = norm_dir / "1.txt"
-            txt_path.write_text(
-                "[Канал: topic | Дата: 2026-04-30 12:00 | Пост: https://t.me/example/1]\n\n"
-                "На российском телевидении предлагают захватить Нарву.",
-                encoding="utf-8",
-            )
-            card = {
-                "triage": "review",
-                "provenance": {"normalized_file": str(txt_path.relative_to(temp_root))},
-                "graph_text": "",
-            }
-            (card_dir / "1.enriched.json").write_text(
-                json.dumps(card, ensure_ascii=False),
-                encoding="utf-8",
-            )
-
-            rag = _FakeRag()
-            with patch.object(config, "PROJECT_ROOT", temp_root):
-                with patch.object(config, "ENRICHED_DIR", enriched_dir):
-                    with patch.object(config, "NORMALIZED_DIR", normalized_dir):
-                        with patch.object(config, "RAG_STORAGE_DIR", temp_root / "rag_storage"):
-                            stats = await load_from_enriched(rag)
-
-            self.assertEqual(stats["loaded"], 1)
-            self.assertEqual(stats["fallback_normalized"], 1)
-            self.assertEqual(stats["skipped_triage"], 1)
-            self.assertEqual(rag.inserted[0]["texts"], [
-                "На российском телевидении предлагают захватить Нарву."
-            ])
-        finally:
-            if temp_root.exists():
-                shutil.rmtree(temp_root)
-
-    async def test_load_from_enriched_falls_back_for_missing_cards(self):
-        temp_root = Path(__file__).resolve().parents[1] / ".tmp-tests" / "missing_enriched_case"
-        if temp_root.exists():
-            shutil.rmtree(temp_root)
-        temp_root.mkdir(parents=True, exist_ok=True)
-
-        try:
-            enriched_dir = temp_root / "output" / "enriched"
-            normalized_dir = temp_root / "output" / "normalized"
-            (enriched_dir / "topic").mkdir(parents=True, exist_ok=True)
-            norm_dir = normalized_dir / "topic"
-            norm_dir.mkdir(parents=True, exist_ok=True)
-
-            txt_path = norm_dir / "1.txt"
-            txt_path.write_text(
-                "[Канал: topic | Дата: 2026-04-30 12:00 | Пост: https://t.me/example/1]\n\n"
-                "Короткий, но важный тезис.",
-                encoding="utf-8",
-            )
-
-            rag = _FakeRag()
-            with patch.object(config, "PROJECT_ROOT", temp_root):
-                with patch.object(config, "ENRICHED_DIR", enriched_dir):
-                    with patch.object(config, "NORMALIZED_DIR", normalized_dir):
-                        with patch.object(config, "RAG_STORAGE_DIR", temp_root / "rag_storage"):
-                            stats = await load_from_enriched(rag)
-
-            self.assertEqual(stats["loaded"], 1)
-            self.assertEqual(stats["fallback_normalized"], 1)
-            self.assertEqual(stats["missing_enriched"], 1)
-            self.assertEqual(rag.inserted[0]["texts"], ["Короткий, но важный тезис."])
-        finally:
-            if temp_root.exists():
-                shutil.rmtree(temp_root)
 
 
 class QueryProfileTests(unittest.TestCase):
