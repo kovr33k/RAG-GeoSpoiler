@@ -20,7 +20,7 @@ from cli import (
 from data_validation import ContractIssue, EnrichedValidationReport
 from experiment_registry import ExperimentRegistry
 from normalizer.transcription_backfill import BackfillItemResult, BackfillStats
-from retrieval.card_fts import CardFtsBuildStats, CardFtsMatch
+from retrieval.card_fts import CardFtsBuildStats, CardFtsMatch, WikiFtsBuildStats
 from retrieval.shadow_search import ShadowMatch
 from retrieval.source_registry import SourcePassport, SourceRegistryStats
 
@@ -200,6 +200,34 @@ class CliCommandTests(unittest.TestCase):
         self.assertIn("Cards seen: 5", text)
         self.assertIn("Cards indexed: 4", text)
         self.assertIn("Cards skipped: 1", text)
+
+    def test_cmd_fts_rebuild_also_rebuilds_wiki_index(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            card_stats = CardFtsBuildStats(
+                db_path=Path(tmpdir) / "card_fts.sqlite",
+                cards_seen=5,
+                cards_indexed=4,
+                cards_skipped=1,
+            )
+            wiki_stats = WikiFtsBuildStats(
+                db_path=Path(tmpdir) / "card_fts.sqlite",
+                pages_seen=3,
+                pages_indexed=2,
+                pages_skipped=1,
+            )
+            output = io.StringIO()
+
+            with patch("sys.stdout", output):
+                returned = cmd_fts_rebuild(
+                    rebuild_index=lambda: card_stats,
+                    rebuild_wiki=lambda: wiki_stats,
+                )
+
+        text = output.getvalue()
+        self.assertIs(returned, card_stats)
+        self.assertIn("Wiki pages seen: 3", text)
+        self.assertIn("Wiki pages indexed: 2", text)
+        self.assertIn("Wiki pages skipped: 1", text)
 
     def test_cmd_fts_search_prints_matches_and_shadow_comparison(self):
         match = CardFtsMatch(

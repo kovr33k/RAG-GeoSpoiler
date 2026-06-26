@@ -6,7 +6,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from retrieval import card_fts
-from retrieval.card_fts import rebuild_card_index, search_card_index
+from retrieval.card_fts import rebuild_card_index, rebuild_wiki_index, search_card_index, search_wiki_index
 
 
 def _fts5_available() -> bool:
@@ -73,6 +73,34 @@ class CardFtsTests(unittest.TestCase):
 
             self.assertEqual(search_card_index("Orban", db_path=db_path), [])
             self.assertEqual(search_card_index("и в на", db_path=db_path), [])
+
+    def test_rebuild_wiki_index_keeps_pages_separate_from_cards(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            wiki_dir = root / "wiki"
+            db_path = root / "card_fts.sqlite"
+            (wiki_dir / "claims").mkdir(parents=True)
+            (wiki_dir / "claims" / "trump-supported-orban.md").write_text(
+                "---\n"
+                "wiki_type: claim\n"
+                "status: supported_by_corpus\n"
+                "---\n\n"
+                "# Trump supported Orban\n\n"
+                "## Evidence\n\n"
+                "- telegram:1:10 - source_claim: Trump supported Orban.\n",
+                encoding="utf-8",
+            )
+
+            stats = rebuild_wiki_index(wiki_dir=wiki_dir, db_path=db_path)
+            matches = search_wiki_index("Orban support", top_k=5, db_path=db_path)
+            card_matches = search_card_index("Orban support", top_k=5, db_path=db_path)
+
+        self.assertEqual(stats.pages_seen, 1)
+        self.assertEqual(stats.pages_indexed, 1)
+        self.assertEqual(len(matches), 1)
+        self.assertEqual(matches[0].page_path, "claims/trump-supported-orban.md")
+        self.assertEqual(matches[0].page_type, "claim")
+        self.assertEqual(card_matches, [])
 
     def test_rebuild_uses_normalized_text_for_thin_similarity_cards(self):
         with tempfile.TemporaryDirectory() as tmp_dir:

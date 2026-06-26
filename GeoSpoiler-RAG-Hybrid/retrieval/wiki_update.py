@@ -365,7 +365,12 @@ def _append_log(stats: WikiIncrementalUpdateStats) -> None:
         "pages_updated": [path.as_posix() for path in stats.pages_updated],
         "pending_updates": len(stats.pending_updates),
     }
+    header = (
+        f"## [{event['timestamp'][:10]}] {event['event']} | "
+        f"new={event['new_sources']} changed={event['changed_sources']}"
+    )
     with stats.log_path.open("a", encoding="utf-8") as f:
+        f.write(header + "\n")
         f.write(json.dumps(event, ensure_ascii=False, sort_keys=True) + "\n")
 
 

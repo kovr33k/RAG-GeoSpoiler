@@ -38,7 +38,9 @@ from cli_wiki import (
     cmd_wiki_build_claims,
     cmd_wiki_build_entities_topics,
     cmd_wiki_health,
+    cmd_wiki_ingest,
     cmd_wiki_init,
+    cmd_wiki_overview,
     cmd_wiki_update,
 )
 
@@ -90,6 +92,8 @@ def build_parser() -> argparse.ArgumentParser:
     wiki_build.add_argument("--claims-only", action="store_true")
     wiki_build.add_argument("--entities-topics", action="store_true")
     wiki_sub.add_parser("health")
+    wiki_sub.add_parser("ingest")
+    wiki_sub.add_parser("overview")
     wiki_sub.add_parser("update")
 
     experiments = subparsers.add_parser("experiments")
@@ -177,13 +181,19 @@ def dispatch(args: argparse.Namespace, parser: argparse.ArgumentParser) -> None:
         if args.subcommand == "health":
             cmd_wiki_health()
             return
+        if args.subcommand == "ingest":
+            cmd_wiki_ingest()
+            return
+        if args.subcommand == "overview":
+            cmd_wiki_overview()
+            return
         if args.subcommand == "update":
             cmd_wiki_update()
             return
         print(
             "Usage: python main.py wiki init | python main.py wiki build --claims-only | "
             "python main.py wiki build --entities-topics | python main.py wiki health | "
-            "python main.py wiki update"
+            "python main.py wiki ingest | python main.py wiki overview | python main.py wiki update"
         )
         return
 

@@ -3,10 +3,12 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from retrieval import wiki_index  # noqa: E402
+from retrieval.card_fts import rebuild_wiki_index  # noqa: E402
 
 
 class WikiIndexTests(unittest.TestCase):
@@ -131,6 +133,25 @@ class WikiIndexTests(unittest.TestCase):
             )
 
         self.assertEqual(results[0].page_path, "claims/trump-supported-orban.md")
+
+    def test_wiki_search_uses_wiki_fts_before_keyword_scoring(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            wiki_dir = root / "wiki"
+            db_path = root / "card_fts.sqlite"
+            (wiki_dir / "claims").mkdir(parents=True)
+            (wiki_dir / "claims" / "short-slug.md").write_text(
+                "# Neutral title\n\n"
+                "A long body says Trump supported Orban before the election. Evidence: telegram:1:10\n",
+                encoding="utf-8",
+            )
+            rebuild_wiki_index(wiki_dir=wiki_dir, db_path=db_path)
+
+            with patch.object(wiki_index.config, "CARD_FTS_DB_PATH", db_path):
+                results = wiki_index.find_wiki_context("Orban support", wiki_dir=wiki_dir, top_k=1)
+
+        self.assertEqual(results[0].page_path, "claims/short-slug.md")
+        self.assertGreater(results[0].score, 0)
 
 
 if __name__ == "__main__":

@@ -176,6 +176,10 @@ switch ($step) {
     "quality" {
         Invoke-Python main.py quality
     }
+    "wiki" {
+        $wikiArgs = @($args | Select-Object -Skip 1)
+        Invoke-Python main.py wiki @wikiArgs
+    }
     "golden" {
         Invoke-Python test_golden_set.py
     }
@@ -189,7 +193,7 @@ switch ($step) {
         Invoke-Python main.py status
     }
     default {
-        Write-Host "Usage: .\run_pipeline.ps1 [auth|fetch|normalize|load|rebuild|run|query|quality|golden|ui|review|status]"
+        Write-Host "Usage: .\run_pipeline.ps1 [auth|fetch|normalize|load|rebuild|run|query|quality|wiki|golden|ui|review|status]"
         Write-Host ""
         Write-Host "  auth           - First-time Telegram login (saves session)"
         Write-Host "  fetch [N]      - Fetch last N messages per channel (default: all new)"
@@ -199,6 +203,7 @@ switch ($step) {
         Write-Host "  run [N]        - Full pipeline: fetch + normalize + load"
         Write-Host "  query `"?`" [m]  - Query the knowledge graph (default: mix; modes: hybrid/mix/local/global)"
         Write-Host "  quality        - Show graph quality diagnostics"
+        Write-Host "  wiki [args]    - Run wiki commands, e.g. wiki ingest or wiki health"
         Write-Host "  golden         - Run golden set verification"
         Write-Host "  ui             - Start the LightRAG Web UI on http://127.0.0.1:9621/"
         Write-Host "  review         - Show pending AI chat review items"

@@ -45,6 +45,8 @@ HYBRID_SYNTH_ENABLED = os.getenv("HYBRID_SYNTH_ENABLED", "true").lower() == "tru
 HYBRID_QUERY_CARDS_TOP_K = int(os.getenv("HYBRID_QUERY_CARDS_TOP_K", "3"))
 WIKI_ENABLED = os.getenv("WIKI_ENABLED", "true").lower() == "true"
 WIKI_TOP_K = int(os.getenv("WIKI_TOP_K", "5"))
+WIKI_INGEST_BATCH_SIZE = int(os.getenv("WIKI_INGEST_BATCH_SIZE", "5"))
+WIKI_INGEST_TIMEOUT_SECONDS = float(os.getenv("WIKI_INGEST_TIMEOUT_SECONDS", "120"))
 
 # Role-specific chat models. Each role falls back to the main LLM_* settings.
 RAG_BUILD_API_KEY = os.getenv("RAG_BUILD_API_KEY", "") or LLM_API_KEY
@@ -149,6 +151,12 @@ ENRICHMENT_BASE_URL = os.getenv("ENRICHMENT_BASE_URL", "") or LLM_BASE_URL
 ENRICHMENT_MODEL = os.getenv("ENRICHMENT_MODEL", "") or LLM_MODEL
 ENRICHMENT_SCHEMA_VERSION = int(os.getenv("ENRICHMENT_SCHEMA_VERSION", "1"))
 ENRICHMENT_CONCURRENCY = int(os.getenv("ENRICHMENT_CONCURRENCY", str(max(1, LLM_MAX_ASYNC))))
+
+# Optional separate model/provider for LLM-maintained wiki pages.
+# Empty values fall back to ENRICHMENT_* settings.
+WIKI_LLM_API_KEY = os.getenv("WIKI_LLM_API_KEY", "")
+WIKI_LLM_BASE_URL = os.getenv("WIKI_LLM_BASE_URL", "")
+WIKI_LLM_MODEL = os.getenv("WIKI_LLM_MODEL", "")
 
 # ───────────────────────── LightRAG ─────────────────────────
 LIGHTRAG_ENTITY_TYPES = [

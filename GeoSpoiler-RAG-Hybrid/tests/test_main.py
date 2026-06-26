@@ -207,6 +207,32 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(count, 0)
         mark.assert_not_called()
 
+    async def test_cmd_run_runs_wiki_ingest_after_enrich_before_load(self):
+        calls = []
+
+        async def fake_fetch(limit=None):
+            calls.append("fetch")
+            return []
+
+        def fake_enrich():
+            calls.append("enrich")
+
+        def fake_wiki_ingest():
+            calls.append("wiki_ingest")
+
+        async def fake_load(texts_with_paths=None):
+            calls.append("load")
+            return cli_pipeline.LoadStats()
+
+        with patch.object(cli_pipeline, "cmd_fetch", side_effect=fake_fetch):
+            with patch.object(cli_pipeline, "cmd_enrich", side_effect=fake_enrich):
+                with patch.object(cli_pipeline, "cmd_wiki_ingest", side_effect=fake_wiki_ingest):
+                    with patch.object(cli_pipeline, "cmd_load", side_effect=fake_load):
+                        with patch.object(cli_pipeline, "_print_run_summary"):
+                            await cli_pipeline.cmd_run()
+
+        self.assertEqual(calls, ["fetch", "enrich", "wiki_ingest", "load"])
+
     def test_main_query_cli_joins_full_question_and_mode(self):
         captured = {}
         original_run = py_asyncio.run
@@ -496,6 +522,30 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
 
         with patch.object(cli_app, "cmd_experiments_index", fake_cmd_experiments_index):
             with patch.object(sys, "argv", ["main.py", "experiments", "index"]):
+                main.main()
+
+        self.assertTrue(captured.get("called"))
+
+    def test_main_wiki_ingest_cli_dispatches(self):
+        captured = {}
+
+        def fake_cmd_wiki_ingest():
+            captured["called"] = True
+
+        with patch.object(cli_app, "cmd_wiki_ingest", fake_cmd_wiki_ingest):
+            with patch.object(sys, "argv", ["main.py", "wiki", "ingest"]):
+                main.main()
+
+        self.assertTrue(captured.get("called"))
+
+    def test_main_wiki_overview_cli_dispatches(self):
+        captured = {}
+
+        def fake_cmd_wiki_overview():
+            captured["called"] = True
+
+        with patch.object(cli_app, "cmd_wiki_overview", fake_cmd_wiki_overview):
+            with patch.object(sys, "argv", ["main.py", "wiki", "overview"]):
                 main.main()
 
         self.assertTrue(captured.get("called"))

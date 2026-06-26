@@ -7,6 +7,8 @@ import config
 from retrieval.wiki_claims import seed_claim_pages
 from retrieval.wiki_health import run_wiki_health, write_health_report
 from retrieval.wiki_index import build_wiki_indexes
+from retrieval.wiki_ingest import run_wiki_ingest
+from retrieval.wiki_overview import build_wiki_overview, write_wiki_overview
 from retrieval.wiki_pages import seed_entity_topic_pages
 from retrieval.wiki_update import run_wiki_incremental_update
 
@@ -66,11 +68,25 @@ Do not use theses, hypotheses, or summaries as the only direct evidence for a cl
 Do not call a claim fake, false, or deepfake unless an evidence item explicitly says that.
 Keep source claims separate from author interpretation.
 
+## LLM-Generated Page Rules
+
+- `python main.py wiki ingest` is the primary wiki growth path.
+- Enriched cards are the source of truth; wiki pages are compiled memory.
+- LLM-generated pages must include generated_by=wiki_ingest_v1.
+- LLM-generated pages must include review_status=auto until reviewed.
+- LLM-generated pages must include source_count and updated_at.
+- Claim pages must cite at least one telegram:* source_id in Evidence.
+- Claim evidence source_ids must come from the current ingest batch.
+- Claim pages must include a Guardrails section.
+- Entity and topic pages should link related claim pages when possible.
+- _pending_updates.json is only a fallback for failed or unclear ingest sources.
+
 ## Update Rules
 
 - Automatically created pages must keep review_status=auto until reviewed.
 - Manual edits must not be overwritten by scaffold or build commands.
 - Append to logs; do not rewrite existing log history.
+- Preserve accepted LLM-generated wiki changes through git history.
 """,
     "_health.md": """# Wiki Health
 
@@ -180,6 +196,44 @@ def cmd_wiki_health() -> None:
             print(f"    - [{issue.severity}] {issue.code}: {issue.page_path} - {issue.message}")
 
 
+def cmd_wiki_ingest() -> None:
+    cmd_wiki_init()
+    stats = run_wiki_ingest()
+    index_stats = build_wiki_indexes()
+    report = run_wiki_health()
+    report_path = write_health_report(report)
+    overview = build_wiki_overview()
+    overview_path = write_wiki_overview(overview)
+
+    print("Wiki ingest complete.")
+    print(f"  Cards processed: {stats.cards_processed}")
+    print(f"  Pages created: {len(stats.pages_created)}")
+    print(f"  Pages updated: {len(stats.pages_updated)}")
+    print(f"  Pending (failed/unclear): {len(stats.pending)}")
+    print(f"  Indexed pages: {index_stats.page_count}")
+    print(f"  Indexed sources: {index_stats.source_count}")
+    print(f"  Health issues: {report.issue_count}")
+    print(f"  Health report: {report_path}")
+    print(f"  Overview: {overview_path}")
+    _print_wiki_git_status_hint()
+
+
+def cmd_wiki_overview() -> None:
+    cmd_wiki_init()
+    build_wiki_indexes()
+    overview = build_wiki_overview()
+    overview_path = write_wiki_overview(overview)
+
+    print("Wiki overview complete.")
+    print(f"  Claims: {overview.claim_count}")
+    print(f"  Entities: {overview.entity_count}")
+    print(f"  Topics: {overview.topic_count}")
+    print(f"  Pending sources: {overview.pending_count}")
+    print(f"  Missing entity coverage: {len(overview.missing_entities)}")
+    print(f"  Missing topic coverage: {len(overview.missing_topics)}")
+    print(f"  Overview: {overview_path}")
+
+
 def cmd_wiki_update() -> None:
     cmd_wiki_init()
     stats = run_wiki_incremental_update()
@@ -198,3 +252,28 @@ def cmd_wiki_update() -> None:
     print(f"  Pending queue: {stats.pending_updates_path}")
     print(f"  Source hashes: {stats.source_hashes_path}")
     print(f"  Operation log: {stats.log_path}")
+
+
+def _print_wiki_git_status_hint() -> None:
+    """Show changed wiki files so LLM-generated edits are easy to commit or revert."""
+    import subprocess
+
+    try:
+        result = subprocess.run(
+            ["git", "status", "--short", "--", "output/wiki"],
+            cwd=str(config.PROJECT_ROOT),
+            check=False,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+        )
+    except OSError:
+        return
+    changed = result.stdout.strip()
+    if not changed:
+        print("  Git wiki changes: none")
+        return
+    print("  Git wiki changes:")
+    for line in changed.splitlines()[:20]:
+        print(f"    {line}")
+    print("  Preserve after review: git add output/wiki && git commit -m \"wiki: ingest enriched cards\"")

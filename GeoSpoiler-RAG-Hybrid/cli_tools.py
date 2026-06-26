@@ -9,7 +9,14 @@ import config
 from data_validation import EnrichedValidationReport, scan_enriched_cards, write_enriched_validation_report
 from experiment_registry import ExperimentRegistry, write_experiment_registry
 from normalizer.transcription_backfill import BackfillStats, backfill_transcripts
-from retrieval.card_fts import CardFtsBuildStats, CardFtsMatch, rebuild_card_index, search_card_index
+from retrieval.card_fts import (
+    CardFtsBuildStats,
+    CardFtsMatch,
+    WikiFtsBuildStats,
+    rebuild_card_index,
+    rebuild_wiki_index,
+    search_card_index,
+)
 from retrieval.shadow_search import ShadowMatch
 from retrieval.shadow_search import search as shadow_search_cards
 from retrieval.source_registry import (
@@ -100,14 +107,19 @@ def cmd_registry_resolve(
 
 def cmd_fts_rebuild(
     rebuild_index: Callable[[], CardFtsBuildStats] = rebuild_card_index,
+    rebuild_wiki: Callable[[], WikiFtsBuildStats] = rebuild_wiki_index,
 ) -> CardFtsBuildStats:
-    """Rebuild the local card FTS index and print its summary."""
+    """Rebuild local card and wiki FTS indexes and print their summaries."""
     stats = rebuild_index()
+    wiki_stats = rebuild_wiki()
     print("Card FTS rebuild complete.")
     print(f"  DB: {stats.db_path}")
     print(f"  Cards seen: {stats.cards_seen}")
     print(f"  Cards indexed: {stats.cards_indexed}")
     print(f"  Cards skipped: {stats.cards_skipped}")
+    print(f"  Wiki pages seen: {wiki_stats.pages_seen}")
+    print(f"  Wiki pages indexed: {wiki_stats.pages_indexed}")
+    print(f"  Wiki pages skipped: {wiki_stats.pages_skipped}")
     return stats
 
 

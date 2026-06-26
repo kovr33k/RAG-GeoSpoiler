@@ -262,6 +262,20 @@ def find_wiki_context(
     wiki_dir: Path = config.WIKI_DIR,
     top_k: int = config.WIKI_TOP_K,
 ) -> list[WikiSearchResult]:
+    """Return ranked wiki pages for a question using wiki FTS with keyword fallback."""
+    try:
+        from retrieval.card_fts import search_wiki_index
+
+        fts_results = search_wiki_index(question, top_k=top_k, db_path=config.CARD_FTS_DB_PATH)
+    except Exception:
+        fts_results = []
+    if fts_results:
+        return _fts_to_wiki_results(fts_results, wiki_dir)
+
+    return _keyword_search(question, wiki_dir, top_k)
+
+
+def _keyword_search(question: str, wiki_dir: Path, top_k: int) -> list[WikiSearchResult]:
     """Return ranked wiki pages for a question using simple keyword matching."""
     query_terms = _expand_query_terms(question)
     if not query_terms:
@@ -291,6 +305,23 @@ def find_wiki_context(
 
     results.sort(key=lambda item: (-item.score, item.page_path))
     return results[:top_k]
+
+
+def _fts_to_wiki_results(fts_results: Iterable[Any], wiki_dir: Path) -> list[WikiSearchResult]:
+    page_to_sources, _ = build_page_source_indexes(wiki_dir)
+    results: list[WikiSearchResult] = []
+    for match in fts_results:
+        page_path = str(match.page_path)
+        results.append(
+            WikiSearchResult(
+                page_path=page_path,
+                score=match.score,
+                title=match.title,
+                snippet=match.snippet,
+                sources=page_to_sources.get(page_path, []),
+            )
+        )
+    return results
 
 
 def wiki_context_to_dicts(results: Iterable[WikiSearchResult]) -> list[dict[str, Any]]:

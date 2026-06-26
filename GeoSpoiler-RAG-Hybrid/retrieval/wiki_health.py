@@ -10,12 +10,13 @@ from __future__ import annotations
 import json
 import re
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any
 
 import config
 from retrieval import wiki_index
+from retrieval.wiki_overview import coverage_gaps
 
 MAX_PAGE_CHARS = 40000
 CLAIM_STATUSES = {
@@ -52,10 +53,15 @@ class WikiHealthReport:
 
 
 def run_wiki_health(
-    wiki_dir: Path = config.WIKI_DIR,
-    index_dir: Path = config.WIKI_INDEX_DIR,
+    wiki_dir: Path | None = None,
+    index_dir: Path | None = None,
+    enriched_dir: Path | None = None,
 ) -> WikiHealthReport:
     """Run health checks over wiki pages and indexes."""
+    wiki_dir = wiki_dir or config.WIKI_DIR
+    index_dir = index_dir or config.WIKI_INDEX_DIR
+    if enriched_dir is None:
+        enriched_dir = config.ENRICHED_DIR if wiki_dir == config.WIKI_DIR else wiki_dir.parent / "enriched"
     issues: list[WikiHealthIssue] = []
     page_paths = list(wiki_index.iter_wiki_pages(wiki_dir))
     page_to_sources = _load_json(index_dir / wiki_index.PAGE_INDEX_FILENAME)
@@ -83,6 +89,11 @@ def run_wiki_health(
             _check_claim_page(rel_path, text, page_to_sources, issues)
 
     _check_indexes(page_to_sources, source_to_pages, wiki_dir, issues)
+    _check_wiki_population(page_paths, enriched_dir, issues)
+    _check_orphan_entities(page_paths, wiki_dir, issues)
+    _check_pending_queue(wiki_dir, issues)
+    _check_coverage_gaps(wiki_dir, enriched_dir, issues)
+    _check_broken_wiki_references(page_paths, wiki_dir, issues)
 
     checked_at = datetime.now(UTC).replace(microsecond=0).isoformat()
     return WikiHealthReport(
@@ -198,6 +209,27 @@ def _check_claim_page(
                 )
             )
 
+    if len(direct_evidence) > 15:
+        issues.append(
+            _issue(
+                "warning",
+                "page_too_broad",
+                rel_path,
+                f"Claim has {len(direct_evidence)} evidence items; split broad claim pages above 15 items.",
+            )
+        )
+
+    updated_at = _parse_date(frontmatter.get("updated_at"))
+    if updated_at and (date.today() - updated_at).days > 30:
+        issues.append(
+            _issue(
+                "info",
+                "stale_claim",
+                rel_path,
+                f"Claim updated_at is older than 30 days: {updated_at.isoformat()}.",
+            )
+        )
+
 
 def _check_indexes(
     page_to_sources: dict[str, Any],
@@ -259,6 +291,115 @@ def _check_indexes(
                 f"{source_id} appears in supported and contradicted claims without disputed_in_corpus.",
             )
         )
+
+
+def _check_wiki_population(
+    page_paths: list[Path],
+    enriched_dir: Path,
+    issues: list[WikiHealthIssue],
+) -> None:
+    if page_paths:
+        return
+    enriched_count = sum(1 for _path, card in wiki_index.iter_enriched_cards(enriched_dir) if card.get("triage") == "keep")
+    if enriched_count > 0:
+        issues.append(
+            _issue(
+                "warning",
+                "wiki_empty_while_cards_exist",
+                "",
+                f"Wiki has 0 pages while {enriched_count} keep enriched card(s) exist.",
+            )
+        )
+
+
+def _check_orphan_entities(
+    page_paths: list[Path],
+    wiki_dir: Path,
+    issues: list[WikiHealthIssue],
+) -> None:
+    claim_paths = {path.relative_to(wiki_dir).as_posix() for path in page_paths if path.parent.name == "claims"}
+    for path in page_paths:
+        rel_path = path.relative_to(wiki_dir).as_posix()
+        if not rel_path.startswith("entities/"):
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        linked_claims = _wiki_refs(text, "claims")
+        if linked_claims and not any(claim in claim_paths for claim in linked_claims):
+            issues.append(
+                _issue(
+                    "warning",
+                    "orphan_entity",
+                    rel_path,
+                    "Entity page links only to claim pages that do not exist.",
+                )
+            )
+
+
+def _check_pending_queue(wiki_dir: Path, issues: list[WikiHealthIssue]) -> None:
+    pending_path = wiki_dir / "_pending_updates.json"
+    if not pending_path.exists():
+        return
+    try:
+        data = json.loads(pending_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return
+    if isinstance(data, list) and len(data) > 20:
+        issues.append(
+            _issue(
+                "warning",
+                "pending_queue_large",
+                "_pending_updates.json",
+                f"Pending queue has {len(data)} item(s); review failed/unclear wiki sources.",
+            )
+        )
+
+
+def _check_coverage_gaps(
+    wiki_dir: Path,
+    enriched_dir: Path,
+    issues: list[WikiHealthIssue],
+) -> None:
+    missing_entities, missing_topics = coverage_gaps(wiki_dir=wiki_dir, enriched_dir=enriched_dir)
+    for name, count in missing_entities:
+        issues.append(
+            _issue(
+                "info",
+                "missing_entity_coverage",
+                "",
+                f"{name} appears in {count} enriched card(s) but has no wiki entity page.",
+            )
+        )
+    for name, count in missing_topics:
+        issues.append(
+            _issue(
+                "info",
+                "missing_topic_coverage",
+                "",
+                f"{name} appears in {count} enriched card(s) but has no wiki topic page.",
+            )
+        )
+
+
+def _check_broken_wiki_references(
+    page_paths: list[Path],
+    wiki_dir: Path,
+    issues: list[WikiHealthIssue],
+) -> None:
+    existing = {path.relative_to(wiki_dir).as_posix() for path in page_paths}
+    for path in page_paths:
+        rel_path = path.relative_to(wiki_dir).as_posix()
+        try:
+            text = path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        for ref in sorted(set(_wiki_refs(text, "claims") + _wiki_refs(text, "entities") + _wiki_refs(text, "topics"))):
+            if ref not in existing:
+                issues.append(
+                    _issue("error", "broken_wiki_reference", rel_path, f"Referenced wiki page does not exist: {ref}")
+                )
 
 
 def _source_to_card_paths(wiki_dir: Path) -> dict[str, list[str]]:
@@ -384,6 +525,21 @@ def _int_or_none(value: Any) -> int | None:
         return int(value)
     except (TypeError, ValueError):
         return None
+
+
+def _parse_date(value: Any) -> date | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    try:
+        return date.fromisoformat(text[:10])
+    except ValueError:
+        return None
+
+
+def _wiki_refs(text: str, directory: str) -> list[str]:
+    pattern = re.compile(rf"\b{re.escape(directory)}/[A-Za-z0-9_.-]+\.md\b")
+    return pattern.findall(text)
 
 
 def _issue(severity: str, code: str, page_path: str, message: str) -> WikiHealthIssue:

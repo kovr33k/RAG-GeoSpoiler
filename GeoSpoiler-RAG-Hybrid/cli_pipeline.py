@@ -9,6 +9,7 @@ from typing import Any
 import config
 from baseline_probe import collect_baseline_metadata, run_baseline_probe, write_baseline_metadata, write_probe_report
 from cli_runtime import _finalize_rag_safely, logger
+from cli_wiki import cmd_wiki_ingest
 from enricher.pipeline import EnrichmentStats, enrich_all
 from fetcher.state import get_all_progress, mark_message_processed
 from fetcher.telegram_client import TelegramFetcher, TelegramMessage
@@ -163,6 +164,9 @@ async def cmd_run(limit: int | None = None):
 
     # Enrich all posts (incremental — only new/changed)
     cmd_enrich()
+
+    # Wiki ingest (incremental - only new/changed enriched cards)
+    cmd_wiki_ingest()
 
     load_stats = await cmd_load(normalize_stats.texts_with_paths)
     _print_run_summary(channel_messages, normalize_stats, load_stats)

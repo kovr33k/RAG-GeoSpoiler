@@ -132,6 +132,10 @@ def _format_wiki_prompt_context(wiki_context: dict[str, Any], max_pages: int = 5
         snippet = str(page.get("snippet") or "").strip()
         if snippet:
             lines.append(f"memory_snippet: {snippet}")
+        if str(page.get("page_path") or "").startswith("claims/"):
+            guardrails = _extract_guardrails_from_page(page, wiki_dir=config.WIKI_DIR)
+            if guardrails:
+                lines.append(f"claim_guardrails: {'; '.join(guardrails[:3])}")
         resolved_sources = list(page.get("resolved_sources") or [])[:max_sources]
         if resolved_sources:
             lines.append("primary_sources:")
@@ -152,6 +156,34 @@ def _format_wiki_prompt_context(wiki_context: dict[str, Any], max_pages: int = 5
             lines.append("source_ids: " + ", ".join(str(item) for item in page["source_ids"]))
     lines.append("--- End local wiki memory context ---")
     return "\n".join(lines)
+
+
+def _extract_guardrails_from_page(page: dict[str, Any], wiki_dir: Path) -> list[str]:
+    """Read bullet lines from a claim page's Guardrails section."""
+    page_path = wiki_dir / str(page.get("page_path") or "")
+    if not page_path.exists() or not page_path.is_file():
+        return []
+    try:
+        text = page_path.read_text(encoding="utf-8")
+    except OSError:
+        return []
+
+    lines: list[str] = []
+    in_section = False
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("## "):
+            if in_section:
+                break
+            in_section = stripped.casefold() == "## guardrails"
+            continue
+        if not in_section:
+            continue
+        if stripped.startswith("- "):
+            item = stripped[2:].strip()
+            if item:
+                lines.append(item)
+    return lines
 
 
 def _attach_wiki_context(result: dict[str, Any], wiki_context: dict[str, Any] | None) -> dict[str, Any]:

@@ -1,4 +1,5 @@
-﻿import sys
+﻿import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -80,6 +81,38 @@ class WikiHealthTests(unittest.TestCase):
 
         codes = {issue.code for issue in report.issues}
         self.assertIn("source_file_missing", codes)
+
+    def test_wiki_health_reports_empty_wiki_and_missing_entity_coverage(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            wiki_dir = root / "wiki"
+            enriched_dir = root / "enriched" / "Cuba"
+            index_dir = wiki_dir / "indexes"
+            wiki_dir.mkdir(parents=True)
+            enriched_dir.mkdir(parents=True)
+            index_dir.mkdir(parents=True)
+            for message_id in [10, 11, 12]:
+                (enriched_dir / f"{message_id}.enriched.json").write_text(
+                    json.dumps(
+                        {
+                            "triage": "keep",
+                            "provenance": {"channel_id": 1, "message_id": message_id},
+                            "summary": "Card",
+                            "entities": {"countries": ["Russia"]},
+                            "topics": ["sanctions"],
+                            "key_facts": [{"text": "Fact", "claim_type": "source_claim"}],
+                        },
+                        ensure_ascii=False,
+                    ),
+                    encoding="utf-8",
+                )
+
+            report = run_wiki_health(wiki_dir=wiki_dir, index_dir=index_dir, enriched_dir=root / "enriched")
+
+        issues = {issue.code: issue for issue in report.issues}
+        self.assertIn("wiki_empty_while_cards_exist", issues)
+        self.assertIn("missing_entity_coverage", issues)
+        self.assertIn("Russia", issues["missing_entity_coverage"].message)
 
 
 if __name__ == "__main__":

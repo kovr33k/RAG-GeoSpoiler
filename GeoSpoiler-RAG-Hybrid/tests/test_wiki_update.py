@@ -88,15 +88,18 @@ class WikiIncrementalUpdateTests(unittest.TestCase):
                 today=date(2026, 5, 26),
             )
             pending = json.loads((wiki_dir / "_pending_updates.json").read_text(encoding="utf-8"))
+            log_text = (wiki_dir / "_log.md").read_text(encoding="utf-8")
             log_events = [
                 json.loads(line)
-                for line in (wiki_dir / "_log.md").read_text(encoding="utf-8").splitlines()
+                for line in log_text.splitlines()
                 if line.startswith("{")
             ]
 
         self.assertEqual(len(stats.pending_updates), 1)
         self.assertEqual(pending[0]["reason"], "new_unlinked_source")
         self.assertEqual(pending[0]["source_id"], "telegram:1:12")
+        self.assertIn("## [", log_text)
+        self.assertIn("wiki_incremental_update | new=1 changed=0", log_text)
         self.assertEqual(log_events[-1]["event"], "wiki_incremental_update")
         self.assertEqual(log_events[-1]["pending_updates"], 1)
 
