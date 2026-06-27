@@ -550,6 +550,18 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertTrue(captured.get("called"))
 
+    def test_main_wiki_coverage_backfill_cli_dispatches(self):
+        captured = {}
+
+        def fake_cmd_wiki_coverage_backfill():
+            captured["called"] = True
+
+        with patch.object(cli_app, "cmd_wiki_coverage_backfill", fake_cmd_wiki_coverage_backfill):
+            with patch.object(sys, "argv", ["main.py", "wiki", "coverage-backfill"]):
+                main.main()
+
+        self.assertTrue(captured.get("called"))
+
     def test_cmd_wiki_init_creates_minimal_scaffold(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             wiki_dir = Path(tmpdir) / "wiki"

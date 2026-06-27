@@ -187,7 +187,7 @@ def _check_claim_page(
         if not str(frontmatter.get(field) or "").strip():
             issues.append(_issue("error", "missing_frontmatter", rel_path, f"Missing {field}."))
 
-    claim_text = _without_section(text, "Guardrails")
+    claim_text = _claim_label_check_text(text)
     if FAKE_LABEL_RE.search(claim_text) and not FAKE_LABEL_RE.search(evidence):
         issues.append(
             _issue(
@@ -508,6 +508,13 @@ def _without_section(text: str, section_name: str) -> str:
     next_section = re.search(r"^##\s+", rest, flags=re.MULTILINE)
     after = rest[next_section.start() :] if next_section else ""
     return before + after
+
+
+def _claim_label_check_text(text: str) -> str:
+    check_text = text
+    for section_name in ["Evidence", "Guardrails", "Related"]:
+        check_text = _without_section(check_text, section_name)
+    return check_text
 
 
 def _load_json(path: Path) -> dict[str, Any]:

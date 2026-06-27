@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import re
 from collections import Counter
 from dataclasses import dataclass, field
 from datetime import date
@@ -12,6 +11,7 @@ from typing import Any
 
 import config
 from retrieval import wiki_index
+from retrieval.wiki_coverage import coverage_gaps
 
 
 @dataclass(frozen=True)
@@ -119,80 +119,6 @@ def write_wiki_overview(overview: WikiOverview, path: Path | None = None) -> Pat
     return path
 
 
-def coverage_gaps(
-    wiki_dir: Path = config.WIKI_DIR,
-    enriched_dir: Path = config.ENRICHED_DIR,
-    threshold: int = 3,
-    limit: int = 20,
-) -> tuple[list[tuple[str, int]], list[tuple[str, int]]]:
-    existing_entities = _existing_page_names(wiki_dir / "entities")
-    existing_topics = _existing_page_names(wiki_dir / "topics")
-    entity_counts: Counter[str] = Counter()
-    topic_counts: Counter[str] = Counter()
-
-    for _path, card in wiki_index.iter_enriched_cards(enriched_dir):
-        if card.get("triage") != "keep":
-            continue
-        for entity in _flatten_entities(card.get("entities")):
-            entity_counts[entity] += 1
-        for topic in _string_list(card.get("topics")):
-            topic_counts[topic] += 1
-
-    missing_entities = _missing_counts(entity_counts, existing_entities, threshold, limit)
-    missing_topics = _missing_counts(topic_counts, existing_topics, threshold, limit)
-    return missing_entities, missing_topics
-
-
-def _missing_counts(
-    counts: Counter[str],
-    existing_names: set[str],
-    threshold: int,
-    limit: int,
-) -> list[tuple[str, int]]:
-    missing = []
-    for name, count in counts.items():
-        if count < threshold:
-            continue
-        if _normalize_name(name) in existing_names:
-            continue
-        missing.append((name, count))
-    missing.sort(key=lambda item: (-item[1], item[0].casefold()))
-    return missing[:limit]
-
-
-def _existing_page_names(directory: Path) -> set[str]:
-    names: set[str] = set()
-    if not directory.exists():
-        return names
-    for path in directory.glob("*.md"):
-        names.add(_normalize_name(path.stem.replace("-", " ")))
-        text = _read_text(path)
-        for line in text.splitlines():
-            if line.startswith("# "):
-                names.add(_normalize_name(line[2:].strip()))
-                break
-    return names
-
-
-def _flatten_entities(value: Any) -> list[str]:
-    if not isinstance(value, dict):
-        return []
-    items: list[str] = []
-    for group in value.values():
-        if isinstance(group, list):
-            items.extend(str(item).strip() for item in group if str(item).strip())
-        elif str(group).strip():
-            items.append(str(group).strip())
-    return items
-
-
-def _string_list(value: Any) -> list[str]:
-    if isinstance(value, list):
-        return [str(item).strip() for item in value if str(item).strip()]
-    text = str(value).strip() if value is not None else ""
-    return [text] if text else []
-
-
 def _load_pending(path: Path) -> list[dict[str, Any]]:
     if not path.exists():
         return []
@@ -215,10 +141,6 @@ def _parse_frontmatter(text: str) -> dict[str, str]:
             key, value = line.split(":", 1)
             data[key.strip()] = value.strip()
     return data
-
-
-def _normalize_name(value: str) -> str:
-    return " ".join(re.findall(r"[\w-]+", value.casefold()))
 
 
 def _read_text(path: Path) -> str:

@@ -1,0 +1,41 @@
+---
+wiki_type: claim
+status: supported_by_corpus
+generated_by: wiki_ingest_v1
+review_status: auto
+source_count: 1
+updated_at: 2026-06-26
+---
+
+# Утверждается, что в 2025 году в Китае наказали 983 000 чиновников в ходе дисциплинарных мер
+
+Status: supported_by_corpus
+Review status: auto
+Source count: 1
+
+## Evidence
+
+- telegram:3001055698:41 - source_claim: В 2025 году наказали 983 000 чиновников в Китае.
+  - post_url: https://t.me/c/3001055698/41
+  - date: 2026-01-18T09:11:13+00:00
+  - card_path: C:\WikiRag\RAG-GeoSpoiler\GeoSpoiler-RAG-Hybrid\output\enriched\Китай\41.enriched.json
+  - content_hash: 8f6580752f27169f0bf2015b4f949157065a90f9e7602768205247125230ed07
+- telegram:3001055698:41 - source_claim: В посте говорится, что это стало рекордом за последние десятилетия.
+  - post_url: https://t.me/c/3001055698/41
+  - date: 2026-01-18T09:11:13+00:00
+  - card_path: C:\WikiRag\RAG-GeoSpoiler\GeoSpoiler-RAG-Hybrid\output\enriched\Китай\41.enriched.json
+  - content_hash: 8f6580752f27169f0bf2015b4f949157065a90f9e7602768205247125230ed07
+
+## Guardrails
+
+- Treat Status as corpus status, not external fact-check status.
+- Use only cited evidence items when answering from this page.
+- Do not use summaries, theses, or hypotheses as direct evidence.
+- Separate source claims from author interpretation.
+- Treat Status как статус по материалам корпуса, а не как внешнюю фактологическую верификацию.
+- Не использовать пост-сводки/оценки вне процитированных источников; опираться на приведённые evidence items.
+- Формулировать как «в посте утверждается».
+
+## Related
+
+- indexes/page_to_sources.json

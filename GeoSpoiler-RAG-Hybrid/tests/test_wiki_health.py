@@ -114,6 +114,40 @@ class WikiHealthTests(unittest.TestCase):
         self.assertIn("missing_entity_coverage", issues)
         self.assertIn("Russia", issues["missing_entity_coverage"].message)
 
+    def test_wiki_health_ignores_fake_labels_in_related_metadata(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            wiki_dir = Path(tmpdir) / "wiki"
+            card_path = Path(tmpdir) / "card.enriched.json"
+            (wiki_dir / "claims").mkdir(parents=True)
+            card_path.write_text("{}", encoding="utf-8")
+            (wiki_dir / "claims" / "claim.md").write_text(
+                "---\n"
+                "wiki_type: claim\n"
+                "status: supported_by_corpus\n"
+                "generated_by: test\n"
+                "review_status: auto\n"
+                "source_count: 1\n"
+                "---\n\n"
+                "# Claim\n\n"
+                "Status: supported_by_corpus\n\n"
+                "## Evidence\n\n"
+                "- telegram:1:10 - source_claim: Direct evidence.\n"
+                f"  - card_path: {card_path}\n\n"
+                "## Related\n\n"
+                "- claims/fake-identities-deepfakes.md\n",
+                encoding="utf-8",
+            )
+            index_result = build_wiki_indexes(wiki_dir=wiki_dir, enriched_dir=Path(tmpdir) / "enriched")
+
+            report = run_wiki_health(wiki_dir=wiki_dir, index_dir=index_result.page_to_sources_path.parent)
+
+        warnings = [
+            issue
+            for issue in report.issues
+            if issue.code == "fake_label_without_direct_evidence" and issue.page_path == "claims/claim.md"
+        ]
+        self.assertEqual(warnings, [])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,10 +1,12 @@
 """Wiki-memory CLI command implementations."""
 
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 
 import config
 from retrieval.wiki_claims import seed_claim_pages
+from retrieval.wiki_coverage import run_wiki_coverage_backfill
 from retrieval.wiki_health import run_wiki_health, write_health_report
 from retrieval.wiki_index import build_wiki_indexes
 from retrieval.wiki_ingest import run_wiki_ingest
@@ -123,6 +125,20 @@ def _write_wiki_file_if_missing(path: Path, content: str, stats: WikiInitStats) 
     stats.files_created.append(path)
 
 
+def _console_safe_text(value: object) -> str:
+    text = str(value)
+    encoding = getattr(sys.stdout, "encoding", None) or "utf-8"
+    try:
+        text.encode(encoding)
+    except (LookupError, UnicodeEncodeError):
+        return text.encode(encoding, errors="backslashreplace").decode(encoding, errors="strict")
+    return text
+
+
+def _print_console(value: object = "") -> None:
+    print(_console_safe_text(value))
+
+
 def cmd_wiki_init() -> WikiInitStats:
     """Create the local wiki-memory scaffold without overwriting existing files."""
     stats = WikiInitStats([], [], [], [])
@@ -184,16 +200,16 @@ def cmd_wiki_health() -> None:
     report = run_wiki_health()
     report_path = write_health_report(report)
 
-    print("Wiki health complete.")
-    print(f"  Pages checked: {report.page_count}")
-    print(f"  Issues: {report.issue_count}")
-    print(f"  Indexed pages: {index_stats.page_count}")
-    print(f"  Indexed sources: {index_stats.source_count}")
-    print(f"  Report: {report_path}")
+    _print_console("Wiki health complete.")
+    _print_console(f"  Pages checked: {report.page_count}")
+    _print_console(f"  Issues: {report.issue_count}")
+    _print_console(f"  Indexed pages: {index_stats.page_count}")
+    _print_console(f"  Indexed sources: {index_stats.source_count}")
+    _print_console(f"  Report: {report_path}")
     if report.issues:
-        print("  First issues:")
+        _print_console("  First issues:")
         for issue in report.issues[:10]:
-            print(f"    - [{issue.severity}] {issue.code}: {issue.page_path} - {issue.message}")
+            _print_console(f"    - [{issue.severity}] {issue.code}: {issue.page_path} - {issue.message}")
 
 
 def cmd_wiki_ingest() -> None:
@@ -232,6 +248,27 @@ def cmd_wiki_overview() -> None:
     print(f"  Missing entity coverage: {len(overview.missing_entities)}")
     print(f"  Missing topic coverage: {len(overview.missing_topics)}")
     print(f"  Overview: {overview_path}")
+
+
+def cmd_wiki_coverage_backfill() -> None:
+    cmd_wiki_init()
+    stats = run_wiki_coverage_backfill()
+    index_stats = build_wiki_indexes()
+    overview = build_wiki_overview()
+    overview_path = write_wiki_overview(overview)
+
+    print("Wiki coverage backfill complete.")
+    print(f"  Pages created: {len(stats.pages_created)}")
+    print(f"  Pages updated: {len(stats.pages_updated)}")
+    print(f"  Pages skipped: {len(stats.pages_skipped)}")
+    print(f"  Entities considered: {stats.entities_considered}")
+    print(f"  Topics considered: {stats.topics_considered}")
+    print(f"  Entity pages changed: {stats.entities_created_or_updated}")
+    print(f"  Topic pages changed: {stats.topics_created_or_updated}")
+    print(f"  Indexed pages: {index_stats.page_count}")
+    print(f"  Indexed sources: {index_stats.source_count}")
+    print(f"  Overview: {overview_path}")
+    _print_wiki_git_status_hint()
 
 
 def cmd_wiki_update() -> None:

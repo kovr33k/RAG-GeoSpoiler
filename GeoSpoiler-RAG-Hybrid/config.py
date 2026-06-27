@@ -47,6 +47,8 @@ WIKI_ENABLED = os.getenv("WIKI_ENABLED", "true").lower() == "true"
 WIKI_TOP_K = int(os.getenv("WIKI_TOP_K", "5"))
 WIKI_INGEST_BATCH_SIZE = int(os.getenv("WIKI_INGEST_BATCH_SIZE", "5"))
 WIKI_INGEST_TIMEOUT_SECONDS = float(os.getenv("WIKI_INGEST_TIMEOUT_SECONDS", "120"))
+WIKI_COVERAGE_THRESHOLD = int(os.getenv("WIKI_COVERAGE_THRESHOLD", "3"))
+WIKI_COVERAGE_LIMIT = int(os.getenv("WIKI_COVERAGE_LIMIT", "20"))
 
 # Role-specific chat models. Each role falls back to the main LLM_* settings.
 RAG_BUILD_API_KEY = os.getenv("RAG_BUILD_API_KEY", "") or LLM_API_KEY

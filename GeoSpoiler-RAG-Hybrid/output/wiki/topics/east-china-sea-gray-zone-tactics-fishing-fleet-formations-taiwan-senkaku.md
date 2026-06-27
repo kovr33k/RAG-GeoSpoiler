@@ -1,0 +1,20 @@
+---
+wiki_type: topic
+generated_by: wiki_ingest_v1
+review_status: auto
+source_count: 1
+updated_at: 2026-06-26
+---
+
+# Восточно-Китайское море и «серые зоны»: тактики «плавучих барьеров», построения рыболовного флота и сценарии изоляции Тайваня/Сенкаку
+
+Тематическая страница для группировки утверждений о построениях тысяч судов в Восточно-Китайском море и об их интерпретации как тактик в «серой зоне», связанной с изоляцией Тайваня и/или Сенкаку.
+
+## Related Claims
+
+- none
+
+## Source Resolution
+
+- Resolve primary sources through claim evidence and output/wiki/indexes/page_to_sources.json.
+

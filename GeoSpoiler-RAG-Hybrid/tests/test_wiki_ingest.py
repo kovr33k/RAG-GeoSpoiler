@@ -78,8 +78,11 @@ class WikiIngestTests(unittest.TestCase):
         self.assertIn("- telegram:1:10 - source_claim: A source claimed", claim_text)
         self.assertIn("Do not generalize beyond the cited source.", claim_text)
         self.assertIn("wiki_type: entity", entity_text)
+        self.assertIn("- claims/cuba-protests-continued.md", entity_text)
+        self.assertNotIn("## Sources", entity_text)
         self.assertEqual(source_hashes["telegram:1:10"]["content_hash"], expected_hash)
         self.assertEqual(page_to_sources["claims/cuba-protests-continued.md"], ["telegram:1:10"])
+        self.assertEqual(page_to_sources["entities/cuba.md"], [])
 
     def test_wiki_ingest_rejects_operations_with_external_source_ids(self):
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -127,6 +130,204 @@ class WikiIngestTests(unittest.TestCase):
         self.assertEqual(stats.pending[0].reason, "invalid_operation")
         self.assertEqual(pending[0]["source_id"], "telegram:1:10")
         self.assertFalse((wiki_dir / "claims" / "bad-external-claim.md").exists())
+
+    def test_wiki_ingest_normalizes_fact_evidence_to_source_claim(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            wiki_dir, enriched_dir, index_dir = _make_dirs(root)
+            _write_card(
+                enriched_dir / "Cuba" / "10.enriched.json",
+                channel_id=1,
+                message_id=10,
+                fact="A source claimed that protests continued in Cuba.",
+                entities={"countries": ["Cuba"]},
+                topics=["cuba protests"],
+            )
+
+            stats = run_wiki_ingest(
+                wiki_dir=wiki_dir,
+                enriched_dir=enriched_dir,
+                index_dir=index_dir,
+                today=date(2026, 6, 26),
+                llm_call=lambda _prompt: {
+                    "operations": [
+                        {
+                            "action": "create",
+                            "page_type": "claim",
+                            "slug": "cuba-protests-continued",
+                            "title": "Cuba protests continued",
+                            "status": "supported_by_corpus",
+                            "source_ids": ["telegram:1:10"],
+                            "evidence": [
+                                {
+                                    "source_id": "telegram:1:10",
+                                    "evidence_type": "fact",
+                                    "text": "A source claimed that protests continued in Cuba.",
+                                }
+                            ],
+                        }
+                    ]
+                },
+            )
+
+            claim_text = (wiki_dir / "claims" / "cuba-protests-continued.md").read_text(encoding="utf-8")
+
+        self.assertEqual(stats.pending, [])
+        self.assertIn("- telegram:1:10 - source_claim: A source claimed", claim_text)
+        self.assertNotIn(" - fact:", claim_text)
+
+    def test_wiki_ingest_filters_related_claims_that_do_not_exist(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            wiki_dir, enriched_dir, index_dir = _make_dirs(root)
+            _write_card(
+                enriched_dir / "Cuba" / "10.enriched.json",
+                channel_id=1,
+                message_id=10,
+                fact="A source claimed that protests continued in Cuba.",
+                entities={"countries": ["Cuba"]},
+                topics=["cuba protests"],
+            )
+
+            run_wiki_ingest(
+                wiki_dir=wiki_dir,
+                enriched_dir=enriched_dir,
+                index_dir=index_dir,
+                today=date(2026, 6, 26),
+                llm_call=lambda _prompt: {
+                    "operations": [
+                        {
+                            "action": "create",
+                            "page_type": "claim",
+                            "slug": "cuba-protests-continued",
+                            "title": "Cuba protests continued",
+                            "status": "supported_by_corpus",
+                            "source_ids": ["telegram:1:10"],
+                            "evidence": [
+                                {
+                                    "source_id": "telegram:1:10",
+                                    "evidence_type": "source_claim",
+                                    "text": "A source claimed that protests continued in Cuba.",
+                                }
+                            ],
+                            "related_claims": [
+                                "claims/does-not-exist.md",
+                                "indexes/page_to_sources.json",
+                            ],
+                        },
+                        {
+                            "action": "create",
+                            "page_type": "topic",
+                            "slug": "cuba-protests",
+                            "title": "Cuba protests",
+                            "summary": "Topic grounded in the ingested source.",
+                            "source_ids": ["telegram:1:10"],
+                            "related_claims": ["claims/does-not-exist.md"],
+                        },
+                    ]
+                },
+            )
+
+            claim_text = (wiki_dir / "claims" / "cuba-protests-continued.md").read_text(encoding="utf-8")
+            topic_text = (wiki_dir / "topics" / "cuba-protests.md").read_text(encoding="utf-8")
+
+        self.assertNotIn("claims/does-not-exist.md", claim_text)
+        self.assertNotIn("indexes/page_to_sources.json\n- claims", claim_text)
+        self.assertIn("- indexes/page_to_sources.json", claim_text)
+        self.assertNotIn("claims/does-not-exist.md", topic_text)
+        self.assertIn("- none", topic_text)
+
+    def test_wiki_ingest_strips_raw_source_ids_from_entity_topic_summary(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            wiki_dir, enriched_dir, index_dir = _make_dirs(root)
+            _write_card(
+                enriched_dir / "Cuba" / "10.enriched.json",
+                channel_id=1,
+                message_id=10,
+                fact="A source claimed that protests continued in Cuba.",
+                entities={"countries": ["Cuba"]},
+                topics=["cuba protests"],
+            )
+
+            run_wiki_ingest(
+                wiki_dir=wiki_dir,
+                enriched_dir=enriched_dir,
+                index_dir=index_dir,
+                today=date(2026, 6, 26),
+                llm_call=lambda _prompt: {
+                    "operations": [
+                        {
+                            "action": "create",
+                            "page_type": "entity",
+                            "slug": "cuba",
+                            "title": "Cuba",
+                            "summary": "Country mentioned by the card (telegram:1:10).",
+                            "source_ids": ["telegram:1:10"],
+                        }
+                    ]
+                },
+            )
+
+            entity_text = (wiki_dir / "entities" / "cuba.md").read_text(encoding="utf-8")
+
+        self.assertIn("Country mentioned by the card.", entity_text)
+        self.assertNotIn("telegram:1:10", entity_text)
+
+    def test_wiki_ingest_runs_coverage_backfill_after_claim_pages(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            wiki_dir, enriched_dir, index_dir = _make_dirs(root)
+            for message_id in [10, 11, 12]:
+                _write_card(
+                    enriched_dir / "China" / f"{message_id}.enriched.json",
+                    channel_id=1,
+                    message_id=message_id,
+                    fact=f"China source claim {message_id}.",
+                    entities={"countries": ["Китай"]},
+                    topics=["геополитика"],
+                )
+
+            def fake_llm(prompt):
+                payload = json.loads(prompt)
+                operations = []
+                for card in payload["cards"]:
+                    source_id = card["source_id"]
+                    card_message_id = source_id.split(":")[-1]
+                    operations.append(
+                        {
+                            "action": "create",
+                            "page_type": "claim",
+                            "slug": f"china-claim-{card_message_id}",
+                            "title": f"China claim {card_message_id}",
+                            "status": "supported_by_corpus",
+                            "source_ids": [source_id],
+                            "evidence": [
+                                {
+                                    "source_id": source_id,
+                                    "evidence_type": "source_claim",
+                                    "text": f"China source claim {card_message_id}.",
+                                }
+                            ],
+                        }
+                    )
+                return {"operations": operations}
+
+            run_wiki_ingest(
+                wiki_dir=wiki_dir,
+                enriched_dir=enriched_dir,
+                index_dir=index_dir,
+                today=date(2026, 6, 27),
+                batch_size=3,
+                llm_call=fake_llm,
+            )
+
+            entity_text = (wiki_dir / "entities" / "китай.md").read_text(encoding="utf-8")
+
+        self.assertIn("# Китай", entity_text)
+        self.assertIn("- claims/china-claim-10.md", entity_text)
+        self.assertIn("- claims/china-claim-11.md", entity_text)
+        self.assertIn("- claims/china-claim-12.md", entity_text)
 
 
 def _make_dirs(root: Path) -> tuple[Path, Path, Path]:

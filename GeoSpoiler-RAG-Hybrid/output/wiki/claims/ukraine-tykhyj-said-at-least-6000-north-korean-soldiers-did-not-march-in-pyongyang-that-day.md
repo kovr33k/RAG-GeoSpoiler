@@ -1,0 +1,40 @@
+---
+wiki_type: claim
+status: supported_by_corpus
+generated_by: wiki_ingest_v1
+review_status: auto
+source_count: 1
+updated_at: 2026-06-26
+---
+
+# Утверждается, что Георгий Тихий заявил: в пропагандистском фарсе не хватало как минимум 6000 северокорейских солдат, которые не марширировали в Пхеньяне
+
+Status: supported_by_corpus
+Review status: auto
+Source count: 1
+
+## Evidence
+
+- telegram:3215620297:25 - quote: «У цьому пропагандистському фарсі бракує щонайменше 6 000 північнокорейських солдатів, які того дня не марширували в Пхеньяні.»
+  - post_url: https://t.me/c/3215620297/25
+  - date: 2026-02-27T12:51:37+00:00
+  - card_path: C:\WikiRag\RAG-GeoSpoiler\GeoSpoiler-RAG-Hybrid\output\enriched\Корея\25.enriched.json
+  - content_hash: be6bfafa99dd467a1f42e76f03ce4e926ed9d0895a57e9415b931ad833f87788
+- telegram:3215620297:25 - source_claim: В посте утверждается, что в пропагандистском фарсе не хватает по меньшей мере 6000 северокорейских солдат, которые того дня не марширували в Пхеньяні.
+  - post_url: https://t.me/c/3215620297/25
+  - date: 2026-02-27T12:51:37+00:00
+  - card_path: C:\WikiRag\RAG-GeoSpoiler\GeoSpoiler-RAG-Hybrid\output\enriched\Корея\25.enriched.json
+  - content_hash: be6bfafa99dd467a1f42e76f03ce4e926ed9d0895a57e9415b931ad833f87788
+
+## Guardrails
+
+- Treat Status as corpus status, not external fact-check status.
+- Use only cited evidence items when answering from this page.
+- Do not use summaries, theses, or hypotheses as direct evidence.
+- Separate source claims from author interpretation.
+- Treat Status as corpus status, not external fact-check status.
+- Use only cited evidence items when answering from this page.
+
+## Related
+
+- indexes/page_to_sources.json

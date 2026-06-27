@@ -18,6 +18,8 @@ from typing import Any
 
 import config
 
+DEFAULT_WIKI_DIR = config.WIKI_DIR
+
 SOURCE_INDEX_FILENAME = "source_to_pages.json"
 PAGE_INDEX_FILENAME = "page_to_sources.json"
 CLAIM_INDEX_FILENAME = "claim_to_sources.json"
@@ -263,12 +265,14 @@ def find_wiki_context(
     top_k: int = config.WIKI_TOP_K,
 ) -> list[WikiSearchResult]:
     """Return ranked wiki pages for a question using wiki FTS with keyword fallback."""
-    try:
-        from retrieval.card_fts import search_wiki_index
+    fts_results = []
+    if _same_path(wiki_dir, DEFAULT_WIKI_DIR):
+        try:
+            from retrieval.card_fts import search_wiki_index
 
-        fts_results = search_wiki_index(question, top_k=top_k, db_path=config.CARD_FTS_DB_PATH)
-    except Exception:
-        fts_results = []
+            fts_results = search_wiki_index(question, top_k=top_k, db_path=config.CARD_FTS_DB_PATH)
+        except Exception:
+            fts_results = []
     if fts_results:
         return _fts_to_wiki_results(fts_results, wiki_dir)
 
@@ -393,6 +397,13 @@ def _expand_query_terms(text: str) -> set[str]:
 
 def _relative_page_path(path: Path, wiki_dir: Path) -> str:
     return path.relative_to(wiki_dir).as_posix()
+
+
+def _same_path(left: Path, right: Path) -> bool:
+    try:
+        return left.resolve() == right.resolve()
+    except OSError:
+        return left == right
 
 
 def _write_json(path: Path, data: Any) -> None:

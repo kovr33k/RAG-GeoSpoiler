@@ -1,0 +1,1042 @@
+{
+  "telegram:3001055698:100": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\100.enriched.json",
+    "content_hash": "1e1b294803fa72356c7374064014e125d1617e2b498673460cce2cb49fe45735",
+    "date": "2026-05-20T18:02:33+00:00",
+    "normalized_file": "output\\normalized\\Китай\\100.txt",
+    "post_url": "https://t.me/c/3001055698/100",
+    "source_id": "telegram:3001055698:100"
+  },
+  "telegram:3001055698:101": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\101.enriched.json",
+    "content_hash": "3a87b42a7d0eef98184ba46892d52603d47c5317557e13a3e5f63c95c6730de7",
+    "date": "2026-05-22T13:03:50+00:00",
+    "normalized_file": "output\\normalized\\Китай\\101.txt",
+    "post_url": "https://t.me/c/3001055698/101",
+    "source_id": "telegram:3001055698:101"
+  },
+  "telegram:3001055698:102": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\102.enriched.json",
+    "content_hash": "3072404e6ea35e0acc35ca9e0d1a70d36e289a495e7ce0c88549b0b0f78c2fc4",
+    "date": "2026-05-22T13:24:34+00:00",
+    "normalized_file": "output\\normalized\\Китай\\102.txt",
+    "post_url": "https://t.me/c/3001055698/102",
+    "source_id": "telegram:3001055698:102"
+  },
+  "telegram:3001055698:103": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\103.enriched.json",
+    "content_hash": "76db9e029a8d2817c3b689a8d40d784d101962d3818e4de50b166d6166d81582",
+    "date": "2026-05-26T23:15:14+00:00",
+    "normalized_file": "output\\normalized\\Китай\\103.txt",
+    "post_url": "https://t.me/c/3001055698/103",
+    "source_id": "telegram:3001055698:103"
+  },
+  "telegram:3001055698:11": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\11.enriched.json",
+    "content_hash": "0bcac9d44d60ebaa9211e09bd4eee0f98019b708b333bd08bd039982d0ad842a",
+    "date": "2025-09-24T17:37:28+00:00",
+    "normalized_file": "output\\normalized\\Китай\\11.txt",
+    "post_url": "https://t.me/c/3001055698/11",
+    "source_id": "telegram:3001055698:11"
+  },
+  "telegram:3001055698:12": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\12.enriched.json",
+    "content_hash": "a771e5ecfb1da4e58fef968af9806d108144224358a486f3691a73bceb419873",
+    "date": "2025-09-25T22:09:22+00:00",
+    "normalized_file": "output\\normalized\\Китай\\12.txt",
+    "post_url": "https://t.me/c/3001055698/12",
+    "source_id": "telegram:3001055698:12"
+  },
+  "telegram:3001055698:15": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\15.enriched.json",
+    "content_hash": "26b897ff93d437df165f01f2a9427d10b87c7023cd5d0124843356954ba60bfd",
+    "date": "2025-09-26T16:59:40+00:00",
+    "normalized_file": "output\\normalized\\Китай\\15.txt",
+    "post_url": "https://t.me/c/3001055698/15",
+    "source_id": "telegram:3001055698:15"
+  },
+  "telegram:3001055698:18": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\18.enriched.json",
+    "content_hash": "8a250d57d42573f3480edea8f86860525081ed61726a8666570d6f6849f0766d",
+    "date": "2025-10-01T21:25:58+00:00",
+    "normalized_file": "output\\normalized\\Китай\\18.txt",
+    "post_url": "https://t.me/c/3001055698/18",
+    "source_id": "telegram:3001055698:18"
+  },
+  "telegram:3001055698:21": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\21.enriched.json",
+    "content_hash": "48444730db5f921665db30386d212951ad5d836136928411b3d83771bf385b53",
+    "date": "2025-10-07T23:22:17+00:00",
+    "normalized_file": "output\\normalized\\Китай\\21.txt",
+    "post_url": "https://t.me/c/3001055698/21",
+    "source_id": "telegram:3001055698:21"
+  },
+  "telegram:3001055698:23": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\23.enriched.json",
+    "content_hash": "d41745d17f4f23581d69d080694334b1364067ac08fdeb413ca422288dc3a3af",
+    "date": "2025-10-11T12:53:17+00:00",
+    "normalized_file": "output\\normalized\\Китай\\23.txt",
+    "post_url": "https://t.me/c/3001055698/23",
+    "source_id": "telegram:3001055698:23"
+  },
+  "telegram:3001055698:24": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\24.enriched.json",
+    "content_hash": "1d25311e4a38eeecab1619d5033f547b34cb939145892e2a6fd59f1db3f6cd80",
+    "date": "2025-10-11T13:32:49+00:00",
+    "normalized_file": "output\\normalized\\Китай\\24.txt",
+    "post_url": "https://t.me/c/3001055698/24",
+    "source_id": "telegram:3001055698:24"
+  },
+  "telegram:3001055698:25": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\25.enriched.json",
+    "content_hash": "6c4210bcea6af205335088df29a00c5030f1c087c326b271f16de0f04d15c07d",
+    "date": "2025-10-11T23:00:54+00:00",
+    "normalized_file": "output\\normalized\\Китай\\25.txt",
+    "post_url": "https://t.me/c/3001055698/25",
+    "source_id": "telegram:3001055698:25"
+  },
+  "telegram:3001055698:26": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\26.enriched.json",
+    "content_hash": "a57ab3b0947ea7c584f10402812f1f859877b1d1bbaedef9fd506a4f98d52e5f",
+    "date": "2025-10-11T23:01:01+00:00",
+    "normalized_file": "output\\normalized\\Китай\\26.txt",
+    "post_url": "https://t.me/c/3001055698/26",
+    "source_id": "telegram:3001055698:26"
+  },
+  "telegram:3001055698:27": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\27.enriched.json",
+    "content_hash": "b1a78a9e7978ad0506a205bb8e0213b15e0ba3e9298c58b83cad9b71f6c4a6e6",
+    "date": "2025-10-11T23:01:23+00:00",
+    "normalized_file": "output\\normalized\\Китай\\27.txt",
+    "post_url": "https://t.me/c/3001055698/27",
+    "source_id": "telegram:3001055698:27"
+  },
+  "telegram:3001055698:28": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\28.enriched.json",
+    "content_hash": "870d487b887a6c629dcda18020b3fe52db3b4473238f4a0ca018267043ac81e7",
+    "date": "2025-10-14T10:43:38+00:00",
+    "normalized_file": "output\\normalized\\Китай\\28.txt",
+    "post_url": "https://t.me/c/3001055698/28",
+    "source_id": "telegram:3001055698:28"
+  },
+  "telegram:3001055698:3": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\3.enriched.json",
+    "content_hash": "e8aee2f51221aa736867e8ef5ebc3ace00b95679e18e0281f98751037abed7ba",
+    "date": "2025-09-18T01:58:56+00:00",
+    "normalized_file": "output\\normalized\\Китай\\3.txt",
+    "post_url": "https://t.me/c/3001055698/3",
+    "source_id": "telegram:3001055698:3"
+  },
+  "telegram:3001055698:33": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\33.enriched.json",
+    "content_hash": "c0147bbb5a656cb6957b64a09ed154ce1ed6ff2fcdbd1c9567dcac6c859f7357",
+    "date": "2025-11-19T15:33:15+00:00",
+    "normalized_file": "output\\normalized\\Китай\\33.txt",
+    "post_url": "https://t.me/c/3001055698/33",
+    "source_id": "telegram:3001055698:33"
+  },
+  "telegram:3001055698:34": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\34.enriched.json",
+    "content_hash": "87792d71ee7d3e1df7fe5d6835185143f1deac2b8082d51c73efa064516d451a",
+    "date": "2025-11-30T17:07:41+00:00",
+    "normalized_file": "output\\normalized\\Китай\\34.txt",
+    "post_url": "https://t.me/c/3001055698/34",
+    "source_id": "telegram:3001055698:34"
+  },
+  "telegram:3001055698:35": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\35.enriched.json",
+    "content_hash": "9d8973cbeeb3a503f386335768221c778455c650c49b392c0e9cb94eb6c50c9f",
+    "date": "2025-12-10T14:05:14+00:00",
+    "normalized_file": "output\\normalized\\Китай\\35.txt",
+    "post_url": "https://t.me/c/3001055698/35",
+    "source_id": "telegram:3001055698:35"
+  },
+  "telegram:3001055698:36": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\36.enriched.json",
+    "content_hash": "75948a69664a1f7b6c6935b30045b9b8dfb67d71786694e5a6f3617763c8f663",
+    "date": "2025-12-15T10:45:58+00:00",
+    "normalized_file": "output\\normalized\\Китай\\36.txt",
+    "post_url": "https://t.me/c/3001055698/36",
+    "source_id": "telegram:3001055698:36"
+  },
+  "telegram:3001055698:38": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\38.enriched.json",
+    "content_hash": "87312b90ad5a75f0fa2378e0cb5a29028627b79f66edff643eac8d60732f64d1",
+    "date": "2025-12-20T14:56:52+00:00",
+    "normalized_file": "output\\normalized\\Китай\\38.txt",
+    "post_url": "https://t.me/c/3001055698/38",
+    "source_id": "telegram:3001055698:38"
+  },
+  "telegram:3001055698:39": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\39.enriched.json",
+    "content_hash": "7b4ad211daabfbb4d6082b0b3f04ea2d6c189e75785b778ba79665b7522a4ebf",
+    "date": "2025-12-30T14:14:45+00:00",
+    "normalized_file": "output\\normalized\\Китай\\39.txt",
+    "post_url": "https://t.me/c/3001055698/39",
+    "source_id": "telegram:3001055698:39"
+  },
+  "telegram:3001055698:4": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\4.enriched.json",
+    "content_hash": "5f1f723a3ee79976cec3e65c36e892c20ec195287044754f0faee73785dc14d8",
+    "date": "2025-09-18T02:26:14+00:00",
+    "normalized_file": "output\\normalized\\Китай\\4.txt",
+    "post_url": "https://t.me/c/3001055698/4",
+    "source_id": "telegram:3001055698:4"
+  },
+  "telegram:3001055698:40": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\40.enriched.json",
+    "content_hash": "d780caa0bd46db968c16e60b0b4a1a9314b78fa9f1464c8c0f94971cd8426e3f",
+    "date": "2026-01-06T13:39:23+00:00",
+    "normalized_file": "output\\normalized\\Китай\\40.txt",
+    "post_url": "https://t.me/c/3001055698/40",
+    "source_id": "telegram:3001055698:40"
+  },
+  "telegram:3001055698:41": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\41.enriched.json",
+    "content_hash": "8f6580752f27169f0bf2015b4f949157065a90f9e7602768205247125230ed07",
+    "date": "2026-01-18T09:11:13+00:00",
+    "normalized_file": "output\\normalized\\Китай\\41.txt",
+    "post_url": "https://t.me/c/3001055698/41",
+    "source_id": "telegram:3001055698:41"
+  },
+  "telegram:3001055698:43": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\43.enriched.json",
+    "content_hash": "b42dd5715f39081560d1bf1ba524d5bdcb64e0139ebf6fe8fd69806749cd8901",
+    "date": "2026-01-28T17:29:43+00:00",
+    "normalized_file": "output\\normalized\\Китай\\43.txt",
+    "post_url": "https://t.me/c/3001055698/43",
+    "source_id": "telegram:3001055698:43"
+  },
+  "telegram:3001055698:48": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\48.enriched.json",
+    "content_hash": "664a6a4c4afec3dcf5a764b8dc2feb620e69fa7990943596879a8e3708435318",
+    "date": "2026-02-01T18:18:45+00:00",
+    "normalized_file": "output\\normalized\\Китай\\48.txt",
+    "post_url": "https://t.me/c/3001055698/48",
+    "source_id": "telegram:3001055698:48"
+  },
+  "telegram:3001055698:49": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\49.enriched.json",
+    "content_hash": "b4eaf8774d5092e19d4c4edb0f4ba2764520b2c2f17df6654f57f368b7f3aa15",
+    "date": "2026-02-03T18:20:11+00:00",
+    "normalized_file": "output\\normalized\\Китай\\49.txt",
+    "post_url": "https://t.me/c/3001055698/49",
+    "source_id": "telegram:3001055698:49"
+  },
+  "telegram:3001055698:5": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\5.enriched.json",
+    "content_hash": "2fc15c2f08c1dc8be8b17e433e9832d9d1969a557e92d6dbeedbb0a99c6efb59",
+    "date": "2025-09-18T02:26:26+00:00",
+    "normalized_file": "output\\normalized\\Китай\\5.txt",
+    "post_url": "https://t.me/c/3001055698/5",
+    "source_id": "telegram:3001055698:5"
+  },
+  "telegram:3001055698:50": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\50.enriched.json",
+    "content_hash": "b5402b4e63ba7c4177ea32cd170b80e8fea05f87347efe96ef6582c1a439eb0b",
+    "date": "2026-02-05T17:50:20+00:00",
+    "normalized_file": "output\\normalized\\Китай\\50.txt",
+    "post_url": "https://t.me/c/3001055698/50",
+    "source_id": "telegram:3001055698:50"
+  },
+  "telegram:3001055698:51": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\51.enriched.json",
+    "content_hash": "d67364e092438353905259bf4375eedbedf936f3c186cd7fec92dca97e910331",
+    "date": "2026-02-14T16:59:44+00:00",
+    "normalized_file": "output\\normalized\\Китай\\51.txt",
+    "post_url": "https://t.me/c/3001055698/51",
+    "source_id": "telegram:3001055698:51"
+  },
+  "telegram:3001055698:52": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\52.enriched.json",
+    "content_hash": "1e4717dbff4ce17389f757c092462d821cd389610c768b3229a5bf6a0aeb1875",
+    "date": "2026-02-14T17:10:26+00:00",
+    "normalized_file": "output\\normalized\\Китай\\52.txt",
+    "post_url": "https://t.me/c/3001055698/52",
+    "source_id": "telegram:3001055698:52"
+  },
+  "telegram:3001055698:53": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\53.enriched.json",
+    "content_hash": "db69d8fc0f4ef946e8cf93c75cfae9e985464e2f53a85b390761daf45c455966",
+    "date": "2026-02-15T15:29:05+00:00",
+    "normalized_file": "output\\normalized\\Китай\\53.txt",
+    "post_url": "https://t.me/c/3001055698/53",
+    "source_id": "telegram:3001055698:53"
+  },
+  "telegram:3001055698:54": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\54.enriched.json",
+    "content_hash": "ced21f6b3ffd7e1d7809dae97b7b39c6c67c8a3e0107d183cd0ca651a3afe620",
+    "date": "2026-02-17T01:57:47+00:00",
+    "normalized_file": "output\\normalized\\Китай\\54.txt",
+    "post_url": "https://t.me/c/3001055698/54",
+    "source_id": "telegram:3001055698:54"
+  },
+  "telegram:3001055698:55": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\55.enriched.json",
+    "content_hash": "b0e78b1f5f57d6736dd8f8da35c53b45aec206399fdad1a752e72bd303560ee1",
+    "date": "2026-02-18T19:04:53+00:00",
+    "normalized_file": "output\\normalized\\Китай\\55.txt",
+    "post_url": "https://t.me/c/3001055698/55",
+    "source_id": "telegram:3001055698:55"
+  },
+  "telegram:3001055698:56": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\56.enriched.json",
+    "content_hash": "dee7402f4eb958024ee7ff91757c97495cd1fdf353e6354ce07b9d07a3c75e9e",
+    "date": "2026-02-20T01:41:22+00:00",
+    "normalized_file": "output\\normalized\\Китай\\56.txt",
+    "post_url": "https://t.me/c/3001055698/56",
+    "source_id": "telegram:3001055698:56"
+  },
+  "telegram:3001055698:58": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\58.enriched.json",
+    "content_hash": "96c0c49f30d13a228a9bba5ae3033022d70f610bb153ae0e41b7c5b891839cc2",
+    "date": "2026-02-21T15:14:31+00:00",
+    "normalized_file": "output\\normalized\\Китай\\58.txt",
+    "post_url": "https://t.me/c/3001055698/58",
+    "source_id": "telegram:3001055698:58"
+  },
+  "telegram:3001055698:6": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\6.enriched.json",
+    "content_hash": "9d96149794c938d3942c73b3576ea38872d9e7bc747e6ff7361ed0bea3f89df2",
+    "date": "2025-09-18T03:02:54+00:00",
+    "normalized_file": "output\\normalized\\Китай\\6.txt",
+    "post_url": "https://t.me/c/3001055698/6",
+    "source_id": "telegram:3001055698:6"
+  },
+  "telegram:3001055698:60": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\60.enriched.json",
+    "content_hash": "63fb9c83bdd754ca472006e5e6576c89dc924567557640baa169f4cbe5dca7b7",
+    "date": "2026-02-22T17:51:39+00:00",
+    "normalized_file": "output\\normalized\\Китай\\60.txt",
+    "post_url": "https://t.me/c/3001055698/60",
+    "source_id": "telegram:3001055698:60"
+  },
+  "telegram:3001055698:61": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\61.enriched.json",
+    "content_hash": "b074973bcc52b5f507610d541e39a10d2eb37565d8379f8eae7a092b8eeec2c2",
+    "date": "2026-02-23T20:20:49+00:00",
+    "normalized_file": "output\\normalized\\Китай\\61.txt",
+    "post_url": "https://t.me/c/3001055698/61",
+    "source_id": "telegram:3001055698:61"
+  },
+  "telegram:3001055698:63": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\63.enriched.json",
+    "content_hash": "37fa2cd968eccf32f0adb88266ccb29544b4000be078f9e3aeca1f143759dc4b",
+    "date": "2026-02-27T08:23:26+00:00",
+    "normalized_file": "output\\normalized\\Китай\\63.txt",
+    "post_url": "https://t.me/c/3001055698/63",
+    "source_id": "telegram:3001055698:63"
+  },
+  "telegram:3001055698:64": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\64.enriched.json",
+    "content_hash": "793ff60665369983bc4c0eec472c85490dc0a98b057c31e4b92d6295a0b51cda",
+    "date": "2026-02-27T13:53:17+00:00",
+    "normalized_file": "output\\normalized\\Китай\\64.txt",
+    "post_url": "https://t.me/c/3001055698/64",
+    "source_id": "telegram:3001055698:64"
+  },
+  "telegram:3001055698:66": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\66.enriched.json",
+    "content_hash": "de7d098cb06429f5743a954bffa58d274e64d35ab8a1af663dc0a86eb57147d2",
+    "date": "2026-02-27T14:40:30+00:00",
+    "normalized_file": "output\\normalized\\Китай\\66.txt",
+    "post_url": "https://t.me/c/3001055698/66",
+    "source_id": "telegram:3001055698:66"
+  },
+  "telegram:3001055698:67": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\67.enriched.json",
+    "content_hash": "699808edfc56a53a93590ca6cd4c6d37c164587e39a79a0d31e23da15386bb10",
+    "date": "2026-02-28T15:43:39+00:00",
+    "normalized_file": "output\\normalized\\Китай\\67.txt",
+    "post_url": "https://t.me/c/3001055698/67",
+    "source_id": "telegram:3001055698:67"
+  },
+  "telegram:3001055698:69": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\69.enriched.json",
+    "content_hash": "2b5d3f5a2b668dedfdcc633f7f494f471ecc0094ec4551f03a4073a7dc4f993d",
+    "date": "2026-03-09T18:27:23+00:00",
+    "normalized_file": "output\\normalized\\Китай\\69.txt",
+    "post_url": "https://t.me/c/3001055698/69",
+    "source_id": "telegram:3001055698:69"
+  },
+  "telegram:3001055698:7": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\7.enriched.json",
+    "content_hash": "e1b1fe1bd04e88faaf8f277650558b4737d4fe3b9a633edaae990ad79abf75c5",
+    "date": "2025-09-18T20:38:32+00:00",
+    "normalized_file": "output\\normalized\\Китай\\7.txt",
+    "post_url": "https://t.me/c/3001055698/7",
+    "source_id": "telegram:3001055698:7"
+  },
+  "telegram:3001055698:70": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\70.enriched.json",
+    "content_hash": "d593bbbfb98e41fb83eafca709f3cd4a18d5d8d0aff0e9ccb8a66b1e61965873",
+    "date": "2026-03-12T17:26:05+00:00",
+    "normalized_file": "output\\normalized\\Китай\\70.txt",
+    "post_url": "https://t.me/c/3001055698/70",
+    "source_id": "telegram:3001055698:70"
+  },
+  "telegram:3001055698:72": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\72.enriched.json",
+    "content_hash": "d2a9df579c1c99a27d49b26bd689c78a17e13dde0fa84f692a9d56bba5b5d92d",
+    "date": "2026-03-15T17:35:24+00:00",
+    "normalized_file": "output\\normalized\\Китай\\72.txt",
+    "post_url": "https://t.me/c/3001055698/72",
+    "source_id": "telegram:3001055698:72"
+  },
+  "telegram:3001055698:76": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\76.enriched.json",
+    "content_hash": "aeb28d974f14a490b9154e1832a60655f9daeeab3ae716fb23ad4e010d14728b",
+    "date": "2026-03-25T17:50:48+00:00",
+    "normalized_file": "output\\normalized\\Китай\\76.txt",
+    "post_url": "https://t.me/c/3001055698/76",
+    "source_id": "telegram:3001055698:76"
+  },
+  "telegram:3001055698:77": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\77.enriched.json",
+    "content_hash": "80aaa5c6c9bfa0382c8e8c7f10e5b9105fdc9828d1dc96fbeaad554b78a66f0d",
+    "date": "2026-03-28T18:18:24+00:00",
+    "normalized_file": "output\\normalized\\Китай\\77.txt",
+    "post_url": "https://t.me/c/3001055698/77",
+    "source_id": "telegram:3001055698:77"
+  },
+  "telegram:3001055698:8": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\8.enriched.json",
+    "content_hash": "c5c5fc807c7f8916a371725e948467e0f26b62563d64efe0c9f8957a43f87598",
+    "date": "2025-09-20T04:14:03+00:00",
+    "normalized_file": "output\\normalized\\Китай\\8.txt",
+    "post_url": "https://t.me/c/3001055698/8",
+    "source_id": "telegram:3001055698:8"
+  },
+  "telegram:3001055698:80": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\80.enriched.json",
+    "content_hash": "0a56b52c22940427024a51def176e8e67eea034e5992f9fda64ad093f37ba5dc",
+    "date": "2026-03-31T17:48:18+00:00",
+    "normalized_file": "output\\normalized\\Китай\\80.txt",
+    "post_url": "https://t.me/c/3001055698/80",
+    "source_id": "telegram:3001055698:80"
+  },
+  "telegram:3001055698:82": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\82.enriched.json",
+    "content_hash": "9c374ebc185f2f208d8dae1a9563da7d4273de7f8cab319211bef3af598299fc",
+    "date": "2026-04-02T17:26:57+00:00",
+    "normalized_file": "output\\normalized\\Китай\\82.txt",
+    "post_url": "https://t.me/c/3001055698/82",
+    "source_id": "telegram:3001055698:82"
+  },
+  "telegram:3001055698:83": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\83.enriched.json",
+    "content_hash": "aaa17c8977410aecda4b2eef1b9f6b7d4d08067e027ae32ef140dbd1478a450d",
+    "date": "2026-04-04T14:03:25+00:00",
+    "normalized_file": "output\\normalized\\Китай\\83.txt",
+    "post_url": "https://t.me/c/3001055698/83",
+    "source_id": "telegram:3001055698:83"
+  },
+  "telegram:3001055698:85": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\85.enriched.json",
+    "content_hash": "b2b375fed33c19b9fd8d0ee228857cbecaf6129a9eeb942248c8c55717ad1b0e",
+    "date": "2026-04-05T16:23:47+00:00",
+    "normalized_file": "output\\normalized\\Китай\\85.txt",
+    "post_url": "https://t.me/c/3001055698/85",
+    "source_id": "telegram:3001055698:85"
+  },
+  "telegram:3001055698:86": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\86.enriched.json",
+    "content_hash": "0e8439f911aa53b0447dfed52d5196066496098c854eaf956f9518806605fd02",
+    "date": "2026-04-14T16:13:55+00:00",
+    "normalized_file": "output\\normalized\\Китай\\86.txt",
+    "post_url": "https://t.me/c/3001055698/86",
+    "source_id": "telegram:3001055698:86"
+  },
+  "telegram:3001055698:87": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\87.enriched.json",
+    "content_hash": "7ff55d59db517324982ee133a59d518d17a20bfd25ca3f3d3e220268bf32f916",
+    "date": "2026-04-14T16:15:40+00:00",
+    "normalized_file": "output\\normalized\\Китай\\87.txt",
+    "post_url": "https://t.me/c/3001055698/87",
+    "source_id": "telegram:3001055698:87"
+  },
+  "telegram:3001055698:88": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\88.enriched.json",
+    "content_hash": "d593d14df9a1c5be26b2d6d7b71be6a05ba7772d600e5057e959c685f293ba49",
+    "date": "2026-04-15T14:09:37+00:00",
+    "normalized_file": "output\\normalized\\Китай\\88.txt",
+    "post_url": "https://t.me/c/3001055698/88",
+    "source_id": "telegram:3001055698:88"
+  },
+  "telegram:3001055698:89": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\89.enriched.json",
+    "content_hash": "be30c9442c8b568dc0e75f769eabcbfc82bb8e95d15b52c27c41ad73485bbf65",
+    "date": "2026-04-16T01:55:20+00:00",
+    "normalized_file": "output\\normalized\\Китай\\89.txt",
+    "post_url": "https://t.me/c/3001055698/89",
+    "source_id": "telegram:3001055698:89"
+  },
+  "telegram:3001055698:9": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\9.enriched.json",
+    "content_hash": "1e05cebee8e8be52497223938c73d17e9110f8d9e4fe8c89adf5cbd3c1de76d8",
+    "date": "2025-09-22T06:35:40+00:00",
+    "normalized_file": "output\\normalized\\Китай\\9.txt",
+    "post_url": "https://t.me/c/3001055698/9",
+    "source_id": "telegram:3001055698:9"
+  },
+  "telegram:3001055698:92": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\92.enriched.json",
+    "content_hash": "81d96c4e5446c8ae46b6b34bee7f34acebba51a9db1b42ec92edf3cd26bcb90a",
+    "date": "2026-05-06T11:01:02+00:00",
+    "normalized_file": "output\\normalized\\Китай\\92.txt",
+    "post_url": "https://t.me/c/3001055698/92",
+    "source_id": "telegram:3001055698:92"
+  },
+  "telegram:3001055698:93": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\93.enriched.json",
+    "content_hash": "dc4cdc576fd3e8bc714f297a6c38bd5fadfd91a8693aaf949b67a72f8d50cefd",
+    "date": "2026-05-06T16:37:34+00:00",
+    "normalized_file": "output\\normalized\\Китай\\93.txt",
+    "post_url": "https://t.me/c/3001055698/93",
+    "source_id": "telegram:3001055698:93"
+  },
+  "telegram:3001055698:97": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\97.enriched.json",
+    "content_hash": "74ebca1439ab80e781f654920e7a91a4b5362a1d05cb3ea52a423c59e18baac8",
+    "date": "2026-05-07T19:31:40+00:00",
+    "normalized_file": "output\\normalized\\Китай\\97.txt",
+    "post_url": "https://t.me/c/3001055698/97",
+    "source_id": "telegram:3001055698:97"
+  },
+  "telegram:3001055698:98": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\98.enriched.json",
+    "content_hash": "6497fb8a23487d87fdaae4416d29ff13c6207c6c11a208899ee64396cc6923c3",
+    "date": "2026-05-16T12:22:38+00:00",
+    "normalized_file": "output\\normalized\\Китай\\98.txt",
+    "post_url": "https://t.me/c/3001055698/98",
+    "source_id": "telegram:3001055698:98"
+  },
+  "telegram:3001055698:99": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Китай\\99.enriched.json",
+    "content_hash": "a4bec95800dede03609af08b37059ccb2341081a7eb462ebe8d435adf9cd12f9",
+    "date": "2026-05-17T12:44:13+00:00",
+    "normalized_file": "output\\normalized\\Китай\\99.txt",
+    "post_url": "https://t.me/c/3001055698/99",
+    "source_id": "telegram:3001055698:99"
+  },
+  "telegram:3215620297:11": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\11.enriched.json",
+    "content_hash": "5494b35eeabbb8cb6bc10b03bc1c159b75203244f28421f62cd2889775015311",
+    "date": "2026-01-26T16:00:14+00:00",
+    "normalized_file": "output\\normalized\\Корея\\11.txt",
+    "post_url": "https://t.me/c/3215620297/11",
+    "source_id": "telegram:3215620297:11"
+  },
+  "telegram:3215620297:12": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\12.enriched.json",
+    "content_hash": "e9b9fe2d8ff2e7035223476ff0b1b11864531e8b641da9f098d4f9252f905e04",
+    "date": "2026-02-06T16:37:38+00:00",
+    "normalized_file": "output\\normalized\\Корея\\12.txt",
+    "post_url": "https://t.me/c/3215620297/12",
+    "source_id": "telegram:3215620297:12"
+  },
+  "telegram:3215620297:13": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\13.enriched.json",
+    "content_hash": "358604e37308a416e86b37e8ca5e309abacfde9ddf66b90c160083da4340660e",
+    "date": "2026-02-07T20:33:03+00:00",
+    "normalized_file": "output\\normalized\\Корея\\13.txt",
+    "post_url": "https://t.me/c/3215620297/13",
+    "source_id": "telegram:3215620297:13"
+  },
+  "telegram:3215620297:14": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\14.enriched.json",
+    "content_hash": "f324d969bf4972fd3a29494ebd86176b82e4932a1362a9f463ee08b962a8aa8b",
+    "date": "2026-02-09T19:46:04+00:00",
+    "normalized_file": "output\\normalized\\Корея\\14.txt",
+    "post_url": "https://t.me/c/3215620297/14",
+    "source_id": "telegram:3215620297:14"
+  },
+  "telegram:3215620297:15": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\15.enriched.json",
+    "content_hash": "3ade6daf3dbdb19c6a98e1941b2fe46fe79ebe7a23dea6818161ca88f6a3b5fc",
+    "date": "2026-02-15T14:47:03+00:00",
+    "normalized_file": "output\\normalized\\Корея\\15.txt",
+    "post_url": "https://t.me/c/3215620297/15",
+    "source_id": "telegram:3215620297:15"
+  },
+  "telegram:3215620297:2": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\2.enriched.json",
+    "content_hash": "a5dd4532be4ce5b2403587b846054e50400cf35b4d346b58e8fe5f0ad736893c",
+    "date": "2025-11-02T15:31:45+00:00",
+    "normalized_file": "output\\normalized\\Корея\\2.txt",
+    "post_url": "https://t.me/c/3215620297/2",
+    "source_id": "telegram:3215620297:2"
+  },
+  "telegram:3215620297:21": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\21.enriched.json",
+    "content_hash": "a7c444f8517299ac9fa9f6d6197512b537fd28a15c38911d1326ff3c3a854020",
+    "date": "2026-02-16T18:38:30+00:00",
+    "normalized_file": "output\\normalized\\Корея\\21.txt",
+    "post_url": "https://t.me/c/3215620297/21",
+    "source_id": "telegram:3215620297:21"
+  },
+  "telegram:3215620297:23": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\23.enriched.json",
+    "content_hash": "ee716a5f505df22f51b0c2005db94a605889d6b8c985c85aa87f35be6d9315a0",
+    "date": "2026-02-24T18:53:39+00:00",
+    "normalized_file": "output\\normalized\\Корея\\23.txt",
+    "post_url": "https://t.me/c/3215620297/23",
+    "source_id": "telegram:3215620297:23"
+  },
+  "telegram:3215620297:24": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\24.enriched.json",
+    "content_hash": "33c9b4ea344c8a7ec304e6123c61e7db31d8da68420dc10b3fc2c8f9932c2bcc",
+    "date": "2026-02-27T08:32:58+00:00",
+    "normalized_file": "output\\normalized\\Корея\\24.txt",
+    "post_url": "https://t.me/c/3215620297/24",
+    "source_id": "telegram:3215620297:24"
+  },
+  "telegram:3215620297:25": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\25.enriched.json",
+    "content_hash": "be6bfafa99dd467a1f42e76f03ce4e926ed9d0895a57e9415b931ad833f87788",
+    "date": "2026-02-27T12:51:37+00:00",
+    "normalized_file": "output\\normalized\\Корея\\25.txt",
+    "post_url": "https://t.me/c/3215620297/25",
+    "source_id": "telegram:3215620297:25"
+  },
+  "telegram:3215620297:26": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\26.enriched.json",
+    "content_hash": "5efe709d905368cc91df0dbcfb66891431c156ba4eaac49066d7a86ed5363b19",
+    "date": "2026-03-10T07:26:15+00:00",
+    "normalized_file": "output\\normalized\\Корея\\26.txt",
+    "post_url": "https://t.me/c/3215620297/26",
+    "source_id": "telegram:3215620297:26"
+  },
+  "telegram:3215620297:27": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\27.enriched.json",
+    "content_hash": "03032af231066f200e4b6513cf29f9f855c10772207cdbe2b9e61ef8bda5ecf9",
+    "date": "2026-03-12T21:43:37+00:00",
+    "normalized_file": "output\\normalized\\Корея\\27.txt",
+    "post_url": "https://t.me/c/3215620297/27",
+    "source_id": "telegram:3215620297:27"
+  },
+  "telegram:3215620297:28": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\28.enriched.json",
+    "content_hash": "78569d403776fdee08cdc35bc33d27eaf4ae531a5f2435832c1dc186da6b3f44",
+    "date": "2026-03-16T16:07:37+00:00",
+    "normalized_file": "output\\normalized\\Корея\\28.txt",
+    "post_url": "https://t.me/c/3215620297/28",
+    "source_id": "telegram:3215620297:28"
+  },
+  "telegram:3215620297:29": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\29.enriched.json",
+    "content_hash": "594899ea75b7287740ff10f3a0c9aa5a4caf1213d98494c6593d19e8097c7030",
+    "date": "2026-03-18T19:45:30+00:00",
+    "normalized_file": "output\\normalized\\Корея\\29.txt",
+    "post_url": "https://t.me/c/3215620297/29",
+    "source_id": "telegram:3215620297:29"
+  },
+  "telegram:3215620297:3": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\3.enriched.json",
+    "content_hash": "501a1a7eef88e50241d96eb8b28256b834d8b688a43debe12b96772a87f4b617",
+    "date": "2025-11-05T09:30:39+00:00",
+    "normalized_file": "output\\normalized\\Корея\\3.txt",
+    "post_url": "https://t.me/c/3215620297/3",
+    "source_id": "telegram:3215620297:3"
+  },
+  "telegram:3215620297:32": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\32.enriched.json",
+    "content_hash": "84d17d0673eb80aab7e90faf83476e268136f8114d68759c433f069390ef05a0",
+    "date": "2026-03-21T16:58:57+00:00",
+    "normalized_file": "output\\normalized\\Корея\\32.txt",
+    "post_url": "https://t.me/c/3215620297/32",
+    "source_id": "telegram:3215620297:32"
+  },
+  "telegram:3215620297:33": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\33.enriched.json",
+    "content_hash": "d04407e80651b3bf0685bdcccc67767c3d126d9eb870991eaafd77d0cd20cc04",
+    "date": "2026-04-07T18:03:26+00:00",
+    "normalized_file": "output\\normalized\\Корея\\33.txt",
+    "post_url": "https://t.me/c/3215620297/33",
+    "source_id": "telegram:3215620297:33"
+  },
+  "telegram:3215620297:37": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\37.enriched.json",
+    "content_hash": "6d3378fe28e47b38834f8042882bdd70a3b3d5fbb9b9cc0d5c7090f25bbc2b63",
+    "date": "2026-04-26T19:58:31+00:00",
+    "normalized_file": "output\\normalized\\Корея\\37.txt",
+    "post_url": "https://t.me/c/3215620297/37",
+    "source_id": "telegram:3215620297:37"
+  },
+  "telegram:3215620297:38": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\38.enriched.json",
+    "content_hash": "0fa2353d76dd95d47e5c547ec112dcec7d17359490d44b7120a96b5977f68362",
+    "date": "2026-04-27T12:07:10+00:00",
+    "normalized_file": "output\\normalized\\Корея\\38.txt",
+    "post_url": "https://t.me/c/3215620297/38",
+    "source_id": "telegram:3215620297:38"
+  },
+  "telegram:3215620297:39": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\39.enriched.json",
+    "content_hash": "246e2ec5ca4022590bcb7ae8fb561cce3840a614e70db297d4a70b6c8dcd8d95",
+    "date": "2026-05-04T21:13:55+00:00",
+    "normalized_file": "output\\normalized\\Корея\\39.txt",
+    "post_url": "https://t.me/c/3215620297/39",
+    "source_id": "telegram:3215620297:39"
+  },
+  "telegram:3215620297:4": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\4.enriched.json",
+    "content_hash": "3087343ab38bd3f7fb4cee9d4602b2834c34ddcd3aa2146ff398e552048c6c55",
+    "date": "2025-11-07T15:56:17+00:00",
+    "normalized_file": "output\\normalized\\Корея\\4.txt",
+    "post_url": "https://t.me/c/3215620297/4",
+    "source_id": "telegram:3215620297:4"
+  },
+  "telegram:3215620297:40": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\40.enriched.json",
+    "content_hash": "7b4e290e09fb67ea526097d84b7911fa2deee3312e1a8bf0478c84af3e959290",
+    "date": "2026-05-06T13:10:13+00:00",
+    "normalized_file": "output\\normalized\\Корея\\40.txt",
+    "post_url": "https://t.me/c/3215620297/40",
+    "source_id": "telegram:3215620297:40"
+  },
+  "telegram:3215620297:41": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\41.enriched.json",
+    "content_hash": "c0129b0167d879a84b0cf1423f9b321c248702d31cbc29b479fb03dce6d3cc9b",
+    "date": "2026-05-09T12:15:30+00:00",
+    "normalized_file": "output\\normalized\\Корея\\41.txt",
+    "post_url": "https://t.me/c/3215620297/41",
+    "source_id": "telegram:3215620297:41"
+  },
+  "telegram:3215620297:42": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\42.enriched.json",
+    "content_hash": "e4815bb811d3a790e2acef7e4c877d74470e0d55aaf289635fa883f5221e7bef",
+    "date": "2026-05-11T17:58:44+00:00",
+    "normalized_file": "output\\normalized\\Корея\\42.txt",
+    "post_url": "https://t.me/c/3215620297/42",
+    "source_id": "telegram:3215620297:42"
+  },
+  "telegram:3215620297:5": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\5.enriched.json",
+    "content_hash": "3a8dca9a237bf154ca5d6590173a3747e48cc5f7ea873b438b4ede1d8b6b6822",
+    "date": "2025-11-17T15:38:01+00:00",
+    "normalized_file": "output\\normalized\\Корея\\5.txt",
+    "post_url": "https://t.me/c/3215620297/5",
+    "source_id": "telegram:3215620297:5"
+  },
+  "telegram:3215620297:6": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\6.enriched.json",
+    "content_hash": "d66151feecbaa9af7ec9e1de03db581dbad5530d1f5d2542fbcfc194a7d6183a",
+    "date": "2025-11-25T14:41:04+00:00",
+    "normalized_file": "output\\normalized\\Корея\\6.txt",
+    "post_url": "https://t.me/c/3215620297/6",
+    "source_id": "telegram:3215620297:6"
+  },
+  "telegram:3215620297:7": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\7.enriched.json",
+    "content_hash": "b8567bf637f5e7196dd9fce2e225cdc1f672509612fa6ffab1a0597985b9136f",
+    "date": "2025-12-18T15:01:23+00:00",
+    "normalized_file": "output\\normalized\\Корея\\7.txt",
+    "post_url": "https://t.me/c/3215620297/7",
+    "source_id": "telegram:3215620297:7"
+  },
+  "telegram:3215620297:8": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Корея\\8.enriched.json",
+    "content_hash": "af7e4f5b0aebc31b348bca23b33d5e0063d6a3dcd80f61d9bb0ef13e58cede29",
+    "date": "2025-12-26T15:00:18+00:00",
+    "normalized_file": "output\\normalized\\Корея\\8.txt",
+    "post_url": "https://t.me/c/3215620297/8",
+    "source_id": "telegram:3215620297:8"
+  },
+  "telegram:3299898370:10": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\10.enriched.json",
+    "content_hash": "d31aaf4e3cc0eebbc01320c84dc002d4c1b7687c3056186e87b3cc2dd7cd72ba",
+    "date": "2026-01-18T11:53:21+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\10.txt",
+    "post_url": "https://t.me/c/3299898370/10",
+    "source_id": "telegram:3299898370:10"
+  },
+  "telegram:3299898370:12": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\12.enriched.json",
+    "content_hash": "7fdf2abfd161390d4b61701263502412f4673df971907912a2cea98c366ce4d8",
+    "date": "2026-02-09T19:05:10+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\12.txt",
+    "post_url": "https://t.me/c/3299898370/12",
+    "source_id": "telegram:3299898370:12"
+  },
+  "telegram:3299898370:13": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\13.enriched.json",
+    "content_hash": "384208f6189714040dab08953ff2075b674aac046813b5566a134a1a23cbb1b1",
+    "date": "2026-02-13T19:56:31+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\13.txt",
+    "post_url": "https://t.me/c/3299898370/13",
+    "source_id": "telegram:3299898370:13"
+  },
+  "telegram:3299898370:14": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\14.enriched.json",
+    "content_hash": "2e634601a9b8a798b2117b357d0d5dc0ab7eaa80f7bad75b2b9832842dcef336",
+    "date": "2026-02-19T09:01:42+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\14.txt",
+    "post_url": "https://t.me/c/3299898370/14",
+    "source_id": "telegram:3299898370:14"
+  },
+  "telegram:3299898370:15": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\15.enriched.json",
+    "content_hash": "4184bc2c328569ec38a0bef2bf1e6d88a85dcec4040adf5ed9a2c4e6385c9eea",
+    "date": "2026-02-21T22:34:12+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\15.txt",
+    "post_url": "https://t.me/c/3299898370/15",
+    "source_id": "telegram:3299898370:15"
+  },
+  "telegram:3299898370:16": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\16.enriched.json",
+    "content_hash": "3efae937440c83aa2dc8bc4e128ca80fac9039f48dd01f1036c9ca025c028e05",
+    "date": "2026-03-01T17:10:51+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\16.txt",
+    "post_url": "https://t.me/c/3299898370/16",
+    "source_id": "telegram:3299898370:16"
+  },
+  "telegram:3299898370:17": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\17.enriched.json",
+    "content_hash": "a5cea968350507a38b94c2e095e134c36226a059c49b85d5f96222d02b51f452",
+    "date": "2026-03-03T15:44:03+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\17.txt",
+    "post_url": "https://t.me/c/3299898370/17",
+    "source_id": "telegram:3299898370:17"
+  },
+  "telegram:3299898370:18": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\18.enriched.json",
+    "content_hash": "043d01ffdbe13598925d91440168fe4bf994c33885ffe1e8e276985df69b18ea",
+    "date": "2026-03-05T01:16:18+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\18.txt",
+    "post_url": "https://t.me/c/3299898370/18",
+    "source_id": "telegram:3299898370:18"
+  },
+  "telegram:3299898370:19": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\19.enriched.json",
+    "content_hash": "837070c2113bfbcd2a0b196220866c5a97a6baa3e2790de890b33cbb5415970d",
+    "date": "2026-03-24T17:31:09+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\19.txt",
+    "post_url": "https://t.me/c/3299898370/19",
+    "source_id": "telegram:3299898370:19"
+  },
+  "telegram:3299898370:2": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\2.enriched.json",
+    "content_hash": "7d6f54faa457dfe8715850d5e777181084dd67bf5288c97a90bb35530465eccd",
+    "date": "2025-12-14T15:38:13+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\2.txt",
+    "post_url": "https://t.me/c/3299898370/2",
+    "source_id": "telegram:3299898370:2"
+  },
+  "telegram:3299898370:20": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\20.enriched.json",
+    "content_hash": "ae8e05800e7a488e2236cb35e485eddf5c14d46d1f42e4da0cdc1ad016fd67ae",
+    "date": "2026-03-26T19:44:07+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\20.txt",
+    "post_url": "https://t.me/c/3299898370/20",
+    "source_id": "telegram:3299898370:20"
+  },
+  "telegram:3299898370:21": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\21.enriched.json",
+    "content_hash": "6aff762f4004b071d4f077fea004bca51dd7876da25d341991cb31d1706a5aca",
+    "date": "2026-03-26T19:47:21+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\21.txt",
+    "post_url": "https://t.me/c/3299898370/21",
+    "source_id": "telegram:3299898370:21"
+  },
+  "telegram:3299898370:22": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\22.enriched.json",
+    "content_hash": "0da2e4f8dec571a7d7908c4433c68c8c379c04f248bca510de27d934e9f90574",
+    "date": "2026-04-13T19:54:05+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\22.txt",
+    "post_url": "https://t.me/c/3299898370/22",
+    "source_id": "telegram:3299898370:22"
+  },
+  "telegram:3299898370:23": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\23.enriched.json",
+    "content_hash": "6fad305948f8f58eceed184556bea4c1945a484dbd4d426bf1d5ba795571f75f",
+    "date": "2026-04-14T15:58:24+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\23.txt",
+    "post_url": "https://t.me/c/3299898370/23",
+    "source_id": "telegram:3299898370:23"
+  },
+  "telegram:3299898370:24": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\24.enriched.json",
+    "content_hash": "700f5f7d45d977822bcd85ecd690d9b0aea912124db803fb2920dec89665605c",
+    "date": "2026-04-14T15:59:00+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\24.txt",
+    "post_url": "https://t.me/c/3299898370/24",
+    "source_id": "telegram:3299898370:24"
+  },
+  "telegram:3299898370:25": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\25.enriched.json",
+    "content_hash": "355131dccce2cfd53c0d966dd4c2bfe25d4cd2472e404ff7c6576b9a739ba181",
+    "date": "2026-04-20T15:45:56+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\25.txt",
+    "post_url": "https://t.me/c/3299898370/25",
+    "source_id": "telegram:3299898370:25"
+  },
+  "telegram:3299898370:27": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\27.enriched.json",
+    "content_hash": "8257210f866a2825cd8faa929f8c246673dc2604f1264335cd7a371ba9f8d580",
+    "date": "2026-04-23T11:54:17+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\27.txt",
+    "post_url": "https://t.me/c/3299898370/27",
+    "source_id": "telegram:3299898370:27"
+  },
+  "telegram:3299898370:28": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\28.enriched.json",
+    "content_hash": "1f7d4bfb34f5e1ada90446f4f0c2c60e0d97c592d82a6c68f0e8ab6a45a9e4cf",
+    "date": "2026-05-08T17:37:24+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\28.txt",
+    "post_url": "https://t.me/c/3299898370/28",
+    "source_id": "telegram:3299898370:28"
+  },
+  "telegram:3299898370:3": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\3.enriched.json",
+    "content_hash": "7de72a6ac3fa5d608614162a6e92fafc8d6b4fadf9927edf3234048091af2c69",
+    "date": "2025-12-17T16:24:01+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\3.txt",
+    "post_url": "https://t.me/c/3299898370/3",
+    "source_id": "telegram:3299898370:3"
+  },
+  "telegram:3299898370:30": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\30.enriched.json",
+    "content_hash": "92e0a9b8e3f14c0f90a7ea1f38ae36168f9beaf7a00167fcbda47210f65eea20",
+    "date": "2026-05-26T18:39:06+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\30.txt",
+    "post_url": "https://t.me/c/3299898370/30",
+    "source_id": "telegram:3299898370:30"
+  },
+  "telegram:3299898370:4": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\4.enriched.json",
+    "content_hash": "3fc907725ca05005a2ea86fd76a87fc8558be677a55b5b4707cb90f8359d7cf0",
+    "date": "2025-12-17T16:24:36+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\4.txt",
+    "post_url": "https://t.me/c/3299898370/4",
+    "source_id": "telegram:3299898370:4"
+  },
+  "telegram:3299898370:5": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\5.enriched.json",
+    "content_hash": "d8a83bd68d49b2d751e750d8d7800eb0c73171ad07a6cd030750e472df447ec3",
+    "date": "2026-01-12T15:52:41+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\5.txt",
+    "post_url": "https://t.me/c/3299898370/5",
+    "source_id": "telegram:3299898370:5"
+  },
+  "telegram:3299898370:9": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Ультра левые и ультра правые\\9.enriched.json",
+    "content_hash": "9e615f27794cd7a5ca9fa6ced4905a4c82db3cb0ad58c452ae48ec2512048823",
+    "date": "2026-01-17T21:26:45+00:00",
+    "normalized_file": "output\\normalized\\Ультра левые и ультра правые\\9.txt",
+    "post_url": "https://t.me/c/3299898370/9",
+    "source_id": "telegram:3299898370:9"
+  },
+  "telegram:3548806336:3": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Англия\\3.enriched.json",
+    "content_hash": "822a8178b701d410b5121e4bf71d0af66e3ada99634ed9f85e20e659e14f5a36",
+    "date": "2026-02-04T19:33:58+00:00",
+    "normalized_file": "output\\normalized\\Англия\\3.txt",
+    "post_url": "https://t.me/c/3548806336/3",
+    "source_id": "telegram:3548806336:3"
+  },
+  "telegram:3548806336:5": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Англия\\5.enriched.json",
+    "content_hash": "7817c27108e1886df260a641c6d2fcb04f8844626fc23dec3d954e0fe6aa1625",
+    "date": "2026-03-08T15:40:13+00:00",
+    "normalized_file": "output\\normalized\\Англия\\5.txt",
+    "post_url": "https://t.me/c/3548806336/5",
+    "source_id": "telegram:3548806336:5"
+  },
+  "telegram:3548806336:8": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Англия\\8.enriched.json",
+    "content_hash": "6dfb689e83ce552beb83a9af898ae6635f901ea4a24fc2b633ade7018d4899f2",
+    "date": "2026-04-01T16:58:33+00:00",
+    "normalized_file": "output\\normalized\\Англия\\8.txt",
+    "post_url": "https://t.me/c/3548806336/8",
+    "source_id": "telegram:3548806336:8"
+  },
+  "telegram:3548806336:9": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Англия\\9.enriched.json",
+    "content_hash": "6e06237ed50ed11a7651637e1a12979b1ac632d5e74ff5b06d2e6aa6e42f3511",
+    "date": "2026-04-09T19:09:37+00:00",
+    "normalized_file": "output\\normalized\\Англия\\9.txt",
+    "post_url": "https://t.me/c/3548806336/9",
+    "source_id": "telegram:3548806336:9"
+  },
+  "telegram:3841808641:10": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Куба\\10.enriched.json",
+    "content_hash": "d3498cda0a6e40200e070d20f15c966a6b9b0f7b462f94fb79b1bfd307cc5ace",
+    "date": "2026-05-21T04:11:25+00:00",
+    "normalized_file": "output\\normalized\\Куба\\10.txt",
+    "post_url": "https://t.me/c/3841808641/10",
+    "source_id": "telegram:3841808641:10"
+  },
+  "telegram:3841808641:6": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Куба\\6.enriched.json",
+    "content_hash": "711bb12e2f6f50b8c9bfa295f0c04ce1ea10fc4b3f510d25c735f14e2dcfde03",
+    "date": "2026-03-30T16:47:25+00:00",
+    "normalized_file": "output\\normalized\\Куба\\6.txt",
+    "post_url": "https://t.me/c/3841808641/6",
+    "source_id": "telegram:3841808641:6"
+  },
+  "telegram:3841808641:8": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Куба\\8.enriched.json",
+    "content_hash": "f8d0ae47c3e5c346fce3618d7f9c57aedae25ea0a39de4c3300f06628b43d149",
+    "date": "2026-04-18T16:14:14+00:00",
+    "normalized_file": "output\\normalized\\Куба\\8.txt",
+    "post_url": "https://t.me/c/3841808641/8",
+    "source_id": "telegram:3841808641:8"
+  },
+  "telegram:3889026624:10": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Балтийские страны\\10.enriched.json",
+    "content_hash": "3608f14343e93fb8752f4da0ea1846b1cf0fb5476bacd2e3dd43b66f1b46005d",
+    "date": "2026-05-09T15:28:39+00:00",
+    "normalized_file": "output\\normalized\\Балтийские страны\\10.txt",
+    "post_url": "https://t.me/c/3889026624/10",
+    "source_id": "telegram:3889026624:10"
+  },
+  "telegram:3889026624:2": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Балтийские страны\\2.enriched.json",
+    "content_hash": "efbcdbb8a41f98b893a032f4f18e8a12deffd71dbb3d16c495cec5b5985c3095",
+    "date": "2026-03-24T21:18:12+00:00",
+    "normalized_file": "output\\normalized\\Балтийские страны\\2.txt",
+    "post_url": "https://t.me/c/3889026624/2",
+    "source_id": "telegram:3889026624:2"
+  },
+  "telegram:3889026624:3": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Балтийские страны\\3.enriched.json",
+    "content_hash": "635196547b872b75e585814abb395809b51713766c293d86aaae50c07c0662c9",
+    "date": "2026-03-24T21:18:12+00:00",
+    "normalized_file": "output\\normalized\\Балтийские страны\\3.txt",
+    "post_url": "https://t.me/c/3889026624/3",
+    "source_id": "telegram:3889026624:3"
+  },
+  "telegram:3889026624:4": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Балтийские страны\\4.enriched.json",
+    "content_hash": "e008c42b66dc8a3c0d94b5b072d21c395b2ccfb4ea08dfbb5ae4216c5439e35c",
+    "date": "2026-03-24T21:18:12+00:00",
+    "normalized_file": "output\\normalized\\Балтийские страны\\4.txt",
+    "post_url": "https://t.me/c/3889026624/4",
+    "source_id": "telegram:3889026624:4"
+  },
+  "telegram:3889026624:6": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Балтийские страны\\6.enriched.json",
+    "content_hash": "69b80895a2149a14ce5bfb0d02b9aa5edfad3a36becdefbff834cc1233a92500",
+    "date": "2026-03-25T17:44:57+00:00",
+    "normalized_file": "output\\normalized\\Балтийские страны\\6.txt",
+    "post_url": "https://t.me/c/3889026624/6",
+    "source_id": "telegram:3889026624:6"
+  },
+  "telegram:3889026624:7": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Балтийские страны\\7.enriched.json",
+    "content_hash": "02c42cc1c6a5483cea48f923cb1fbca6c8d88b5242b8a85c34860cda13267484",
+    "date": "2026-03-26T00:43:56+00:00",
+    "normalized_file": "output\\normalized\\Балтийские страны\\7.txt",
+    "post_url": "https://t.me/c/3889026624/7",
+    "source_id": "telegram:3889026624:7"
+  },
+  "telegram:3889026624:9": {
+    "card_path": "C:\\WikiRag\\RAG-GeoSpoiler\\GeoSpoiler-RAG-Hybrid\\output\\enriched\\Балтийские страны\\9.enriched.json",
+    "content_hash": "a9a8cd6ba0f779239cc10cf1bf44ec130552c4f9c3ab77268381abfdbb6e294d",
+    "date": "2026-04-15T15:17:00+00:00",
+    "normalized_file": "output\\normalized\\Балтийские страны\\9.txt",
+    "post_url": "https://t.me/c/3889026624/9",
+    "source_id": "telegram:3889026624:9"
+  }
+}

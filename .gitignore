@@ -16,7 +16,9 @@ __pycache__/
 .venv/
 logs/
 media_cache/
-output/
+output/*
+!output/wiki/
+!output/wiki/**
 rag_storage/
 rag_storage_backups/
 rag_storage_failed_rebuild_*/

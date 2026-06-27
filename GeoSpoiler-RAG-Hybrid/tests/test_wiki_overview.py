@@ -62,6 +62,25 @@ class WikiOverviewTests(unittest.TestCase):
         self.assertIn("Russia: 3", text)
         self.assertTrue(output_exists)
 
+    def test_wiki_overview_does_not_report_existing_entity_hub_as_missing(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            wiki_dir = root / "wiki"
+            enriched_dir = root / "enriched"
+            (wiki_dir / "entities").mkdir(parents=True)
+            (wiki_dir / "topics").mkdir()
+            enriched_dir.mkdir(parents=True)
+            for message_id in [10, 11, 12]:
+                _write_card(enriched_dir / f"{message_id}.enriched.json", "Китай", "геополитика")
+            (wiki_dir / "entities" / "китай.md").write_text(
+                "# Китай\n\n## Related Claims\n\n- none\n",
+                encoding="utf-8",
+            )
+
+            overview = build_wiki_overview(wiki_dir=wiki_dir, enriched_dir=enriched_dir)
+
+        self.assertNotIn(("Китай", 3), overview.missing_entities)
+
 
 def _write_card(path: Path, entity: str, topic: str) -> None:
     path.write_text(

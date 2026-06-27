@@ -12,6 +12,7 @@ from typing import Any
 
 import config
 from retrieval import wiki_index
+from retrieval.wiki_coverage import run_wiki_coverage_backfill
 from retrieval.wiki_llm import call_wiki_llm
 from retrieval.wiki_update import OPERATION_LOG_FILENAME, PENDING_UPDATES_FILENAME, SOURCE_HASHES_FILENAME
 
@@ -23,6 +24,12 @@ CLAIM_STATUSES = {
     "unclear_in_corpus",
 }
 PAGE_TYPES = {"claim", "entity", "topic"}
+DIRECT_EVIDENCE_TYPES = {"source_claim", "quote"}
+EVIDENCE_TYPE_ALIASES = {
+    "fact": "source_claim",
+    "key_fact": "source_claim",
+    "key_facts": "source_claim",
+}
 
 
 @dataclass(frozen=True)
@@ -99,6 +106,8 @@ def run_wiki_ingest(
 
     _write_source_hashes(source_hashes_path, _current_source_hash_records(enriched_dir))
     _write_pending_updates(pending_updates_path, pending)
+    wiki_index.build_wiki_indexes(wiki_dir=wiki_dir, enriched_dir=enriched_dir, index_dir=index_dir)
+    run_wiki_coverage_backfill(wiki_dir=wiki_dir, enriched_dir=enriched_dir, index_dir=index_dir, today=today)
     wiki_index.build_wiki_indexes(wiki_dir=wiki_dir, enriched_dir=enriched_dir, index_dir=index_dir)
 
     stats = WikiIngestStats(
@@ -230,19 +239,23 @@ def _validate_wiki_operations(
             if status not in CLAIM_STATUSES:
                 errors.append(f"operation {index} has unsupported claim status={status!r}")
                 continue
-            if not source_ids or not any(source_id.startswith("telegram:") for source_id in source_ids):
+            evidence = _normalize_claim_evidence(op.get("evidence"), allowed_sources)
+            if not evidence:
+                errors.append(f"operation {index} claim has no source_claim or quote evidence")
+                continue
+            evidence_source_ids = {item["source_id"] for item in evidence}
+            if not any(source_id.startswith("telegram:") for source_id in evidence_source_ids):
                 errors.append(f"operation {index} claim has no telegram source_id")
                 continue
-            evidence = op.get("evidence")
-            if not isinstance(evidence, list) or not evidence:
-                errors.append(f"operation {index} claim has no evidence")
-                continue
+            source_ids = evidence_source_ids
 
         normalized = dict(op)
         normalized["page_type"] = page_type
         normalized["slug"] = slug
         normalized["title"] = title
         normalized["source_ids"] = sorted(source_ids)
+        if page_type == "claim":
+            normalized["evidence"] = evidence
         validated.append(normalized)
 
     return validated, errors
@@ -257,15 +270,16 @@ def _apply_wiki_operations(
     created: list[Path] = []
     updated: list[Path] = []
     source_by_id = {card.source.source_id or "": card.source for card in batch}
+    known_pages = _known_wiki_pages(wiki_dir, operations)
 
     for op in operations:
         page_type = str(op["page_type"])
         page_path = wiki_dir / _page_directory(page_type) / f"{op['slug']}.md"
         page_path.parent.mkdir(parents=True, exist_ok=True)
         text = (
-            _render_claim_page(op, source_by_id, today)
+            _render_claim_page(op, source_by_id, today, known_pages)
             if page_type == "claim"
-            else _render_entity_topic_page(op, source_by_id, today)
+            else _render_entity_topic_page(op, today, known_pages)
         )
         old_text = page_path.read_text(encoding="utf-8") if page_path.exists() else None
         if old_text == text:
@@ -278,7 +292,12 @@ def _apply_wiki_operations(
     return created, updated
 
 
-def _render_claim_page(op: dict[str, Any], source_by_id: dict[str, wiki_index.EnrichedSource], today: date) -> str:
+def _render_claim_page(
+    op: dict[str, Any],
+    source_by_id: dict[str, wiki_index.EnrichedSource],
+    today: date,
+    known_pages: set[str],
+) -> str:
     source_ids = [source_id for source_id in op.get("source_ids", []) if source_id]
     evidence = [item for item in op.get("evidence", []) if isinstance(item, dict)]
     source_count = len(set(source_ids))
@@ -304,9 +323,9 @@ def _render_claim_page(op: dict[str, Any], source_by_id: dict[str, wiki_index.En
 
     for item in evidence:
         source_id = _clean_str(item.get("source_id"))
-        evidence_type = _clean_str(item.get("evidence_type")) or "source_claim"
+        evidence_type = _normalize_evidence_type(item.get("evidence_type"))
         text = _one_line(item.get("text"))
-        if not source_id or not text:
+        if not source_id or not text or evidence_type not in DIRECT_EVIDENCE_TYPES:
             continue
         lines.append(f"- {source_id} - {evidence_type}: {text}")
         source = source_by_id.get(source_id)
@@ -334,7 +353,7 @@ def _render_claim_page(op: dict[str, Any], source_by_id: dict[str, wiki_index.En
         if text:
             lines.append(f"- {text}")
 
-    related_claims = _string_list(op.get("related_claims"))
+    related_claims = _valid_related_claims(op.get("related_claims"), known_pages)
     lines.extend(["", "## Related", ""])
     if related_claims:
         lines.extend(f"- {claim}" for claim in related_claims)
@@ -346,12 +365,12 @@ def _render_claim_page(op: dict[str, Any], source_by_id: dict[str, wiki_index.En
 
 def _render_entity_topic_page(
     op: dict[str, Any],
-    source_by_id: dict[str, wiki_index.EnrichedSource],
     today: date,
+    known_pages: set[str],
 ) -> str:
     page_type = str(op.get("page_type"))
     source_ids = [source_id for source_id in op.get("source_ids", []) if source_id]
-    related_claims = _string_list(op.get("related_claims"))
+    related_claims = _valid_related_claims(op.get("related_claims"), known_pages)
     lines = [
         "---",
         f"wiki_type: {page_type}",
@@ -363,7 +382,7 @@ def _render_entity_topic_page(
         "",
         f"# {op['title']}",
         "",
-        _one_line(op.get("summary")) or "LLM-maintained wiki page grounded in enriched cards.",
+        _strip_source_ids(_one_line(op.get("summary"))) or "LLM-maintained wiki page grounded in enriched cards.",
         "",
         "## Related Claims",
         "",
@@ -375,13 +394,6 @@ def _render_entity_topic_page(
 
     lines.extend(["", "## Source Resolution", ""])
     lines.append("- Resolve primary sources through claim evidence and output/wiki/indexes/page_to_sources.json.")
-    if source_ids:
-        lines.extend(["", "## Sources", ""])
-        for source_id in source_ids:
-            lines.append(f"- {source_id}")
-            source = source_by_id.get(source_id)
-            if source and source.card_path:
-                lines.append(f"  - card_path: {source.card_path}")
     lines.append("")
     return "\n".join(lines)
 
@@ -412,6 +424,69 @@ def _operation_source_ids(op: dict[str, Any]) -> list[str]:
             if source_id:
                 source_ids.add(source_id)
     return sorted(source_ids)
+
+
+def _normalize_claim_evidence(value: Any, allowed_sources: set[str]) -> list[dict[str, str]]:
+    if not isinstance(value, list):
+        return []
+    normalized: list[dict[str, str]] = []
+    for item in value:
+        if not isinstance(item, dict):
+            continue
+        source_id = _clean_str(item.get("source_id"))
+        evidence_type = _normalize_evidence_type(item.get("evidence_type"))
+        text = _one_line(item.get("text"))
+        if (
+            not source_id
+            or source_id not in allowed_sources
+            or evidence_type not in DIRECT_EVIDENCE_TYPES
+            or not text
+        ):
+            continue
+        normalized.append({"source_id": source_id, "evidence_type": evidence_type, "text": text})
+    return normalized
+
+
+def _normalize_evidence_type(value: object) -> str:
+    text = _clean_str(value).casefold().replace("-", "_").replace(" ", "_")
+    if not text:
+        return "source_claim"
+    return EVIDENCE_TYPE_ALIASES.get(text, text)
+
+
+def _known_wiki_pages(wiki_dir: Path, operations: list[dict[str, Any]]) -> set[str]:
+    pages = {path.relative_to(wiki_dir).as_posix() for path in wiki_index.iter_wiki_pages(wiki_dir)}
+    for op in operations:
+        page_type = str(op.get("page_type") or "")
+        slug = _clean_str(op.get("slug"))
+        if page_type in PAGE_TYPES and slug:
+            pages.add(f"{_page_directory(page_type)}/{slug}.md")
+    return pages
+
+
+def _valid_related_claims(value: Any, known_pages: set[str]) -> list[str]:
+    refs: list[str] = []
+    seen: set[str] = set()
+    for item in _string_list(value):
+        ref = _claim_ref_from_text(item)
+        if not ref or ref not in known_pages or ref in seen:
+            continue
+        refs.append(ref)
+        seen.add(ref)
+    return refs
+
+
+def _claim_ref_from_text(value: object) -> str:
+    text = _clean_str(value).replace("\\", "/")
+    match = re.search(r"\bclaims/[\w.-]+\.md\b", text, flags=re.UNICODE)
+    return match.group(0) if match else ""
+
+
+def _strip_source_ids(text: str) -> str:
+    text = re.sub(r"\s*\(\s*telegram:[^)]+\)", "", text)
+    text = re.sub(r"\btelegram:[^\s\]\),;]+?:[^\s\r\n\]\),.;]+", "", text)
+    text = re.sub(r"\s{2,}", " ", text)
+    return text.strip()
 
 
 def _pending_for_batch(reason: str, batch: list[EnrichedCard], message: str) -> list[WikiIngestPending]:

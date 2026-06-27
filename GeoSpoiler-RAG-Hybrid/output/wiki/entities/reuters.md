@@ -1,0 +1,21 @@
+---
+wiki_type: entity
+generated_by: wiki_coverage_backfill_v1
+review_status: auto
+coverage_count: 3
+related_claim_count: 1
+updated_at: 2026-06-27
+---
+
+# Reuters
+
+This entity page is a coverage hub generated from enriched-card mentions.
+
+## Related Claims
+
+- claims/cac-fined-toutiao-and-ucweb-for-content-that-appeared-in-trends.md
+
+## Source Resolution
+
+- Resolve primary sources through claim evidence and output/wiki/indexes/page_to_sources.json.
+- This page does not add direct evidence beyond its related claim pages.
