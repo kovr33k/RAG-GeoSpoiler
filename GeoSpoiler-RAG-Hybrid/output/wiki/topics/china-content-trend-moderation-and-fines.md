@@ -10,11 +10,11 @@ updated_at: 2026-06-26
 
 Карты описывают инициативы китайских регуляторов/модерации в соцсетях: штрафы платформам за контент в трендах и кампании по блокированию аккаунтов/удалению контента, связанного с «пессимистичными настроениями» и паникой.
 
-## Related Claims
+## Связанные утверждения
 
-- none
+- нет
 
-## Source Resolution
+## Как найти источники
 
-- Resolve primary sources through claim evidence and output/wiki/indexes/page_to_sources.json.
+- Первичные источники открываются через доказательства в claim pages и output/wiki/indexes/page_to_sources.json.
 

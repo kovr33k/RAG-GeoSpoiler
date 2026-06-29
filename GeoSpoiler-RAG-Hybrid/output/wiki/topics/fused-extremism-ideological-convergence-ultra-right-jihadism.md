@@ -10,11 +10,11 @@ updated_at: 2026-06-26
 
 Карточки используют терминологическую рамку «fused extremism» для описания переплетения/конвергенции ультраправых и джихадистских идеологий и отмечают механизмы вдохновения и заимствования дискурса, символики и пропаганды.
 
-## Related Claims
+## Связанные утверждения
 
-- none
+- нет
 
-## Source Resolution
+## Как найти источники
 
-- Resolve primary sources through claim evidence and output/wiki/indexes/page_to_sources.json.
+- Первичные источники открываются через доказательства в claim pages и output/wiki/indexes/page_to_sources.json.
 

@@ -562,6 +562,18 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertTrue(captured.get("called"))
 
+    def test_main_wiki_localize_cli_dispatches(self):
+        captured = {}
+
+        def fake_cmd_wiki_localize():
+            captured["called"] = True
+
+        with patch.object(cli_app, "cmd_wiki_localize", fake_cmd_wiki_localize):
+            with patch.object(sys, "argv", ["main.py", "wiki", "localize"]):
+                main.main()
+
+        self.assertTrue(captured.get("called"))
+
     def test_cmd_wiki_init_creates_minimal_scaffold(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             wiki_dir = Path(tmpdir) / "wiki"

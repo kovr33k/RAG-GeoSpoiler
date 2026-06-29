@@ -10,11 +10,11 @@ updated_at: 2026-06-26
 
 Тема объединяет утверждения о том, что китайские СМИ публиковали критические материалы об участии китайских школьников в параде Победы во Владивостоке и связывали это обсуждение с историческими интерпретациями и реакцией в сети.
 
-## Related Claims
+## Связанные утверждения
 
-- claims/china-media-criticized-chinese-schoolchildren-participation-in-victory-parade-in-vladivostok-as-sale-of-national-dignity.md
+- claims/утверждается-что-китайские-сми-раскритиковали-участие-китайских-школьников-в-параде-победы-во-владивостоке-как-продажу-н.md
 
-## Source Resolution
+## Как найти источники
 
-- Resolve primary sources through claim evidence and output/wiki/indexes/page_to_sources.json.
+- Первичные источники открываются через доказательства в claim pages и output/wiki/indexes/page_to_sources.json.
 

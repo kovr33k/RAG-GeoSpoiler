@@ -242,15 +242,16 @@ def _update_linked_pages(
 
 
 def _update_page_text(text: str, source_by_id: dict[str, WikiSourceSnapshot], today: date) -> str:
-    evidence = _section(text, "Evidence")
-    if not evidence:
+    evidence_section = _first_existing_section_name(text, ("Evidence", "Доказательства"))
+    if not evidence_section:
         return text
+    evidence = _section(text, evidence_section)
 
     updated_evidence = _update_evidence_section(evidence, source_by_id)
     if updated_evidence == evidence:
         return text
 
-    start, end = _section_bounds(text, "Evidence")
+    start, end = _section_bounds(text, evidence_section)
     updated_text = text[:start] + updated_evidence + text[end:]
     return _set_updated_at(updated_text, today)
 
@@ -335,6 +336,13 @@ def _set_updated_at(text: str, today: date) -> str:
 def _section(text: str, section_name: str) -> str:
     start, end = _section_bounds(text, section_name)
     return text[start:end]
+
+
+def _first_existing_section_name(text: str, section_names: tuple[str, ...]) -> str:
+    for section_name in section_names:
+        if _section(text, section_name):
+            return section_name
+    return ""
 
 
 def _section_bounds(text: str, section_name: str) -> tuple[int, int]:

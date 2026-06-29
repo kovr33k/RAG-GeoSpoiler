@@ -144,7 +144,7 @@ def _check_claim_page(
     frontmatter = _parse_frontmatter(text)
     status = _claim_status(text, frontmatter)
     source_count = _int_or_none(frontmatter.get("source_count"))
-    evidence = _section(text, "Evidence")
+    evidence = _section_any(text, ("Evidence", "Доказательства"))
     direct_evidence = _evidence_items(evidence)
     sources = page_to_sources.get(rel_path, [])
     if not isinstance(sources, list):
@@ -409,7 +409,7 @@ def _source_to_card_paths(wiki_dir: Path) -> dict[str, list[str]]:
             text = path.read_text(encoding="utf-8")
         except OSError:
             continue
-        evidence = _section(text, "Evidence")
+        evidence = _section_any(text, ("Evidence", "Доказательства"))
         for source_id, _evidence_type, card_paths in _evidence_items(evidence):
             mapping.setdefault(source_id, []).extend(card_paths)
     return mapping
@@ -498,6 +498,14 @@ def _section(text: str, section_name: str) -> str:
     return rest[: next_section.start()] if next_section else rest
 
 
+def _section_any(text: str, section_names: tuple[str, ...]) -> str:
+    for section_name in section_names:
+        section = _section(text, section_name)
+        if section:
+            return section
+    return ""
+
+
 def _without_section(text: str, section_name: str) -> str:
     pattern = re.compile(rf"^##\s+{re.escape(section_name)}\s*$", flags=re.MULTILINE)
     match = pattern.search(text)
@@ -512,7 +520,14 @@ def _without_section(text: str, section_name: str) -> str:
 
 def _claim_label_check_text(text: str) -> str:
     check_text = text
-    for section_name in ["Evidence", "Guardrails", "Related"]:
+    for section_name in [
+        "Evidence",
+        "Доказательства",
+        "Guardrails",
+        "Ограничения",
+        "Related",
+        "Связанные страницы",
+    ]:
         check_text = _without_section(check_text, section_name)
     return check_text
 

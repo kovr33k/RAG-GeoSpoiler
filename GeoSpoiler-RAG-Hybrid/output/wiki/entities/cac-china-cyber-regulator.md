@@ -10,11 +10,11 @@ updated_at: 2026-06-26
 
 В картах упоминается Китайский регулятор киберпространства (CAC) как орган, который оштрафовал Toutiao (ByteDance) и UCWeb (Alibaba) за нарушения в контенте, попадавшем в тренды.
 
-## Related Claims
+## Связанные утверждения
 
-- none
+- нет
 
-## Source Resolution
+## Как найти источники
 
-- Resolve primary sources through claim evidence and output/wiki/indexes/page_to_sources.json.
+- Первичные источники открываются через доказательства в claim pages и output/wiki/indexes/page_to_sources.json.
 

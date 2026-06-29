@@ -213,26 +213,34 @@ def _render_hub_page(candidate: CoverageCandidate, today: date) -> str:
         "",
         f"# {candidate.name}",
         "",
-        f"This {candidate.page_type} page is a coverage hub generated from enriched-card mentions.",
+        _hub_summary(candidate.page_type),
         "",
-        "## Related Claims",
+        "## Связанные утверждения",
         "",
     ]
     if candidate.related_claims:
         lines.extend(f"- {claim}" for claim in candidate.related_claims)
     else:
-        lines.append("- none")
+        lines.append("- нет")
     lines.extend(
         [
             "",
-            "## Source Resolution",
+            "## Как найти источники",
             "",
-            "- Resolve primary sources through claim evidence and output/wiki/indexes/page_to_sources.json.",
-            "- This page does not add direct evidence beyond its related claim pages.",
+            "- Первичные источники открываются через доказательства в claim pages и output/wiki/indexes/page_to_sources.json.",
+            "- Эта страница не добавляет прямых доказательств сверх связанных страниц-утверждений.",
             "",
         ]
     )
     return "\n".join(lines)
+
+
+def _hub_summary(page_type: str) -> str:
+    if page_type == "entity":
+        return "Эта страница-сводка по сущности автоматически собрана из упоминаний в enriched cards."
+    if page_type == "topic":
+        return "Эта страница-сводка по теме автоматически собрана из упоминаний в enriched cards."
+    return "Эта страница-сводка автоматически собрана из упоминаний в enriched cards."
 
 
 def _source_to_claims(page_to_sources: dict[str, Any]) -> dict[str, list[str]]:

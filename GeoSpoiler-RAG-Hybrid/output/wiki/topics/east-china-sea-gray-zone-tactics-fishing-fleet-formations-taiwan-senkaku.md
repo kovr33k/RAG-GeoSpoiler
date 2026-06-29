@@ -10,11 +10,11 @@ updated_at: 2026-06-26
 
 Тематическая страница для группировки утверждений о построениях тысяч судов в Восточно-Китайском море и об их интерпретации как тактик в «серой зоне», связанной с изоляцией Тайваня и/или Сенкаку.
 
-## Related Claims
+## Связанные утверждения
 
-- none
+- нет
 
-## Source Resolution
+## Как найти источники
 
-- Resolve primary sources through claim evidence and output/wiki/indexes/page_to_sources.json.
+- Первичные источники открываются через доказательства в claim pages и output/wiki/indexes/page_to_sources.json.
 

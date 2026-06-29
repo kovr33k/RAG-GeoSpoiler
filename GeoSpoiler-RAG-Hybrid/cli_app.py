@@ -41,6 +41,7 @@ from cli_wiki import (
     cmd_wiki_health,
     cmd_wiki_ingest,
     cmd_wiki_init,
+    cmd_wiki_localize,
     cmd_wiki_overview,
     cmd_wiki_update,
 )
@@ -96,6 +97,7 @@ def build_parser() -> argparse.ArgumentParser:
     wiki_sub.add_parser("ingest")
     wiki_sub.add_parser("overview")
     wiki_sub.add_parser("coverage-backfill")
+    wiki_sub.add_parser("localize")
     wiki_sub.add_parser("update")
 
     experiments = subparsers.add_parser("experiments")
@@ -192,6 +194,9 @@ def dispatch(args: argparse.Namespace, parser: argparse.ArgumentParser) -> None:
         if args.subcommand == "coverage-backfill":
             cmd_wiki_coverage_backfill()
             return
+        if args.subcommand == "localize":
+            cmd_wiki_localize()
+            return
         if args.subcommand == "update":
             cmd_wiki_update()
             return
@@ -199,7 +204,7 @@ def dispatch(args: argparse.Namespace, parser: argparse.ArgumentParser) -> None:
             "Usage: python main.py wiki init | python main.py wiki build --claims-only | "
             "python main.py wiki build --entities-topics | python main.py wiki health | "
             "python main.py wiki ingest | python main.py wiki overview | "
-            "python main.py wiki coverage-backfill | python main.py wiki update"
+            "python main.py wiki coverage-backfill | python main.py wiki localize | python main.py wiki update"
         )
         return
 

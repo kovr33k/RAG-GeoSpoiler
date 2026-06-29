@@ -10,11 +10,11 @@ updated_at: 2026-06-26
 
 Тема объединяет утверждения из карточки о том, что рост Китая завязан на стабильные мировые торговые маршруты и энергетическую цепочку через Ормуз, а эскалация вокруг Ирана рассматривается как стресс-тест из‑за торгово-логистических и страховых последствий.
 
-## Related Claims
+## Связанные утверждения
 
-- claims/china-uses-diplomacy-to-manage-risks-and-delay-sanctions-not-to-improve-ukraine-relations.md
+- claims/утверждается-что-китай-использует-дипломатию-для-управления-рисками-и-отсрочки-санкций-а-не-для-улучшения-отношений-с-ук.md
 
-## Source Resolution
+## Как найти источники
 
-- Resolve primary sources through claim evidence and output/wiki/indexes/page_to_sources.json.
+- Первичные источники открываются через доказательства в claim pages и output/wiki/indexes/page_to_sources.json.
 

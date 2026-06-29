@@ -4,20 +4,20 @@ generated_by: wiki_coverage_backfill_v1
 review_status: auto
 coverage_count: 3
 related_claim_count: 3
-updated_at: 2026-06-27
+updated_at: 2026-06-29
 ---
 
 # Yigal Levin (@yigallevin)
 
-This entity page is a coverage hub generated from enriched-card mentions.
+Эта страница-сводка по сущности автоматически собрана из упоминаний в enriched cards.
 
-## Related Claims
+## Связанные утверждения
 
-- claims/china-fishing-fleet-formations-in-east-china-sea-as-training-for-gray-zone-isolation-of-taiwan-or-senkaku-jan-2026.md
-- claims/china-growth-built-within-us-global-trading-system-not-outside-of-it-and-fears-instability-in-iran-and-taiwan-risks.md
-- claims/china-resumed-land-reclamation-in-northern-south-china-sea-paracel-islands-built-largest-advanced-base.md
+- claims/утверждается-что-аномальная-активность-китайского-рыболовного-флота-в-восточно-китайском-море-выглядит-как-централизован.md
+- claims/утверждается-что-китай-после-почти-десятилетней-паузы-возобновил-намыв-на-парасельских-островах-и-нарастил-объект-до-уро.md
+- claims/утверждается-что-рост-китая-встроен-в-американскую-систему-глобальной-торговли-а-вокруг-ирана-и-тайваня-китай-опасается-.md
 
-## Source Resolution
+## Как найти источники
 
-- Resolve primary sources through claim evidence and output/wiki/indexes/page_to_sources.json.
-- This page does not add direct evidence beyond its related claim pages.
+- Первичные источники открываются через доказательства в claim pages и output/wiki/indexes/page_to_sources.json.
+- Эта страница не добавляет прямых доказательств сверх связанных страниц-утверждений.

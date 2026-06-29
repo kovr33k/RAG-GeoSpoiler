@@ -10,11 +10,11 @@ updated_at: 2026-06-26
 
 SAFE описывается как фонд для стимулирования европейских оборонных расходов и совместных закупок оружия через займы; в сообщении также говорится о роли SAFE в обсуждении совместимости и координации оборонных закупок.
 
-## Related Claims
+## Связанные утверждения
 
-- none
+- нет
 
-## Source Resolution
+## Как найти источники
 
-- Resolve primary sources through claim evidence and output/wiki/indexes/page_to_sources.json.
+- Первичные источники открываются через доказательства в claim pages и output/wiki/indexes/page_to_sources.json.
 

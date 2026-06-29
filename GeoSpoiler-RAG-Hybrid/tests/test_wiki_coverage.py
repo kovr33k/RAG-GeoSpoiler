@@ -54,7 +54,11 @@ class WikiCoverageBackfillTests(unittest.TestCase):
         self.assertIn("- claims/china-claim-10.md", entity_text)
         self.assertIn("- claims/china-claim-11.md", entity_text)
         self.assertIn("- claims/china-claim-12.md", entity_text)
-        self.assertIn("Resolve primary sources through claim evidence", entity_text)
+        self.assertIn("## Связанные утверждения", entity_text)
+        self.assertIn("## Как найти источники", entity_text)
+        self.assertIn("Первичные источники открываются через доказательства", entity_text)
+        self.assertNotIn("## Related Claims", entity_text)
+        self.assertNotIn("## Source Resolution", entity_text)
         self.assertNotIn("telegram:1:10", entity_text)
         self.assertTrue(topic_exists)
 
@@ -177,7 +181,7 @@ class WikiCoverageBackfillTests(unittest.TestCase):
 
         self.assertEqual([path.name for path in stats.pages_created], ["москва.md", "безопасность.md"])
         self.assertIn("related_claim_count: 0", entity_text)
-        self.assertIn("- none", entity_text)
+        self.assertIn("- нет", entity_text)
         self.assertNotIn("telegram:1:10", entity_text)
         self.assertIn("related_claim_count: 0", topic_text)
 

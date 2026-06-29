@@ -175,7 +175,7 @@ def _extract_guardrails_from_page(page: dict[str, Any], wiki_dir: Path) -> list[
         if stripped.startswith("## "):
             if in_section:
                 break
-            in_section = stripped.casefold() == "## guardrails"
+            in_section = stripped.casefold() in {"## guardrails", "## ограничения"}
             continue
         if not in_section:
             continue

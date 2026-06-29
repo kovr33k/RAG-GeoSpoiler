@@ -172,6 +172,9 @@ def _build_ingest_prompt(batch: list[EnrichedCard], wiki_dir: Path) -> str:
             "Each operation must include action, page_type, slug, title, and source_ids.",
             "Claim operations must include status, evidence, and guardrails.",
             "Every source_id must be copied from the input cards.",
+            "Use Russian for all human-visible wiki page text when the source cards are Russian.",
+            "Prefer Russian titles for claim pages; claim file names are derived from those titles.",
+            "Do not translate source evidence away from the language used in enriched cards.",
         ],
         "schema": schema,
         "existing_pages": existing_pages,
@@ -227,6 +230,10 @@ def _validate_wiki_operations(
         if not slug or not title:
             errors.append(f"operation {index} is missing slug/title")
             continue
+        if page_type == "claim":
+            title_slug = _slugify(title)
+            if title_slug and _has_cyrillic(title):
+                slug = title_slug
 
         source_ids = set(_operation_source_ids(op))
         external = sorted(source_ids - allowed_sources)
@@ -313,11 +320,11 @@ def _render_claim_page(
         "",
         f"# {op['title']}",
         "",
-        f"Status: {op.get('status')}",
-        "Review status: auto",
-        f"Source count: {source_count}",
+        f"Статус: {op.get('status')}",
+        "Статус проверки: auto",
+        f"Количество источников: {source_count}",
         "",
-        "## Evidence",
+        "## Доказательства",
         "",
     ]
 
@@ -340,12 +347,12 @@ def _render_claim_page(
     lines.extend(
         [
             "",
-            "## Guardrails",
+            "## Ограничения",
             "",
-            "- Treat Status as corpus status, not external fact-check status.",
-            "- Use only cited evidence items when answering from this page.",
-            "- Do not use summaries, theses, or hypotheses as direct evidence.",
-            "- Separate source claims from author interpretation.",
+            "- Поле `status` описывает поддержку внутри корпуса, а не внешнюю фактчек-оценку.",
+            "- Отвечая по этой странице, используй только процитированные доказательства.",
+            "- Не используй summaries, theses или hypotheses как прямое доказательство.",
+            "- Отделяй утверждения источника от интерпретации автора.",
         ]
     )
     for guardrail in op.get("guardrails") or []:
@@ -354,7 +361,7 @@ def _render_claim_page(
             lines.append(f"- {text}")
 
     related_claims = _valid_related_claims(op.get("related_claims"), known_pages)
-    lines.extend(["", "## Related", ""])
+    lines.extend(["", "## Связанные страницы", ""])
     if related_claims:
         lines.extend(f"- {claim}" for claim in related_claims)
     else:
@@ -384,16 +391,16 @@ def _render_entity_topic_page(
         "",
         _strip_source_ids(_one_line(op.get("summary"))) or "LLM-maintained wiki page grounded in enriched cards.",
         "",
-        "## Related Claims",
+        "## Связанные утверждения",
         "",
     ]
     if related_claims:
         lines.extend(f"- {claim}" for claim in related_claims)
     else:
-        lines.append("- none")
+        lines.append("- нет")
 
-    lines.extend(["", "## Source Resolution", ""])
-    lines.append("- Resolve primary sources through claim evidence and output/wiki/indexes/page_to_sources.json.")
+    lines.extend(["", "## Как найти источники", ""])
+    lines.append("- Первичные источники открываются через доказательства в claim pages и output/wiki/indexes/page_to_sources.json.")
     lines.append("")
     return "\n".join(lines)
 
@@ -671,6 +678,10 @@ def _slugify(value: object) -> str:
     text = re.sub(r"[^\w\s-]", "", text, flags=re.UNICODE)
     text = re.sub(r"[\s_]+", "-", text, flags=re.UNICODE).strip("-")
     return text[:120]
+
+
+def _has_cyrillic(value: object) -> bool:
+    return bool(re.search(r"[а-яё]", _clean_str(value), flags=re.IGNORECASE))
 
 
 def _string_list(value: Any) -> list[str]:

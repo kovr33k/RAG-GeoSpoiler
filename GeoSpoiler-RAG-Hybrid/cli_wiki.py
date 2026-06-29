@@ -10,6 +10,7 @@ from retrieval.wiki_coverage import run_wiki_coverage_backfill
 from retrieval.wiki_health import run_wiki_health, write_health_report
 from retrieval.wiki_index import build_wiki_indexes
 from retrieval.wiki_ingest import run_wiki_ingest
+from retrieval.wiki_localize import localize_wiki_pages
 from retrieval.wiki_overview import build_wiki_overview, write_wiki_overview
 from retrieval.wiki_pages import seed_entity_topic_pages
 from retrieval.wiki_update import run_wiki_incremental_update
@@ -267,6 +268,21 @@ def cmd_wiki_coverage_backfill() -> None:
     print(f"  Topic pages changed: {stats.topics_created_or_updated}")
     print(f"  Indexed pages: {index_stats.page_count}")
     print(f"  Indexed sources: {index_stats.source_count}")
+    print(f"  Overview: {overview_path}")
+    _print_wiki_git_status_hint()
+
+
+def cmd_wiki_localize() -> None:
+    cmd_wiki_init()
+    stats = localize_wiki_pages()
+    overview = build_wiki_overview()
+    overview_path = write_wiki_overview(overview)
+
+    print("Wiki localization complete.")
+    print(f"  Claim pages renamed: {stats.claims_renamed}")
+    print(f"  Pages rewritten: {stats.pages_rewritten}")
+    print(f"  Indexed pages: {stats.indexed_pages}")
+    print(f"  Indexed sources: {stats.indexed_sources}")
     print(f"  Overview: {overview_path}")
     _print_wiki_git_status_hint()
 

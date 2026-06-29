@@ -84,6 +84,59 @@ class WikiIngestTests(unittest.TestCase):
         self.assertEqual(page_to_sources["claims/cuba-protests-continued.md"], ["telegram:1:10"])
         self.assertEqual(page_to_sources["entities/cuba.md"], [])
 
+    def test_wiki_ingest_uses_russian_claim_filename_and_labels(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            wiki_dir, enriched_dir, index_dir = _make_dirs(root)
+            _write_card(
+                enriched_dir / "China" / "10.enriched.json",
+                channel_id=1,
+                message_id=10,
+                fact="Китай поставляет компоненты для дронов.",
+                entities={"countries": ["Китай"]},
+                topics=["дроны"],
+            )
+
+            run_wiki_ingest(
+                wiki_dir=wiki_dir,
+                enriched_dir=enriched_dir,
+                index_dir=index_dir,
+                today=date(2026, 6, 29),
+                llm_call=lambda _prompt: {
+                    "operations": [
+                        {
+                            "action": "create",
+                            "page_type": "claim",
+                            "slug": "china-drone-components",
+                            "title": "Китай поставляет компоненты для дронов",
+                            "status": "supported_by_corpus",
+                            "source_ids": ["telegram:1:10"],
+                            "evidence": [
+                                {
+                                    "source_id": "telegram:1:10",
+                                    "evidence_type": "source_claim",
+                                    "text": "Китай поставляет компоненты для дронов.",
+                                }
+                            ],
+                        }
+                    ]
+                },
+            )
+
+            russian_claim = wiki_dir / "claims" / "китай-поставляет-компоненты-для-дронов.md"
+            english_claim = wiki_dir / "claims" / "china-drone-components.md"
+            russian_claim_exists = russian_claim.exists()
+            english_claim_exists = english_claim.exists()
+            claim_text = russian_claim.read_text(encoding="utf-8")
+
+        self.assertTrue(russian_claim_exists)
+        self.assertFalse(english_claim_exists)
+        self.assertIn("## Доказательства", claim_text)
+        self.assertIn("## Ограничения", claim_text)
+        self.assertIn("Статус:", claim_text)
+        self.assertNotIn("## Evidence", claim_text)
+        self.assertNotIn("## Guardrails", claim_text)
+
     def test_wiki_ingest_rejects_operations_with_external_source_ids(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
@@ -235,7 +288,7 @@ class WikiIngestTests(unittest.TestCase):
         self.assertNotIn("indexes/page_to_sources.json\n- claims", claim_text)
         self.assertIn("- indexes/page_to_sources.json", claim_text)
         self.assertNotIn("claims/does-not-exist.md", topic_text)
-        self.assertIn("- none", topic_text)
+        self.assertIn("- нет", topic_text)
 
     def test_wiki_ingest_strips_raw_source_ids_from_entity_topic_summary(self):
         with tempfile.TemporaryDirectory() as tmpdir:

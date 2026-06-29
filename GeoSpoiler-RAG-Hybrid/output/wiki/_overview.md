@@ -1,6 +1,6 @@
 # Wiki Overview
 
-Generated: 2026-06-27
+Generated: 2026-06-29
 
 ## Counts
 
@@ -15,16 +15,16 @@ Generated: 2026-06-27
 
 ## Recent Updates
 
-- 2026-06-26: claims/xiamen-victory-technology-engines-linked-to-shahed-136-iranian-drone-use.md
-- 2026-06-26: claims/works-of-david-mayatth-were-published-and-distributed-in-hamas-and-aryan-nations-environments.md
-- 2026-06-26: claims/white-jihad-is-american-trend-exported-to-european-far-right.md
-- 2026-06-26: claims/weibo-blocked-1200-accounts-over-rumors-and-china-cyber-campaign-removes-pessimistic-content.md
-- 2026-06-26: claims/war-on-the-rocks-radical-strategy-change-china-paralyze-taiwan-via-quarantine-and-insurance-market.md
-- 2026-06-26: claims/vietnam-accelerated-land-reclamation-in-spratlys-in-2025-and-turned-rssfs-into-artificial-islands-with-military-infrastr.md
-- 2026-06-26: claims/van-yi-says-europe-should-dialogue-with-russia-and-china-has-no-last-word-on-ukraine-talks.md
-- 2026-06-26: claims/us-secret-talks-with-cuba-in-havana-discussed-reforms-release-of-political-prisoners-compensation-and-starlink.md
-- 2026-06-26: claims/us-indicted-raul-castro-and-others-over-1996-shootdown-of-two-civilian-aircraft.md
-- 2026-06-26: claims/us-implemented-50-percent-rule-export-controls-automatically-apply-if-blacklisted-entity-ownership-exceeds-50-percent.md
+- 2026-06-26: claims/утверждается-что-экспорт-китая-компонентов-для-дронов-на-оптоволокне-в-россию-в-2026-году-вырос-несмотря-на-общее-сокращ.md
+- 2026-06-26: claims/утверждается-что-школьница-назначенная-главой-ядерных-сил-кндр-получает-брифинги-от-генералов-и-иногда-отдает-приказы.md
+- 2026-06-26: claims/утверждается-что-ультраправые-партии-в-европе-пересматривают-связи-с-дональдом-трампом-после-применения-военной-силы-про.md
+- 2026-06-26: claims/утверждается-что-сша-внедрили-правило-50-при-котором-экспортные-ограничения-автоматически-распространяются-на-компанию-е.md
+- 2026-06-26: claims/утверждается-что-северокорейские-военнопленные-в-украине-просили-передать-их-южной-корее-южнокорейская-разведка-заявляет.md
+- 2026-06-26: claims/утверждается-что-северокорейские-айтишники-проникают-в-it-компании-используя-поддельные-личности-дипфейки-и-фальшивые-ре.md
+- 2026-06-26: claims/утверждается-что-северная-корея-системно-готовит-эскалацию-на-границе-с-южной-кореей-а-ответ-сеула-фактически-отсутствуе.md
+- 2026-06-26: claims/утверждается-что-северная-корея-могла-заработать-до-14-млрд-на-поставках-оружиябоеприпасов-и-предоставлении-солдат-для-р.md
+- 2026-06-26: claims/утверждается-что-с-2022-года-китай-сэкономил-в-торговле-с-россией-более-20-млрд-а-по-газу-и-спг-экономия-добавляет-пекин.md
+- 2026-06-26: claims/утверждается-что-рост-китая-встроен-в-американскую-систему-глобальной-торговли-а-вокруг-ирана-и-тайваня-китай-опасается-.md
 
 ## Pending Sources
 
