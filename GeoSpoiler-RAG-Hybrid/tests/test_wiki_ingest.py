@@ -312,11 +312,27 @@ class WikiIngestTests(unittest.TestCase):
                     "operations": [
                         {
                             "action": "create",
+                            "page_type": "claim",
+                            "slug": "cuba-protests-continued",
+                            "title": "Cuba protests continued",
+                            "status": "supported_by_corpus",
+                            "source_ids": ["telegram:1:10"],
+                            "evidence": [
+                                {
+                                    "source_id": "telegram:1:10",
+                                    "evidence_type": "source_claim",
+                                    "text": "A source claimed that protests continued in Cuba.",
+                                }
+                            ],
+                        },
+                        {
+                            "action": "create",
                             "page_type": "entity",
                             "slug": "cuba",
                             "title": "Cuba",
                             "summary": "Country mentioned by the card (telegram:1:10).",
                             "source_ids": ["telegram:1:10"],
+                            "related_claims": ["claims/cuba-protests-continued.md"],
                         }
                     ]
                 },

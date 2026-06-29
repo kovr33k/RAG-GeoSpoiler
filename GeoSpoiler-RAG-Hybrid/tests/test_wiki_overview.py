@@ -59,7 +59,7 @@ class WikiOverviewTests(unittest.TestCase):
         self.assertIn("supported_by_corpus: 1", text)
         self.assertIn("Pending Sources", text)
         self.assertIn("Important entities in enriched cards without wiki page", text)
-        self.assertIn("Russia: 3", text)
+        self.assertIn("Россия: 3", text)
         self.assertTrue(output_exists)
 
     def test_wiki_overview_does_not_report_existing_entity_hub_as_missing(self):

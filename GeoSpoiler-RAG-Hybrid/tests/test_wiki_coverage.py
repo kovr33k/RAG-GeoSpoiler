@@ -154,6 +154,155 @@ class WikiCoverageBackfillTests(unittest.TestCase):
         self.assertIn("- claims/china-claim-12.md", entity_text)
         self.assertIn("related_claim_count: 3", entity_text)
 
+    def test_backfill_canonicalizes_entity_aliases_and_merges_claims(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            wiki_dir, enriched_dir, index_dir = _make_dirs(root)
+            cards = [
+                (10, ["Россия"], "russia-claim-10"),
+                (11, ["РФ"], "russia-claim-11"),
+                (12, ["Россия", "РФ"], "russia-claim-12"),
+                (20, ["Европа"], "europe-claim-20"),
+                (21, ["ЕС"], "europe-claim-21"),
+                (22, ["Европа", "ЕС"], "europe-claim-22"),
+            ]
+            for message_id, entities, claim_slug in cards:
+                _write_card(
+                    enriched_dir / f"{message_id}.enriched.json",
+                    message_id=message_id,
+                    entity=entities,
+                    topic="геополитика",
+                    fact=f"Alias-related source claim {message_id}.",
+                )
+                _write_claim(
+                    wiki_dir / "claims" / f"{claim_slug}.md",
+                    enriched_dir / f"{message_id}.enriched.json",
+                    source_id=f"telegram:1:{message_id}",
+                    title=f"Alias claim {message_id}",
+                    fact=f"Alias-related source claim {message_id}.",
+                )
+            build_wiki_indexes(wiki_dir=wiki_dir, enriched_dir=enriched_dir, index_dir=index_dir)
+
+            run_wiki_coverage_backfill(
+                wiki_dir=wiki_dir,
+                enriched_dir=enriched_dir,
+                index_dir=index_dir,
+                today=date(2026, 6, 27),
+                threshold=3,
+            )
+
+            russia_text = (wiki_dir / "entities" / "россия.md").read_text(encoding="utf-8")
+            europe_text = (wiki_dir / "entities" / "европа.md").read_text(encoding="utf-8")
+            rf_exists = (wiki_dir / "entities" / "рф.md").exists()
+            eu_exists = (wiki_dir / "entities" / "ес.md").exists()
+
+        self.assertIn("# Россия", russia_text)
+        self.assertIn("coverage_count: 3", russia_text)
+        self.assertIn("- claims/russia-claim-10.md", russia_text)
+        self.assertIn("- claims/russia-claim-11.md", russia_text)
+        self.assertIn("- claims/russia-claim-12.md", russia_text)
+        self.assertFalse(rf_exists)
+        self.assertIn("# Европа", europe_text)
+        self.assertIn("coverage_count: 3", europe_text)
+        self.assertIn("- claims/europe-claim-20.md", europe_text)
+        self.assertIn("- claims/europe-claim-21.md", europe_text)
+        self.assertIn("- claims/europe-claim-22.md", europe_text)
+        self.assertFalse(eu_exists)
+
+    def test_backfill_skips_source_like_entities_and_deletes_auto_pages(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            wiki_dir, enriched_dir, index_dir = _make_dirs(root)
+            source_names = ["Reuters", "Bloomberg", "Financial Times", "Yigal Levin (@yigallevin)"]
+            message_id = 1
+            for source_name in source_names:
+                for _ in range(3):
+                    _write_card(
+                        enriched_dir / f"{message_id}.enriched.json",
+                        message_id=message_id,
+                        entity=source_name,
+                        topic="медиа-источники",
+                        fact=f"Source-like entity claim {message_id}.",
+                    )
+                    _write_claim(
+                        wiki_dir / "claims" / f"source-like-{message_id}.md",
+                        enriched_dir / f"{message_id}.enriched.json",
+                        source_id=f"telegram:1:{message_id}",
+                        title=f"Source-like claim {message_id}",
+                        fact=f"Source-like entity claim {message_id}.",
+                    )
+                    message_id += 1
+            stale_page = wiki_dir / "entities" / "reuters.md"
+            stale_page.write_text(
+                "---\n"
+                "wiki_type: entity\n"
+                "generated_by: wiki_coverage_backfill_v1\n"
+                "review_status: auto\n"
+                "coverage_count: 3\n"
+                "updated_at: 2026-06-26\n"
+                "---\n\n"
+                "# Reuters\n",
+                encoding="utf-8",
+            )
+            build_wiki_indexes(wiki_dir=wiki_dir, enriched_dir=enriched_dir, index_dir=index_dir)
+
+            stats = run_wiki_coverage_backfill(
+                wiki_dir=wiki_dir,
+                enriched_dir=enriched_dir,
+                index_dir=index_dir,
+                today=date(2026, 6, 27),
+                threshold=3,
+            )
+            reuters_exists = (wiki_dir / "entities" / "reuters.md").exists()
+            bloomberg_exists = (wiki_dir / "entities" / "bloomberg.md").exists()
+            financial_times_exists = (wiki_dir / "entities" / "financial-times.md").exists()
+            yigal_levin_exists = (wiki_dir / "entities" / "yigal-levin-yigallevin.md").exists()
+
+        self.assertIn(stale_page, stats.pages_deleted)
+        self.assertFalse(reuters_exists)
+        self.assertFalse(bloomberg_exists)
+        self.assertFalse(financial_times_exists)
+        self.assertFalse(yigal_levin_exists)
+
+    def test_backfill_deletes_auto_entity_pages_below_coverage_threshold(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            wiki_dir, enriched_dir, index_dir = _make_dirs(root)
+            _write_card(
+                enriched_dir / "10.enriched.json",
+                message_id=10,
+                entity="One-Off Actor",
+                topic="геополитика",
+                fact="One-off source claim.",
+            )
+            stale_page = wiki_dir / "entities" / "one-off-actor.md"
+            stale_page.write_text(
+                "---\n"
+                "wiki_type: entity\n"
+                "generated_by: wiki_ingest_v1\n"
+                "review_status: auto\n"
+                "source_count: 1\n"
+                "updated_at: 2026-06-26\n"
+                "---\n\n"
+                "# One-Off Actor\n\n"
+                "## Связанные утверждения\n\n"
+                "- нет\n",
+                encoding="utf-8",
+            )
+            build_wiki_indexes(wiki_dir=wiki_dir, enriched_dir=enriched_dir, index_dir=index_dir)
+
+            stats = run_wiki_coverage_backfill(
+                wiki_dir=wiki_dir,
+                enriched_dir=enriched_dir,
+                index_dir=index_dir,
+                today=date(2026, 6, 27),
+                threshold=3,
+            )
+            stale_exists = stale_page.exists()
+
+        self.assertIn(stale_page, stats.pages_deleted)
+        self.assertFalse(stale_exists)
+
     def test_backfill_creates_empty_hub_when_mentions_have_no_claim_pages(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
@@ -195,7 +344,8 @@ def _make_dirs(root: Path) -> tuple[Path, Path, Path]:
     return wiki_dir, enriched_dir, index_dir
 
 
-def _write_card(path: Path, *, message_id: int, entity: str, topic: str, fact: str) -> None:
+def _write_card(path: Path, *, message_id: int, entity: str | list[str], topic: str, fact: str) -> None:
+    entities = entity if isinstance(entity, list) else [entity]
     path.write_text(
         json.dumps(
             {
@@ -209,7 +359,7 @@ def _write_card(path: Path, *, message_id: int, entity: str, topic: str, fact: s
                     "date": "2026-06-27T00:00:00+00:00",
                 },
                 "key_facts": [{"text": fact, "claim_type": "source_claim"}],
-                "entities": {"countries": [entity]},
+                "entities": {"countries": entities},
                 "topics": [topic],
                 "quotes": [],
                 "events": [],

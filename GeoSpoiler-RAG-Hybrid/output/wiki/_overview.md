@@ -5,7 +5,7 @@ Generated: 2026-06-29
 ## Counts
 
 - Claims: 84
-- Entities: 48
+- Entities: 36
 - Topics: 32
 
 ## Claim Statuses

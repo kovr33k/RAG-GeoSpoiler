@@ -261,6 +261,7 @@ def cmd_wiki_coverage_backfill() -> None:
     print("Wiki coverage backfill complete.")
     print(f"  Pages created: {len(stats.pages_created)}")
     print(f"  Pages updated: {len(stats.pages_updated)}")
+    print(f"  Pages deleted: {len(stats.pages_deleted)}")
     print(f"  Pages skipped: {len(stats.pages_skipped)}")
     print(f"  Entities considered: {stats.entities_considered}")
     print(f"  Topics considered: {stats.topics_considered}")

@@ -112,7 +112,7 @@ class WikiHealthTests(unittest.TestCase):
         issues = {issue.code: issue for issue in report.issues}
         self.assertIn("wiki_empty_while_cards_exist", issues)
         self.assertIn("missing_entity_coverage", issues)
-        self.assertIn("Russia", issues["missing_entity_coverage"].message)
+        self.assertIn("Россия", issues["missing_entity_coverage"].message)
 
     def test_wiki_health_ignores_fake_labels_in_related_metadata(self):
         with tempfile.TemporaryDirectory() as tmpdir:
