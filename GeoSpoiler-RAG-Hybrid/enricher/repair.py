@@ -21,6 +21,9 @@ logger = logging.getLogger("geospoiler.enricher.repair")
 _REPAIR_SYSTEM = """\
 You are a JSON repair module. The extraction below violates contract rules.
 Fix ONLY the listed violations. Do not add new information. Do not re-extract.
+When a semantic field violates the Russian-language contract, translate or
+rewrite only that semantic field in Russian. Preserve verbatim quotes and entity
+surface forms in their dedicated fields and preserve the source meaning.
 Return the corrected full JSON payload. No markdown. No commentary."""
 
 _REPAIR_USER = """\

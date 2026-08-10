@@ -17,6 +17,7 @@ from enricher.youtube_pipeline import (  # noqa: E402
     _episode_card_path,
     _episode_source_id,
     _file_sha256,
+    _finish_payload,
     _initialize_checkpoint,
     _iter_legacy_sources,
     _load_reusable_segment,
@@ -65,6 +66,16 @@ def _payload(summary: str = "Китай обсуждал поставки ком
 
 
 class YouTubeSegmenterTests(unittest.TestCase):
+    def test_persistent_language_failure_is_reported_for_episode_guard(self):
+        raw = {"summary": "Україна ухвалила важливе рішення."}
+
+        with patch("enricher.repair._call_llm", return_value=raw):
+            payload, issues = _finish_payload(raw, "Україна ухвалила важливе рішення.")
+
+        self.assertEqual(payload.summary, "")
+        self.assertIn("extraction_unstable", payload.quality_flags)
+        self.assertTrue(any(issue.startswith("Russian-language contract violation") for issue in issues))
+
     def test_llm_cannot_assign_pipeline_owned_youtube_quality_flags(self):
         payload = LLMPayload(
             summary="Substantive summary",

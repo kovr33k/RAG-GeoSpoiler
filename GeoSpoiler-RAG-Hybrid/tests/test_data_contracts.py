@@ -29,10 +29,10 @@ def _minimal_v2_card(point_type: str = "reported_statement") -> dict:
         },
         "content_type": "telegram_post",
         "language": "ru",
-        "summary": "Donald Trump supported Viktor Orban.",
+        "summary": "Дональд Трамп поддержал Виктора Орбана.",
         "key_points": [
             {
-                "text": "Donald Trump supported Viktor Orban before the 2026 Hungarian election.",
+                "text": "Дональд Трамп поддержал Виктора Орбана перед выборами 2026 года в Венгрии.",
                 "type": point_type,
                 "importance": "high",
                 "evidence": None,
@@ -64,8 +64,8 @@ def _minimal_v2_card(point_type: str = "reported_statement") -> dict:
             "mentioned_sources": [],
             "external_links": [],
         },
-        "graph_text": "Donald Trump supported Viktor Orban.",
-        "search_text": "Donald Trump supported Viktor Orban.",
+        "graph_text": "Дональд Трамп поддержал Виктора Орбана.",
+        "search_text": "Дональд Трамп поддержал Виктора Орбана. Donald Trump Viktor Orban.",
         "ignored_blocks": [],
         "quality_flags": [],
     }
@@ -148,6 +148,36 @@ class DataContractTests(unittest.TestCase):
 
         self.assertIsNone(card)
         self.assertTrue(any(issue.severity == "error" for issue in issues))
+
+    def test_validate_enriched_card_rejects_non_russian_semantic_field(self):
+        card_data = _minimal_v2_card()
+        card_data["summary"] = "Україна ухвалила важливе рішення."
+
+        card, issues = validate_enriched_card(card_data, "card.enriched.json")
+
+        self.assertIsNotNone(card)
+        self.assertTrue(any(issue.code == "non_russian_semantic_field" for issue in issues))
+
+    def test_validate_enriched_card_allows_non_russian_quote_outside_graph_text(self):
+        card_data = _minimal_v2_card()
+        card_data["quotes"] = [{"speaker": "Президент", "text": "Ми ухвалили це рішення"}]
+        card_data["search_text"] += " Ми ухвалили це рішення"
+
+        card, issues = validate_enriched_card(card_data, "card.enriched.json")
+
+        self.assertIsNotNone(card)
+        self.assertFalse(any(issue.severity == "error" for issue in issues), issues)
+
+    def test_validate_enriched_card_rejects_non_russian_quote_in_graph_text(self):
+        card_data = _minimal_v2_card()
+        quote = "Ми ухвалили це важливе рішення"
+        card_data["quotes"] = [{"speaker": "Президент", "text": quote}]
+        card_data["graph_text"] += f" {quote}"
+
+        card, issues = validate_enriched_card(card_data, "card.enriched.json")
+
+        self.assertIsNotNone(card)
+        self.assertTrue(any(issue.code == "non_russian_quote_in_graph_text" for issue in issues))
 
     def test_scan_enriched_cards_and_write_report(self):
         with tempfile.TemporaryDirectory() as tmpdir:

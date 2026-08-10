@@ -45,7 +45,11 @@ from enricher.repair import (
     repair_invalid_payload,
 )
 from enricher.triage import TRIAGE_REVIEW, auto_triage
-from enricher.validator import drop_invalid_optional_items, validate_payload
+from enricher.validator import (
+    drop_invalid_optional_items,
+    has_required_language_violations,
+    validate_payload,
+)
 from enricher.youtube_pipeline import _looks_like_legacy_youtube_document, enrich_youtube_all
 from models import EnrichedCardV2, LLMPayload, NormalizedMeta, Provenance, SourceChain
 from normalizer.review_queue import (
@@ -323,6 +327,10 @@ def _run_enrichment_job(job: _EnrichmentJob, stats: EnrichmentStats) -> dict | N
             extraction_issues = dropped
     if not final_validation.is_valid and "extraction_unstable" not in payload.quality_flags:
         payload.quality_flags.append("extraction_unstable")
+    if has_required_language_violations(final_validation):
+        raise UnusableExtractionError(
+            "Semantic extraction still violates the Russian-language contract after repair"
+        )
     if (
         not final_validation.is_valid
         and preprocessed.body_char_count >= 30

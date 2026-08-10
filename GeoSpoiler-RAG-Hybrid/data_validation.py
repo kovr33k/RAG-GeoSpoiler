@@ -11,7 +11,8 @@ from typing import Any
 from pydantic import ValidationError
 
 import config
-from models import EnrichedCardV2
+from enricher.validator import non_russian_prose_reason, required_russian_violations
+from models import EnrichedCardV2, LLMPayload
 
 
 @dataclass(frozen=True)
@@ -72,6 +73,41 @@ def validate_enriched_card(data: dict[str, Any], path: Path | str = "") -> tuple
                 message="Card has neither summary nor key_points.",
             )
         )
+
+    payload = LLMPayload.model_validate(
+        {
+            field_name: getattr(card, field_name)
+            for field_name in LLMPayload.model_fields
+        }
+    )
+    for violation in required_russian_violations(payload):
+        field_name = violation.split(":", 2)[1].strip().split(" ", 1)[0]
+        issues.append(
+            ContractIssue(
+                severity="error",
+                code="non_russian_semantic_field",
+                path=path_text,
+                field=field_name,
+                message=violation,
+            )
+        )
+
+    for index, quote in enumerate(card.quotes):
+        quote_text = quote.text.strip()
+        if (
+            len(quote_text) >= 12
+            and quote_text in card.graph_text
+            and non_russian_prose_reason(quote_text) is not None
+        ):
+            issues.append(
+                ContractIssue(
+                    severity="error",
+                    code="non_russian_quote_in_graph_text",
+                    path=path_text,
+                    field=f"quotes.{index}.text,graph_text",
+                    message="Non-Russian verbatim quote leaked into graph_text.",
+                )
+            )
 
     return card, issues
 

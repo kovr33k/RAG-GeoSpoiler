@@ -149,6 +149,15 @@ Unknown fields and values are schema errors. Raw LLM output is validated against
 - quotes.text — original language (verbatim)
 - search_text — mixed (Russian + original terms)
 - search_phrases — mixed
+- The validator rejects Ukrainian-specific characters and clearly dominant
+  non-Russian Latin or Han prose in required Russian semantic fields. Exact
+  entity surface forms are excluded from this language decision.
+- A language violation consumes the same single repair attempt as other semantic
+  violations. If it remains after repair, the job fails and neither a card nor
+  an enrichment-progress record is published.
+- Verbatim quotes are included in `search_text`, but not in `graph_text`; this
+  preserves multilingual retrieval without introducing foreign-language prose
+  into the graph extraction input.
 
 ## Wiki Contract Status
 

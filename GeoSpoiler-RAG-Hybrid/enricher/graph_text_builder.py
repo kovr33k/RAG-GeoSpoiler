@@ -66,13 +66,6 @@ def build_graph_text(card: dict) -> str:
             speaker_prefix = f"{speaker}: " if speaker else ""
             parts.append(f"Позиция — {speaker_prefix}{th['text']}")
 
-    # Top quotes (max 2 for graph density)
-    quotes = card.get("quotes", [])[:2]
-    for q in quotes:
-        if isinstance(q, dict) and q.get("text"):
-            speaker = q.get("speaker", "?")
-            parts.append(f'{speaker}: «{q["text"]}»')
-
     return "\n".join(parts)
 
 

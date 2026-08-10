@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from enricher import pipeline as enricher_pipeline  # noqa: E402
 from enricher.content_classifier import classify_content  # noqa: E402
+from enricher.graph_text_builder import build_graph_text, build_search_text  # noqa: E402
 from enricher.llm_enricher import (  # noqa: E402
     _normalize_to_payload,
     _serialize_chunk_results,
@@ -22,6 +23,7 @@ from enricher.repair import RepairContext, StructuralRepairError, repair_if_need
 from enricher.triage import auto_triage  # noqa: E402
 from enricher.validator import (
     ValidationResult,  # noqa: E402
+    has_required_language_violations,  # noqa: E402
     validate_payload,  # noqa: E402
 )
 from models import EnrichedCardV2, IgnoredBlock, LLMPayload, NormalizedMeta  # noqa: E402
@@ -87,6 +89,93 @@ class AutoTriageTests(unittest.TestCase):
 
 
 class PipelineQualityFlagTests(unittest.TestCase):
+    def test_ukrainian_semantic_prose_is_rejected(self):
+        payload = LLMPayload(summary="Україна обговорила важливі події.")
+
+        result = validate_payload(payload, "Україна обговорила важливі події.")
+
+        self.assertFalse(result.is_valid)
+        self.assertTrue(has_required_language_violations(result))
+
+    def test_mixed_russian_ukrainian_semantic_prose_is_rejected(self):
+        payload = LLMPayload(summary="Россия сообщила об этой події.")
+
+        result = validate_payload(payload, "Россия сообщила об этой події.")
+
+        self.assertTrue(has_required_language_violations(result))
+
+    def test_all_required_semantic_collections_enforce_russian(self):
+        cases = {
+            "key_points": {
+                "key_points": [{"text": "Україна ухвалила важливе рішення"}]
+            },
+            "topics": {"topics": [{"label": "Важливі події"}]},
+            "theses": {"theses": [{"text": "Це важливе рішення"}]},
+            "events": {"events": [{"description": "Відбулася важлива подія"}]},
+        }
+
+        for field_name, values in cases.items():
+            with self.subTest(field_name=field_name):
+                result = validate_payload(LLMPayload(**values), "Україна ухвалила рішення.")
+                self.assertTrue(has_required_language_violations(result))
+
+    def test_non_russian_quote_and_search_phrase_are_allowed(self):
+        payload = LLMPayload(
+            summary="Президент описал решение правительства.",
+            quotes=[{"text": "Україна ухвалила важливе рішення"}],
+            search_phrases=[
+                {"text": "Україна важливе рішення", "source": "phrase_from_text"}
+            ],
+        )
+        source = "Президент заявил: Україна ухвалила важливе рішення."
+
+        result = validate_payload(payload, source)
+
+        self.assertTrue(result.is_valid, result.violations)
+
+    def test_original_entity_surface_form_is_allowed_in_russian_topic(self):
+        payload = LLMPayload(
+            summary="Компания представила новую стратегию.",
+            entities={"organizations": [{"text": "Українська правда"}]},
+            topics=[
+                {
+                    "label": "Стратегия Українська правда",
+                    "salience": "primary",
+                    "type": "source_topic",
+                }
+            ],
+        )
+
+        result = validate_payload(payload, "Українська правда представила новую стратегию.")
+
+        self.assertTrue(result.is_valid, result.violations)
+
+    def test_english_semantic_prose_is_rejected_but_latin_entity_is_allowed(self):
+        english = LLMPayload(summary="The government announced a major policy decision today.")
+        russian = LLMPayload(
+            summary="Компания OpenAI представила новую модель для анализа данных.",
+            entities={"organizations": [{"text": "OpenAI"}]},
+        )
+
+        english_result = validate_payload(english, english.summary)
+        russian_result = validate_payload(russian, russian.summary)
+
+        self.assertTrue(has_required_language_violations(english_result))
+        self.assertTrue(russian_result.is_valid, russian_result.violations)
+
+    def test_graph_text_excludes_quotes_while_search_text_preserves_them(self):
+        card = {
+            "provenance": {"channel": "Канал", "date": "2026-08-10T00:00:00Z"},
+            "summary": "Президент прокомментировал решение.",
+            "quotes": [{"speaker": "Президент", "text": "Ми ухвалили це рішення"}],
+        }
+
+        graph_text = build_graph_text(card)
+        search_text = build_search_text(card)
+
+        self.assertNotIn("Ми ухвалили це рішення", graph_text)
+        self.assertIn("Ми ухвалили це рішення", search_text)
+
     def test_substantive_payload_drops_no_substantive_and_llm_unstable_flags(self):
         payload = LLMPayload(
             summary="Содержательный текст.",
@@ -292,21 +381,24 @@ class EnrichmentFailurePolicyTests(unittest.TestCase):
             jobs = self._make_jobs(root, 2)
             progress = {"enriched": {}}
             stats = enricher_pipeline.EnrichmentStats()
+            state_dir = root / "state"
+            state_dir.mkdir()
 
-            with patch.object(enricher_pipeline.config, "PROJECT_ROOT", root):
-                with patch.object(enricher_pipeline.config, "ENRICHMENT_CONCURRENCY", 1):
-                    with patch.object(enricher_pipeline, "classify_content", return_value="telegram_post"):
-                        with patch.object(enricher_pipeline, "auto_triage", return_value=("keep", "")):
-                            with patch.object(
-                                enricher_pipeline,
-                                "extract_short_post_raw",
-                                side_effect=[{}, {"summary": "Second job succeeded."}],
-                            ):
-                                with patch(
-                                    "enricher.repair._call_llm",
-                                    return_value={},
-                                ) as repair_call:
-                                    enricher_pipeline._run_enrichment_jobs(jobs, progress, stats)
+            with patch.object(enricher_pipeline, "_PROGRESS_FILE", state_dir / "enrichment_progress.json"):
+                with patch.object(enricher_pipeline.config, "PROJECT_ROOT", root):
+                    with patch.object(enricher_pipeline.config, "ENRICHMENT_CONCURRENCY", 1):
+                        with patch.object(enricher_pipeline, "classify_content", return_value="telegram_post"):
+                            with patch.object(enricher_pipeline, "auto_triage", return_value=("keep", "")):
+                                with patch.object(
+                                    enricher_pipeline,
+                                    "extract_short_post_raw",
+                                    side_effect=[{}, {"summary": "Вторая задача выполнена успешно."}],
+                                ):
+                                    with patch(
+                                        "enricher.repair._call_llm",
+                                        return_value={},
+                                    ) as repair_call:
+                                        enricher_pipeline._run_enrichment_jobs(jobs, progress, stats)
 
             first_exists = jobs[0].out_path.exists()
             second_exists = jobs[1].out_path.exists()
@@ -325,21 +417,24 @@ class EnrichmentFailurePolicyTests(unittest.TestCase):
             jobs = self._make_jobs(root, 1)
             progress = {"enriched": {}}
             stats = enricher_pipeline.EnrichmentStats()
+            state_dir = root / "state"
+            state_dir.mkdir()
             raw = {
-                "summary": "The source makes a substantive claim.",
+                "summary": "Источник приводит содержательное утверждение.",
                 "quotes": [{"text": "quote absent from source"}],
             }
 
-            with patch.object(enricher_pipeline.config, "PROJECT_ROOT", root):
-                with patch.object(enricher_pipeline.config, "ENRICHMENT_CONCURRENCY", 1):
-                    with patch.object(enricher_pipeline, "classify_content", return_value="telegram_post"):
-                        with patch.object(enricher_pipeline, "auto_triage", return_value=("keep", "")):
-                            with patch.object(enricher_pipeline, "extract_short_post_raw", return_value=raw):
-                                with patch(
-                                    "enricher.repair._call_llm",
-                                    return_value={},
-                                ) as repair_call:
-                                    enricher_pipeline._run_enrichment_jobs(jobs, progress, stats)
+            with patch.object(enricher_pipeline, "_PROGRESS_FILE", state_dir / "enrichment_progress.json"):
+                with patch.object(enricher_pipeline.config, "PROJECT_ROOT", root):
+                    with patch.object(enricher_pipeline.config, "ENRICHMENT_CONCURRENCY", 1):
+                        with patch.object(enricher_pipeline, "classify_content", return_value="telegram_post"):
+                            with patch.object(enricher_pipeline, "auto_triage", return_value=("keep", "")):
+                                with patch.object(enricher_pipeline, "extract_short_post_raw", return_value=raw):
+                                    with patch(
+                                        "enricher.repair._call_llm",
+                                        return_value={},
+                                    ) as repair_call:
+                                        enricher_pipeline._run_enrichment_jobs(jobs, progress, stats)
 
             saved = json.loads(jobs[0].out_path.read_text(encoding="utf-8"))
 
@@ -350,6 +445,30 @@ class EnrichmentFailurePolicyTests(unittest.TestCase):
         self.assertNotIn("extraction_unstable", saved["quality_flags"])
         self.assertTrue(saved["extraction_issues"])
         self.assertIn("Channel/1", progress["enriched"])
+
+    def test_persistent_language_failure_does_not_publish_card_or_progress(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            jobs = self._make_jobs(root, 1)
+            progress = {"enriched": {}}
+            stats = enricher_pipeline.EnrichmentStats()
+            state_dir = root / "state"
+            state_dir.mkdir()
+            raw = {"summary": "Україна ухвалила важливе рішення."}
+
+            with patch.object(enricher_pipeline, "_PROGRESS_FILE", state_dir / "enrichment_progress.json"):
+                with patch.object(enricher_pipeline.config, "PROJECT_ROOT", root):
+                    with patch.object(enricher_pipeline.config, "ENRICHMENT_CONCURRENCY", 1):
+                        with patch.object(enricher_pipeline, "classify_content", return_value="telegram_post"):
+                            with patch.object(enricher_pipeline, "auto_triage", return_value=("keep", "")):
+                                with patch.object(enricher_pipeline, "extract_short_post_raw", return_value=raw):
+                                    with patch("enricher.repair._call_llm", return_value=raw):
+                                        enricher_pipeline._run_enrichment_jobs(jobs, progress, stats)
+
+            self.assertFalse(jobs[0].out_path.exists())
+            self.assertEqual(progress["enriched"], {})
+            self.assertEqual(stats.failed, 1)
+            self.assertEqual(stats.enriched, 0)
 
 
 class EnrichedV2BoundaryTests(unittest.TestCase):
@@ -829,9 +948,14 @@ class EnrichedV2BoundaryTests(unittest.TestCase):
                 "content_type": "telegram_post",
             }
 
-            enricher_pipeline._handle_enrichment_result(job, card, progress, stats)
+            state_dir = root / "state"
+            state_dir.mkdir()
+            progress_path = state_dir / "enrichment_progress.json"
+            with patch.object(enricher_pipeline, "_PROGRESS_FILE", progress_path):
+                enricher_pipeline._handle_enrichment_result(job, card, progress, stats)
 
             self.assertTrue(out_path.exists())
+            self.assertTrue(progress_path.exists())
             self.assertEqual(stats.enriched, 1)
             self.assertEqual(stats.partial, 0)
             self.assertIn("Channel/1", progress["enriched"])

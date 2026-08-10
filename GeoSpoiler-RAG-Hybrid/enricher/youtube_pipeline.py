@@ -30,7 +30,11 @@ from enricher.llm_enricher import (
 )
 from enricher.preprocessor import PreprocessedText
 from enricher.repair import RepairContext, repair_if_needed, repair_invalid_payload
-from enricher.validator import drop_invalid_optional_items, validate_payload
+from enricher.validator import (
+    drop_invalid_optional_items,
+    has_required_language_violations,
+    validate_payload,
+)
 from enricher.youtube_segmenter import (
     SEGMENT_MAX_CHARS,
     SEGMENT_MIN_CHARS,
@@ -173,6 +177,7 @@ def _enrich_source(source: dict, *, force: bool) -> YouTubeEnrichmentResult:
     segment_payloads: list[dict] = []
     segment_cards: list[YouTubeSegmentCardV2] = []
     partial_failure = False
+    language_failure = False
     if specs:
         for spec in specs:
             cached_segment = _load_reusable_segment(
@@ -190,6 +195,8 @@ def _enrich_source(source: dict, *, force: bool) -> YouTubeEnrichmentResult:
             except Exception as exc:
                 payload = LLMPayload(quality_flags=["extraction_unstable"])
                 issues = [f"segment_{spec.index}_extraction_failed: {exc}"]
+            if has_required_language_violations(issues):
+                language_failure = True
             if issues or "extraction_unstable" in payload.quality_flags:
                 partial_failure = True
             segment_cards.append(_build_segment_card(source, spec, payload, issues))
@@ -209,6 +216,12 @@ def _enrich_source(source: dict, *, force: bool) -> YouTubeEnrichmentResult:
     else:
         payload, issues = _extract_full_payload(transcript, source.get("title") or "YouTube")
 
+    if has_required_language_violations(issues):
+        language_failure = True
+    if language_failure:
+        raise ValueError(
+            "YouTube extraction still violates the Russian-language contract after repair"
+        )
     if issues and "extraction_unstable" in payload.quality_flags:
         partial_failure = True
     if partial_failure and "partial_segment_failure" not in payload.quality_flags:
