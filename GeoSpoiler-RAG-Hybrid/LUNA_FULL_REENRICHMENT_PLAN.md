@@ -1,7 +1,7 @@
 # Полная Luna-регенерация Enriched v2
 
 Дата плана: 2026-08-10
-Статус: план, выполнение не начато
+Статус: выполнено; корпус принят 2026-08-10
 Цель: пересоздать весь текущий Enriched-корпус единственным текстовым backend `Luna`, не смешивая поколения моделей и не допуская украинский текст в русскоязычных смысловых полях.
 
 ## 1. Зафиксированный исходный контекст
@@ -298,3 +298,14 @@ Backup не удаляется до завершения нового стаби
 - Не обновлять активный FTS до приёмки файлового корпуса.
 - Не пересобирать LightRAG без изменения normalized-корпуса.
 - Не удалять backup автоматически.
+-
+## 13. Closeout (2026-08-10)
+
+- Run: `artifacts/luna_full_reenrich/20260810T035948Z_f9c5a48/`.
+- Corpus acceptance: passed; 131 normalized, 129 generic, 2 YouTube-only, 4 episodes, 22 segments.
+- Enriched validation: 133/133 valid; required Russian fields have zero violations; no open YouTube checkpoints.
+- Model identity: all base/episode/segment cards use `codex-cli:gpt-5.6-luna@xhigh`; `CODEX_FALLBACK_TO_API=false`.
+- Active indexes: Card FTS 133, YouTube segment FTS 22, registry 135 sources / 131 normalized / 133 enriched / 32 references, all references URL-backed.
+- Late-Fusion automatic smoke: 10/10 routed through Late-Fusion, zero fallback, zero citation URL errors.
+- Full pytest: 587 passed in both `LATE_FUSION_ENABLED=false` and `true` profiles; targeted final tests: 69 passed, 9 subtests; review-queue isolation: 2 passed.
+- Known source-quality flags remain only where the source itself lacks transcript/timestamps or mixes topics; they are not generation failures.

@@ -169,6 +169,7 @@ class PipelineQualityFlagTests(unittest.TestCase):
             "summary": "Президент прокомментировал решение.",
             "quotes": [{"speaker": "Президент", "text": "Ми ухвалили це рішення"}],
         }
+        card["summary"] += " " + card["quotes"][0]["text"]
 
         graph_text = build_graph_text(card)
         search_text = build_search_text(card)

@@ -555,6 +555,7 @@ class YouTubePipelineTests(unittest.TestCase):
                  patch.object(config, "ENRICHED_DIR", root / "enriched"), \
                  patch.object(config, "YOUTUBE_SEGMENTS_DIR", root / "segments"), \
                  patch.object(config, "YOUTUBE_CHECKPOINT_DIR", root / "checkpoints"), \
+                 patch.object(config, "REVIEW_QUEUE_DIR", root / "review_queue"), \
                  patch("enricher.youtube_pipeline.extract_full_post_raw", return_value=_payload()):
                 stats = enrich_youtube_all(force=True)
 
@@ -623,6 +624,7 @@ class YouTubePipelineTests(unittest.TestCase):
                  patch.object(config, "ENRICHED_DIR", enriched), \
                  patch.object(config, "YOUTUBE_SEGMENTS_DIR", segments), \
                  patch.object(config, "YOUTUBE_CHECKPOINT_DIR", root / "checkpoints"), \
+                 patch.object(config, "REVIEW_QUEUE_DIR", root / "review_queue"), \
                  patch("enricher.youtube_pipeline.extract_chunk_raw", return_value=_payload()), \
                  patch("enricher.youtube_pipeline.merge_chunk_results_raw", return_value=_payload()):
                 stats = enrich_youtube_all(force=True)
@@ -673,6 +675,7 @@ class YouTubePipelineTests(unittest.TestCase):
                  patch.object(config, "ENRICHED_DIR", enriched), \
                  patch.object(config, "YOUTUBE_SEGMENTS_DIR", segments), \
                  patch.object(config, "YOUTUBE_CHECKPOINT_DIR", root / "checkpoints"), \
+                 patch.object(config, "REVIEW_QUEUE_DIR", root / "review_queue"), \
                  patch("enricher.youtube_pipeline.extract_full_post_raw", return_value=_payload()), \
                  patch(
                      "enricher.youtube_pipeline._remove_legacy_generation",
@@ -793,6 +796,7 @@ class YouTubePipelineTests(unittest.TestCase):
                  patch.object(config, "ENRICHED_DIR", enriched), \
                  patch.object(config, "YOUTUBE_SEGMENTS_DIR", segments), \
                  patch.object(config, "YOUTUBE_CHECKPOINT_DIR", root / "checkpoints"), \
+                 patch.object(config, "REVIEW_QUEUE_DIR", root / "review_queue"), \
                  patch("enricher.youtube_pipeline.extract_chunk_raw", return_value=_payload()), \
                  patch("enricher.youtube_pipeline.merge_chunk_results_raw", return_value=_payload()), \
                  patch("enricher.youtube_pipeline.extract_full_post_raw", return_value=_payload()):
@@ -850,6 +854,7 @@ class YouTubePipelineTests(unittest.TestCase):
                  patch.object(config, "ENRICHED_DIR", enriched), \
                  patch.object(config, "YOUTUBE_SEGMENTS_DIR", segments), \
                  patch.object(config, "YOUTUBE_CHECKPOINT_DIR", root / "checkpoints"), \
+                 patch.object(config, "REVIEW_QUEUE_DIR", root / "review_queue"), \
                  patch("enricher.youtube_pipeline.extract_chunk_raw", side_effect=extract_segment), \
                  patch("enricher.youtube_pipeline.merge_chunk_results_raw", return_value=_payload()):
                 first = enrich_youtube_all(force=True)
@@ -907,6 +912,7 @@ class YouTubePipelineTests(unittest.TestCase):
                  patch.object(config, "ENRICHED_DIR", enriched), \
                  patch.object(config, "YOUTUBE_SEGMENTS_DIR", segments), \
                  patch.object(config, "YOUTUBE_CHECKPOINT_DIR", root / "checkpoints"), \
+                 patch.object(config, "REVIEW_QUEUE_DIR", root / "review_queue"), \
                  patch("enricher.youtube_pipeline.extract_chunk_raw", side_effect=interrupt_on_second_segment), \
                  patch("enricher.youtube_pipeline.merge_chunk_results_raw", return_value=_payload()):
                 with self.assertRaises(KeyboardInterrupt):

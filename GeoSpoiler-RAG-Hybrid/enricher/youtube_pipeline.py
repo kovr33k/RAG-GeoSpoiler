@@ -52,6 +52,13 @@ from normalizer.review_queue import queue_item as queue_review_item
 from normalizer.youtube_handler import is_valid_youtube_url, redact_sensitive_url
 
 logger = logging.getLogger("geospoiler.enricher.youtube")
+
+# Keep merge requests comfortably below the Codex CLI timeout.  The public
+# configuration remains part of the source fingerprint, while this safety cap
+# prevents a large episode from putting several long segment payloads into one
+# model request.
+_SAFE_MERGE_BATCH_CHARS = 24_000
+_COMPACT_MERGE_BATCH_CHARS = 18_000
 _PIPELINE_OWNED_QUALITY_FLAGS = frozenset(
     {
         "extraction_unstable",
@@ -268,6 +275,25 @@ def _merge_episode_payload(
     transcript: str,
     segment_payloads: list[dict],
 ) -> tuple[LLMPayload, list[str]]:
+    if len(segment_payloads) >= 6:
+        if _published_episode_needs_deterministic_fallback(source):
+            fallback = _deterministic_episode_payload(segment_payloads)
+            if fallback.summary or fallback.key_points:
+                logger.warning(
+                    "Rebuilding unstable YouTube episode from validated segments for %s",
+                    source.get("video_id") or source.get("url"),
+                )
+                return fallback, []
+        payload, issues = _compact_merge_episode_payload(source, transcript, segment_payloads)
+        if issues or "extraction_unstable" in payload.quality_flags:
+            fallback = _deterministic_episode_payload(segment_payloads)
+            if fallback.summary or fallback.key_points:
+                logger.warning(
+                    "YouTube episode merge failed; publishing deterministic segment fallback for %s",
+                    source.get("video_id") or source.get("url"),
+                )
+                return fallback, []
+        return payload, issues
     if len(segment_payloads) == 1:
         payload = LLMPayload.model_validate(
             {key: segment_payloads[0].get(key) for key in _payload_fields()}
@@ -280,9 +306,19 @@ def _merge_episode_payload(
         issues = []
         while len(current) > 1:
             next_level: list[dict] = []
-            for batch in _merge_batches(current, config.YOUTUBE_MERGE_MAX_CHARS):
-                raw = merge_chunk_results_raw(title, batch)
-                merged, batch_issues = _finish_payload(raw, transcript)
+            for batch in _merge_batches(
+                current,
+                min(config.YOUTUBE_MERGE_MAX_CHARS, _SAFE_MERGE_BATCH_CHARS),
+            ):
+                if len(batch) == 1:
+                    merged = LLMPayload.model_validate(
+                        {key: batch[0].get(key) for key in _payload_fields()}
+                    )
+                    _normalize_quality_flags(merged)
+                    batch_issues: list[str] = []
+                else:
+                    raw = merge_chunk_results_raw(title, batch)
+                    merged, batch_issues = _finish_payload(raw, transcript)
                 if batch_issues or "extraction_unstable" in merged.quality_flags:
                     return LLMPayload(quality_flags=["extraction_unstable"]), batch_issues or [
                         "youtube_merge_batch_unstable"
@@ -302,12 +338,141 @@ def _merge_episode_payload(
     return payload, issues
 
 
+def _compact_merge_episode_payload(
+    source: dict,
+    transcript: str,
+    segment_payloads: list[dict],
+) -> tuple[LLMPayload, list[str]]:
+    """Merge long episodes with small semantic prompts and deterministic unions.
+
+    Full segment payloads contain verbose entities, quotes, and search phrases.
+    Sending all of them through every merge level is both slow and prone to the
+    Codex CLI timeout. Summaries and semantic claims are merged by Luna; the
+    retrieval-oriented fields are already validated per segment and can be
+    unioned losslessly afterwards.
+    """
+    title = str(source.get("title") or "YouTube episode")
+    compact_fields = ("summary", "key_points", "topics", "theses", "events", "quality_flags")
+    current = [
+        {key: segment.get(key) for key in compact_fields}
+        for segment in segment_payloads
+    ]
+    issues: list[str] = []
+    while len(current) > 1:
+        next_level: list[dict] = []
+        for batch in _merge_batches(current, _COMPACT_MERGE_BATCH_CHARS):
+            if len(batch) == 1:
+                merged = LLMPayload.model_validate(
+                    {key: batch[0].get(key) for key in _payload_fields()}
+                )
+                _normalize_quality_flags(merged)
+                batch_issues: list[str] = []
+            else:
+                raw = merge_chunk_results_raw(title, batch)
+                merged, batch_issues = _finish_payload(raw, transcript)
+            if batch_issues or "extraction_unstable" in merged.quality_flags:
+                return LLMPayload(quality_flags=["extraction_unstable"]), batch_issues or [
+                    "youtube_compact_merge_unstable"
+                ]
+            next_level.append(merged.model_dump(mode="json"))
+        current = next_level
+
+    payload = LLMPayload.model_validate(
+        {key: current[0].get(key) for key in _payload_fields()}
+    )
+    _normalize_quality_flags(payload)
+    return _restore_segment_metadata(payload, segment_payloads), issues
+
+
+def _restore_segment_metadata(payload: LLMPayload, segment_payloads: list[dict]) -> LLMPayload:
+    """Union validated retrieval fields omitted from compact merge prompts."""
+    data = payload.model_dump(mode="json")
+    entity_categories = (
+        "people", "organizations", "countries", "locations", "military_units",
+        "equipment", "weapons", "programs_projects", "media_sources", "other",
+    )
+    entities = {category: [] for category in entity_categories}
+    for category in entity_categories:
+        seen: set[str] = set()
+        for segment in segment_payloads:
+            for item in (segment.get("entities") or {}).get(category) or []:
+                key = json.dumps(item, ensure_ascii=False, sort_keys=True)
+                if key not in seen:
+                    seen.add(key)
+                    entities[category].append(item)
+    data["entities"] = entities
+    for field in ("quotes", "search_phrases"):
+        values: list[dict] = []
+        seen: set[str] = set()
+        for segment in segment_payloads:
+            for item in segment.get(field) or []:
+                key = json.dumps(item, ensure_ascii=False, sort_keys=True)
+                if key not in seen:
+                    seen.add(key)
+                    values.append(item)
+        data[field] = values
+    return LLMPayload.model_validate(data)
+
+
+def _deterministic_episode_payload(segment_payloads: list[dict]) -> LLMPayload:
+    """Build an episode payload from validated segment payloads without new claims.
+
+    This is the last-resort path for a merge timeout/invalid response. Every
+    value comes from a segment that already passed the normal extraction and
+    contract validators; the fallback only concatenates summaries and unions
+    structured retrieval fields.
+    """
+    summaries: list[str] = []
+    for segment in segment_payloads:
+        summary = str(segment.get("summary") or "").strip()
+        if summary and summary not in summaries:
+            summaries.append(summary)
+    data: dict[str, object] = {"summary": "\n\n".join(summaries)}
+    for field in ("key_points", "topics", "theses", "events"):
+        values: list[dict] = []
+        seen: set[str] = set()
+        for segment in segment_payloads:
+            for item in segment.get(field) or []:
+                key = json.dumps(item, ensure_ascii=False, sort_keys=True)
+                if key not in seen:
+                    seen.add(key)
+                    values.append(item)
+        data[field] = values
+
+    flags: list[str] = []
+    for segment in segment_payloads:
+        for flag in _without_pipeline_owned_quality_flags(segment.get("quality_flags") or []):
+            if flag not in flags:
+                flags.append(flag)
+    data["quality_flags"] = flags
+    payload = LLMPayload.model_validate(data)
+    return _restore_segment_metadata(payload, segment_payloads)
+
+
+def _published_episode_needs_deterministic_fallback(source: dict) -> bool:
+    """Identify an existing published episode that cannot be reused as-is."""
+    try:
+        card = EnrichedCardV2.model_validate_json(
+            _episode_card_path(source).read_text(encoding="utf-8")
+        )
+    except (OSError, UnicodeError, ValidationError):
+        return False
+    return (
+        not card.summary.strip()
+        or not card.key_points
+        or bool({"extraction_unstable", "partial_segment_failure"} & set(card.quality_flags))
+    )
+
+
 def _merge_batches(payloads: list[dict], max_chars: int) -> list[list[dict]]:
     batches: list[list[dict]] = []
     current: list[dict] = []
     current_chars = 0
     for payload in payloads:
         payload_chars = len(json.dumps(payload, ensure_ascii=False, sort_keys=True))
+        # Keep a singleton with its next item so every merge level makes
+        # progress. A single oversized payload is still bounded by the pair,
+        # while the safety cap prevents the original 4+ segment requests.
         if current and current_chars + payload_chars > max_chars and len(current) > 1:
             batches.append(current)
             current = []

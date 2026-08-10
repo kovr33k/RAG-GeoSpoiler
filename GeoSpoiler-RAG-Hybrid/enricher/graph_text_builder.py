@@ -66,7 +66,16 @@ def build_graph_text(card: dict) -> str:
             speaker_prefix = f"{speaker}: " if speaker else ""
             parts.append(f"Позиция — {speaker_prefix}{th['text']}")
 
-    return "\n".join(parts)
+    graph_text = "\n".join(parts)
+    # Verbatim quotations are retrieval evidence, not graph prose.  A model
+    # may still repeat a quote inside a summary/thesis, so remove exact quote
+    # spans from the assembled graph text as a final deterministic guard.
+    for quote in card.get("quotes", []) or []:
+        if isinstance(quote, dict):
+            quote_text = str(quote.get("text") or "").strip()
+            if quote_text:
+                graph_text = graph_text.replace(quote_text, "")
+    return graph_text
 
 
 def build_search_text(card: dict) -> str:
