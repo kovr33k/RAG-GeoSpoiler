@@ -9,6 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from fetcher.telegram_client import TelegramMedia  # noqa: E402
 from normalizer.image_handler import _candidate_api_keys, describe_image  # noqa: E402
+from normalizer.instagram.downloader import _get_info_ytdlp  # noqa: E402
 from normalizer.instagram_handler import (  # noqa: E402
     _compute_edge_density,
     _compute_phash,
@@ -20,11 +21,34 @@ from normalizer.instagram_handler import (  # noqa: E402
     _write_cache,
     canonicalize_instagram_url,
 )
-from normalizer.transcription_handler import transcribe_media  # noqa: E402
+from normalizer.transcription_handler import _resolve_media_path, transcribe_media  # noqa: E402
 from normalizer.youtube_handler import _clean_description, extract_youtube_text  # noqa: E402
 
 
 class HandlerTests(unittest.TestCase):
+    def test_instagram_ytdlp_uses_active_python_environment(self):
+        completed = Mock(returncode=0, stdout='{"id": "ABC123"}', stderr="")
+        with patch("normalizer.instagram.downloader.subprocess.run", return_value=completed) as run:
+            info = _get_info_ytdlp("https://www.instagram.com/reel/ABC123/")
+
+        self.assertEqual(info["id"], "ABC123")
+        command = run.call_args.args[0]
+        self.assertEqual(command[:3], [sys.executable, "-m", "yt_dlp"])
+
+    def test_resolve_media_path_reanchors_stale_absolute_media_cache_path(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            active_cache = Path(tmpdir) / "media_cache"
+            active_file = active_cache / "Channel" / "voice" / "msg_14.ogg"
+            active_file.parent.mkdir(parents=True)
+            active_file.write_bytes(b"audio")
+
+            with patch("normalizer.transcription_handler.config.MEDIA_CACHE_DIR", active_cache):
+                resolved = _resolve_media_path(
+                    r"C:\WikiRag\RAG-GeoSpoiler\GeoSpoiler-RAG-Hybrid\media_cache\Channel\voice\msg_14.ogg"
+                )
+
+        self.assertEqual(resolved, active_file)
+
     def test_canonicalize_instagram_url_rewrites_kk_host(self):
         url = "https://kkinstagram.com/reel/DVRCLW0DZT9/?igsh=cWI0ejYzYnZvMzVi"
         self.assertEqual(
@@ -161,8 +185,10 @@ class HandlerTests(unittest.TestCase):
 
     def test_transcribe_media_writes_artifact(self):
         response = Mock()
-        response.raise_for_status.return_value = None
-        response.json.return_value = {"text": "transcribed native media"}
+        response.ok = True
+        response.json.return_value = {
+            "choices": [{"message": {"content": "transcribed native media"}}]
+        }
 
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
@@ -198,8 +224,105 @@ class HandlerTests(unittest.TestCase):
         self.assertEqual(result.text, "transcribed native media")
         self.assertEqual(payload["text"], "transcribed native media")
         self.assertEqual(payload["media"]["media_type"], "voice")
-        self.assertEqual(post.call_args.kwargs["data"]["model"], "whisper-1")
-        self.assertIn("/audio/transcriptions", post.call_args.args[0])
+        self.assertEqual(post.call_args.kwargs["json"]["model"], "whisper-1")
+        audio = post.call_args.kwargs["json"]["messages"][0]["content"][0]
+        self.assertEqual(audio["type"], "input_audio")
+        self.assertEqual(audio["input_audio"]["format"], "ogg")
+        self.assertIn("/chat/completions", post.call_args.args[0])
+
+    def test_transcribe_media_uses_json_stt_fallback_after_audio_route_400(self):
+        primary = Mock(ok=False, status_code=400, text='{"error":"audio unsupported"}')
+        fallback = Mock(ok=True, status_code=200)
+        fallback.json.return_value = {"text": "fallback transcript"}
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            media_path = root / "media_cache" / "Channel" / "voice" / "msg_12.ogg"
+            media_path.parent.mkdir(parents=True)
+            media_path.write_bytes(b"fake audio")
+            transcript_dir = root / "output" / "transcripts"
+            item = TelegramMedia(
+                media_type="voice",
+                mime_type="audio/ogg",
+                message_id=12,
+                file_path=str(media_path),
+                download_status="downloaded",
+            )
+
+            with patch("normalizer.transcription_handler.config.TRANSCRIPTION_ENABLED", True):
+                with patch("normalizer.transcription_handler.config.TRANSCRIPTION_API_KEY", "api-key"):
+                    with patch("normalizer.transcription_handler.config.TRANSCRIPTION_BASE_URL", "https://example.com/v1"):
+                        with patch("normalizer.transcription_handler.config.TRANSCRIPTION_MODEL", "gemini-audio"):
+                            with patch(
+                                "normalizer.transcription_handler.config.TRANSCRIPTION_STT_MODEL",
+                                "openai/whisper-large-v3",
+                            ):
+                                with patch("normalizer.transcription_handler.config.TRANSCRIPTION_LANGUAGE", ""):
+                                    with patch("normalizer.transcription_handler.config.TRANSCRIPTION_TIMEOUT_SECONDS", 10):
+                                        with patch("normalizer.transcription_handler.config.TRANSCRIPTION_DIR", transcript_dir):
+                                            with patch(
+                                                "normalizer.transcription_handler.requests.post",
+                                                side_effect=[primary, fallback],
+                                            ) as post:
+                                                result = transcribe_media(item, "Channel", 12)
+
+        self.assertEqual(result.status, "transcribed")
+        self.assertEqual(result.text, "fallback transcript")
+        self.assertEqual(post.call_count, 2)
+        self.assertIn("/chat/completions", post.call_args_list[0].args[0])
+        self.assertIn("/audio/transcriptions", post.call_args_list[1].args[0])
+        fallback_payload = post.call_args_list[1].kwargs["json"]
+        self.assertEqual(fallback_payload["model"], "openai/whisper-large-v3")
+        self.assertIn("input_audio", fallback_payload)
+        self.assertNotIn("files", post.call_args_list[1].kwargs)
+
+    def test_transcribe_media_extracts_audio_from_video_before_chat_request(self):
+        response = Mock(ok=True)
+        response.json.return_value = {
+            "choices": [{"message": {"content": "video transcript"}}]
+        }
+
+        def fake_ffmpeg(command, **kwargs):
+            Path(command[-1]).write_bytes(b"extracted mp3")
+            return Mock(returncode=0, stderr="")
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            media_path = root / "media_cache" / "Channel" / "video" / "msg_13.mp4"
+            media_path.parent.mkdir(parents=True)
+            media_path.write_bytes(b"fake video")
+            transcript_dir = root / "output" / "transcripts"
+            item = TelegramMedia(
+                media_type="video",
+                mime_type="video/mp4",
+                message_id=13,
+                file_path=str(media_path),
+                download_status="downloaded",
+            )
+
+            with patch("normalizer.transcription_handler.config.TRANSCRIPTION_ENABLED", True):
+                with patch("normalizer.transcription_handler.config.TRANSCRIPTION_API_KEY", "api-key"):
+                    with patch("normalizer.transcription_handler.config.TRANSCRIPTION_BASE_URL", "https://example.com/v1"):
+                        with patch("normalizer.transcription_handler.config.TRANSCRIPTION_MODEL", "gemini-audio"):
+                            with patch("normalizer.transcription_handler.config.TRANSCRIPTION_TIMEOUT_SECONDS", 10):
+                                with patch("normalizer.transcription_handler.config.TRANSCRIPTION_DIR", transcript_dir):
+                                    with patch(
+                                        "normalizer.transcription_handler.subprocess.run",
+                                        side_effect=fake_ffmpeg,
+                                    ):
+                                        with patch(
+                                            "normalizer.transcription_handler.requests.post",
+                                            return_value=response,
+                                        ) as post:
+                                            result = transcribe_media(item, "Channel", 13)
+
+        self.assertEqual(result.status, "transcribed")
+        audio = post.call_args.kwargs["json"]["messages"][0]["content"][0]
+        self.assertEqual(audio["input_audio"]["format"], "mp3")
+        self.assertEqual(
+            __import__("base64").b64decode(audio["input_audio"]["data"]),
+            b"extracted mp3",
+        )
 
 
 # ─────────────────────── Instagram Deep Extract Tests ───────────────────────
@@ -423,19 +546,33 @@ class InstagramCacheTests(unittest.TestCase):
                 with patch("normalizer.instagram_handler.config.INSTAGRAM_DEEP_EXTRACT_ENABLED", True):
                     self.assertIsNone(_read_cache("ABC123"))
 
-    def test_deep_extract_failure_does_not_cache_caption_only_fallback(self):
+    def test_deep_extract_failure_is_queued_instead_of_caption_only_success(self):
         info = {"description": "Caption", "uploader": "user", "duration": 10}
         with tempfile.TemporaryDirectory() as tmpdir:
-            cache_dir = Path(tmpdir)
+            root = Path(tmpdir)
+            cache_dir = root / "instagram_cache"
+            queue_dir = root / "review_queue"
+            cache_dir.mkdir()
+            queue_dir.mkdir()
             with patch("normalizer.instagram_handler.config.INSTAGRAM_CACHE_DIR", cache_dir):
-                with patch("normalizer.instagram_handler.config.INSTAGRAM_DEEP_EXTRACT_ENABLED", True):
-                    with patch("normalizer.instagram_handler._get_info_ytdlp", return_value=info):
-                        with patch("normalizer.instagram_handler._deep_extract_reel", return_value=None):
-                            from normalizer.instagram_handler import extract_instagram_text
+                with patch("normalizer.instagram_handler.config.REVIEW_QUEUE_DIR", queue_dir):
+                    with patch("normalizer.instagram_handler.config.INSTAGRAM_DEEP_EXTRACT_ENABLED", True):
+                        with patch("normalizer.instagram_handler._get_info_ytdlp", return_value=info):
+                            with patch("normalizer.instagram_handler._deep_extract_reel", return_value=None):
+                                from normalizer.instagram_handler import extract_instagram_text
 
-                            result = extract_instagram_text("https://www.instagram.com/reel/ABC123/")
+                                result = extract_instagram_text(
+                                    "https://www.instagram.com/reel/ABC123/",
+                                    channel_name="Channel",
+                                    message_id=42,
+                                )
 
-            self.assertIn("Caption", result)
+            self.assertIn("очеред", result.lower())
+            queued = list(queue_dir.glob("*.json"))
+            self.assertEqual(len(queued), 1)
+            payload = json.loads(queued[0].read_text(encoding="utf-8"))
+            self.assertEqual(payload["status"], "pending")
+            self.assertIn("deep extraction failed", payload["reason"])
             self.assertFalse((cache_dir / "ABC123.json").exists())
 
 

@@ -7,6 +7,7 @@ then assembles everything into a single normalized text file per message.
 
 import json
 import logging
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -194,28 +195,14 @@ def normalize_message(
 
     # Instagram: same rule — auto-process only link-only posts.
     for url in classified.instagram_urls:
-        if has_body_text:
-            rv = queue_review_item(
-                review_type=REVIEW_TYPE_EXTERNAL_LINK,
-                channel_name=msg.channel_name,
-                message_id=msg.message_id,
-                message_text=msg.text,
-                message_date=msg.date,
-                url=url,
-                reason="Instagram link in post with text",
-            )
-            sections.append(rv.placeholder_text)
-            if rv.action == "queued":
-                link_review_created += 1
-        else:
-            ig_text = extract_instagram_text(
-                url,
-                channel_name=msg.channel_name,
-                message_id=msg.message_id,
-                message_text=msg.text,
-                message_date=msg.date,
-            )
-            sections.append(ig_text)
+        ig_text = extract_instagram_text(
+            url,
+            channel_name=msg.channel_name,
+            message_id=msg.message_id,
+            message_text=msg.text,
+            message_date=msg.date,
+        )
+        sections.append(ig_text)
 
     for url in classified.ai_chat_urls:
         review_result = queue_for_review(
@@ -506,8 +493,10 @@ def _strip_urls_from_text(text: str, urls: list[str]) -> str:
     result = text
     for url in urls:
         result = result.replace(url, "")
-    import re
-
+    # Telegram entities and message text can differ in punctuation, aliases,
+    # or URL normalization. Remove any remaining URL token as a final guard so
+    # a URL-only post cannot be misclassified as substantive body text.
+    result = re.sub(r"(?:https?://|www\.)[^\s<>\"']+", " ", result, flags=re.IGNORECASE)
     result = re.sub(r"\n{3,}", "\n\n", result)
     return result.strip()
 

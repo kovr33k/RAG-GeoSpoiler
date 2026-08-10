@@ -46,6 +46,7 @@ def queue_item(
     url: str = "",
     reason: str = "",
     normalized_filepath: str = "",
+    reopen_processed: bool = False,
 ) -> ReviewResult:
     """
     Save an item to the review queue for manual processing.
@@ -81,13 +82,22 @@ def queue_item(
     filename = f"{channel_name}_{message_id}_{unique_key}.json"
     filepath = config.REVIEW_QUEUE_DIR / _sanitize(filename)
 
-    # Guard: do NOT overwrite files that have already been reviewed.
-    # Re-normalizing the same message must not reset a processed/skipped item
-    # back to pending (which would erase the extracted_text).
+    # Guard: do NOT overwrite files that have already been reviewed unless an
+    # automated extractor explicitly reopens a processed item after a fresh
+    # source-access failure. Skipped items remain terminal by design.
     if filepath.exists():
         try:
             existing = json.loads(filepath.read_text(encoding="utf-8"))
-            if existing.get("status") in ("processed", "skipped"):
+            if existing.get("status") == "processed" and reopen_processed:
+                review_item["reopened_from_status"] = "processed"
+                review_item["previous_extracted_text"] = existing.get("extracted_text")
+                review_item["previous_reviewed_at"] = existing.get("reviewed_at")
+                logger.info("  Reopening processed review item after fresh extraction failure: %s", filepath.name)
+            elif existing.get("status") == "pending":
+                for key in ("reopened_from_status", "previous_extracted_text", "previous_reviewed_at"):
+                    if key in existing:
+                        review_item[key] = existing[key]
+            elif existing.get("status") in ("processed", "skipped"):
                 logger.info(
                     f"  Review item already reviewed ({existing['status']}), skipping: {filepath.name}"
                 )

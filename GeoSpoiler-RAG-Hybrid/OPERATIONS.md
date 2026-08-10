@@ -57,6 +57,18 @@ operationally important flags to check before runs:
 | `RERANKER_ENABLED` | Enable reranker hook | Keep `false`; latest DeepSeek golden regressed with reranker. |
 | `TRANSCRIPTION_ENABLED` | Enable native media transcription | Keep `false` unless testing real downloaded media. |
 
+Instagram Reel extraction uses the `yt-dlp` module from the active Python
+interpreter, not a globally installed executable. Verify the runtime before a
+media backfill:
+
+```powershell
+.\.venv\Scripts\python.exe -m yt_dlp --version
+```
+
+The project requires `yt-dlp>=2026.7.4`; older global versions can return
+`Instagram sent an empty media response` even when the Reel is publicly
+playable in a browser.
+
 ## Normal Daily Flow
 
 Check current state:
@@ -235,12 +247,20 @@ TRANSCRIPTION_ENABLED
 TRANSCRIPTION_API_KEY
 TRANSCRIPTION_BASE_URL
 TRANSCRIPTION_MODEL
+TRANSCRIPTION_STT_MODEL
 TRANSCRIPTION_LANGUAGE
 TRANSCRIPTION_TIMEOUT_SECONDS
 ```
 
 New native media transcripts are attached during normalization when
 `TRANSCRIPTION_ENABLED=true` and downloaded media is available.
+
+The primary route sends normalized audio to OpenRouter `/chat/completions`
+using `TRANSCRIPTION_MODEL` (Gemini audio input). Video files are converted to
+mono mp3 before upload. HTTP contract errors use the JSON/base64
+`/audio/transcriptions` fallback with `TRANSCRIPTION_STT_MODEL`; both routes
+record a failed status and response detail instead of silently treating the
+media as successfully processed.
 
 For old downloaded media, use controlled backfill:
 

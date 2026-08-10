@@ -17,6 +17,7 @@ from dataclasses import dataclass, field
 
 import config
 from fetcher.telegram_client import TelegramMedia, TelegramMessage
+from normalizer.instagram.downloader import canonicalize_instagram_url
 from normalizer.youtube_handler import is_valid_youtube_url
 
 logger = logging.getLogger("geospoiler.router")
@@ -64,10 +65,11 @@ def classify(msg: TelegramMessage) -> ClassifiedMessage:
             logger.debug(f"  YouTube URL: {url_clean}")
             continue
 
-        # Instagram
-        if config.INSTAGRAM_PATTERN.search(url_clean):
-            result.instagram_urls.append(url_clean)
-            logger.debug(f"  Instagram URL: {url_clean}")
+        # Instagram. Canonicalize archived kkinstagram links before matching.
+        instagram_url = canonicalize_instagram_url(url_clean)
+        if config.INSTAGRAM_PATTERN.search(instagram_url):
+            result.instagram_urls.append(instagram_url)
+            logger.debug(f"  Instagram URL: {instagram_url}")
             continue
 
         # Any other web URL

@@ -4,12 +4,19 @@ import json
 import logging
 import re
 import subprocess
+import sys
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
 import config
 
 logger = logging.getLogger("geospoiler.normalizer.instagram")
+
+
+def _yt_dlp_command(*args: str) -> list[str]:
+    """Run yt-dlp from the interpreter that owns the active project environment."""
+    return [sys.executable, "-m", "yt_dlp", *args]
+
 
 def canonicalize_instagram_url(url: str) -> str:
     """Rewrite archived kkinstagram links back to canonical Instagram URLs."""
@@ -41,7 +48,7 @@ def _get_info_ytdlp(url: str) -> dict | None:
     """Get post metadata via yt-dlp --dump-json."""
     try:
         result = subprocess.run(
-            ["yt-dlp", "--dump-json", "--no-download", "--no-warnings", url],
+            _yt_dlp_command("--dump-json", "--no-download", "--no-warnings", url),
             capture_output=True,
             text=True,
             timeout=30,
@@ -49,6 +56,20 @@ def _get_info_ytdlp(url: str) -> dict | None:
         )
         if result.returncode == 0 and result.stdout:
             return json.loads(result.stdout)
+        details = (result.stderr or "").strip().replace("\r", " ").replace("\n", " ")
+        if details:
+            logger.warning(
+                "yt-dlp metadata extraction failed for %s (exit=%s): %s",
+                url,
+                result.returncode,
+                details[-1000:],
+            )
+        else:
+            logger.warning(
+                "yt-dlp metadata extraction failed for %s (exit=%s; empty stderr)",
+                url,
+                result.returncode,
+            )
     except subprocess.TimeoutExpired:
         logger.warning(f"yt-dlp timeout for {url}")
     except json.JSONDecodeError:
@@ -57,19 +78,19 @@ def _get_info_ytdlp(url: str) -> dict | None:
         logger.error("yt-dlp not found — install it: pip install yt-dlp")
     return None
 
+
 def _download_video(url: str, work_dir: Path, post_id: str) -> Path | None:
     """Download video via yt-dlp."""
     out_path = work_dir / f"{post_id}.%(ext)s"
     try:
         subprocess.run(
-            [
-                "yt-dlp",
+            _yt_dlp_command(
                 "-f", "best[ext=mp4]/best",
                 "--no-warnings",
                 "--max-filesize", f"{config.INSTAGRAM_MAX_VIDEO_SIZE_MB}M",
                 "-o", str(out_path),
                 url,
-            ],
+            ),
             capture_output=True,
             text=True,
             timeout=120,
@@ -96,6 +117,7 @@ def _download_video(url: str, work_dir: Path, post_id: str) -> Path | None:
             return m
     return None
 
+
 def _download_carousel_images(
     url: str, carousel_dir: Path, post_id: str, info: dict
 ) -> list[Path]:
@@ -103,12 +125,11 @@ def _download_carousel_images(
     out_template = str(carousel_dir / f"{post_id}_%(autonumber)s.%(ext)s")
     try:
         subprocess.run(
-            [
-                "yt-dlp",
+            _yt_dlp_command(
                 "--no-warnings",
                 "-o", out_template,
                 url,
-            ],
+            ),
             capture_output=True,
             text=True,
             timeout=120,
@@ -156,8 +177,7 @@ def _get_subtitles_from_info(url: str, info: dict) -> str | None:
     sub_dir.mkdir(parents=True, exist_ok=True)
 
     try:
-        cmd = [
-            "yt-dlp",
+        cmd = _yt_dlp_command(
             "--skip-download",
             "--no-warnings",
             "--write-subs" if not use_auto else "--write-auto-subs",
@@ -166,7 +186,7 @@ def _get_subtitles_from_info(url: str, info: dict) -> str | None:
             "--convert-subs", "srt",
             "-o", str(sub_dir / "%(id)s"),
             url,
-        ]
+        )
         subprocess.run(cmd, capture_output=True, text=True, timeout=30, encoding="utf-8")
 
         video_id = info.get("id", "")

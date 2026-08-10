@@ -22,6 +22,8 @@ from normalizer.instagram.downloader import (
 )
 from normalizer.instagram.frames import _dedup_frames, _extract_frames, _filter_empty_frames
 from normalizer.instagram.vision import _describe_single_image, _ocr_frames_batched, _summarize_reel
+from normalizer.review_queue import REVIEW_TYPE_EXTERNAL_LINK
+from normalizer.review_queue import queue_item as queue_review_item
 
 logger = logging.getLogger("geospoiler.normalizer.instagram")
 
@@ -51,9 +53,16 @@ def extract_instagram_text(
     info = _get_info_ytdlp(canonical_url)
     if not info:
         logger.warning(f"Could not extract Instagram content from {canonical_url}")
-        return (
-            f"[Instagram: {canonical_url}]\n"
-            "[Содержание не удалось извлечь - пост может быть приватным]"
+        return _queue_instagram_extraction_failure(
+            canonical_url,
+            channel_name=channel_name,
+            message_id=message_id,
+            message_text=message_text,
+            message_date=message_date,
+            reason=(
+                "Instagram media metadata unavailable to yt-dlp; the page may still be "
+                "visible in a browser (empty media response or extractor access block)"
+            ),
         )
 
     caption = (info.get("description") or info.get("title") or "").strip()
@@ -79,18 +88,59 @@ def extract_instagram_text(
                 if post_id and not _is_review_queue_placeholder(result):
                     _write_cache(post_id, result)
                 return result
+            return _queue_instagram_extraction_failure(
+                canonical_url,
+                channel_name=channel_name,
+                message_id=message_id,
+                message_text=message_text,
+                message_date=message_date,
+                reason="Instagram Reel deep extraction failed",
+            )
         else:
             result = _deep_extract_carousel(canonical_url, info, caption, uploader)
             if result:
                 if post_id:
                     _write_cache(post_id, result)
                 return result
+            return _queue_instagram_extraction_failure(
+                canonical_url,
+                channel_name=channel_name,
+                message_id=message_id,
+                message_text=message_text,
+                message_date=message_date,
+                reason="Instagram carousel extraction failed",
+                post_type="Post",
+            )
 
     # Fallback: caption-only (original behavior)
     result = _caption_only(canonical_url, info, caption, uploader, is_reel)
     if post_id and not config.INSTAGRAM_DEEP_EXTRACT_ENABLED:
         _write_cache(post_id, result)
     return result
+
+
+def _queue_instagram_extraction_failure(
+    url: str,
+    *,
+    channel_name: str,
+    message_id: int,
+    message_text: str,
+    message_date: datetime | None,
+    reason: str,
+    post_type: str = "Reel",
+) -> str:
+    """Make source-access failures visible without pretending caption-only success."""
+    review = queue_review_item(
+        review_type=REVIEW_TYPE_EXTERNAL_LINK,
+        channel_name=channel_name,
+        message_id=message_id,
+        message_text=message_text,
+        message_date=message_date,
+        url=url,
+        reason=reason,
+        reopen_processed=True,
+    )
+    return f"[Instagram {post_type}: {url}]\n{review.placeholder_text}"
 
 def _deep_extract_reel(
     url: str,

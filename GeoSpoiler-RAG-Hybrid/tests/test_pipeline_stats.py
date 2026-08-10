@@ -9,10 +9,81 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from fetcher.telegram_client import TelegramMessage  # noqa: E402
 from normalizer.ai_chat_handler import AIReviewResult  # noqa: E402
-from normalizer.pipeline import normalize_batch  # noqa: E402
+from normalizer.pipeline import normalize_batch, normalize_message  # noqa: E402
+from normalizer.router import classify  # noqa: E402
 
 
 class PipelineStatsTests(unittest.TestCase):
+    def test_kkinstagram_url_only_is_canonicalized_and_not_body_text(self):
+        url = "https://kkinstagram.com/reel/DT_BzWeD9SF/?igsh=abc123"
+        msg = TelegramMessage(
+            channel_name="Ультра левые и ультра правые",
+            channel_id=1,
+            channel_username="channel",
+            message_id=16,
+            date=datetime(2026, 6, 22),
+            text=url,
+            urls=[url],
+        )
+        classified = classify(msg)
+        saved = {}
+
+        def fake_save(message, text, metadata=None):
+            saved["text"] = text
+            saved["metadata"] = metadata
+            return Path("D:/fake/16.txt")
+
+        with patch("normalizer.pipeline.normalize_text", side_effect=lambda text: text):
+            with patch("normalizer.pipeline.extract_instagram_text", return_value="[reel extracted]") as extract:
+                with patch("normalizer.pipeline._save_normalized", side_effect=fake_save):
+                    with patch(
+                        "normalizer.pipeline.translate_to_russian_if_needed",
+                        side_effect=lambda text: text,
+                    ):
+                        result = normalize_message(msg, classified)
+
+        self.assertEqual(
+            classified.instagram_urls,
+            ["https://www.instagram.com/reel/DT_BzWeD9SF/?igsh=abc123"],
+        )
+        self.assertEqual(result.link_review_created, 0)
+        self.assertEqual(extract.call_count, 1)
+        self.assertFalse(saved["metadata"]["has_body_text"])
+        self.assertIn("[reel extracted]", saved["text"])
+
+    def test_instagram_reel_with_caption_is_extracted_not_queued(self):
+        url = "https://www.instagram.com/reel/DN3mCxKWnaL/?igsh=abc123"
+        msg = TelegramMessage(
+            channel_name="Ультра левые и ультра правые",
+            channel_id=1,
+            channel_username="channel",
+            message_id=18,
+            date=datetime(2026, 6, 22),
+            text=f"Подпись к ролику\n{url}",
+            urls=[url],
+        )
+        saved = {}
+
+        def fake_save(message, text, metadata=None):
+            saved["text"] = text
+            saved["metadata"] = metadata
+            return Path("D:/fake/18.txt")
+
+        with patch("normalizer.pipeline.normalize_text", side_effect=lambda text: text):
+            with patch("normalizer.pipeline.extract_instagram_text", return_value="[reel extracted]") as extract:
+                with patch("normalizer.pipeline._save_normalized", side_effect=fake_save):
+                    with patch(
+                        "normalizer.pipeline.translate_to_russian_if_needed",
+                        side_effect=lambda text: text,
+                    ):
+                        result = normalize_message(msg)
+
+        extract.assert_called_once()
+        self.assertEqual(result.link_review_created, 0)
+        self.assertTrue(saved["metadata"]["has_body_text"])
+        self.assertIn("Подпись к ролику", saved["text"])
+        self.assertIn("[reel extracted]", saved["text"])
+
     def test_normalize_batch_collects_content_type_and_review_stats(self):
         msg1 = TelegramMessage(
             channel_name="Channel",
@@ -101,7 +172,7 @@ class PipelineStatsTests(unittest.TestCase):
         self.assertEqual(result.failed_messages, 0)
         self.assertEqual(result.ai_review_created, 1)
         self.assertEqual(result.ai_review_already_reviewed, 1)
-        self.assertEqual(result.link_review_created, 3)
+        self.assertEqual(result.link_review_created, 1)
         self.assertEqual(len(result.texts_with_paths), 1)
         self.assertEqual(Path(result.texts_with_paths[0][0]), Path("D:/fake/101.txt"))
         self.assertEqual(ANY, result.texts_with_paths[0][1])

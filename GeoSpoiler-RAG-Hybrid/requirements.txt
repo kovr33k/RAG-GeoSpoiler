@@ -9,8 +9,8 @@ openai>=2.0.0
 crawl4ai>=0.4.0
 requests>=2.31.0
 
-# YouTube subtitles
-yt-dlp>=2024.0.0
+# YouTube/Instagram media extraction (Instagram API-compatible extractor)
+yt-dlp>=2026.7.4
 
 # Instagram (captions)
 instaloader>=4.13.0
