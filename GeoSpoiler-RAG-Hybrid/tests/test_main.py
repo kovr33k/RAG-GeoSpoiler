@@ -13,7 +13,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import cli_app  # noqa: E402
 import cli_pipeline  # noqa: E402
 import cli_query  # noqa: E402
-import cli_wiki  # noqa: E402
 import main  # noqa: E402
 
 
@@ -133,11 +132,11 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
 
     def test_extract_query_sources_uses_direct_reference_metadata(self):
         result = {
-            "llm_response": {"content": "Answer\n\n### References\n- [1] Wiki source"},
+            "llm_response": {"content": "Answer\n\n### References\n- [1] Direct source"},
             "data": {
                 "references": [
                     {
-                        "reference_id": "wiki-1-1",
+                        "reference_id": "direct-1",
                         "file_path": "output/normalized/test/10.txt",
                         "post_url": "https://t.me/c/1/10",
                         "channel": "Test",
@@ -207,7 +206,7 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(count, 0)
         mark.assert_not_called()
 
-    async def test_cmd_run_runs_wiki_ingest_after_enrich_before_load(self):
+    async def test_cmd_run_stops_after_enrich_and_local_index_refresh(self):
         calls = []
 
         async def fake_fetch(limit=None):
@@ -216,22 +215,32 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
 
         def fake_enrich():
             calls.append("enrich")
+            return SimpleNamespace()
 
-        def fake_wiki_ingest():
-            calls.append("wiki_ingest")
-
-        async def fake_load(texts_with_paths=None):
+        async def forbidden_load(*_args, **_kwargs):
             calls.append("load")
-            return cli_pipeline.LoadStats()
 
         with patch.object(cli_pipeline, "cmd_fetch", side_effect=fake_fetch):
             with patch.object(cli_pipeline, "cmd_enrich", side_effect=fake_enrich):
-                with patch.object(cli_pipeline, "cmd_wiki_ingest", side_effect=fake_wiki_ingest):
-                    with patch.object(cli_pipeline, "cmd_load", side_effect=fake_load):
-                        with patch.object(cli_pipeline, "_print_run_summary"):
-                            await cli_pipeline.cmd_run()
+                with patch.object(cli_pipeline, "cmd_load", side_effect=forbidden_load):
+                    with patch.object(cli_pipeline, "_print_pipeline_summary"):
+                        await cli_pipeline.cmd_run()
 
-        self.assertEqual(calls, ["fetch", "enrich", "wiki_ingest", "load"])
+        self.assertEqual(calls, ["fetch", "enrich"])
+
+    def test_maybe_launch_reviewer_opens_web_when_pending_and_enabled(self):
+        with patch.object(cli_pipeline, "get_pending_reviews", return_value=[{"id": "review-1"}]):
+            with patch.object(cli_pipeline.config, "AUTO_OPEN_REVIEWER_AFTER_RUN", True, create=True):
+                with patch.object(cli_pipeline, "launch_reviewer_web") as launch:
+                    with patch("sys.stdout", io.StringIO()):
+                        cli_pipeline._maybe_launch_reviewer()
+
+        launch.assert_called_once()
+
+    def test_run_pipeline_review_command_launches_web_reviewer(self):
+        script = Path("run_pipeline.ps1").read_text(encoding="utf-8")
+
+        self.assertIn('Invoke-Python main.py review --web', script)
 
     def test_main_query_cli_joins_full_question_and_mode(self):
         captured = {}
@@ -311,7 +320,7 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(captured.get("mode"), cli_app._default_query_mode())
         self.assertIsNone(captured.get("query_profile"))
 
-    def test_main_rebuild_cli_defaults_to_normalized_graph(self):
+    def test_main_rebuild_cli_uses_explicit_enriched_graph_command(self):
         captured = {"called": False}
         original_run = py_asyncio.run
 
@@ -329,34 +338,12 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertTrue(captured["called"])
 
-    def test_main_rebuild_cli_rejects_enriched_flag(self):
+    def test_main_load_cli_defaults_to_enriched_graph(self):
         captured = {"called": False}
-        output = io.StringIO()
         original_run = py_asyncio.run
 
-        async def fake_cmd_rebuild():
+        async def fake_cmd_load():
             captured["called"] = True
-
-        def fake_run(coro):
-            original_run(coro)
-
-        with patch.object(cli_app, "setup_logging"):
-            with patch.object(cli_app, "cmd_rebuild", fake_cmd_rebuild):
-                with patch("sys.stdout", output):
-                    with patch.object(cli_app.asyncio, "run", side_effect=fake_run):
-                        with patch.object(sys, "argv", ["main.py", "rebuild", "--from-enriched"]):
-                            main.main()
-
-        self.assertFalse(captured["called"])
-        self.assertIn("not supported", output.getvalue())
-        self.assertIn("experimental", output.getvalue())
-
-    def test_main_load_cli_defaults_to_normalized_graph(self):
-        captured = {}
-        original_run = py_asyncio.run
-
-        async def fake_cmd_load(texts_with_paths=None):
-            captured["texts_with_paths"] = texts_with_paths
             return cli_pipeline.LoadStats()
 
         def fake_run(coro):
@@ -369,30 +356,7 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
                         with patch.object(sys, "argv", ["main.py", "load"]):
                             main.main()
 
-        self.assertIsNone(captured.get("texts_with_paths"))
-
-    def test_main_load_cli_rejects_enriched_flag(self):
-        captured = {"called": False}
-        output = io.StringIO()
-        original_run = py_asyncio.run
-
-        async def fake_cmd_load(texts_with_paths=None):
-            captured["called"] = True
-            return cli_pipeline.LoadStats()
-
-        def fake_run(coro):
-            return original_run(coro)
-
-        with patch.object(cli_app, "setup_logging"):
-            with patch.object(cli_app, "cmd_load", fake_cmd_load):
-                with patch("sys.stdout", output):
-                    with patch.object(cli_app.asyncio, "run", side_effect=fake_run):
-                        with patch.object(sys, "argv", ["main.py", "load", "--from-enriched"]):
-                            main.main()
-
-        self.assertFalse(captured["called"])
-        self.assertIn("not supported", output.getvalue())
-        self.assertIn("experimental", output.getvalue())
+        self.assertTrue(captured["called"])
 
     def test_main_fts_search_cli_parses_flags(self):
         captured = {}
@@ -423,6 +387,25 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(captured.get("query"), "Trump Orban")
         self.assertEqual(captured.get("top_k"), 3)
         self.assertTrue(captured.get("compare_shadow"))
+
+    def test_main_fts_search_cli_all_passes_unbounded_limit(self):
+        captured = {}
+
+        def fake_cmd_fts_search(query, top_k=10, compare_shadow=False):
+            captured["query"] = query
+            captured["top_k"] = top_k
+
+        with patch.object(cli_app, "setup_logging"):
+            with patch.object(cli_app, "cmd_fts_search", fake_cmd_fts_search):
+                with patch.object(sys, "argv", ["main.py", "fts", "search", "Cuba", "--all"]):
+                    main.main()
+
+        self.assertEqual(captured, {"query": "Cuba", "top_k": None})
+
+    def test_fts_search_cli_rejects_all_with_top_k(self):
+        parser = cli_app.build_parser()
+        with self.assertRaises(SystemExit):
+            parser.parse_args(["fts", "search", "Cuba", "--all", "--top-k", "3"])
 
     def test_main_fts_rebuild_cli_dispatches(self):
         captured = {}
@@ -526,85 +509,94 @@ class MainQueryTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertTrue(captured.get("called"))
 
-    def test_main_wiki_ingest_cli_dispatches(self):
+    def test_wiki_run_parser_accepts_paths_profile_and_no_luna(self):
+        args = cli_app.build_parser().parse_args(
+            [
+                "wiki",
+                "run",
+                "first.enriched.json",
+                "second.enriched.json",
+                "--llm-profile",
+                "luna",
+                "--no-luna",
+            ]
+        )
+
+        self.assertEqual(args.command, "wiki")
+        self.assertEqual(args.subcommand, "run")
+        self.assertEqual(
+            args.paths,
+            ["first.enriched.json", "second.enriched.json"],
+        )
+        self.assertEqual(args.llm_profile, "luna")
+        self.assertTrue(args.no_luna)
+
+    @patch.object(cli_app.config, "WIKI_ENABLED", True)
+    def test_main_wiki_run_dispatches_and_opens_pending_review(self):
+        captured = {}
+        stats = SimpleNamespace(review_counts=SimpleNamespace(total=3))
+
+        def fake_cmd_wiki_run(paths, *, use_luna=None):
+            captured["paths"] = paths
+            captured["use_luna"] = use_luna
+            return stats
+
+        with patch.object(cli_app, "setup_logging"):
+            with patch.object(cli_app, "cmd_wiki_run", fake_cmd_wiki_run):
+                with patch.object(cli_app, "_maybe_launch_reviewer") as launch:
+                    with patch.object(
+                        sys,
+                        "argv",
+                        [
+                            "main.py",
+                            "wiki",
+                            "run",
+                            "card.enriched.json",
+                            "--no-luna",
+                        ],
+                    ):
+                        main.main()
+
+        self.assertEqual(captured["paths"], ["card.enriched.json"])
+        self.assertFalse(captured["use_luna"])
+        launch.assert_called_once_with()
+
+    @patch.object(cli_app.config, "WIKI_ENABLED", True)
+    def test_main_wiki_search_joins_query_and_passes_limit(self):
         captured = {}
 
-        def fake_cmd_wiki_ingest():
-            captured["called"] = True
+        def fake_cmd_wiki_search(query, *, limit=12):
+            captured["query"] = query
+            captured["limit"] = limit
 
-        with patch.object(cli_app, "cmd_wiki_ingest", fake_cmd_wiki_ingest):
-            with patch.object(sys, "argv", ["main.py", "wiki", "ingest"]):
-                main.main()
+        with patch.object(cli_app, "setup_logging"):
+            with patch.object(cli_app, "cmd_wiki_search", fake_cmd_wiki_search):
+                with patch.object(
+                    sys,
+                    "argv",
+                    [
+                        "main.py",
+                        "wiki",
+                        "search",
+                        "Китай",
+                        "ракеты",
+                        "--limit",
+                        "4",
+                    ],
+                ):
+                    main.main()
 
-        self.assertTrue(captured.get("called"))
+        self.assertEqual(captured, {"query": "Китай ракеты", "limit": 4})
 
-    def test_main_wiki_overview_cli_dispatches(self):
-        captured = {}
+    def test_main_wiki_commands_are_blocked_when_master_switch_is_off(self):
+        with patch.object(cli_app.config, "WIKI_ENABLED", False):
+            with patch.object(cli_app, "setup_logging"):
+                with patch.object(cli_app, "cmd_wiki_run") as wiki_run:
+                    with patch.object(
+                        sys,
+                        "argv",
+                        ["main.py", "wiki", "run", "card.enriched.json"],
+                    ):
+                        main.main()
 
-        def fake_cmd_wiki_overview():
-            captured["called"] = True
-
-        with patch.object(cli_app, "cmd_wiki_overview", fake_cmd_wiki_overview):
-            with patch.object(sys, "argv", ["main.py", "wiki", "overview"]):
-                main.main()
-
-        self.assertTrue(captured.get("called"))
-
-    def test_main_wiki_coverage_backfill_cli_dispatches(self):
-        captured = {}
-
-        def fake_cmd_wiki_coverage_backfill():
-            captured["called"] = True
-
-        with patch.object(cli_app, "cmd_wiki_coverage_backfill", fake_cmd_wiki_coverage_backfill):
-            with patch.object(sys, "argv", ["main.py", "wiki", "coverage-backfill"]):
-                main.main()
-
-        self.assertTrue(captured.get("called"))
-
-    def test_main_wiki_localize_cli_dispatches(self):
-        captured = {}
-
-        def fake_cmd_wiki_localize():
-            captured["called"] = True
-
-        with patch.object(cli_app, "cmd_wiki_localize", fake_cmd_wiki_localize):
-            with patch.object(sys, "argv", ["main.py", "wiki", "localize"]):
-                main.main()
-
-        self.assertTrue(captured.get("called"))
-
-    def test_cmd_wiki_init_creates_minimal_scaffold(self):
-        with tempfile.TemporaryDirectory() as tmpdir:
-            wiki_dir = Path(tmpdir) / "wiki"
-            with patch.object(cli_wiki.config, "WIKI_DIR", wiki_dir):
-                with patch.object(cli_wiki.config, "WIKI_INDEX_DIR", wiki_dir / "indexes"):
-                    stats = cli_wiki.cmd_wiki_init()
-
-            self.assertEqual(len(stats.directories_created), 5)
-            self.assertEqual(len(stats.files_created), 6)
-            for dirname in ["entities", "topics", "claims", "indexes"]:
-                self.assertTrue((wiki_dir / dirname).is_dir())
-            for filename in [
-                "_master_index.md",
-                "_schema.md",
-                "_health.md",
-                "_change_log.md",
-                "_log.md",
-                "_pending_updates.json",
-            ]:
-                self.assertTrue((wiki_dir / filename).is_file())
-
-    def test_cmd_wiki_init_does_not_overwrite_existing_files(self):
-        with tempfile.TemporaryDirectory() as tmpdir:
-            wiki_dir = Path(tmpdir) / "wiki"
-            with patch.object(cli_wiki.config, "WIKI_DIR", wiki_dir):
-                with patch.object(cli_wiki.config, "WIKI_INDEX_DIR", wiki_dir / "indexes"):
-                    cli_wiki.cmd_wiki_init()
-                    schema_path = wiki_dir / "_schema.md"
-                    schema_path.write_text("manual edit\n", encoding="utf-8")
-
-                    stats = cli_wiki.cmd_wiki_init()
-
-            self.assertEqual(stats.files_created, [])
-            self.assertEqual(schema_path.read_text(encoding="utf-8"), "manual edit\n")
+        wiki_run.assert_not_called()

@@ -27,7 +27,6 @@ Recommended trusted flags:
 ```text
 RERANKER_ENABLED=false
 HYBRID_SYNTH_ENABLED=true
-WIKI_ENABLED=true
 ```
 
 Latest trusted results:
@@ -69,17 +68,10 @@ Relevant focused suites:
 
 ```powershell
 python -m unittest test_golden_set_unit test_golden_compare test_baseline_probe
-python -m unittest test_wiki_index test_wiki_health test_wiki_resolver
 python -m unittest test_media_capture test_transcription_backfill
 ```
 
 ## Local Health Checks
-
-Wiki health:
-
-```powershell
-python main.py wiki health
-```
 
 FTS sanity:
 
@@ -229,7 +221,6 @@ python golden_compare.py artifacts/baseline_scores.json artifacts/candidate_scor
 
 Use this after changes to:
 
-- wiki context;
 - retrieval ranking;
 - synthesis prompts;
 - reranker configuration;
@@ -276,13 +267,13 @@ python llm_verification_probe.py
 
 ## Reranker Evaluation
 
-Keep reranker evaluation separate from wiki and synthesis changes.
+Keep reranker evaluation separate from synthesis changes.
 
 Recommended sequence:
 
 1. Run golden with `RERANKER_ENABLED=false`.
 2. Run the same golden with `RERANKER_ENABLED=true`.
-3. Keep `WIKI_ENABLED` and `HYBRID_SYNTH_ENABLED` explicit in both runs.
+3. Keep `HYBRID_SYNTH_ENABLED` explicit in both runs.
 4. Compare with `golden_compare.py`.
 5. Inspect latency, source grounding, and unsupported confident claims.
 

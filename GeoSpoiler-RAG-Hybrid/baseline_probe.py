@@ -3,7 +3,7 @@ Baseline model probe for roadmap E1.
 
 The probe records the query model/endpoint/config flags used for baseline work
 and can run a small set of manual LightRAG queries. It does not modify .env,
-clear caches, rebuild storage, or call any wiki-specific query integration.
+clear caches, rebuild storage, or call any optional query integration.
 """
 
 from __future__ import annotations

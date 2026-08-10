@@ -2,6 +2,7 @@ import asyncio
 import json
 import shutil
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
@@ -42,6 +43,22 @@ from loader.storage import (  # noqa: E402
 )
 from retrieval import shadow_search  # noqa: E402
 from retrieval.source_registry import rebuild_source_registry  # noqa: E402
+
+
+def _v2_provenance(
+    root: Path,
+    source_path: Path,
+    *,
+    source_id: str | None = None,
+    channel: str | None = None,
+    **extra,
+) -> dict:
+    return {
+        "source_id": source_id or f"test:{source_path.parent.name}:{source_path.stem}",
+        "normalized_path": str(source_path.relative_to(root)),
+        "channel": channel or source_path.parent.name,
+        **extra,
+    }
 
 
 class LightragLoaderFacadeTests(unittest.TestCase):
@@ -160,6 +177,21 @@ class _FailedStatusRag(_FakeRag):
 
 
 class LoadTextsTests(unittest.IsolatedAsyncioTestCase):
+    def setUp(self):
+        super().setUp()
+        self._rag_storage_temp = tempfile.TemporaryDirectory()
+        self._rag_storage_patch = patch.object(
+            config,
+            "RAG_STORAGE_DIR",
+            Path(self._rag_storage_temp.name) / "rag_storage",
+        )
+        self._rag_storage_patch.start()
+
+    def tearDown(self):
+        self._rag_storage_patch.stop()
+        self._rag_storage_temp.cleanup()
+        super().tearDown()
+
     async def test_load_texts_uses_stable_path_based_doc_ids(self):
         path = str((Path(__file__).resolve().parents[1] / "output" / "normalized" / "topic" / "1.txt").resolve())
         rag = _FakeRag()
@@ -172,6 +204,37 @@ class LoadTextsTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(rag.inserted[0]["ids"], [_source_doc_id(path)])
         self.assertEqual(rag.inserted[0]["file_paths"], [path])
         self.assertEqual(rag.inserted[0]["texts"], ["hello world"])
+
+    async def test_load_texts_disambiguates_duplicate_normalized_basenames(self):
+        temp_root = Path(__file__).resolve().parents[1] / ".tmp-tests" / "duplicate_basename_case"
+        if temp_root.exists():
+            shutil.rmtree(temp_root)
+        (temp_root / "normalized" / "alpha").mkdir(parents=True, exist_ok=True)
+        (temp_root / "normalized" / "beta").mkdir(parents=True, exist_ok=True)
+
+        try:
+            first = temp_root / "normalized" / "alpha" / "21.txt"
+            second = temp_root / "normalized" / "beta" / "21.txt"
+            first.write_text("Alpha body", encoding="utf-8")
+            second.write_text("Beta body", encoding="utf-8")
+            rag_storage_dir = temp_root / "rag_storage"
+            rag = _FakeRag()
+
+            with patch.object(config, "NORMALIZED_DIR", temp_root / "normalized"):
+                with patch.object(config, "RAG_STORAGE_DIR", rag_storage_dir):
+                    inserted = await load_texts(
+                        rag,
+                        [(str(first), "Alpha body"), (str(second), "Beta body")],
+                        batch_size=5,
+                    )
+
+            self.assertEqual(inserted, 2)
+            file_paths = [item["file_paths"][0] for item in rag.inserted]
+            self.assertEqual(len(set(file_paths)), 2)
+            self.assertTrue(all(Path(path).name.startswith("__geospoiler__doc-") for path in file_paths))
+        finally:
+            if temp_root.exists():
+                shutil.rmtree(temp_root)
 
     async def test_load_texts_strips_headers_and_placeholders_before_insert(self):
         path = str((Path(__file__).resolve().parents[1] / "output" / "normalized" / "topic" / "3.txt").resolve())
@@ -494,6 +557,19 @@ class ChatCompletionOptionsTests(unittest.TestCase):
 
 
 class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
+    def setUp(self):
+        super().setUp()
+        self._runtime_config_patch = patch.multiple(
+            config,
+            LATE_FUSION_ENABLED=False,
+            LLM_PROFILE="current",
+        )
+        self._runtime_config_patch.start()
+
+    def tearDown(self):
+        self._runtime_config_patch.stop()
+        super().tearDown()
+
     def test_content_query_terms_drop_source_request_wording(self):
         terms = shadow_search.query_terms("Трамп реально поддерживал Орбана? Дай источник.")
         content_terms = _content_query_terms(terms, shadow_search)
@@ -519,10 +595,10 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             source_path = normalized_dir / "8.txt"
             source_path.write_text("США провели переговоры с Кубой в Гаване.", encoding="utf-8")
             card = {
-                "triage": "keep",
+                "schema_version": "enriched_v2",
                 "summary": "США провели тайные переговоры с Кубой в Гаване.",
-                "key_facts": [{"text": "Это первые прямые переговоры США и Кубы за 10 лет."}],
-                "provenance": {"normalized_file": str(source_path.relative_to(temp_root))},
+                "key_points": [{"text": "Это первые прямые переговоры США и Кубы за 10 лет.", "type": "reported_statement", "importance": "high", "evidence": None}],
+                "provenance": _v2_provenance(temp_root, source_path),
                 "search_text": "США провели переговоры с Кубой в Гаване.",
             }
             (enriched_dir / "8.enriched.json").write_text(
@@ -566,17 +642,17 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             other_source.write_text("Ultraright protests happened elsewhere.", encoding="utf-8")
 
             cuba_card = {
-                "triage": "keep",
+                "schema_version": "enriched_v2",
                 "summary": "Cuba protests followed an economic crisis.",
-                "key_facts": [{"text": "The relevant item is about protests in Cuba."}],
-                "provenance": {"normalized_file": str(cuba_source.relative_to(temp_root))},
+                "key_points": [{"text": "The relevant item is about protests in Cuba.", "type": "reported_statement", "importance": "high", "evidence": None}],
+                "provenance": _v2_provenance(temp_root, cuba_source),
                 "search_text": "Cuba protests economic crisis",
             }
             other_card = {
-                "triage": "keep",
+                "schema_version": "enriched_v2",
                 "summary": "Ultraright protests happened elsewhere.",
-                "key_facts": [{"text": "This card is not about Cuba."}],
-                "provenance": {"normalized_file": str(other_source.relative_to(temp_root))},
+                "key_points": [{"text": "This card is not about Cuba.", "type": "reported_statement", "importance": "high", "evidence": None}],
+                "provenance": _v2_provenance(temp_root, other_source),
                 "search_text": "ultraright protests protests protests",
             }
             (cuba_enriched / "5.enriched.json").write_text(
@@ -622,17 +698,17 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             other_source.write_text("Связь связь связь Венгрии с Россией.", encoding="utf-8")
 
             ultra_card = {
-                "triage": "keep",
+                "schema_version": "enriched_v2",
                 "summary": "Европейские ультраправых политиков связывают с Россией.",
-                "key_facts": [{"text": "Ультраправых политиков связывают с Россией."}],
-                "provenance": {"normalized_file": str(ultra_source.relative_to(temp_root))},
+                "key_points": [{"text": "Ультраправых политиков связывают с Россией.", "type": "reported_statement", "importance": "high", "evidence": None}],
+                "provenance": _v2_provenance(temp_root, ultra_source),
                 "search_text": "ультраправых Россией",
             }
             other_card = {
-                "triage": "keep",
+                "schema_version": "enriched_v2",
                 "summary": "Связь Венгрии с Россией.",
-                "key_facts": [{"text": "Связь связь связь с Россией."}],
-                "provenance": {"normalized_file": str(other_source.relative_to(temp_root))},
+                "key_points": [{"text": "Связь связь связь с Россией.", "type": "reported_statement", "importance": "high", "evidence": None}],
+                "provenance": _v2_provenance(temp_root, other_source),
                 "search_text": "связь связь связь Россией",
             }
             (ultra_enriched / "9.enriched.json").write_text(
@@ -681,22 +757,21 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             )
 
             thin_card = {
-                "triage": "keep",
+                "schema_version": "enriched_v2",
                 "summary": "",
-                "key_facts": [],
+                "key_points": [],
                 "quotes": [],
                 "theses": [],
                 "events": [],
-                "chunks": [],
-                "provenance": {"normalized_file": str(canonical_source.relative_to(temp_root))},
+                "provenance": _v2_provenance(temp_root, canonical_source),
                 "search_text": "Источник: Ultra",
                 "graph_text": "Источник: Ultra",
             }
             broad_card = {
-                "triage": "keep",
+                "schema_version": "enriched_v2",
                 "summary": "Материал про совпадение идеологии ультраправых групп с джихадистами.",
-                "key_facts": [{"text": "Ультраправые группы совпадают с джихадистами по отдельным установкам."}],
-                "provenance": {"normalized_file": str(broad_source.relative_to(temp_root))},
+                "key_points": [{"text": "Ультраправые группы совпадают с джихадистами по отдельным установкам.", "type": "reported_statement", "importance": "high", "evidence": None}],
+                "provenance": _v2_provenance(temp_root, broad_source),
                 "search_text": (
                     "[Канал: Ультра левые и ультра правые]\n\n"
                     "Ультраправые группы совпадают с джихадистами по отдельным установкам."
@@ -743,10 +818,10 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             direct_source = direct_normalized / "12.txt"
             direct_source.write_text("АдГ выступает против военной помощи Украине.", encoding="utf-8")
             direct_card = {
-                "triage": "keep",
+                "schema_version": "enriched_v2",
                 "summary": "АдГ выступает против военной помощи Украине.",
-                "key_facts": [{"text": "АдГ выступает против военной помощи Украине."}],
-                "provenance": {"normalized_file": str(direct_source.relative_to(temp_root))},
+                "key_points": [{"text": "АдГ выступает против военной помощи Украине.", "type": "reported_statement", "importance": "high", "evidence": None}],
+                "provenance": _v2_provenance(temp_root, direct_source),
                 "search_text": "АдГ войне Украине помощь",
             }
             (direct_enriched / "12.enriched.json").write_text(
@@ -757,10 +832,10 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
                 broad_source = broad_normalized / f"{message_id}.txt"
                 broad_source.write_text("Украине нужна помощь в войне.", encoding="utf-8")
                 broad_card = {
-                    "triage": "keep",
+                    "schema_version": "enriched_v2",
                     "summary": "Общий материал про войну и Украину без партии.",
-                    "key_facts": [{"text": "Войне в Украине посвящён общий материал без партии."}],
-                    "provenance": {"normalized_file": str(broad_source.relative_to(temp_root))},
+                    "key_points": [{"text": "Войне в Украине посвящён общий материал без партии.", "type": "reported_statement", "importance": "high", "evidence": None}],
+                    "provenance": _v2_provenance(temp_root, broad_source),
                     "search_text": "войне Украине войне Украине войне Украине",
                 }
                 (broad_enriched / f"{message_id}.enriched.json").write_text(
@@ -782,7 +857,7 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             if temp_root.exists():
                 shutil.rmtree(temp_root)
 
-    def test_shadow_fallback_hides_visual_notes_for_regular_questions(self):
+    def test_shadow_fallback_uses_summary_and_key_points_for_regular_questions(self):
         temp_root = Path(__file__).resolve().parents[1] / ".tmp-tests" / "shadow_visual_case"
         if temp_root.exists():
             shutil.rmtree(temp_root)
@@ -797,14 +872,10 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             source_path = normalized_dir / "7.txt"
             source_path.write_text("Фицо стремится посетить Москву.", encoding="utf-8")
             card = {
-                "triage": "keep",
+                "schema_version": "enriched_v2",
                 "summary": "Фицо стремится посетить Москву на фоне политического кризиса.",
-                "key_facts": [{"text": "Страны Балтии отказали самолёту Фицо в пролёте."}],
-                "visual": {
-                    "broll_potential": "high",
-                    "broll_notes": "Самолёт Фицо на фоне карты Европы.",
-                },
-                "provenance": {"normalized_file": str(source_path.relative_to(temp_root))},
+                "key_points": [{"text": "Страны Балтии отказали самолёту Фицо в пролёте.", "type": "reported_statement", "importance": "high", "evidence": None}],
+                "provenance": _v2_provenance(temp_root, source_path),
                 "search_text": "Фицо Москва политический кризис самолёт карта Европы",
             }
             (enriched_dir / "7.enriched.json").write_text(
@@ -821,16 +892,17 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
 
             self.assertIsNotNone(result)
             answer = result["llm_response"]["content"]
+            facts = result["data"]["shadow_context"][0]["facts"]
+            self.assertEqual(facts, [card["summary"], card["key_points"][0]["text"]])
             self.assertIn("Фицо", answer)
             self.assertNotIn("B-roll", answer)
-            self.assertNotIn("Самолёт Фицо на фоне карты Европы", answer)
             self.assertNotIn("LightRAG не поднял", answer)
             self.assertNotIn("Точный поиск по карточкам", answer)
         finally:
             if temp_root.exists():
                 shutil.rmtree(temp_root)
 
-    def test_shadow_fallback_includes_visual_notes_for_visual_questions(self):
+    def test_shadow_fallback_uses_summary_and_key_points_for_visual_questions(self):
         temp_root = Path(__file__).resolve().parents[1] / ".tmp-tests" / "shadow_visual_requested_case"
         if temp_root.exists():
             shutil.rmtree(temp_root)
@@ -845,14 +917,10 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             source_path = normalized_dir / "2.txt"
             source_path.write_text("Нарва и Эстония фигурируют в сценарии давления.", encoding="utf-8")
             card = {
-                "triage": "keep",
+                "schema_version": "enriched_v2",
                 "summary": "Нарва упоминается в контексте давления на Эстонию.",
-                "key_facts": [{"text": "Ида-Вирумаа и Нарва выделяются как чувствительные регионы."}],
-                "visual": {
-                    "broll_potential": "high",
-                    "broll_notes": "Карта Эстонии с выделением Нарвы.",
-                },
-                "provenance": {"normalized_file": str(source_path.relative_to(temp_root))},
+                "key_points": [{"text": "Ида-Вирумаа и Нарва выделяются как чувствительные регионы.", "type": "reported_statement", "importance": "high", "evidence": None}],
+                "provenance": _v2_provenance(temp_root, source_path),
                 "search_text": "Нарва Эстония визуалы карта",
             }
             (enriched_dir / "2.enriched.json").write_text(
@@ -869,7 +937,8 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
 
             self.assertIsNotNone(result)
             answer = result["llm_response"]["content"]
-            self.assertIn("Карта Эстонии", answer)
+            facts = result["data"]["shadow_context"][0]["facts"]
+            self.assertEqual(facts, [card["summary"], card["key_points"][0]["text"]])
             self.assertIn("Нарв", answer)
         finally:
             if temp_root.exists():
@@ -916,14 +985,10 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             ]
             for filename, source_path, search_text, summary in cards:
                 card = {
-                    "triage": "keep",
+                    "schema_version": "enriched_v2",
                     "summary": summary,
-                    "key_facts": [{"text": summary}],
-                    "visual": {
-                        "broll_potential": "high",
-                        "broll_notes": "Карта Эстонии с выделением Нарвы.",
-                    },
-                    "provenance": {"normalized_file": str(source_path.relative_to(temp_root))},
+                    "key_points": [{"text": summary, "type": "reported_statement", "importance": "high", "evidence": None}],
+                    "provenance": _v2_provenance(temp_root, source_path),
                     "search_text": search_text,
                 }
                 (enriched_dir / filename).write_text(
@@ -966,17 +1031,17 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             direct_source.write_text("AfD и война в Украине.", encoding="utf-8")
 
             generic_card = {
-                "triage": "keep",
+                "schema_version": "enriched_v2",
                 "summary": "Отношение к войне в Украине без упоминания нужной партии.",
-                "key_facts": [{"text": "Отношение к войне в Украине описано общими словами."}],
-                "provenance": {"normalized_file": str(generic_source.relative_to(temp_root))},
+                "key_points": [{"text": "Отношение к войне в Украине описано общими словами.", "type": "reported_statement", "importance": "high", "evidence": None}],
+                "provenance": _v2_provenance(temp_root, generic_source),
                 "search_text": "отношение отношение отношение войне войне Украине Украине",
             }
             direct_card = {
-                "triage": "keep",
+                "schema_version": "enriched_v2",
                 "summary": "AfD выступает против военной помощи Украине.",
-                "key_facts": [{"text": "AfD выступает против военной помощи Украине."}],
-                "provenance": {"normalized_file": str(direct_source.relative_to(temp_root))},
+                "key_points": [{"text": "AfD выступает против военной помощи Украине.", "type": "reported_statement", "importance": "high", "evidence": None}],
+                "provenance": _v2_provenance(temp_root, direct_source),
                 "search_text": "AfD войне Украине",
             }
             (generic_enriched / "9.enriched.json").write_text(
@@ -1017,10 +1082,10 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             source_path = normalized_dir / "148.txt"
             source_path.write_text("Trump supported Orban in Hungary.", encoding="utf-8")
             card = {
-                "triage": "keep",
+                "schema_version": "enriched_v2",
                 "summary": "Trump publicly supported Orban before Hungarian elections.",
-                "key_facts": [{"text": "The post frames this as explicit political support."}],
-                "provenance": {"normalized_file": str(source_path.relative_to(temp_root))},
+                "key_points": [{"text": "The post frames this as explicit political support.", "type": "reported_statement", "importance": "high", "evidence": None}],
+                "provenance": _v2_provenance(temp_root, source_path),
                 "search_text": "Trump Orban Hungary explicit political support election",
             }
             (enriched_dir / "148.enriched.json").write_text(
@@ -1056,17 +1121,18 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             source_path = normalized_dir / "148.txt"
             source_path.write_text("Trump supported Orban in Hungary.", encoding="utf-8")
             card = {
-                "triage": "keep",
+                "schema_version": "enriched_v2",
                 "summary": "Trump publicly supported Orban before Hungarian elections.",
-                "key_facts": [{"text": "The post frames this as explicit political support."}],
-                "provenance": {
-                    "channel_name": "Hungary",
-                    "channel_id": 1,
-                    "message_id": 148,
-                    "date": "2026-05-27T00:00:00+00:00",
-                    "post_url": "https://t.me/c/1/148",
-                    "normalized_file": str(source_path.relative_to(temp_root)),
-                },
+                "key_points": [{"text": "The post frames this as explicit political support.", "type": "reported_statement", "importance": "high", "evidence": None}],
+                "provenance": _v2_provenance(
+                    temp_root,
+                    source_path,
+                    source_id="telegram:1:148",
+                    channel="Hungary",
+                    message_id=148,
+                    date="2026-05-27T00:00:00+00:00",
+                    post_url="https://t.me/c/1/148",
+                ),
                 "search_text": "Trump Orban Hungary explicit political support election",
             }
             (enriched_dir / "148.enriched.json").write_text(
@@ -1148,24 +1214,24 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
 
     def test_card_fact_lines_preserve_claim_type_as_reader_visible_tags(self):
         card = {
-            "key_facts": [
-                {"text": "Plain source fact.", "claim_type": "fact"},
-                {"text": "Claimed by the source.", "claim_type": "source_claim"},
-                {"text": "Analytical hypothesis.", "claim_type": "hypothesis"},
-                {"text": "Quoted wording.", "claim_type": "quote"},
-                {"text": "Thesis wording.", "claim_type": "thesis"},
-                {"text": "Unknown cautious wording.", "claim_type": "claim"},
+            "key_points": [
+                {"text": "Plain source fact.", "type": "reported_statement", "importance": "high", "evidence": None},
+                {"text": "Claimed by the source.", "type": "reported_statement", "importance": "high", "evidence": None},
+                {"text": "Analytical hypothesis.", "type": "reported_statement", "importance": "medium", "evidence": None},
+                {"text": "Quoted wording.", "type": "reported_statement", "importance": "high", "evidence": None},
+                {"text": "Thesis wording.", "type": "reported_statement", "importance": "high", "evidence": None},
+                {"text": "Unknown cautious wording.", "type": "reported_statement", "importance": "high", "evidence": None},
             ]
         }
 
         facts = _card_fact_lines(card, limit=6)
 
         self.assertEqual(facts[0], "Plain source fact.")
-        self.assertEqual(facts[1], "[утверждение источника] Claimed by the source.")
-        self.assertEqual(facts[2], "[гипотеза/оценка источника] Analytical hypothesis.")
-        self.assertEqual(facts[3], "[цитата источника] Quoted wording.")
-        self.assertEqual(facts[4], "[утверждение источника] Thesis wording.")
-        self.assertEqual(facts[5], "[утверждение источника] Unknown cautious wording.")
+        self.assertEqual(facts[1], "Claimed by the source.")
+        self.assertEqual(facts[2], "Analytical hypothesis.")
+        self.assertEqual(facts[3], "Quoted wording.")
+        self.assertEqual(facts[4], "Thesis wording.")
+        self.assertEqual(facts[5], "Unknown cautious wording.")
 
     async def test_hybrid_synthesis_can_attach_context_without_second_llm(self):
         result = {
@@ -1183,109 +1249,6 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertEqual(fixed["llm_response"]["content"], "Graph answer")
         self.assertEqual(fixed["data"]["references"][0]["reference_id"], "card-1")
-
-    async def test_hybrid_synthesis_includes_wiki_context_in_llm_prompt(self):
-        calls = []
-
-        class FakeCompletions:
-            async def create(self, **kwargs):
-                calls.append(kwargs)
-                return SimpleNamespace(
-                    choices=[
-                        SimpleNamespace(
-                            message=SimpleNamespace(content="Synthesized answer with source.")
-                        )
-                    ]
-                )
-
-        class FakeClient:
-            def __init__(self, *args, **kwargs):
-                self.chat = SimpleNamespace(completions=FakeCompletions())
-
-        result = {
-            "response": "Graph answer",
-            "llm_response": {"content": "Graph answer"},
-            "data": {
-                "references": [
-                    {
-                        "reference_id": "wiki-1-1",
-                        "file_path": "D:/wiki/source/10.txt",
-                        "post_url": "https://t.me/c/1/10",
-                    }
-                ],
-                "wiki_context": [
-                    {
-                        "page_path": "claims/trump-supported-orban.md",
-                        "title": "Trump supported Orban",
-                        "score": 12,
-                        "snippet": "Trump supported Orban.",
-                        "source_ids": ["telegram:1:10"],
-                        "resolved_sources": [
-                            {
-                                "source_id": "telegram:1:10",
-                                "post_url": "https://t.me/c/1/10",
-                                "date": "2026-05-27T00:00:00+00:00",
-                            }
-                        ],
-                    }
-                ],
-                "wiki_references": [
-                    {
-                        "reference_id": "wiki-1-1",
-                        "file_path": "D:/wiki/source/10.txt",
-                        "post_url": "https://t.me/c/1/10",
-                    }
-                ],
-            },
-        }
-        card_context = {
-            "references": [{"reference_id": "card-1", "file_path": "D:/topic/148.txt"}],
-            "shadow_context": [
-                {
-                    "reference_id": "card-1",
-                    "file_path": "D:/topic/148.txt",
-                    "facts": ["Card fact about Orban."],
-                }
-            ],
-        }
-
-        with patch.multiple(
-            config,
-            HYBRID_SYNTH_ENABLED=True,
-            FALLBACK_SYNTH_API_KEY="test-key",
-            FALLBACK_SYNTH_BASE_URL="https://example.invalid/v1",
-            FALLBACK_SYNTH_MODEL="test-model",
-            FALLBACK_SYNTH_MAX_TOKENS=4096,
-            LLM_REASONING_EFFORT="low",
-            QUERY_DELAY_SECONDS=0,
-            FALLBACK_SYNTH_TIMEOUT_SECONDS=5,
-            LLM_TIMEOUT_SECONDS=5,
-        ):
-            with patch.object(lightrag_clients, "AsyncOpenAI", FakeClient):
-                fixed = await _synthesize_hybrid_result(
-                    "Откуда тезис про Трампа и Орбана?",
-                    "source",
-                    result,
-                    card_context,
-                )
-
-        self.assertEqual(fixed["llm_response"]["content"], "Synthesized answer with source.")
-        self.assertEqual(calls[0]["model"], "test-model")
-        self.assertEqual(calls[0]["max_tokens"], 4096)
-        self.assertEqual(calls[0]["reasoning_effort"], "low")
-        user_prompt = calls[0]["messages"][1]["content"]
-        system_prompt = calls[0]["messages"][0]["content"]
-        self.assertIn("Локальная wiki-память", user_prompt)
-        self.assertIn("Local wiki memory context", user_prompt)
-        self.assertIn("Trump supported Orban", user_prompt)
-        self.assertIn("https://t.me/c/1/10", user_prompt)
-        self.assertIn("wiki-память", system_prompt)
-        self.assertIn("[утверждение источника]", system_prompt)
-        self.assertIn("[гипотеза/оценка источника]", system_prompt)
-        self.assertIn("не выводи сами теги", system_prompt.casefold())
-        self.assertIn("формулировку пользователя", system_prompt.casefold())
-        reference_ids = [item["reference_id"] for item in fixed["data"]["references"]]
-        self.assertEqual(reference_ids, ["card-1", "wiki-1-1"])
 
     async def test_shadow_synthesis_prompt_requires_naming_confirmed_question_subject(self):
         calls = []
@@ -1429,106 +1392,18 @@ class ShadowFallbackTests(unittest.IsolatedAsyncioTestCase):
             fixed["hybrid_context"] = "cards"
             return fixed
 
-        with patch.object(config, "WIKI_ENABLED", False):
-            with patch.object(lightrag_query, "_card_context_for_query", return_value=card_context):
-                with patch.object(lightrag_query, "_synthesize_hybrid_result", side_effect=fake_synth):
-                    result = await query_rag_result(
-                        FakeQueryRag(),
-                        "Что в базе говорится про Трампа и Орбана?",
-                        mode="hybrid",
-                        query_profile="answer",
-                    )
+        with patch.object(lightrag_query, "_card_context_for_query", return_value=card_context):
+            with patch.object(lightrag_query, "_synthesize_hybrid_result", side_effect=fake_synth):
+                result = await query_rag_result(
+                    FakeQueryRag(),
+                    "Что в базе говорится про Трампа и Орбана?",
+                    mode="hybrid",
+                    query_profile="answer",
+                )
 
         self.assertEqual(result["llm_response"]["content"], "Hybrid answer")
         self.assertEqual(result["hybrid_context"], "cards")
         self.assertEqual(result["data"]["references"][0]["reference_id"], "card-1")
-
-    async def test_query_can_attach_wiki_context_without_second_llm(self):
-        temp_root = Path(__file__).resolve().parents[1] / ".tmp-tests" / "query_wiki_context_case"
-        if temp_root.exists():
-            shutil.rmtree(temp_root)
-        temp_root.mkdir(parents=True, exist_ok=True)
-
-        class FakeQueryRag:
-            def __init__(self):
-                self.calls = []
-
-            async def aquery_llm(self, *args, **kwargs):
-                self.calls.append({"args": args, "kwargs": kwargs})
-                return {
-                    "response": "Graph answer about Orban.",
-                    "llm_response": {"content": "Graph answer about Orban."},
-                    "data": {"references": []},
-                }
-
-        try:
-            wiki_dir = temp_root / "output" / "wiki"
-            enriched_dir = temp_root / "output" / "enriched"
-            (wiki_dir / "claims").mkdir(parents=True, exist_ok=True)
-            enriched_dir.mkdir(parents=True, exist_ok=True)
-            (wiki_dir / "claims" / "trump-supported-orban.md").write_text(
-                "# Trump supported Orban\n\n"
-                "## Evidence\n\n"
-                "- telegram:1:10 - source_claim: Trump supported Orban.\n",
-                encoding="utf-8",
-            )
-            (enriched_dir / "10.enriched.json").write_text(
-                json.dumps(
-                    {
-                        "triage": "keep",
-                        "provenance": {
-                            "channel_id": 1,
-                            "message_id": 10,
-                            "channel_name": "Test",
-                            "date": "2026-05-27T00:00:00+00:00",
-                            "post_url": "https://t.me/c/1/10",
-                            "normalized_file": "output/normalized/test/10.txt",
-                        },
-                        "key_facts": [
-                            {
-                                "text": "Trump supported Orban.",
-                                "claim_type": "source_claim",
-                            }
-                        ],
-                        "source_chain": {"youtube_url": None},
-                    },
-                    ensure_ascii=False,
-                ),
-                encoding="utf-8",
-            )
-
-            rag = FakeQueryRag()
-            with patch.multiple(
-                config,
-                PROJECT_ROOT=temp_root,
-                WIKI_ENABLED=True,
-                WIKI_DIR=wiki_dir,
-                WIKI_INDEX_DIR=wiki_dir / "indexes",
-                ENRICHED_DIR=enriched_dir,
-                WIKI_TOP_K=5,
-                HYBRID_QUERY_CARDS_ENABLED=False,
-                HYBRID_SYNTH_ENABLED=False,
-            ):
-                with patch.object(lightrag_query, "_synthesize_hybrid_result") as synth_mock:
-                    result = await query_rag_result(
-                        rag,
-                        "Trump Orban support",
-                        mode="hybrid",
-                        query_profile="source",
-                    )
-
-            self.assertEqual(len(rag.calls), 1)
-            synth_mock.assert_not_called()
-            param = rag.calls[0]["kwargs"]["param"]
-            self.assertIn("Local wiki memory context", param.user_prompt)
-            self.assertIn("Trump supported Orban", param.user_prompt)
-            self.assertIn("https://t.me/c/1/10", param.user_prompt)
-            self.assertEqual(result["data"]["wiki_context"][0]["page_path"], "claims/trump-supported-orban.md")
-            self.assertEqual(result["data"]["wiki_references"][0]["post_url"], "https://t.me/c/1/10")
-            self.assertEqual(result["data"]["references"][0]["reference_id"], "wiki-1-1")
-        finally:
-            if temp_root.exists():
-                shutil.rmtree(temp_root)
 
     async def test_query_rag_result_uses_shadow_fallback_on_lightrag_error(self):
         class FailingQueryRag:

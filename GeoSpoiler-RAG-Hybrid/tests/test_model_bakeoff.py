@@ -172,10 +172,12 @@ class ModelBakeoffScoringTests(unittest.TestCase):
             "raw_response": "",
             "parsed_response": {
                 "summary": "The report alleges forced labor linked to Xinjiang supply chains.",
-                "key_facts": [
+                "key_points": [
                     {
                         "text": "The report alleges forced labor linked to Xinjiang supply chains.",
-                        "claim_type": "source_claim",
+                        "type": "reported_statement",
+                        "importance": "high",
+                        "evidence": None,
                     }
                 ],
                 "entities": {

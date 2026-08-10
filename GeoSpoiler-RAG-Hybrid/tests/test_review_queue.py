@@ -3,45 +3,43 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-import cli_pipeline  # noqa: E402
-import config  # noqa: E402
+from normalizer.review_queue import mark_reviewed  # noqa: E402
 
 
 class ReviewQueueLoadTests(unittest.TestCase):
-    def test_collect_reviewed_texts_loads_all_processed_review_types(self):
+    def test_mark_reviewed_stores_prompt_extraction_context(self):
         with tempfile.TemporaryDirectory() as tmpdir:
-            queue_dir = Path(tmpdir)
-            for name, review_type, text in [
-                ("ai.json", "ai_chat", "AI extracted"),
-                ("link.json", "external_link", "External extracted"),
-                ("low.json", "uninformative", "Approved low info"),
-            ]:
-                (queue_dir / name).write_text(
-                    json.dumps(
-                        {
-                            "review_type": review_type,
-                            "status": "processed",
-                            "channel": "Channel",
-                            "message_id": 10,
-                            "url": "https://example.com" if review_type == "external_link" else "",
-                            "extracted_text": text,
-                        },
-                        ensure_ascii=False,
-                    ),
-                    encoding="utf-8",
-                )
+            review_file = Path(tmpdir) / "item.json"
+            review_file.write_text(
+                json.dumps(
+                    {
+                        "review_type": "external_link",
+                        "status": "pending",
+                        "extracted_text": None,
+                    }
+                ),
+                encoding="utf-8",
+            )
 
-            with patch.object(config, "REVIEW_QUEUE_DIR", queue_dir):
-                reviewed = cli_pipeline._collect_reviewed_texts()
+            mark_reviewed(
+                str(review_file),
+                extracted_text="Filtered extraction",
+                extraction_prompt="Extract only the port blockade details",
+                extraction_source="youtube",
+            )
 
-        self.assertEqual(len(reviewed), 3)
-        self.assertTrue(all("Review type:" in text for _, text in reviewed))
-        self.assertEqual({Path(path).name for path, _ in reviewed}, {"ai.json", "link.json", "low.json"})
+            payload = json.loads(review_file.read_text(encoding="utf-8"))
 
+        self.assertEqual(payload["status"], "processed")
+        self.assertEqual(payload["extracted_text"], "Filtered extraction")
+        self.assertEqual(
+            payload["extraction_prompt"],
+            "Extract only the port blockade details",
+        )
+        self.assertEqual(payload["extraction_source"], "youtube")
 
 if __name__ == "__main__":
     unittest.main()

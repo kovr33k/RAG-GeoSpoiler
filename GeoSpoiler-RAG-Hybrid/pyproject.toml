@@ -5,11 +5,11 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "geospoiler-rag-hybrid"
 version = "0.1.0"
-description = "Telegram-to-RAG OSINT memory pipeline with wiki, FTS, source registry, and evaluation tooling."
+description = "Telegram-to-RAG OSINT memory pipeline with FTS, source registry, and evaluation tooling."
 requires-python = ">=3.11"
 dependencies = [
     "telethon>=1.36.0",
-    "lightrag-hku>=1.0.0",
+    "lightrag-hku==1.5.4",
     "openai>=2.0.0",
     "crawl4ai>=0.4.0",
     "streamlit>=1.40.0",
@@ -26,6 +26,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "pre-commit>=3.6.0",
+    "pytest>=8.0.0",
     "ruff>=0.8.0",
 ]
 
@@ -40,6 +41,7 @@ packages = [
     "normalizer",
     "normalizer.instagram",
     "retrieval",
+    "retrieval.wiki",
 ]
 py-modules = [
     "auth",
@@ -50,12 +52,12 @@ py-modules = [
     "cli_query",
     "cli_runtime",
     "cli_tools",
-    "cli_wiki",
     "config",
     "data_validation",
     "experiment_registry",
     "golden_compare",
     "llm_auth",
+    "llm_backend",
     "llm_verification_probe",
     "main",
     "models",

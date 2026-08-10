@@ -1,4 +1,4 @@
-"""LightRAG query orchestration with wiki, card context, and fallbacks."""
+"""LightRAG query orchestration with card context and fallbacks."""
 
 import asyncio
 from typing import Any
@@ -6,6 +6,7 @@ from typing import Any
 from lightrag import LightRAG, QueryParam
 
 import config
+import llm_backend
 from loader.answer_postprocess import (
     _answer_looks_corrupt,
     _is_funding_question,
@@ -29,13 +30,6 @@ from loader.profiles import _QUERY_RESPONSE_TYPE, get_query_profile
 from loader.reference_hints import _attach_reference_hints
 from loader.runtime import LLM_ROLE as _LLM_ROLE
 from loader.runtime import logger
-from loader.wiki_context import (
-    _attach_wiki_context,
-    _format_wiki_prompt_context,
-    _query_user_prompt_with_wiki,
-    _wiki_context_for_query,
-    _wiki_context_from_result,
-)
 
 
 async def _try_shadow_fallback_result(question: str, query_profile: str | None) -> dict[str, Any] | None:
@@ -86,7 +80,9 @@ async def _synthesize_hybrid_result(
 ) -> dict[str, Any]:
     """Compose LightRAG answer with enriched-card facts into one user-facing answer."""
     prefer_card_references = _card_references_should_be_first(question, query_profile)
-    if not config.HYBRID_SYNTH_ENABLED or not config.FALLBACK_SYNTH_API_KEY:
+    if not config.HYBRID_SYNTH_ENABLED or (
+        not config.FALLBACK_SYNTH_API_KEY and not llm_backend.is_luna_role("fallback_synth")
+    ):
         return _attach_card_context(result, card_context, prefer_card_references=prefer_card_references)
 
     graph_answer = str(result.get("llm_response", {}).get("content") or result.get("response") or "").strip()
@@ -94,19 +90,13 @@ async def _synthesize_hybrid_result(
     if not graph_answer or not context.strip():
         return _attach_card_context(result, card_context, prefer_card_references=prefer_card_references)
 
-    wiki_context = _wiki_context_from_result(result)
-    wiki_prompt_context = (
-        _format_wiki_prompt_context(wiki_context, max_pages=3, max_sources=2)
-        if wiki_context
-        else ""
-    )
     include_visual = _question_requests_visuals(question)
     profile = query_profile or "answer"
     system = (
         "Ты пишешь финальный ответ RAG-системы на русском языке. "
-        "У тебя есть черновой ответ графа, дополнительные карточки источников и, возможно, локальная wiki-память. "
+        "У тебя есть черновой ответ графа и дополнительные карточки источников. "
         "Собери один связный ответ, используя только эти данные. "
-        "Не упоминай LightRAG, shadow search, fallback, wiki-память, карточки, технические детали системы или внутренние режимы поиска. "
+        "Не упоминай LightRAG, shadow search, fallback, карточки, технические детали системы или внутренние режимы поиска. "
         "Не копируй сырые поля как дамп. "
         f"{_USER_ENTITY_WORDING_PROMPT}"
         "Сохраняй осторожные формулировки: подозрения остаются подозрениями, заявления источника остаются заявлениями источника. "
@@ -121,39 +111,70 @@ async def _synthesize_hybrid_result(
     if profile == "source":
         system += " Так как пользователь просит источник, укажи конкретные файлы/ссылки из контекста."
 
-    wiki_block = f"\n\nЛокальная wiki-память:\n{wiki_prompt_context}" if wiki_prompt_context else ""
     user = (
         f"Вопрос:\n{question}\n\n"
         f"Черновой ответ графа:\n{graph_answer}\n\n"
-        f"Дополнительный контекст источников:\n{context}"
-        f"{wiki_block}\n\n"
+        f"Дополнительный контекст источников:\n{context}\n\n"
         "Ответь в 2-5 абзацах. Не добавляй факты вне предоставленных данных."
     )
 
     try:
         if config.QUERY_DELAY_SECONDS > 0:
             await asyncio.sleep(config.QUERY_DELAY_SECONDS)
-        client = _openai_client(
-            config.FALLBACK_SYNTH_API_KEY,
-            config.FALLBACK_SYNTH_BASE_URL,
-            timeout=min(config.LLM_TIMEOUT_SECONDS, config.FALLBACK_SYNTH_TIMEOUT_SECONDS),
-            max_retries=0,
-        )
-        response = await asyncio.wait_for(
-            client.chat.completions.create(
-                model=config.FALLBACK_SYNTH_MODEL,
-                messages=[
-                    {"role": "system", "content": system},
-                    {"role": "user", "content": user},
-                ],
-                **_chat_completion_options(
-                    max_tokens=config.FALLBACK_SYNTH_MAX_TOKENS,
-                    temperature=0,
+        messages = [
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
+        ]
+        if llm_backend.is_luna_role("fallback_synth"):
+            try:
+                answer = (
+                    await llm_backend.complete_text_async(
+                        messages,
+                        role="fallback_synth",
+                        timeout_seconds=config.FALLBACK_SYNTH_TIMEOUT_SECONDS,
+                    )
+                ).strip()
+            except llm_backend.LLMBackendError:
+                if not config.CODEX_FALLBACK_TO_API:
+                    raise
+                logger.warning("Codex fallback synthesis failed; explicit API fallback is enabled")
+                client = _openai_client(
+                    config.FALLBACK_SYNTH_API_KEY,
+                    config.FALLBACK_SYNTH_BASE_URL,
+                    timeout=min(config.LLM_TIMEOUT_SECONDS, config.FALLBACK_SYNTH_TIMEOUT_SECONDS),
+                    max_retries=0,
+                )
+                response = await asyncio.wait_for(
+                    client.chat.completions.create(
+                        model=config.FALLBACK_SYNTH_MODEL,
+                        messages=messages,
+                        **_chat_completion_options(
+                            max_tokens=config.FALLBACK_SYNTH_MAX_TOKENS,
+                            temperature=0,
+                        ),
+                    ),
+                    timeout=config.FALLBACK_SYNTH_TIMEOUT_SECONDS + 5,
+                )
+                answer = (response.choices[0].message.content or "").strip()
+        else:
+            client = _openai_client(
+                config.FALLBACK_SYNTH_API_KEY,
+                config.FALLBACK_SYNTH_BASE_URL,
+                timeout=min(config.LLM_TIMEOUT_SECONDS, config.FALLBACK_SYNTH_TIMEOUT_SECONDS),
+                max_retries=0,
+            )
+            response = await asyncio.wait_for(
+                client.chat.completions.create(
+                    model=config.FALLBACK_SYNTH_MODEL,
+                    messages=messages,
+                    **_chat_completion_options(
+                        max_tokens=config.FALLBACK_SYNTH_MAX_TOKENS,
+                        temperature=0,
+                    ),
                 ),
-            ),
-            timeout=config.FALLBACK_SYNTH_TIMEOUT_SECONDS + 5,
-        )
-        answer = (response.choices[0].message.content or "").strip()
+                timeout=config.FALLBACK_SYNTH_TIMEOUT_SECONDS + 5,
+            )
+            answer = (response.choices[0].message.content or "").strip()
     except Exception as exc:
         logger.warning(f"Hybrid synthesis failed; keeping LightRAG answer with card references: {exc}")
         return _attach_card_context(result, card_context, prefer_card_references=prefer_card_references)
@@ -174,18 +195,17 @@ async def _synthesize_hybrid_result(
     return fixed
 
 
-async def query_rag_result(
+async def _query_rag_result_legacy(
     rag: LightRAG,
     question: str,
     mode: str | None = None,
     query_profile: str | None = None,
 ) -> dict[str, Any]:
-    """Query LightRAG once and return both the answer and structured retrieval data."""
+    """Preserve the pre-Late-Fusion query path for disabled flag and direct rollback."""
     if mode is None:
         mode = "mix" if config.RERANKER_ENABLED else "hybrid"
     profile = get_query_profile(query_profile)
-    wiki_context = _wiki_context_for_query(question)
-    user_prompt = _query_user_prompt_with_wiki(profile["user_prompt"], wiki_context)
+    user_prompt = profile["user_prompt"]
 
     logger.info(
         f"Querying LightRAG with retrieval payload (mode={mode}, profile={query_profile or 'answer'}, rerank={'enabled' if config.RERANKER_ENABLED else 'disabled'})"
@@ -217,35 +237,35 @@ async def query_rag_result(
         )
         fallback = await _try_shadow_fallback_result(question, query_profile)
         if fallback:
-            return _attach_wiki_context(fallback, wiki_context)
-        return _attach_wiki_context({
+            return fallback
+        return {
             "response": "В базе не удалось получить ответ за отведённое время.",
             "llm_response": {"content": "В базе не удалось получить ответ за отведённое время."},
             "data": {"references": []},
             "fallback": "timeout_no_context",
-        }, wiki_context)
+        }
     except Exception as exc:
         _LLM_ROLE.reset(token)
         logger.warning(f"LightRAG query failed; trying shadow-search fallback: {exc}")
         fallback = await _try_shadow_fallback_result(question, query_profile)
         if fallback:
-            return _attach_wiki_context(fallback, wiki_context)
-        return _attach_wiki_context({
+            return fallback
+        return {
             "response": "В базе не удалось получить ответ.",
             "llm_response": {"content": "В базе не удалось получить ответ."},
             "data": {"references": []},
             "fallback": "error_no_context",
-        }, wiki_context)
+        }
     if isinstance(result, dict) and not _is_funding_question(question) and _response_has_no_context(result):
         fallback = await _try_shadow_fallback_result(question, query_profile)
         if fallback:
             logger.info("Using shadow-search fallback after no-context LightRAG answer.")
-            return _attach_wiki_context(fallback, wiki_context)
+            return fallback
     if isinstance(result, dict) and not _is_funding_question(question) and _response_looks_corrupt(result):
         fallback = await _try_shadow_fallback_result(question, query_profile)
         if fallback:
             logger.info("Using shadow-search fallback after corrupt LightRAG answer.")
-            return _attach_wiki_context(fallback, wiki_context)
+            return fallback
     if isinstance(result, dict):
         answer = str(result.get("llm_response", {}).get("content") or result.get("response") or "")
         fixed_answer = _postprocess_answer_text(answer, question, query_profile)
@@ -255,7 +275,6 @@ async def query_rag_result(
             llm_response["content"] = fixed_answer
             result["llm_response"] = llm_response
             result["response"] = fixed_answer
-        result = _attach_wiki_context(result, wiki_context)
         if not _is_funding_question(question):
             card_context = _card_context_for_query(question, query_profile)
             if card_context:
@@ -268,3 +287,73 @@ async def query_rag_result(
                 )
         result = _attach_reference_hints(result, question)
     return result
+
+
+async def query_rag_result(
+    rag: LightRAG,
+    question: str,
+    mode: str | None = None,
+    query_profile: str | None = None,
+) -> dict[str, Any]:
+    """Route query-time execution to Late Fusion or the unchanged legacy path."""
+    if not config.LATE_FUSION_ENABLED:
+        return await _query_rag_result_legacy(
+            rag,
+            question,
+            mode=mode,
+            query_profile=query_profile,
+        )
+
+    from loader.late_fusion import LateFusionFallbackRequired, query_late_fusion
+
+    effective_mode = mode or "mix"
+    try:
+        return await query_late_fusion(
+            rag,
+            question,
+            mode=effective_mode,
+            query_profile=query_profile,
+        )
+    except LateFusionFallbackRequired as exc:
+        logger.warning("Late Fusion requested direct legacy fallback: %s", exc)
+        return await _legacy_after_late_fusion(
+            rag,
+            question,
+            mode=effective_mode,
+            query_profile=query_profile,
+            reason=str(exc),
+        )
+    except Exception as exc:
+        logger.exception("Unexpected Late Fusion failure; using direct legacy fallback")
+        return await _legacy_after_late_fusion(
+            rag,
+            question,
+            mode=effective_mode,
+            query_profile=query_profile,
+            reason=f"unexpected_late_fusion_error:{type(exc).__name__}",
+        )
+
+
+async def _legacy_after_late_fusion(
+    rag: LightRAG,
+    question: str,
+    *,
+    mode: str,
+    query_profile: str | None,
+    reason: str,
+) -> dict[str, Any]:
+    """Call the private legacy implementation once, without re-entering the public router."""
+    legacy = await _query_rag_result_legacy(
+        rag,
+        question,
+        mode=mode,
+        query_profile=query_profile,
+    )
+    fixed = dict(legacy)
+    data = dict(fixed.get("data") or {})
+    data["late_fusion"] = {
+        "pipeline": "legacy_fallback",
+        "fallback_reason": reason,
+    }
+    fixed["data"] = data
+    return fixed

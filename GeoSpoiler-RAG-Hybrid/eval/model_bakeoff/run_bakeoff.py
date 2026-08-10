@@ -126,7 +126,6 @@ def run_bakeoff(
         "flags": {
             "RERANKER_ENABLED": config.RERANKER_ENABLED,
             "HYBRID_SYNTH_ENABLED": config.HYBRID_SYNTH_ENABLED,
-            "WIKI_ENABLED": config.WIKI_ENABLED,
         },
     }
     (run_dir / "config_snapshot.json").write_text(

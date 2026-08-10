@@ -26,8 +26,12 @@ _SIMILARITY_EXPANSIONS = (
 )
 
 
-def expand_query_terms(terms: list[str]) -> list[str]:
-    """Expand intent terms without tying retrieval to a specific source id."""
+def expand_query_terms(
+    terms: list[str],
+    *,
+    max_terms: int = 64,
+) -> list[str]:
+    """Expand lexical intent deterministically."""
     expanded = list(dict.fromkeys(term for term in terms if term))
     if any(_has_stem(term, _SIMILARITY_STEMS) for term in expanded):
         expanded.extend(term for term in _SIMILARITY_EXPANSIONS if term not in expanded)
@@ -35,7 +39,7 @@ def expand_query_terms(terms: list[str]) -> list[str]:
         expanded.append("адг")
     if "адг" in expanded and "afd" not in expanded:
         expanded.append("afd")
-    return expanded
+    return expanded[:max_terms]
 
 
 def add_compound_terms(terms: list[str]) -> list[str]:

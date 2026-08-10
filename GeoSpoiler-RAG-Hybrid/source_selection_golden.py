@@ -222,8 +222,6 @@ async def run_source_selection_golden() -> dict[str, Any]:
             "RERANKER_ENABLED": config.RERANKER_ENABLED,
             "HYBRID_SYNTH_ENABLED": config.HYBRID_SYNTH_ENABLED,
             "HYBRID_QUERY_CARDS_ENABLED": config.HYBRID_QUERY_CARDS_ENABLED,
-            "WIKI_ENABLED": config.WIKI_ENABLED,
-            "WIKI_TOP_K": config.WIKI_TOP_K,
         },
         "source_limit": _source_limit(),
         "total": len(results),
@@ -411,8 +409,7 @@ def _write_markdown(summary: dict[str, Any], path: Path) -> None:
             "Flags: "
             f"`RERANKER_ENABLED={summary['config_flags']['RERANKER_ENABLED']}`, "
             f"`HYBRID_SYNTH_ENABLED={summary['config_flags']['HYBRID_SYNTH_ENABLED']}`, "
-            f"`HYBRID_QUERY_CARDS_ENABLED={summary['config_flags']['HYBRID_QUERY_CARDS_ENABLED']}`, "
-            f"`WIKI_ENABLED={summary['config_flags']['WIKI_ENABLED']}`"
+            f"`HYBRID_QUERY_CARDS_ENABLED={summary['config_flags']['HYBRID_QUERY_CARDS_ENABLED']}`"
         ),
         "",
         (

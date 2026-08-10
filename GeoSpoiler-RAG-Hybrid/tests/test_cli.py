@@ -3,12 +3,10 @@ import io
 import tempfile
 import unittest
 from pathlib import Path
-from types import SimpleNamespace
 from unittest.mock import patch
 
 import cli_query
 import cli_runtime
-import cli_wiki
 import config
 from cli import (
     cmd_experiments_index,
@@ -22,10 +20,9 @@ from cli import (
 from data_validation import ContractIssue, EnrichedValidationReport
 from experiment_registry import ExperimentRegistry
 from normalizer.transcription_backfill import BackfillItemResult, BackfillStats
-from retrieval.card_fts import CardFtsBuildStats, CardFtsMatch, WikiFtsBuildStats
+from retrieval.card_fts import CardFtsBuildStats, CardFtsMatch
 from retrieval.shadow_search import ShadowMatch
 from retrieval.source_registry import SourcePassport, SourceRegistryStats
-from retrieval.wiki_health import WikiHealthIssue, WikiHealthReport
 
 
 class CliCommandTests(unittest.TestCase):
@@ -204,34 +201,6 @@ class CliCommandTests(unittest.TestCase):
         self.assertIn("Cards indexed: 4", text)
         self.assertIn("Cards skipped: 1", text)
 
-    def test_cmd_fts_rebuild_also_rebuilds_wiki_index(self):
-        with tempfile.TemporaryDirectory() as tmpdir:
-            card_stats = CardFtsBuildStats(
-                db_path=Path(tmpdir) / "card_fts.sqlite",
-                cards_seen=5,
-                cards_indexed=4,
-                cards_skipped=1,
-            )
-            wiki_stats = WikiFtsBuildStats(
-                db_path=Path(tmpdir) / "card_fts.sqlite",
-                pages_seen=3,
-                pages_indexed=2,
-                pages_skipped=1,
-            )
-            output = io.StringIO()
-
-            with patch("sys.stdout", output):
-                returned = cmd_fts_rebuild(
-                    rebuild_index=lambda: card_stats,
-                    rebuild_wiki=lambda: wiki_stats,
-                )
-
-        text = output.getvalue()
-        self.assertIs(returned, card_stats)
-        self.assertIn("Wiki pages seen: 3", text)
-        self.assertIn("Wiki pages indexed: 2", text)
-        self.assertIn("Wiki pages skipped: 1", text)
-
     def test_cmd_fts_search_prints_matches_and_shadow_comparison(self):
         match = CardFtsMatch(
             source_id="telegram:1:10",
@@ -280,36 +249,6 @@ class CliCommandTests(unittest.TestCase):
 
         self.assertEqual(returned, [])
         self.assertIn("No FTS matches.", output.getvalue())
-
-    def test_cmd_wiki_health_prints_unicode_issues_on_narrow_console(self):
-        report = WikiHealthReport(
-            wiki_dir=Path("wiki"),
-            checked_at="2026-06-27T00:00:00+00:00",
-            page_count=1,
-            issue_count=1,
-            issues=[
-                WikiHealthIssue(
-                    severity="info",
-                    code="missing_entity_coverage",
-                    page_path="",
-                    message="Китай appears in 3 enriched card(s)",
-                )
-            ],
-        )
-        buffer = io.BytesIO()
-        narrow_stdout = io.TextIOWrapper(buffer, encoding="cp1252", errors="strict")
-
-        with patch("sys.stdout", narrow_stdout):
-            with patch.object(cli_wiki, "cmd_wiki_init", lambda: None):
-                with patch.object(cli_wiki, "build_wiki_indexes", lambda: SimpleNamespace(page_count=1, source_count=1)):
-                    with patch.object(cli_wiki, "run_wiki_health", lambda: report):
-                        with patch.object(cli_wiki, "write_health_report", lambda _report: Path("wiki/_health.md")):
-                            cli_wiki.cmd_wiki_health()
-        narrow_stdout.flush()
-        text = buffer.getvalue().decode("cp1252")
-
-        self.assertIn("Wiki health complete.", text)
-        self.assertIn("\\u041a\\u0438\\u0442\\u0430\\u0439", text)
 
     def test_cmd_transcribe_backfill_prints_summary_and_items(self):
         stats = BackfillStats(

@@ -21,7 +21,7 @@ from normalizer.instagram_handler import (  # noqa: E402
     canonicalize_instagram_url,
 )
 from normalizer.transcription_handler import transcribe_media  # noqa: E402
-from normalizer.youtube_handler import _clean_description  # noqa: E402
+from normalizer.youtube_handler import _clean_description, extract_youtube_text  # noqa: E402
 
 
 class HandlerTests(unittest.TestCase):
@@ -106,6 +106,58 @@ class HandlerTests(unittest.TestCase):
         )
 
         self.assertEqual(_clean_description(description), "Полезное описание.")
+
+    def test_extract_youtube_text_starts_with_author_title_and_url(self):
+        url = "https://www.youtube.com/watch?v=abc123"
+        info = {
+            "title": "Video title",
+            "channel": "Video channel",
+            "description": "Description",
+        }
+
+        with patch("normalizer.youtube_handler._get_video_info", return_value=info):
+            with patch("normalizer.youtube_handler._get_subtitles", return_value="Transcript body"):
+                result = extract_youtube_text(url)
+
+        self.assertTrue(
+            result.startswith(
+                "[YouTube]\n"
+                "Автор: Video channel\n"
+                "Название: Video title\n"
+                "URL: https://www.youtube.com/watch?v=abc123"
+            )
+        )
+        self.assertIn("Transcript body", result)
+
+    def test_extract_youtube_text_preserves_chapters_when_only_description_available(self):
+        url = "https://www.youtube.com/watch?v=vVmfBZvpfHg"
+        info = {
+            "title": "Китай, военный экспорт, K-pop",
+            "channel": "BBC News - Русская служба",
+            "description": "\n".join(
+                [
+                    "Еще не подписаны на наш YouTube-канал?",
+                    "ᐅ https://bit.ly/4aHdtrk ᐊ",
+                    "",
+                    "Почему власть в Северной Корее остается устойчивой?",
+                    "17:55 Как военный экспорт в Россию повысил уровень жизни в Северной Корее",
+                    "21:53 Как Китай воспринимает сотрудничество КНДР и России",
+                ]
+            ),
+        }
+
+        with patch("normalizer.youtube_handler._get_video_info", return_value=info):
+            with patch("normalizer.youtube_handler._get_subtitles", return_value=None):
+                with patch("normalizer.youtube_handler._transcribe_audio", return_value=None):
+                    result = extract_youtube_text(url)
+
+        self.assertIn("Почему власть в Северной Корее остается устойчивой?", result)
+        self.assertIn(
+            "17:55 Как военный экспорт в Россию повысил уровень жизни в Северной Корее",
+            result,
+        )
+        self.assertNotIn("Еще не подписаны", result)
+        self.assertNotIn("bit.ly", result)
 
     def test_transcribe_media_writes_artifact(self):
         response = Mock()

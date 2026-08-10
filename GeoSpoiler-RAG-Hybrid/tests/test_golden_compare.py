@@ -14,7 +14,7 @@ class GoldenCompareTests(unittest.TestCase):
             "passed": 2,
             "total": 2,
             "average_score": 100,
-            "config_flags": {"WIKI_ENABLED": False},
+            "config_flags": {"RERANKER_ENABLED": False},
             "cases": [
                 {
                     "question": "Откуда тезис? Дай ссылку.",
@@ -39,7 +39,7 @@ class GoldenCompareTests(unittest.TestCase):
             "passed": 1,
             "total": 2,
             "average_score": 80,
-            "config_flags": {"WIKI_ENABLED": True},
+            "config_flags": {"RERANKER_ENABLED": True},
             "cases": [
                 {
                     "question": "Откуда тезис? Дай ссылку.",
@@ -96,7 +96,7 @@ class GoldenCompareTests(unittest.TestCase):
             golden_compare.write_markdown_report(comparison, output)
 
             text = output.read_text(encoding="utf-8")
-            self.assertIn("# Golden Set Wiki Context Comparison", text)
+            self.assertIn("# Golden Set Comparison", text)
             self.assertIn("Q\\|1", text)
 
 

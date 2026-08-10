@@ -27,6 +27,11 @@ def _chat_settings_for_role(role: str) -> tuple[str, str, str]:
 
 
 def _openai_client(api_key: str, base_url: str, **kwargs) -> AsyncOpenAI:
+    # LightRAG already owns the retry/timeout boundary for build and query
+    # calls.  Letting the OpenAI SDK retry internally can keep a cancelled
+    # LightRAG task alive for hours when the provider connection is unhealthy.
+    # The caller-level retry policy remains explicit and bounded.
+    kwargs.setdefault("max_retries", 0)
     return AsyncOpenAI(
         api_key=_client_api_key(api_key, base_url),
         base_url=base_url,
@@ -106,6 +111,7 @@ def _get_embed_client() -> AsyncOpenAI:
                 api_key=_client_api_key(config.EMBEDDING_API_KEY, config.EMBEDDING_BASE_URL),
                 base_url=config.EMBEDDING_BASE_URL,
                 timeout=config.EMBEDDING_TIMEOUT_SECONDS,
+                max_retries=0,
             ),
         )
     return _embed_client_cache[1]
@@ -143,10 +149,13 @@ async def _embed_texts(texts: list[str], input_type: str | None = None) -> np.nd
         for attempt in range(1, max(1, config.EMBEDDING_MAX_ATTEMPTS) + 1):
             try:
                 async with _get_embed_semaphore():
-                    response = await _get_embed_client().embeddings.create(**kwargs)
+                    response = await asyncio.wait_for(
+                        _get_embed_client().embeddings.create(**kwargs),
+                        timeout=config.EMBEDDING_TIMEOUT_SECONDS,
+                    )
                 all_vectors.extend(item.embedding for item in response.data)
                 break
-            except (APIConnectionError, APITimeoutError) as exc:
+            except (APIConnectionError, APITimeoutError, TimeoutError) as exc:
                 if attempt >= config.EMBEDDING_MAX_ATTEMPTS:
                     raise
                 delay = min(12, 1.5 * attempt)

@@ -1,4 +1,4 @@
-"""Soft validation for local GeoSpoiler artifacts."""
+"""Validation for enriched v2 cards."""
 
 from __future__ import annotations
 
@@ -11,8 +11,7 @@ from typing import Any
 from pydantic import ValidationError
 
 import config
-from models import ALLOWED_CLAIM_TYPES, EnrichedCard
-from retrieval.wiki_index import compute_content_hash
+from models import EnrichedCardV2
 
 
 @dataclass(frozen=True)
@@ -42,62 +41,37 @@ class EnrichedValidationReport:
         return len(self.warnings)
 
 
-def validate_enriched_card(data: dict[str, Any], path: Path | str = "") -> tuple[EnrichedCard | None, list[ContractIssue]]:
-    """Validate one enriched card and return non-fatal contract issues."""
+def validate_enriched_card(data: dict[str, Any], path: Path | str = "") -> tuple[EnrichedCardV2 | None, list[ContractIssue]]:
+    """Validate one enriched v2 card and return non-fatal contract issues."""
     path_text = str(path)
     issues: list[ContractIssue] = []
     try:
-        card = EnrichedCard.model_validate(data)
+        card = EnrichedCardV2.model_validate(data)
     except ValidationError as exc:
         for err in exc.errors():
-            field = ".".join(str(part) for part in err.get("loc", ()))
+            field_path = ".".join(str(part) for part in err.get("loc", ()))
             issues.append(
                 ContractIssue(
                     severity="error",
                     code="schema_error",
                     path=path_text,
-                    field=field,
+                    field=field_path,
                     message=str(err.get("msg", "validation error")),
                 )
             )
         return None, issues
 
-    if card.source_id is None:
-        issues.append(
-            ContractIssue(
-                severity="warning",
-                code="missing_source_id",
-                path=path_text,
-                field="provenance",
-                message="Could not derive stable source_id from provenance.",
-            )
-        )
-
-    if card.triage == "keep" and not card.summary.strip() and not card.key_facts:
+    has_content = card.summary.strip() or card.key_points
+    if not has_content:
         issues.append(
             ContractIssue(
                 severity="warning",
                 code="empty_evidence_summary",
                 path=path_text,
-                field="summary,key_facts",
-                message="Kept card has neither summary nor key_facts.",
+                field="summary,key_points",
+                message="Card has neither summary nor key_points.",
             )
         )
-
-    for idx, fact in enumerate(card.key_facts):
-        if fact.claim_type not in ALLOWED_CLAIM_TYPES:
-            issues.append(
-                ContractIssue(
-                    severity="warning",
-                    code="unknown_claim_type",
-                    path=path_text,
-                    field=f"key_facts.{idx}.claim_type",
-                    message=(
-                        f"Unknown claim_type '{fact.claim_type}'. "
-                        f"Allowed: {', '.join(sorted(ALLOWED_CLAIM_TYPES))}."
-                    ),
-                )
-            )
 
     return card, issues
 
@@ -206,16 +180,11 @@ def write_enriched_validation_report(
     return output_path
 
 
-def compute_card_content_hash(card: EnrichedCard) -> str:
-    """Compute the existing wiki/source-registry content hash for a parsed card."""
-    return compute_content_hash(card.model_dump(mode="json"))
-
-
 def _issue_lines(issues: list[ContractIssue], limit: int = 100) -> list[str]:
     rows = []
     for issue in issues[:limit]:
-        field = f" `{issue.field}`" if issue.field else ""
-        rows.append(f"- `{issue.code}`{field}: {issue.path} - {issue.message}")
+        field_str = f" `{issue.field}`" if issue.field else ""
+        rows.append(f"- `{issue.code}`{field_str}: {issue.path} - {issue.message}")
     if len(issues) > limit:
         rows.append(f"- ... {len(issues) - limit} more issue(s) omitted")
     return rows

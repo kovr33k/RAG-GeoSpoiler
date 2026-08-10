@@ -39,26 +39,46 @@ class SourceRegistryTests(unittest.TestCase):
             (enriched_dir / "10.enriched.json").write_text(
                 json.dumps(
                     {
-                        "triage": "keep",
-                        "content_type": "news",
+                        "schema_version": "enriched_v2",
+                        "content_type": "telegram_post",
                         "language": "ru",
                         "summary": "Trump supported Orban.",
                         "provenance": {
-                            "channel_name": "Hungary",
-                            "channel_id": 1,
+                            "source_id": "telegram:1:10",
+                            "channel": "Hungary",
                             "message_id": 10,
                             "date": "2026-05-27T00:00:00+00:00",
                             "post_url": "https://t.me/c/1/10",
-                            "normalized_file": "output/normalized/Hungary/10.txt",
-                            "meta_file": "output/normalized/Hungary/10.meta.json",
+                            "normalized_path": "output/normalized/Hungary/10.txt",
                         },
                         "source_chain": {
                             "original_source": "Telegram",
-                            "youtube_url": "https://www.youtube.com/watch?v=abc",
-                            "cited_sources": ["https://example.com/source"],
+                            "external_links": [
+                                {
+                                    "url": "https://www.youtube.com/watch?v=abc",
+                                    "label": "YouTube video",
+                                },
+                                {
+                                    "url": "https://example.com/source",
+                                    "label": "External source",
+                                },
+                            ],
                         },
                     },
                     ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+            (enriched_dir / "legacy.enriched.json").write_text(
+                json.dumps(
+                    {
+                        "schema_version": "enriched_v1",
+                        "provenance": {
+                            "source_id": "legacy:1",
+                            "channel": "Legacy",
+                            "normalized_path": "legacy.txt",
+                        },
+                    }
                 ),
                 encoding="utf-8",
             )
@@ -69,12 +89,14 @@ class SourceRegistryTests(unittest.TestCase):
                 db_path=db_path,
             )
             passport = resolve_source("telegram:1:10", db_path=db_path)
+            legacy = resolve_source("legacy:1", db_path=db_path)
 
             self.assertEqual(stats.sources, 1)
             self.assertEqual(stats.normalized_docs, 1)
             self.assertEqual(stats.enriched_cards, 1)
             self.assertEqual(stats.references, 3)
             self.assertIsNotNone(passport)
+            self.assertIsNone(legacy)
             self.assertEqual(passport.post_url, "https://t.me/c/1/10")
             self.assertEqual(passport.primary_url, "https://www.youtube.com/watch?v=abc")
             self.assertEqual(passport.normalized_file, "output/normalized/Hungary/10.txt")

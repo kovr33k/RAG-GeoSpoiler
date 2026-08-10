@@ -17,6 +17,7 @@ from dataclasses import dataclass, field
 
 import config
 from fetcher.telegram_client import TelegramMedia, TelegramMessage
+from normalizer.youtube_handler import is_valid_youtube_url
 
 logger = logging.getLogger("geospoiler.router")
 
@@ -58,7 +59,7 @@ def classify(msg: TelegramMessage) -> ClassifiedMessage:
             continue
 
         # YouTube
-        if config.YOUTUBE_PATTERN.search(url_clean):
+        if is_valid_youtube_url(url_clean):
             result.youtube_urls.append(url_clean)
             logger.debug(f"  YouTube URL: {url_clean}")
             continue

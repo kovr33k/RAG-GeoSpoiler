@@ -3,6 +3,7 @@ import logging
 import requests
 
 import config
+import llm_backend
 from llm_auth import auth_headers
 
 logger = logging.getLogger("geospoiler.normalizer.translator")
@@ -23,6 +24,23 @@ def translate_to_russian_if_needed(text: str) -> str:
     if not text or not text.strip():
         return text
 
+    messages = [
+        {"role": "system", "content": TRANSLATOR_SYSTEM_PROMPT},
+        {"role": "user", "content": text},
+    ]
+    if llm_backend.is_luna_role("default"):
+        try:
+            return llm_backend.complete_text_sync(
+                messages,
+                role="default",
+                timeout_seconds=config.CODEX_LLM_TIMEOUT_SECONDS,
+            ).strip()
+        except llm_backend.LLMBackendError as exc:
+            if not config.CODEX_FALLBACK_TO_API:
+                logger.warning("Codex translation failed; returning original text: %s", exc)
+                return text
+            logger.warning("Codex translation failed; explicit API fallback is enabled: %s", exc)
+
     api_key = config.TRANSLATION_API_KEY
     if not api_key or api_key == "your-api-key-here":
         logger.warning("No TRANSLATION_API_KEY configured; skipping translation.")
@@ -30,10 +48,7 @@ def translate_to_russian_if_needed(text: str) -> str:
 
     payload = {
         "model": config.TRANSLATION_MODEL,
-        "messages": [
-            {"role": "system", "content": TRANSLATOR_SYSTEM_PROMPT},
-            {"role": "user", "content": text},
-        ],
+            "messages": messages,
         "temperature": 0.1,  # Low temperature for accurate translation
     }
     payload.update(_deepseek_v4_options(config.TRANSLATION_MODEL, config.TRANSLATION_BASE_URL))

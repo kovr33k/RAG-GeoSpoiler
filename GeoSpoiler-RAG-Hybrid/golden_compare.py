@@ -86,7 +86,7 @@ def compare_summaries(baseline: dict[str, Any], candidate: dict[str, Any]) -> di
 def write_markdown_report(comparison: dict[str, Any], path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     lines = [
-        "# Golden Set Wiki Context Comparison",
+        "# Golden Set Comparison",
         "",
         "## Summary",
         "",
@@ -194,14 +194,12 @@ def _average_delta(cases: list[dict[str, Any]]) -> float:
 
 
 def _run_label(metadata: dict[str, Any]) -> str:
-    flags = metadata.get("config_flags", {})
     return (
         f"{metadata.get('checked_at') or 'unknown time'}, "
         f"{metadata.get('passed')}/{metadata.get('total')} passed, "
         f"avg={metadata.get('average_score')}, "
         f"model={metadata.get('query_model')}, "
-        f"mode={metadata.get('mode')}, "
-        f"WIKI_ENABLED={flags.get('WIKI_ENABLED', 'unknown')}"
+        f"mode={metadata.get('mode')}"
     )
 
 

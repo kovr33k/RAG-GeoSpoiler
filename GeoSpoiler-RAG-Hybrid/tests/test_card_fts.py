@@ -2,11 +2,12 @@
 import sqlite3
 import tempfile
 import unittest
+from contextlib import closing
 from pathlib import Path
 from unittest.mock import patch
 
 from retrieval import card_fts
-from retrieval.card_fts import rebuild_card_index, rebuild_wiki_index, search_card_index, search_wiki_index
+from retrieval.card_fts import rebuild_card_index, search_card_index
 
 
 def _fts5_available() -> bool:
@@ -30,42 +31,54 @@ class CardFtsTests(unittest.TestCase):
             self._write_card(
                 enriched_dir / "10.enriched.json",
                 {
-                    "triage": "keep",
                     "provenance": {
-                        "channel_name": "Hungary",
-                        "channel_id": 1,
+                        "source_id": "telegram:1:10",
+                        "channel": "Hungary",
                         "message_id": 10,
                         "date": "2026-05-27T00:00:00+00:00",
                         "post_url": "https://t.me/c/1/10",
-                        "normalized_file": "output/normalized/Hungary/10.txt",
+                        "normalized_path": "output/normalized/Hungary/10.txt",
                     },
                     "search_text": "Trump supported Orban before the Hungarian election.",
                     "entities": {"people": ["Trump", "Viktor Orban"], "countries": ["Hungary"]},
                     "topics": ["elections", "support"],
-                    "key_facts": [{"text": "Trump supported Orban.", "claim_type": "source_claim"}],
+                    "key_points": [{"text": "Trump supported Orban.", "type": "reported_statement", "importance": "high", "evidence": None}],
                 },
             )
             self._write_card(
                 enriched_dir / "11.enriched.json",
                 {
-                    "triage": "review",
-                    "provenance": {"channel_name": "Hungary", "message_id": 11},
-                    "search_text": "This reviewed card should not be indexed.",
+                    "provenance": {
+                        "source_id": "telegram:1:11",
+                        "channel": "Hungary",
+                        "message_id": 11,
+                        "normalized_path": "output/normalized/Hungary/11.txt",
+                    },
+                    "summary": "",
+                    "key_points": [],
+                    "search_text": "",
                 },
+            )
+            (enriched_dir / "legacy.enriched.json").write_text(
+                json.dumps(
+                    {
+                        "schema_version": "enriched_v1",
+                        "search_text": "Orban support legacy card",
+                        "provenance": {"source_id": "legacy:1"},
+                    }
+                ),
+                encoding="utf-8",
             )
 
             stats = rebuild_card_index(enriched_dir=enriched_dir, db_path=db_path)
             matches = search_card_index("Orban support", top_k=5, db_path=db_path)
-            claim_matches = search_card_index("source_claim", top_k=5, db_path=db_path)
-
-            self.assertEqual(stats.cards_seen, 2)
+            self.assertEqual(stats.cards_seen, 3)
             self.assertEqual(stats.cards_indexed, 1)
-            self.assertEqual(stats.cards_skipped, 1)
+            self.assertEqual(stats.cards_skipped, 2)
             self.assertEqual(len(matches), 1)
             self.assertEqual(matches[0].source_id, "telegram:1:10")
             self.assertEqual(matches[0].post_url, "https://t.me/c/1/10")
             self.assertIn("Orban", matches[0].snippet)
-            self.assertEqual(len(claim_matches), 1)
 
     def test_search_missing_index_or_empty_query_returns_empty(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -74,33 +87,95 @@ class CardFtsTests(unittest.TestCase):
             self.assertEqual(search_card_index("Orban", db_path=db_path), [])
             self.assertEqual(search_card_index("и в на", db_path=db_path), [])
 
-    def test_rebuild_wiki_index_keeps_pages_separate_from_cards(self):
+    def test_search_top_k_none_returns_all_matches_without_limit_100(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = Path(tmp_dir)
-            wiki_dir = root / "wiki"
+            enriched_dir = root / "enriched"
+            enriched_dir.mkdir()
             db_path = root / "card_fts.sqlite"
-            (wiki_dir / "claims").mkdir(parents=True)
-            (wiki_dir / "claims" / "trump-supported-orban.md").write_text(
-                "---\n"
-                "wiki_type: claim\n"
-                "status: supported_by_corpus\n"
-                "---\n\n"
-                "# Trump supported Orban\n\n"
-                "## Evidence\n\n"
-                "- telegram:1:10 - source_claim: Trump supported Orban.\n",
-                encoding="utf-8",
+            for index in range(125):
+                self._write_card(
+                    enriched_dir / f"{index}.enriched.json",
+                    {
+                        "provenance": {
+                            "source_id": f"telegram:1:{index}",
+                            "channel": "Cuba",
+                            "message_id": index,
+                            "normalized_path": f"normalized/{index}.txt",
+                        },
+                        "search_text": f"Cuba policy report number {index}",
+                    },
+                )
+
+            rebuild_card_index(enriched_dir=enriched_dir, db_path=db_path)
+            limited = search_card_index("Cuba policy", top_k=10, db_path=db_path)
+            all_matches = search_card_index("Cuba policy", top_k=None, db_path=db_path)
+
+        self.assertEqual(len(limited), 10)
+        self.assertEqual(len(all_matches), 125)
+
+    def test_equal_coverage_and_rank_use_stable_identity_tiebreakers(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            enriched_dir = root / "enriched"
+            enriched_dir.mkdir()
+            db_path = root / "card_fts.sqlite"
+            for filename, source_id in (
+                ("z.enriched.json", "telegram:1:2"),
+                ("a.enriched.json", "telegram:1:1"),
+            ):
+                self._write_card(
+                    enriched_dir / filename,
+                    {
+                        "provenance": {
+                            "source_id": source_id,
+                            "channel": "Test",
+                            "normalized_path": f"normalized/{source_id.rsplit(':', 1)[-1]}.txt",
+                        },
+                        "search_text": "identical stable ranking phrase",
+                    },
+                )
+
+            rebuild_card_index(enriched_dir=enriched_dir, db_path=db_path)
+            first = search_card_index("stable ranking", top_k=None, db_path=db_path)
+            second = search_card_index("stable ranking", top_k=None, db_path=db_path)
+
+        expected = ["telegram:1:1", "telegram:1:2"]
+        self.assertEqual([match.source_id for match in first], expected)
+        self.assertEqual([match.source_id for match in second], expected)
+
+    def test_query_path_is_read_only_and_does_not_create_missing_schema(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            enriched_dir = root / "enriched"
+            enriched_dir.mkdir()
+            db_path = root / "card_fts.sqlite"
+            self._write_card(
+                enriched_dir / "one.enriched.json",
+                {
+                    "provenance": {"source_id": "telegram:1:1", "normalized_path": "n/1.txt"},
+                    "search_text": "read only query marker",
+                },
             )
+            rebuild_card_index(enriched_dir=enriched_dir, db_path=db_path)
+            before = (db_path.stat().st_mtime_ns, db_path.read_bytes())
+            self.assertEqual(len(search_card_index("read only", db_path=db_path)), 1)
+            with self.assertRaises(sqlite3.OperationalError):
+                card_fts.list_youtube_segment_ids("telegram:1:1", db_path=db_path)
+            after = (db_path.stat().st_mtime_ns, db_path.read_bytes())
+            self.assertEqual(after, before)
 
-            stats = rebuild_wiki_index(wiki_dir=wiki_dir, db_path=db_path)
-            matches = search_wiki_index("Orban support", top_k=5, db_path=db_path)
-            card_matches = search_card_index("Orban support", top_k=5, db_path=db_path)
-
-        self.assertEqual(stats.pages_seen, 1)
-        self.assertEqual(stats.pages_indexed, 1)
-        self.assertEqual(len(matches), 1)
-        self.assertEqual(matches[0].page_path, "claims/trump-supported-orban.md")
-        self.assertEqual(matches[0].page_type, "claim")
-        self.assertEqual(card_matches, [])
+            empty_db = root / "empty.sqlite"
+            sqlite3.connect(empty_db).close()
+            with self.assertRaises(sqlite3.OperationalError):
+                search_card_index("read only", db_path=empty_db)
+            with self.assertRaises(sqlite3.OperationalError):
+                card_fts.search_youtube_segments("read only", db_path=empty_db)
+            with self.assertRaises(sqlite3.OperationalError):
+                card_fts.list_youtube_segment_ids("telegram:1:1", db_path=empty_db)
+            with closing(sqlite3.connect(empty_db)) as conn:
+                tables = conn.execute("SELECT name FROM sqlite_master").fetchall()
+            self.assertEqual(tables, [])
 
     def test_rebuild_uses_normalized_text_for_thin_similarity_cards(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -121,20 +196,18 @@ class CardFtsTests(unittest.TestCase):
             self._write_card(
                 enriched_dir / "11.enriched.json",
                 {
-                    "triage": "keep",
                     "provenance": {
-                        "channel_name": "Ultra",
-                        "channel_id": 3299898370,
+                        "source_id": "telegram:3299898370:11",
+                        "channel": "Ultra",
                         "message_id": 11,
                         "post_url": "https://t.me/c/3299898370/11",
-                        "normalized_file": str(canonical_source.relative_to(root)),
+                        "normalized_path": str(canonical_source.relative_to(root)),
                     },
                     "summary": "",
-                    "key_facts": [],
+                    "key_points": [],
                     "quotes": [],
                     "theses": [],
                     "events": [],
-                    "chunks": [],
                     "search_text": "Источник: Ultra",
                     "graph_text": "Источник: Ultra",
                 },
@@ -142,16 +215,15 @@ class CardFtsTests(unittest.TestCase):
             self._write_card(
                 enriched_dir / "20.enriched.json",
                 {
-                    "triage": "keep",
                     "provenance": {
-                        "channel_name": "Ultra",
-                        "channel_id": 3299898370,
+                        "source_id": "telegram:3299898370:20",
+                        "channel": "Ultra",
                         "message_id": 20,
                         "post_url": "https://t.me/c/3299898370/20",
-                        "normalized_file": str(broad_source.relative_to(root)),
+                        "normalized_path": str(broad_source.relative_to(root)),
                     },
                     "summary": "Материал про совпадение идеологии ультраправых групп с джихадистами.",
-                    "key_facts": [{"text": "Ультраправые группы совпадают с джихадистами по отдельным установкам."}],
+                    "key_points": [{"text": "Ультраправые группы совпадают с джихадистами по отдельным установкам.", "type": "reported_statement", "importance": "high", "evidence": None}],
                     "search_text": (
                         "[Канал: Ультра левые и ультра правые]\n\n"
                         "Ультраправые группы совпадают с джихадистами по отдельным установкам."
@@ -172,7 +244,9 @@ class CardFtsTests(unittest.TestCase):
             self.assertIn("совпадают", matches[0].snippet)
 
     def _write_card(self, path: Path, data: dict) -> None:
-        path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+        payload = dict(data)
+        payload.setdefault("schema_version", "enriched_v2")
+        path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
 
 
 if __name__ == "__main__":

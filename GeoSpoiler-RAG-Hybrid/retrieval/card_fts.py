@@ -8,14 +8,17 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from pydantic import ValidationError
+
 import config
+from models import YouTubeSegmentCardV2
 from retrieval.card_text import card_search_text, strip_metadata_lines
 from retrieval.query_terms import add_compound_terms, expand_query_terms, matches_term
-from retrieval.wiki_index import extract_source_id
 
 logger = logging.getLogger("geospoiler.retrieval.card_fts")
 
 _TOKEN_RE = re.compile(r"\w{3,}", re.UNICODE)
+_COVERAGE_TOKEN_RE = re.compile(r"\w{2,}", re.UNICODE)
 
 
 @dataclass(frozen=True)
@@ -40,14 +43,6 @@ class CardFtsBuildStats:
 
 
 @dataclass(frozen=True)
-class WikiFtsBuildStats:
-    db_path: Path
-    pages_seen: int
-    pages_indexed: int
-    pages_skipped: int
-
-
-@dataclass(frozen=True)
 class CardFtsMatch:
     source_id: str
     card_path: str
@@ -59,9 +54,23 @@ class CardFtsMatch:
 
 
 @dataclass(frozen=True)
-class WikiFtsMatch:
-    page_path: str
-    page_type: str
+class YouTubeSegmentFtsBuildStats:
+    db_path: Path
+    segments_seen: int
+    segments_indexed: int
+    segments_skipped: int
+
+
+@dataclass(frozen=True)
+class YouTubeSegmentFtsMatch:
+    segment_id: str
+    parent_source_id: str
+    video_id: str
+    segment_index: int
+    start_seconds: float | None
+    end_seconds: float | None
+    start_url: str
+    card_path: str
     title: str
     score: float
     snippet: str
@@ -120,61 +129,21 @@ def rebuild_card_index(
     )
 
 
-def rebuild_wiki_index(
-    wiki_dir: Path = config.WIKI_DIR,
-    db_path: Path = config.CARD_FTS_DB_PATH,
-) -> WikiFtsBuildStats:
-    """Rebuild the local SQLite FTS5 index for wiki pages."""
-    records = list(iter_wiki_records(wiki_dir))
-    db_path.parent.mkdir(parents=True, exist_ok=True)
-
-    with closing(sqlite3.connect(db_path)) as conn:
-        _create_wiki_schema(conn)
-        conn.execute("DELETE FROM wiki_fts")
-        conn.executemany(
-            """
-            INSERT INTO wiki_fts (
-                page_path,
-                page_type,
-                title,
-                content,
-                entities,
-                topics
-            )
-            VALUES (?, ?, ?, ?, ?, ?)
-            """,
-            records,
-        )
-        conn.commit()
-
-    seen = _count_wiki_pages(wiki_dir)
-    indexed = len(records)
-    return WikiFtsBuildStats(
-        db_path=db_path,
-        pages_seen=seen,
-        pages_indexed=indexed,
-        pages_skipped=max(0, seen - indexed),
-    )
-
-
 def search_card_index(
     query: str,
-    top_k: int = 10,
+    top_k: int | None = 10,
     db_path: Path = config.CARD_FTS_DB_PATH,
 ) -> list[CardFtsMatch]:
-    """Search the local card FTS index without calling LightRAG or an LLM."""
+    """Search card FTS; top_k=None returns every matching indexed card."""
     query_terms = _query_terms(query)
     match_query = _to_fts_query(query)
     if not match_query or not db_path.exists():
         return []
 
-    limit = max(1, top_k)
-    fetch_limit = max(limit, min(100, limit * 5))
-    with closing(sqlite3.connect(db_path)) as conn:
+    limit = None if top_k is None else max(1, top_k)
+    with closing(_connect_read_only(db_path)) as conn:
         conn.row_factory = sqlite3.Row
-        _create_schema(conn)
-        rows = conn.execute(
-            """
+        sql = """
             SELECT
                 source_id,
                 card_path,
@@ -186,15 +155,18 @@ def search_card_index(
                 snippet(cards_fts, 5, '...', '...', ' ', 24) AS snippet
             FROM cards_fts
             WHERE cards_fts MATCH ?
-            ORDER BY rank
-            LIMIT ?
-            """,
-            (match_query, fetch_limit),
-        ).fetchall()
+            ORDER BY rank, source_id, card_path, normalized_file
+        """
+        params: tuple[Any, ...] = (match_query,)
+        if limit is not None:
+            fetch_limit = max(limit, min(100, limit * 5))
+            sql += " LIMIT ?"
+            params += (fetch_limit,)
+        rows = conn.execute(sql, params).fetchall()
         ranked = [
             (
                 _coverage_score(str(row["search_text"] or ""), query_terms),
-                -float(row["rank"]),
+                float(row["rank"]),
                 CardFtsMatch(
                     source_id=row["source_id"],
                     card_path=row["card_path"],
@@ -207,58 +179,112 @@ def search_card_index(
             )
             for row in rows
         ]
-        ranked.sort(key=lambda item: (item[0], item[1]), reverse=True)
-        return [item[2] for item in ranked[:limit]]
+        ranked.sort(
+            key=lambda item: (
+                -item[0],
+                item[1],
+                item[2].source_id,
+                item[2].card_path,
+                item[2].normalized_file,
+            )
+        )
+        matches = [item[2] for item in ranked]
+        return matches if limit is None else matches[:limit]
 
 
-def search_wiki_index(
-    query: str,
-    top_k: int = 10,
+def rebuild_youtube_segment_index(
+    segments_dir: Path = config.YOUTUBE_SEGMENTS_DIR,
     db_path: Path = config.CARD_FTS_DB_PATH,
-) -> list[WikiFtsMatch]:
-    """Search the local wiki FTS table without mixing card results."""
-    query_terms = _query_terms(query)
+) -> YouTubeSegmentFtsBuildStats:
+    """Rebuild the separate FTS index for YouTube child segments."""
+    indexed = 0
+
+    def counted_records():
+        nonlocal indexed
+        for record in iter_youtube_segment_records(segments_dir):
+            indexed += 1
+            yield record
+
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    with closing(sqlite3.connect(db_path)) as conn:
+        _create_youtube_segment_schema(conn)
+        conn.execute("DELETE FROM youtube_segments_fts")
+        conn.executemany(
+            """
+            INSERT INTO youtube_segments_fts (
+                segment_id, parent_source_id, video_id, segment_index,
+                start_seconds, end_seconds, start_url, card_path, title, search_text
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            counted_records(),
+        )
+        conn.commit()
+    seen = sum(1 for _ in segments_dir.rglob("*.youtube-segment.json")) if segments_dir.exists() else 0
+    return YouTubeSegmentFtsBuildStats(
+        db_path=db_path,
+        segments_seen=seen,
+        segments_indexed=indexed,
+        segments_skipped=max(0, seen - indexed),
+    )
+
+
+def search_youtube_segments(
+    query: str,
+    top_k: int | None = 50,
+    db_path: Path = config.CARD_FTS_DB_PATH,
+) -> list[YouTubeSegmentFtsMatch]:
+    """Search every matching YouTube segment; ``top_k=None`` means all."""
     match_query = _to_fts_query(query)
     if not match_query or not db_path.exists():
         return []
-
-    limit = max(1, top_k)
-    fetch_limit = max(limit, min(100, limit * 5))
-    with closing(sqlite3.connect(db_path)) as conn:
+    limit = None if top_k is None else max(1, top_k)
+    with closing(_connect_read_only(db_path)) as conn:
         conn.row_factory = sqlite3.Row
-        _create_wiki_schema(conn)
-        rows = conn.execute(
-            """
-            SELECT
-                page_path,
-                page_type,
-                title,
-                content,
-                bm25(wiki_fts) AS rank,
-                snippet(wiki_fts, 3, '...', '...', ' ', 24) AS snippet
-            FROM wiki_fts
-            WHERE wiki_fts MATCH ?
-            ORDER BY rank
-            LIMIT ?
-            """,
-            (match_query, fetch_limit),
-        ).fetchall()
-        ranked = [
-            (
-                _coverage_score(str(row["content"] or ""), query_terms),
-                -float(row["rank"]),
-                WikiFtsMatch(
-                    page_path=row["page_path"],
-                    page_type=row["page_type"],
-                    title=row["title"],
-                    score=round(-float(row["rank"]), 6),
-                    snippet=_clean_snippet(row["snippet"]),
-                ),
+        sql = """
+            SELECT segment_id, parent_source_id, video_id, segment_index,
+                   start_seconds, end_seconds, start_url, card_path, title,
+                   bm25(youtube_segments_fts) AS rank,
+                   snippet(youtube_segments_fts, 9, '...', '...', ' ', 24) AS snippet
+            FROM youtube_segments_fts
+            WHERE youtube_segments_fts MATCH ?
+            ORDER BY rank, segment_index, segment_id
+        """
+        params: tuple[object, ...] = (match_query,)
+        if limit is not None:
+            sql += " LIMIT ?"
+            params += (limit,)
+        rows = conn.execute(sql, params).fetchall()
+        return [
+            YouTubeSegmentFtsMatch(
+                segment_id=row["segment_id"],
+                parent_source_id=row["parent_source_id"],
+                video_id=row["video_id"],
+                segment_index=int(row["segment_index"]),
+                start_seconds=row["start_seconds"],
+                end_seconds=row["end_seconds"],
+                start_url=row["start_url"] or "",
+                card_path=row["card_path"],
+                title=row["title"],
+                score=round(-float(row["rank"]), 6),
+                snippet=_clean_snippet(row["snippet"]),
             )
             for row in rows
         ]
-        ranked.sort(key=lambda item: (item[0], item[1]), reverse=True)
-        return [item[2] for item in ranked[:limit]]
+
+
+def list_youtube_segment_ids(
+    parent_source_id: str,
+    db_path: Path = config.CARD_FTS_DB_PATH,
+) -> set[str]:
+    """Return every indexed segment ID for one YouTube episode."""
+    if not db_path.exists():
+        return set()
+    with closing(_connect_read_only(db_path)) as conn:
+        rows = conn.execute(
+            "SELECT segment_id FROM youtube_segments_fts WHERE parent_source_id = ?",
+            (parent_source_id,),
+        ).fetchall()
+    return {str(row[0]) for row in rows}
 
 
 def iter_card_records(enriched_dir: Path = config.ENRICHED_DIR) -> Iterable[CardFtsRecord]:
@@ -276,47 +302,50 @@ def iter_card_records(enriched_dir: Path = config.ENRICHED_DIR) -> Iterable[Card
             yield record
 
 
-def iter_wiki_records(wiki_dir: Path = config.WIKI_DIR) -> Iterable[tuple[str, str, str, str, str, str]]:
-    if not wiki_dir.exists():
+def iter_youtube_segment_records(
+    segments_dir: Path = config.YOUTUBE_SEGMENTS_DIR,
+) -> Iterable[tuple[object, ...]]:
+    if not segments_dir.exists():
         return
-
-    from retrieval import wiki_index
-
-    for page_path in wiki_index.iter_wiki_pages(wiki_dir):
+    for card_path in sorted(segments_dir.rglob("*.youtube-segment.json")):
         try:
-            text = page_path.read_text(encoding="utf-8")
-        except OSError as exc:
-            logger.debug("Wiki FTS could not read %s: %s", page_path, exc)
-            continue
-        rel_path = page_path.relative_to(wiki_dir).as_posix()
-        title = _wiki_title(text, rel_path)
-        page_type = _wiki_page_type(rel_path, text)
-        yield (
-            rel_path,
-            page_type,
-            title,
-            text,
-            _wiki_section_terms(text, "Entities"),
-            _wiki_section_terms(text, "Topics"),
-        )
+            segment = YouTubeSegmentCardV2.model_validate(
+                json.loads(card_path.read_text(encoding="utf-8"))
+            )
+            search_text = segment.search_text.strip()
+            if not search_text:
+                continue
+            yield (
+                segment.segment_id,
+                segment.parent_source_id,
+                segment.video_id,
+                segment.segment_index,
+                segment.start_seconds,
+                segment.end_seconds,
+                segment.start_url,
+                str(card_path),
+                segment.title or "YouTube",
+                search_text,
+            )
+        except (OSError, ValueError, json.JSONDecodeError, ValidationError) as exc:
+            logger.debug("YouTube segment FTS could not read %s: %s", card_path, exc)
 
 
 def card_to_fts_record(card: dict[str, Any], card_path: Path) -> CardFtsRecord | None:
-    if card.get("triage") != "keep":
+    if card.get("schema_version") != "enriched_v2":
         return None
-
     provenance = card.get("provenance") if isinstance(card.get("provenance"), dict) else {}
     search_text = card_search_text(card, card_path)
     if not search_text:
         return None
 
-    normalized_file = _clean_str(provenance.get("normalized_file")) or str(card_path)
-    channel_name = _clean_str(provenance.get("channel_name")) or "?"
+    normalized_file = _clean_str(provenance.get("normalized_path"))
+    channel_name = _clean_str(provenance.get("channel")) or "?"
     date = _clean_str(provenance.get("date"))
-    title = f"{channel_name} - {date[:10] if date else '?'}"
+    title = _clean_str(provenance.get("source_title")) or f"{channel_name} - {date[:10] if date else '?'}"
 
     return CardFtsRecord(
-        source_id=extract_source_id(card) or "",
+        source_id=_v2_source_id(card),
         card_path=str(card_path),
         normalized_file=normalized_file,
         post_url=_clean_str(provenance.get("post_url")),
@@ -326,6 +355,11 @@ def card_to_fts_record(card: dict[str, Any], card_path: Path) -> CardFtsRecord |
         topics=_join_texts(card.get("topics")),
         claim_types=_claim_types(card),
     )
+
+
+def _v2_source_id(card: dict[str, Any]) -> str:
+    provenance = card.get("provenance") if isinstance(card.get("provenance"), dict) else {}
+    return _clean_str(provenance.get("source_id"))
 
 
 def _create_schema(conn: sqlite3.Connection) -> None:
@@ -347,16 +381,25 @@ def _create_schema(conn: sqlite3.Connection) -> None:
     )
 
 
-def _create_wiki_schema(conn: sqlite3.Connection) -> None:
+def _connect_read_only(db_path: Path) -> sqlite3.Connection:
+    """Open an existing FTS database without allowing query-time mutations."""
+    return sqlite3.connect(f"{db_path.resolve().as_uri()}?mode=ro", uri=True)
+
+
+def _create_youtube_segment_schema(conn: sqlite3.Connection) -> None:
     conn.execute(
         """
-        CREATE VIRTUAL TABLE IF NOT EXISTS wiki_fts USING fts5(
-            page_path UNINDEXED,
-            page_type UNINDEXED,
+        CREATE VIRTUAL TABLE IF NOT EXISTS youtube_segments_fts USING fts5(
+            segment_id UNINDEXED,
+            parent_source_id UNINDEXED,
+            video_id UNINDEXED,
+            segment_index UNINDEXED,
+            start_seconds UNINDEXED,
+            end_seconds UNINDEXED,
+            start_url UNINDEXED,
+            card_path UNINDEXED,
             title,
-            content,
-            entities,
-            topics,
+            search_text,
             tokenize='unicode61'
         )
         """
@@ -365,7 +408,14 @@ def _create_wiki_schema(conn: sqlite3.Connection) -> None:
 
 def _to_fts_query(query: str) -> str:
     terms = _query_terms(query)
-    return " OR ".join(f"{term}*" for term in terms)
+    return " OR ".join(_fts_term(term) for term in terms)
+
+
+def _fts_term(term: str) -> str:
+    escaped = term.replace('"', '""')
+    if " " in escaped:
+        return f'"{escaped}"'
+    return f'"{escaped}"*'
 
 
 def _query_terms(query: str) -> list[str]:
@@ -381,11 +431,24 @@ def _query_terms(query: str) -> list[str]:
 
 def _coverage_score(search_text: str, query_terms: list[str]) -> int:
     ranking_text = strip_metadata_lines(search_text)
-    text_tokens = add_compound_terms(_TOKEN_RE.findall(ranking_text.casefold()))
-    return sum(
-        1
-        for term in query_terms
-        if any(_matches_term(token, term) for token in text_tokens)
+    text_tokens = add_compound_terms(_COVERAGE_TOKEN_RE.findall(ranking_text.casefold()))
+    return sum(1 for term in query_terms if _term_matches_tokens(text_tokens, term))
+
+
+def _term_matches_tokens(text_tokens: list[str], term: str) -> bool:
+    phrase_tokens = _COVERAGE_TOKEN_RE.findall(term.casefold())
+    if not phrase_tokens:
+        return False
+    if len(phrase_tokens) == 1:
+        return any(_matches_term(token, phrase_tokens[0]) for token in text_tokens)
+    width = len(phrase_tokens)
+    return any(
+        all(
+            _matches_term(token, expected)
+            for token, expected in zip(window, phrase_tokens, strict=True)
+        )
+        for start in range(len(text_tokens) - width + 1)
+        for window in (text_tokens[start : start + width],)
     )
 
 
@@ -399,21 +462,19 @@ def _count_enriched_cards(enriched_dir: Path) -> int:
     return sum(1 for _ in enriched_dir.rglob("*.enriched.json"))
 
 
-def _count_wiki_pages(wiki_dir: Path) -> int:
-    if not wiki_dir.exists():
-        return 0
-    from retrieval import wiki_index
-
-    return sum(1 for _ in wiki_index.iter_wiki_pages(wiki_dir))
-
-
 def _flatten_entities(value: Any) -> str:
     if not isinstance(value, dict):
         return ""
     items: list[str] = []
     for group in value.values():
         if isinstance(group, list):
-            items.extend(str(item) for item in group if str(item).strip())
+            for item in group:
+                if isinstance(item, dict):
+                    text = str(item.get("text", "")).strip()
+                else:
+                    text = str(item).strip()
+                if text:
+                    items.append(text)
         elif str(group).strip():
             items.append(str(group))
     return " ".join(items)
@@ -421,17 +482,25 @@ def _flatten_entities(value: Any) -> str:
 
 def _claim_types(card: dict[str, Any]) -> str:
     values = []
-    for fact in card.get("key_facts") or []:
-        if isinstance(fact, dict):
-            claim_type = _clean_str(fact.get("claim_type"))
-            if claim_type:
-                values.append(claim_type)
+    for point in card.get("key_points") or []:
+        if isinstance(point, dict):
+            point_type = _clean_str(point.get("type"))
+            if point_type:
+                values.append(point_type)
     return " ".join(sorted(set(values)))
 
 
 def _join_texts(value: Any) -> str:
     if isinstance(value, list):
-        return " ".join(str(item) for item in value if str(item).strip())
+        parts = []
+        for item in value:
+            if isinstance(item, dict):
+                text = str(item.get("label", "") or item.get("text", "")).strip()
+            else:
+                text = str(item).strip()
+            if text:
+                parts.append(text)
+        return " ".join(parts)
     if str(value).strip():
         return str(value)
     return ""
@@ -444,50 +513,3 @@ def _clean_str(value: Any) -> str:
 def _clean_snippet(value: Any) -> str:
     text = _clean_str(value).replace("\n", " ")
     return re.sub(r"\s+", " ", text)
-
-
-def _wiki_title(text: str, rel_path: str) -> str:
-    for line in text.splitlines():
-        stripped = line.strip()
-        if stripped.startswith("# "):
-            return stripped[2:].strip()
-    return Path(rel_path).stem.replace("-", " ")
-
-
-def _wiki_page_type(rel_path: str, text: str) -> str:
-    frontmatter = _parse_frontmatter(text)
-    wiki_type = str(frontmatter.get("wiki_type") or "").strip()
-    if wiki_type:
-        return wiki_type
-    if rel_path.startswith("claims/"):
-        return "claim"
-    if rel_path.startswith("entities/"):
-        return "entity"
-    if rel_path.startswith("topics/"):
-        return "topic"
-    return "wiki"
-
-
-def _wiki_section_terms(text: str, section_name: str) -> str:
-    pattern = re.compile(rf"^##\s+{re.escape(section_name)}\s*$", flags=re.MULTILINE)
-    match = pattern.search(text)
-    if not match:
-        return ""
-    rest = text[match.end() :]
-    next_section = re.search(r"^##\s+", rest, flags=re.MULTILINE)
-    section = rest[: next_section.start()] if next_section else rest
-    return _clean_snippet(section)
-
-
-def _parse_frontmatter(text: str) -> dict[str, str]:
-    lines = text.splitlines()
-    if len(lines) < 3 or lines[0].strip() != "---":
-        return {}
-    data: dict[str, str] = {}
-    for line in lines[1:]:
-        if line.strip() == "---":
-            break
-        if ":" in line:
-            key, value = line.split(":", 1)
-            data[key.strip()] = value.strip()
-    return data

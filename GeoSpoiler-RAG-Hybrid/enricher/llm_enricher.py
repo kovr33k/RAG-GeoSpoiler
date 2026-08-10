@@ -1,259 +1,267 @@
 """
-LLM Enricher — calls the LLM to extract structured data from normalized posts.
+LLM Enricher v2 — extracts semantic payload from preprocessed text.
 
-Single LLM call extracts: summary, key_facts, entities, topics, theses,
-quotes, events, query_aliases, visual assessment, and claim types.
+Returns LLMPayload only: summary, key_points, entities, topics, theses,
+quotes, events, search_phrases, quality_flags.
+
+Does NOT return: graph_text, search_text, provenance, content_type,
+source_chain, ignored_blocks, schema_version.
 """
 
 import json
 import logging
-import re
 
 import requests
 
 import config
+import llm_backend
+from enricher.preprocessor import PreprocessedText
 from llm_auth import auth_headers
+from models import LLMPayload
 
 logger = logging.getLogger("geospoiler.enricher.llm")
 
-# ── Header regex to strip before sending to LLM ──
-_HEADER_RE = re.compile(r"^\[Канал:.*\]\s*$")
-_EXPLICIT_FAKE_RE = re.compile(
-    r"(фейк\w*|фальшив\w*|подделк\w*|поддельн\w*|сфабрикован\w*|"
-    r"дезинформац\w*|сатир\w*|пароди\w*|fake\w*|false\w*|"
-    r"fabricated|forged|disinformation|satire|parody|not real|"
-    r"не\s+явля\w+\s+реальн\w*|не\s+настоящ\w*)",
-    re.IGNORECASE,
-)
-_UNSUPPORTED_VERDICT_RE = re.compile(
-    r"(фейк\w*|фальшив\w*|подделк\w*|поддельн\w*|сфабрикован\w*|"
-    r"дезинформац\w*|сатир\w*|пароди\w*|fake\w*|false\w*|"
-    r"fabricated|forged|disinformation|satire|parody|not real|"
-    r"не\s+явля\w+\s+реальн\w*|не\s+настоящ\w*)",
-    re.IGNORECASE,
-)
 
+class EmptyLLMResponseError(ValueError):
+    """Raised when an extraction call returns no JSON object at all."""
 
-# ── System prompts ──────────────────────────────────────────────────────────
+# ── System prompt v2 — production version ─────────────────────────────────────
 
-_SYSTEM_PROMPT_FULL = """Ты — аналитик для OSINT-базы знаний по геополитике (проект GeoSpoiler).
-CRITICAL SOURCE-FIDELITY RULES:
-- Do not fact-check claims against your outside knowledge.
-- If the source presents a statement as real, preserve it as a source_claim.
-- Do not label a claim as fake, false, satire, parody, fabricated, disinformation, or imitation unless the source text explicitly says that.
-- Sarcasm, emojis, all-caps style, political disagreement, or hostile commentary are not enough to call a statement fake.
-- Do not add hedging words such as "якобы" unless the source itself uses them.
-- When uncertain about truth status, write "в посте утверждается" and use claim_type=source_claim.
+_SYSTEM_PROMPT = """\
+You are an information extraction module for a local personal RAG/OSINT knowledge base.
 
-Тебе дают нормализованный текст поста из Telegram. Пост может содержать:
-- текст автора
-- транскрипт YouTube видео
-- описание изображений (через Vision API)
-- контент из Instagram
-- внешние статьи
+Your task is to convert one NORMALIZED TEXT document into one compact enriched JSON payload for search and retrieval.
 
-Твоя задача — извлечь структурированную информацию и вернуть JSON.
+You are not an analyst, fact-checker, wiki writer, or canonical resolver.
 
-ВАЖНЫЕ ПРАВИЛА:
-- Пиши summary и key_facts на РУССКОМ языке.
-- key_facts — это АТОМАРНЫЕ утверждения. Каждый факт = одно предложение. Сохраняй конкретику: имена, цифры, даты, названия.
-- НЕ выдумывай факты. Если в тексте нет информации — оставь поле пустым.
-- НЕ превращай мнения автора в проверенные факты. Используй claim_type.
-- query_aliases — синонимы/переводы для поиска (русский + английский).
-- Для quotes сохраняй ОРИГИНАЛЬНЫЙ текст цитаты.
-- broll_potential: high = есть конкретные визуальные кадры, medium = возможно полезно, low = только текст, none = ничего визуально.
+Hard rules:
+- Use only the provided normalized text and metadata.
+- Do not use external knowledge.
+- Do not verify, correct, dispute, or judge source claims.
+- Do not add causes, consequences, motives, background, or context unless explicitly present in the normalized text.
+- Do not canonicalize entities.
+- Do not create canonical IDs.
+- Extract entities only as raw surface forms present in the normalized text.
+- Do not add aliases that are not present in the normalized text.
+- Do not open links or infer contents of external pages.
+- Do not process video, audio, images, Instagram, YouTube, or Telegram media yourself.
+- Native/legacy media placeholders are noise and must be ignored.
+- If information is missing, use null, "", or [].
+- quality_flags may describe source/content quality only. Do not emit
+  extraction_unstable; that flag is assigned by the pipeline after validation
+  and repair fail.
+- Return valid JSON only. No markdown. No commentary.
+- Do not output graph_text, search_text, provenance, content_type, source_chain, schema_version, or ignored_blocks.
 
-Верни ТОЛЬКО JSON, без markdown-обёртки."""
+Language policy:
+- summary, key_points, topics, theses, events — write in RUSSIAN.
+- entities.text — keep original surface form as it appears in the text (NATO, DPRK, Xi Jinping, etc.).
+- quotes.text — keep in original language (verbatim).
+- search_phrases — mix: Russian meaning + original terms from text.
 
-_USER_PROMPT_FULL = """Извлеки из этого поста структурированную информацию.
+Important interpretation rules:
+- summary describes what the source says, claims, reports, discusses, or quotes.
+- key_points are source-stated content points, not verified facts.
+- topics are specific search-oriented tags based only on the text.
+- theses are only explicit positions, framings, narratives, accusations, or predictions in the text.
+- quotes must be verbatim or near-verbatim from the text.
+- events are concrete reported actions/statements/decisions/etc., not broad themes.
+- search_phrases are useful search queries built only from terms present in the text. Morphological normalization is OK, adding synonyms/translations/aliases is NOT.
 
-Пост (content_type: {content_type}):
+Content cleaning:
+- Exclude boilerplate, promotional lines, donation requests, subscription calls, generic disclaimers, navigation text, and technical placeholders.
+- Do NOT remove politically meaningful rhetoric, accusations, or emotional language if it is part of substantive source content.
+
+Output schema:
+
+{
+  "summary": "1-3 sentences in Russian",
+  "key_points": [{"text": "...", "type": "reported_statement|reported_event|opinion|prediction|accusation|quote_summary|source_reference|announcement|numeric_claim|other", "importance": "high|medium|low", "evidence": "...or null"}],
+  "entities": {"people": [{"text":"...","role":"...","salience":"primary|secondary|mentioned"}], "organizations":[], "countries":[], "locations":[], "military_units":[], "equipment":[], "weapons":[], "programs_projects":[], "media_sources":[], "other":[]},
+  "topics": [{"label":"...","salience":"primary|secondary","type":"case_topic|policy_topic|military_topic|diplomatic_topic|economic_topic|rhetoric_topic|source_topic|regional_topic|technology_topic|sanctions_topic|energy_topic|migration_topic|other"}],
+  "theses": [{"text":"...","speaker":"...or null","stance":"supportive|critical|accusatory|alarmist|sarcastic|neutral_explanatory|interpretive|predictive|mobilizing|unclear","evidence":"...or null"}],
+  "quotes": [{"text":"...","speaker":"...or null","context":"...or null"}],
+  "events": [{"event_type":"reported_statement|meeting|agreement|attack|strike|military_movement|exercise|launch|decision|vote|publication|announcement|negotiation|sanction|accusation|arrest|border_incident|economic_measure|unknown","description":"...","date_text":"...or null","date_normalized":"YYYY-MM-DD or null","location":"...or null","actors":[]}],
+  "search_phrases": [{"text":"...","source":"surface_form|phrase_from_text|constructed_from_present_terms"}],
+  "quality_flags": []
+}
+
+Return valid JSON only."""
+
+_USER_PROMPT = """\
+Normalized text (content_type: {content_type}):
 ---
 {text}
 ---
 
-Верни JSON с ТОЧНО такой структурой:
-{{
-  "summary": "2-4 предложения: о чём пост",
-  "key_facts": [
-    {{"text": "атомарный факт", "claim_type": "fact|source_claim|hypothesis"}}
-  ],
-  "entities": {{
-    "people": ["Имя (уточнение)"],
-    "organizations": ["Название"],
-    "countries": ["Страна"],
-    "locations": ["Место"],
-    "military_units": ["Подразделение"],
-    "equipment": ["Техника/системы"]
-  }},
-  "topics": ["тег темы 1", "тег темы 2"],
-  "theses": ["авторский тезис/вывод 1"],
-  "quotes": [
-    {{"speaker": "кто", "text": "дословная цитата", "context": "контекст"}}
-  ],
-  "events": [
-    {{"name": "название", "date": "YYYY-MM-DD или null", "location": "где", "description": "что произошло"}}
-  ],
-  "query_aliases": ["синоним 1 (ru)", "synonym 2 (en)"],
-  "broll_potential": "high|medium|low|none",
-  "broll_notes": "описание визуального материала для b-roll, если есть"
-}}"""
+Extract structured information. Return only valid JSON."""
 
-_SYSTEM_PROMPT_SHORT = """Ты — аналитик для OSINT-базы знаний. Извлеки минимальную структуру из короткого поста.
-CRITICAL SOURCE-FIDELITY RULES:
-- Do not fact-check claims against your outside knowledge.
-- If the source presents a statement as real, preserve it as a source_claim.
-- Do not label a claim as fake, false, satire, parody, fabricated, disinformation, or imitation unless the source text explicitly says that.
-- Do not add hedging words such as "якобы" unless the source itself uses them.
+_SYSTEM_PROMPT_SHORT = _SYSTEM_PROMPT + """\
 
-Пиши summary и key_facts на РУССКОМ языке, даже если исходный текст на другом языке.
-Верни ТОЛЬКО JSON, без markdown-обёртки."""
+You are an information extraction module for a local personal RAG/OSINT knowledge base.
+Extract minimal structure from a short post. Same rules: no external knowledge, no fact-checking, no canonicalization, raw surface forms only.
+Write summary and key_points in RUSSIAN. Entities in original form.
+Do not output graph_text, search_text, provenance, content_type, source_chain, schema_version, or ignored_blocks.
+Return every field from the exact Output schema. Use empty arrays when a category has no content.
+Return only valid JSON, no markdown."""
 
-_USER_PROMPT_SHORT = """Короткий пост (content_type: {content_type}):
+_USER_PROMPT_SHORT = """\
+Short post (content_type: {content_type}):
 ---
 {text}
 ---
 
-Верни JSON:
-{{
-  "summary": "1-2 предложения",
-  "key_facts": [{{"text": "факт", "claim_type": "fact|source_claim|hypothesis"}}],
-  "entities": {{
-    "people": [], "organizations": [], "countries": [],
-    "locations": [], "military_units": [], "equipment": []
-  }},
-  "topics": [],
-  "theses": [],
-  "quotes": [],
-  "events": [],
-  "query_aliases": [],
-  "broll_potential": "none",
-  "broll_notes": ""
-}}"""
+Return the complete payload using the exact Output schema from the system prompt.
+Keep summary to 1-2 sentences, key_points to 1-3 items, and topics to 1-3 items."""
 
-_SYSTEM_PROMPT_CHUNK = """Ты — аналитик. Перед тобой ФРАГМЕНТ длинного транскрипта видео.
-Извлеки структурированную информацию из этого фрагмента.
-Пиши summary и key_facts на РУССКОМ языке, даже если исходный текст на другом языке.
-Верни ТОЛЬКО JSON, без markdown-обёртки."""
+_SYSTEM_PROMPT_CHUNK = _SYSTEM_PROMPT + """\
 
-_USER_PROMPT_CHUNK = """Фрагмент #{chunk_index} (из {total_chunks}):
+You are an information extraction module. Extract structured data from this FRAGMENT of a long transcript.
+Same rules: no external knowledge, no fact-checking, raw surface forms only.
+Write summary and key_points in RUSSIAN. Entities in original form.
+Return every field from the exact Output schema. Use empty arrays when a category has no content.
+Return only valid JSON, no markdown."""
+
+_USER_PROMPT_CHUNK = """\
+Fragment #{chunk_index} of {total_chunks}:
 ---
 {text}
 ---
 
-Верни JSON:
-{{
-  "summary": "2-3 предложения: о чём этот фрагмент",
-  "key_facts": [{{"text": "атомарный факт", "claim_type": "fact|source_claim|hypothesis"}}],
-  "entities": {{
-    "people": [], "organizations": [], "countries": [],
-    "locations": [], "military_units": [], "equipment": []
-  }},
-  "quotes": [{{"speaker": "кто", "text": "цитата", "context": "контекст"}}],
-  "broll_notes": "визуальные описания, если упоминаются"
-}}"""
+Return the complete payload using the exact Output schema from the system prompt.
+Preserve summary, key_points, entities, topics, theses, quotes, events,
+search_phrases, and quality_flags from this fragment."""
 
-_SYSTEM_PROMPT_MERGE = """Ты — аналитик. Перед тобой summaries и key_facts из ВСЕХ фрагментов длинного видео.
-Объедини их в единую карточку. Дедуплицируй факты, сохрани ВСЕ уникальные.
-Пиши summary, key_facts, topics, theses, events, query_aliases и broll_notes на РУССКОМ языке, кроме дословных цитат.
-Верни ТОЛЬКО JSON, без markdown-обёртки."""
+_SYSTEM_PROMPT_MERGE = _SYSTEM_PROMPT + """\
 
-_USER_PROMPT_MERGE = """Заголовок поста: {header}
+You are an information extraction module. Merge fragment results into one unified extraction payload.
+Deduplicate facts, preserve ALL unique information.
+Write all text fields in RUSSIAN except verbatim quotes and entity surface forms.
+Same rules: no external knowledge, no fact-checking, raw surface forms only.
+Do not output graph_text, search_text, provenance, content_type, source_chain, schema_version, or ignored_blocks.
+Return only valid JSON, no markdown."""
 
-Данные по фрагментам:
+_USER_PROMPT_MERGE = """\
+Post header: {header}
+
+Fragment data:
 {chunks_data}
 
-Верни единый JSON:
-{{
-  "summary": "3-5 предложений — общее summary всего видео",
-  "key_facts": [{{"text": "факт", "claim_type": "fact|source_claim|hypothesis"}}],
-  "entities": {{
-    "people": [], "organizations": [], "countries": [],
-    "locations": [], "military_units": [], "equipment": []
-  }},
-  "topics": ["тег 1", "тег 2"],
-  "theses": ["авторский тезис 1"],
-  "quotes": [{{"speaker": "кто", "text": "цитата", "context": "контекст"}}],
-  "events": [{{"name": "", "date": null, "location": "", "description": ""}}],
-  "query_aliases": ["синоним (ru)", "synonym (en)"],
-  "broll_potential": "high|medium|low|none",
-  "broll_notes": "описание визуала для монтажа"
-}}"""
+Return unified JSON with: summary (3-5 sentences), key_points, entities, topics, theses, quotes, events, search_phrases, quality_flags."""
 
 
 # ── Public API ──────────────────────────────────────────────────────────────
 
-def enrich_short_post(text: str, content_type: str) -> dict:
+def enrich_short_post(preprocessed: PreprocessedText, content_type: str) -> LLMPayload:
     """Enrich a short post (<500 chars body) with minimal LLM extraction."""
-    body = _strip_header(text)
-    if len(body.strip()) < 20:
-        return _empty_enrichment()
+    return _normalize_to_payload(extract_short_post_raw(preprocessed, content_type))
 
-    result = _normalize_result(_call_llm(
+
+def extract_short_post_raw(preprocessed: PreprocessedText, content_type: str) -> dict:
+    """Return raw JSON for a short post so the pipeline can apply repair policy."""
+    if preprocessed.body_char_count < 20:
+        return {}
+
+    return _call_llm(
         system=_SYSTEM_PROMPT_SHORT,
-        user=_USER_PROMPT_SHORT.format(content_type=content_type, text=body),
-    ))
-    return _remove_unsupported_fake_labels(result, body)
+        user=_USER_PROMPT_SHORT.format(content_type=content_type, text=preprocessed.clean_text),
+    )
 
 
-def enrich_full_post(text: str, content_type: str) -> dict:
+def enrich_full_post(preprocessed: PreprocessedText, content_type: str) -> LLMPayload:
     """Enrich a regular post with full LLM extraction."""
-    body = _strip_header(text)
-    result = _normalize_result(_call_llm(
-        system=_SYSTEM_PROMPT_FULL,
-        user=_USER_PROMPT_FULL.format(content_type=content_type, text=body),
-    ))
-    return _remove_unsupported_fake_labels(result, body)
+    return _normalize_to_payload(extract_full_post_raw(preprocessed, content_type))
+
+
+def extract_full_post_raw(preprocessed: PreprocessedText, content_type: str) -> dict:
+    """Return raw JSON for a regular post so the pipeline can apply repair policy."""
+    return _call_llm(
+        system=_SYSTEM_PROMPT,
+        user=_USER_PROMPT.format(content_type=content_type, text=preprocessed.clean_text),
+    )
 
 
 def enrich_chunk(text: str, chunk_index: int, total_chunks: int) -> dict:
-    """Enrich a single chunk of a long-form post."""
-    result = _normalize_result(_call_llm(
+    """Enrich a single chunk of a long-form post. Returns raw dict for merging."""
+    return _normalize_to_payload(
+        extract_chunk_raw(text, chunk_index, total_chunks)
+    ).model_dump(mode="json")
+
+
+def extract_chunk_raw(text: str, chunk_index: int, total_chunks: int) -> dict:
+    """Return raw JSON for one internal chunk."""
+    return _call_llm(
         system=_SYSTEM_PROMPT_CHUNK,
         user=_USER_PROMPT_CHUNK.format(
             chunk_index=chunk_index + 1,
             total_chunks=total_chunks,
             text=text,
         ),
-    ))
-    return _remove_unsupported_fake_labels(result, text)
+    )
 
 
-def merge_chunk_results(header: str, chunk_results: list[dict]) -> dict:
-    """Merge multiple chunk results into a single enrichment."""
-    chunks_data = ""
-    for i, cr in enumerate(chunk_results):
-        chunks_data += f"\n--- Фрагмент {i+1} ---\n"
-        chunks_data += f"Summary: {cr.get('summary', '')}\n"
-        facts = cr.get("key_facts", [])
-        if facts:
-            chunks_data += "Key facts:\n"
-            for f in facts:
-                if isinstance(f, dict):
-                    chunks_data += f"  - {f.get('text', '')} [{f.get('claim_type', 'fact')}]\n"
-                else:
-                    chunks_data += f"  - {f}\n"
-        quotes = cr.get("quotes", [])
-        if quotes:
-            chunks_data += "Quotes:\n"
-            for q in quotes:
-                if isinstance(q, dict):
-                    chunks_data += f"  - {q.get('speaker', '?')}: «{q.get('text', '')}»\n"
-        broll = cr.get("broll_notes", "")
-        if broll:
-            chunks_data += f"B-roll: {broll}\n"
+def merge_chunk_results(header: str, chunk_results: list[dict]) -> LLMPayload:
+    """Merge multiple chunk results into a single LLMPayload."""
+    return _normalize_to_payload(merge_chunk_results_raw(header, chunk_results))
 
-    result = _call_llm(
+
+def merge_chunk_results_raw(header: str, chunk_results: list[dict]) -> dict:
+    """Return raw merged JSON while preserving every semantic chunk category."""
+    chunks_data = _serialize_chunk_results(chunk_results)
+    return _call_llm(
         system=_SYSTEM_PROMPT_MERGE,
         user=_USER_PROMPT_MERGE.format(header=header, chunks_data=chunks_data),
     )
-    return _normalize_result(result)
+
+
+def _serialize_chunk_results(chunk_results: list[dict]) -> str:
+    """Serialize complete internal chunk payloads for the merge prompt."""
+    semantic_fields = (
+        "summary",
+        "key_points",
+        "entities",
+        "topics",
+        "theses",
+        "quotes",
+        "events",
+        "search_phrases",
+        "quality_flags",
+    )
+    fragments = []
+    for index, chunk_result in enumerate(chunk_results):
+        payload = {field: chunk_result.get(field) for field in semantic_fields}
+        fragments.append(
+            {
+                "fragment_index": index + 1,
+                "char_range": chunk_result.get("char_range"),
+                "payload": payload,
+            }
+        )
+    return json.dumps(fragments, ensure_ascii=False, indent=2)
 
 
 # ── LLM call ───────────────────────────────────────────────────────────────
 
 def _call_llm(system: str, user: str) -> dict:
-    """Call the LLM API and parse JSON response with hard total timeout."""
+    """Call the LLM API and parse JSON response."""
+    messages = [
+        {"role": "system", "content": system},
+        {"role": "user", "content": user},
+    ]
+    if llm_backend.is_luna_role("enrichment"):
+        try:
+            return llm_backend.complete_json_sync(
+                messages,
+                role="enrichment",
+                schema=LLMPayload.model_json_schema(),
+                timeout_seconds=config.CODEX_LLM_TIMEOUT_SECONDS,
+            )
+        except llm_backend.LLMBackendError as exc:
+            if not config.CODEX_FALLBACK_TO_API:
+                logger.error("Codex enrichment failed: %s", exc)
+                return {}
+            logger.warning("Codex enrichment failed; explicit API fallback is enabled: %s", exc)
+
     api_key = config.ENRICHMENT_API_KEY
     if not api_key or api_key == "your-api-key-here":
         logger.warning("No ENRICHMENT_API_KEY configured; returning empty enrichment.")
@@ -261,11 +269,8 @@ def _call_llm(system: str, user: str) -> dict:
 
     payload = {
         "model": config.ENRICHMENT_MODEL,
-        "messages": [
-            {"role": "system", "content": system},
-            {"role": "user", "content": user},
-        ],
-        "temperature": 0.2,
+        "messages": messages,
+        "temperature": 0.1,
         "response_format": {"type": "json_object"},
     }
     payload.update(_deepseek_v4_options(config.ENRICHMENT_MODEL, config.ENRICHMENT_BASE_URL))
@@ -276,8 +281,7 @@ def _call_llm(system: str, user: str) -> dict:
 
     except _HardTimeoutError:
         logger.warning(
-            f"LLM enrichment hard timeout ({config.LLM_TIMEOUT_SECONDS}s). "
-            "API was streaming but took too long overall."
+            f"LLM enrichment hard timeout ({config.LLM_TIMEOUT_SECONDS}s)."
         )
         return {}
     except requests.Timeout:
@@ -287,9 +291,8 @@ def _call_llm(system: str, user: str) -> dict:
         logger.error(f"LLM enrichment HTTP error: {e}")
         if e.response is not None:
             if e.response.status_code == 429:
-                logger.warning("Rate limited (429). Returning empty (will be marked partial and retried later).")
+                logger.warning("Rate limited (429). Returning empty.")
                 return {}
-            # If the model doesn't support json_object mode, retry without it
             if e.response.status_code == 400:
                 return _call_llm_fallback(system, user)
         return {}
@@ -299,24 +302,17 @@ def _call_llm(system: str, user: str) -> dict:
 
 
 class _HardTimeoutError(Exception):
-    """Raised when the total request time exceeds the hard limit."""
+    pass
 
 
 def _post_with_hard_timeout(payload: dict) -> str:
-    """
-    POST to LLM API with a hard total timeout.
-
-    requests.post(timeout=N) only limits time between bytes — if the API
-    streams tokens slowly, the request can hang forever. This wraps the
-    call in a thread and kills it after LLM_TIMEOUT_SECONDS total.
-    """
     import concurrent.futures
     import time
 
     def _do_request():
         if config.LLM_DELAY_SECONDS > 0:
             time.sleep(config.LLM_DELAY_SECONDS)
-            
+
         response = requests.post(
             f"{config.ENRICHMENT_BASE_URL}/chat/completions",
             headers=auth_headers(config.ENRICHMENT_API_KEY, config.ENRICHMENT_BASE_URL),
@@ -337,15 +333,30 @@ def _post_with_hard_timeout(payload: dict) -> str:
 
 
 def _call_llm_fallback(system: str, user: str) -> dict:
-    """Fallback LLM call without response_format (for models that don't support it)."""
+    """Fallback LLM call without response_format."""
+    messages = [
+        {"role": "system", "content": system},
+        {"role": "user", "content": user},
+    ]
+    if llm_backend.is_luna_role("enrichment"):
+        try:
+            return llm_backend.complete_json_sync(
+                messages,
+                role="enrichment",
+                schema=LLMPayload.model_json_schema(),
+                timeout_seconds=config.CODEX_LLM_TIMEOUT_SECONDS,
+            )
+        except llm_backend.LLMBackendError as exc:
+            if not config.CODEX_FALLBACK_TO_API:
+                logger.error("Codex enrichment repair failed: %s", exc)
+                return {}
+            logger.warning("Codex enrichment repair failed; explicit API fallback is enabled: %s", exc)
+
     api_key = config.ENRICHMENT_API_KEY
     payload = {
         "model": config.ENRICHMENT_MODEL,
-        "messages": [
-            {"role": "system", "content": system},
-            {"role": "user", "content": user},
-        ],
-        "temperature": 0.2,
+        "messages": messages,
+        "temperature": 0.1,
     }
     payload.update(_deepseek_v4_options(config.ENRICHMENT_MODEL, config.ENRICHMENT_BASE_URL))
 
@@ -365,6 +376,72 @@ def _call_llm_fallback(system: str, user: str) -> dict:
         return {}
 
 
+# ── Normalization ─────────────────────────────────────────────────────────────
+
+def _normalize_to_payload(raw: object) -> LLMPayload:
+    """Validate raw LLM JSON at the v2 payload boundary.
+
+    The model occasionally uses ``name`` for an entity surface form even
+    after being shown the v2 schema.  This narrow boundary adapter keeps the
+    final card strict while preventing a harmless field-name variation from
+    consuming the job's only structural repair attempt.
+    """
+    if not isinstance(raw, dict) or not raw:
+        raise EmptyLLMResponseError("LLM extraction returned an empty JSON payload")
+    normalized = _normalize_entity_surface_keys(raw)
+    normalized = _normalize_quality_flag_aliases(normalized)
+    return LLMPayload.model_validate(normalized)
+
+
+def _normalize_entity_surface_keys(raw: dict) -> dict:
+    """Map the common model-only entity ``name`` spelling to v2 ``text``."""
+    entities = raw.get("entities")
+    if not isinstance(entities, dict):
+        return raw
+
+    normalized = dict(raw)
+    normalized_entities = dict(entities)
+    changed = False
+    for category, items in entities.items():
+        if not isinstance(items, list):
+            continue
+        normalized_items = []
+        for item in items:
+            if isinstance(item, dict) and "text" not in item and "name" in item:
+                item = {**item, "text": item["name"]}
+                item.pop("name", None)
+                changed = True
+            normalized_items.append(item)
+        if normalized_items != items:
+            normalized_entities[category] = normalized_items
+    if changed:
+        normalized["entities"] = normalized_entities
+    return normalized
+
+
+_QUALITY_FLAG_ALIASES = {
+    "noisy_boilerplate_detected": "mostly_boilerplate",
+}
+
+
+def _normalize_quality_flag_aliases(raw: dict) -> dict:
+    """Map known model wording variants to the v2 quality-flag vocabulary."""
+    flags = raw.get("quality_flags")
+    if not isinstance(flags, list):
+        return raw
+
+    normalized_flags = [
+        _QUALITY_FLAG_ALIASES.get(str(flag).casefold(), flag)
+        for flag in flags
+    ]
+    if normalized_flags == flags:
+        return raw
+
+    normalized = dict(raw)
+    normalized["quality_flags"] = list(dict.fromkeys(normalized_flags))
+    return normalized
+
+
 # ── Helpers ─────────────────────────────────────────────────────────────────
 
 def _deepseek_v4_options(model: str, base_url: str) -> dict:
@@ -378,10 +455,8 @@ def _deepseek_v4_options(model: str, base_url: str) -> dict:
 
 def _parse_json_response(content: str) -> dict:
     """Parse JSON from LLM response, handling markdown code blocks."""
-    # Strip markdown code fences if present
     content = content.strip()
     if content.startswith("```"):
-        # Remove opening ```json or ``` and closing ```
         lines = content.split("\n")
         if lines[0].startswith("```"):
             lines = lines[1:]
@@ -395,207 +470,3 @@ def _parse_json_response(content: str) -> dict:
         logger.warning(f"Failed to parse LLM JSON: {e}")
         logger.debug(f"Raw content: {content[:500]}")
         return {}
-
-
-def _strip_header(text: str) -> str:
-    """Remove the metadata header line from normalized text."""
-    lines = text.split("\n")
-    body_lines = [ln for ln in lines if not _HEADER_RE.match(ln.strip())]
-    return "\n".join(body_lines).strip()
-
-
-def _normalize_result(raw: dict) -> dict:
-    """Normalize LLM output into a consistent structure."""
-    result = _empty_enrichment()
-
-    result["summary"] = raw.get("summary", "")
-
-    # Key facts: support both list[str] and list[dict]
-    raw_facts = raw.get("key_facts", [])
-    for f in raw_facts:
-        if isinstance(f, str):
-            result["key_facts"].append({"text": f, "claim_type": "fact"})
-        elif isinstance(f, dict) and f.get("text"):
-            result["key_facts"].append({
-                "text": f["text"],
-                "claim_type": f.get("claim_type", "fact"),
-            })
-
-    # Entities
-    raw_entities = raw.get("entities", {})
-    for key in result["entities"]:
-        vals = raw_entities.get(key, [])
-        if isinstance(vals, list):
-            result["entities"][key] = [str(v) for v in vals if v]
-
-    result["topics"] = [str(t) for t in raw.get("topics", []) if t]
-    result["theses"] = [str(t) for t in raw.get("theses", []) if t]
-
-    # Quotes
-    raw_quotes = raw.get("quotes", [])
-    for q in raw_quotes:
-        if isinstance(q, dict) and q.get("text"):
-            result["quotes"].append({
-                "speaker": q.get("speaker", "unknown"),
-                "text": q["text"],
-                "context": q.get("context", ""),
-            })
-
-    # Events
-    raw_events = raw.get("events", [])
-    for e in raw_events:
-        if isinstance(e, dict) and (e.get("name") or e.get("description")):
-            result["events"].append({
-                "name": e.get("name", ""),
-                "date": e.get("date"),
-                "location": e.get("location", ""),
-                "description": e.get("description", ""),
-            })
-
-    result["query_aliases"] = [str(a) for a in raw.get("query_aliases", []) if a]
-    result["broll_potential"] = raw.get("broll_potential", "unknown")
-    result["broll_notes"] = raw.get("broll_notes", "")
-
-    return result
-
-
-def _remove_unsupported_fake_labels(result: dict, source_text: str) -> dict:
-    """
-    Remove model-inferred fake/satire/disinformation verdicts.
-
-    The enricher extracts what the source says; it is not a fact-checker.
-    If the source itself does not explicitly call something fake, generated
-    verdict labels are unsafe and should not enter graph_text/search_text.
-    """
-    if _EXPLICIT_FAKE_RE.search(source_text or ""):
-        return result
-
-    strip_unsupported_hedges = "якобы" not in (source_text or "").casefold()
-    result["summary"] = _sanitize_unsupported_verdict_text(
-        result.get("summary", ""),
-        strip_unsupported_hedges=strip_unsupported_hedges,
-    )
-
-    cleaned_facts = []
-    for fact in result.get("key_facts", []):
-        if not isinstance(fact, dict):
-            continue
-        text = _sanitize_unsupported_verdict_text(
-            fact.get("text", ""),
-            strip_unsupported_hedges=strip_unsupported_hedges,
-        )
-        if text:
-            cleaned_facts.append({**fact, "text": text})
-    result["key_facts"] = cleaned_facts
-
-    result["topics"] = [
-        topic for topic in result.get("topics", [])
-        if not _UNSUPPORTED_VERDICT_RE.search(str(topic))
-    ]
-    result["theses"] = [
-        _sanitize_unsupported_verdict_text(
-            thesis,
-            strip_unsupported_hedges=strip_unsupported_hedges,
-        )
-        for thesis in result.get("theses", [])
-        if not _UNSUPPORTED_VERDICT_RE.search(str(thesis))
-    ]
-    result["theses"] = [thesis for thesis in result["theses"] if thesis]
-
-    for quote in result.get("quotes", []):
-        if isinstance(quote, dict):
-            quote["speaker"] = _sanitize_unsupported_verdict_text(
-                quote.get("speaker", ""),
-                strip_unsupported_hedges=strip_unsupported_hedges,
-            )
-            quote["context"] = _sanitize_unsupported_verdict_text(
-                quote.get("context", ""),
-                strip_unsupported_hedges=strip_unsupported_hedges,
-            )
-
-    for event in result.get("events", []):
-        if isinstance(event, dict):
-            event["description"] = _sanitize_unsupported_verdict_text(
-                event.get("description", ""),
-                strip_unsupported_hedges=strip_unsupported_hedges,
-            )
-
-    return result
-
-
-def _sanitize_unsupported_verdict_text(
-    text: str,
-    strip_unsupported_hedges: bool = False,
-) -> str:
-    """Strip unsupported verdict wording while keeping the source claim."""
-    if not text:
-        return ""
-
-    cleaned = str(text)
-    cleaned = re.sub(
-        r"Текст\s+имитирует[^.]*\.\s*",
-        "",
-        cleaned,
-        flags=re.IGNORECASE,
-    )
-    cleaned = re.sub(
-        r"(?:,\s*)?(?:но|хотя)?\s*не\s+явля\w+\s+реальн\w*\.?",
-        "",
-        cleaned,
-        flags=re.IGNORECASE,
-    )
-    cleaned = re.sub(
-        r"\bфальшив\w*\s+",
-        "",
-        cleaned,
-        flags=re.IGNORECASE,
-    )
-    cleaned = re.sub(
-        r"\b(фейков\w*|поддельн\w*|сфабрикованн\w*)\s+",
-        "",
-        cleaned,
-        flags=re.IGNORECASE,
-    )
-    if strip_unsupported_hedges:
-        cleaned = re.sub(
-            r"\bякобы\s+",
-            "",
-            cleaned,
-            flags=re.IGNORECASE,
-        )
-        cleaned = re.sub(
-            r"\s*\(якобы\)",
-            "",
-            cleaned,
-            flags=re.IGNORECASE,
-        )
-        cleaned = cleaned.replace("заявление, от", "заявление от")
-    cleaned = re.sub(
-        r"\s{2,}",
-        " ",
-        cleaned,
-    ).strip()
-    return cleaned
-
-
-def _empty_enrichment() -> dict:
-    """Return an empty enrichment structure."""
-    return {
-        "summary": "",
-        "key_facts": [],
-        "entities": {
-            "people": [],
-            "organizations": [],
-            "countries": [],
-            "locations": [],
-            "military_units": [],
-            "equipment": [],
-        },
-        "topics": [],
-        "theses": [],
-        "quotes": [],
-        "events": [],
-        "query_aliases": [],
-        "broll_potential": "unknown",
-        "broll_notes": "",
-    }

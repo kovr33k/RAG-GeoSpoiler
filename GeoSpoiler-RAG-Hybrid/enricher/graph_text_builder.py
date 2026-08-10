@@ -1,12 +1,12 @@
 """
-Graph Text Builder — converts enriched memory cards into texts
-optimised for LightRAG ingestion and keyword search.
+Graph Text Builder v2 — converts enriched_v2 cards into texts
+for LightRAG ingestion and FTS search.
 
 Two outputs per card:
-  graph_text  — compact, fact-dense text that LightRAG will parse
-                into entities and relationships.
-  search_text — expanded text with aliases and bilingual terms
-                for BM25 / keyword retrieval.
+  graph_text  — compact 3-10 sentence text for LightRAG graph extraction.
+                Focuses on relationships between entities and events.
+  search_text — dense flat text for BM25/FTS retrieval combining all
+                card fields into a searchable representation.
 """
 
 import json
@@ -16,175 +16,180 @@ import config
 
 logger = logging.getLogger("geospoiler.enricher.graph_text")
 
-TRIAGE_KEEP = "keep"
-
 
 # ── Public API ──────────────────────────────────────────────────────────────
 
 def build_graph_text(card: dict) -> str:
     """
-    Build a compact, LightRAG-optimised text from an enriched card.
+    Build a compact LightRAG-optimised graph text from a v2 enriched card.
 
-    Structure:
-        [Header: channel, date, post_url]
-        SUMMARY: ...
-        KEY FACTS:
-          - fact 1 [fact]
-          - fact 2 [source_claim]
-        ENTITIES: person1, org1, country1, ...
-        THESES:
-          - thesis 1
-        QUOTES:
-          - Speaker: "quote" (context)
-        EVENTS:
-          - Event Name (date, location): description
+    Structure: short relational sentences that help LightRAG extract
+    entity-relationship triples. No dump of all fields.
     """
-    if card.get("triage") != TRIAGE_KEEP:
-        return ""
-
-    prov = card.get("provenance", {})
     parts = []
 
-    # Header
-    header = (
-        f"[Канал: {prov.get('channel_name', '?')} | "
-        f"Дата: {_format_date(prov.get('date', ''))} | "
-        f"Пост: {prov.get('post_url', '')}]"
-    )
-    parts.append(header)
+    prov = card.get("provenance", {})
+    channel = prov.get("channel", "?")
+    date = _format_date(prov.get("date", ""))
+    source = prov.get("forwarded_from") or channel
 
-    # Summary
-    summary = card.get("summary", "").strip()
+    # Header for context
+    parts.append(f"Документ из канала {channel} ({date}), источник: {source}.")
+
+    # Summary as main relationship anchor
+    summary = (card.get("summary") or "").strip()
     if summary:
-        parts.append(f"\n{summary}")
+        parts.append(summary)
 
-    # Key facts
-    facts = card.get("key_facts", [])
-    if facts:
-        lines = ["Ключевые факты:"]
-        for f in facts:
-            text = f.get("text", "") if isinstance(f, dict) else str(f)
-            claim = f.get("claim_type", "fact") if isinstance(f, dict) else "fact"
-            if text:
-                lines.append(f"- {text} [{claim}]")
-        if len(lines) > 1:
-            parts.append("\n".join(lines))
-
-    # Entities (flat line for graph extraction)
-    entities = card.get("entities", {})
-    entity_tokens = []
-    for category in ["people", "organizations", "countries", "locations",
-                      "military_units", "equipment"]:
-        for e in entities.get(category, []):
-            if e:
-                entity_tokens.append(str(e))
+    # Key entities as relationship nodes
+    entity_tokens = _extract_entity_texts(card.get("entities", {}))
     if entity_tokens:
-        parts.append(f"Сущности: {', '.join(entity_tokens)}")
+        parts.append(f"Упоминаются: {', '.join(entity_tokens[:15])}.")
 
-    # Theses
-    theses = card.get("theses", [])
-    if theses:
-        lines = ["Тезисы:"]
-        for t in theses:
-            if t:
-                lines.append(f"- {t}")
-        if len(lines) > 1:
-            parts.append("\n".join(lines))
-
-    # Quotes (top 5)
-    quotes = card.get("quotes", [])[:5]
-    if quotes:
-        lines = ["Цитаты:"]
-        for q in quotes:
-            speaker = q.get("speaker", "?")
-            text = q.get("text", "")
-            context = q.get("context", "")
-            if text:
-                line = f'- {speaker}: «{text}»'
-                if context:
-                    line += f" ({context})"
-                lines.append(line)
-        if len(lines) > 1:
-            parts.append("\n".join(lines))
-
-    # Events
+    # Events as relationship edges
     events = card.get("events", [])
-    if events:
-        lines = ["События:"]
-        for ev in events:
-            name = ev.get("name", "")
-            date = ev.get("date", "")
-            location = ev.get("location", "")
+    for ev in events[:5]:
+        if isinstance(ev, dict):
             desc = ev.get("description", "")
-            if name or desc:
-                meta = ", ".join(filter(None, [date, location]))
-                label = f"{name} ({meta})" if meta else name
-                line = f"- {label}"
-                if desc:
-                    line += f": {desc}"
-                lines.append(line)
-        if len(lines) > 1:
-            parts.append("\n".join(lines))
+            actors = ev.get("actors", [])
+            location = ev.get("location", "")
+            if desc:
+                actor_text = f" ({', '.join(actors)})" if actors else ""
+                loc_text = f" в {location}" if location else ""
+                parts.append(f"Событие{loc_text}{actor_text}: {desc}")
 
-    # Source chain
-    source = card.get("source_chain", {})
-    original = source.get("original_source", "")
-    youtube = source.get("youtube_url", "")
-    if original:
-        parts.append(f"Источник: {original}")
-    if youtube:
-        parts.append(f"YouTube: {youtube}")
+    # Theses as relationship context
+    theses = card.get("theses", [])
+    for th in theses[:3]:
+        if isinstance(th, dict) and th.get("text"):
+            speaker = th.get("speaker", "")
+            speaker_prefix = f"{speaker}: " if speaker else ""
+            parts.append(f"Позиция — {speaker_prefix}{th['text']}")
 
-    return "\n\n".join(parts)
+    # Top quotes (max 2 for graph density)
+    quotes = card.get("quotes", [])[:2]
+    for q in quotes:
+        if isinstance(q, dict) and q.get("text"):
+            speaker = q.get("speaker", "?")
+            parts.append(f'{speaker}: «{q["text"]}»')
+
+    return "\n".join(parts)
 
 
 def build_search_text(card: dict) -> str:
     """
-    Build an expanded search text with aliases and bilingual terms.
+    Build a dense FTS/search text combining all card fields.
 
-    Includes graph_text + query_aliases + topics + content_type.
-    Designed for BM25/keyword matching.
+    Designed for BM25/keyword matching — includes all searchable tokens.
     """
-    if card.get("triage") != TRIAGE_KEEP:
-        return ""
-
     parts = []
 
-    # Start with graph_text as base
-    graph_text = card.get("graph_text", "")
-    if not graph_text:
-        graph_text = build_graph_text(card)
-    parts.append(graph_text)
+    prov = card.get("provenance", {})
+    content_type = card.get("content_type", "")
+    channel = prov.get("channel", "")
+    date = _format_date(prov.get("date", ""))
 
-    # Query aliases (bilingual)
-    aliases = card.get("query_aliases", [])
-    if aliases:
-        parts.append("Синонимы для поиска: " + " | ".join(aliases))
+    # Metadata line
+    meta_parts = [p for p in [content_type, channel, date] if p]
+    if meta_parts:
+        parts.append(" ".join(meta_parts))
+
+    # Summary
+    summary = (card.get("summary") or "").strip()
+    if summary:
+        parts.append(summary)
+
+    # Key points
+    key_points = card.get("key_points", [])
+    if key_points:
+        kp_texts = []
+        for kp in key_points:
+            if isinstance(kp, dict):
+                kp_texts.append(kp.get("text", ""))
+            elif isinstance(kp, str):
+                kp_texts.append(kp)
+        kp_text = "; ".join(t for t in kp_texts if t)
+        if kp_text:
+            parts.append(f"Ключевые пункты: {kp_text}")
+
+    # Entities
+    entity_tokens = _extract_entity_texts(card.get("entities", {}))
+    if entity_tokens:
+        parts.append(f"Сущности: {', '.join(entity_tokens)}")
 
     # Topics
     topics = card.get("topics", [])
     if topics:
-        parts.append("Темы: " + ", ".join(topics))
+        topic_labels = []
+        for t in topics:
+            if isinstance(t, dict):
+                topic_labels.append(t.get("label", ""))
+            elif isinstance(t, str):
+                topic_labels.append(t)
+        topic_text = ", ".join(t for t in topic_labels if t)
+        if topic_text:
+            parts.append(f"Темы: {topic_text}")
 
-    visual = card.get("visual", {})
-    if isinstance(visual, dict):
-        broll = str(visual.get("broll_notes") or "").strip()
-        if broll and visual.get("broll_potential") in ("high", "medium"):
-            parts.append("Визуалы для поиска: " + broll)
+    # Theses
+    theses = card.get("theses", [])
+    if theses:
+        thesis_texts = []
+        for th in theses:
+            if isinstance(th, dict):
+                thesis_texts.append(th.get("text", ""))
+            elif isinstance(th, str):
+                thesis_texts.append(th)
+        th_text = "; ".join(t for t in thesis_texts if t)
+        if th_text:
+            parts.append(f"Тезисы: {th_text}")
 
-    # Content type
-    ct = card.get("content_type", "")
-    if ct:
-        parts.append(f"Тип контента: {ct}")
+    # Quotes (condensed)
+    quotes = card.get("quotes", [])[:5]
+    if quotes:
+        q_parts = []
+        for q in quotes:
+            if isinstance(q, dict) and q.get("text"):
+                speaker = q.get("speaker", "?")
+                q_parts.append(f'{speaker}: «{q["text"]}»')
+        if q_parts:
+            parts.append("Цитаты: " + " | ".join(q_parts))
 
-    return "\n\n".join(parts)
+    # Events
+    events = card.get("events", [])
+    if events:
+        ev_parts = []
+        for ev in events:
+            if isinstance(ev, dict):
+                desc = ev.get("description", "")
+                if desc:
+                    ev_parts.append(desc)
+        if ev_parts:
+            parts.append("События: " + "; ".join(ev_parts))
+
+    # Search phrases
+    phrases = card.get("search_phrases", [])
+    if phrases:
+        phrase_texts = []
+        for a in phrases:
+            if isinstance(a, dict):
+                phrase_texts.append(a.get("text", ""))
+            elif isinstance(a, str):
+                phrase_texts.append(a)
+        phrase_text = " | ".join(t for t in phrase_texts if t)
+        if phrase_text:
+            parts.append(f"Поиск: {phrase_text}")
+
+    # Source chain
+    source_chain = card.get("source_chain", {})
+    original = source_chain.get("original_source", "")
+    if original:
+        parts.append(f"Источник: {original}")
+
+    return "\n".join(parts)
 
 
 def populate_graph_texts(card: dict) -> dict:
-    """
-    Fill graph_text and search_text fields in a card.
-    Returns the modified card.
-    """
+    """Fill graph_text and search_text fields in a card. Returns the modified card."""
     card["graph_text"] = build_graph_text(card)
     card["search_text"] = build_search_text(card)
     return card
@@ -214,14 +219,9 @@ def populate_all_cards(channel_filter: str | None = None) -> dict:
             try:
                 card = json.loads(card_path.read_text(encoding="utf-8"))
 
-                if card.get("triage") != TRIAGE_KEEP:
-                    stats["skipped"] += 1
-                    continue
-
                 old_gt = card.get("graph_text", "")
                 populate_graph_texts(card)
 
-                # Only write if changed
                 if card["graph_text"] != old_gt or not old_gt:
                     card_path.write_text(
                         json.dumps(card, ensure_ascii=False, indent=2),
@@ -247,11 +247,26 @@ def populate_all_cards(channel_filter: str | None = None) -> dict:
 
 # ── Helpers ─────────────────────────────────────────────────────────────────
 
+def _extract_entity_texts(entities: dict) -> list[str]:
+    """Extract flat list of entity text strings from v2 structured entities."""
+    tokens = []
+    for category in ["people", "organizations", "countries", "locations",
+                     "military_units", "equipment", "weapons",
+                     "programs_projects", "media_sources", "other"]:
+        for item in entities.get(category, []):
+            if isinstance(item, dict):
+                text = item.get("text", "")
+            else:
+                text = str(item)
+            if text.strip():
+                tokens.append(text.strip())
+    return tokens
+
+
 def _format_date(date_str: str) -> str:
     """Format ISO date to compact 'YYYY-MM-DD HH:MM' format."""
     if not date_str:
         return "?"
-    # Handle ISO format: "2026-04-18T16:14:14+00:00"
     try:
         return date_str[:16].replace("T", " ")
     except Exception:

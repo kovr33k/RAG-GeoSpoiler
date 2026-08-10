@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 import config
+import llm_backend
 from loader.answer_postprocess import (
     _answer_looks_corrupt,
     _postprocess_answer_text,
@@ -16,7 +17,6 @@ from loader.reference_hints import _existing_references, _merge_references, _res
 from loader.runtime import logger
 from retrieval.card_text import card_ranking_text
 from retrieval.source_registry import resolve_source
-from retrieval.wiki_index import extract_source_id
 
 _CLAIM_TYPE_LABELS = {
     "source_claim": "утверждение источника",
@@ -41,10 +41,10 @@ def _format_card_fact_for_context(fact: dict[str, Any]) -> str:
     text = str(fact.get("text") or "").strip()
     if not text:
         return ""
-    claim_type = str(fact.get("claim_type") or "fact").strip().casefold()
-    if claim_type == "fact":
+    point_type = str(fact.get("type") or "other").strip().casefold()
+    if point_type in ("reported_statement", "reported_event", "announcement", "other"):
         return text
-    label = _CLAIM_TYPE_LABELS.get(claim_type, "утверждение источника")
+    label = _CLAIM_TYPE_LABELS.get(point_type, "утверждение источника")
     return f"[{label}] {text}"
 
 
@@ -58,7 +58,8 @@ def _card_fact_lines(
     summary = str(card.get("summary") or "").strip()
     if summary:
         lines.append(summary)
-    for fact in card.get("key_facts", []) or []:
+    points = card.get("key_points") or []
+    for fact in points:
         if not isinstance(fact, dict):
             continue
         text = _format_card_fact_for_context(fact)
@@ -66,12 +67,6 @@ def _card_fact_lines(
             lines.append(text)
         if len(lines) >= limit:
             break
-    if include_visual:
-        visual = card.get("visual", {})
-        if isinstance(visual, dict):
-            broll_notes = str(visual.get("broll_notes") or "").strip()
-            if broll_notes:
-                lines.append(f"Визуалы: {broll_notes}")
     return lines[:limit]
 
 
@@ -87,7 +82,7 @@ def _load_shadow_card(card_path: str | None) -> dict[str, Any]:
 
 def _reference_from_card(reference_id: str, file_path: str, card: dict[str, Any]) -> dict[str, Any]:
     reference: dict[str, Any] = {"reference_id": reference_id, "file_path": file_path}
-    source_id = extract_source_id(card)
+    source_id = _extract_source_id(card)
     if not source_id:
         return reference
 
@@ -113,6 +108,28 @@ def _reference_from_card(reference_id: str, file_path: str, card: dict[str, Any]
     return reference
 
 
+def _extract_source_id(card: dict[str, Any]) -> str | None:
+    """Resolve an Enriched source id from card provenance."""
+    provenance = card.get("provenance")
+    if not isinstance(provenance, dict):
+        provenance = card
+
+    source_id = str(provenance.get("source_id") or "").strip()
+    if source_id:
+        return source_id
+
+    message_id = str(provenance.get("message_id") or "").strip()
+    if not message_id:
+        return None
+    channel_id = str(provenance.get("channel_id") or "").strip()
+    if channel_id:
+        return f"telegram:{channel_id}:{message_id}"
+    channel_name = str(
+        provenance.get("channel_name") or provenance.get("channel") or ""
+    ).strip()
+    return f"telegram:{channel_name}:{message_id}" if channel_name else None
+
+
 def _shadow_body_text(match: Any, card: dict[str, Any]) -> str:
     """Return the source body used for topic/entity coverage scoring."""
     return card_ranking_text(card, getattr(match, "card_path", None)) or str(match.snippet or "")
@@ -125,7 +142,7 @@ def _shadow_match_text(match: Any, card: dict[str, Any]) -> str:
         str(match.snippet),
         _shadow_body_text(match, card),
     ]
-    for fact in card.get("key_facts", []) or []:
+    for fact in card.get("key_points") or []:
         if isinstance(fact, dict) and fact.get("text"):
             parts.append(str(fact["text"]))
     return "\n".join(parts)
@@ -314,7 +331,9 @@ async def _synthesize_shadow_fallback_result(
     """Turn shadow-search matches into a normal user-facing answer."""
     data = dict(fallback.get("data") or {})
     context_items = data.get("shadow_context") or []
-    if not context_items or not config.FALLBACK_SYNTH_API_KEY or not config.HYBRID_SYNTH_ENABLED:
+    if not context_items or not config.HYBRID_SYNTH_ENABLED or (
+        not config.FALLBACK_SYNTH_API_KEY and not llm_backend.is_luna_role("fallback_synth")
+    ):
         return fallback
 
     include_visual = _question_requests_visuals(question)
@@ -362,27 +381,60 @@ async def _synthesize_shadow_fallback_result(
     try:
         if config.QUERY_DELAY_SECONDS > 0:
             await asyncio.sleep(config.QUERY_DELAY_SECONDS)
-        client = _openai_client(
-            config.FALLBACK_SYNTH_API_KEY,
-            config.FALLBACK_SYNTH_BASE_URL,
-            timeout=min(config.LLM_TIMEOUT_SECONDS, config.FALLBACK_SYNTH_TIMEOUT_SECONDS),
-            max_retries=0,
-        )
-        response = await asyncio.wait_for(
-            client.chat.completions.create(
-                model=config.FALLBACK_SYNTH_MODEL,
-                messages=[
-                    {"role": "system", "content": system},
-                    {"role": "user", "content": user},
-                ],
-                **_chat_completion_options(
-                    max_tokens=config.FALLBACK_SYNTH_MAX_TOKENS,
-                    temperature=0,
+        messages = [
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
+        ]
+        if llm_backend.is_luna_role("fallback_synth"):
+            try:
+                answer = (
+                    await llm_backend.complete_text_async(
+                        messages,
+                        role="fallback_synth",
+                        timeout_seconds=config.FALLBACK_SYNTH_TIMEOUT_SECONDS,
+                    )
+                ).strip()
+            except llm_backend.LLMBackendError:
+                if not config.CODEX_FALLBACK_TO_API:
+                    raise
+                logger.warning("Codex card fallback failed; explicit API fallback is enabled")
+                client = _openai_client(
+                    config.FALLBACK_SYNTH_API_KEY,
+                    config.FALLBACK_SYNTH_BASE_URL,
+                    timeout=min(config.LLM_TIMEOUT_SECONDS, config.FALLBACK_SYNTH_TIMEOUT_SECONDS),
+                    max_retries=0,
+                )
+                response = await asyncio.wait_for(
+                    client.chat.completions.create(
+                        model=config.FALLBACK_SYNTH_MODEL,
+                        messages=messages,
+                        **_chat_completion_options(
+                            max_tokens=config.FALLBACK_SYNTH_MAX_TOKENS,
+                            temperature=0,
+                        ),
+                    ),
+                    timeout=config.FALLBACK_SYNTH_TIMEOUT_SECONDS + 5,
+                )
+                answer = (response.choices[0].message.content or "").strip()
+        else:
+            client = _openai_client(
+                config.FALLBACK_SYNTH_API_KEY,
+                config.FALLBACK_SYNTH_BASE_URL,
+                timeout=min(config.LLM_TIMEOUT_SECONDS, config.FALLBACK_SYNTH_TIMEOUT_SECONDS),
+                max_retries=0,
+            )
+            response = await asyncio.wait_for(
+                client.chat.completions.create(
+                    model=config.FALLBACK_SYNTH_MODEL,
+                    messages=messages,
+                    **_chat_completion_options(
+                        max_tokens=config.FALLBACK_SYNTH_MAX_TOKENS,
+                        temperature=0,
+                    ),
                 ),
-            ),
-            timeout=config.FALLBACK_SYNTH_TIMEOUT_SECONDS + 5,
-        )
-        answer = (response.choices[0].message.content or "").strip()
+                timeout=config.FALLBACK_SYNTH_TIMEOUT_SECONDS + 5,
+            )
+            answer = (response.choices[0].message.content or "").strip()
     except Exception as exc:
         logger.warning(f"Shadow fallback synthesis failed; using deterministic answer: {exc}")
         return fallback
@@ -401,18 +453,108 @@ async def _synthesize_shadow_fallback_result(
     return fixed
 
 
-def _card_context_for_query(question: str, query_profile: str | None) -> dict[str, Any] | None:
-    """Return strong enriched-card matches as context for normal hybrid answers."""
-    if not config.HYBRID_QUERY_CARDS_ENABLED:
+def _wiki_context_for_query(question: str) -> dict[str, Any] | None:
+    """Return approved-hub context while preserving underlying card references."""
+    if (
+        not config.WIKI_ENABLED
+        or not config.HYBRID_QUERY_WIKI_ENABLED
+        or not config.WIKI_STATE_DB_PATH.exists()
+    ):
         return None
+    try:
+        from retrieval.wiki.projections import get_projection_artifact
+        from retrieval.wiki.schema import connect_database
+        from retrieval.wiki.search import search_wiki
+
+        connection = connect_database(config.WIKI_STATE_DB_PATH)
+        try:
+            matches = search_wiki(
+                connection,
+                question,
+                limit=config.HYBRID_QUERY_WIKI_TOP_K,
+                document_kinds=("hub",),
+            )
+            references: list[dict[str, Any]] = []
+            context_items: list[dict[str, Any]] = []
+            for hub_index, match in enumerate(matches, start=1):
+                artifact = get_projection_artifact(
+                    connection,
+                    projection_kind="hub",
+                    scope_key=match.scope_key,
+                )
+                if artifact is None:
+                    continue
+                raw_sources = (
+                    match.source_refs.get("sources", [])
+                    if isinstance(match.source_refs, dict)
+                    else []
+                )
+                first_reference_id = f"wiki-{hub_index}"
+                references_before = len(references)
+                for source_index, source in enumerate(raw_sources, start=1):
+                    if not isinstance(source, dict):
+                        continue
+                    reference_id = f"wiki-{hub_index}-{source_index}"
+                    reference = {
+                        "reference_id": reference_id,
+                        "file_path": (
+                            str(source.get("source_id") or "").strip()
+                            or f"wiki://hub/{match.scope_key}"
+                        ),
+                    }
+                    for source_key, reference_key in (
+                        ("source_id", "source_id"),
+                        ("url", "post_url"),
+                        ("date", "date"),
+                    ):
+                        value = source.get(source_key)
+                        if value:
+                            reference[reference_key] = value
+                    references.append(reference)
+                    if source_index == 1:
+                        first_reference_id = reference_id
+                if len(references) == references_before:
+                    references.append(
+                        {
+                            "reference_id": first_reference_id,
+                            "file_path": f"wiki://hub/{match.scope_key}",
+                        }
+                    )
+                context_items.append(
+                    {
+                        "reference_id": first_reference_id,
+                        "file_path": f"Wiki hub: {match.title}",
+                        "title": match.title,
+                        "facts": [artifact.rendered_content[:12_000]],
+                        "wiki_scope_key": match.scope_key,
+                    }
+                )
+        finally:
+            connection.close()
+    except Exception as exc:
+        logger.debug("Wiki context unavailable: %s", exc)
+        return None
+    if not context_items:
+        return None
+    return {
+        "references": references,
+        "shadow_context": context_items,
+    }
+
+
+def _card_context_for_query(question: str, query_profile: str | None) -> dict[str, Any] | None:
+    """Return approved Wiki hubs plus strong Enriched-card context."""
+    wiki_context = _wiki_context_for_query(question)
+    if not config.HYBRID_QUERY_CARDS_ENABLED:
+        return wiki_context
     fallback = _shadow_fallback_result(question, query_profile)
     if not fallback:
-        return None
+        return wiki_context
 
     data = dict(fallback.get("data") or {})
     context_items = list(data.get("shadow_context") or [])[: max(1, config.HYBRID_QUERY_CARDS_TOP_K)]
     if not context_items:
-        return None
+        return wiki_context
 
     references = []
     for idx, item in enumerate(context_items, start=1):
@@ -426,9 +568,20 @@ def _card_context_for_query(question: str, query_profile: str | None) -> dict[st
                     reference[key] = value
             references.append(reference)
     if not references:
-        return None
+        return wiki_context
 
-    return {"references": references, "shadow_context": context_items}
+    if wiki_context is None:
+        return {"references": references, "shadow_context": context_items}
+    return {
+        "references": _merge_references(
+            list(wiki_context.get("references") or []),
+            references,
+        ),
+        "shadow_context": [
+            *list(wiki_context.get("shadow_context") or []),
+            *context_items,
+        ],
+    }
 
 
 def _attach_card_context(

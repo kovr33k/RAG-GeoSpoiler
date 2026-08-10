@@ -159,11 +159,14 @@ def _remove_source_metadata_index(source_path: str) -> None:
     index_path = _source_index_path()
     if not index_path.exists():
         return
+    canonical_path = _canonical_source_path(source_path)
+    paths_to_remove = {canonical_path}
+    paths_to_remove.add(_canonical_source_path(_rag_file_path(canonical_path)))
     conn = _connect_source_metadata_index()
     try:
-        conn.execute(
+        conn.executemany(
             "DELETE FROM source_metadata WHERE source_path = ?",
-            (_canonical_source_path(source_path),),
+            [(path,) for path in paths_to_remove],
         )
         conn.commit()
     finally:
@@ -320,3 +323,33 @@ def _canonical_source_path(source_path: str) -> str:
 def _source_doc_id(source_path: str) -> str:
     """Build a stable document ID from the normalized source path."""
     return compute_mdhash_id(_canonical_source_path(source_path), prefix="doc-")
+
+
+def _rag_file_path(source_path: str) -> str:
+    """Return the citation path passed to LightRAG.
+
+    LightRAG deliberately canonicalizes ``file_paths`` to basenames.  That is
+    unsafe for this corpus because every normalized topic directory can have a
+    ``1.txt``, ``21.txt``, etc.  Keep the real path when its basename is unique;
+    otherwise use a deterministic virtual basename.  The source metadata index
+    maps that virtual name back to the real normalized path.
+    """
+    canonical_path = _canonical_source_path(source_path)
+    basename = Path(canonical_path).name
+
+    try:
+        normalized_root = config.NORMALIZED_DIR.resolve(strict=False)
+        Path(canonical_path).relative_to(normalized_root)
+        matching_paths = [
+            path
+            for path in config.NORMALIZED_DIR.rglob(basename)
+            if path.is_file()
+        ]
+    except (OSError, ValueError):
+        matching_paths = []
+
+    if len(matching_paths) <= 1:
+        return canonical_path
+
+    suffix = Path(basename).suffix or ".txt"
+    return f"__geospoiler__{_source_doc_id(canonical_path)}{suffix}"

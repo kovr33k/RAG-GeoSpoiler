@@ -1,11 +1,14 @@
 """
-Enricher Module — transforms normalized posts into structured memory cards.
+Enricher Module v2 — transforms normalized posts into structured memory cards.
 
-Pipeline: normalized/ → enricher → enriched/ → LightRAG graph
+Pipeline: normalized/ -> preprocessor -> classifier -> LLM -> validator -> repair -> postprocessor -> enriched/
 
-Each normalized post gets an enriched JSON card containing:
-- summary, key_facts, entities, topics, theses, quotes
-- content_type classification and triage status
-- graph_text (clean text for LightRAG) and search_text (broad text for search)
-- provenance links back to normalized source and Telegram post
+Each normalized post gets an enriched_v2 JSON card containing:
+- summary, key_points, entities (raw surface forms), topics, theses, quotes, events, search_phrases
+- content_type classification (rule-based, not LLM)
+- graph_text (code-built relational text for LightRAG)
+- search_text (code-built dense text for FTS/BM25)
+- source_chain (code-built from metadata)
+- ignored_blocks (preprocessor-detected)
+- quality_flags, provenance
 """

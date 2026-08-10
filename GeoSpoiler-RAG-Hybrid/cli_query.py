@@ -172,10 +172,11 @@ def _extract_query_sources(query_result: dict[str, Any], limit: int = 5) -> list
         meta = metadata_index.get(canonical_path, {})
         if not meta:
             meta = _load_adjacent_source_metadata(canonical_path)
+        source_path = str(meta.get("canonical_path") or canonical_path)
         post_url = str(meta.get("пост") or meta.get("post_url") or post_url_from_ref).strip()
         channel = str(meta.get("канал") or meta.get("channel_name") or ref.get("channel") or "").strip()
         date = str(meta.get("дата") or meta.get("date") or ref.get("date") or "").strip()
-        key = post_url or canonical_path
+        key = post_url or source_path
         if not key or key in seen_keys:
             continue
         seen_keys.add(key)
@@ -184,7 +185,7 @@ def _extract_query_sources(query_result: dict[str, Any], limit: int = 5) -> list
                 "post_url": post_url,
                 "channel": channel,
                 "date": date,
-                "file_path": canonical_path,
+                "file_path": source_path,
             }
         )
         if len(results) >= limit:

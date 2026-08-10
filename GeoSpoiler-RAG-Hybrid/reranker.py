@@ -1,10 +1,6 @@
-"""
-Reranker — интеграция с LightRAG 1.4.15 и поддержка самостоятельного вызова.
+"""Reranker integration for LightRAG and the standalone query helper.
 
-Поддерживает 3 провайдера (выбирается через RERANKER_PROVIDER в .env):
-  nim          — Nvidia NIM /v1/ranking (рекомендуется)
-  jina         — Jina AI Reranker API
-  huggingface  — Локальный BAAI/bge-reranker-v2-m3
+The production route uses OpenRouter's ``POST /api/v1/rerank`` contract.
 
 LightRAG API (rerank_model_func):
   async def func(query: str, documents: list[str], top_n: int)
@@ -21,6 +17,27 @@ import httpx
 import config
 
 logger = logging.getLogger("geospoiler.reranker")
+
+_RERANKER_STATS: dict[str, object] = {
+    "attempted": 0,
+    "succeeded": 0,
+    "failed": 0,
+    "last_error_type": None,
+}
+
+
+def reset_reranker_stats() -> None:
+    """Reset process-local counters before an observable query/run."""
+    _RERANKER_STATS.update(attempted=0, succeeded=0, failed=0, last_error_type=None)
+
+
+def get_reranker_stats() -> dict[str, object]:
+    """Return a copy safe to persist in local evaluation artifacts."""
+    return {
+        **_RERANKER_STATS,
+        "provider": config.RERANKER_PROVIDER,
+        "model": config.RERANKER_MODEL,
+    }
 
 
 # ──────────────────────────────────────────────────────────────────
@@ -53,13 +70,19 @@ async def lightrag_rerank_func(
     try:
         provider = config.RERANKER_PROVIDER.lower()
 
-        if provider == "nim":
-            results = await _rerank_nim_async(query, candidates, top_n)
+        _RERANKER_STATS["attempted"] = int(_RERANKER_STATS["attempted"]) + 1
+
+        if provider == "openrouter":
+            results = await _rerank_openrouter_async(query, candidates, top_n)
         elif provider == "jina":
             results = await _rerank_jina_async(query, candidates, top_n)
         else:
-            logger.warning(f"Unknown reranker provider '{provider}', skipping.")
-            return [{"index": i, "relevance_score": 1.0} for i in range(min(top_n, len(candidates)))]
+            raise ValueError(f"Unknown reranker provider: {provider}")
+
+        if not results:
+            raise ValueError("Reranker returned no results")
+
+        _RERANKER_STATS["succeeded"] = int(_RERANKER_STATS["succeeded"]) + 1
 
         logger.info(
             f"Reranker ({provider}): {len(documents)} docs -> "
@@ -68,32 +91,29 @@ async def lightrag_rerank_func(
         return results
 
     except Exception as e:
+        _RERANKER_STATS["failed"] = int(_RERANKER_STATS["failed"]) + 1
+        _RERANKER_STATS["last_error_type"] = type(e).__name__
         logger.warning(f"Reranker failed ({e}), using original order.")
         return [{"index": i, "relevance_score": 1.0} for i in range(min(top_n or 10, len(documents)))]
 
 
 # ──────────────────────────────────────────────────────────────────
-# Nvidia NIM async
+# OpenRouter async
 # ──────────────────────────────────────────────────────────────────
 
-async def _rerank_nim_async(
+async def _rerank_openrouter_async(
     query: str,
-    passages: list[str],
+    documents: list[str],
     top_n: int,
 ) -> list[dict]:
-    """
-    Nvidia NIM Reranking API (async).
-    Full endpoint: {RERANKER_BASE_URL}/reranking
-    Example: https://ai.api.nvidia.com/v1/retrieval/nvidia/llama-nemotron-rerank-1b-v2/reranking
-    Response: {"rankings": [{"index": 0, "logit": 3.14}, ...]}
-    """
-    url = config.RERANKER_BASE_URL.rstrip("/") + "/reranking"
+    """Call OpenRouter's provider-routed rerank endpoint."""
+    url = config.RERANKER_BASE_URL.rstrip("/") + "/rerank"
 
     payload = {
         "model": config.RERANKER_MODEL,
-        "query": {"text": query},
-        "passages": [{"text": p} for p in passages],
-        "truncate": "END",
+        "query": query,
+        "documents": documents,
+        "top_n": top_n,
     }
 
     headers = {
@@ -107,18 +127,28 @@ async def _rerank_nim_async(
         resp.raise_for_status()
         data = resp.json()
 
-    # NIM returns rankings sorted by logit desc (most relevant first)
-    rankings = data.get("rankings", [])
+    return _validated_results(data.get("results"), document_count=len(documents), top_n=top_n)
 
-    # Normalize logit scores to [0, 1] range using sigmoid
-    import math
-    results = []
-    for r in rankings[:top_n]:
-        logit = r.get("logit", 0.0)
-        score = 1.0 / (1.0 + math.exp(-logit))  # sigmoid
-        results.append({"index": r["index"], "relevance_score": score})
 
-    return results
+def _validated_results(results: object, *, document_count: int, top_n: int) -> list[dict]:
+    if not isinstance(results, list):
+        raise ValueError("Reranker response is missing results")
+    validated: list[dict] = []
+    seen: set[int] = set()
+    for item in results[:top_n]:
+        if not isinstance(item, dict):
+            raise ValueError("Reranker result must be an object")
+        index = item.get("index")
+        score = item.get("relevance_score")
+        if not isinstance(index, int) or isinstance(index, bool) or not 0 <= index < document_count:
+            raise ValueError("Reranker result index is invalid")
+        if index in seen:
+            raise ValueError("Reranker result index is duplicated")
+        if not isinstance(score, (int, float)) or isinstance(score, bool):
+            raise ValueError("Reranker relevance score is invalid")
+        seen.add(index)
+        validated.append({"index": index, "relevance_score": float(score)})
+    return validated
 
 
 # ──────────────────────────────────────────────────────────────────
@@ -154,11 +184,7 @@ async def _rerank_jina_async(
         data = resp.json()
 
     # Jina returns: {"results": [{"index": 0, "relevance_score": 0.95, ...}, ...]}
-    results = data.get("results", [])
-    return [
-        {"index": r["index"], "relevance_score": r.get("relevance_score", 0.0)}
-        for r in results
-    ]
+    return _validated_results(data.get("results"), document_count=len(passages), top_n=top_n)
 
 
 # ──────────────────────────────────────────────────────────────────

@@ -8,7 +8,7 @@ from typing import Any
 import config
 
 _TEXT_FIELDS = ("search_text", "graph_text", "summary")
-_EVIDENCE_LIST_FIELDS = ("key_facts", "quotes", "theses", "events", "chunks")
+_EVIDENCE_LIST_FIELDS = ("key_points", "quotes", "theses", "events")
 
 
 def card_search_text(card: dict[str, Any], card_path: Path | str | None = None) -> str:
@@ -60,17 +60,11 @@ def _is_thin_card(card: dict[str, Any]) -> bool:
 
 def _read_normalized_text(card: dict[str, Any], card_path: Path | str | None = None) -> str:
     provenance = card.get("provenance") if isinstance(card.get("provenance"), dict) else {}
-    normalized_file = str(provenance.get("normalized_file") or "").strip()
+    normalized_file = str(provenance.get("normalized_path") or "").strip()
     candidates = []
     if normalized_file:
         path = Path(normalized_file)
         candidates.append(path if path.is_absolute() else config.PROJECT_ROOT / path)
-    if card_path:
-        path = Path(card_path)
-        if path.name.endswith(".enriched.json"):
-            normalized_name = path.name.removesuffix(".enriched.json") + ".txt"
-            candidates.append(config.NORMALIZED_DIR / path.parent.name / normalized_name)
-
     for path in candidates:
         try:
             if path.exists() and path.is_file():

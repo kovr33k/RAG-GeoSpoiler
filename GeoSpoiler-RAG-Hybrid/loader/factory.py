@@ -6,6 +6,7 @@ from lightrag import LightRAG
 from lightrag.utils import EmbeddingFunc
 
 import config
+import llm_backend
 from loader.clients import _chat_completion_options, _chat_settings_for_role, _embed_texts, _openai_client
 from loader.extraction import (
     _build_extraction_policy,
@@ -26,12 +27,7 @@ async def create_rag() -> LightRAG:
         is_extraction = _is_extraction_prompt(prompt, system_prompt)
         role = _LLM_ROLE.get()
         chat_role = "build" if role == "build" else "query"
-        api_key, base_url, model = _chat_settings_for_role(chat_role)
-        llm_client = _openai_client(
-            api_key,
-            base_url,
-            timeout=config.LLM_TIMEOUT_SECONDS,
-        )
+        backend_role = "rag_build" if chat_role == "build" else "query"
         messages = []
         if system_prompt:
             system_content = system_prompt
@@ -48,16 +44,56 @@ async def create_rag() -> LightRAG:
         if delay_seconds > 0:
             await asyncio.sleep(delay_seconds)
 
-        response = await llm_client.chat.completions.create(
-            model=model,
-            messages=messages,
-            **_chat_completion_options(
-                max_tokens=kwargs.get("max_tokens") or config.QUERY_MAX_TOKENS,
-                temperature=kwargs.get("temperature"),
-                top_p=kwargs.get("top_p"),
-            ),
-        )
-        content = response.choices[0].message.content or ""
+        if llm_backend.is_luna_role(backend_role):
+            try:
+                content = await llm_backend.complete_text_async(
+                    messages,
+                    role=backend_role,
+                    timeout_seconds=config.CODEX_LLM_TIMEOUT_SECONDS,
+                )
+            except llm_backend.LLMBackendError:
+                if not config.CODEX_FALLBACK_TO_API:
+                    raise
+                logger.warning("Codex %s call failed; explicit API fallback is enabled", backend_role)
+                api_key, base_url, model = _chat_settings_for_role(chat_role)
+                llm_client = _openai_client(
+                    api_key,
+                    base_url,
+                    timeout=config.LLM_TIMEOUT_SECONDS,
+                )
+                response = await asyncio.wait_for(
+                    llm_client.chat.completions.create(
+                        model=model,
+                        messages=messages,
+                        **_chat_completion_options(
+                            max_tokens=kwargs.get("max_tokens") or config.QUERY_MAX_TOKENS,
+                            temperature=kwargs.get("temperature"),
+                            top_p=kwargs.get("top_p"),
+                        ),
+                    ),
+                    timeout=config.LLM_TIMEOUT_SECONDS,
+                )
+                content = response.choices[0].message.content or ""
+        else:
+            api_key, base_url, model = _chat_settings_for_role(chat_role)
+            llm_client = _openai_client(
+                api_key,
+                base_url,
+                timeout=config.LLM_TIMEOUT_SECONDS,
+            )
+            response = await asyncio.wait_for(
+                llm_client.chat.completions.create(
+                    model=model,
+                    messages=messages,
+                    **_chat_completion_options(
+                        max_tokens=kwargs.get("max_tokens") or config.QUERY_MAX_TOKENS,
+                        temperature=kwargs.get("temperature"),
+                        top_p=kwargs.get("top_p"),
+                    ),
+                ),
+                timeout=config.LLM_TIMEOUT_SECONDS,
+            )
+            content = response.choices[0].message.content or ""
         if is_extraction:
             content = _postprocess_extraction_response(content)
         return content

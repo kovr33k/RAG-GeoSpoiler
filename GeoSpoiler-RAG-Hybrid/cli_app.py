@@ -4,10 +4,10 @@ import argparse
 import asyncio
 import sys
 
+import config
+import llm_backend
 from cli_pipeline import (
-    LoadStats,
     _maybe_launch_reviewer,
-    _print_enriched_graph_load_unsupported,
     _print_load_summary,
     _print_run_summary,
     cmd_baseline_probe,
@@ -34,19 +34,22 @@ from cli_tools import (
     cmd_validate_enriched,
 )
 from cli_wiki import (
-    _print_wiki_init_summary,
-    cmd_wiki_build_claims,
-    cmd_wiki_build_entities_topics,
-    cmd_wiki_coverage_backfill,
-    cmd_wiki_health,
-    cmd_wiki_ingest,
-    cmd_wiki_init,
-    cmd_wiki_localize,
-    cmd_wiki_overview,
-    cmd_wiki_update,
+    cmd_wiki_rebuild,
+    cmd_wiki_run,
+    cmd_wiki_search,
+    cmd_wiki_status,
 )
 
 CLI_DESCRIPTION = "Telegram-to-RAG pipeline for GeoSpoiler local memory."
+
+
+def _add_llm_profile(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
+    parser.add_argument(
+        "--llm-profile",
+        choices=("current", "luna"),
+        help="Text LLM backend for this command (default: LLM_PROFILE).",
+    )
+    return parser
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -56,29 +59,26 @@ def build_parser() -> argparse.ArgumentParser:
     fetch = subparsers.add_parser("fetch")
     fetch.add_argument("limit", nargs="?", type=int)
 
-    normalize = subparsers.add_parser("normalize")
+    normalize = _add_llm_profile(subparsers.add_parser("normalize"))
     normalize.add_argument("limit", nargs="?", type=int)
 
-    enrich = subparsers.add_parser("enrich")
+    enrich = _add_llm_profile(subparsers.add_parser("enrich"))
     enrich.add_argument("--channel", dest="channel_filter")
     enrich.add_argument("--force", action="store_true")
 
-    load = subparsers.add_parser("load")
-    load.add_argument("--from-enriched", action="store_true", dest="from_enriched")
+    _add_llm_profile(subparsers.add_parser("load"))
 
-    run = subparsers.add_parser("run")
+    run = _add_llm_profile(subparsers.add_parser("run"))
     run.add_argument("limit", nargs="?", type=int)
 
-    rebuild = subparsers.add_parser("rebuild")
-    rebuild.add_argument("--from-enriched", action="store_true", dest="from_enriched")
+    _add_llm_profile(subparsers.add_parser("rebuild"))
 
-    rebuild_embedding = subparsers.add_parser("rebuild-embedding")
-    rebuild_embedding.add_argument("--from-enriched", action="store_true", dest="from_enriched")
+    subparsers.add_parser("rebuild-embedding")
 
-    query = subparsers.add_parser("query")
+    query = _add_llm_profile(subparsers.add_parser("query"))
     query.add_argument("query_args", nargs="*")
 
-    search = subparsers.add_parser("search")
+    search = _add_llm_profile(subparsers.add_parser("search"))
     search.add_argument("query", nargs="*")
     search.add_argument("--mode", default="recall")
 
@@ -86,19 +86,6 @@ def build_parser() -> argparse.ArgumentParser:
     baseline_sub = baseline.add_subparsers(dest="subcommand")
     baseline_probe = baseline_sub.add_parser("probe")
     baseline_probe.add_argument("limit", nargs="?", type=int, default=3)
-
-    wiki = subparsers.add_parser("wiki")
-    wiki_sub = wiki.add_subparsers(dest="subcommand")
-    wiki_sub.add_parser("init")
-    wiki_build = wiki_sub.add_parser("build")
-    wiki_build.add_argument("--claims-only", action="store_true")
-    wiki_build.add_argument("--entities-topics", action="store_true")
-    wiki_sub.add_parser("health")
-    wiki_sub.add_parser("ingest")
-    wiki_sub.add_parser("overview")
-    wiki_sub.add_parser("coverage-backfill")
-    wiki_sub.add_parser("localize")
-    wiki_sub.add_parser("update")
 
     experiments = subparsers.add_parser("experiments")
     experiments_sub = experiments.add_subparsers(dest="subcommand")
@@ -109,7 +96,9 @@ def build_parser() -> argparse.ArgumentParser:
     fts_sub.add_parser("rebuild")
     fts_search = fts_sub.add_parser("search")
     fts_search.add_argument("query", nargs="*")
-    fts_search.add_argument("--top-k", type=int, default=10)
+    fts_limit = fts_search.add_mutually_exclusive_group()
+    fts_limit.add_argument("--top-k", type=int, default=10)
+    fts_limit.add_argument("--all", action="store_true", dest="all_results")
     fts_search.add_argument("--compare-shadow", action="store_true")
 
     registry = subparsers.add_parser("registry")
@@ -133,8 +122,21 @@ def build_parser() -> argparse.ArgumentParser:
 
     subparsers.add_parser("quality")
 
-    review = subparsers.add_parser("review")
+    review = _add_llm_profile(subparsers.add_parser("review"))
     review.add_argument("--web", action="store_true")
+
+    wiki = subparsers.add_parser("wiki")
+    wiki_sub = wiki.add_subparsers(dest="subcommand")
+    wiki_run = _add_llm_profile(wiki_sub.add_parser("run"))
+    wiki_run.add_argument("paths", nargs="*")
+    wiki_run.add_argument("--no-luna", action="store_true")
+    wiki_rebuild = _add_llm_profile(wiki_sub.add_parser("rebuild"))
+    wiki_rebuild.add_argument("--no-luna", action="store_true")
+    wiki_search = wiki_sub.add_parser("search")
+    wiki_search.add_argument("query", nargs="*")
+    wiki_search.add_argument("--limit", type=int, default=12)
+    wiki_sub.add_parser("status")
+    wiki_sub.add_parser("review")
 
     subparsers.add_parser("status")
     return parser
@@ -162,50 +164,35 @@ def dispatch(args: argparse.Namespace, parser: argparse.ArgumentParser) -> None:
         parser.print_help()
         return
 
+    selected_profile = getattr(args, "llm_profile", None)
+    if selected_profile:
+        llm_backend.set_profile(selected_profile)
+    luna_disabled_for_wiki = command == "wiki" and getattr(args, "no_luna", False)
+    if (
+        llm_backend.active_profile() == "luna"
+        and not luna_disabled_for_wiki
+        and command in {
+            "normalize",
+            "enrich",
+            "load",
+            "rebuild",
+            "run",
+            "query",
+            "search",
+            "review",
+            "wiki",
+        }
+    ):
+        try:
+            llm_backend.validate_luna_configuration()
+        except llm_backend.LLMBackendError as exc:
+            parser.error(str(exc))
+
     if command == "baseline":
         if args.subcommand == "probe":
             asyncio.run(cmd_baseline_probe(limit=args.limit))
             return
         print("Usage: python main.py baseline probe [N]")
-        return
-
-    if command == "wiki":
-        if args.subcommand == "init":
-            _print_wiki_init_summary(cmd_wiki_init())
-            return
-        if args.subcommand == "build" and args.claims_only:
-            cmd_wiki_build_claims()
-            return
-        if args.subcommand == "build" and args.entities_topics:
-            cmd_wiki_build_entities_topics()
-            return
-        if args.subcommand == "build":
-            print("Usage: python main.py wiki build --claims-only | python main.py wiki build --entities-topics")
-            return
-        if args.subcommand == "health":
-            cmd_wiki_health()
-            return
-        if args.subcommand == "ingest":
-            cmd_wiki_ingest()
-            return
-        if args.subcommand == "overview":
-            cmd_wiki_overview()
-            return
-        if args.subcommand == "coverage-backfill":
-            cmd_wiki_coverage_backfill()
-            return
-        if args.subcommand == "localize":
-            cmd_wiki_localize()
-            return
-        if args.subcommand == "update":
-            cmd_wiki_update()
-            return
-        print(
-            "Usage: python main.py wiki init | python main.py wiki build --claims-only | "
-            "python main.py wiki build --entities-topics | python main.py wiki health | "
-            "python main.py wiki ingest | python main.py wiki overview | "
-            "python main.py wiki coverage-backfill | python main.py wiki localize | python main.py wiki update"
-        )
         return
 
     if command == "experiments":
@@ -230,37 +217,29 @@ def dispatch(args: argparse.Namespace, parser: argparse.ArgumentParser) -> None:
                 return
             normalize_stats = await cmd_normalize(channel_messages)
             print(f"\nDone: {normalize_stats.normalized_messages} texts normalized to output/normalized/")
-            _print_run_summary(channel_messages, normalize_stats, LoadStats())
-            print("Run 'python main.py load' when ready to load into LightRAG.")
+            _print_run_summary(channel_messages, normalize_stats)
+            print("Run 'python main.py enrich' next, then optionally 'python main.py load'.")
             _maybe_launch_reviewer()
 
         asyncio.run(_fetch_and_normalize())
         return
 
     if command == "load":
-        if args.from_enriched:
-            _print_enriched_graph_load_unsupported()
-            return
         load_stats = asyncio.run(cmd_load())
         _print_load_summary(load_stats)
         return
 
     if command == "rebuild":
-        if args.from_enriched:
-            _print_enriched_graph_load_unsupported()
-            return
         asyncio.run(cmd_rebuild())
         return
 
     if command == "rebuild-embedding":
-        if args.from_enriched:
-            _print_enriched_graph_load_unsupported()
-            return
         asyncio.run(cmd_rebuild_embedding())
         return
 
     if command == "enrich":
         cmd_enrich(channel_filter=args.channel_filter, force=args.force)
+        _maybe_launch_reviewer()
         return
 
     if command == "run":
@@ -292,11 +271,15 @@ def dispatch(args: argparse.Namespace, parser: argparse.ArgumentParser) -> None:
         if args.subcommand == "search":
             query = " ".join(args.query).strip()
             if not query:
-                print('Usage: python main.py fts search "query" [--top-k N] [--compare-shadow]')
+                print('Usage: python main.py fts search "query" [--top-k N | --all] [--compare-shadow]')
                 return
-            cmd_fts_search(query, top_k=args.top_k, compare_shadow=args.compare_shadow)
+            top_k = None if args.all_results else args.top_k
+            cmd_fts_search(query, top_k=top_k, compare_shadow=args.compare_shadow)
             return
-        print('Usage: python main.py fts rebuild | python main.py fts search "query" [--top-k N] [--compare-shadow]')
+        print(
+            'Usage: python main.py fts rebuild | python main.py fts search "query" '
+            '[--top-k N | --all] [--compare-shadow]'
+        )
         return
 
     if command == "registry":
@@ -341,6 +324,47 @@ def dispatch(args: argparse.Namespace, parser: argparse.ArgumentParser) -> None:
 
     if command == "review":
         cmd_review(web=args.web)
+        return
+
+    if command == "wiki":
+        if not config.WIKI_ENABLED:
+            print(
+                "Wiki disabled (WIKI_ENABLED=false). "
+                "Set WIKI_ENABLED=true to enable its commands."
+            )
+            return
+        if args.subcommand == "run":
+            stats = cmd_wiki_run(
+                args.paths,
+                use_luna=False if args.no_luna else None,
+            )
+            if stats.review_counts.total:
+                _maybe_launch_reviewer()
+            return
+        if args.subcommand == "rebuild":
+            stats = cmd_wiki_rebuild(
+                use_luna=False if args.no_luna else None,
+            )
+            if stats.review_counts.total:
+                _maybe_launch_reviewer()
+            return
+        if args.subcommand == "search":
+            query = " ".join(args.query).strip()
+            if not query:
+                print('Usage: python main.py wiki search "query" [--limit N]')
+                return
+            cmd_wiki_search(query, limit=args.limit)
+            return
+        if args.subcommand == "status":
+            cmd_wiki_status()
+            return
+        if args.subcommand == "review":
+            cmd_review(web=True)
+            return
+        print(
+            "Usage: python main.py wiki "
+            "run [PATH ...] | rebuild | search QUERY | status | review"
+        )
         return
 
     if command == "status":

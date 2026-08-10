@@ -2,7 +2,7 @@
 telethon>=1.36.0
 
 # LightRAG
-lightrag-hku>=1.0.0
+lightrag-hku==1.5.4
 openai>=2.0.0
 
 # Web scraping

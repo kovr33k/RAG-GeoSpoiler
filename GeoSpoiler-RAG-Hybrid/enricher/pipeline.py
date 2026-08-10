@@ -1,56 +1,68 @@
 """
-Enricher Pipeline — orchestrates the conversion of normalized posts into enriched memory cards.
+Enricher Pipeline v2 — produces enriched_v2 cards from normalized posts.
 
-Scans output/normalized/ for .txt + .meta.json pairs, checks enrichment state,
-and produces enriched JSON cards in output/enriched/.
-
-Uses LLM to extract: summary, key_facts, entities, topics, theses, quotes,
-events, query_aliases, and visual assessment. Long-form content is chunked
-and merged. Dedup runs after all cards are created.
+Pipeline:
+  normalized text
+    -> content_type classifier (rule-based)
+    -> triage
+    -> preprocessor (clean text + ignored blocks)
+    -> LLM extraction (semantic payload only)
+    -> validator (contract checks)
+    -> repair (optional, max 1 attempt)
+    -> postprocessor (assemble final card)
+    -> graph_text / search_text builders
+    -> enriched_v2 card
 """
 
 import concurrent.futures
+import hashlib
 import json
 import logging
-import re
+import threading
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
 
+from pydantic import ValidationError
+
 import config
+import llm_backend
 from enricher.chunker import chunk_text, needs_chunking
 from enricher.content_classifier import classify_content
-from enricher.dedup import mark_duplicates
 from enricher.graph_text_builder import populate_graph_texts
 from enricher.llm_enricher import (
-    enrich_chunk,
-    enrich_full_post,
-    enrich_short_post,
-    merge_chunk_results,
+    EmptyLLMResponseError,
+    _normalize_to_payload,
+    extract_chunk_raw,
+    extract_full_post_raw,
+    extract_short_post_raw,
+    merge_chunk_results_raw,
 )
-from enricher.triage import TRIAGE_KEEP, TRIAGE_REVIEW, auto_triage
+from enricher.preprocessor import PreprocessedText, preprocess
+from enricher.repair import (
+    RepairContext,
+    repair_if_needed,
+    repair_invalid_payload,
+)
+from enricher.triage import TRIAGE_REVIEW, auto_triage
+from enricher.validator import drop_invalid_optional_items, validate_payload
+from enricher.youtube_pipeline import _looks_like_legacy_youtube_document, enrich_youtube_all
+from models import EnrichedCardV2, LLMPayload, NormalizedMeta, Provenance, SourceChain
 from normalizer.review_queue import (
     REVIEW_TYPE_UNINFORMATIVE,
 )
 from normalizer.review_queue import (
     queue_item as queue_review_item,
 )
+from normalizer.youtube_handler import redact_sensitive_url
 
 logger = logging.getLogger("geospoiler.enricher")
 
-# Header regex
-_HEADER_RE = re.compile(r"^\[Канал:.*\]\s*$")
-
-# Noise patterns — donation links, social media CTAs, disclaimers
-_NOISE_PATTERNS = [
-    (re.compile(r"(?:подписывайтесь|подписка|subscribe|подпишитесь).*(?:канал|channel|patreon|youtube)", re.IGNORECASE), "subscription_cta"),
-    (re.compile(r"(?:patreon\.com|buymeacoffee\.com|ko-fi\.com|donationalerts)", re.IGNORECASE), "donation_link"),
-    (re.compile(r"(?:QR-код|qr.code)", re.IGNORECASE), "qr_code_reference"),
-    (re.compile(r"ссылки?\s+(?:на\s+)?(?:платные|в описании|внизу|ниже)", re.IGNORECASE), "paid_links_cta"),
-]
-
-# Short post threshold — posts below this body length get minimal LLM processing
 _SHORT_POST_THRESHOLD = 500
+
+
+class UnusableExtractionError(RuntimeError):
+    """Raised when a substantive source has no usable extracted content."""
 
 
 @dataclass
@@ -59,14 +71,21 @@ class EnrichmentStats:
 
     scanned: int = 0
     enriched: int = 0
-    partial: int = 0  # LLM returned empty for a keep post
+    partial: int = 0
     skipped_up_to_date: int = 0
     skipped_no_meta: int = 0
+    skipped_review: int = 0
+    skipped_youtube: int = 0
+    repaired: int = 0
+    youtube_sources: int = 0
+    youtube_episodes: int = 0
+    youtube_skipped: int = 0
+    youtube_segments: int = 0
+    youtube_partial: int = 0
+    youtube_failed: int = 0
     failed: int = 0
-    duplicates_marked: int = 0
-    partial_posts: list = field(default_factory=list)  # names of partial posts
+    partial_posts: list = field(default_factory=list)
     by_content_type: dict = field(default_factory=dict)
-    by_triage: dict = field(default_factory=dict)
 
 
 def enrich_all(
@@ -93,20 +112,23 @@ def enrich_all(
     )
 
     _run_enrichment_jobs(jobs, progress, stats)
-
-    # Save progress
+    # Persist completed generic work before the potentially long YouTube pass.
+    # Otherwise an interrupted YouTube run makes all generic LLM work repeat.
     _save_progress(progress)
-
-    # Run dedup across all enriched cards
-    if stats.enriched > 0:
-        logger.info("Running dedup check...")
-        stats.duplicates_marked = mark_duplicates()
-        if stats.duplicates_marked:
-            logger.info(f"  Marked {stats.duplicates_marked} duplicate(s)")
+    youtube_stats = enrich_youtube_all(channel_filter=channel_filter, force=force)
+    stats.youtube_sources = youtube_stats.sources_scanned
+    stats.youtube_episodes = youtube_stats.episodes_written
+    stats.youtube_skipped = youtube_stats.episodes_skipped
+    stats.youtube_segments = youtube_stats.segments_written
+    stats.youtube_partial = youtube_stats.partial_sources
+    stats.youtube_failed = youtube_stats.failed_sources
+    _save_progress(progress)
 
     logger.info(
         f"Enrichment complete: {stats.enriched} enriched, "
+        f"{stats.repaired} repaired, "
         f"{stats.skipped_up_to_date} up-to-date, "
+        f"{stats.skipped_review} review, "
         f"{stats.failed} failed out of {stats.scanned} scanned"
     )
     return stats
@@ -119,7 +141,7 @@ class _EnrichmentJob:
     channel_name: str
     msg_id: str
     progress_key: str
-    normalized_mtime: float
+    source_fingerprint: str
     out_path: Path
 
 
@@ -151,18 +173,37 @@ def _collect_enrichment_jobs(
             msg_id = txt_path.stem
             meta_path = txt_path.with_suffix(".meta.json")
             progress_key = f"{channel_name}/{msg_id}"
+            expected_source_id: str | None = None
+            metadata_identity_valid = False
 
             if not meta_path.exists():
-                logger.warning(f"No meta.json for {progress_key} ? skipping")
+                logger.warning(f"No meta.json for {progress_key} — skipping")
                 stats.skipped_no_meta += 1
                 continue
 
-            normalized_mtime = txt_path.stat().st_mtime
+            try:
+                normalized_meta = NormalizedMeta.model_validate_json(
+                    meta_path.read_text(encoding="utf-8")
+                )
+                expected_source_id = _build_source_id(normalized_meta, channel_name, msg_id)
+                metadata_identity_valid = True
+                if normalized_meta.youtube_urls and _is_youtube_only_normalized_document(
+                    normalized_meta,
+                    txt_path,
+                ):
+                    stats.skipped_youtube += 1
+                    continue
+            except (OSError, ValidationError):
+                logger.warning("Cannot inspect metadata for %s", progress_key)
+
+            source_fingerprint = _source_fingerprint(txt_path, meta_path)
             out_path = enriched_dir / channel_name / f"{msg_id}.enriched.json"
             if (
                 not force
-                and not _needs_enrichment(progress, progress_key, normalized_mtime)
-                and not _is_existing_partial_card(out_path, txt_path)
+                and out_path.exists()
+                and not _needs_enrichment(progress, progress_key, source_fingerprint)
+                and metadata_identity_valid
+                and _is_valid_enriched_output(out_path, expected_source_id)
             ):
                 stats.skipped_up_to_date += 1
                 continue
@@ -174,12 +215,26 @@ def _collect_enrichment_jobs(
                     channel_name=channel_name,
                     msg_id=msg_id,
                     progress_key=progress_key,
-                    normalized_mtime=normalized_mtime,
+                    source_fingerprint=source_fingerprint,
                     out_path=out_path,
                 )
             )
 
     return jobs
+
+
+def _is_youtube_only_normalized_document(meta: NormalizedMeta, text_path: Path) -> bool:
+    """Keep a standalone YouTube transcript out of the generic Telegram stream."""
+    if not meta.youtube_urls:
+        return False
+    if meta.has_body_text is False:
+        return True
+    if meta.has_body_text is True:
+        return False
+    try:
+        return _looks_like_legacy_youtube_document(text_path.read_text(encoding="utf-8"))
+    except OSError:
+        return False
 
 
 def _run_enrichment_jobs(
@@ -194,80 +249,303 @@ def _run_enrichment_jobs(
     if concurrency <= 1:
         for job in jobs:
             try:
-                card = _run_enrichment_job(job)
-                _handle_enriched_card(job, card, progress, stats)
+                result = _run_enrichment_job(job, stats)
+                _handle_enrichment_result(job, result, progress, stats)
             except Exception as exc:
                 _record_enrichment_failure(job, exc, stats)
         return
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=concurrency) as executor:
-        future_to_job = {executor.submit(_run_enrichment_job, job): job for job in jobs}
+        future_to_job = {executor.submit(_run_enrichment_job, job, stats): job for job in jobs}
         for future in concurrent.futures.as_completed(future_to_job):
             job = future_to_job[future]
             try:
-                card = future.result()
-                _handle_enriched_card(job, card, progress, stats)
+                result = future.result()
+                _handle_enrichment_result(job, result, progress, stats)
             except Exception as exc:
                 _record_enrichment_failure(job, exc, stats)
 
 
-def _run_enrichment_job(job: _EnrichmentJob) -> dict:
-    return _enrich_single_post(
-        txt_path=job.txt_path,
-        meta_path=job.meta_path,
-        channel_name=job.channel_name,
-        msg_id=job.msg_id,
-    )
+def _run_enrichment_job(job: _EnrichmentJob, stats: EnrichmentStats) -> dict | None:
+    """Run the full enrichment pipeline for a single post."""
+    normalized_text = job.txt_path.read_text(encoding="utf-8")
+    meta = NormalizedMeta.model_validate_json(job.meta_path.read_text(encoding="utf-8"))
+    meta_data = meta.model_dump(mode="json")
 
+    # 1. Content type classification (rule-based)
+    content_type = classify_content(meta_data, normalized_text)
 
-def _handle_enriched_card(
-    job: _EnrichmentJob,
-    card: dict,
-    progress: dict,
-    stats: EnrichmentStats,
-) -> None:
-    is_partial = (
-        card.get("triage") == TRIAGE_KEEP
-        and not card.get("summary")
-        and len(_strip_header(job.txt_path.read_text(encoding="utf-8")).strip()) >= 20
-    )
-
-    ct = card.get("content_type", "unknown")
-    tr = card.get("triage", "unknown")
-
-    if tr == TRIAGE_REVIEW:
+    # 2. Triage check
+    triage_status, triage_reason = auto_triage(content_type, meta_data, normalized_text)
+    if triage_status == TRIAGE_REVIEW:
         _queue_uninformative_review(
-            card=card,
+            triage_reason=triage_reason,
             txt_path=job.txt_path,
             channel_name=job.channel_name,
             msg_id=job.msg_id,
+            meta=meta_data,
         )
+        return None
+
+    # 3. Preprocess
+    preprocessed = preprocess(normalized_text)
+
+    repair_context = RepairContext()
+
+    # 4. LLM extraction and strict structural validation
+    payload = _extract_payload(preprocessed, content_type, repair_context)
+    _normalize_pipeline_quality_flags(payload)
+
+    # 5. Validate
+    ignored_texts = [b.text for b in preprocessed.ignored_blocks]
+    validation_text = _validation_text(preprocessed)
+    validation = validate_payload(payload, validation_text, ignored_texts)
+
+    # 6. Repair if needed (max 1 attempt)
+    if not validation.is_valid:
+        payload, _ = repair_if_needed(
+            payload,
+            validation,
+            validation_text,
+            ignored_texts,
+            context=repair_context,
+        )
+        _normalize_pipeline_quality_flags(payload)
+
+    final_validation = validate_payload(payload, validation_text, ignored_texts)
+    extraction_issues = list(final_validation.violations)
+    optional_items_dropped = False
+    if not final_validation.is_valid:
+        dropped = drop_invalid_optional_items(payload, final_validation)
+        if dropped:
+            optional_items_dropped = True
+            final_validation = validate_payload(payload, validation_text, ignored_texts)
+            extraction_issues = dropped
+    if not final_validation.is_valid and "extraction_unstable" not in payload.quality_flags:
+        payload.quality_flags.append("extraction_unstable")
+    if (
+        not final_validation.is_valid
+        and preprocessed.body_char_count >= 30
+        and not payload.summary.strip()
+        and not payload.key_points
+    ):
+        raise UnusableExtractionError(
+            "Semantic extraction is invalid and contains neither summary nor key_points"
+        )
+
+    # 7. Assemble final card
+    card = _assemble_card(
+        payload=payload,
+        meta=meta,
+        content_type=content_type,
+        channel_name=job.channel_name,
+        msg_id=job.msg_id,
+        txt_path=job.txt_path,
+        preprocessed=preprocessed,
+        extraction_issues=extraction_issues,
+    )
+
+    card_data = card.model_dump(mode="json")
+    repair_succeeded = (
+        repair_context.succeeded
+        and final_validation.is_valid
+        and not optional_items_dropped
+    )
+    card_data["_repair_succeeded"] = repair_succeeded
+    if repair_succeeded and threading.current_thread() is threading.main_thread():
+        stats.repaired += 1
+        card_data["_repair_counted"] = True
+    return card_data
+
+
+def _extract_payload(
+    preprocessed: PreprocessedText,
+    content_type: str,
+    repair_context: RepairContext | None = None,
+) -> LLMPayload:
+    """Run LLM extraction and apply the job's structural repair budget."""
+    context = repair_context or RepairContext()
+    if preprocessed.body_char_count < 20:
+        return LLMPayload()
+
+    if preprocessed.body_char_count < _SHORT_POST_THRESHOLD:
+        raw = extract_short_post_raw(preprocessed, content_type)
+        return _payload_from_raw(raw, context)
+
+    if needs_chunking(preprocessed.clean_text):
+        text_chunks = chunk_text(preprocessed.clean_text)
+        chunk_results = []
+        for chunk in text_chunks:
+            cr = extract_chunk_raw(chunk["text"], chunk["index"], len(text_chunks))
+            if not isinstance(cr, dict):
+                cr = {}
+            cr["char_range"] = chunk["char_range"]
+            chunk_results.append(cr)
+        raw = merge_chunk_results_raw(preprocessed.header, chunk_results)
+        return _payload_from_raw(raw, context)
+
+    raw = extract_full_post_raw(preprocessed, content_type)
+    return _payload_from_raw(raw, context)
+
+
+def _payload_from_raw(raw: object, repair_context: RepairContext) -> LLMPayload:
+    """Validate raw LLM output, using at most one structural repair attempt."""
+    try:
+        return _normalize_to_payload(raw)
+    except (ValidationError, EmptyLLMResponseError) as error:
+        return repair_invalid_payload(raw, error, repair_context)
+
+
+def _normalize_pipeline_quality_flags(payload: LLMPayload) -> None:
+    """Keep pipeline-owned extraction status separate from LLM source flags."""
+    substantive = any(
+        (
+            payload.summary.strip(),
+            payload.key_points,
+            payload.entities.model_dump(exclude_defaults=True),
+            payload.topics,
+            payload.theses,
+            payload.quotes,
+            payload.events,
+            payload.search_phrases,
+        )
+    )
+    flags = list(dict.fromkeys(payload.quality_flags))
+    if substantive:
+        flags = [flag for flag in flags if flag != "no_substantive_content"]
+    # This status is assigned only after validator/repair, never by the LLM.
+    payload.quality_flags = [flag for flag in flags if flag != "extraction_unstable"]
+
+
+def _validation_text(preprocessed: PreprocessedText) -> str:
+    """Validate against source text plus the source header used by chunk merge."""
+    return "\n\n".join(
+        part.strip()
+        for part in (preprocessed.header, preprocessed.clean_text)
+        if part and part.strip()
+    )
+
+
+def _assemble_card(
+    *,
+    payload: LLMPayload,
+    meta: NormalizedMeta,
+    content_type: str,
+    channel_name: str,
+    msg_id: str,
+    txt_path: Path,
+    preprocessed: PreprocessedText,
+    extraction_issues: list[str] | None = None,
+) -> EnrichedCardV2:
+    """Assemble the final EnrichedCardV2 from LLM payload + code-built fields."""
+    provenance = Provenance(
+        source_id=_build_source_id(meta, channel_name, msg_id),
+        source_type=_source_type_from_content_type(content_type),
+        channel=meta.channel_name or channel_name,
+        date=meta.date or None,
+        post_url=redact_sensitive_url(meta.post_url),
+        message_id=meta.message_id or msg_id,
+        forwarded_from=meta.forward_from_name,
+        normalized_path=str(txt_path.relative_to(config.PROJECT_ROOT)),
+    )
+
+    source_chain = SourceChain(
+        original_source=_detect_original_source(meta),
+        forwarded_from=meta.forward_from_name,
+        mentioned_sources=[],
+        external_links=_collect_external_links(meta),
+    )
+
+    card = EnrichedCardV2(
+        schema_version=config.ENRICHMENT_SCHEMA_VERSION,
+        prompt_version=config.ENRICHMENT_PROMPT_VERSION,
+        enrichment_model=llm_backend.active_model_for("enrichment"),
+        enriched_at=datetime.now(UTC).isoformat(),
+        provenance=provenance,
+        content_type=content_type,
+        language="ru",
+        # LLM payload
+        summary=payload.summary,
+        key_points=payload.key_points,
+        entities=payload.entities,
+        topics=payload.topics,
+        theses=payload.theses,
+        quotes=payload.quotes,
+        events=payload.events,
+        search_phrases=payload.search_phrases,
+        # Code-built
+        source_chain=source_chain,
+        graph_text="",
+        search_text="",
+        ignored_blocks=preprocessed.ignored_blocks,
+        quality_flags=payload.quality_flags,
+        extraction_issues=list(extraction_issues or []),
+    )
+
+    # Build graph_text and search_text
+    card_dict = card.model_dump(mode="json")
+    populate_graph_texts(card_dict)
+    card = EnrichedCardV2.model_validate(card_dict)
+
+    return card
+
+
+def _handle_enrichment_result(
+    job: _EnrichmentJob,
+    result: dict | None,
+    progress: dict,
+    stats: EnrichmentStats,
+) -> None:
+    if result is None:
+        stats.skipped_review += 1
+        job.out_path.unlink(missing_ok=True)
+        return
+
+    card = result
+    if card.pop("_repair_succeeded", False) and not card.pop("_repair_counted", False):
+        stats.repaired += 1
+    ct = card.get("content_type", "unknown")
+
+    is_partial = (
+        not card.get("summary")
+        and not card.get("key_points")
+        and job.txt_path.stat().st_size > 50
+    )
 
     if is_partial:
         stats.partial += 1
         stats.partial_posts.append(job.progress_key)
-        logger.warning(
-            f"  Partial: {job.progress_key} -> {ct} / {tr} "
-            "(LLM returned empty result, will retry)"
-        )
+        logger.warning(f"  Partial: {job.progress_key} -> {ct}")
     else:
         out_dir = job.out_path.parent
         out_dir.mkdir(parents=True, exist_ok=True)
-        job.out_path.write_text(
+        temporary = job.out_path.with_name(f".{job.out_path.name}.tmp")
+        temporary.write_text(
             json.dumps(card, ensure_ascii=False, indent=2),
             encoding="utf-8",
         )
+        temporary.replace(job.out_path)
 
         progress["enriched"][job.progress_key] = {
             "enriched_at": datetime.now(UTC).isoformat(),
-            "normalized_mtime": job.normalized_mtime,
-            "version": config.ENRICHMENT_SCHEMA_VERSION,
+            "source_fingerprint": job.source_fingerprint,
+            "schema_version": config.ENRICHMENT_SCHEMA_VERSION,
+            "prompt_version": config.ENRICHMENT_PROMPT_VERSION,
+            "enrichment_model": llm_backend.active_model_for("enrichment"),
         }
         stats.enriched += 1
-        logger.info(f"  Enriched: {job.progress_key} -> {ct} / {tr}")
+        logger.info(f"  Enriched: {job.progress_key} -> {ct}")
+
+        # The caller owns progress mutation; write it here after the card is
+        # safely published so an interrupted batch does not repeat the job.
+        _save_progress(progress)
+
+    if is_partial:
+        # Never leave an older card active for a changed source after a failed
+        # regeneration. The normalized archive remains the recovery source.
+        job.out_path.unlink(missing_ok=True)
 
     stats.by_content_type[ct] = stats.by_content_type.get(ct, 0) + 1
-    stats.by_triage[tr] = stats.by_triage.get(tr, 0) + 1
 
 
 def _record_enrichment_failure(
@@ -276,6 +554,7 @@ def _record_enrichment_failure(
     stats: EnrichmentStats,
 ) -> None:
     stats.failed += 1
+    job.out_path.unlink(missing_ok=True)
     logger.error(
         f"  Failed to enrich {job.progress_key}: {exc}",
         exc_info=True,
@@ -288,232 +567,73 @@ def _enrichment_concurrency() -> int:
     except (TypeError, ValueError):
         return 1
 
-def _enrich_single_post(
-    txt_path: Path,
-    meta_path: Path,
-    channel_name: str,
-    msg_id: str,
-) -> dict:
-    """
-    Create an enriched memory card for a single normalized post.
 
-    Flow:
-    1. Classify content type
-    2. Auto-triage
-    3. If triage != keep → skeleton card (no LLM)
-    4. If short text → short LLM extraction
-    5. If long text → chunk + per-chunk LLM + merge
-    6. If regular → full LLM extraction
-    7. Extract noise patterns
-    """
-    normalized_text = txt_path.read_text(encoding="utf-8")
-    meta = json.loads(meta_path.read_text(encoding="utf-8"))
+# ── Postprocessor helpers ─────────────────────────────────────────────────────
 
-    # Classify content type
-    content_type = classify_content(meta, normalized_text)
+def _build_source_id(meta: NormalizedMeta, channel_name: str, msg_id: str) -> str:
+    existing = meta.source_id
+    if existing is not None:
+        return existing.value
 
-    # Auto-triage
-    triage_status, triage_reason = auto_triage(content_type, meta, normalized_text)
-
-    # Build provenance
-    provenance = {
-        "channel_name": meta.get("channel_name", channel_name),
-        "channel_id": meta.get("channel_id"),
-        "message_id": meta.get("message_id", int(msg_id) if msg_id.isdigit() else msg_id),
-        "date": meta.get("date"),
-        "post_url": meta.get("post_url", ""),
-        "normalized_file": str(txt_path.relative_to(config.PROJECT_ROOT)),
-        "meta_file": str(meta_path.relative_to(config.PROJECT_ROOT)),
-        "is_forward": meta.get("is_forward", False),
-        "forward_from": meta.get("forward_from_name"),
-    }
-
-    # Detect language (default Russian for this pipeline)
-    language = "ru"
-
-    # ── LLM enrichment ──
-    llm_data = {}
-    chunks_data = []
-
-    if triage_status == TRIAGE_KEEP:
-        body = _strip_header(normalized_text)
-        body_len = len(body.strip())
-
-        if body_len < 20:
-            # Too short even for minimal LLM
-            pass
-        elif body_len < _SHORT_POST_THRESHOLD:
-            # Short post — minimal extraction
-            llm_data = enrich_short_post(normalized_text, content_type)
-        elif needs_chunking(normalized_text):
-            # Long-form — chunk + merge
-            header_line = _extract_header(normalized_text)
-            text_chunks = chunk_text(normalized_text)
-            chunk_results = []
-            for chunk in text_chunks:
-                cr = enrich_chunk(chunk["text"], chunk["index"], len(text_chunks))
-                cr["char_range"] = chunk["char_range"]
-                chunk_results.append(cr)
-
-            llm_data = merge_chunk_results(header_line, chunk_results)
-            chunks_data = [
-                {
-                    "index": i,
-                    "summary": cr.get("summary", ""),
-                    "key_facts": cr.get("key_facts", []),
-                    "char_range": cr.get("char_range", []),
-                }
-                for i, cr in enumerate(chunk_results)
-            ]
-        else:
-            # Regular post — full extraction
-            llm_data = enrich_full_post(normalized_text, content_type)
-
-    # ── Extract noise ──
-    noise = _extract_noise(normalized_text)
-
-    # ── Build card ──
-    card = {
-        "version": config.ENRICHMENT_SCHEMA_VERSION,
-        "enriched_at": datetime.now(UTC).isoformat(),
-        "provenance": provenance,
-        "content_type": content_type,
-        "triage": triage_status,
-        "triage_reason": triage_reason,
-        "language": language,
-
-        # LLM-populated fields
-        "summary": llm_data.get("summary", ""),
-        "key_facts": llm_data.get("key_facts", []),
-        "entities": llm_data.get("entities", {
-            "people": [],
-            "organizations": [],
-            "countries": [],
-            "locations": [],
-            "military_units": [],
-            "equipment": [],
-        }),
-        "topics": llm_data.get("topics", []),
-        "theses": llm_data.get("theses", []),
-        "quotes": llm_data.get("quotes", []),
-        "events": llm_data.get("events", []),
-        "query_aliases": llm_data.get("query_aliases", []),
-
-        # Visual assessment
-        "visual": {
-            "has_images": meta.get("has_images", False),
-            "has_video": meta.get("has_video", False) or bool(meta.get("youtube_urls")),
-            "video_type": _detect_video_type(meta),
-            "broll_potential": llm_data.get("broll_potential", "unknown"),
-            "broll_notes": llm_data.get("broll_notes", ""),
-            "image_descriptions": [],
-        },
-
-        # Source chain
-        "source_chain": {
-            "original_source": _detect_original_source(meta),
-            "cited_sources": [],
-            "youtube_url": (meta.get("youtube_urls") or [None])[0],
-        },
-
-        # Chunks for long content
-        "chunks": chunks_data,
-
-        # Noise
-        "noise": noise,
-
-        # Dedup (filled by mark_duplicates after all cards are created)
-        "dedup": {
-            "is_duplicate": False,
-            "duplicate_group_id": None,
-            "canonical_memory_id": None,
-            "duplicate_reason": None,
-        },
-
-        # Graph/search texts
-        "graph_text": "",
-        "search_text": "",
-    }
-
-    # Populate graph_text and search_text from the card data
-    populate_graph_texts(card)
-
-    return card
+    channel_id = meta.channel_id
+    message_id = meta.message_id or msg_id
+    if channel_id and message_id:
+        return f"telegram:{channel_id}:{message_id}"
+    if channel_name and message_id:
+        return f"telegram:{channel_name}:{message_id}"
+    raise ValueError("Could not build stable source_id from normalized metadata")
 
 
-def _detect_video_type(meta: dict) -> str | None:
-    """Determine video type from metadata."""
-    if meta.get("youtube_urls"):
-        return "youtube"
-    if meta.get("has_video"):
-        return "telegram_native"
-    return None
+def _source_type_from_content_type(content_type: str) -> str:
+    if content_type in ("telegram_post", "telegram_forward"):
+        return content_type
+    if content_type == "youtube_transcript":
+        return "youtube_transcript"
+    if content_type == "instagram_text":
+        return "instagram_text"
+    if content_type == "web_article_text":
+        return "web_article_text"
+    return "mixed_normalized_text"
 
 
-def _detect_original_source(meta: dict) -> str:
-    """Determine original source attribution."""
-    if meta.get("is_forward") and meta.get("forward_from_name"):
-        return meta["forward_from_name"]
-    return meta.get("channel_name", "unknown")
+def _detect_original_source(meta: NormalizedMeta) -> str | None:
+    if meta.is_forward and meta.forward_from_name:
+        return meta.forward_from_name
+    return meta.channel_name or None
 
 
-def _strip_header(text: str) -> str:
-    """Remove the metadata header line from normalized text."""
-    lines = text.split("\n")
-    body_lines = [ln for ln in lines if not _HEADER_RE.match(ln.strip())]
-    return "\n".join(body_lines).strip()
-
-
-def _extract_header(text: str) -> str:
-    """Extract the metadata header line."""
-    for line in text.split("\n"):
-        if _HEADER_RE.match(line.strip()):
-            return line.strip()
-    return ""
-
-
-def _extract_noise(text: str) -> list[dict]:
-    """Detect noise patterns (donation links, CTAs) in text."""
-    noise = []
-    for pattern, kind in _NOISE_PATTERNS:
-        matches = pattern.findall(text)
-        if matches:
-            noise.append({
-                "kind": kind,
-                "matched": matches[0] if len(matches) == 1 else matches[:3],
-                "action": "exclude_from_graph",
-            })
-    return noise
+def _collect_external_links(meta: NormalizedMeta) -> list[dict[str, str]]:
+    links = []
+    for url in meta.youtube_urls:
+        links.append({"url": redact_sensitive_url(url), "label": "YouTube video"})
+    for url in meta.instagram_urls:
+        links.append({"url": redact_sensitive_url(url), "label": "Instagram post"})
+    for url in meta.web_urls:
+        links.append({"url": redact_sensitive_url(url), "label": "External link"})
+    return links
 
 
 def _queue_uninformative_review(
-    card: dict,
+    triage_reason: str,
     txt_path: Path,
     channel_name: str,
     msg_id: str,
+    meta: dict,
 ) -> None:
-    """Create a review queue item for a post flagged as uninformative by auto_triage."""
-    provenance = card.get("provenance", {})
-    triage_reason = card.get("triage_reason", "Uninformative post")
-
-    # Read a preview of the normalized text for context
     try:
         message_text = txt_path.read_text(encoding="utf-8")[:500]
     except OSError:
         message_text = ""
 
-    # Parse message_id as int if possible
     try:
         mid = int(msg_id)
     except ValueError:
         mid = 0
 
-    # Parse date
-    date_str = provenance.get("date")
+    date_str = meta.get("date")
     message_date = None
     if date_str:
         try:
-            from datetime import datetime
             message_date = datetime.fromisoformat(date_str)
         except (ValueError, TypeError):
             pass
@@ -529,55 +649,12 @@ def _queue_uninformative_review(
     )
 
 
-def _card_has_extracted_content(card: dict) -> bool:
-    if str(card.get("summary") or "").strip():
-        return True
-
-    for content_field in ("key_facts", "topics", "theses", "quotes", "events", "chunks"):
-        if card.get(content_field):
-            return True
-
-    entities = card.get("entities", {})
-    if isinstance(entities, dict):
-        return any(bool(items) for items in entities.values())
-
-    visual = card.get("visual", {})
-    if isinstance(visual, dict) and str(visual.get("broll_notes") or "").strip():
-        return True
-
-    return False
-
-
-def _is_existing_partial_card(card_path: Path, txt_path: Path) -> bool:
-    if not card_path.exists():
-        return False
-
-    try:
-        card = json.loads(card_path.read_text(encoding="utf-8"))
-        if card.get("triage") != TRIAGE_KEEP:
-            return False
-        if _card_has_extracted_content(card):
-            return False
-
-        body = _strip_header(txt_path.read_text(encoding="utf-8")).strip()
-        if len(body) >= 20:
-            logger.warning(
-                f"  Partial enriched card will be retried: {card_path.parent.name}/{card_path.stem}"
-            )
-            return True
-    except Exception as e:
-        logger.warning(f"Cannot inspect enriched card {card_path}: {e}")
-
-    return False
-
-
 # ── Progress tracking ──────────────────────────────────────────────────────
 
 _PROGRESS_FILE = config.STATE_DIR / "enrichment_progress.json"
 
 
 def _load_progress() -> dict:
-    """Load enrichment progress state."""
     if _PROGRESS_FILE.exists():
         try:
             return json.loads(_PROGRESS_FILE.read_text(encoding="utf-8"))
@@ -587,25 +664,61 @@ def _load_progress() -> dict:
 
 
 def _save_progress(progress: dict) -> None:
-    """Save enrichment progress state."""
     progress["last_run"] = datetime.now(UTC).isoformat()
-    _PROGRESS_FILE.write_text(
+    temporary = _PROGRESS_FILE.with_name(f".{_PROGRESS_FILE.name}.tmp")
+    temporary.write_text(
         json.dumps(progress, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
+    temporary.replace(_PROGRESS_FILE)
 
 
 def _needs_enrichment(
     progress: dict,
     key: str,
-    normalized_mtime: float,
+    source_fingerprint: str,
 ) -> bool:
-    """Check if a post needs (re-)enrichment."""
     prev = progress.get("enriched", {}).get(key)
     if prev is None:
-        return True  # Never enriched
-    if prev.get("normalized_mtime", 0) < normalized_mtime:
-        return True  # Normalized file was updated
-    if prev.get("version", 0) < config.ENRICHMENT_SCHEMA_VERSION:
-        return True  # Schema/prompt version bumped
+        return True
+    if prev.get("source_fingerprint") != source_fingerprint:
+        return True
+    if prev.get("schema_version") != config.ENRICHMENT_SCHEMA_VERSION:
+        return True
+    if prev.get("prompt_version") != config.ENRICHMENT_PROMPT_VERSION:
+        return True
+    if llm_backend.model_change_requires_regeneration(
+        str(prev.get("enrichment_model") or ""), "enrichment"
+    ):
+        return True
     return False
+
+
+def _is_valid_enriched_output(path: Path, expected_source_id: str | None) -> bool:
+    """Return whether an output file is safe to treat as a completed card."""
+    try:
+        card = EnrichedCardV2.model_validate_json(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, ValidationError):
+        return False
+    if card.schema_version != config.ENRICHMENT_SCHEMA_VERSION:
+        return False
+    if card.prompt_version != config.ENRICHMENT_PROMPT_VERSION:
+        return False
+    if llm_backend.model_change_requires_regeneration(card.enrichment_model, "enrichment"):
+        return False
+    if not expected_source_id:
+        return False
+    if card.provenance.source_id != expected_source_id:
+        return False
+    return True
+
+
+def _source_fingerprint(txt_path: Path, meta_path: Path) -> str:
+    """Hash both normalized inputs so metadata-only changes invalidate a card."""
+    digest = hashlib.sha256()
+    for label, path in ((b"text", txt_path), (b"meta", meta_path)):
+        data = path.read_bytes()
+        digest.update(label)
+        digest.update(len(data).to_bytes(8, "big"))
+        digest.update(data)
+    return digest.hexdigest()

@@ -162,8 +162,6 @@ async def run_probe() -> dict[str, Any]:
             "RERANKER_ENABLED": config.RERANKER_ENABLED,
             "HYBRID_SYNTH_ENABLED": config.HYBRID_SYNTH_ENABLED,
             "HYBRID_QUERY_CARDS_ENABLED": config.HYBRID_QUERY_CARDS_ENABLED,
-            "WIKI_ENABLED": config.WIKI_ENABLED,
-            "WIKI_TOP_K": config.WIKI_TOP_K,
         },
         "cache_backup": str(cache_backup) if cache_backup else "",
         "total": len(results),
@@ -225,8 +223,7 @@ def _write_markdown(summary: dict[str, Any], path: Path) -> None:
         (
             "Flags: "
             f"`RERANKER_ENABLED={summary['config_flags']['RERANKER_ENABLED']}`, "
-            f"`HYBRID_SYNTH_ENABLED={summary['config_flags']['HYBRID_SYNTH_ENABLED']}`, "
-            f"`WIKI_ENABLED={summary['config_flags']['WIKI_ENABLED']}`"
+            f"`HYBRID_SYNTH_ENABLED={summary['config_flags']['HYBRID_SYNTH_ENABLED']}`"
         ),
         "",
         (

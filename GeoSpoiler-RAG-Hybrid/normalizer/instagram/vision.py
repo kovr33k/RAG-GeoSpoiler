@@ -7,6 +7,7 @@ from pathlib import Path
 import requests
 
 import config
+import llm_backend
 from llm_auth import get_openai_api_key
 
 logger = logging.getLogger("geospoiler.normalizer.instagram")
@@ -166,16 +167,6 @@ def _summarize_reel(
     caption: str, transcript: str, ocr_text: str, uploader: str
 ) -> str | None:
     """Generate a concise summary of the Reel using DeepSeek V4."""
-    api_key = config.LLM_API_KEY
-    if not api_key or api_key == "your-api-key-here":
-        return None
-
-    base_url = config.LLM_BASE_URL.rstrip("/")
-    headers = {
-        "Authorization": f"Bearer {get_openai_api_key(api_key, base_url)}",
-        "Content-Type": "application/json",
-    }
-
     prompt_parts = [
         "Ты аналитик OSINT. Объедини информацию из Instagram Reel в краткое связное описание "
         "для базы знаний. Сохрани ВСЕ факты, имена, даты, цифры, организации.",
@@ -192,6 +183,33 @@ def _summarize_reel(
         "\nНапиши краткое связное описание на русском. "
         "Не повторяй информацию, объедини. Убери мусор и рекламу."
     )
+    messages = [{"role": "user", "content": "\n".join(prompt_parts)}]
+
+    if llm_backend.is_luna_role("default"):
+        try:
+            return (
+                llm_backend.complete_text_sync(
+                    messages,
+                    role="default",
+                    timeout_seconds=config.CODEX_LLM_TIMEOUT_SECONDS,
+                ).strip()
+                or None
+            )
+        except llm_backend.LLMBackendError as exc:
+            if not config.CODEX_FALLBACK_TO_API:
+                logger.warning("Codex Instagram summary failed: %s", exc)
+                return None
+            logger.warning("Codex Instagram summary failed; explicit API fallback is enabled: %s", exc)
+
+    api_key = config.LLM_API_KEY
+    if not api_key or api_key == "your-api-key-here":
+        return None
+
+    base_url = config.LLM_BASE_URL.rstrip("/")
+    headers = {
+        "Authorization": f"Bearer {get_openai_api_key(api_key, base_url)}",
+        "Content-Type": "application/json",
+    }
 
     try:
         response = requests.post(
@@ -199,7 +217,7 @@ def _summarize_reel(
             headers=headers,
             json={
                 "model": config.LLM_MODEL,
-                "messages": [{"role": "user", "content": "\n".join(prompt_parts)}],
+                "messages": messages,
                 "max_tokens": 1500,
             },
             timeout=config.LLM_TIMEOUT_SECONDS,

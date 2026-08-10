@@ -30,22 +30,39 @@ function Import-DotEnvFile {
     }
 }
 
+function Test-PythonExe {
+    param(
+        [string]$Candidate
+    )
+
+    if (-not $Candidate -or -not (Test-Path -LiteralPath $Candidate)) {
+        return $false
+    }
+
+    & $Candidate -c "import sys; raise SystemExit(0 if sys.version_info >= (3, 11) else 1)" *> $null
+    return $LASTEXITCODE -eq 0
+}
+
 function Resolve-PythonExe {
     if ($env:VIRTUAL_ENV) {
         $venvPython = Join-Path $env:VIRTUAL_ENV "Scripts\python.exe"
-        if (Test-Path $venvPython) {
+        if (Test-PythonExe $venvPython) {
             return $venvPython
         }
     }
 
     $projectVenvPython = Join-Path $PSScriptRoot ".venv\Scripts\python.exe"
-    if (Test-Path $projectVenvPython) {
+    if (Test-PythonExe $projectVenvPython) {
         return $projectVenvPython
     }
 
     try {
         $pythonCmd = Get-Command python -ErrorAction Stop
-        if ($pythonCmd.Source -and $pythonCmd.Source -notlike "*WindowsApps\python.exe") {
+        if (
+            $pythonCmd.Source -and
+            $pythonCmd.Source -notlike "*WindowsApps\python.exe" -and
+            (Test-PythonExe $pythonCmd.Source)
+        ) {
             return $pythonCmd.Source
         }
     } catch {
@@ -56,12 +73,12 @@ function Resolve-PythonExe {
         -ErrorAction SilentlyContinue |
         Sort-Object FullName -Descending |
         Select-Object -First 1
-    if ($pythonCore) {
+    if ($pythonCore -and (Test-PythonExe $pythonCore.FullName)) {
         return $pythonCore.FullName
     }
 
     $localBinPython = Join-Path $env:LOCALAPPDATA "Python\bin\python.exe"
-    if (Test-Path $localBinPython) {
+    if (Test-PythonExe $localBinPython) {
         return $localBinPython
     }
 
@@ -176,10 +193,6 @@ switch ($step) {
     "quality" {
         Invoke-Python main.py quality
     }
-    "wiki" {
-        $wikiArgs = @($args | Select-Object -Skip 1)
-        Invoke-Python main.py wiki @wikiArgs
-    }
     "golden" {
         Invoke-Python test_golden_set.py
     }
@@ -187,13 +200,13 @@ switch ($step) {
         Start-LightRAGUi
     }
     "review" {
-        Invoke-Python main.py review
+        Invoke-Python main.py review --web
     }
     "status" {
         Invoke-Python main.py status
     }
     default {
-        Write-Host "Usage: .\run_pipeline.ps1 [auth|fetch|normalize|load|rebuild|run|query|quality|wiki|golden|ui|review|status]"
+        Write-Host "Usage: .\run_pipeline.ps1 [auth|fetch|normalize|load|rebuild|run|query|quality|golden|ui|review|status]"
         Write-Host ""
         Write-Host "  auth           - First-time Telegram login (saves session)"
         Write-Host "  fetch [N]      - Fetch last N messages per channel (default: all new)"
@@ -203,7 +216,6 @@ switch ($step) {
         Write-Host "  run [N]        - Full pipeline: fetch + normalize + load"
         Write-Host "  query `"?`" [m]  - Query the knowledge graph (default: mix; modes: hybrid/mix/local/global)"
         Write-Host "  quality        - Show graph quality diagnostics"
-        Write-Host "  wiki [args]    - Run wiki commands, e.g. wiki ingest or wiki health"
         Write-Host "  golden         - Run golden set verification"
         Write-Host "  ui             - Start the LightRAG Web UI on http://127.0.0.1:9621/"
         Write-Host "  review         - Show pending AI chat review items"

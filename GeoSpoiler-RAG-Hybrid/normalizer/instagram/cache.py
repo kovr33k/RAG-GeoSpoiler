@@ -5,6 +5,7 @@ import logging
 from datetime import UTC, datetime
 
 import config
+import llm_backend
 
 logger = logging.getLogger("geospoiler.normalizer.instagram")
 _INSTAGRAM_CACHE_VERSION = 2
@@ -22,7 +23,8 @@ def _cache_signature() -> dict:
         "transcription_model": config.TRANSCRIPTION_MODEL,
         "vision_base_url": config.INSTAGRAM_VISION_BASE_URL,
         "vision_model": config.INSTAGRAM_VISION_MODEL,
-        "llm_model": config.LLM_MODEL,
+        "llm_profile": llm_backend.active_profile(),
+        "llm_model": llm_backend.active_model_for("default"),
     }
 
 def _read_cache(post_id: str) -> str | None:

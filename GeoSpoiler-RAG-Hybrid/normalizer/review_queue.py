@@ -65,6 +65,8 @@ def queue_item(
         "queued_at": datetime.now(UTC).isoformat(),
         "status": "pending",  # pending | processed | skipped
         "extracted_text": None,  # User fills this in
+        "extraction_prompt": None,  # Optional reviewer instruction used for extraction
+        "extraction_source": None,  # Source kind used for prompt extraction
         "attached_image": None,  # Path to user-attached image
     }
 
@@ -130,6 +132,8 @@ def mark_reviewed(
     extracted_text: str | None = None,
     skip: bool = False,
     attached_image: str | None = None,
+    extraction_prompt: str | None = None,
+    extraction_source: str | None = None,
 ) -> None:
     """
     Mark a review item as processed or skipped.
@@ -139,6 +143,8 @@ def mark_reviewed(
         extracted_text: The text to use (if processed).
         skip: If True, mark as skipped (no text extracted).
         attached_image: Optional path to an attached image file.
+        extraction_prompt: Optional reviewer instruction used to produce extracted_text.
+        extraction_source: Source kind used for prompt extraction.
     """
     path = Path(filepath)
     if not path.exists():
@@ -149,6 +155,10 @@ def mark_reviewed(
     data["status"] = "skipped" if skip else "processed"
     data["extracted_text"] = extracted_text
     data["attached_image"] = attached_image
+    if extraction_prompt is not None or "extraction_prompt" in data:
+        data["extraction_prompt"] = extraction_prompt
+    if extraction_source is not None or "extraction_source" in data:
+        data["extraction_source"] = extraction_source
     data["reviewed_at"] = datetime.now(UTC).isoformat()
 
     path.write_text(

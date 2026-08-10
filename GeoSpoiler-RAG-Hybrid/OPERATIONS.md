@@ -27,7 +27,6 @@ Use direct Python for newer subcommands that are not exposed through
 `run_pipeline.ps1`:
 
 ```powershell
-python main.py wiki health
 python main.py fts rebuild
 python main.py registry rebuild
 python main.py transcribe backfill --dry-run
@@ -52,8 +51,9 @@ operationally important flags to check before runs:
 | `QUERY_MAX_TOKENS`, `FALLBACK_SYNTH_MAX_TOKENS` | Query/synthesis output budgets | Tune for long source-grounded answers. |
 | `LLM_REASONING_EFFORT` | Generic OpenAI-style reasoning effort | Leave empty for DeepSeek V4 Flash trusted runs. |
 | `HYBRID_QUERY_CARDS_ENABLED` | Attach enriched-card context to query | Keep `true` for trusted query runs. |
-| `HYBRID_SYNTH_ENABLED` | Synthesize final answer from graph/cards/wiki | Keep `true` for trusted DeepSeek runs. |
-| `WIKI_ENABLED`, `WIKI_TOP_K` | Attach wiki-memory context | Keep `true` and small `top_k` for trusted runs. |
+| `WIKI_ENABLED` | Master switch for all Wiki ingest, review, projections, CLI, and retrieval | Keep `false`; the dormant implementation and existing state remain available for later. |
+| `HYBRID_QUERY_WIKI_ENABLED`, `HYBRID_QUERY_WIKI_TOP_K` | Attach approved Wiki hubs when the master switch is on | Ignored while `WIKI_ENABLED=false`. |
+| `HYBRID_SYNTH_ENABLED` | Synthesize final answer from graph/cards | Keep `true` for trusted DeepSeek runs. |
 | `RERANKER_ENABLED` | Enable reranker hook | Keep `false`; latest DeepSeek golden regressed with reranker. |
 | `TRANSCRIPTION_ENABLED` | Enable native media transcription | Keep `false` unless testing real downloaded media. |
 
@@ -98,11 +98,13 @@ Important local paths:
 ```text
 output/normalized/        source-of-truth normalized text and .meta.json files
 output/enriched/          structured evidence cards
-output/wiki/              wiki-memory markdown and JSON indexes
 output/review_queue/      manual review queue for AI chats, external links, long Reels, and low-info posts
 output/transcripts/       native media transcript artifacts
 artifacts/card_fts.sqlite local FTS index for enriched cards
 artifacts/source_registry.sqlite source registry
+artifacts/wiki_state.sqlite versioned Wiki state and review history
+output/wiki/              disposable generated Wiki hubs
+wiki_sidecars/            authoritative manual hub notes
 rag_storage/              active LightRAG storage
 rag_storage_backups/      rebuild backups
 logs/                     pipeline and LightRAG logs
@@ -112,41 +114,6 @@ media_cache/              downloaded images and native media
 
 Do not delete generated data casually. If a rebuild or backfill needs to touch
 these paths, prefer commands that make the operation explicit.
-
-## Wiki Memory
-
-Initialize wiki files and directories:
-
-```powershell
-python main.py wiki init
-```
-
-Seed source-grounded claims:
-
-```powershell
-python main.py wiki build --claims-only
-```
-
-Seed entities/topics:
-
-```powershell
-python main.py wiki build --entities-topics
-```
-
-Run local health checks:
-
-```powershell
-python main.py wiki health
-```
-
-Run incremental update from enriched-card hashes:
-
-```powershell
-python main.py wiki update
-```
-
-After manual wiki edits, run `python main.py wiki health` to rebuild indexes and
-catch source/evidence issues.
 
 ## FTS Index
 
@@ -186,6 +153,59 @@ python main.py registry resolve telegram:3328128766:148
 
 Run registry rebuild after major normalized/enriched changes if query source
 resolution looks stale.
+
+## Approved Wiki
+
+Wiki is dormant while `WIKI_ENABLED=false`: `enrich`/`run` does not ingest or
+refresh it, queries do not search it, the reviewer hides its tab, and Wiki CLI
+commands are blocked. Existing SQLite state and generated files are preserved.
+
+To reactivate it later, set `WIKI_ENABLED=true`. The normal `enrich`/`run` flow
+will then refresh Wiki automatically. It can also be run directly:
+
+```powershell
+python main.py wiki run
+python main.py wiki run --llm-profile luna
+python main.py wiki run --no-luna
+```
+
+The Luna form may propose identity equivalence, claim-local resolutions, and a
+sparse hierarchy. It still cannot approve a concept, alias, ambiguity, or
+edge. `--no-luna` keeps registry thresholds, exact grouping, deterministic
+roles, hubs, and FTS active while making no Wiki-side Luna calls.
+
+Review all content and Wiki queues in one browser:
+
+```powershell
+python main.py review --web
+# equivalent Wiki-specific entry point
+python main.py wiki review
+```
+
+Inspect and search:
+
+```powershell
+python main.py wiki status
+python main.py wiki search "КНДР ракетная программа"
+```
+
+Recompute derived groups, links, hubs, and FTS without rereading card files:
+
+```powershell
+python main.py wiki rebuild
+```
+
+Recovery rules:
+
+- deleting `output/wiki/` is safe; `wiki rebuild` recreates it;
+- do not delete `wiki_sidecars/` or `artifacts/wiki_state.sqlite` without an
+  explicit backup, because they contain manual/approved state;
+- an old SQLite schema is rejected rather than silently migrated;
+- for a planned clean reload, archive/remove the exact Wiki DB explicitly and
+  run `wiki run`; Enriched cards remain the source material;
+- generated hub files marked `generated_by: geospoiler-wiki-v2` may be
+  replaced or removed by the builder; unrelated files in that directory are
+  not deleted.
 
 ## Experiment Registry
 
@@ -238,7 +258,6 @@ After backfilling transcripts, rerun:
 python main.py enrich
 python main.py fts rebuild
 python main.py registry rebuild
-python main.py wiki update
 ```
 
 Do not run a large transcription backfill without first doing a dry run.
@@ -333,11 +352,9 @@ normalized files:
 ```powershell
 python main.py fts rebuild
 python main.py registry rebuild
-python main.py wiki health
 python main.py rebuild
 python main.py fts rebuild
 python main.py registry rebuild
-python main.py wiki health
 ```
 
 Then validate behavior:
@@ -353,8 +370,7 @@ If rebuild quality regresses:
 1. Stop further loads.
 2. Keep the failed `rag_storage/` by moving or renaming it with a timestamp.
 3. Restore the latest known-good directory from `rag_storage_backups/`.
-4. Run `python main.py status`, `python main.py wiki health`, and a local FTS
-   search before another live probe.
+4. Run `python main.py status` and a local FTS search before another live probe.
 5. Record the failed attempt and artifact paths in `DEVELOPMENT_RETURN_LOG.md`.
 
 Do not use enriched-card graph rebuild as a recovery path. It previously proved
@@ -368,10 +384,9 @@ After code changes:
 python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
-After wiki/retrieval/source changes:
+After retrieval/source changes:
 
 ```powershell
-python main.py wiki health
 python main.py fts search "Trump Orban" --top-k 5
 python main.py registry resolve telegram:3328128766:148
 ```
@@ -402,7 +417,6 @@ LLM endpoint:
 ```powershell
 python main.py fts search "query terms" --top-k 10 --compare-shadow
 python main.py registry resolve SOURCE_ID
-python main.py wiki health
 ```
 
 If SQLite files are locked on Windows, make sure no long-running process still

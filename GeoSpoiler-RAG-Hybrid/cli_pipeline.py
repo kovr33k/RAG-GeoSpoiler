@@ -1,42 +1,78 @@
 """Pipeline, review, status, and quality CLI command implementations."""
 
-import json
+import os
 import sys
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 import config
+import llm_backend
 from baseline_probe import collect_baseline_metadata, run_baseline_probe, write_baseline_metadata, write_probe_report
 from cli_runtime import _finalize_rag_safely, logger
-from cli_wiki import cmd_wiki_ingest
 from enricher.pipeline import EnrichmentStats, enrich_all
 from fetcher.state import get_all_progress, mark_message_processed
 from fetcher.telegram_client import TelegramFetcher, TelegramMessage
 from loader.entity_merge import auto_fix_safe_entity_merges
 from loader.factory import create_rag
 from loader.graph_quality import build_quality_report
-from loader.ingest import load_from_directory, load_texts
+from loader.ingest import load_from_enriched
 from loader.storage import rebuild_rag_storage
 from normalizer.pipeline import NormalizationBatchResult, normalize_batch
 from normalizer.review_queue import get_pending_reviews
+from retrieval.card_fts import (
+    CardFtsBuildStats,
+    YouTubeSegmentFtsBuildStats,
+    rebuild_card_index,
+    rebuild_youtube_segment_index,
+)
+from retrieval.source_registry import SourceRegistryStats, rebuild_source_registry
+from retrieval.wiki.service import (
+    WikiPipelineStats,
+    get_wiki_review_counts,
+    run_configured_wiki_pipeline,
+    wiki_status,
+)
 
 
 @dataclass
 class LoadStats:
     """Summary of what reached LightRAG during a load step."""
 
-    normalized_attempted: int = 0
-    normalized_loaded: int = 0
-    reviewed_attempted: int = 0
-    reviewed_loaded: int = 0
-    review_pending: int = 0
-    review_processed: int = 0
-    review_skipped: int = 0
+    enriched_cards_seen: int = 0
+    graph_texts_loaded: int = 0
 
     @property
     def total_loaded(self) -> int:
-        return self.normalized_loaded + self.reviewed_loaded
+        return self.graph_texts_loaded
+
+
+@dataclass(frozen=True)
+class RetrievalRefreshStats:
+    """Result of rebuilding the local indexes derived from enriched cards."""
+
+    card_fts: CardFtsBuildStats | None
+    source_registry: SourceRegistryStats | None
+    errors: tuple[str, ...] = ()
+    youtube_segments: YouTubeSegmentFtsBuildStats | None = None
+    wiki: WikiPipelineStats | None = None
+
+
+class RetrievalRefreshError(RuntimeError):
+    """Raised after every local retrieval component was attempted and one failed."""
+
+    def __init__(self, stats: RetrievalRefreshStats):
+        self.stats = stats
+        super().__init__("Retrieval refresh failed: " + "; ".join(stats.errors))
+
+
+@dataclass(frozen=True)
+class EnrichCommandStats:
+    """Enrichment result together with the indexes refreshed from saved cards."""
+
+    enrichment: EnrichmentStats
+    retrieval: RetrievalRefreshStats
 
 async def cmd_fetch(limit: int | None = None) -> list[tuple[str, list[TelegramMessage]]]:
     """Fetch new messages from all Telegram channels."""
@@ -96,33 +132,18 @@ async def cmd_normalize(channel_messages: list[tuple[str, list[TelegramMessage]]
     return summary
 
 
-async def cmd_load(texts_with_paths: list[tuple[str, str]] | None = None) -> LoadStats:
-    """Load normalized texts into LightRAG."""
-    logger.info("=== LOAD: Loading into LightRAG ===")
+async def cmd_load() -> LoadStats:
+    """Explicitly load enriched_v2 graph_text into LightRAG."""
+    logger.info("=== LOAD: Loading enriched graph text into LightRAG ===")
 
     rag = await create_rag()
     load_stats = LoadStats()
 
     try:
-        if texts_with_paths is not None:
-            # Explicit texts passed (e.g. from cmd_run after normalize)
-            load_stats.normalized_attempted = len(texts_with_paths)
-            load_stats.normalized_loaded = await load_texts(rag, texts_with_paths)
-        else:
-            # Default: load raw normalized texts
-            load_stats.normalized_attempted = sum(1 for _ in config.NORMALIZED_DIR.rglob("*.txt"))
-            load_stats.normalized_loaded = await load_from_directory(rag)
-
-        reviewed = _collect_reviewed_texts()
-        if reviewed:
-            logger.info(f"  Loading {len(reviewed)} reviewed item(s) into LightRAG.")
-            load_stats.reviewed_attempted = len(reviewed)
-            load_stats.reviewed_loaded = await load_texts(rag, reviewed)
-
-        queue_stats = _get_review_queue_status_counts()
-        load_stats.review_pending = queue_stats["pending"]
-        load_stats.review_processed = queue_stats["processed"]
-        load_stats.review_skipped = queue_stats["skipped"]
+        load_stats.enriched_cards_seen = sum(
+            1 for _ in config.ENRICHED_DIR.rglob("*.enriched.json")
+        )
+        load_stats.graph_texts_loaded = await load_from_enriched(rag)
 
         merges = await auto_fix_safe_entity_merges(rag)
         if merges:
@@ -138,19 +159,140 @@ async def cmd_load(texts_with_paths: list[tuple[str, str]] | None = None) -> Loa
 def cmd_enrich(
     channel_filter: str | None = None,
     force: bool = False,
-) -> EnrichmentStats:
-    """Enrich normalized posts into structured memory cards."""
+) -> EnrichCommandStats:
+    """Enrich normalized posts and refresh indexes derived from saved cards."""
     logger.info("=== ENRICH: Building memory cards ===")
 
-    stats = enrich_all(channel_filter=channel_filter, force=force)
+    stats: EnrichmentStats | None = None
+    enrichment_error: Exception | None = None
+    try:
+        stats = enrich_all(channel_filter=channel_filter, force=force)
+    except Exception as exc:
+        enrichment_error = exc
+
+    try:
+        # A failed batch may still have saved valid cards before the exception.
+        refresh_stats = refresh_enriched_retrieval()
+    except RetrievalRefreshError as refresh_error:
+        if enrichment_error is not None:
+            raise ExceptionGroup(
+                "Enrichment and retrieval refresh failed",
+                [enrichment_error, refresh_error],
+            ) from refresh_error
+        raise
+
+    if enrichment_error is not None:
+        raise enrichment_error
+
+    if stats is None:  # pragma: no cover - enrich_all exceptions propagate
+        raise RuntimeError("Enrichment did not return statistics")
+
     _print_enrich_summary(stats)
 
     logger.info("=== ENRICH complete ===")
+    return EnrichCommandStats(enrichment=stats, retrieval=refresh_stats)
+
+
+def refresh_enriched_retrieval(
+    rebuild_fts: Callable[[], CardFtsBuildStats] | None = None,
+    rebuild_registry: Callable[[], SourceRegistryStats] | None = None,
+    rebuild_youtube_segments: Callable[[], YouTubeSegmentFtsBuildStats] | None = None,
+    refresh_wiki: Callable[[], WikiPipelineStats] | None = None,
+) -> RetrievalRefreshStats:
+    """Refresh all local indexes derived from current enriched_v2 cards."""
+    logger.info("=== RETRIEVAL REFRESH: Rebuilding FTS and registries ===")
+    rebuild_fts = rebuild_fts or rebuild_card_index
+    rebuild_registry = rebuild_registry or rebuild_source_registry
+    rebuild_youtube_segments = rebuild_youtube_segments or rebuild_youtube_segment_index
+    refresh_wiki = (
+        refresh_wiki or run_configured_wiki_pipeline
+        if config.WIKI_ENABLED
+        else None
+    )
+    errors: list[str] = []
+    card_stats: CardFtsBuildStats | None = None
+    registry_stats: SourceRegistryStats | None = None
+    youtube_segment_stats: YouTubeSegmentFtsBuildStats | None = None
+    wiki_stats: WikiPipelineStats | None = None
+
+    try:
+        card_stats = rebuild_fts()
+        logger.info(
+            "Card FTS refreshed: seen=%d indexed=%d skipped=%d db=%s",
+            card_stats.cards_seen,
+            card_stats.cards_indexed,
+            card_stats.cards_skipped,
+            card_stats.db_path,
+        )
+    except Exception as exc:
+        message = f"card FTS rebuild failed: {exc}"
+        errors.append(message)
+        logger.exception(message)
+
+    try:
+        registry_stats = rebuild_registry()
+        logger.info(
+            "Source registry refreshed: sources=%d normalized=%d enriched=%d references=%d db=%s",
+            registry_stats.sources,
+            registry_stats.normalized_docs,
+            registry_stats.enriched_cards,
+            registry_stats.references,
+            registry_stats.db_path,
+        )
+    except Exception as exc:
+        message = f"source registry rebuild failed: {exc}"
+        errors.append(message)
+        logger.exception(message)
+
+    try:
+        youtube_segment_stats = rebuild_youtube_segments()
+        logger.info(
+            "YouTube segment FTS refreshed: seen=%d indexed=%d skipped=%d db=%s",
+            youtube_segment_stats.segments_seen,
+            youtube_segment_stats.segments_indexed,
+            youtube_segment_stats.segments_skipped,
+            youtube_segment_stats.db_path,
+        )
+    except Exception as exc:
+        message = f"YouTube segment FTS rebuild failed: {exc}"
+        errors.append(message)
+        logger.exception(message)
+
+    if refresh_wiki is None:
+        logger.info("Wiki disabled: skipping ingest, derived refresh, and projections")
+    else:
+        try:
+            wiki_stats = refresh_wiki()
+            logger.info(
+                "Wiki refreshed: concepts_pending=%d hierarchy_pending=%d "
+                "ambiguities_pending=%d hubs=%d fts=%d db=%s",
+                wiki_stats.review_counts.concepts,
+                wiki_stats.review_counts.hierarchy,
+                wiki_stats.review_counts.ambiguities,
+                wiki_stats.projections.hubs_built,
+                wiki_stats.projections.fts_documents,
+                wiki_stats.database_path,
+            )
+        except Exception as exc:
+            message = f"Wiki refresh failed: {exc}"
+            errors.append(message)
+            logger.exception(message)
+
+    logger.info("=== RETRIEVAL REFRESH complete: errors=%d ===", len(errors))
+    stats = RetrievalRefreshStats(
+        card_fts=card_stats,
+        source_registry=registry_stats,
+        errors=tuple(errors),
+        youtube_segments=youtube_segment_stats,
+        wiki=wiki_stats,
+    )
+    if errors:
+        raise RetrievalRefreshError(stats)
     return stats
 
 
 async def cmd_run(limit: int | None = None):
-    """Full pipeline: fetch -> normalize -> enrich -> load."""
+    """Automatic pipeline: fetch -> normalize -> enrich -> local index refresh."""
     logger.info("=== FULL PIPELINE START ===")
 
     channel_messages = await cmd_fetch(limit=limit)
@@ -163,27 +305,22 @@ async def cmd_run(limit: int | None = None):
         logger.info("No new Telegram messages to normalize.")
 
     # Enrich all posts (incremental — only new/changed)
-    cmd_enrich()
-
-    # Wiki ingest (incremental - only new/changed enriched cards)
-    cmd_wiki_ingest()
-
-    load_stats = await cmd_load(normalize_stats.texts_with_paths)
-    _print_run_summary(channel_messages, normalize_stats, load_stats)
+    enrich_stats = cmd_enrich()
+    _print_pipeline_summary(channel_messages, normalize_stats, enrich_stats)
 
     logger.info("=== FULL PIPELINE COMPLETE ===")
 
 
 async def cmd_rebuild():
-    """Backup current RAG storage, then rebuild from normalized sources."""
-    logger.info("=== REBUILD: Resetting LightRAG storage (source: normalized) ===")
+    """Backup current RAG storage, then rebuild from enriched_v2 graph_text."""
+    logger.info("=== REBUILD: Resetting LightRAG storage (source: enriched_v2 graph_text) ===")
 
     backup_path = rebuild_rag_storage()
     if backup_path:
         logger.info(f"RAG storage backup created at: {backup_path}")
     _clear_lightrag_query_cache()
 
-    logger.info("=== REBUILD: Loading all normalized sources into fresh LightRAG storage ===")
+    logger.info("=== REBUILD: Loading enriched_v2 graph text into fresh LightRAG storage ===")
     load_stats = await cmd_load()
     _print_load_summary(load_stats, heading="REBUILD SUMMARY")
     logger.info("=== REBUILD COMPLETE ===")
@@ -203,14 +340,6 @@ async def cmd_rebuild_embedding():
     logger.info("=== REBUILD EMBEDDING COMPLETE ===")
 
 
-def _print_enriched_graph_load_unsupported() -> None:
-    print(
-        "`--from-enriched` is not supported in the main CLI. "
-        "Enriched-card graph loading was experimental and is no longer a v1.1 release path. "
-        "Use `python main.py load` or `python main.py rebuild` to load normalized sources."
-    )
-
-
 def _clear_lightrag_query_cache() -> None:
     """Remove stale LLM query cache after storage reset/rebuild."""
     cache_path = config.RAG_STORAGE_DIR / "kv_store_llm_response_cache.json"
@@ -223,54 +352,9 @@ def _clear_lightrag_query_cache() -> None:
         logger.warning(f"Could not clear LightRAG LLM response cache: {exc}")
 
 
-def _collect_reviewed_texts() -> list[tuple[str, str]]:
-    """Collect processed review items whose extracted_text is non-empty."""
-    results = []
-    for f in config.REVIEW_QUEUE_DIR.glob("*.json"):
-        try:
-            data = json.loads(f.read_text(encoding="utf-8"))
-            if data.get("status") != "processed" or not data.get("extracted_text"):
-                continue
-            extracted = str(data["extracted_text"]).strip()
-            if not extracted:
-                continue
-            header = (
-                f"[Review type: {data.get('review_type', 'unknown')} | "
-                f"Channel: {data.get('channel', '')} | "
-                f"Message: {data.get('message_id', '')} | "
-                f"URL: {data.get('url', '')}]"
-            )
-            results.append((str(f), f"{header}\n\n{extracted}"))
-        except (json.JSONDecodeError, OSError):
-            continue
-    return results
-
-
-def _get_review_queue_status_counts() -> dict[str, int]:
-    """Count current review queue items by status."""
-    counts = {
-        "pending": 0,
-        "processed": 0,
-        "skipped": 0,
-    }
-
-    for f in config.REVIEW_QUEUE_DIR.glob("*.json"):
-        try:
-            data = json.loads(f.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError):
-            continue
-
-        status = data.get("status")
-        if status in counts:
-            counts[status] += 1
-
-    return counts
-
-
 def _print_run_summary(
     channel_messages: list[tuple[str, list[TelegramMessage]]],
     normalize_stats: NormalizationBatchResult,
-    load_stats: LoadStats,
 ) -> None:
     """Print an end-of-run summary with content breakdown and final delivery counts."""
     total_channels = len(channel_messages)
@@ -321,30 +405,47 @@ def _print_run_summary(
     print(f"  Внешних ссылок отправлено на review: {normalize_stats.link_review_created}")
     print(f"  Малоинформативных постов на review: {normalize_stats.uninformative_review_created}")
     print(f"  AI ссылок уже обработано ранее: {normalize_stats.ai_review_already_reviewed}")
-    print(f"  Pending сейчас: {load_stats.review_pending}")
-    print(f"  Processed сейчас: {load_stats.review_processed}")
-    print(f"  Skipped сейчас: {load_stats.review_skipped}")
-    print()
-    print("Дошло до LightRAG:")
-    print(f"  Нормализованных текстов к загрузке: {load_stats.normalized_attempted}")
-    print(f"  Нормализованных текстов загружено: {load_stats.normalized_loaded}")
-    print(f"  Reviewed items к загрузке: {load_stats.reviewed_attempted}")
-    print(f"  Reviewed items загружено: {load_stats.reviewed_loaded}")
-    print(f"  Итого загружено в LightRAG: {load_stats.total_loaded}")
     print("═" * 60)
+
+
+def _print_pipeline_summary(
+    channel_messages: list[tuple[str, list[TelegramMessage]]],
+    normalize_stats: NormalizationBatchResult,
+    enrich_stats: EnrichCommandStats,
+) -> None:
+    """Print the automatic pipeline result without implying LightRAG work."""
+    total_messages = sum(len(messages) for _, messages in channel_messages)
+    enrichment = enrich_stats.enrichment
+    retrieval = enrich_stats.retrieval
+
+    print("\nPIPELINE SUMMARY")
+    print("=" * 60)
+    print(f"Fetched messages: {total_messages}")
+    print(f"Normalized texts: {normalize_stats.normalized_messages}")
+    print(f"Enriched cards written: {enrichment.enriched}")
+    print(f"Enrichment failures: {enrichment.failed}")
+    if retrieval.card_fts:
+        print(
+            "Card FTS: "
+            f"{retrieval.card_fts.cards_indexed}/{retrieval.card_fts.cards_seen} indexed "
+            f"({retrieval.card_fts.cards_skipped} skipped)"
+        )
+    if retrieval.source_registry:
+        print(
+            "Source registry: "
+            f"{retrieval.source_registry.sources} sources, "
+            f"{retrieval.source_registry.enriched_cards} enriched cards"
+        )
+    print(f"Index refresh errors: {len(retrieval.errors)}")
+    print("=" * 60)
 
 
 def _print_load_summary(load_stats: LoadStats, heading: str = "LOAD SUMMARY") -> None:
     """Print a compact summary for load/rebuild commands."""
     print(f"\n📦 {heading}")
     print("═" * 60)
-    print(f"Нормализованных текстов к загрузке: {load_stats.normalized_attempted}")
-    print(f"Нормализованных текстов загружено: {load_stats.normalized_loaded}")
-    print(f"Reviewed items к загрузке: {load_stats.reviewed_attempted}")
-    print(f"Reviewed items загружено: {load_stats.reviewed_loaded}")
-    print(f"Pending review сейчас: {load_stats.review_pending}")
-    print(f"Processed review сейчас: {load_stats.review_processed}")
-    print(f"Skipped review сейчас: {load_stats.review_skipped}")
+    print(f"Enriched cards scanned: {load_stats.enriched_cards_seen}")
+    print(f"enriched_v2 graph texts loaded: {load_stats.graph_texts_loaded}")
     print(f"Итого загружено в LightRAG: {load_stats.total_loaded}")
     print("═" * 60)
 
@@ -357,8 +458,21 @@ def _print_enrich_summary(stats: EnrichmentStats) -> None:
     print(f"Обогащено полностью: {stats.enriched}")
     if stats.partial:
         print(f"⚠️  Частично (LLM не ответил, будет повтор): {stats.partial}")
+    if hasattr(stats, "skipped_review") and stats.skipped_review:
+        print(f"Отправлено на review: {stats.skipped_review}")
     print(f"Пропущено (актуальных): {stats.skipped_up_to_date}")
     print(f"Пропущено (без meta.json): {stats.skipped_no_meta}")
+    if getattr(stats, "youtube_sources", 0):
+        print(
+            f"YouTube: {stats.youtube_episodes} episode cards, "
+            f"{stats.youtube_segments} segments"
+        )
+        if getattr(stats, "youtube_skipped", 0):
+            print(f"YouTube skipped (already current): {stats.youtube_skipped}")
+        if stats.youtube_partial:
+            print(f"⚠️  YouTube с частичными сегментами: {stats.youtube_partial}")
+        if stats.youtube_failed:
+            print(f"⚠️  YouTube с ошибкой: {stats.youtube_failed}")
     print(f"Ошибок: {stats.failed}")
     if stats.partial_posts:
         print()
@@ -370,13 +484,8 @@ def _print_enrich_summary(stats: EnrichmentStats) -> None:
         print("По типу контента:")
         for ct, count in sorted(stats.by_content_type.items(), key=lambda x: -x[1]):
             print(f"  {ct}: {count}")
-    if stats.by_triage:
-        print()
-        print("По triage:")
-        for tr, count in sorted(stats.by_triage.items(), key=lambda x: -x[1]):
-            print(f"  {tr}: {count}")
-    if stats.duplicates_marked:
-        print(f"\nДубликатов помечено: {stats.duplicates_marked}")
+    if stats.repaired:
+        print(f"\nОтремонтировано: {stats.repaired}")
     print("═" * 60)
 
 def launch_reviewer_web() -> None:
@@ -402,6 +511,20 @@ def launch_reviewer_web() -> None:
     import threading
     threading.Thread(target=_open_browser, daemon=True).start()
 
+    child_env = os.environ.copy()
+    child_env.update(
+        {
+            "LLM_PROFILE": llm_backend.active_profile(),
+            "CODEX_CLI_PATH": config.CODEX_CLI_PATH,
+            "CODEX_LUNA_MODEL": config.CODEX_LUNA_MODEL,
+            "CODEX_LUNA_REASONING_EFFORT": config.CODEX_LUNA_REASONING_EFFORT,
+            "CODEX_LLM_TIMEOUT_SECONDS": str(config.CODEX_LLM_TIMEOUT_SECONDS),
+            "CODEX_LLM_MAX_CONCURRENCY": str(config.CODEX_LLM_MAX_CONCURRENCY),
+            "CODEX_FALLBACK_TO_API": str(config.CODEX_FALLBACK_TO_API).lower(),
+            "REGENERATE_ON_PROFILE_CHANGE": str(config.REGENERATE_ON_PROFILE_CHANGE).lower(),
+        }
+    )
+
     subprocess.run(
         [
             sys.executable,
@@ -415,17 +538,35 @@ def launch_reviewer_web() -> None:
             "true",
         ],
         cwd=str(config.PROJECT_ROOT),
+        env=child_env,
     )
 
 
 def _maybe_launch_reviewer() -> None:
     """Check for pending reviews and offer to launch the web UI."""
-    pending = get_pending_reviews()
-    if not pending:
-        return
-
-    print(f"\n🔍 Обнаружено {len(pending)} элемент(ов) в очереди ревью.")
-    print("   Запустите: python main.py review --web")
+    content_pending = get_pending_reviews()
+    wiki_pending = None
+    if config.WIKI_ENABLED:
+        try:
+            wiki_pending = get_wiki_review_counts()
+        except Exception as exc:
+            logger.warning("Could not count Wiki review items: %s", exc)
+    wiki_total = 0 if wiki_pending is None else wiki_pending.total
+    review_total = len(content_pending) + wiki_total
+    if review_total:
+        print(f"\nReview required: {review_total} item(s).")
+        print(f"  Content queue: {len(content_pending)}")
+        if wiki_pending is not None:
+            print(
+                "  Wiki: "
+                f"{wiki_pending.concepts} concepts/aliases, "
+                f"{wiki_pending.hierarchy} hierarchy, "
+                f"{wiki_pending.ambiguities} ambiguities"
+            )
+        if config.AUTO_OPEN_REVIEWER_AFTER_RUN:
+            launch_reviewer_web()
+        else:
+            print("  Run: python main.py review --web")
 
 
 def cmd_review(web: bool = False):
@@ -434,10 +575,27 @@ def cmd_review(web: bool = False):
         launch_reviewer_web()
         return
 
+    wiki_pending = None
+    if config.WIKI_ENABLED:
+        try:
+            wiki_pending = get_wiki_review_counts()
+        except Exception as exc:
+            logger.warning("Could not count Wiki review items: %s", exc)
+    if wiki_pending is not None and wiki_pending.total:
+        print(
+            "\nWiki review: "
+            f"{wiki_pending.concepts} concepts/aliases, "
+            f"{wiki_pending.hierarchy} hierarchy, "
+            f"{wiki_pending.ambiguities} ambiguities."
+        )
+        print("Open all queues with: python main.py review --web")
+
     items = get_pending_reviews()
-    if not items:
+    if not items and (wiki_pending is None or wiki_pending.total == 0):
         print("✅ Нет элементов в очереди на проверку.")
         print("\nДля веб-интерфейса: python main.py review --web")
+        return
+    if not items:
         return
 
     print(f"\n📋 Pending review items: {len(items)}\n")
@@ -493,6 +651,21 @@ def cmd_status():
     print(f"\n  📄 Normalized files: {txt_count}")
 
     review_count = len(get_pending_reviews())
+    if not config.WIKI_ENABLED:
+        print("  Wiki: disabled (WIKI_ENABLED=false)")
+    else:
+        try:
+            current_wiki = wiki_status()
+        except Exception as exc:
+            print(f"  Wiki: unavailable ({exc})")
+        else:
+            print(
+                "  Wiki: "
+                f"{current_wiki['approved_concepts']} approved concepts, "
+                f"{current_wiki['pending_proposals']} concept proposals, "
+                f"{current_wiki['pending_hierarchy']} hierarchy proposals, "
+                f"{current_wiki['pending_ambiguities']} ambiguities"
+            )
     print(f"  🔍 Pending reviews: {review_count}")
 
 

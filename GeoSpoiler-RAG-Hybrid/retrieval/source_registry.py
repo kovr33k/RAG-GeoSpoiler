@@ -1,3 +1,4 @@
+import hashlib
 import json
 import logging
 import sqlite3
@@ -8,9 +9,24 @@ from pathlib import Path
 from typing import Any
 
 import config
-from retrieval.wiki_index import compute_content_hash, extract_source_id
+from models import SourceId
 
 logger = logging.getLogger("geospoiler.retrieval.source_registry")
+
+_CONTENT_HASH_FIELDS = (
+    "provenance",
+    "content_type",
+    "language",
+    "summary",
+    "key_points",
+    "entities",
+    "topics",
+    "quotes",
+    "events",
+    "source_chain",
+    "graph_text",
+    "search_text",
+)
 
 
 @dataclass(frozen=True)
@@ -54,7 +70,8 @@ def rebuild_source_registry(
     reference_rows: list[dict[str, str]] = []
 
     for meta_path, meta in _iter_normalized_meta(normalized_dir):
-        source_id = extract_source_id(meta)
+        normalized_source_id = SourceId.from_provenance(meta)
+        source_id = normalized_source_id.value if normalized_source_id else None
         if not source_id:
             continue
         normalized_file = _normalized_file_for_meta(meta_path)
@@ -77,20 +94,20 @@ def rebuild_source_registry(
         reference_rows.extend(_references_from_normalized_meta(source_id, meta))
 
     for card_path, card in _iter_enriched_cards(enriched_dir):
-        source_id = extract_source_id(card)
+        provenance = card.get("provenance") if isinstance(card.get("provenance"), dict) else {}
+        source_id = _clean_str(provenance.get("source_id"))
         if not source_id:
             continue
-        provenance = card.get("provenance") if isinstance(card.get("provenance"), dict) else {}
         source_chain = card.get("source_chain") if isinstance(card.get("source_chain"), dict) else {}
-        source = _source_from_metadata(source_id, provenance)
+        source = _source_from_enriched_provenance(source_id, provenance)
         source.update(
             {
                 "card_path": str(card_path),
-                "normalized_file": _clean_str(provenance.get("normalized_file")),
-                "meta_file": _clean_str(provenance.get("meta_file")),
+                "normalized_file": _clean_str(provenance.get("normalized_path")),
+                "meta_file": "",
                 "content_type": _clean_str(card.get("content_type")),
                 "language": _clean_str(card.get("language")),
-                "youtube_url": _clean_str(source_chain.get("youtube_url")),
+                "youtube_url": _extract_youtube_url(source_chain),
                 "original_source": _clean_str(source_chain.get("original_source")),
             }
         )
@@ -100,11 +117,11 @@ def rebuild_source_registry(
             {
                 "source_id": source_id,
                 "card_path": str(card_path),
-                "triage": _clean_str(card.get("triage")),
+                "triage": "",
                 "content_type": _clean_str(card.get("content_type")),
                 "language": _clean_str(card.get("language")),
                 "summary": _clean_str(card.get("summary")),
-                "content_hash": compute_content_hash(card),
+                "content_hash": _compute_content_hash(card),
             }
         )
         reference_rows.extend(_references_from_enriched_card(source_id, card))
@@ -158,34 +175,175 @@ def resolve_source(
 ) -> SourcePassport | None:
     if not source_id or not db_path.exists():
         return None
-    with closing(sqlite3.connect(db_path)) as conn:
+    with closing(_connect_read_only(db_path)) as conn:
         conn.row_factory = sqlite3.Row
-        _create_schema(conn)
-        row = conn.execute(
-            """
-            SELECT
-                source_id,
-                post_url,
-                primary_url,
-                normalized_file,
-                meta_file,
-                card_path,
-                channel_name,
-                channel_id,
-                message_id,
-                date,
-                content_type,
-                language,
-                youtube_url,
-                original_source
-            FROM sources
-            WHERE source_id = ?
-            """,
-            (source_id,),
-        ).fetchone()
+        try:
+            row = conn.execute(
+                """
+                SELECT
+                    source_id,
+                    post_url,
+                    primary_url,
+                    normalized_file,
+                    meta_file,
+                    card_path,
+                    channel_name,
+                    channel_id,
+                    message_id,
+                    date,
+                    content_type,
+                    language,
+                    youtube_url,
+                    original_source
+                FROM sources
+                WHERE source_id = ?
+                """,
+                (source_id,),
+            ).fetchone()
+        except sqlite3.OperationalError:
+            return None
         if row is None:
             return None
-        return SourcePassport(**{key: _clean_str(row[key]) for key in row.keys()})
+        return _source_passport_from_row(row)
+
+
+def resolve_source_path(
+    file_path: str,
+    db_path: Path = config.SOURCE_REGISTRY_DB_PATH,
+    metadata_index_path: Path | None = None,
+) -> SourcePassport | None:
+    """Resolve a LightRAG provenance path without unsafe basename matching.
+
+    LightRAG may return a canonical normalized path, a deterministic
+    ``__geospoiler__doc-*`` virtual name, or a path with different separators
+    and casing.  Virtual names are resolved only through the metadata index
+    written during ingestion; ordinary paths are matched against the complete
+    normalized path.  A filename by itself is deliberately never searched in
+    the registry, because duplicate topic directories are a normal corpus
+    condition.
+    """
+    if not str(file_path or "").strip() or not db_path.exists():
+        return None
+
+    target_keys = _path_lookup_keys(file_path)
+    canonical_from_metadata = _canonical_path_from_metadata_index(
+        file_path,
+        metadata_index_path=metadata_index_path,
+    )
+    if canonical_from_metadata:
+        target_keys.update(_path_lookup_keys(canonical_from_metadata))
+
+    if not target_keys:
+        return None
+
+    with closing(_connect_read_only(db_path)) as conn:
+        conn.row_factory = sqlite3.Row
+        try:
+            rows = conn.execute(
+                """
+                SELECT
+                    source_id,
+                    post_url,
+                    primary_url,
+                    normalized_file,
+                    meta_file,
+                    card_path,
+                    channel_name,
+                    channel_id,
+                    message_id,
+                    date,
+                    content_type,
+                    language,
+                    youtube_url,
+                    original_source
+                FROM sources
+                WHERE normalized_file != ''
+                """
+            ).fetchall()
+        except sqlite3.OperationalError:
+            return None
+
+    matches = [
+        row
+        for row in rows
+        if target_keys.intersection(_path_lookup_keys(_clean_str(row["normalized_file"])))
+    ]
+    if len(matches) != 1:
+        if len(matches) > 1:
+            logger.warning("Ambiguous LightRAG provenance path ignored: %s", file_path)
+        return None
+    return _source_passport_from_row(matches[0])
+
+
+def _source_passport_from_row(row: sqlite3.Row) -> SourcePassport:
+    return SourcePassport(**{key: _clean_str(row[key]) for key in row.keys()})
+
+
+def _connect_read_only(db_path: Path) -> sqlite3.Connection:
+    """Open the existing registry in read-only mode for query resolution."""
+    return sqlite3.connect(f"{db_path.resolve().as_uri()}?mode=ro", uri=True)
+
+
+def _path_lookup_keys(value: str) -> set[str]:
+    """Return full-path keys only; this helper must not produce basename keys."""
+    raw = _clean_str(value)
+    if not raw:
+        return set()
+
+    keys = {_normalise_path_key(raw)}
+    try:
+        path = Path(raw)
+        if not path.is_absolute():
+            path = config.PROJECT_ROOT / path
+        keys.add(_normalise_path_key(str(path.resolve(strict=False))))
+    except (OSError, ValueError):
+        pass
+    return {key for key in keys if key}
+
+
+def _normalise_path_key(value: str) -> str:
+    return _clean_str(value).replace("\\", "/").casefold()
+
+
+def _canonical_path_from_metadata_index(
+    file_path: str,
+    *,
+    metadata_index_path: Path | None,
+) -> str:
+    """Look up an explicit ingestion mapping for a virtual LightRAG path."""
+    index_path = metadata_index_path or (config.RAG_STORAGE_DIR / "doc_metadata_index.sqlite")
+    if not index_path.exists():
+        return ""
+
+    keys = _path_lookup_keys(file_path)
+    if not keys:
+        return ""
+    conn: sqlite3.Connection | None = None
+    try:
+        conn = _connect_read_only(index_path)
+        rows = conn.execute(
+            "SELECT source_path, metadata_json FROM source_metadata"
+        ).fetchall()
+    except sqlite3.Error:
+        return ""
+    finally:
+        if conn is not None:
+            conn.close()
+
+    matches: list[str] = []
+    for source_path, metadata_json in rows:
+        if not keys.intersection(_path_lookup_keys(_clean_str(source_path))):
+            continue
+        try:
+            metadata = json.loads(metadata_json)
+        except (TypeError, json.JSONDecodeError):
+            continue
+        canonical_path = _clean_str(metadata.get("canonical_path")) if isinstance(metadata, dict) else ""
+        if canonical_path:
+            matches.append(canonical_path)
+
+    unique = sorted(set(matches), key=str.casefold)
+    return unique[0] if len(unique) == 1 else ""
 
 
 def _create_schema(conn: sqlite3.Connection) -> None:
@@ -406,6 +564,24 @@ def _source_from_metadata(source_id: str, metadata: dict[str, Any]) -> dict[str,
     }
 
 
+def _source_from_enriched_provenance(
+    source_id: str,
+    provenance: dict[str, Any],
+) -> dict[str, str]:
+    """Map strict v2 provenance names into the registry's stable DB columns."""
+    post_url = _clean_str(provenance.get("post_url"))
+    return {
+        "source_id": source_id,
+        "channel_name": _clean_str(provenance.get("channel")),
+        "channel_id": "",
+        "channel_username": "",
+        "message_id": _clean_str(provenance.get("message_id")),
+        "date": _clean_str(provenance.get("date")),
+        "post_url": post_url,
+        "primary_url": post_url,
+    }
+
+
 def _merge_source(sources: dict[str, dict[str, str]], source_id: str, incoming: dict[str, str]) -> None:
     current = sources.setdefault(source_id, {"source_id": source_id})
     for key, value in incoming.items():
@@ -432,18 +608,14 @@ def _references_from_normalized_meta(source_id: str, meta: dict[str, Any]) -> li
 def _references_from_enriched_card(source_id: str, card: dict[str, Any]) -> list[dict[str, str]]:
     source_chain = card.get("source_chain") if isinstance(card.get("source_chain"), dict) else {}
     rows: list[dict[str, str]] = []
-    youtube_url = _clean_str(source_chain.get("youtube_url"))
-    if youtube_url:
-        rows.append(_reference_row(source_id, "youtube", youtube_url, "youtube_url", "enriched_card"))
-    for item in source_chain.get("cited_sources") or []:
-        if isinstance(item, dict):
-            url = _clean_str(item.get("url") or item.get("post_url") or item.get("source"))
-            label = _clean_str(item.get("label") or item.get("title") or item.get("name") or "cited_sources")
-        else:
-            url = _clean_str(item)
-            label = "cited_sources"
+    for item in source_chain.get("external_links") or []:
+        if not isinstance(item, dict):
+            continue
+        url = _clean_str(item.get("url"))
+        label = _clean_str(item.get("label")) or "external_link"
         if url:
-            rows.append(_reference_row(source_id, "cited_source", url, label, "enriched_card"))
+            reference_type = "youtube" if "youtube" in label.lower() else "external_link"
+            rows.append(_reference_row(source_id, reference_type, url, label, "enriched_card"))
     return rows
 
 
@@ -482,7 +654,7 @@ def _iter_enriched_cards(enriched_dir: Path) -> list[tuple[Path, dict[str, Any]]
         except (json.JSONDecodeError, OSError) as exc:
             logger.debug("Source registry could not read enriched card %s: %s", card_path, exc)
             continue
-        if isinstance(data, dict):
+        if isinstance(data, dict) and data.get("schema_version") == "enriched_v2":
             rows.append((card_path, data))
     return rows
 
@@ -502,6 +674,25 @@ def _iter_urls(value: Any) -> list[str]:
 
 def _bool_text(value: Any) -> str:
     return "1" if bool(value) else "0"
+
+
+def _extract_youtube_url(source_chain: dict) -> str:
+    for link in source_chain.get("external_links") or []:
+        if isinstance(link, dict) and "youtube" in (link.get("label") or "").lower():
+            return _clean_str(link.get("url"))
+    return ""
+
+
+def _compute_content_hash(card: dict[str, Any]) -> str:
+    """Hash source-registry metadata locally."""
+    payload = {key: card.get(key) for key in _CONTENT_HASH_FIELDS if key in card}
+    canonical = json.dumps(
+        payload,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def _clean_str(value: Any) -> str:

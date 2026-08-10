@@ -19,7 +19,6 @@ class ExperimentRegistryTests(unittest.TestCase):
                         "config_flags": {
                             "RERANKER_ENABLED": False,
                             "HYBRID_SYNTH_ENABLED": True,
-                            "WIKI_ENABLED": True,
                         },
                         "total": 4,
                         "passed": 3,
@@ -37,7 +36,6 @@ class ExperimentRegistryTests(unittest.TestCase):
                         "config_flags": {
                             "RERANKER_ENABLED": "false",
                             "HYBRID_SYNTH_ENABLED": "true",
-                            "WIKI_ENABLED": "true",
                         },
                         "total": 6,
                         "passed": 6,

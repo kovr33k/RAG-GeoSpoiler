@@ -24,7 +24,6 @@ class ExperimentRecord:
     average_duration_seconds: float | None
     reranker_enabled: bool | None
     hybrid_synth_enabled: bool | None
-    wiki_enabled: bool | None
     scores_path: str
     results_path: str
 
@@ -106,7 +105,6 @@ def _record_from_summary(path: Path, data: dict[str, Any]) -> ExperimentRecord:
         average_duration_seconds=_optional_float(data.get("average_duration_seconds")),
         reranker_enabled=_optional_bool(flags.get("RERANKER_ENABLED")),
         hybrid_synth_enabled=_optional_bool(flags.get("HYBRID_SYNTH_ENABLED")),
-        wiki_enabled=_optional_bool(flags.get("WIKI_ENABLED")),
         scores_path=str(path),
         results_path=str(_paired_results_path(path)),
     )
@@ -119,8 +117,8 @@ def _write_markdown_report(records: list[ExperimentRecord], path: Path, generate
         f"- generated_at: {generated_at}",
         f"- records: {len(records)}",
         "",
-        "| Checked At | Kind | Model | Mode | Passed | Avg | Rerank | Synth | Wiki | Scores |",
-        "|---|---|---|---|---:|---:|:---:|:---:|:---:|---|",
+        "| Checked At | Kind | Model | Mode | Passed | Avg | Rerank | Synth | Scores |",
+        "|---|---|---|---|---:|---:|:---:|:---:|---|",
     ]
     for record in records:
         lines.append(
@@ -133,7 +131,6 @@ def _write_markdown_report(records: list[ExperimentRecord], path: Path, generate
             f"{record.average_score:g} | "
             f"{_flag(record.reranker_enabled)} | "
             f"{_flag(record.hybrid_synth_enabled)} | "
-            f"{_flag(record.wiki_enabled)} | "
             f"`{Path(record.scores_path).name}` |"
         )
     lines.append("")

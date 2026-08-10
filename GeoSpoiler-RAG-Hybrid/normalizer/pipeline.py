@@ -25,7 +25,11 @@ from normalizer.router import ClassifiedMessage, classify
 from normalizer.text_handler import normalize_text
 from normalizer.transcription_handler import TranscriptionResult, transcribe_media
 from normalizer.translator import translate_to_russian_if_needed
-from normalizer.youtube_handler import extract_youtube_text
+from normalizer.youtube_handler import (
+    extract_youtube_artifact,
+    extract_youtube_text,  # noqa: F401 - compatibility seam for reviewer/tests
+    save_youtube_artifact,
+)
 
 logger = logging.getLogger("geospoiler.normalizer")
 
@@ -113,6 +117,7 @@ def normalize_message(
     classified = classified or classify(msg)
 
     sections = []
+    youtube_sources: list[dict] = []
     ai_review_created = 0
     ai_review_already_reviewed = 0
     link_review_created = 0
@@ -138,10 +143,42 @@ def normalize_message(
     media_sections, transcription_metadata = _build_media_sections(classified, msg)
     sections.extend(media_sections)
 
-    # YouTube: auto-process only if the post is just a link (no body text).
-    # If the post has text + YouTube link, route to review.
+    # YouTube is extracted into a dedicated source artifact. A mixed Telegram
+    # post keeps its own text in the normal archive and gets a separate episode.
     for url in classified.youtube_urls:
-        if has_body_text:
+        try:
+            artifact = extract_youtube_artifact(url)
+            paths = save_youtube_artifact(
+                artifact,
+                channel_name=msg.channel_name,
+                message_id=msg.message_id,
+                source_meta={
+                    "channel_name": msg.channel_name,
+                    "channel_id": msg.channel_id,
+                    "message_id": msg.message_id,
+                    "date": msg.date.isoformat() if msg.date else None,
+                    "post_url": msg.post_url,
+                },
+                channel_id=msg.channel_id,
+            )
+            youtube_sources.append(
+                {
+                    **artifact.metadata(),
+                    **{
+                        "text_path": paths["text_path"],
+                        "metadata_path": paths["metadata_path"],
+                        "cues_path": paths["cues_path"],
+                    },
+                }
+            )
+            if has_body_text:
+                # The dedicated artifact is referenced by metadata. Do not put
+                # a filesystem path into translatable/searchable body text.
+                continue
+            else:
+                sections.append(artifact.normalized_text)
+        except Exception as exc:
+            logger.warning("YouTube extraction failed for %s: %s", url, exc)
             rv = queue_review_item(
                 review_type=REVIEW_TYPE_EXTERNAL_LINK,
                 channel_name=msg.channel_name,
@@ -149,14 +186,11 @@ def normalize_message(
                 message_text=msg.text,
                 message_date=msg.date,
                 url=url,
-                reason="YouTube link in post with text",
+                reason=f"YouTube extraction failed: {exc}",
             )
             sections.append(rv.placeholder_text)
             if rv.action == "queued":
                 link_review_created += 1
-        else:
-            yt_text = extract_youtube_text(url)
-            sections.append(yt_text)
 
     # Instagram: same rule — auto-process only link-only posts.
     for url in classified.instagram_urls:
@@ -222,7 +256,13 @@ def normalize_message(
     translated_body = translate_to_russian_if_needed(body_text)
     
     full_text = f"{header}\n\n{translated_body}"
-    metadata = _build_metadata(msg, classified, transcription_metadata)
+    metadata = _build_metadata(
+        msg,
+        classified,
+        transcription_metadata,
+        youtube_sources,
+        has_body_text=has_body_text,
+    )
 
     filepath = _save_normalized(msg, full_text, metadata)
     logger.info(f"  Normalized: {filepath.name} ({len(full_text)} chars)")
@@ -335,6 +375,9 @@ def _build_metadata(
     msg: TelegramMessage,
     classified: ClassifiedMessage,
     transcriptions: list[dict] | None = None,
+    youtube_sources: list[dict] | None = None,
+    *,
+    has_body_text: bool | None = None,
 ) -> dict:
     """Build structured metadata saved alongside the normalized text."""
     transcriptions = transcriptions or []
@@ -351,6 +394,7 @@ def _build_metadata(
         "forward_from_id": msg.forward_from_id,
         "forward_date": msg.forward_date.isoformat() if msg.forward_date else None,
         "has_text": classified.has_text,
+        "has_body_text": has_body_text,
         "has_images": bool(classified.image_paths),
         "image_count": len(classified.image_paths),
         "image_paths": list(classified.image_paths),
@@ -360,6 +404,7 @@ def _build_metadata(
         "media_count": len(media),
         "media": media,
         "transcriptions": transcriptions,
+        "youtube_sources": youtube_sources or [],
         "native_media_paths": [
             item["file_path"]
             for item in media

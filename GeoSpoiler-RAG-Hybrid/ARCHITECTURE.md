@@ -1,7 +1,7 @@
 # Architecture
 
 GeoSpoiler RAG is a local OSINT memory system built around Telegram sources,
-normalized text, enriched evidence cards, wiki memory, local indexes, and
+normalized text, enriched evidence cards, local indexes, and
 LightRAG query execution.
 
 The project is not trying to make LightRAG the only source of truth. The stable
@@ -11,7 +11,8 @@ source chain is:
 Telegram / web / media
   -> output/normalized
   -> output/enriched
-  -> output/wiki + local indexes
+  -> local indexes
+  -> optional LightRAG commands
   -> query/search/eval
 ```
 
@@ -28,20 +29,19 @@ normalizer/
 
 enricher/
   normalized .txt + .meta.json -> enriched evidence cards.
-  Extracts summaries, key facts, entities, topics, quotes, theses, events,
-  graph text, and visual notes.
+  Extracts summaries, key points, entities, topics, quotes, theses, and events;
+  deterministic builders produce graph/search text.
 
 retrieval/
   Local retrieval/index layers:
   - card FTS;
   - source registry;
-  - wiki indexes/resolver/health/update;
   - composer search.
 
 loader/
   Focused LightRAG modules for factory setup, ingestion, storage, extraction,
-  entity merge policy, query orchestration, card fallback context, and wiki
-  context. `loader/lightrag_loader.py` is a compatibility facade.
+  entity merge policy, query orchestration, and card fallback context.
+  `loader/lightrag_loader.py` is a compatibility facade.
 
 cli_tools.py
   Secondary command helpers for experiment-registry, enriched-validation,
@@ -50,9 +50,9 @@ cli_tools.py
 cli.py
   Compatibility wrapper that re-exports `cli_tools` for older imports.
 
-cli_app.py / cli_pipeline.py / cli_query.py / cli_wiki.py / cli_runtime.py
+cli_app.py / cli_pipeline.py / cli_query.py / cli_runtime.py
   Argparse command routing, pipeline commands, query/source display helpers,
-  wiki commands, and shared CLI runtime utilities.
+  and shared CLI runtime utilities.
 
 experiment_registry.py
   Read-only score-artifact registry for golden/probe/smoke run summaries.
@@ -63,7 +63,8 @@ main.py
 
 ## Source Of Truth
 
-`output/normalized/` is the source-of-truth text layer for the default graph.
+`output/normalized/` is the immutable source archive. `output/enriched/` is the
+working card layer used by local retrieval and explicit LightRAG graph loading.
 Each normalized text has a sidecar metadata file:
 
 ```text
@@ -97,15 +98,19 @@ cmd_enrich
   -> enricher.pipeline.enrich_all
   -> output/enriched/*.enriched.json
   -> state/enrichment_progress.json update
+  -> full card FTS rebuild
+  -> full source registry rebuild
 
 cmd_load
   -> cli_pipeline.cmd_load
   -> loader.factory.create_rag
-  -> loader.ingest.load_from_directory
+  -> loader.ingest.load_from_enriched
+  -> enriched_v2 graph_text only
   -> rag_storage/
 ```
 
-`python main.py run` executes fetch, normalize, enrich, and load in one pass.
+`python main.py run` executes fetch, normalize, enrich, card FTS rebuild, and
+source-registry rebuild. LightRAG loading is a separate, explicit command.
 
 ## Normalization
 
@@ -152,23 +157,21 @@ normalizer.transcription_backfill
 `enricher.pipeline` scans normalized files and creates structured cards under
 `output/enriched/`.
 
-Cards include:
+Enriched v2 cards include:
 
 - provenance;
-- content type and triage;
+- content type;
 - summary;
-- key facts;
+- key points;
 - entities and topics;
 - quotes;
 - events;
 - theses;
-- visual/B-roll notes;
 - graph/search text.
 
-The default LightRAG graph is still loaded from normalized source text, not from
-enriched cards. Loading enriched cards directly into LightRAG was retired as a
-main CLI path in v1.1 because it did not improve quality enough to justify the
-operational cost.
+LightRAG is not updated by `run` or `enrich`. `python main.py load` explicitly
+loads `graph_text` from `schema_version=enriched_v2` cards. Cards without
+`graph_text` are skipped; normalized text is never used as an implicit fallback.
 
 ## LightRAG Storage
 
@@ -178,43 +181,85 @@ The active LightRAG working directory is:
 rag_storage/
 ```
 
-Default load path:
+Explicit load path:
 
 ```text
-output/normalized/*.txt -> LightRAG
+output/enriched/*.enriched.json:graph_text -> LightRAG
 ```
 
-Document ids are stable and path-based. The review queue is a unified
-manual-ingestion layer. Normalization and enrichment may enqueue AI chat links,
-external links, long Instagram Reels, and low-information posts. Processed items
-are loaded as review JSON sources during `load` when they have
-`status=processed` and non-empty `extracted_text`.
+Document ids are stable and path-based. The review queue remains a separate
+manual workflow. `load` and `rebuild` do not read it; both commands ingest only
+non-empty `graph_text` from `schema_version=enriched_v2` cards.
 
 `rebuild` moves the current `rag_storage/` into `rag_storage_backups/`, clears
-the active query cache, and reloads normalized sources.
+the active query cache, and reloads enriched v2 graph text.
 
-## Wiki Memory
+## Wiki Status
 
-Wiki memory is a local markdown layer under:
+The old file-first Wiki was removed. Its replacement is
+`retrieval/wiki/`: a versioned SQLite state machine whose Markdown files are
+only disposable projections.
 
 ```text
-output/wiki/
+Enriched v2 + YouTube segment cards
+  -> lineage/input revisions + immutable claim occurrences
+  -> registry surface evidence
+  -> user-approved concepts and identity aliases
+  -> exact reversible claim groups
+  -> role-aware occurrence -> concept links
+  -> computed card relations
+  -> approved hierarchy + authoritative manual sidecars
+  -> card / claim / hub projections
+  -> generated output/wiki/*.md + Wiki FTS
+  -> Retrieval Composer and hybrid query context
 ```
 
-It tracks:
+The main ownership boundary is:
 
-- high-risk claims;
-- entities;
-- topics;
-- source-grounding guardrails;
-- page/source indexes.
+```text
+Authoritative
+  Enriched revisions, approvals/rejects/reopens, aliases,
+  hierarchy decisions, pinned ambiguity resolutions, sidecars
 
-Wiki search is implemented in `retrieval/wiki_index.py`. Source resolution is
-implemented in `retrieval/wiki_resolver.py` and prefers
-`artifacts/source_registry.sqlite` before falling back to enriched cards.
+Derived/rebuildable
+  automatic groups and links, card relations, proposal candidates,
+  projection artifacts, generated hubs, FTS
+```
 
-Query integration uses wiki context as read-only memory. It is not a primary
-source; final answers should prefer Telegram/YouTube/normalized references.
+Stages use immutable input/dependency generations and processor-contract
+activation history. Their final CAS checks every bound head, so a late worker
+cannot apply an obsolete revision. Claim extraction is invalidated only by
+claim inputs; summary, relation, eligibility, and display changes move their
+own generations. Successful Luna identity/hierarchy analyses are cached by the
+exact candidate/tree snapshot, prompt version, and model profile; unchanged
+runs do not call the model again.
+
+Lifecycle-active occurrences are distinct from eligible-active occurrences.
+Grouping and concept resolution can be prepared from lifecycle state, while
+eligibility only exposes or hides those results from review, hubs, and FTS.
+Luna relation resolution runs only for unclear roles or plausible claim-local
+metonyms; explicit structured `subject`/`actor`/`object` roles stay
+deterministic.
+
+Registry and resolver safety:
+
+- two independent claim clusters are required before a surface proposal;
+- reposts of the same content remain one cluster;
+- concepts do not exist before explicit approval;
+- aliases are identity equivalence only; metonyms are claim-local;
+- exact claim grouping never destroys source occurrences;
+- ambiguous candidates enter a separate review queue;
+- hierarchy changes are proposals and approved branches never move
+  automatically;
+- hubs exist only for approved concepts with current eligible material;
+- direct claims/cards are prominent, while context/mentions are preserved in
+  collapsed sections.
+
+Wiki is a dormant optional subsystem by default. With `WIKI_ENABLED=false`,
+`cli_pipeline.refresh_enriched_retrieval()` skips it, `reviewer_app.py` hides
+its tab, CLI commands are blocked, and query paths do not open its SQLite DB.
+Setting `WIKI_ENABLED=true` restores those paths; approved hub context is then
+included when `HYBRID_QUERY_WIKI_ENABLED=true`.
 
 ## Local Retrieval Indexes
 
@@ -225,8 +270,10 @@ retrieval/card_fts.py
 artifacts/card_fts.sqlite
 ```
 
-This is the preferred local card search backend. It falls back to legacy
-`retrieval/shadow_search.py` when FTS is empty or unavailable.
+This is the preferred local card search backend. Composer also runs
+`retrieval/shadow_search.py`, keeps FTS first for duplicates, and appends unique
+shadow matches for extra recall. Direct FTS search supports bounded `--top-k`
+and unbounded `--all` modes.
 
 Source registry:
 
@@ -244,8 +291,8 @@ Retrieval composer:
 retrieval/composer.py
 ```
 
-Composer combines wiki context, LightRAG query results, and card search for
-search/report commands. Cards-only modes avoid LightRAG and live LLM calls.
+Composer combines LightRAG query results and card search for search/report
+commands. Cards-only modes avoid LightRAG and live LLM calls.
 
 ## Query Flow
 
@@ -261,15 +308,30 @@ main.py
 Inside the loader query path:
 
 ```text
-question
-  -> optional wiki context lookup
-  -> optional enriched-card context lookup
-  -> LightRAG query with query profile prompt
-  -> attach wiki/card references
-  -> optional fallback synthesis when configured
-  -> postprocess answer
-  -> return llm_response + data.references
+LATE_FUSION_ENABLED=false
+  -> preserved legacy LightRAG/card-context path
+
+LATE_FUSION_ENABLED=true
+  -> LightRAG aquery_data + Card FTS + YouTube segment FTS in parallel
+  -> independent per-channel timeout/status/duration trace
+  -> path/source normalization, deduplication and RRF
+  -> best-ranked YouTube segment validation with backfill
+  -> strict card/source identity, HTTP(S) URL validation and hydration backfill
+  -> field-aware deterministic token packing
+  -> one final Luna synthesis call with stable [S1]..[Sn] citations
+  -> citation validation
+  -> direct legacy fallback only for a Late-Fusion synthesis failure
 ```
+
+Late Fusion remains Enriched-first: LightRAG ingestion still receives only
+`EnrichedCardV2.graph_text`; normalized files are provenance identities, not
+the answer evidence. Wiki is excluded from the V1 path. `data.late_fusion`
+contains a compact retrieval trace, while `data.references` contains only the
+source blocks actually passed to Luna.
+
+Query-time Card/YouTube FTS and source-registry resolution open existing SQLite
+databases read-only. Schema creation and migrations belong to explicit
+rebuild/init paths, never to a user query.
 
 Query profiles:
 
@@ -297,7 +359,6 @@ Modes:
 
 ```text
 recall      broad LightRAG + card retrieval
-broll       visual/B-roll focused search
 thesis      claim/thesis focused search
 entity      entity focused search
 cards       local cards-only search
@@ -313,7 +374,6 @@ Source grounding is maintained by several cooperating layers:
 - normalized `.meta.json` stores post URLs and media/link metadata;
 - enriched cards preserve provenance and normalized file paths;
 - source registry gives a single source passport;
-- wiki indexes map pages to source ids;
 - query results carry `data.references`;
 - `cli_query._extract_query_sources` resolves references for source display.
 
@@ -327,7 +387,6 @@ No-network checks:
 
 ```text
 python -m unittest
-python main.py wiki health
 python main.py fts search "query"
 python main.py registry resolve SOURCE_ID
 ```
@@ -350,7 +409,6 @@ Important runtime flags:
 ```text
 HYBRID_QUERY_CARDS_ENABLED
 HYBRID_SYNTH_ENABLED
-WIKI_ENABLED
 RERANKER_ENABLED
 QUERY_MODEL
 FALLBACK_SYNTH_MODEL
@@ -358,13 +416,12 @@ LLM_REASONING_EFFORT
 TRANSCRIPTION_ENABLED
 ```
 
-Reranker, synthesis, wiki, model, and retrieval changes should be evaluated
+Reranker, synthesis, model, and retrieval changes should be evaluated
 separately. Combining them in one run makes regressions hard to interpret.
 
 ## Design Principles
 
 - Keep normalized sources as source of truth.
-- Keep wiki as read-only memory during query, not as a replacement source.
 - Prefer local deterministic indexes before adding new infrastructure.
 - Do not rebuild LightRAG unless the active graph must be recreated.
 - Keep source-grounding checks separate from answer-quality checks.

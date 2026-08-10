@@ -2,7 +2,7 @@
 Content Classifier — determines content_type from meta.json + normalized text.
 
 Reads the sidecar .meta.json produced by the normalizer and the body text
-to classify a post into one of the 15 content types.
+to classify a post into one of the v2 content types.
 """
 
 import logging
@@ -10,27 +10,20 @@ import re
 
 logger = logging.getLogger("geospoiler.enricher.classifier")
 
-# ── Content types ──────────────────────────────────────────────────────────
+# ── Content types (v2) ─────────────────────────────────────────────────────
 CONTENT_TYPES = [
-    "text",              # Plain text post, no media
-    "news",              # News repost (forwarded from news channel)
-    "analysis",          # Long-form analysis / opinion
-    "youtube_longform",  # YouTube video with long transcript (>3000 chars)
-    "youtube_short",     # YouTube Shorts or short video (<3000 chars transcript)
-    "instagram_reel",    # Instagram Reel
-    "instagram_post",    # Instagram photo/carousel post
-    "image",             # Post with image(s) — infographic, map, photo
-    "screenshot",        # Screenshot of social media / chat
-    "quote",             # Short quote (<200 chars body)
-    "video_native",      # Telegram native video (not YouTube)
-    "ai_chat",           # AI chat link (ChatGPT, Claude)
-    "web_article",       # External web article
-    "broll_candidate",   # Visual-only content for b-roll
-    "mixed",             # Combination of text + video + images
+    "telegram_post",            # Original Telegram post (text, analysis, quote, image+text)
+    "telegram_forward",         # Forwarded post
+    "youtube_transcript",       # YouTube video with transcript
+    "instagram_text",           # Instagram content
+    "web_article_text",         # External web article
+    "mixed_normalized_text",    # Native video, image-only, mixed media
+    "unknown",                  # Fallback
 ]
 
 # YouTube marker left by the normalizer's youtube_handler
 _YOUTUBE_MARKER_RE = re.compile(r"\[YouTube:", re.IGNORECASE)
+_STANDALONE_YOUTUBE_RE = re.compile(r"^\[YouTube\]\s*$", re.IGNORECASE | re.MULTILINE)
 # Vision API description marker from image_handler
 _IMAGE_DESC_RE = re.compile(r"\[Изображение(?:\s+\d+)?:", re.IGNORECASE)
 # Native media placeholders from normalizer
@@ -58,7 +51,6 @@ def classify_content(meta: dict, normalized_text: str) -> str:
     Returns:
         One of the CONTENT_TYPES strings.
     """
-    # Strip header line for body analysis
     lines = normalized_text.split("\n")
     body_lines = [ln for ln in lines if not _HEADER_RE.match(ln.strip())]
     body = "\n".join(body_lines).strip()
@@ -70,88 +62,45 @@ def classify_content(meta: dict, normalized_text: str) -> str:
     has_images = meta.get("has_images", False)
     has_video = meta.get("has_video", False)
     has_text = meta.get("has_text", False)
+    has_body_text = meta.get("has_body_text")
     is_forward = meta.get("is_forward", False)
 
-    # Count how many content signals are present
-    media_signals = sum([has_youtube, has_instagram, has_images, has_video, has_web])
-
-    # ── Priority 1: AI chat ──
+    # AI chat → handled by triage as "review", but classify if it reaches here
     if has_ai_chat:
-        return "ai_chat"
+        return "mixed_normalized_text"
 
-    # ── Priority 2: YouTube ──
-    if has_youtube:
-        # Estimate transcript length from the YouTube section in normalized text
-        yt_section_len = _estimate_youtube_section_length(body)
-        if yt_section_len > 3000:
-            return "youtube_longform"
-        return "youtube_short"
+    # A link-only post is represented by the dedicated YouTube episode job.
+    # Mixed posts keep their Telegram text as a normal Telegram card.
+    standalone_youtube = has_youtube and (
+        has_body_text is False
+        or (has_body_text is None and _STANDALONE_YOUTUBE_RE.search(normalized_text))
+    )
+    if standalone_youtube:
+        return "youtube_transcript"
 
-    # ── Priority 3: Instagram ──
-    if has_instagram:
-        for url in meta.get("instagram_urls", []):
-            if "/reel/" in url.lower():
-                return "instagram_reel"
-        return "instagram_post"
+    # Instagram
+    if has_instagram and has_body_text is not True:
+        return "instagram_text"
 
-    # ── Priority 4: Native video ──
-    if has_video and not has_youtube:
-        # If there's meaningful text alongside, it's mixed
-        if has_text and _body_text_length(body) > 200:
-            return "mixed"
-        return "video_native"
-
-    # ── Priority 5: Web article ──
+    # Web article
     if has_web and _WEB_MARKER_RE.search(body):
-        return "web_article"
+        return "web_article_text"
 
-    # ── Priority 6: Image-based ──
-    if has_images:
-        text_len = _body_text_length(body)
-        if text_len < 50:
-            # Image with no/minimal text → b-roll or pure image
-            return "broll_candidate"
-        if text_len < 200 and not has_text:
-            # Only image descriptions, no original text
-            return "image"
-        if has_text and text_len > 200:
-            # Text + images
-            if media_signals > 1:
-                return "mixed"
-            # Determine if the text is analysis or news
-            return _classify_text_post(body, is_forward)
-        return "image"
+    # Native video / image-only / mixed media without substantive text
+    if (has_video or has_images) and not has_text:
+        return "mixed_normalized_text"
+    if has_video and has_text and _body_text_length(body) < 50:
+        return "mixed_normalized_text"
 
-    # ── Priority 7: Text-only posts ──
-    if has_text:
-        return _classify_text_post(body, is_forward)
-
-    # ── Fallback ──
-    return "text"
-
-
-def _classify_text_post(body: str, is_forward: bool) -> str:
-    """Sub-classify a text-only post into text / news / analysis / quote."""
-    text_len = _body_text_length(body)
-
-    # Very short text → quote
-    if text_len < 200:
-        return "quote"
-
-    # Forwarded posts under 800 chars are typically news
-    if is_forward and text_len < 800:
-        return "news"
-
-    # Long text (>1500 chars) is usually analysis
-    if text_len > 1500:
-        return "analysis"
-
-    # Medium-length forwarded → news
+    # Forwarded text posts
     if is_forward:
-        return "news"
+        return "telegram_forward"
 
-    # Medium-length original → text
-    return "text"
+    # Original text posts (all lengths: short quotes, analysis, news — same type)
+    if has_text:
+        return "telegram_post"
+
+    return "unknown"
 
 
 def _body_text_length(body: str) -> int:

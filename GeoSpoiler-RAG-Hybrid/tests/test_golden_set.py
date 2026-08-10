@@ -224,8 +224,7 @@ async def run_tests():
                 f"`RERANKER_ENABLED={config.RERANKER_ENABLED}`, "
                 f"`HYBRID_SYNTH_ENABLED={config.HYBRID_SYNTH_ENABLED}`, "
                 f"`HYBRID_QUERY_CARDS_ENABLED={config.HYBRID_QUERY_CARDS_ENABLED}`, "
-                f"`WIKI_ENABLED={config.WIKI_ENABLED}`, "
-                f"`WIKI_TOP_K={config.WIKI_TOP_K}`\n\n"
+                "\n\n"
             )
             f.write("Default profile: answer/top_k=15. Source questions use source/top_k=15. Overview questions use overview/top_k=30.\n\n")
 
@@ -301,8 +300,6 @@ async def run_tests():
             "RERANKER_ENABLED": config.RERANKER_ENABLED,
             "HYBRID_SYNTH_ENABLED": config.HYBRID_SYNTH_ENABLED,
             "HYBRID_QUERY_CARDS_ENABLED": config.HYBRID_QUERY_CARDS_ENABLED,
-            "WIKI_ENABLED": config.WIKI_ENABLED,
-            "WIKI_TOP_K": config.WIKI_TOP_K,
         },
         "total": len(scores),
         "passed": sum(1 for item in scores if item["pass"]),

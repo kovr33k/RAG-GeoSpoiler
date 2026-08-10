@@ -12,9 +12,7 @@ from normalizer.transcription_backfill import BackfillStats, backfill_transcript
 from retrieval.card_fts import (
     CardFtsBuildStats,
     CardFtsMatch,
-    WikiFtsBuildStats,
     rebuild_card_index,
-    rebuild_wiki_index,
     search_card_index,
 )
 from retrieval.shadow_search import ShadowMatch
@@ -107,25 +105,20 @@ def cmd_registry_resolve(
 
 def cmd_fts_rebuild(
     rebuild_index: Callable[[], CardFtsBuildStats] = rebuild_card_index,
-    rebuild_wiki: Callable[[], WikiFtsBuildStats] = rebuild_wiki_index,
 ) -> CardFtsBuildStats:
-    """Rebuild local card and wiki FTS indexes and print their summaries."""
+    """Rebuild the local card FTS index and print its summary."""
     stats = rebuild_index()
-    wiki_stats = rebuild_wiki()
     print("Card FTS rebuild complete.")
     print(f"  DB: {stats.db_path}")
     print(f"  Cards seen: {stats.cards_seen}")
     print(f"  Cards indexed: {stats.cards_indexed}")
     print(f"  Cards skipped: {stats.cards_skipped}")
-    print(f"  Wiki pages seen: {wiki_stats.pages_seen}")
-    print(f"  Wiki pages indexed: {wiki_stats.pages_indexed}")
-    print(f"  Wiki pages skipped: {wiki_stats.pages_skipped}")
     return stats
 
 
 def cmd_fts_search(
     query: str,
-    top_k: int = 10,
+    top_k: int | None = 10,
     compare_shadow: bool = False,
     search_index: Callable[..., list[CardFtsMatch]] = search_card_index,
     search_shadow: Callable[..., list[ShadowMatch]] = shadow_search_cards,
